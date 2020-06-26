@@ -1,7 +1,17 @@
 import React from 'react';
 
-export default function Item() {
+export default function Item({ name, category, address }) {
+  if (name === '' || category === '' || address === '') {
+    return '';
+  }
+
   return (
-    <li />
+    <li>
+      {name}
+      |
+      {category}
+      |
+      {address}
+    </li>
   );
 }
