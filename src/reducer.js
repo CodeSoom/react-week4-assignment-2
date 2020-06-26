@@ -14,6 +14,14 @@ function reducer(previousState = initState, action) {
       restaurantName: action.payload.restaurantName,
     };
   }
+
+  if (action.type === 'changeType') {
+    return {
+      ...initState,
+      restaurantType: action.payload.restaurantType,
+    };
+  }
+
   return previousState;
 }
 
