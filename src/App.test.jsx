@@ -40,7 +40,22 @@ describe('<App />', () => {
 
     context('without restaurants', () => {
       it('shows nothing', () => {
-        const restaurants = [];
+        const emptyRestaurants = [];
+
+        const { getByText } = renderApp();
+
+        expect(getByText(/레스토랑1/i)).not.toBeInTheDocument();
+        expect(getByText(/분류1/i)).not.toBeInTheDocument();
+        expect(getByText(/주소1/i)).not.toBeInTheDocument();
+
+        expect(getByText(/레스토랑2/i)).not.toBeInTheDocument();
+        expect(getByText(/분류2/i)).not.toBeInTheDocument();
+        expect(getByText(/주소2/i)).not.toBeInTheDocument();
+
+        expect(getByText(/레스토랑3/i)).not.toBeInTheDocument();
+        expect(getByText(/분류3/i)).not.toBeInTheDocument();
+        expect(getByText(/주소3/i)).not.toBeInTheDocument();
+
       });
     });
 
