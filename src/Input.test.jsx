@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Input from './Input';
 
@@ -54,6 +54,41 @@ describe('Input', () => {
       expect(nameInput.value).toBe(informations.name);
       expect(categoryInput.value).toBe(informations.category);
       expect(addressInput.value).toBe(informations.address);
+    });
+  });
+
+  context('when input change', () => {
+    it('handleChangeInformations 함수가 실행된다.', () => {
+      const informations = {
+        name: '',
+        category: '',
+        address: '',
+      };
+
+      const handleChangeInformations = jest.fn();
+
+      const { container } = render(
+        <Input
+          informations={informations}
+          handleChangeInformations={handleChangeInformations}
+        />,
+      );
+
+      const nameInput = container.querySelector('input[name = name]');
+      const categoryInput = container.querySelector('input[name = category]');
+      const addressInput = container.querySelector('input[name = address]');
+
+      fireEvent.change(nameInput, { target: { value: '한식당' } });
+
+      expect(handleChangeInformations).toBeCalled();
+
+      fireEvent.change(categoryInput, { target: { value: '한식' } });
+
+      expect(handleChangeInformations).toBeCalled();
+
+      fireEvent.change(addressInput, { target: { value: '강남구' } });
+
+      expect(handleChangeInformations).toBeCalled();
     });
   });
 });
