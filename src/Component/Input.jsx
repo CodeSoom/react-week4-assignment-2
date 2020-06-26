@@ -3,11 +3,7 @@ import React from 'react';
 export default function Input({ information, onChangeHandlers }) {
   const { name, category, address } = information;
 
-  const {
-    handleChangeName,
-    handleChangeCategory,
-    handleChangeAddress,
-  } = onChangeHandlers;
+  const { handleChangeName, handleChangeCategory, handleChangeAddress } = onChangeHandlers;
 
   return (
     <p>
