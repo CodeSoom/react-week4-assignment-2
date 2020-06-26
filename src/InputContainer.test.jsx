@@ -1,14 +1,18 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 
 describe('InputContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   const informations = {
     name: '한식당',
     category: '한식',
@@ -48,6 +52,20 @@ describe('InputContainer', () => {
       expect(nameInput.value).toBe('한식당');
       expect(categoryInput.value).toBe('한식');
       expect(addressInput.value).toBe('강남구');
+    });
+  });
+
+  context('when change values', () => {
+    it('name input이 변경되면 dispatch가 실행됩니다.', () => {
+      const { container } = render(
+        <InputContainer />,
+      );
+
+      const nameInput = container.querySelector('input[name = name]');
+
+      fireEvent.change(nameInput, { target: { value: '마녀식당' } });
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
