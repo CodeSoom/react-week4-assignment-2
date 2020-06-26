@@ -18,13 +18,46 @@ describe('<App />', () => {
 
     context('with restaurants', () => {
       it('shows restaurants', () => {
+        const restarunts = [
+          {
+            id: 1,
+            name: '레스토랑1',
+            type: '분류1',
+            address: '주소1',
+          },
+          {
+            id: 2,
+            name: '레스토랑2',
+            type: '분류2',
+            address: '주소2',
+          },
+          {
+            id: 3,
+            name: '레스토랑3',
+            type: '분류3',
+            address: '주소3',
+          },
+        ];
 
+        const { getByText } = renderApp();
+
+        expect(getByText(/레스토랑1/i)).toBeInTheDocument();
+        expect(getByText(/분류1/i)).toBeInTheDocument();
+        expect(getByText(/주소1/i)).toBeInTheDocument();
+
+        expect(getByText(/레스토랑2/i)).toBeInTheDocument();
+        expect(getByText(/분류2/i)).toBeInTheDocument();
+        expect(getByText(/주소2/i)).toBeInTheDocument();
+
+        expect(getByText(/레스토랑3/i)).toBeInTheDocument();
+        expect(getByText(/분류3/i)).toBeInTheDocument();
+        expect(getByText(/주소3/i)).toBeInTheDocument();
       });
     });
 
     context('without restaurants', () => {
       it('shows nothing', () => {
-
+        const restarunts = [];
       });
     });
 
