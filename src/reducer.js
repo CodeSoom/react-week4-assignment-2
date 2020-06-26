@@ -31,6 +31,30 @@ function reducer(previousState = initState, action) {
     };
   }
 
+  if (action.type === 'addRestaurant') {
+    const {
+      restaurantName,
+      restaurantType,
+      restaurantAddress,
+      restaurants,
+    } = previousState;
+
+    return {
+      ...initState,
+      restaurantName: '',
+      restaurantType: '',
+      restaurantAddress: '',
+      restaurants: [
+        ...restaurants,
+        {
+          name: restaurantName,
+          type: restaurantType,
+          address: restaurantAddress,
+        },
+      ],
+    };
+  }
+
   return previousState;
 }
 
