@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { changeName, changeType, changeAddress } from './action';
+import { changeName, changeType, changeAddress, addRestaurant } from './action';
 
 describe('reducer', () => {
   describe('without parameter', () => {
@@ -56,11 +56,7 @@ describe('reducer', () => {
         restaurantAddress: 'New restaurantAddress',
       };
 
-      const action = {
-        type: 'addRestaurant',
-      };
-
-      const newState = reducer(prevState, action);
+      const newState = reducer(prevState, addRestaurant());
 
       expect(newState.restaurantName).toBe('');
       expect(newState.restaurantType).toBe('');
@@ -75,10 +71,7 @@ describe('reducer', () => {
         restaurantAddress: 'New restaurantAddress',
       };
 
-      const action = {
-        type: 'addRestaurant',
-      };
-      const newState = reducer(prevState, action);
+      const newState = reducer(prevState, addRestaurant());
 
       expect(newState.restaurants).toHaveLength(1);
     });
