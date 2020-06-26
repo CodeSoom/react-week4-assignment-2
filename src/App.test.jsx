@@ -1,11 +1,15 @@
+import React from 'react';
+
+import { render } from '@testing-library/react';
+
+import App from './App';
+
 describe('<App />', () => {
   context('when the user does nothing', () => {
     it('shows a app title', () => {
-
       const { container } = render(<App />);
 
       expect(container).toHaveTextContent('Restaurants');
-
     });
 
     it('shows 3 inputs', () => {});
@@ -22,5 +26,4 @@ describe('<App />', () => {
 
     it('shows a new restaurant into restaurants', () => {});
   });
-
 });
