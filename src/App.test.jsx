@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import App from './App';
 
 import restaurants from '../__fixture__/data';
+
+jest.mock('react-redux');
 
 function renderApp() {
   return render(<App />);
@@ -20,7 +24,9 @@ describe('<App />', () => {
 
     context('with restaurants', () => {
       it('shows restaurants', () => {
-        // const restaurants  = restaurants;
+        useSelector.mockImplementation((selector) => selector({
+          restaurants,
+        }));
 
         const { getByText } = renderApp();
 
@@ -40,23 +46,23 @@ describe('<App />', () => {
 
     context('without restaurants', () => {
       it('shows nothing', () => {
-        // TODO : Redux 추가 후 다시 진행
-        // const emptyRestaurants = [];
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+        }));
 
-        // const { getByText } = renderApp();
+        const { getByText } = renderApp();
 
-        // expect(getByText(/레스토랑1/i)).not.toBeInTheDocument();
-        // expect(getByText(/분류1/i)).not.toBeInTheDocument();
-        // expect(getByText(/주소1/i)).not.toBeInTheDocument();
+        expect(getByText(/레스토랑1/i)).not.toBeInTheDocument();
+        expect(getByText(/분류1/i)).not.toBeInTheDocument();
+        expect(getByText(/주소1/i)).not.toBeInTheDocument();
 
-        // expect(getByText(/레스토랑2/i)).not.toBeInTheDocument();
-        // expect(getByText(/분류2/i)).not.toBeInTheDocument();
-        // expect(getByText(/주소2/i)).not.toBeInTheDocument();
+        expect(getByText(/레스토랑2/i)).not.toBeInTheDocument();
+        expect(getByText(/분류2/i)).not.toBeInTheDocument();
+        expect(getByText(/주소2/i)).not.toBeInTheDocument();
 
-        // expect(getByText(/레스토랑3/i)).not.toBeInTheDocument();
-        // expect(getByText(/분류3/i)).not.toBeInTheDocument();
-        // expect(getByText(/주소3/i)).not.toBeInTheDocument();
-
+        expect(getByText(/레스토랑3/i)).not.toBeInTheDocument();
+        expect(getByText(/분류3/i)).not.toBeInTheDocument();
+        expect(getByText(/주소3/i)).not.toBeInTheDocument();
       });
     });
 
