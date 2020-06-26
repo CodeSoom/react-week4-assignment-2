@@ -1,4 +1,5 @@
 import React from 'react';
+import ListContainer from './Component/ListContainer';
 
 export default function App() {
   return (
@@ -6,16 +7,7 @@ export default function App() {
       {/* App Component */}
       <h1>Restaurants</h1>
       {/* List Component */}
-      <ul>
-        {/* Item Component */}
-        <li>
-          마녀주방
-          |
-          한식
-          |
-          서울시 강남구
-        </li>
-      </ul>
+      <ListContainer />
       {/* Input Component */}
       <p>
         <input type="text" placeholder="이름" />
