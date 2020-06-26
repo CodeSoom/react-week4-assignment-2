@@ -6,32 +6,25 @@ const initialState = {
   informations: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'updateName') {
-    return {
-      ...state,
-      name: action.payload.name,
-    };
-  }
-
-  if (action.type === 'updateCategory') {
-    return {
-      ...state,
-      category: action.payload.category,
-    };
-  }
-
-  if (action.type === 'updateAddress') {
-    return {
-      ...state,
-      address: action.payload.address,
-    };
-  }
-
-  if (action.type === 'addInformation') {
+const reducers = {
+  updateName: (state, action) => ({
+    ...state,
+    name: action.payload.name,
+  }),
+  updateCategory: (state, action) => ({
+    ...state,
+    category: action.payload.category,
+  }),
+  updateAddress: (state, action) => ({
+    ...state,
+    address: action.payload.address,
+  }),
+  addInformation: (state) => {
     const {
       newId, name, category, address, informations,
     } = state;
+
+    if (!name || !category || !address) return state;
 
     return {
       ...state,
@@ -43,7 +36,10 @@ export default function reducer(state = initialState, action) {
         id: newId, name, category, address,
       }],
     };
-  }
+  },
+};
 
-  return state;
+export default function reducer(state = initialState, action) {
+  if (reducers[action.type] === undefined) return state;
+  return reducers[action.type](state, action);
 }

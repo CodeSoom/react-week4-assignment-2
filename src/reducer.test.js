@@ -1,5 +1,12 @@
 import reducer from './reducer';
 
+import {
+  updateName,
+  updateCategory,
+  updateAddress,
+  addInformation,
+} from './actions';
+
 describe('reducer', () => {
   describe('updateName', () => {
     it('이름이 변경된다.', () => {
@@ -7,14 +14,7 @@ describe('reducer', () => {
         name: '',
       };
 
-      const action = {
-        type: 'updateName',
-        payload: {
-          name: '콩나물해장국',
-        },
-      };
-
-      const state = reducer(previousState, action);
+      const state = reducer(previousState, updateName('콩나물해장국'));
 
       expect(state.name).toBe('콩나물해장국');
     });
@@ -26,14 +26,7 @@ describe('reducer', () => {
         category: '',
       };
 
-      const action = {
-        type: 'updateCategory',
-        payload: {
-          category: '한식',
-        },
-      };
-
-      const state = reducer(previousState, action);
+      const state = reducer(previousState, updateCategory('한식'));
 
       expect(state.category).toBe('한식');
     });
@@ -45,14 +38,7 @@ describe('reducer', () => {
         address: '',
       };
 
-      const action = {
-        type: 'updateAddress',
-        payload: {
-          address: '강릉',
-        },
-      };
-
-      const state = reducer(previousState, action);
+      const state = reducer(previousState, updateAddress('강릉'));
 
       expect(state.address).toBe('강릉');
     });
@@ -69,11 +55,7 @@ describe('reducer', () => {
           informations: [],
         };
 
-        const action = {
-          type: 'addInformation',
-        };
-
-        const state = reducer(previousState, action);
+        const state = reducer(previousState, addInformation());
 
         expect(state.informations).toHaveLength(1);
       });
@@ -89,11 +71,7 @@ describe('reducer', () => {
           informations: [],
         };
 
-        const action = {
-          type: 'addInformation',
-        };
-
-        const state = reducer(previousState, action);
+        const state = reducer(previousState, addInformation());
 
         expect(state.informations).toHaveLength(0);
       });
