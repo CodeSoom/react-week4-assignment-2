@@ -7,6 +7,7 @@ export default function App() {
       <input type="text" name="name" />
       <input type="text" name="category" />
       <input type="text" name="address" />
+      <button type="button">등록</button>
     </div>
   );
 }
