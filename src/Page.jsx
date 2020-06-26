@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { render } from 'react-dom';
 import Input from './Input';
 
 export default function Page() {
@@ -14,12 +13,17 @@ export default function Page() {
     return null;
   }
 
+  function handleClick() {
+    return null;
+  }
+
   return (
     <div>
       <h1>Restaurants</h1>
       <Input
         informations={informations}
         handleChangeInformations={handleChangeInformations}
+        handleClick={handleClick}
       />
     </div>
   );
