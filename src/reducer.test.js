@@ -72,6 +72,7 @@ describe('reducer', () => {
         type: 'addInformation',
       };
 
+
       const state = reducer(previousState, action);
 
       expect(state.informations).toHaveLength(1);

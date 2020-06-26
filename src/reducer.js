@@ -28,5 +28,22 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'addInformation') {
+    const {
+      newId, name, category, address, informations,
+    } = state;
+
+    return {
+      ...state,
+      newId: newId + 1,
+      name: '',
+      category: '',
+      address: '',
+      informations: [...informations, {
+        id: newId, name, category, address,
+      }],
+    };
+  }
+
   return state;
 }
