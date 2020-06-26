@@ -27,7 +27,9 @@ describe('<App />', () => {
   });
 
   context('when the user input a new restaurant', () => {
-    it('shows a new restaurant in inputs', () => {});
+    it('shows a new restaurant in inputs', () => {
+      
+    });
   });
 
   context('when the user add a new restaurant', () => {
