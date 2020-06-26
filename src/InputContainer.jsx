@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Input from './Input';
 
-export default function Page() {
+export default function InputContainer() {
   const informations = useSelector((state) => state.informations);
 
   function handleChangeInformations() {
