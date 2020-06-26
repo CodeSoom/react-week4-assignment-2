@@ -18,6 +18,10 @@ describe('Input', () => {
       expect(nameInput).not.toBeNull();
       expect(categoryInput).not.toBeNull();
       expect(addressInput).not.toBeNull();
+
+      expect(nameInput.value).toBe('');
+      expect(categoryInput.value).toBe('');
+      expect(addressInput.value).toBe('');
     });
   });
 });
