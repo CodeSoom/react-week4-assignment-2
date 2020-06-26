@@ -95,5 +95,27 @@ describe('InputContainer', () => {
       expect(getByTestId(/category/)).toHaveValue('중식');
       expect(getByTestId(/address/)).toHaveValue('대구');
     });
+
+    it('입력 창에 이름, 분류, 주소 정보가 입력되어있다.', () => {
+      const information = {
+        name: '불짬뽕',
+        category: '중식',
+        address: '대구',
+      };
+
+      useSelector.mockImplementation((selector) => selector(information));
+
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { getByText } = render((
+        <InputContainer />
+      ));
+
+      fireEvent.click(getByText('등록'));
+
+      expect(dispatch).toBeCalledWith(addInformation());
+    });
   });
 });
