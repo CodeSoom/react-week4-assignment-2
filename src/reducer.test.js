@@ -46,4 +46,41 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('addRestaurant', () => {
+    it('clear New restaurant', () => {
+      const prevState = {
+        restaurants: [],
+        restaurantName: 'New restaurantName',
+        restaurantType: 'New restaurantType',
+        restaurantAddress: 'New restaurantAddress',
+      };
+
+      const action = {
+        type: 'addRestaurant',
+      };
+
+      const newState = reducer(prevState, action);
+
+      expect(newState.restaurantName).toBe('');
+      expect(newState.restaurantType).toBe('');
+      expect(newState.restaurantType).toBe('');
+    });
+
+    it('appends a new restaurant into restaurants', () => {
+      const prevState = {
+        restaurants: [],
+        restaurantName: 'New restaurantName',
+        restaurantType: 'New restaurantType',
+        restaurantAddress: 'New restaurantAddress',
+      };
+
+      const action = {
+        type: 'addRestaurant',
+      };
+      const newState = reducer(prevState, action);
+
+      expect(newState.restaurants).toHaveLength(1);
+    });
+  });
 });
