@@ -52,7 +52,25 @@ describe('reducer', () => {
     });
 
     context('changeAddress', () => {
-      it('change a restaurant address', () => {});
+      it('change a restaurant address', () => {
+        const prevState = {
+          restaurants: [],
+          restaurantName: '',
+          restaurantType: '',
+          restaurantAddress: '',
+        };
+
+        const action = {
+          type: 'changeAddress',
+          payload: {
+            restaurantAddress: 'New restaurantAddress',
+          },
+        };
+
+        const newState = reducer(prevState, action);
+
+        expect(newState.restaurantAddress).toBe('New restaurantAddress');
+      });
     });
   });
 });
