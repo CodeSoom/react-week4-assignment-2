@@ -7,8 +7,16 @@ import Input from './Input';
 describe('Input', () => {
   context('without input values', () => {
     it('값이 없는 3개의 input이 보인다.', () => {
+      const informations = {
+        name: '',
+        category: '',
+        address: '',
+      };
+
       const { container } = render(
-        <Input />,
+        <Input
+          informations={informations}
+        />,
       );
 
       const nameInput = container.querySelector('input[name = name]');
