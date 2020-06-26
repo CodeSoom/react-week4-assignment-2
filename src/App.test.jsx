@@ -117,9 +117,43 @@ describe('<App />', () => {
     });
 
     context('when the user add a new restaurant', () => {
-      it('input is empty', () => {});
+      it('input is empty', () => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+          restaurantName: '레스토랑4',
+          restaurantType: '분류4',
+          restaurantAddress: '주소4',
 
-      it('shows a new restaurant into restaurants', () => {});
+        }));
+        
+        const { getByText, getByPlaceholderText } = renderApp();
+
+        fireEvent.click(getByText(/등록/i));
+
+        expect(getByPlaceholderText(/이름/i).value).toBe('');
+
+        expect(getByPlaceholderText(/분류/i).value).toBe('');
+
+        expect(getByPlaceholderText(/주소/i).value).toBe('');
+      });
+
+      it('shows a new restaurant into restaurants', () => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+          restaurantName: '레스토랑4',
+          restaurantType: '분류4',
+          restaurantAddress: '주소4',
+
+        }));
+
+        const { container, getByText } = renderApp();
+
+        fireEvent.click(getByText(/등록/i));
+
+        expect(container).toHaveTextContent(/레스토랑4/i);
+        expect(container).toHaveTextContent(/분류4/i);
+        expect(container).toHaveTextContent(/주소4/i);
+      });
     });
   });
 });
