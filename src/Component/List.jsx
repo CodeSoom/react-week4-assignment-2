@@ -2,16 +2,15 @@ import React from 'react';
 
 import Item from './Item';
 
-export default function List() {
-  const information = {
-    name: '마녀주방',
-    category: '한식',
-    address: '강남',
-  };
-
+export default function List({ informations }) {
   return (
-    <Item 
-      information={information}
-    />
+    <ul>
+      {informations.map((information) => (
+        <Item
+          key={information.id}
+          information={information}
+        />
+      ))}
+    </ul>
   );
 }
