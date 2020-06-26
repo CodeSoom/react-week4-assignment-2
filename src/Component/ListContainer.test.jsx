@@ -20,7 +20,7 @@ describe('ListContainer', () => {
   });
 
   context('레스토랑 정보가 있다면', () => {
-    it('화면에 아무것도 나타나지 않는다.', () => {
+    it('화면에 레스토랑 정보를 보여준다.', () => {
       const informations = [
         {
           id: 1,
