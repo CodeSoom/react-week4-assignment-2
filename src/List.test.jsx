@@ -1,3 +1,4 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 
 import List from './List';
@@ -24,9 +25,9 @@ describe('List', () => {
 
   context('without restaurants', () => {
     it('renders empty', () => {
-      const { getByText } = render(<List restaurants={[]}/>);
+      const { container } = render(<List restaurants={[]}/>);
 
-      expect(getByText(/마녀주방/)).toBeEmpty();
+      expect(container.querySelector('ul').textContent).toBe('')
     });
   });
 });
