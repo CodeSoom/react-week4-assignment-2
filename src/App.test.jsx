@@ -18,7 +18,12 @@ describe('<App />', () => {
 
     it('shows 3 inputs', () => {});
 
-    it('shows a button for adding a restaurant ', () => {});
+    it('shows a button for adding a restaurant ', () => {
+      const { getByRole } = renderApp();
+
+      expect(getByRole('button')).toHaveTextContent(/등록/i);
+
+    });
   });
 
   context('when the user input a new restaurant', () => {
