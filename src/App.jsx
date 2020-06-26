@@ -1,13 +1,22 @@
 import React from 'react';
 
+import restaurants from '../__fixture__/data';
+
 export default function App() {
   return (
     <div>
       <h2>Restaurants</h2>
-      <p>레스토랑1|분류1|주소1</p>
-      <p>레스토랑2|분류2|주소2</p>
-      <p>레스토랑3|분류3|주소3</p>
-
+      <ul>
+        {restaurants.map((restaurant) => (
+          <li key={restaurant.id}>
+            {restaurant.name}
+            |
+            {restaurant.type}
+            |
+            {restaurant.address}
+          </li>
+        ))}
+      </ul>
       <input placeholder="이름" />
       <input placeholder="분류" />
       <input placeholder="주소" />

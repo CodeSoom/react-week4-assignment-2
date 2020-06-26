@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+import restaurants from '../__fixture__/data';
+
 function renderApp() {
   return render(<App />);
 }
@@ -18,26 +20,7 @@ describe('<App />', () => {
 
     context('with restaurants', () => {
       it('shows restaurants', () => {
-        const restarunts = [
-          {
-            id: 1,
-            name: '레스토랑1',
-            type: '분류1',
-            address: '주소1',
-          },
-          {
-            id: 2,
-            name: '레스토랑2',
-            type: '분류2',
-            address: '주소2',
-          },
-          {
-            id: 3,
-            name: '레스토랑3',
-            type: '분류3',
-            address: '주소3',
-          },
-        ];
+        // const restaurants  = restaurants;
 
         const { getByText } = renderApp();
 
@@ -57,7 +40,7 @@ describe('<App />', () => {
 
     context('without restaurants', () => {
       it('shows nothing', () => {
-        const restarunts = [];
+        const restaurants = [];
       });
     });
 
