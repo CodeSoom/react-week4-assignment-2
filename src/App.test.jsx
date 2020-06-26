@@ -9,11 +9,23 @@ function renderApp() {
 }
 
 describe('<App />', () => {
-  context('when the user does nothing', () => {
+  describe('Initial Rendering', () => {
     it('shows a app title', () => {
       const { container } = renderApp();
 
       expect(container).toHaveTextContent('Restaurants');
+    });
+
+    context('with restaurants', () => {
+      it('shows restaurants', () => {
+
+      });
+    });
+
+    context('without restaurants', () => {
+      it('shows nothing', () => {
+
+      });
     });
 
     it('shows 3 inputs', () => {
@@ -31,13 +43,15 @@ describe('<App />', () => {
     });
   });
 
-  context('when the user input a new restaurant', () => {
-    it('shows a new restaurant in inputs', () => {});
-  });
+  describe('User Interaction', () => {
+    context('when the user input a new restaurant', () => {
+      it('shows a new restaurant in inputs', () => {});
+    });
 
-  context('when the user add a new restaurant', () => {
-    it('input is empty', () => {});
+    context('when the user add a new restaurant', () => {
+      it('input is empty', () => {});
 
-    it('shows a new restaurant into restaurants', () => {});
+      it('shows a new restaurant into restaurants', () => {});
+    });
   });
 });
