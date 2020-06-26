@@ -31,7 +31,24 @@ describe('reducer', () => {
     });
 
     context('changeType', () => {
-      it('change a restaurant type', () => {});
+      it('change a restaurant type', () => {
+        const prevState = {
+          restaurants: [],
+          restaurantName: '',
+          restaurantType: '',
+        };
+
+        const action = {
+          type: 'changeType',
+          payload: {
+            restaurantType: 'New restaurantType',
+          },
+        };
+
+        const newState = reducer(prevState, action);
+
+        expect(newState.restaurantType).toBe('New restaurantType');
+      });
     });
 
     context('changeAddress', () => {
