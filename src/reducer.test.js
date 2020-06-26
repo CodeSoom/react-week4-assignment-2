@@ -57,4 +57,24 @@ describe('reducer', () => {
       expect(state.address).toBe('강릉');
     });
   });
+
+  describe('addInformation', () => {
+    it('레스토랑 정보가 추가된다', () => {
+      const previousState = {
+        newId: 100,
+        name: '돈스파이크',
+        category: '양식',
+        address: '인천',
+        informations: [],
+      };
+
+      const action = {
+        type: 'addInformation',
+      };
+
+      const state = reducer(previousState, action);
+
+      expect(state.informations).toHaveLength(1);
+    });
+  });
 });
