@@ -22,6 +22,13 @@ function reducer(previousState = initState, action) {
     };
   }
 
+  if (action.type === 'changeAddress') {
+    return {
+      ...initState,
+      restaurantAddress: action.payload.restaurantAddress,
+    };
+  }
+
   return previousState;
 }
 
