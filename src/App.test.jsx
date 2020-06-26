@@ -17,6 +17,10 @@ function renderApp() {
 describe('<App />', () => {
   describe('Initial Rendering', () => {
     it('shows a app title', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
+      }));
+
       const { container } = renderApp();
 
       expect(container).toHaveTextContent('Restaurants');
