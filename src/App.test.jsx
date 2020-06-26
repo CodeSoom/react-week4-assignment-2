@@ -4,10 +4,14 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+function renderApp() {
+  return render(<App />);
+}
+
 describe('<App />', () => {
   context('when the user does nothing', () => {
     it('shows a app title', () => {
-      const { container } = render(<App />);
+      const { container } = renderApp();
 
       expect(container).toHaveTextContent('Restaurants');
     });
