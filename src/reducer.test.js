@@ -8,4 +8,18 @@ describe('reducer', () => {
       expect(newState.restaurants).toHaveLength(0);
     });
   });
+
+  describe('changeRestaurant', () => {
+    context('changeName', () => {
+      it('change a restaurant name', () => {});
+    });
+
+    context('changeType', () => {
+      it('change a restaurant type', () => {});
+    });
+
+    context('changeAddress', () => {
+      it('change a restaurant address', () => {});
+    });
+  });
 });
