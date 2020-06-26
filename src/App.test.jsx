@@ -50,19 +50,19 @@ describe('<App />', () => {
           restaurants: [],
         }));
 
-        const { getByText } = renderApp();
+        const { container } = renderApp();
 
-        expect(getByText(/레스토랑1/i)).not.toBeInTheDocument();
-        expect(getByText(/분류1/i)).not.toBeInTheDocument();
-        expect(getByText(/주소1/i)).not.toBeInTheDocument();
+        expect(container).not.toHaveTextContent(/레스토랑1/i);
+        expect(container).not.toHaveTextContent(/분류1/i);
+        expect(container).not.toHaveTextContent(/주소1/i);
 
-        expect(getByText(/레스토랑2/i)).not.toBeInTheDocument();
-        expect(getByText(/분류2/i)).not.toBeInTheDocument();
-        expect(getByText(/주소2/i)).not.toBeInTheDocument();
+        expect(container).not.toHaveTextContent(/레스토랑2/i);
+        expect(container).not.toHaveTextContent(/분류2/i);
+        expect(container).not.toHaveTextContent(/주소2/i);
 
-        expect(getByText(/레스토랑3/i)).not.toBeInTheDocument();
-        expect(getByText(/분류3/i)).not.toBeInTheDocument();
-        expect(getByText(/주소3/i)).not.toBeInTheDocument();
+        expect(container).not.toHaveTextContent(/레스토랑3/i);
+        expect(container).not.toHaveTextContent(/분류3/i);
+        expect(container).not.toHaveTextContent(/주소3/i);
       });
     });
 
