@@ -1,4 +1,12 @@
-export default function reducer(state, action) {
+const initialState = {
+  informations: {
+    name: '',
+    category: '',
+    address: '',
+  },
+};
+
+export default function reducer(state = initialState, action) {
   if (action.type === 'updateInformations') {
     return {
       ...state,
