@@ -10,6 +10,6 @@ describe('Item', () => {
       <Item />
     ));
 
-    expect(container).toHaveTextContent(/마녀주방/);
+    expect(container).toHaveTextContent('');
   });
 });
