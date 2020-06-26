@@ -46,18 +46,25 @@ describe('reducer', () => {
 
   describe('addInformation', () => {
     context('이름, 분류, 주소등 모든 정보가 있을 경우', () => {
+      const previousState = {
+        newId: 100,
+        name: '돈스파이크',
+        category: '양식',
+        address: '인천',
+        informations: [],
+      };
       it('레스토랑 정보가 추가된다', () => {
-        const previousState = {
-          newId: 100,
-          name: '돈스파이크',
-          category: '양식',
-          address: '인천',
-          informations: [],
-        };
-
         const state = reducer(previousState, addInformation());
 
         expect(state.informations).toHaveLength(1);
+      });
+
+      it('레스토랑 정보가 추가된 후 입력정보가 초기화된다.', () => {
+        const state = reducer(previousState, addInformation());
+
+        expect(state.name).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('');
       });
     });
 

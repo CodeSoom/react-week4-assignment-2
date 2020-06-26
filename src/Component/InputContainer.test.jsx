@@ -78,13 +78,12 @@ describe('InputContainer', () => {
   });
 
   context('이름, 분류, 주소가 있는 경우', () => {
+    const information = {
+      name: '불짬뽕',
+      category: '중식',
+      address: '대구',
+    };
     it('입력 창에 이름, 분류, 주소 정보가 입력되어있다.', () => {
-      const information = {
-        name: '불짬뽕',
-        category: '중식',
-        address: '대구',
-      };
-
       useSelector.mockImplementation((selector) => selector(information));
 
       const { getByTestId } = render((
@@ -96,13 +95,7 @@ describe('InputContainer', () => {
       expect(getByTestId(/address/)).toHaveValue('대구');
     });
 
-    it('입력 창에 이름, 분류, 주소 정보가 입력되어있다.', () => {
-      const information = {
-        name: '불짬뽕',
-        category: '중식',
-        address: '대구',
-      };
-
+    it('등록 버튼을 누르면 AddInformation 액션이 전달된다.', () => {
       useSelector.mockImplementation((selector) => selector(information));
 
       const dispatch = jest.fn();
