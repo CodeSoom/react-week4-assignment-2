@@ -67,5 +67,29 @@ describe('InputContainer', () => {
 
       expect(dispatch).toBeCalled();
     });
+
+    it('category input이 변경되면 dispatch가 실행됩니다.', () => {
+      const { container } = render(
+        <InputContainer />,
+      );
+
+      const categoryInput = container.querySelector('input[name = category]');
+
+      fireEvent.change(categoryInput, { target: { value: '중식' } });
+
+      expect(dispatch).toBeCalled();
+    });
+
+    it('name input이 변경되면 dispatch가 실행됩니다.', () => {
+      const { container } = render(
+        <InputContainer />,
+      );
+
+      const nameInput = container.querySelector('input[name = name]');
+
+      fireEvent.change(nameInput, { target: { value: '마녀식당' } });
+
+      expect(dispatch).toBeCalled();
+    });
   });
 });

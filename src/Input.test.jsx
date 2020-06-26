@@ -47,7 +47,7 @@ describe('Input', () => {
       const { container } = render(
         <Input
           informations={informations}
-          handleChangeInformations={handleChangeInformations}
+          onChange={handleChangeInformations}
           handleClick={handleClick}
         />,
       );
@@ -76,7 +76,7 @@ describe('Input', () => {
       const { container } = render(
         <Input
           informations={informations}
-          handleChangeInformations={handleChangeInformations}
+          onChange={handleChangeInformations}
           handleClick={handleClick}
         />,
       );
@@ -113,7 +113,7 @@ describe('Input', () => {
       const { getByText } = render(
         <Input
           informations={informations}
-          handleChangeInformations={handleChangeInformations}
+          onChange={handleChangeInformations}
           handleClick={handleClick}
         />,
       );
