@@ -11,7 +11,23 @@ describe('reducer', () => {
 
   describe('changeRestaurant', () => {
     context('changeName', () => {
-      it('change a restaurant name', () => {});
+      it('change a restaurant name', () => {
+        const prevState = {
+          restaurants: [],
+          restaurantName: '',
+        };
+
+        const action = {
+          type: 'changeName',
+          payload: {
+            restaurantName: 'New restaurantName',
+          },
+        };
+
+        const newState = reducer(prevState, action);
+
+        expect(newState.restaurantName).toBe('New restaurantName');
+      });
     });
 
     context('changeType', () => {
