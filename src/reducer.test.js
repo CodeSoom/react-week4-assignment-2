@@ -6,7 +6,10 @@ describe('reducer', () => {
   describe('without parameter', () => {
     const newState = reducer();
 
-    it('restaurants is empty', () => {
+    it('state is initState', () => {
+      expect(newState.restaurantName).toBe('');
+      expect(newState.restaurantType).toBe('');
+      expect(newState.restaurantAddress).toBe('');
       expect(newState.restaurants).toHaveLength(0);
     });
   });
@@ -74,6 +77,17 @@ describe('reducer', () => {
       const newState = reducer(prevState, addRestaurant());
 
       expect(newState.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('previousState is undefined', () => {
+    const newState = reducer(undefined, {});
+
+    it('state is initState', () => {
+      expect(newState.restaurantName).toBe('');
+      expect(newState.restaurantType).toBe('');
+      expect(newState.restaurantAddress).toBe('');
+      expect(newState.restaurants).toHaveLength(0);
     });
   });
 });
