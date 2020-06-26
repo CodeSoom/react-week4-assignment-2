@@ -1,5 +1,7 @@
 const initState = {
   restaurantName: '',
+  restaurantType: '',
+  restaurantAddress: '',
   restaurants: [],
 };
 

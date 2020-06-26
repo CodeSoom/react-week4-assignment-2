@@ -1,5 +1,7 @@
 import reducer from './reducer';
 
+import { changeName, changeType, changeAddress } from './action';
+
 describe('reducer', () => {
   describe('without parameter', () => {
     const newState = reducer();
@@ -10,21 +12,16 @@ describe('reducer', () => {
   });
 
   describe('changeRestaurant', () => {
+    const prevState = {
+      restaurants: [],
+      restaurantName: '',
+      restaurantType: '',
+      restaurantAddress: '',
+    };
+
     context('changeName', () => {
       it('change a restaurant name', () => {
-        const prevState = {
-          restaurants: [],
-          restaurantName: '',
-        };
-
-        const action = {
-          type: 'changeName',
-          payload: {
-            restaurantName: 'New restaurantName',
-          },
-        };
-
-        const newState = reducer(prevState, action);
+        const newState = reducer(prevState, changeName('New restaurantName'));
 
         expect(newState.restaurantName).toBe('New restaurantName');
       });
@@ -32,20 +29,7 @@ describe('reducer', () => {
 
     context('changeType', () => {
       it('change a restaurant type', () => {
-        const prevState = {
-          restaurants: [],
-          restaurantName: '',
-          restaurantType: '',
-        };
-
-        const action = {
-          type: 'changeType',
-          payload: {
-            restaurantType: 'New restaurantType',
-          },
-        };
-
-        const newState = reducer(prevState, action);
+        const newState = reducer(prevState, changeType('New restaurantType'));
 
         expect(newState.restaurantType).toBe('New restaurantType');
       });
@@ -53,21 +37,10 @@ describe('reducer', () => {
 
     context('changeAddress', () => {
       it('change a restaurant address', () => {
-        const prevState = {
-          restaurants: [],
-          restaurantName: '',
-          restaurantType: '',
-          restaurantAddress: '',
-        };
-
-        const action = {
-          type: 'changeAddress',
-          payload: {
-            restaurantAddress: 'New restaurantAddress',
-          },
-        };
-
-        const newState = reducer(prevState, action);
+        const newState = reducer(
+          prevState,
+          changeAddress('New restaurantAddress'),
+        );
 
         expect(newState.restaurantAddress).toBe('New restaurantAddress');
       });
