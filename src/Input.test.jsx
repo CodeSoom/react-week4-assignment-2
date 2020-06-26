@@ -41,9 +41,14 @@ describe('Input', () => {
         address: '강남구',
       };
 
+      const handleChangeInformations = jest.fn();
+      const handleClick = jest.fn();
+
       const { container } = render(
         <Input
           informations={informations}
+          handleChangeInformations={handleChangeInformations}
+          handleClick={handleClick}
         />,
       );
 
@@ -66,11 +71,13 @@ describe('Input', () => {
       };
 
       const handleChangeInformations = jest.fn();
+      const handleClick = jest.fn();
 
       const { container } = render(
         <Input
           informations={informations}
           handleChangeInformations={handleChangeInformations}
+          handleClick={handleClick}
         />,
       );
 
@@ -89,6 +96,31 @@ describe('Input', () => {
       fireEvent.change(addressInput, { target: { value: '강남구' } });
 
       expect(handleChangeInformations).toBeCalled();
+    });
+  });
+
+  context('when click 등록', () => {
+    it('handleClick 함수가 실행된다.', () => {
+      const informations = {
+        name: '',
+        category: '',
+        address: '',
+      };
+
+      const handleChangeInformations = jest.fn();
+      const handleClick = jest.fn();
+
+      const { getByText } = render(
+        <Input
+          informations={informations}
+          handleChangeInformations={handleChangeInformations}
+          handleClick={handleClick}
+        />,
+      );
+
+      fireEvent.click(getByText('등록'));
+
+      expect(handleClick).toBeCalled();
     });
   });
 });
