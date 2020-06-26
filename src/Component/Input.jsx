@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Input({ information, onChangeHandlers }) {
+export default function Input({ information, onChangeHandlers, onClick }) {
   const { name, category, address } = information;
 
   const { handleChangeName, handleChangeCategory, handleChangeAddress } = onChangeHandlers;
@@ -28,7 +28,7 @@ export default function Input({ information, onChangeHandlers }) {
         value={address}
         onChange={handleChangeAddress}
       />
-      <button type="button">등록</button>
+      <button type="button" onClick={onClick}>등록</button>
     </p>
   );
 }
