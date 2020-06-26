@@ -1,10 +1,24 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import Page from './Page';
 
+jest.mock('react-redux');
+
 describe('Page', () => {
+  const informations = {
+    name: '한식당',
+    category: '한식',
+    address: '강남구',
+  };
+
+  useSelector.mockImplementation((selector) => selector({
+    informations,
+  }));
+
   context('when start application', () => {
     it('Restaurants가 보인다.', () => {
       const { container } = render(
