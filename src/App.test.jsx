@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
 import restaurants from '../__fixture__/data';
+
+import { addRestaurant } from './action';
 
 jest.mock('react-redux');
 
@@ -88,6 +90,12 @@ describe('<App />', () => {
   describe('User Interaction', () => {
     context('when the user input a new restaurant', () => {
       it('shows a new restaurant in inputs', () => {
+        // useSelector.mockImplementation((selector) => selector({
+        //   restaurants: [],
+        //   restaurantName: '',
+        //   restaurantType: '',
+        //   restaurantAddress: '',
+        // }));
         const { getByPlaceholderText } = renderApp();
 
         fireEvent.change(getByPlaceholderText(/이름/i), {
@@ -123,18 +131,18 @@ describe('<App />', () => {
           restaurantName: '레스토랑4',
           restaurantType: '분류4',
           restaurantAddress: '주소4',
-
         }));
-        
-        const { getByText, getByPlaceholderText } = renderApp();
+
+        const dispatch = jest.fn();
+        useDispatch.mockImplementation(() => dispatch);
+
+        const { getByText } = renderApp();
 
         fireEvent.click(getByText(/등록/i));
 
-        expect(getByPlaceholderText(/이름/i).value).toBe('');
+        expect(dispatch).toHaveBeenCalledWith(addRestaurant());
 
-        expect(getByPlaceholderText(/분류/i).value).toBe('');
-
-        expect(getByPlaceholderText(/주소/i).value).toBe('');
+        expect(dispatch).toHaveBeenCalledTimes(1);
       });
 
       it('shows a new restaurant into restaurants', () => {
@@ -143,16 +151,19 @@ describe('<App />', () => {
           restaurantName: '레스토랑4',
           restaurantType: '분류4',
           restaurantAddress: '주소4',
-
         }));
 
-        const { container, getByText } = renderApp();
+        const dispatch = jest.fn();
+
+        useDispatch.mockImplementation(() => dispatch);
+
+        const { getByText } = renderApp();
 
         fireEvent.click(getByText(/등록/i));
 
-        expect(container).toHaveTextContent(/레스토랑4/i);
-        expect(container).toHaveTextContent(/분류4/i);
-        expect(container).toHaveTextContent(/주소4/i);
+        expect(dispatch).toHaveBeenCalledWith(addRestaurant());
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
       });
     });
   });
