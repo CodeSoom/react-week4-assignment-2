@@ -1,9 +1,7 @@
 import React from 'react';
 
-export default function Item({ name, category, address }) {
-  if (name === '' || category === '' || address === '') {
-    return '';
-  }
+export default function Item({ information }) {
+  const { name, category, address } = information;
 
   return (
     <li>
