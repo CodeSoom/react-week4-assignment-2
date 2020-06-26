@@ -21,9 +21,9 @@ export default function InputContainer() {
   }));
 
   const changeHandlers = {
-    handleChangeName: dispatch(updateName),
-    handleChangeCategory: dispatch(updateCategory),
-    handleChangeAddress: dispatch(updateAddress),
+    handleChangeName: (name) => dispatch(updateName(name)),
+    handleChangeCategory: (category) => dispatch(updateCategory(category)),
+    handleChangeAddress: (address) => dispatch(updateAddress(address)),
   };
 
   function handleClickAddInformation() {

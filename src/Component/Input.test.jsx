@@ -68,7 +68,6 @@ describe('Input', () => {
     };
 
     it('화면에 이름, 분류, 주소 정보가 표시된다.', () => {
-
       const { getByDisplayValue } = render((
         <Input
           information={information}
