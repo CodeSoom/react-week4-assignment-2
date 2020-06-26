@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from 'Input';
+import Input from './Input';
 
 test('Input', () => {
 
@@ -13,10 +13,10 @@ test('Input', () => {
     <Input onChange={handleChange} onClick={handleClick}/>
   );
 
-  expect(getByPlaceholderText(/이름/)).not.toBeEmpty();
-  expect(getByPlaceholderText(/분류/)).not.toBeEmpty();
-  expect(getByPlaceholderText(/주소/)).not.toBeEmpty();
-  expect(getByText(/등록/)).not.toBeEmpty();
+  expect(getByPlaceholderText(/이름/)).not.toBeNull();
+  expect(getByPlaceholderText(/분류/)).not.toBeNull();
+  expect(getByPlaceholderText(/주소/)).not.toBeNull();
+  expect(getByText(/등록/)).not.toBeNull();
 
   expect(handleClick).not.toBeCalled();
 
