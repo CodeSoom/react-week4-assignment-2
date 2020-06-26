@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from './Input';
+import Inputs from './Inputs';
 
-describe('Input', () => {
+describe('Inputs', () => {
   const handleChanges = {
     name: jest.fn(),
     category: jest.fn(),
@@ -19,6 +19,12 @@ describe('Input', () => {
     address: '마포구',
   };
 
+  const undefinedRestaurant = {
+    name: undefined,
+    category: undefined,
+    address: undefined,
+  };
+
   const events = {
     nameInputEvent: { target: { value: restaurant.name } },
     categoryInputEvent: { target: { value: restaurant.name } },
@@ -28,7 +34,11 @@ describe('Input', () => {
   context('without any input', () => {
     it('renders empty inputs', () => {
       const { container } = render((
-        <Input />
+        <Inputs
+          value={undefinedRestaurant}
+          onChanges={handleChanges}
+          onClick={handleClickEnrollRestaurant}
+        />
       ));
 
       const inputNameBox = container.querySelector('#input-name');
@@ -44,58 +54,64 @@ describe('Input', () => {
   });
 
   context('when input name of restaurant', () => {
-    const { container } = render((
-      <Input
-        onChanges={handleChanges}
-      />
-    ));
+    it('renders name of restaurant', () => {
+      const { container } = render((
+        <Inputs
+          value={undefinedRestaurant}
+          onChanges={handleChanges}
+          onClick={handleClickEnrollRestaurant}
+        />
+      ));
 
-    const inputNameBox = container.querySelector('#input-name');
+      const inputNameBox = container.querySelector('#input-name');
 
-    fireEvent.change(inputNameBox, events.nameInputEvent);
+      fireEvent.change(inputNameBox, events.nameInputEvent);
 
-    expect(handleChanges.name).toBeCalledTimes(1);
-    expect(handleChanges.category).not.toBeCalled();
-    expect(handleChanges.address).not.toBeCalled();
+      expect(handleChanges.name).toBeCalledTimes(1);
+    });
   });
 
   context('when input category of restaurant', () => {
-    const { container } = render((
-      <Input
-        onChanges={handleChanges}
-      />
-    ));
+    it('renders category of restaurant', () => {
+      const { container } = render((
+        <Inputs
+          value={undefinedRestaurant}
+          onChanges={handleChanges}
+          onClick={handleClickEnrollRestaurant}
+        />
+      ));
 
-    const inputCategoryBox = container.querySelector('#input-category');
+      const inputCategoryBox = container.querySelector('#input-category');
 
-    fireEvent.change(inputCategoryBox, events.categoryInputEvent);
+      fireEvent.change(inputCategoryBox, events.categoryInputEvent);
 
-    expect(handleChanges.name).not.toBeCalled();
-    expect(handleChanges.category).toBeCalledTimes(1);
-    expect(handleChanges.address).not.toBeCalled();
+      expect(handleChanges.category).toBeCalledTimes(1);
+    });
   });
 
   context('when input address of restaurant', () => {
-    const { container } = render((
-      <Input
-        onChanges={handleChanges}
-      />
-    ));
+    it('renders category of restaurant', () => {
+      const { container } = render((
+        <Inputs
+          value={undefinedRestaurant}
+          onChanges={handleChanges}
+          onClick={handleClickEnrollRestaurant}
+        />
+      ));
 
-    const inputAddressBox = container.querySelector('#input-address');
+      const inputAddressBox = container.querySelector('#input-address');
 
-    fireEvent.change(inputAddressBox, events.addressInputEvent);
+      fireEvent.change(inputAddressBox, events.addressInputEvent);
 
-    expect(handleChanges.name).not.toBeCalled();
-    expect(handleChanges.category).not.toBeCalled();
-    expect(handleChanges.address).toBeCalledTimes(1);
+      expect(handleChanges.address).toBeCalledTimes(1);
+    });
   });
 
   context('when input restaurant all infomations', () => {
     it('click enroll button', () => {
       const { getByText } = render((
-        <Input
-          restaurant={restaurant}
+        <Inputs
+          value={restaurant}
           onChanges={handleChanges}
           onClick={handleClickEnrollRestaurant}
         />
