@@ -1,8 +1,16 @@
 import React from 'react';
 
-import restaurants from '../__fixture__/data';
+import { useSelector } from 'react-redux';
+
+function selector(state) {
+  return {
+    restaurants: state.restaurants,
+  };
+}
 
 export default function App() {
+  const { restaurants } = useSelector(selector);
+
   return (
     <div>
       <h2>Restaurants</h2>
