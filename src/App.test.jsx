@@ -27,5 +27,13 @@ describe('App', () => {
       expect(categoryInput).not.toBeNull();
       expect(addressInput).not.toBeNull();
     });
+
+    it('등록 버튼이 보인다.', () => {
+      const { container } = render(
+        <App />,
+      );
+
+      expect(container).toHaveTextContent('등록');
+    });
   });
 });
