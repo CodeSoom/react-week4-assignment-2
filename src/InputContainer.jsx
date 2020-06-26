@@ -1,13 +1,11 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import Input from './Input';
 
 export default function Page() {
-  const informations = {
-    name: '',
-    category: '',
-    address: '',
-  };
+  const informations = useSelector((state) => state.informations);
 
   function handleChangeInformations() {
     return null;
