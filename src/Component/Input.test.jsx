@@ -4,11 +4,26 @@ import { render } from '@testing-library/react';
 
 import Input from './Input';
 
+const changeHandlers = {
+  handleChangeName: () => jest.fn(),
+  handleChangeCategory: () => jest.fn(),
+  handleChangeAddress: () => jest.fn(),
+};
+
 describe('Input', () => {
   context('이름, 분류, 주소 정보가 없을 경우', () => {
+    const information = {
+      name: '',
+      category: '',
+      address: '',
+    };
+
     it('초기화면이 나타난다.', () => {
       const { getByText, getByTestId } = render((
-        <Input />
+        <Input
+          information={information}
+          onChangeHandlers={changeHandlers}
+        />
       ));
 
       expect(getByTestId(/name/)).not.toBeNull();
@@ -29,6 +44,7 @@ describe('Input', () => {
       const { getByDisplayValue } = render((
         <Input
           information={information}
+          onChangeHandlers={changeHandlers}
         />
       ));
 
