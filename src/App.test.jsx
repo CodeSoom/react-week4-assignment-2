@@ -1,6 +1,12 @@
 describe('<App />', () => {
   context('when the user does nothing', () => {
-    it('shows a app title', () => {});
+    it('shows a app title', () => {
+
+      const { container } = render(<App />);
+
+      expect(container).toHaveTextContent('Restaurants');
+
+    });
 
     it('shows 3 inputs', () => {});
 
