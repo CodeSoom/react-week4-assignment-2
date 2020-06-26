@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -87,7 +87,33 @@ describe('<App />', () => {
 
   describe('User Interaction', () => {
     context('when the user input a new restaurant', () => {
-      it('shows a new restaurant in inputs', () => {});
+      it('shows a new restaurant in inputs', () => {
+        const { getByPlaceholderText } = renderApp();
+
+        fireEvent.change(getByPlaceholderText(/이름/i), {
+          target: {
+            value: '이름1',
+          },
+        });
+
+        expect(getByPlaceholderText(/이름/i).value).toBe('이름1');
+
+        fireEvent.change(getByPlaceholderText(/분류/i), {
+          target: {
+            value: '분류1',
+          },
+        });
+
+        expect(getByPlaceholderText(/분류/i).value).toBe('분류1');
+
+        fireEvent.change(getByPlaceholderText(/주소/i), {
+          target: {
+            value: '주소1',
+          },
+        });
+
+        expect(getByPlaceholderText(/주소/i).value).toBe('주소1');
+      });
     });
 
     context('when the user add a new restaurant', () => {
