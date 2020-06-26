@@ -8,6 +8,30 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  context('존재하지 않는 action을 전달한 경우', () => {
+    it('state값이 변화없이 그대로 반환된다', () => {
+      const state = reducer({}, { type: 'unknownAction' });
+
+      expect(state).toEqual({});
+    });
+  });
+
+  context('빈 state 값 파라미터로 전달한 경우', () => {
+    it('initialState가 반환된다', () => {
+      const initialState = {
+        newId: 100,
+        name: '',
+        category: '',
+        address: '',
+        informations: [],
+      };
+
+      const state = reducer(undefined, { type: 'addInformation' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('updateName', () => {
     it('이름이 변경된다.', () => {
       const previousState = {

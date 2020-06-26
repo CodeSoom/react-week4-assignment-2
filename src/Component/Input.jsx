@@ -11,6 +11,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         type="text"
         placeholder="이름"
         data-testid="name"
+        name="name"
         value={name}
         onChange={handleChangeName}
       />
@@ -18,6 +19,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         type="text"
         placeholder="분류"
         data-testid="category"
+        name="category"
         value={category}
         onChange={handleChangeCategory}
       />
@@ -25,6 +27,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         type="text"
         placeholder="주소"
         data-testid="address"
+        name="address"
         value={address}
         onChange={handleChangeAddress}
       />
