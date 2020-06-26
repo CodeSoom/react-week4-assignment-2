@@ -1,13 +1,13 @@
 import React from 'react';
 
 export default function Input(
-  { informations: { name, category, address }, handleChangeInformations, handleClick },
+  { informations: { name, category, address }, onChange, handleClick },
 ) {
   return (
     <>
-      <input type="text" name="name" value={name} onChange={handleChangeInformations} />
-      <input type="text" name="category" value={category} onChange={handleChangeInformations} />
-      <input type="text" name="address" value={address} onChange={handleChangeInformations} />
+      <input type="text" name="name" value={name} onChange={onChange} />
+      <input type="text" name="category" value={category} onChange={onChange} />
+      <input type="text" name="address" value={address} onChange={onChange} />
       <button type="button" onClick={handleClick}>등록</button>
     </>
   );

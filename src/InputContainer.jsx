@@ -26,7 +26,7 @@ export default function InputContainer() {
   return (
     <Input
       informations={informations}
-      handleChangeInformations={handleChangeInformations}
+      onChange={handleChangeInformations}
       handleClick={handleClick}
     />
   );
