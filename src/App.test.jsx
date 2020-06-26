@@ -8,7 +8,9 @@ import App from './App';
 
 import restaurants from '../__fixture__/data';
 
-import { addRestaurant } from './action';
+import {
+  changeName, changeType, changeAddress, addRestaurant,
+} from './action';
 
 jest.mock('react-redux');
 
@@ -89,13 +91,17 @@ describe('<App />', () => {
 
   describe('User Interaction', () => {
     context('when the user input a new restaurant', () => {
-      it('shows a new restaurant in inputs', () => {
-        // useSelector.mockImplementation((selector) => selector({
-        //   restaurants: [],
-        //   restaurantName: '',
-        //   restaurantType: '',
-        //   restaurantAddress: '',
-        // }));
+      it('shows a new restaurant name in input', () => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+          restaurantName: '',
+          restaurantType: '',
+          restaurantAddress: '',
+        }));
+
+        const dispatch = jest.fn();
+        useDispatch.mockImplementation(() => dispatch);
+
         const { getByPlaceholderText } = renderApp();
 
         fireEvent.change(getByPlaceholderText(/이름/i), {
@@ -106,6 +112,24 @@ describe('<App />', () => {
 
         expect(getByPlaceholderText(/이름/i).value).toBe('이름1');
 
+        expect(dispatch).toHaveBeenCalledWith(changeName());
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+      });
+
+      it('shows a new restaurant type in inputs', () => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+          restaurantName: '',
+          restaurantType: '',
+          restaurantAddress: '',
+        }));
+
+        const dispatch = jest.fn();
+        useDispatch.mockImplementation(() => dispatch);
+
+        const { getByPlaceholderText } = renderApp();
+
         fireEvent.change(getByPlaceholderText(/분류/i), {
           target: {
             value: '분류1',
@@ -114,6 +138,24 @@ describe('<App />', () => {
 
         expect(getByPlaceholderText(/분류/i).value).toBe('분류1');
 
+        expect(dispatch).toHaveBeenCalledWith(changeType());
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+      });
+
+      it('shows a new restaurant address in inputs', () => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurants: [],
+          restaurantName: '',
+          restaurantType: '',
+          restaurantAddress: '',
+        }));
+
+        const dispatch = jest.fn();
+        useDispatch.mockImplementation(() => dispatch);
+
+        const { getByPlaceholderText } = renderApp();
+
         fireEvent.change(getByPlaceholderText(/주소/i), {
           target: {
             value: '주소1',
@@ -121,6 +163,10 @@ describe('<App />', () => {
         });
 
         expect(getByPlaceholderText(/주소/i).value).toBe('주소1');
+
+        expect(dispatch).toHaveBeenCalledWith(changeAddress());
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
       });
     });
 
