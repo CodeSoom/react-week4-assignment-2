@@ -59,23 +59,44 @@ describe('reducer', () => {
   });
 
   describe('addInformation', () => {
-    it('레스토랑 정보가 추가된다', () => {
-      const previousState = {
-        newId: 100,
-        name: '돈스파이크',
-        category: '양식',
-        address: '인천',
-        informations: [],
-      };
+    context('이름, 분류, 주소등 모든 정보가 있을 경우', () => {
+      it('레스토랑 정보가 추가된다', () => {
+        const previousState = {
+          newId: 100,
+          name: '돈스파이크',
+          category: '양식',
+          address: '인천',
+          informations: [],
+        };
 
-      const action = {
-        type: 'addInformation',
-      };
+        const action = {
+          type: 'addInformation',
+        };
 
+        const state = reducer(previousState, action);
 
-      const state = reducer(previousState, action);
+        expect(state.informations).toHaveLength(1);
+      });
+    });
 
-      expect(state.informations).toHaveLength(1);
+    context('이름, 분류, 주소 중 정보가 하나라도 없을 경우', () => {
+      it('레스토랑 정보가 추가되지 않는다.', () => {
+        const previousState = {
+          newId: 100,
+          name: '',
+          category: '양식',
+          address: '인천',
+          informations: [],
+        };
+
+        const action = {
+          type: 'addInformation',
+        };
+
+        const state = reducer(previousState, action);
+
+        expect(state.informations).toHaveLength(0);
+      });
     });
   });
 });
