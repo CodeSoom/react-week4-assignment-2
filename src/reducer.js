@@ -4,6 +4,10 @@ const initState = {
 };
 
 function reducer(previousState = initState, action) {
+  if (!action) {
+    return previousState;
+  }
+
   if (action.type === 'changeName') {
     return {
       ...initState,
