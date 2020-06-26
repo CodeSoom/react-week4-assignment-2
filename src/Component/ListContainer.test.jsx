@@ -2,14 +2,49 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import ListContainer from './ListContainer';
 
-describe('ListContainer', () => {
-  it('화면에 아무것도 나타나지 않는다.', () => {
-    const { container } = render((
-      <ListContainer />
-    ));
+jest.mock('react-redux');
 
-    expect(container).toHaveTextContent('');
+describe('ListContainer', () => {
+  context('레스토랑 정보가 없다면', () => {
+    it('화면에 아무것도 나타나지 않는다.', () => {
+      const { container } = render((
+        <ListContainer />
+      ));
+
+      expect(container).toHaveTextContent('');
+    });
+  });
+
+  context('레스토랑 정보가 있다면', () => {
+    it('화면에 아무것도 나타나지 않는다.', () => {
+      const informations = [
+        {
+          id: 1,
+          name: '마녀주방',
+          category: '한식',
+          address: '강남',
+        },
+        {
+          id: 2,
+          name: '할머니뼈해장국',
+          category: '한식',
+          address: '강서',
+        },
+      ];
+
+      useSelector.mockImplementation((selector) => selector({
+        informations,
+      }));
+
+      const { container } = render((
+        <ListContainer />
+      ));
+
+      expect(container).toHaveTextContent(/마녀주방/);
+    });
   });
 });
