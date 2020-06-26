@@ -1,5 +1,9 @@
 import reducer from './reducer';
 
+import {
+  updateInformations,
+} from './actions';
+
 describe('reducer', () => {
   describe('updateInformations', () => {
     context('with new informations', () => {
@@ -12,37 +16,19 @@ describe('reducer', () => {
       };
 
       it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, {
-          type: 'updateInformations',
-          payload: {
-            target: 'name',
-            value: '한식당',
-          },
-        });
+        const newState = reducer(previousState, updateInformations('name', '한식당'));
 
         expect(newState.informations.name).toEqual('한식당');
       });
 
       it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, {
-          type: 'updateInformations',
-          payload: {
-            target: 'category',
-            value: '한식',
-          },
-        });
+        const newState = reducer(previousState, updateInformations('category', '한식'));
 
         expect(newState.informations.category).toEqual('한식');
       });
 
       it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, {
-          type: 'updateInformations',
-          payload: {
-            target: 'address',
-            value: '강남구',
-          },
-        });
+        const newState = reducer(previousState, updateInformations('address', '강남구'));
 
         expect(newState.informations.address).toEqual('강남구');
       });
