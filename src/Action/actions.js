@@ -7,11 +7,8 @@ export function updateRestaurant(restaurant) {
   };
 }
 
-export function enrollRestaurant(restaurant) {
+export function addRestaurant() {
   return {
-    type: 'updateRestaurant',
-    payload: {
-      restaurant,
-    },
+    type: 'addRestaurant',
   };
 }
