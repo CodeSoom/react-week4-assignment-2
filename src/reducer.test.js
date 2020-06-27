@@ -35,6 +35,24 @@ describe('reducer', () => {
     });
   });
 
+  describe('addRestaurant', () => {
+    context('with new informations', () => {
+      it('restaurants에 새로운 restaurant이 추가된다.', () => {
+        const newState = reducer({
+          informations: {
+            name: '한식당',
+            category: '한식',
+            address: '강남구',
+          },
+          restaurants: [],
+        }, {
+          type: 'addRestaurant',
+        });
+
+        expect(newState.restaurants).toHaveLength(1);
+      });
+    });
+  });
   context('without existed action', () => {
     it('state를 반환한다.', () => {
       const state = reducer({
