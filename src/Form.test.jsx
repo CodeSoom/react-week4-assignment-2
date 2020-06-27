@@ -71,10 +71,10 @@ describe('<Form />', () => {
     it('can press the submit button', () => {
       // when
       const { registerButton } = renderForm({ name: '시카고피자', category: '양식', address: '이태원동' });
-      fireEvent.click(registerButton);
+      fireEvent.submit(registerButton);
 
       // then
-      handleSubmit.toBeCalledTimes(1);
+      expect(handleSubmit).toBeCalledTimes(1);
     });
   });
 });
