@@ -18,6 +18,18 @@ describe('reducer', () => {
     reservations: [],
   };
 
+  test('initialState', () => {
+    const state = reducer(undefined, { type: 'addTask' });
+
+    expect(state).toEqual(initialState);
+  });
+
+  test('unexist action', () => {
+    const state = reducer({}, { type: 'unexist action' });
+
+    expect(state).toEqual({});
+  });
+
   test('updateRestaurantName', () => {
     const state = reducer(
       initialState,
