@@ -4,6 +4,7 @@ const initialState = {
     category: '',
     address: '',
   },
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -14,6 +15,17 @@ export default function reducer(state = initialState, action) {
         ...state.informations,
         [action.payload.target]: action.payload.value,
       },
+    };
+  }
+
+  if (action.type === 'addRestaurant') {
+    return {
+      ...state,
+      restaurants: [...state.restaurants, {
+        name: state.informations.name,
+        category: state.informations.category,
+        address: state.informations.address,
+      }],
     };
   }
 
