@@ -1,54 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const initialState = {
-  newId: 1,
-  newRestaurant: {
-    name: '',
-    category: '',
-    address: '',
-  },
-  restaurants: [],
-};
-
-function changeRestuarant(state, field, value) {
-  const { newRestaurant } = state;
-
-  newRestaurant[field] = value;
-
-  return {
-    ...state,
-    newRestaurant,
-  };
-}
-
-function saveNewRestaurant(state) {
-  const {
-    newId, newRestaurant, restaurants,
-  } = state;
-
-  return {
-    newId: newId + 1,
-    newRestaurant: {
-      name: '',
-      category: '',
-      address: '',
-    },
-    restaurants: [
-      ...restaurants,
-      {
-        id: newId,
-        ...newRestaurant,
-      },
-    ],
-  };
-}
+import { changeRestaurant, saveNewRestaurant } from './actions';
 
 export default function App() {
-  const [state, setState] = useState(initialState);
+  const { newRestaurant, restaurants } = useSelector((state) => ({
+    newRestaurant: state.newRestaurant,
+    restaurants: state.restaurants,
+  }));
+
+  const dispatch = useDispatch();
 
   function handleChange(event) {
-    setState(changeRestuarant(
-      state,
+    dispatch(changeRestaurant(
       event.target.name,
       event.target.value,
     ));
@@ -56,7 +20,7 @@ export default function App() {
 
   function handleClickSubmit(event) {
     event.preventDefault();
-    setState(saveNewRestaurant(state));
+    dispatch(saveNewRestaurant());
   }
 
   return (
@@ -64,7 +28,7 @@ export default function App() {
       <h1>Restaurants</h1>
       <ul>
         {
-          state.restaurants.map((restaurant) => (
+          restaurants.map((restaurant) => (
             <li key={restaurant.id}>
               {restaurant.name}
               {' '}
@@ -83,21 +47,21 @@ export default function App() {
         <input
           type="text"
           name="name"
-          value={state.newRestaurant.name}
+          value={newRestaurant.name}
           placeholder="이름"
           onChange={handleChange}
         />
         <input
           type="text"
           name="category"
-          value={state.newRestaurant.name}
+          value={newRestaurant.category}
           placeholder="분류"
           onChange={handleChange}
         />
         <input
           type="text"
           name="address"
-          value={state.newRestaurant.address}
+          value={newRestaurant.address}
           placeholder="주소"
           onChange={handleChange}
         />
