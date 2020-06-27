@@ -1,4 +1,12 @@
-function reducer(state, action) {
+const initialState = {
+  newId: 1,
+  name: '',
+  category: '',
+  address: '',
+  restaurants: [],
+};
+
+function reducer(state = initialState, action) {
   if (action.type === 'changeName') {
     return {
       ...state,
