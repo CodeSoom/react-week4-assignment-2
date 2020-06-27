@@ -30,3 +30,9 @@ export function updateRestaurantAddress(address) {
     },
   };
 }
+
+export function registerReservation() {
+  return {
+    type: 'registerReservation',
+  };
+}
