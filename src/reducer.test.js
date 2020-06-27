@@ -23,7 +23,7 @@ describe('reducer', () => {
     it('changes category', () => {
       const state = reducer(testState, changeCategory('패스트푸드2'));
 
-      expect(state.address).toBe('패스트푸드2');
+      expect(state.category).toBe('패스트푸드2');
     });
   });
 
