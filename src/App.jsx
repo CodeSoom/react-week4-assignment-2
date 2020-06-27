@@ -2,47 +2,42 @@ import React, { useState } from 'react';
 
 const initialState = {
   newId: 1,
-  name: '',
-  category: '',
-  address: '',
+  newRestaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
   restaurants: [],
 };
 
-function changeName(state, name) {
+function changeRestuarant(state, field, value) {
+  const { newRestaurant } = state;
+
+  newRestaurant[field] = value;
+
   return {
     ...state,
-    name,
+    newRestaurant,
   };
 }
 
-function changeCategory(state, category) {
-  return {
-    ...state,
-    category,
-  };
-}
-
-function changeAddress(state, address) {
-  return {
-    ...state,
-    address,
-  };
-}
-
-function clickSubmit(state) {
+function saveNewRestaurant(state) {
   const {
-    newId, name, category, address, restaurants,
+    newId, newRestaurant, restaurants,
   } = state;
 
   return {
     newId: newId + 1,
-    name: '',
-    category: '',
-    address: '',
+    newRestaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
     restaurants: [
       ...restaurants,
       {
-        id: newId, name, category, address,
+        id: newId,
+        ...newRestaurant,
       },
     ],
   };
@@ -51,21 +46,17 @@ function clickSubmit(state) {
 export default function App() {
   const [state, setState] = useState(initialState);
 
-  function handleChangeName(event) {
-    setState(changeName(state, event.target.value));
-  }
-
-  function handleChangeCategory(event) {
-    setState(changeCategory(state, event.target.value));
-  }
-
-  function handleChangeAddress(event) {
-    setState(changeAddress(state, event.target.value));
+  function handleChange(event) {
+    setState(changeRestuarant(
+      state,
+      event.target.name,
+      event.target.value,
+    ));
   }
 
   function handleClickSubmit(event) {
     event.preventDefault();
-    setState(clickSubmit(state));
+    setState(saveNewRestaurant(state));
   }
 
   return (
@@ -84,23 +75,23 @@ export default function App() {
         <input
           type="text"
           name="name"
-          value={state.name}
+          value={state.newRestaurant.name}
           placeholder="이름"
-          onChange={handleChangeName}
+          onChange={handleChange}
         />
         <input
           type="text"
           name="category"
-          value={state.category}
+          value={state.newRestaurant.name}
           placeholder="분류"
-          onChange={handleChangeCategory}
+          onChange={handleChange}
         />
         <input
           type="text"
           name="address"
-          value={state.address}
+          value={state.newRestaurant.address}
           placeholder="주소"
-          onChange={handleChangeAddress}
+          onChange={handleChange}
         />
         <input type="submit" value="등록" />
       </form>
