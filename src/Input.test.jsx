@@ -7,7 +7,7 @@ import Input from './Input';
 test('Input', () => {
 
   const handleChange = jest.fn();
-  const handleClick = jest.fn();
+  const handleClick = jest.fn(e => e.preventDefault);
 
   const { getByPlaceholderText, getByText } = render(
     <Input onChange={handleChange} onClick={handleClick}/>
