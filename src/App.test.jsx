@@ -104,7 +104,7 @@ describe('<App />', () => {
         });
       });
 
-      it('the entered values are erased', () => {
+      it('entered values are erased', () => {
         // given
         const restaurant = restaurants[0];
 
