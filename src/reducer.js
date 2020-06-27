@@ -1,4 +1,11 @@
 function reducer(state, action) {
+  if (action.type === 'changeAddress') {
+    return {
+      ...state,
+      address: action.payload.address,
+    };
+  }
+
   if (action.type === 'clickSubmit') {
     const {
       newId, name, category, address, restaurants,
