@@ -47,10 +47,30 @@ function updateRestaurantAddress(state, action) {
   };
 }
 
+function registerReservation(state) {
+  const { id, restaurant, reservations } = state;
+
+  if (restaurant.name === '' || restaurant.category === '' || restaurant.address === '') {
+    return state;
+  }
+
+  return {
+    ...state,
+    id: id + 1,
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
+    reservations: [...reservations, { id, restaurant }],
+  };
+}
+
 const handleAction = {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  registerReservation,
 };
 
 export default function reducer(state = initialState, action) {
