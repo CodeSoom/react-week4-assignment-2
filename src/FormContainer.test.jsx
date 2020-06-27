@@ -44,14 +44,6 @@ describe('<FormContainer />', () => {
   });
 
   context('when initialized', () => {
-    it('renders title', () => {
-      // when
-      const { heading } = renderFormContainer();
-
-      // then
-      expect(heading).toBeInTheDocument();
-    });
-
     it('renders input boxes', () => {
       // when
       const { nameInput, categoryInput, addressInput } = renderFormContainer();
