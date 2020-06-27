@@ -44,9 +44,9 @@ describe('reducer', () => {
         // when
         const state = reduceRegisterRestaurant();
         // then
-        expect(state.input.name.value).toBe('');
-        expect(state.input.category.value).toBe('');
-        expect(state.input.address.value).toBe('');
+        expect(state.input.name).toBe('');
+        expect(state.input.category).toBe('');
+        expect(state.input.address).toBe('');
       });
     });
   });
@@ -77,7 +77,7 @@ describe('reducer', () => {
         // when
         const state = reduceUpdateInput(inputValue);
         // then
-        expect(state.input.name).toBe(inputValue.value);
+        expect(state.input.category).toBe(inputValue.value);
       });
 
       it('update the address input value', () => {
@@ -88,7 +88,7 @@ describe('reducer', () => {
         // when
         const state = reduceUpdateInput(inputValue);
         // then
-        expect(state.input.name).toBe(inputValue.value);
+        expect(state.input.address).toBe(inputValue.value);
       });
 
       it('does not change the id of the state', () => {
