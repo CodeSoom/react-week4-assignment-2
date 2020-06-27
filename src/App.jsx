@@ -47,9 +47,9 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <input type="text" onChange={handleChangeName} placeholder="이름" />
-      <input type="text" onChange={handleChangeType} placeholder="분류" />
-      <input type="text" onChange={handleChangeAddress} placeholder="주소" />
+      <input name="name" type="text" onChange={handleChangeName} placeholder="이름" />
+      <input name="category" type="text" onChange={handleChangeType} placeholder="분류" />
+      <input name="address" type="text" onChange={handleChangeAddress} placeholder="주소" />
       <button onClick={handleAddRestaurant} type="button">
         등록
       </button>
