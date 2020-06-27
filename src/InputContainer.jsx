@@ -21,7 +21,7 @@ export default function InputContainer() {
   }
 
   function handleClick() {
-    dispatch(addRestaurant);
+    dispatch(addRestaurant());
   }
 
   return (
