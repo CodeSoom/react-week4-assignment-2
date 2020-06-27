@@ -3,47 +3,53 @@ import React, { useState } from 'react';
 import List from './List';
 import Form from './Form';
 
-export default function App() {
-  const [state, setState] = useState({
-    id: 1,
-    input: {
-      name: '',
-      category: '',
-      address: '',
+const initialState = {
+  id: 1,
+  input: {
+    name: '',
+    category: '',
+    address: '',
+  },
+  restaurants: [],
+};
+
+const registerRestaurant = (state) => ({
+  ...state,
+  id: state.id + 1,
+  input: {
+    name: '',
+    category: '',
+    address: '',
+  },
+  restaurants: [
+    ...state.restaurants,
+    {
+      id: state.id,
+      name: state.input.name,
+      category: state.input.category,
+      address: state.input.address,
     },
-    restaurants: [],
-  });
+  ],
+});
+
+const updateInput = (state, { name, value }) => ({
+  ...state,
+  input: {
+    ...state.input,
+    [name]: value,
+  },
+});
+
+export default function App() {
+  const [state, setState] = useState(initialState);
 
   const handleSubmit = (event) => {
-    setState({
-      ...state,
-      id: state.id + 1,
-      input: {
-        name: '',
-        category: '',
-        address: '',
-      },
-      restaurants: [
-        ...state.restaurants,
-        {
-          id: state.id,
-          name: state.input.name,
-          category: state.input.category,
-          address: state.input.address,
-        },
-      ],
-    });
+    setState(registerRestaurant(state));
     event.preventDefault();
   };
 
   const handleChangeInput = ({ name, value }) => {
-    setState({
-      ...state,
-      input: {
-        ...state.input,
-        [name]: value,
-      },
-    });
+    setState(updateInput(state, { name, value }));
   };
 
   return (
