@@ -6,9 +6,11 @@ export default function Restaurant({ restaurant: { name, type, address } }) {
       {name}
       {' '}
       |
+      {' '}
       {type}
       {' '}
       |
+      {' '}
       {address}
     </li>
   );

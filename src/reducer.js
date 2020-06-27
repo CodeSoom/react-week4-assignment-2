@@ -3,7 +3,11 @@ const initialState = {
   name: '',
   type: '',
   address: '',
-  restaurants: [],
+  restaurants: [
+    {
+      newId: 101, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon', restaurants: [],
+    },
+  ],
 };
 
 const reducers = {

@@ -3,13 +3,13 @@ import Restaurant from './Restaurant';
 
 export default function List({ restaurants }) {
   return (
-    <ol>
+    <ul>
       {restaurants.map((restaurant) => (
         <Restaurant
           key={restaurant.id}
           restaurant={restaurant}
         />
       ))}
-    </ol>
+    </ul>
   );
 }
