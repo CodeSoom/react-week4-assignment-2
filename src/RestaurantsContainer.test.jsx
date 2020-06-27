@@ -16,12 +16,11 @@ test('RestaurantsContainer', () => {
       id: 2, name: '깐부치킨', category: '치킨', address: '용인수지',
     },
   ];
+  useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   const { container } = render((
     <RestaurantsContainer />
   ));
-
-  useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   restaurants.forEach((restaurant) => {
     expect(container).toHaveTextContent(restaurant.name);
