@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import List from './List';
+
 export default function App() {
   const [state, setState] = useState({
     id: 1,
@@ -43,18 +45,12 @@ export default function App() {
     });
   };
 
-  const restaurantIntoText = ({ name, category, address }) => `${name} | ${category} | ${address}`;
-
   return (
     <>
       <h1>Restaurants</h1>
-      <ul>
-        {state.restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurantIntoText(restaurant)}
-          </li>
-        ))}
-      </ul>
+      <List
+        restaurants={state.restaurants}
+      />
       <form onSubmit={handleSubmit}>
         <input
           name="name"
