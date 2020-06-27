@@ -114,7 +114,7 @@ describe('Input', () => {
         <Input
           informations={informations}
           onChange={handleChangeInformations}
-          handleClick={handleClick}
+          onClick={handleClick}
         />,
       );
 
