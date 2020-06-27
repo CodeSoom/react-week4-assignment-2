@@ -1,18 +1,14 @@
 import React from 'react';
+import Registration from './Registration';
 
 export default function List({ registrations }) {
   return (
     <ol>
       {registrations.map((registration) => (
-        <li key={1}>
-          {registration.id}
-          {' '}
-          |
-          {registration.type}
-          {' '}
-          |
-          {registration.address}
-        </li>
+        <Registration
+          key={registration.id}
+          registration={registration}
+        />
       ))}
     </ol>
   );

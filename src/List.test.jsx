@@ -18,13 +18,14 @@ describe('List', () => {
       {
         id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Iteawon',
       },
-      // {
-      //   id: 2, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
-      // },
+      {
+        id: 2, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
+      },
     ];
 
     const { getByText } = renderList(registrations);
 
     expect(getByText(/Seoul Iteawon/)).not.toBeNull();
+    expect(getByText(/Busan Daeyeon/)).not.toBeNull();
   });
 });
