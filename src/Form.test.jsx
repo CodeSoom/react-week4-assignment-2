@@ -22,55 +22,47 @@ function renderForm(value) {
 }
 
 describe('<Form />', () => {
+  // given
+  const inputValue = {
+    name: '시카고피자',
+    category: '양식',
+    address: '이태원동',
+  };
   context('with input value', () => {
     it('print value on input box', () => {
-      // given
-      const value = {
-        name: '시카고피자',
-        category: '양식',
-        address: '이태원동',
-      };
-
       // when
       const {
         nameInput, categoryInput, addressInput,
-      } = renderForm(value);
+      } = renderForm(inputValue);
 
       // then
-      expect(nameInput.value).toBe(value.name);
-      expect(categoryInput.value).toBe(value.category);
-      expect(addressInput.value).toBe(value.address);
+      expect(nameInput.value).toBe(inputValue.name);
+      expect(categoryInput.value).toBe(inputValue.category);
+      expect(addressInput.value).toBe(inputValue.address);
     });
   });
 
   context('when submitting restaurant information', () => {
     it('can enter restaurant information', () => {
-      // given
-      const restaurant = {
-        name: '시카고피자',
-        category: '양식',
-        address: '이태원동',
-      };
-
       // when
       const {
         nameInput, categoryInput, addressInput,
       } = renderForm({ name: '', category: '', address: '' });
 
-      fireEvent.change(nameInput, { target: { value: restaurant.name } });
-      fireEvent.change(categoryInput, { target: { value: restaurant.category } });
-      fireEvent.change(addressInput, { target: { value: restaurant.address } });
+      fireEvent.change(nameInput, { target: { value: inputValue.name } });
+      fireEvent.change(categoryInput, { target: { value: inputValue.category } });
+      fireEvent.change(addressInput, { target: { value: inputValue.address } });
 
       // then
       expect(handleChangeInput).toBeCalledTimes(3);
-      expect(handleChangeInput).toBeCalledWith({ name: 'name', value: restaurant.name });
-      expect(handleChangeInput).toBeCalledWith({ name: 'category', value: restaurant.category });
-      expect(handleChangeInput).toBeCalledWith({ name: 'address', value: restaurant.address });
+      expect(handleChangeInput).toBeCalledWith({ name: 'name', value: inputValue.name });
+      expect(handleChangeInput).toBeCalledWith({ name: 'category', value: inputValue.category });
+      expect(handleChangeInput).toBeCalledWith({ name: 'address', value: inputValue.address });
     });
 
     it('can press the submit button', () => {
       // when
-      const { registerButton } = renderForm({ name: '시카고피자', category: '양식', address: '이태원동' });
+      const { registerButton } = renderForm(inputValue);
       fireEvent.submit(registerButton);
 
       // then

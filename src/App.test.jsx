@@ -32,6 +32,18 @@ function enterRestaurantInformation(
 
 describe('<App />', () => {
   const dispatch = jest.fn();
+  const restaurants = [{
+    id: 1,
+    name: '시카고피자',
+    category: '양식',
+    address: '이태원동',
+  },
+  {
+    id: 2,
+    name: '마녀주방',
+    category: '한식',
+    address: '서울시 강남구',
+  }];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -42,7 +54,7 @@ describe('<App />', () => {
         category: '',
         address: '',
       },
-      restaurants: [],
+      restaurants,
     }));
   });
 
@@ -75,6 +87,7 @@ describe('<App />', () => {
   });
 
   describe('register restaurant', () => {
+    // given
     const inputValues = [{
       name: '시카고피자',
       category: '양식',
@@ -137,28 +150,6 @@ describe('<App />', () => {
 
   context('with restaurants', () => {
     it('renders restaurants', () => {
-      // given
-      const restaurants = [{
-        id: 1,
-        name: '시카고피자',
-        category: '양식',
-        address: '이태원동',
-      },
-      {
-        id: 2,
-        name: '마녀주방',
-        category: '한식',
-        address: '서울시 강남구',
-      }];
-      useSelector.mockImplementation((selector) => selector({
-        input: {
-          name: '',
-          category: '',
-          address: '',
-        },
-        restaurants,
-      }));
-
       // when
       const { getRestaurantListItems } = renderApp();
 

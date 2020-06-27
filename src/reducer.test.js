@@ -91,17 +91,11 @@ describe('reducer', () => {
         expect(state.input.address).toBe(inputValue.value);
       });
 
-      it('does not change the id of the state', () => {
+      it('do not change id and restaurants state', () => {
         // when
         const state = reduceUpdateInput({ name: 'address', value: '분당구 정자동' });
         // then
         expect(state.id).toBe(previousState.id);
-      });
-
-      it('does not change the restaurants of the state', () => {
-        // when
-        const state = reduceUpdateInput({ name: 'address', value: '분당구 정자동' });
-        // then
         expect(state.restaurants).toEqual(previousState.restaurants);
       });
     });
