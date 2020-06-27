@@ -1,11 +1,5 @@
 import React from 'react';
 
-const defaultValue = {
-  name: '',
-  category: '',
-  address: '',
-};
-
 export default function Inputs({ value, onChanges, onClick }) {
   return (
     <p>

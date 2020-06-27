@@ -31,15 +31,19 @@ describe('Inputs', () => {
     addressInputEvent: { target: { value: restaurant.address } },
   };
 
+  function renderInputs(value) {
+    return render((
+      <Inputs
+        value={value}
+        onChanges={handleChanges}
+        onClick={handleClickEnrollRestaurant}
+      />
+    ));
+  }
+
   context('without any input', () => {
     it('renders empty inputs', () => {
-      const { container } = render((
-        <Inputs
-          value={undefinedRestaurant}
-          onChanges={handleChanges}
-          onClick={handleClickEnrollRestaurant}
-        />
-      ));
+      const { container } = renderInputs(undefinedRestaurant);
 
       const inputNameBox = container.querySelector('#input-name');
       const inputCategoryBox = container.querySelector('#input-category');
@@ -55,13 +59,7 @@ describe('Inputs', () => {
 
   context('when input name of restaurant', () => {
     it('renders name of restaurant', () => {
-      const { container } = render((
-        <Inputs
-          value={undefinedRestaurant}
-          onChanges={handleChanges}
-          onClick={handleClickEnrollRestaurant}
-        />
-      ));
+      const { container } = renderInputs(undefinedRestaurant);
 
       const inputNameBox = container.querySelector('#input-name');
 
@@ -73,13 +71,7 @@ describe('Inputs', () => {
 
   context('when input category of restaurant', () => {
     it('renders category of restaurant', () => {
-      const { container } = render((
-        <Inputs
-          value={undefinedRestaurant}
-          onChanges={handleChanges}
-          onClick={handleClickEnrollRestaurant}
-        />
-      ));
+      const { container } = renderInputs(undefinedRestaurant);
 
       const inputCategoryBox = container.querySelector('#input-category');
 
@@ -91,13 +83,7 @@ describe('Inputs', () => {
 
   context('when input address of restaurant', () => {
     it('renders category of restaurant', () => {
-      const { container } = render((
-        <Inputs
-          value={undefinedRestaurant}
-          onChanges={handleChanges}
-          onClick={handleClickEnrollRestaurant}
-        />
-      ));
+      const { container } = renderInputs(undefinedRestaurant);
 
       const inputAddressBox = container.querySelector('#input-address');
 
@@ -109,13 +95,7 @@ describe('Inputs', () => {
 
   context('when input restaurant all infomations', () => {
     it('click enroll button', () => {
-      const { getByText } = render((
-        <Inputs
-          value={restaurant}
-          onChanges={handleChanges}
-          onClick={handleClickEnrollRestaurant}
-        />
-      ));
+      const { getByText } = renderInputs(restaurant);
 
       fireEvent.click(getByText('등록'));
 
