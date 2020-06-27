@@ -4,20 +4,18 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import App from './App';
+import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-function renderApp() {
-  render(<App />);
+function renderFormContainer() {
+  render(<FormContainer />);
 
   return {
-    heading: screen.getByText(/Restaurants/),
     nameInput: screen.getByPlaceholderText(/이름/),
     categoryInput: screen.getByPlaceholderText(/분류/),
     addressInput: screen.getByPlaceholderText(/주소/),
     registerButton: screen.getByRole('button', { name: /등록/ }),
-    getRestaurantListItems: () => screen.getAllByRole('listitem'),
   };
 }
 
@@ -30,7 +28,7 @@ function enterRestaurantInformation(
   fireEvent.change(addressInput, { target: { value: address } });
 }
 
-describe('<App />', () => {
+describe('<FormContainer />', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -42,14 +40,13 @@ describe('<App />', () => {
         category: '',
         address: '',
       },
-      restaurants: [],
     }));
   });
 
   context('when initialized', () => {
     it('renders title', () => {
       // when
-      const { heading } = renderApp();
+      const { heading } = renderFormContainer();
 
       // then
       expect(heading).toBeInTheDocument();
@@ -57,7 +54,7 @@ describe('<App />', () => {
 
     it('renders input boxes', () => {
       // when
-      const { nameInput, categoryInput, addressInput } = renderApp();
+      const { nameInput, categoryInput, addressInput } = renderFormContainer();
 
       // then
       expect(nameInput).toBeInTheDocument();
@@ -67,7 +64,7 @@ describe('<App />', () => {
 
     it('renders register button', () => {
       // when
-      const { registerButton } = renderApp();
+      const { registerButton } = renderFormContainer();
 
       // then
       expect(registerButton).toBeInTheDocument();
@@ -75,6 +72,7 @@ describe('<App />', () => {
   });
 
   describe('register restaurant', () => {
+    // given
     const inputValues = [{
       name: '시카고피자',
       category: '양식',
@@ -92,7 +90,7 @@ describe('<App />', () => {
         const restaurant = inputValues[0];
 
         // when
-        const { nameInput, categoryInput, addressInput } = renderApp();
+        const { nameInput, categoryInput, addressInput } = renderFormContainer();
         enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
 
         // then
@@ -117,7 +115,7 @@ describe('<App />', () => {
         // when
         const {
           nameInput, categoryInput, addressInput, registerButton,
-        } = renderApp();
+        } = renderFormContainer();
 
         inputValues.forEach((restaurant) => {
           enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
@@ -131,42 +129,6 @@ describe('<App />', () => {
             payload: {},
           });
         });
-      });
-    });
-  });
-
-  context('with restaurants', () => {
-    it('renders restaurants', () => {
-      // given
-      const restaurants = [{
-        id: 1,
-        name: '시카고피자',
-        category: '양식',
-        address: '이태원동',
-      },
-      {
-        id: 2,
-        name: '마녀주방',
-        category: '한식',
-        address: '서울시 강남구',
-      }];
-      useSelector.mockImplementation((selector) => selector({
-        input: {
-          name: '',
-          category: '',
-          address: '',
-        },
-        restaurants,
-      }));
-
-      // when
-      const { getRestaurantListItems } = renderApp();
-
-      // then
-      const restaurantListItems = getRestaurantListItems();
-      expect(restaurantListItems).toHaveLength(2);
-      restaurantListItems.forEach((item, index) => {
-        expect(item.innerHTML).toBe(`${restaurants[index].name} | ${restaurants[index].category} | ${restaurants[index].address}`);
       });
     });
   });
