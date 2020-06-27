@@ -31,9 +31,17 @@ function addInformation() {
   };
 }
 
+function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: { informations: restaurants },
+  };
+}
+
 export {
   updateName,
   updateCategory,
   updateAddress,
   addInformation,
+  setRestaurants,
 };

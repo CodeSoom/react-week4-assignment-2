@@ -5,6 +5,7 @@ import {
   updateCategory,
   updateAddress,
   addInformation,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -106,6 +107,41 @@ describe('reducer', () => {
 
         expect(state.informations).toHaveLength(0);
       });
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('레스토랑 정보가 추가된다.', () => {
+      const previousState = {
+        newId: 100,
+        name: '',
+        category: '양식',
+        address: '인천',
+        informations: [],
+      };
+
+      const restaurants = [
+        {
+          id: 1,
+          name: '마녀주방',
+          category: '한식',
+          address: '강남',
+        }, {
+          id: 2,
+          name: '할머니뼈해장국',
+          category: '한식',
+          address: '강서',
+        }, {
+          id: 3,
+          name: '엄마손파이',
+          category: '한식',
+          address: '강북',
+        },
+      ];
+
+      const state = reducer(previousState, setRestaurants(restaurants));
+
+      expect(state.informations).toHaveLength(3);
     });
   });
 });
