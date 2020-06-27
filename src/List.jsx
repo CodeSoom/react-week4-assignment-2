@@ -8,6 +8,9 @@ export default function List({ registrations }) {
           {registration.id}
           {' '}
           |
+          {registration.type}
+          {' '}
+          |
           {registration.address}
         </li>
       ))}
