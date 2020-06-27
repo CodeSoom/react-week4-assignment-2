@@ -17,7 +17,17 @@ describe('reducer', () => {
 
   const triggerMockAction = () => ({ action: 'mockAction' });
 
-  // TODO: set initial state
+  context('when reducer is executed first time', () => {
+    it('set initial state', () => {
+      const state = reducer(undefined, triggerMockAction());
+
+      expect(state.newId).not.toBeNull();
+      expect(state.name).toHaveLength(0);
+      expect(state.category).toHaveLength(0);
+      expect(state.address).toHaveLength(0);
+      expect(state.restaurants).toHaveLength(0);
+    });
+  });
 
   context('when action type does not exist', () => {
     it('return previous state', () => {
