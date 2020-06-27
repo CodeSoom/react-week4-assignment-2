@@ -6,6 +6,7 @@ import Input from './Input';
 
 import {
   updateInformations,
+  addRestaurant,
 } from './actions';
 
 export default function InputContainer() {
@@ -20,14 +21,14 @@ export default function InputContainer() {
   }
 
   function handleClick() {
-    return null;
+    dispatch(addRestaurant);
   }
 
   return (
     <Input
       informations={informations}
       onChange={handleChangeInformations}
-      handleClick={handleClick}
+      onClick={handleClick}
     />
   );
 }
