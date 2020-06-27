@@ -9,31 +9,22 @@ export default function Input({
 }) {
   return (
     <p>
-      <label htmlFor="input-restaurant-name">
-        이름
-      </label>
       <input
-        id="input-restaurant-name"
+        name="name"
         type="text"
         placeholder="이름"
         value={value.name}
         onChange={onChangeName}
       />
-      <label htmlFor="input-restaurant-category">
-        분류
-      </label>
       <input
-        id="input-restaurant-category"
+        name="category"
         type="text"
         placeholder="분류"
         value={value.category}
         onChange={onChangeCategory}
       />
-      <label htmlFor="input-restaurant-address">
-        주소
-      </label>
       <input
-        id="input-restaurant-address"
+        name="address"
         type="text"
         placeholder="주소"
         value={value.address}

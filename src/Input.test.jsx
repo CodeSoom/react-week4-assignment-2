@@ -15,7 +15,7 @@ test('Input', () => {
   const handleChangeAddress = jest.fn();
   const handleClick = jest.fn();
 
-  const { getByDisplayValue, getByLabelText, getByText } = render(
+  const { getByDisplayValue, getByPlaceholderText, getByText } = render(
     <Input
       value={restaurant}
       onChangeName={handleChangeName}
@@ -30,21 +30,21 @@ test('Input', () => {
   expect(getByDisplayValue('초기 주소')).not.toBeNull();
 
   fireEvent.change(
-    getByLabelText('이름'),
+    getByPlaceholderText('이름'),
     { target: { value: '황궁쟁반짜장' } },
   );
 
   expect(handleChangeName).toBeCalled();
 
   fireEvent.change(
-    getByLabelText('분류'),
+    getByPlaceholderText('분류'),
     { target: { value: '중식' } },
   );
 
   expect(handleChangeCategory).toBeCalled();
 
   fireEvent.change(
-    getByLabelText('주소'),
+    getByPlaceholderText('주소'),
     { target: { value: '서울시 서초구' } },
   );
 
