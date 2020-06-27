@@ -4,6 +4,7 @@ import Input from './Input';
 import List from './List';
 
 const initialState = {
+  id: 1,
   restaurant: {
     name: '',
     category: '',
@@ -15,7 +16,7 @@ const initialState = {
 export default function App() {
   const [state, setState] = useState(initialState);
 
-  const { restaurant, reservations } = state;
+  const { id, restaurant, reservations } = state;
 
   function handleChangeRestaurantName(event) {
     const { restaurant } = state;
@@ -53,6 +54,21 @@ export default function App() {
     })
   }
 
+  function handleClickRegisterReservation() {
+    const { restaurant, reservations } = state;
+
+    setState({
+      ...state,
+      id: id + 1,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      reservations: [...reservations, { id, restaurant }],
+    });
+  }
+
   return (
     <div>
       <h1>Restaurants</h1>
@@ -64,6 +80,7 @@ export default function App() {
         onChangeName={handleChangeRestaurantName}
         onChangeCategory={handleChangeRestaurantCategory}
         onChangeAddress={handleChangeRestaurantAddress}
+        onClick={handleClickRegisterReservation}
       />
     </div>
   );
