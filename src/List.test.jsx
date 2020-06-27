@@ -17,9 +17,9 @@ describe('List', () => {
         ]
       }/>);
 
-      expect(getByText(/마녀주방/)).not.toBeEmpty();
-      expect(getByText(/한식/)).not.toBeEmpty();
-      expect(getByText(/서울시 강남구/)).not.toBeEmpty();
+      expect(getByText(/마녀주방/)).not.toBeNull();
+      expect(getByText(/한식/)).not.toBeNull();
+      expect(getByText(/서울시 강남구/)).not.toBeNull();
     });
   });
 
