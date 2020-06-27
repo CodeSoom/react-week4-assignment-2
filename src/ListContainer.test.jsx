@@ -1,10 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import ListContainer from './ListContainer';
 
-// jest.mock('react-redux');
-// TODO: Add useSelector
+jest.mock('react-redux');
 
 test('ListContainer', () => {
   const restaurants = [
@@ -19,6 +20,8 @@ test('ListContainer', () => {
   const { container } = render((
     <ListContainer />
   ));
+
+  useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   restaurants.forEach((restaurant) => {
     expect(container).toHaveTextContent(restaurant.name);
