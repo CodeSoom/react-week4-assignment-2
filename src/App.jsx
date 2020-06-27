@@ -19,44 +19,39 @@ export default function App() {
   const { id, restaurant, reservations } = state;
 
   function handleChangeRestaurantName(event) {
-    const { restaurant } = state;
     setState({
       ...state,
       restaurant: {
         name: event.target.value,
         category: restaurant.category,
         address: restaurant.address,
-      }
-    })
+      },
+    });
   }
 
   function handleChangeRestaurantCategory(event) {
-    const { restaurant } = state;
     setState({
       ...state,
       restaurant: {
         name: restaurant.name,
         category: event.target.value,
         address: restaurant.address,
-      }
-    })
+      },
+    });
   }
 
   function handleChangeRestaurantAddress(event) {
-    const { restaurant } = state;
     setState({
       ...state,
       restaurant: {
         name: restaurant.name,
         category: restaurant.category,
         address: event.target.value,
-      }
-    })
+      },
+    });
   }
 
   function handleClickRegisterReservation() {
-    const { restaurant, reservations } = state;
-
     setState({
       ...state,
       id: id + 1,

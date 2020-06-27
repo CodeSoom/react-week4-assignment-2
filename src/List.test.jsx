@@ -21,13 +21,13 @@ test('List', () => {
         category: '양식',
         address: '서울시 종로구',
       },
-    }
+    },
   ];
 
   const { container } = render(
     <List
       reservations={reservations}
-    />
+    />,
   );
 
   expect(container).toHaveTextContent('지코바|한식|서울시 강남구');

@@ -6,7 +6,7 @@ export default function Input({
   onChangeCategory,
   onChangeAddress,
   onClick,
-}){
+}) {
   return (
     <p>
       <label htmlFor="input-restaurant-name">

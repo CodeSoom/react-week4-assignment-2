@@ -14,7 +14,7 @@ test('Item', () => {
   const { container } = render(
     <Item
       restaurant={restaurant}
-    />
+    />,
   );
 
   expect(container).toHaveTextContent('지코바|한식|서울시 강남구');

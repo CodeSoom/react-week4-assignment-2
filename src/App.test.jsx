@@ -12,7 +12,7 @@ describe('App', () => {
       address: '서울시 도봉구',
     };
     const { getByLabelText } = render(
-      <App />
+      <App />,
     );
 
     fireEvent.change(
@@ -67,6 +67,5 @@ describe('App', () => {
     expect(getByLabelText('주소')).toHaveAttribute('value', '');
 
     expect(container).toHaveTextContent('서브웨이|양식|서울시 도봉구');
-
   });
 });
