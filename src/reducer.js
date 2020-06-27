@@ -8,7 +8,7 @@ const initialState = {
   restaurants: [],
 };
 
-const reduce = {
+const handlers = {
   registerRestaurant: (state) => ({
     ...state,
     id: state.id + 1,
@@ -38,5 +38,5 @@ const reduce = {
 };
 
 export default function reducer(state = initialState, action) {
-  return reduce[action.type](state, action.payload);
+  return handlers[action.type] ? handlers[action.type](state, action.payload) : state;
 }
