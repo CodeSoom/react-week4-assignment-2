@@ -71,7 +71,7 @@ describe('reducer', () => {
         },
         registerReservation(),
       );
-  
+
       expect(state.reservations).toHaveLength(1);
       expect(state.reservations[0].id).not.toBeUndefined();
       expect(state.reservations[0].restaurant.name).toBe('교촌');
