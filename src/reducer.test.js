@@ -19,8 +19,14 @@ describe('reducer', () => {
   // TODO: no action type
   // TODO: changeName test
   // TODO: changeCategory test
-  // TODO: changeAddress test
-  // TODO: clickSubmit - context1: all inputs are filled, context2: any input is missing
+
+  describe('changeAddress', () => {
+    it('changes address', () => {
+      const state = reducer(testState, changeAddress('고봉민김밥2'));
+
+      expect(state.address).toBe('고봉민김밥2');
+    });
+  });
 
   describe('clickSubmit', () => {
     context('when all inputs are filled', () => {
