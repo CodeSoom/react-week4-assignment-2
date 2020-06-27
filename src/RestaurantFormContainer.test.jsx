@@ -3,10 +3,13 @@ import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantFormContainer from './RestaurantFormContainer';
+import {
+  changeRestaurant, saveNewRestaurant,
+} from './actions';
 
 jest.mock('react-redux');
 
-test('RestaurantForm', () => {
+describe('RestaurantForm', () => {
   const newRestaurant = {
     name: '맘스터치', category: '패스트푸드', address: '용인수지',
   };
@@ -16,11 +19,29 @@ test('RestaurantForm', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({ newRestaurant }));
 
-  const { getByText } = render(
-    <RestaurantFormContainer />,
-  );
+  context('when input value is changed', () => {
+    it('occurs changeRestarant action', () => {
+      const { getByPlaceholderText } = render(
+        <RestaurantFormContainer />,
+      );
 
-  // TODO: when input value is changed - occurs changeRestaurant
-  // TODO: wheh submit button is clicked - occurs saveNewRestaurant
+      fireEvent.change(getByPlaceholderText(/이름/), {
+        target: { value: '버거킹' },
+      });
 
+      expect(dispatch).toBeCalledWith(changeRestaurant('name', '버거킹'));
+    });
+  });
+
+  context('wheh submit button is clicked', () => {
+    it('occurs saveNewRestaurant', () => {
+      const { getByText } = render(
+        <RestaurantFormContainer />,
+      );
+
+      fireEvent.click(getByText(/등록/));
+
+      expect(dispatch).toBeCalledWith(saveNewRestaurant());
+    });
+  });
 });
