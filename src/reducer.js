@@ -19,12 +19,10 @@ const reducers = {
     ...state,
     address: action.payload.address,
   }),
-  setRestaurants: (state, action) => {
-    return {
-      ...state,
-      informations: [...state.informations, ...action.payload.informations],
-    };
-  },
+  setRestaurants: (state, action) => ({
+    ...state,
+    informations: [...state.informations, ...action.payload.informations],
+  }),
   addInformation: (state) => {
     const {
       newId, name, category, address, informations,
