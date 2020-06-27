@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   updateInformations,
+  addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -45,9 +46,7 @@ describe('reducer', () => {
             address: '강남구',
           },
           restaurants: [],
-        }, {
-          type: 'addRestaurant',
-        });
+        }, addRestaurant());
 
         expect(newState.restaurants).toHaveLength(1);
       });
@@ -61,9 +60,7 @@ describe('reducer', () => {
             address: '강남구',
           },
           restaurants: [],
-        }, {
-          type: 'addRestaurant',
-        });
+        }, addRestaurant());
 
         expect(newState.restaurants[0].id).toBe(1);
         expect(newState.newId).toBe(1 + 1);
@@ -78,9 +75,7 @@ describe('reducer', () => {
             address: '강남구',
           },
           restaurants: [],
-        }, {
-          type: 'addRestaurant',
-        });
+        }, addRestaurant());
 
         const { name, category, address } = newState.informations;
 
@@ -90,6 +85,7 @@ describe('reducer', () => {
       });
     });
   });
+
   context('without existed action', () => {
     it('state를 반환한다.', () => {
       const state = reducer({
