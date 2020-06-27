@@ -9,30 +9,16 @@ describe('Input', () => {
   const handleClick = jest.fn();
 
   it('should get input', () => {
+    const registration = {
+      name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+    };
+
     const { getByDisplayValue, getByPlaceholderText } = render((
-      <div>
-        <input
-          id="input-registration-name"
-          type="text"
-          placeholder="이름"
-          value="Seoul Pizza"
-          onChange={handleChange}
-        />
-        <input
-          id="input-registration-type"
-          type="text"
-          placeholder="분류"
-          value="Western"
-          onChange={handleChange}
-        />
-        <input
-          id="input-registration-address"
-          type="text"
-          placeholder="주소"
-          value="Seoul Itaewon"
-          onChange={handleChange}
-        />
-      </div>
+      <Input
+        registration={registration}
+        onChange={handleChange}
+        onClick={handleClick}
+      />
     ));
 
     expect(getByDisplayValue('Seoul Pizza')).not.toBeNull();
@@ -55,36 +41,16 @@ describe('Input', () => {
   });
 
   it('should be clicked for adding', () => {
+    const registration = {
+      name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+    };
+
     const { getByText } = render((
-      <div>
-        <input
-          id="input-registration-name"
-          type="text"
-          placeholder="이름"
-          value="Seoul Pizza"
-          onChange={handleChange}
-        />
-        <input
-          id="input-registration-type"
-          type="text"
-          placeholder="분류"
-          value="Western"
-          onChange={handleChange}
-        />
-        <input
-          id="input-registration-address"
-          type="text"
-          placeholder="주소"
-          value="Seoul Itaewon"
-          onChange={handleChange}
-        />
-        <button
-          type="button"
-          onClick={handleClick}
-        >
-          등록
-        </button>
-      </div>
+      <Input
+        registration={registration}
+        onChange={handleChange}
+        onClick={handleClick}
+      />
     ));
 
     fireEvent.click(getByText('등록'));
