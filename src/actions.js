@@ -7,3 +7,9 @@ export function updateInformations(target, value) {
     },
   };
 }
+
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
+}
