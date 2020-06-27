@@ -1,4 +1,5 @@
 const initialState = {
+  newId: 1,
   informations: {
     name: '',
     category: '',
@@ -21,7 +22,9 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
     return {
       ...state,
+      newId: state.newId + 1,
       restaurants: [...state.restaurants, {
+        id: state.newId,
         name: state.informations.name,
         category: state.informations.category,
         address: state.informations.address,
