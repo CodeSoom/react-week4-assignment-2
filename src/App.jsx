@@ -2,15 +2,14 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import List from './List';
 import Form from './Form';
 
 import { registerRestaurant, updateInput } from './actions';
+import ListContainer from './ListContainer';
 
 export default function App() {
   const dispatch = useDispatch();
-  const { restaurants, input } = useSelector((state) => ({
-    restaurants: state.restaurants,
+  const { input } = useSelector((state) => ({
     input: state.input,
   }));
 
@@ -26,9 +25,7 @@ export default function App() {
   return (
     <>
       <h1>Restaurants</h1>
-      <List
-        restaurants={restaurants}
-      />
+      <ListContainer />
       <Form
         value={input}
         onChangeInput={handleChangeInput}
