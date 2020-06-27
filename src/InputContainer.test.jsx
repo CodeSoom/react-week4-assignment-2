@@ -8,26 +8,53 @@ import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 describe('InputContainer', () => {
+  context('when add restaurants', () => {
+    it('fire form event', () => {
+      const dispatch = jest.fn((e) => e.preventDefault);
 
-  it ('클릭', () => {
-    const dispatch = jest.fn(e => e.preventDefault);
+      useDispatch.mockImplementation(() => dispatch);
 
-    useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        input: {
+          name: '하하',
+          category: '호호',
+          address: '히히',
+        },
+      }));
 
-    useSelector.mockImplementation((selector) => selector({
-      input: {
-        name: '하하',
-        category: '호호',
-        address: '히히',
-      }
-    }));
+      const { getByTestId } = render(<InputContainer />);
 
-    const {getByText} = render(<InputContainer />);
+      expect(dispatch).not.toBeCalled();
 
-    expect(dispatch).not.toBeCalled();
+      fireEvent.submit(getByTestId('form'));
 
-    fireEvent.click(getByText(/등록/));
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 
-    expect(dispatch).toBeCalled();
+  context('when \'name\'input change', () => {
+    it('fire change event', () => {
+      const dispatch = jest.fn((e) => e.preventDefault);
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({
+        input: {
+          name: '',
+        },
+      }));
+
+      const { getByPlaceholderText } = render(<InputContainer />);
+
+      expect(dispatch).not.toBeCalled();
+
+      fireEvent.change(getByPlaceholderText(/이름/), {
+        target: {
+          value: '바보',
+        },
+      });
+
+      expect(dispatch).toBeCalled();
+    });
   });
 });

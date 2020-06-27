@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { addRestaurant, updateInput } from './actions';
-
 import { useDispatch, useSelector } from 'react-redux';
+import { addRestaurant, updateInput } from './actions';
 
 import Input from './Input';
 
 export default function InputContainer() {
-
   const dispatch = useDispatch();
 
   const { name, category, address } = useSelector((selector) => ({
     name: selector.input.name,
     category: selector.input.category,
-    address: selector.input.address
+    address: selector.input.address,
   }));
 
   const handleInputChange = (e) => {
