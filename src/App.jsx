@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { changeRestaurant, saveNewRestaurant } from './actions';
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
-  const { newRestaurant, restaurants } = useSelector((state) => ({
+  const { newRestaurant } = useSelector((state) => ({
     newRestaurant: state.newRestaurant,
-    restaurants: state.restaurants,
   }));
 
   const dispatch = useDispatch();
@@ -26,23 +26,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {
-          restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {restaurant.name}
-              {' '}
-              |
-              {' '}
-              {restaurant.category}
-              {' '}
-              |
-              {' '}
-              {restaurant.address}
-            </li>
-          ))
-        }
-      </ul>
+      <RestaurantsContainer />
       <form onSubmit={handleClickSubmit}>
         <input
           type="text"
