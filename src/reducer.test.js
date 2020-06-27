@@ -75,8 +75,7 @@ describe('reducer', () => {
       it('returns state with changed input data', () => {
 
         const state = reducer(initialState, updateInput({
-          key: 'name',
-          value: '바보'
+          'name': '바보',
         }));
 
         expect(state.input.name).toBe('바보');
@@ -87,8 +86,7 @@ describe('reducer', () => {
       it('returns state with changed input data', () => {
 
         const state = reducer(initialState, updateInput({
-          key: 'category',
-          value: '바보'
+          'category': '바보',
         }));
 
         expect(state.input.category).toBe('바보');
@@ -99,8 +97,7 @@ describe('reducer', () => {
       it('returns state with changed input data', () => {
 
         const state = reducer(initialState, updateInput({
-          key: 'address',
-          value: '바보'
+          'address': '바보',
         }));
 
         expect(state.input.address).toBe('바보');
