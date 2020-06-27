@@ -1,13 +1,13 @@
 import React from 'react';
-import Registration from './Registration';
+import Restaurant from './Restaurant';
 
-export default function List({ registrations }) {
+export default function List({ restaurants }) {
   return (
     <ol>
-      {registrations.map((registration) => (
-        <Registration
-          key={registration.id}
-          registration={registration}
+      {restaurants.map((restaurant) => (
+        <Restaurant
+          key={restaurant.id}
+          restaurant={restaurant}
         />
       ))}
     </ol>

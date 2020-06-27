@@ -2,17 +2,17 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Registration from './Registration';
+import Restaurant from './Restaurant';
 
-describe('Registration', () => {
-  it('has registration detail', () => {
-    const registration = {
+describe('Restaurant', () => {
+  it('has restaurant detail', () => {
+    const restaurant = {
       id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
     };
 
     const { container } = render((
-      <Registration
-        registration={registration}
+      <Restaurant
+        restaurant={restaurant}
       />
     ));
 

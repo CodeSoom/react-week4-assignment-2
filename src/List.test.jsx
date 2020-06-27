@@ -5,16 +5,16 @@ import { render } from '@testing-library/react';
 import List from './List';
 
 describe('List', () => {
-  function renderList(registrations) {
+  function renderList(restaurants) {
     return render((
       <List
-        registrations={registrations}
+      restaurants={restaurants}
       />
     ));
   }
 
-  it('render registrations', () => {
-    const registrations = [
+  it('render restaurants', () => {
+    const restaurants = [
       {
         id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Iteawon',
       },
@@ -23,7 +23,7 @@ describe('List', () => {
       },
     ];
 
-    const { getByText } = renderList(registrations);
+    const { getByText } = renderList(restaurants);
 
     expect(getByText(/Seoul Iteawon/)).not.toBeNull();
     expect(getByText(/Busan Daeyeon/)).not.toBeNull();

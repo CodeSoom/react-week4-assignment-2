@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Registration({ registration: { name, type, address } }) {
+export default function Restaurant({ restaurant: { name, type, address } }) {
   return (
     <li>
       {name}
