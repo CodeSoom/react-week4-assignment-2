@@ -38,44 +38,31 @@ describe('reducer', () => {
 
   describe('addRestaurant', () => {
     context('with new informations', () => {
+      const previousState = {
+        newId: 1,
+        informations: {
+          name: '한식당',
+          category: '한식',
+          address: '강남구',
+        },
+        restaurants: [],
+      };
+
       it('restaurants에 새로운 restaurant이 추가된다.', () => {
-        const newState = reducer({
-          informations: {
-            name: '한식당',
-            category: '한식',
-            address: '강남구',
-          },
-          restaurants: [],
-        }, addRestaurant());
+        const newState = reducer(previousState, addRestaurant());
 
         expect(newState.restaurants).toHaveLength(1);
       });
 
       it('추가된 restaurant에 id가 부여된다.', () => {
-        const newState = reducer({
-          newId: 1,
-          informations: {
-            name: '한식당',
-            category: '한식',
-            address: '강남구',
-          },
-          restaurants: [],
-        }, addRestaurant());
+        const newState = reducer(previousState, addRestaurant());
 
         expect(newState.restaurants[0].id).toBe(1);
         expect(newState.newId).toBe(1 + 1);
       });
 
       it('informations가 초기화 된다.', () => {
-        const newState = reducer({
-          newId: 1,
-          informations: {
-            name: '한식당',
-            category: '한식',
-            address: '강남구',
-          },
-          restaurants: [],
-        }, addRestaurant());
+        const newState = reducer(previousState, addRestaurant());
 
         const { name, category, address } = newState.informations;
 
