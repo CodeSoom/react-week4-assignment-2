@@ -15,8 +15,17 @@ describe('reducer', () => {
     }],
   };
 
+  const triggerMockAction = () => ({ action: 'mockAction' });
+
   // TODO: set initial state
-  // TODO: no action type
+
+  context('when action type does not exist', () => {
+    it('return previous state', () => {
+      const state = reducer(testState, triggerMockAction());
+
+      expect(state).toBe(testState);
+    });
+  });
 
   describe('changeName', () => {
     it('changes name', () => {
