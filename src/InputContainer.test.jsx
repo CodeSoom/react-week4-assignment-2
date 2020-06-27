@@ -92,4 +92,16 @@ describe('InputContainer', () => {
       expect(dispatch).toBeCalled();
     });
   });
+
+  context('when click 등록', () => {
+    it('disaptch가 호출된다.', () => {
+      const { getByText } = render(
+        <InputContainer />,
+      );
+
+      fireEvent.click(getByText('등록'));
+
+      expect(dispatch).toBeCalled();
+    });
+  });
 });
