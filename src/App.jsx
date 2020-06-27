@@ -64,9 +64,17 @@ export default function App() {
       <h1>Restaurants</h1>
       <ul>
         {
-          state.restaurants.map((restuarant) => (
-            <li key={restuarant.id}>
-              {`${restuarant.name} | ${restuarant.category} | ${restuarant.address}`}
+          state.restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {restaurant.name}
+              {' '}
+              |
+              {' '}
+              {restaurant.category}
+              {' '}
+              |
+              {' '}
+              {restaurant.address}
             </li>
           ))
         }
