@@ -1,16 +1,17 @@
+import { v4 as uuid } from 'uuid';
+
 export const initialState = {
   input: {
     name: '',
     category: '',
-    address: '',
+    address: ''
   },
   restaurants: []
 };
 
 export default function reducer(state = initialState, action) {
-
   if (action.type === 'addRestaurant') {
-    const {name, category, address} = action.payload.input;
+    const { name, category, address } = action.payload.input;
 
     if (!name || !category || !address) {
       return state;
@@ -18,22 +19,37 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
+      input: {
+        name: '',
+        category: '',
+        address: ''
+      },
       restaurants: [...state.restaurants, {
+        id: uuid(),
         name,
         category,
-        address,
-      }],
-    }
+        address
+      }]
+    };
   }
 
   if (action.type === 'updateInput') {
+
+    const input = action.payload.input;
+
     return {
       ...state,
       input: {
         ...state.input,
-        [action.payload.key]: action.payload.value
+        ...input
       }
-    }
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    return {
+      ...initialState
+    };
   }
 
   return state;
