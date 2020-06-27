@@ -1,32 +1,14 @@
-export function changeName(name) {
+export function changeRestaurant(field, value) {
   return {
-    type: 'changeName',
+    type: 'changeRestaurant',
     payload: {
-      name,
+      field, value,
     },
   };
 }
 
-export function changeCategory(category) {
+export function saveNewRestaurant() {
   return {
-    type: 'changeCategory',
-    payload: {
-      category,
-    },
-  };
-}
-
-export function changeAddress(address) {
-  return {
-    type: 'changeAddress',
-    payload: {
-      address,
-    },
-  };
-}
-
-export function clickSubmit() {
-  return {
-    type: 'clickSubmit',
+    type: 'saveNewRestaurant',
   };
 }
