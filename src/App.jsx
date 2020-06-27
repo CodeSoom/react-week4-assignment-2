@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import List from './List';
+import Form from './Form';
 
 export default function App() {
   const [state, setState] = useState({
@@ -35,12 +36,12 @@ export default function App() {
     event.preventDefault();
   };
 
-  const handleChaneInput = (event) => {
+  const handleChangeInput = ({ name, value }) => {
     setState({
       ...state,
       input: {
         ...state.input,
-        [event.target.name]: event.target.value,
+        [name]: value,
       },
     });
   };
@@ -51,34 +52,11 @@ export default function App() {
       <List
         restaurants={state.restaurants}
       />
-      <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          type="text"
-          value={state.input.name}
-          onChange={handleChaneInput}
-          placeholder="이름"
-        />
-        <input
-          name="category"
-          type="text"
-          value={state.input.category}
-          onChange={handleChaneInput}
-          placeholder="분류"
-        />
-        <input
-          name="address"
-          type="text"
-          value={state.input.address}
-          onChange={handleChaneInput}
-          placeholder="주소"
-        />
-        <button
-          type="submit"
-        >
-          등록
-        </button>
-      </form>
+      <Form
+        value={state.input}
+        onChangeInput={handleChangeInput}
+        onSubmit={handleSubmit}
+      />
     </>
   );
 }
