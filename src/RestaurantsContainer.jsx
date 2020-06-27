@@ -1,8 +1,8 @@
 import React from 'react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-export default function ListContainer() {
+export default function RestaurantsContainer() {
   const restaurants = [
     {
       id: 1, name: '맘스터치', category: '패스트푸드', address: '용인수지',
@@ -13,7 +13,7 @@ export default function ListContainer() {
   ];
 
   return (
-    <List
+    <Restaurants
       restaurants={restaurants}
     />
   );

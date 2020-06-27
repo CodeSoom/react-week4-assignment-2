@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   function renderList(restaurants) {
     return render((
-      <List
+      <Restaurants
         restaurants={restaurants}
       />
     ));

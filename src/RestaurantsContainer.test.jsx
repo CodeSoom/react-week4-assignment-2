@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-test('ListContainer', () => {
+test('RestaurantsContainer', () => {
   const restaurants = [
     {
       id: 1, name: '맘스터치', category: '패스트푸드', address: '용인수지',
@@ -18,7 +18,7 @@ test('ListContainer', () => {
   ];
 
   const { container } = render((
-    <ListContainer />
+    <RestaurantsContainer />
   ));
 
   useSelector.mockImplementation((selector) => selector({ restaurants }));
