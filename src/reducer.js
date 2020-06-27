@@ -1,4 +1,11 @@
 function reducer(state, action) {
+  if (action.type === 'changeName') {
+    return {
+      ...state,
+      name: action.payload.name,
+    };
+  }
+
   if (action.type === 'changeCategory') {
     return {
       ...state,
