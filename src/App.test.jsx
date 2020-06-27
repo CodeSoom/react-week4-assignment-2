@@ -2,7 +2,11 @@ import React from 'react';
 
 import { render, screen, fireEvent } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import App from './App';
+
+jest.mock('react-redux');
 
 function renderApp() {
   render(<App />);
@@ -27,6 +31,21 @@ function enterRestaurantInformation(
 }
 
 describe('<App />', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      input: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [],
+    }));
+  });
+
   context('when initialized', () => {
     it('renders title', () => {
       // when
@@ -57,7 +76,7 @@ describe('<App />', () => {
 
   describe('register restaurant', () => {
     // given
-    const restaurants = [{
+    const inputValues = [{
       name: '시카고피자',
       category: '양식',
       address: '이태원동',
@@ -71,16 +90,26 @@ describe('<App />', () => {
     context('when entering restaurant information', () => {
       it('renders the entered value', () => {
         // given
-        const restaurant = restaurants[0];
+        const restaurant = inputValues[0];
 
         // when
         const { nameInput, categoryInput, addressInput } = renderApp();
         enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
 
         // then
-        expect(nameInput.value).toBe(restaurant.name);
-        expect(categoryInput.value).toBe(restaurant.category);
-        expect(addressInput.value).toBe(restaurant.address);
+        expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toBeCalledWith({
+          type: 'updateInput',
+          payload: { name: 'name', value: restaurant.name },
+        });
+        expect(dispatch).toBeCalledWith({
+          type: 'updateInput',
+          payload: { name: 'category', value: restaurant.category },
+        });
+        expect(dispatch).toBeCalledWith({
+          type: 'updateInput',
+          payload: { name: 'address', value: restaurant.address },
+        });
       });
     });
 
@@ -88,38 +117,57 @@ describe('<App />', () => {
       it('restaurants is added to the list', () => {
         // when
         const {
-          nameInput, categoryInput, addressInput, registerButton, getRestaurantListItems,
+          nameInput, categoryInput, addressInput, registerButton,
         } = renderApp();
 
-        restaurants.forEach((restaurant) => {
+        inputValues.forEach((restaurant) => {
           enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
           fireEvent.click(registerButton);
         });
 
         // then
-        const restaurantListItems = getRestaurantListItems();
-        expect(restaurantListItems).toHaveLength(2);
-        restaurantListItems.forEach((item, index) => {
-          expect(item.innerHTML).toBe(`${restaurants[index].name} | ${restaurants[index].category} | ${restaurants[index].address}`);
+        inputValues.forEach(() => {
+          expect(dispatch).toBeCalledWith({
+            type: 'registerRestaurant',
+            payload: {},
+          });
         });
       });
+    });
+  });
 
-      it('entered values are erased', () => {
-        // given
-        const restaurant = restaurants[0];
+  context('with restaurants', () => {
+    it('renders restaurants', () => {
+      // given
+      const restaurants = [{
+        id: 1,
+        name: '시카고피자',
+        category: '양식',
+        address: '이태원동',
+      },
+      {
+        id: 2,
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+      }];
+      useSelector.mockImplementation((selector) => selector({
+        input: {
+          name: '',
+          category: '',
+          address: '',
+        },
+        restaurants,
+      }));
 
-        // when
-        const {
-          nameInput, categoryInput, addressInput, registerButton,
-        } = renderApp();
+      // when
+      const { getRestaurantListItems } = renderApp();
 
-        enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
-        fireEvent.click(registerButton);
-
-        // then
-        expect(nameInput.value).toBe('');
-        expect(categoryInput.value).toBe('');
-        expect(addressInput.value).toBe('');
+      // then
+      const restaurantListItems = getRestaurantListItems();
+      expect(restaurantListItems).toHaveLength(2);
+      restaurantListItems.forEach((item, index) => {
+        expect(item.innerHTML).toBe(`${restaurants[index].name} | ${restaurants[index].category} | ${restaurants[index].address}`);
       });
     });
   });
