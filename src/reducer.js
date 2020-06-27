@@ -4,9 +4,9 @@ export const initialState = {
   input: {
     name: '',
     category: '',
-    address: ''
+    address: '',
   },
-  restaurants: []
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,33 +22,26 @@ export default function reducer(state = initialState, action) {
       input: {
         name: '',
         category: '',
-        address: ''
+        address: '',
       },
       restaurants: [...state.restaurants, {
         id: uuid(),
         name,
         category,
-        address
-      }]
+        address,
+      }],
     };
   }
 
   if (action.type === 'updateInput') {
-
-    const input = action.payload.input;
+    const { input } = action.payload;
 
     return {
       ...state,
       input: {
         ...state.input,
-        ...input
-      }
-    };
-  }
-
-  if (action.type === 'setRestaurants') {
-    return {
-      ...initialState
+        ...input,
+      },
     };
   }
 

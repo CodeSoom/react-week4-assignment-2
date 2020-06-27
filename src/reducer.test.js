@@ -1,17 +1,15 @@
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
-import { initialState } from './reducer';
 import { addRestaurant, updateInput } from './actions';
 
 describe('reducer', () => {
   describe('addRestaurant', () => {
     context('with input data', () => {
       it('returns state with append restaurants data', () => {
-
         const state = reducer(initialState, addRestaurant({
           name: '마녀주방',
           category: '양식',
-          address: '서울시 강남구'
+          address: '서울시 강남구',
         }));
 
         expect(state.restaurants).toHaveLength(1);
@@ -26,7 +24,7 @@ describe('reducer', () => {
         const state = reducer(initialState, addRestaurant({
           name: '',
           category: '',
-          address: ''
+          address: '',
         }));
 
         expect(state.restaurants).toHaveLength(0);
@@ -38,7 +36,7 @@ describe('reducer', () => {
         const state = reducer(initialState, addRestaurant({
           name: '',
           category: '카테고리',
-          address: '주소'
+          address: '주소',
         }));
 
         expect(state.restaurants).toHaveLength(0);
@@ -50,7 +48,7 @@ describe('reducer', () => {
         const state = reducer(initialState, addRestaurant({
           name: '이름',
           category: '',
-          address: '주소'
+          address: '주소',
         }));
 
         expect(state.restaurants).toHaveLength(0);
@@ -62,7 +60,7 @@ describe('reducer', () => {
         const state = reducer(initialState, addRestaurant({
           name: '이름',
           category: '카테고리',
-          address: ''
+          address: '',
         }));
 
         expect(state.restaurants).toHaveLength(0);
@@ -73,9 +71,8 @@ describe('reducer', () => {
   describe('changeInput', () => {
     context('with change name input data', () => {
       it('returns state with changed input data', () => {
-
         const state = reducer(initialState, updateInput({
-          'name': '바보',
+          name: '바보',
         }));
 
         expect(state.input.name).toBe('바보');
@@ -84,9 +81,8 @@ describe('reducer', () => {
 
     context('with change category input data', () => {
       it('returns state with changed input data', () => {
-
         const state = reducer(initialState, updateInput({
-          'category': '바보',
+          category: '바보',
         }));
 
         expect(state.input.category).toBe('바보');
@@ -95,13 +91,36 @@ describe('reducer', () => {
 
     context('with change address input data', () => {
       it('returns state with changed input data', () => {
-
         const state = reducer(initialState, updateInput({
-          'address': '바보',
+          address: '바보',
         }));
 
         expect(state.input.address).toBe('바보');
       });
+    });
+  });
+
+  describe('not exist action type', () => {
+    it('returns original state', () => {
+      const state = reducer(initialState, {
+        type: 'nope',
+      });
+
+      expect(state.input.name).toBe('');
+      expect(state.input.category).toBe('');
+      expect(state.input.address).toBe('');
+    });
+  });
+
+  describe('not exist initialState', () => {
+    it('returns default initialState', () => {
+      const state = reducer(undefined, {
+        type: 'nope',
+      });
+
+      expect(state.input.name).toBe('');
+      expect(state.input.category).toBe('');
+      expect(state.input.address).toBe('');
     });
   });
 });
