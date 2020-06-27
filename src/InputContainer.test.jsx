@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +10,7 @@ jest.mock('react-redux');
 describe('InputContainer', () => {
 
   it ('클릭', () => {
-    const dispatch = jest.fn();
+    const dispatch = jest.fn(e => e.preventDefault);
 
     useDispatch.mockImplementation(() => dispatch);
 
@@ -28,5 +30,4 @@ describe('InputContainer', () => {
 
     expect(dispatch).toBeCalled();
   });
-
 });
