@@ -4,6 +4,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  registerReservation,
 } from './actions';
 
 describe('reducer', () => {
@@ -42,5 +43,46 @@ describe('reducer', () => {
     );
 
     expect(state.restaurant.address).toBe('서울시 성북구');
+  });
+
+  describe('registerReservation', () => {
+    context('with restaurant', () => {
+      const state = reducer(
+        {
+          id: 1,
+          restaurant: {
+            name: '교촌',
+            category: '한식',
+            address: '서울시 중구',
+          },
+          reservations: [],
+        },
+        registerReservation(),
+      );
+  
+      expect(state.reservations).toHaveLength(1);
+      expect(state.reservations[0].id).not.toBeUndefined();
+      expect(state.reservations[0].restaurant.name).toBe('교촌');
+      expect(state.reservations[0].restaurant.category).toBe('한식');
+      expect(state.reservations[0].restaurant.address).toBe('서울시 중구');
+      expect(state.restaurant.name).toBe('');
+      expect(state.restaurant.category).toBe('');
+      expect(state.restaurant.address).toBe('');
+    });
+
+    context('without restaurant', () => {
+      const state = reducer({
+        id: 1,
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
+        reservations: [],
+      },
+      registerReservation());
+
+      expect(state.reservations).toHaveLength(0);
+    });
   });
 });
