@@ -1,17 +1,13 @@
 export const addRestaurant = (input) => ({
   type: 'addRestaurant',
   payload: {
-    input
-  }
+    input,
+  },
 });
 
 export const updateInput = (input) => ({
   type: 'updateInput',
   payload: {
-    input
-  }
-});
-
-export const setRestaurants = () => ({
-  type: 'setRestaurants'
+    input,
+  },
 });

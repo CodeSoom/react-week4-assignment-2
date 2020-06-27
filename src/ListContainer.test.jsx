@@ -10,7 +10,7 @@ jest.mock('react-redux');
 describe('ListContainer', () => {
   context('with restaurants data', () => {
     it('renders data with restaurants data', () => {
-      const dispatch = jest.fn(e => e.preventDefault);
+      const dispatch = jest.fn((e) => e.preventDefault);
 
       useDispatch.mockImplementation(() => dispatch);
 
@@ -19,11 +19,11 @@ describe('ListContainer', () => {
           id: '100',
           name: '하하',
           category: '호호',
-          address: '히히'
-        }]
+          address: '히히',
+        }],
       }));
 
-      const { getByText } = render(<ListContainer/>);
+      const { getByText } = render(<ListContainer />);
 
       expect(getByText(/하하/)).not.toBeNull();
     });
