@@ -68,6 +68,26 @@ describe('reducer', () => {
         expect(newState.restaurants[0].id).toBe(1);
         expect(newState.newId).toBe(1 + 1);
       });
+
+      it('informations가 초기화 된다.', () => {
+        const newState = reducer({
+          newId: 1,
+          informations: {
+            name: '한식당',
+            category: '한식',
+            address: '강남구',
+          },
+          restaurants: [],
+        }, {
+          type: 'addRestaurant',
+        });
+
+        const { name, category, address } = newState.informations;
+
+        expect(name).toBe('');
+        expect(category).toBe('');
+        expect(address).toBe('');
+      });
     });
   });
   context('without existed action', () => {
