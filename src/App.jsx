@@ -13,55 +13,79 @@ const initialState = {
   reservations: [],
 };
 
+function updateRestaurantName(state, value) {
+  const { restaurant } = state;
+
+  return {
+    ...state,
+    restaurant: {
+      name: value,
+      category: restaurant.category,
+      address: restaurant.address,
+    },
+  };
+}
+
+function updateRestaurantCategory(state, value) {
+  const { restaurant } = state;
+
+  return {
+    ...state,
+    restaurant: {
+      name: restaurant.name,
+      category: value,
+      address: restaurant.address,
+    },
+  };
+}
+
+function updateRestaurantAddress(state, value) {
+  const { restaurant } = state;
+
+  return {
+    ...state,
+    restaurant: {
+      name: restaurant.name,
+      category: restaurant.category,
+      address: value,
+    },
+  };
+}
+
+function registerReservation(state) {
+  const { id, restaurant, reservations } = state;
+
+  return {
+    ...state,
+    id: id + 1,
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
+    reservations: [...reservations, { id, restaurant }],
+  };
+}
+
 export default function App() {
   const [state, setState] = useState(initialState);
 
-  const { id, restaurant, reservations } = state;
+  const { restaurant, reservations } = state;
 
   function handleChangeRestaurantName(event) {
-    setState({
-      ...state,
-      restaurant: {
-        name: event.target.value,
-        category: restaurant.category,
-        address: restaurant.address,
-      },
-    });
+    setState(updateRestaurantName(state, event.target.value));
   }
 
   function handleChangeRestaurantCategory(event) {
-    setState({
-      ...state,
-      restaurant: {
-        name: restaurant.name,
-        category: event.target.value,
-        address: restaurant.address,
-      },
-    });
+    setState(updateRestaurantCategory(state, event.target.value));
   }
 
   function handleChangeRestaurantAddress(event) {
-    setState({
-      ...state,
-      restaurant: {
-        name: restaurant.name,
-        category: restaurant.category,
-        address: event.target.value,
-      },
-    });
+    setState(updateRestaurantAddress(state, event.target.value));
   }
 
   function handleClickRegisterReservation() {
-    setState({
-      ...state,
-      id: id + 1,
-      restaurant: {
-        name: '',
-        category: '',
-        address: '',
-      },
-      reservations: [...reservations, { id, restaurant }],
-    });
+    setState(registerReservation(state));
   }
 
   return (
