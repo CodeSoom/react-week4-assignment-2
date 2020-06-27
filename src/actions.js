@@ -5,9 +5,13 @@ export const addRestaurant = (input) => ({
   }
 });
 
-export const updateInput = ({key, value}) => ({
+export const updateInput = (input) => ({
   type: 'updateInput',
   payload: {
-    key,value
+    input
   }
-})
+});
+
+export const setRestaurants = () => ({
+  type: 'setRestaurants'
+});
