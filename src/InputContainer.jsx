@@ -2,13 +2,19 @@ import React from 'react';
 
 import { addRestaurant, updateInput } from './actions';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Input from './Input';
 
 export default function InputContainer() {
 
   const dispatch = useDispatch();
+
+  const { name, category, address } = useSelector((selector) => ({
+    name: selector.input.name,
+    category: selector.input.category,
+    address: selector.input.address
+  }));
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,6 +38,9 @@ export default function InputContainer() {
     <Input
       onChange={handleInputChange}
       onClick={handleSubmit}
+      name={name}
+      category={category}
+      address={address}
     />
   );
 }

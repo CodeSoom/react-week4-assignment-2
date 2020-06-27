@@ -1,14 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
-
-export default function Input({ onChange, onClick }) {
-  const { name, category, address } = useSelector((selector) => ({
-    name: selector.input.name,
-    category: selector.input.category,
-    address: selector.input.address
-  }));
-
+export default function Input({ onChange, onClick, name, category, address }) {
   return (
     <div>
       <form onSubmit={onClick}>
