@@ -17,13 +17,20 @@ describe('reducer', () => {
 
   // TODO: set initial state
   // TODO: no action type
-  // TODO: changeName test
+
+  describe('changeName', () => {
+    it('changes name', () => {
+      const state = reducer(testState, changeName('고봉민김밥2'));
+
+      expect(state.name).toBe('고봉민김밥2');
+    });
+  });
 
   describe('changeCategory', () => {
     it('changes category', () => {
-      const state = reducer(testState, changeCategory('패스트푸드2'));
+      const state = reducer(testState, changeCategory('분식2'));
 
-      expect(state.category).toBe('패스트푸드2');
+      expect(state.category).toBe('분식2');
     });
   });
 
