@@ -2,6 +2,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  registerReservation,
 } from './actions';
 
 describe('actions', () => {
@@ -30,5 +31,12 @@ describe('actions', () => {
 
     expect(action.type).toBe('updateRestaurantAddress');
     expect(action.payload.restaurant.address).toBe(address);
+  });
+
+  test('registerReservation', () => {
+    const action = registerReservation();
+
+    expect(action.type).toBe('registerReservation');
+    expect(action.payload).toBeUndefined();
   });
 });
