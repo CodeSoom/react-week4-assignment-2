@@ -12,12 +12,6 @@ export default function App() {
   });
 
   const handleSubmit = (event) => {
-    const restaurant = {
-      id: state.id,
-      name: state.input.name,
-      category: state.input.category,
-      address: state.input.address,
-    };
     setState({
       ...state,
       id: state.id + 1,
@@ -26,7 +20,15 @@ export default function App() {
         category: '',
         address: '',
       },
-      restaurants: [...state.restaurants, restaurant],
+      restaurants: [
+        ...state.restaurants,
+        {
+          id: state.id,
+          name: state.input.name,
+          category: state.input.category,
+          address: state.input.address,
+        },
+      ],
     });
     event.preventDefault();
   };
@@ -41,13 +43,15 @@ export default function App() {
     });
   };
 
+  const restaurantIntoText = ({ name, category, address }) => `${name} | ${category} | ${address}`;
+
   return (
     <>
       <h1>Restaurants</h1>
       <ul>
         {state.restaurants.map((restaurant) => (
           <li key={restaurant.id}>
-            {`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`}
+            {restaurantIntoText(restaurant)}
           </li>
         ))}
       </ul>
