@@ -10,7 +10,7 @@ describe('Input', () => {
       const handleChange = jest.fn();
       const handleAddRestaurant = jest.fn();
 
-      const { getByDisplayValue, getByPlaceholderText, getByText } = render((
+      const { getAllByDisplayValue, getByPlaceholderText, getByText } = render((
         <Input
           title=""
           onChangeTitle={handleChange}
@@ -18,7 +18,7 @@ describe('Input', () => {
         />
       ));
 
-      expect(getByDisplayValue('')).not.toBeNull();
+      expect(getAllByDisplayValue('')).not.toBeNull();
 
       fireEvent.change(getByPlaceholderText('이름'), {
         target: { value: '마녀주방' },
@@ -37,7 +37,7 @@ describe('Input', () => {
       const handleChangeKind = jest.fn();
       const handleAddRestaurant = jest.fn();
 
-      const { getByDisplayValue, getByPlaceholderText } = render((
+      const { getAllByDisplayValue, getByPlaceholderText } = render((
         <Input
           kind=""
           onChangeKind={handleChangeKind}
@@ -45,7 +45,7 @@ describe('Input', () => {
         />
       ));
 
-      expect(getByDisplayValue('')).not.toBeNull();
+      expect(getAllByDisplayValue('')).not.toBeNull();
 
       fireEvent.change(getByPlaceholderText('분류'), {
         target: { value: '한식' },
