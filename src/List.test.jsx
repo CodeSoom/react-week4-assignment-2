@@ -15,11 +15,14 @@ function renderList(restaurants) {
 }
 
 describe('<List />', () => {
-  context('without restaurants', () => {
-    it('do not print restaurant item', () => {
-      // given
-      const restaurants = [];
+  let restaurants;
 
+  context('without restaurants', () => {
+    beforeEach(() => {
+      restaurants = [];
+    });
+
+    it('do not print restaurant item', () => {
       // when
       const { restaurantListItems } = renderList(restaurants);
 
@@ -29,9 +32,8 @@ describe('<List />', () => {
   });
 
   context('with restaurants', () => {
-    it('print the restaurant items', () => {
-      // given
-      const restaurants = [{
+    beforeEach(() => {
+      restaurants = [{
         id: 1,
         name: '시카고피자',
         category: '양식',
@@ -49,7 +51,9 @@ describe('<List />', () => {
         category: '일식',
         address: '분당구 정자동',
       }];
+    });
 
+    it('print the restaurant items', () => {
       // when
       const { restaurantListItems } = renderList(restaurants);
 
