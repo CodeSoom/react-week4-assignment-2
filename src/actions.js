@@ -36,3 +36,12 @@ export function registerReservation() {
     type: 'registerReservation',
   };
 }
+
+export function setReservations(reservations) {
+  return {
+    type: 'setReservations',
+    payload: {
+      reservations,
+    },
+  };
+}
