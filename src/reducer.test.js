@@ -22,6 +22,14 @@ describe('reducer', () => {
     });
   });
 
+  context('using default initialState on reducer', () => {
+    const state = reducer(undefined, {});
+
+    expect(state).toEqual({
+      newId: 100, restaurantName: '', restaurantCategory: '', restaurantAddress: '', restaurants: [],
+    });
+  });
+
   describe('add restaurant', () => {
     context('when with value on name, category, address', () => {
       it('append a new restaurant into restaurants', () => {
