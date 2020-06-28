@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  changeRestaurant, saveNewRestaurant,
+  changeRestaurant, saveNewRestaurant, setInitialRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -73,6 +73,21 @@ describe('reducer', () => {
       expect(state.restaurants[1].name).toBe('고봉민김밥');
       expect(state.restaurants[1].category).toBe('분식');
       expect(state.restaurants[1].address).toBe('강남');
+    });
+  });
+
+  describe('setInitialRestaurants', () => {
+    it('sets initial restaurants list', () => {
+      const state = reducer(
+        undefined,
+        setInitialRestaurants(testState.restaurants),
+      );
+
+      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants[0].id).not.toBeUndefined();
+      expect(state.restaurants[0].name).toBe('맘스터치');
+      expect(state.restaurants[0].category).toBe('패스트푸드');
+      expect(state.restaurants[0].address).toBe('용인수지');
     });
   });
 });
