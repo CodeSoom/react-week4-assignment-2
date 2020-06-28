@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
@@ -35,6 +37,34 @@ describe('InputContainer', () => {
       ));
 
       expect(container).toHaveTextContent(/등록/);
+    });
+  });
+
+  context('publish button', () => {
+    it('click when all input filled', () => {
+      const dispatch = jest.fn();
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({
+        restaurantName: 'New Name',
+        restaurantCategory: 'New Category',
+        restaurantAddress: 'New Address',
+      }));
+
+      const { container, getByPlaceholderText } = render((
+        <InputContainer />
+      ));
+
+      fireEvent.change(getByPlaceholderText(/이름/), { target: { value: 'test name' } });
+      expect(container).toBeInTheDocument('test name');
+
+      fireEvent.change(getByPlaceholderText(/분류/), { target: { value: 'test category' } });
+      expect(container).toBeInTheDocument('test category');
+
+      fireEvent.change(getByPlaceholderText(/주소/), { target: { value: 'test address' } });
+      expect(container).toBeInTheDocument('test address');
+
+      expect(dispatch).toBeCalled({ type: 'addRestaurant' });
     });
   });
 });
