@@ -114,7 +114,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('액션값이 없을 때', () => {
+  context('액션값이 없을 때', () => {
     it('state 값을 그대로 보내준다', () => {
       const state = reducer({
         newId: 100,
@@ -126,17 +126,25 @@ describe('reducer', () => {
 
       expect(state).toEqual(initialState);
     });
-  });
 
-  describe('초기값', () => {
-    it('initialState', () => {
-      expect(initialState).toEqual({
+    it('state 값을 그대로 보내준다', () => {
+      const state = reducer({
         newId: 100,
         name: '',
         classify: '',
         address: '',
         restaurants: [],
-      });
+      }, { type: 'deleteRestaurant' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
+  context('이전 상태가 없으면', () => {
+    it('initialState 적용', () => {
+      const state = reducer();
+
+      expect(state).toEqual(initialState);
     });
   });
 });
