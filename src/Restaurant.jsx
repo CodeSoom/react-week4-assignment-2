@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function Restaurant({ restaurant: { name, type, address } }) {
+export default function Restaurant({ restaurant: { name, category, address } }) {
   return (
     <li>
       {name}
       {' '}
       |
       {' '}
-      {type}
+      {category}
       {' '}
       |
       {' '}

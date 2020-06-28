@@ -1,6 +1,6 @@
 const initialRestaurant = {
   name: '',
-  type: '',
+  category: '',
   address: '',
 };
 
@@ -11,6 +11,13 @@ const initialState = {
 };
 
 const reducers = {
+  setRestaurants: (state, action) => {
+    const { restaurants } = action.payload;
+    return {
+      ...state,
+      restaurants,
+    };
+  },
   updateRestaurantField: (state, action) => {
     const { name, value } = action.payload;
     return {

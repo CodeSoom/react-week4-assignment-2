@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   function renderList(restaurants) {
     return render((
-      <List
-      restaurants={restaurants}
+      <Restaurants
+        restaurants={restaurants}
       />
     ));
   }
@@ -16,10 +16,10 @@ describe('List', () => {
   it('render restaurants', () => {
     const restaurants = [
       {
-        id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Iteawon',
+        id: 1, name: 'Seoul Pizza', category: 'Western', address: 'Seoul Iteawon',
       },
       {
-        id: 2, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
+        id: 2, name: 'Busan Rice', category: 'Korean', address: 'Busan Daeyeon',
       },
     ];
 

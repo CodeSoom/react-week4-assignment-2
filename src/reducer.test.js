@@ -1,13 +1,31 @@
 import reducer from './reducer';
 
-import { addRestaurant, updateRestaurantField } from './actions';
+import {
+  addRestaurant,
+  updateRestaurantField,
+  setRestaurants,
+} from './actions';
+
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
+  describe('setRestaurants', () => {
+    it('should set restaurants array', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
+
   describe('add restaurant', () => {
     context('with restaurant', () => {
       it('should return with new restaurant', () => {
         const restaurant = {
-          name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+          id: 101, name: 'Busan Rice', category: 'Korean', address: 'Busan Daeyeon',
         };
         const state = reducer(
           {
@@ -21,7 +39,7 @@ describe('reducer', () => {
         expect(state.restaurants[0].id).not.toBeUndefined();
         expect(state.restaurants[0].id).toBe(101);
 
-        expect(state.restaurants[0].name).toBe('Seoul Pizza');
+        expect(state.restaurants[0].name).toBe('Busan Rice');
         expect(state.newId).toBe(102);
       });
     });
@@ -40,7 +58,7 @@ describe('reducer', () => {
       const state = reducer({
         restaurant: {
           name: 'name',
-          type: 'western',
+          category: 'western',
           address: 'address',
         },
       }, updateRestaurantField({

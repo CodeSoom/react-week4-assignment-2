@@ -2,28 +2,33 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 describe('App', () => {
   context('when there are restaurants', () => {
     it('should display restaurants', () => {
-      const restaurant = {
-        id: 101, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
-      };
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
       useSelector.mockImplementation((selector) => selector({
-        restaurants: [restaurant],
-        restaurant,
+        restaurants: [],
+        restaurant: {},
       }));
 
-      const { getByText } = render((
+      const { queryByText } = render((
         <App />
       ));
 
-      expect(getByText('Restaurants')).not.toBeNull();
+      expect(dispatch).toBeCalledWith(
+        { type: 'setRestaurants', payload: { restaurants: [] } },
+      );
 
-      // expect(getByText(/Seoul Iteawon/)).not.toBeNull();
+      expect(queryByText('Busan Rice')).toBeNull();
     });
   });
 });

@@ -1,19 +1,18 @@
 import React from 'react';
 
-export default function Input(
+export default function RestaurantForm(
   {
     restaurant, onChange, onClick,
   },
 ) {
   function handleChange(event) {
     const { target: { name, value } } = event;
-    onChange(name, value);
+    onChange({ name, value });
   }
 
   return (
     <div>
       <input
-        id="input-registration-name"
         type="text"
         name="name"
         placeholder="이름"
@@ -21,15 +20,13 @@ export default function Input(
         onChange={handleChange}
       />
       <input
-        id="input-registration-type"
         type="text"
-        name="type"
+        name="category"
         placeholder="분류"
-        value={restaurant.type}
+        value={restaurant.category}
         onChange={handleChange}
       />
       <input
-        id="input-registration-address"
         type="text"
         name="address"
         placeholder="주소"

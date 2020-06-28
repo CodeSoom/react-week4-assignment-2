@@ -4,17 +4,17 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-describe('ListContainer', () => {
+describe('RestaurantsContainer', () => {
   const restaurants = [
     {
-      id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Iteawon',
+      id: 1, name: 'Seoul Pizza', category: 'Western', address: 'Seoul Iteawon',
     },
     {
-      id: 2, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
+      id: 2, name: 'Busan Rice', category: 'Korean', address: 'Busan Daeyeon',
     },
   ];
 
@@ -25,7 +25,7 @@ describe('ListContainer', () => {
       }));
 
       const { getByText } = render((
-        <ListContainer />
+        <RestaurantsContainer />
       ));
 
       expect(getByText(/Seoul Iteawon/)).not.toBeNull();

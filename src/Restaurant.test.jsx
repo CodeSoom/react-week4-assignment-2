@@ -7,7 +7,7 @@ import Restaurant from './Restaurant';
 describe('Restaurant', () => {
   it('has restaurant detail', () => {
     const restaurant = {
-      id: 1, name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+      id: 1, name: 'Seoul Pizza', category: 'Western', address: 'Seoul Itaewon',
     };
 
     const { container } = render((

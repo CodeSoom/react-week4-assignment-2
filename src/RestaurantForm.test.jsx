@@ -2,19 +2,19 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
-describe('Input', () => {
+describe('RestaurantForm', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
   it('should get input', () => {
     const restaurant = {
-      name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+      name: 'Seoul Pizza', category: 'Western', address: 'Seoul Itaewon',
     };
 
     const { getByDisplayValue, getByPlaceholderText } = render((
-      <Input
+      <RestaurantForm
         restaurant={restaurant}
         onChange={handleChange}
         onClick={handleClick}
@@ -42,11 +42,11 @@ describe('Input', () => {
 
   it('should be clicked for adding', () => {
     const restaurant = {
-      name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
+      name: 'Seoul Pizza', category: 'Western', address: 'Seoul Itaewon',
     };
 
     const { getByText } = render((
-      <Input
+      <RestaurantForm
         restaurant={restaurant}
         onChange={handleChange}
         onClick={handleClick}
