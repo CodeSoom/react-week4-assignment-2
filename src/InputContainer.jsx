@@ -2,9 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  changeRestaurantName, changeRestaurantCategory, changeRestaurantAddress, addRestaurant,
-} from './actions';
+import { changeRestaurantField, addRestaurant } from './actions';
 
 export default function InputContainer() {
   // ASK: 구조분해 할당
@@ -15,15 +13,15 @@ export default function InputContainer() {
   const dispatch = useDispatch();
 
   function handleChangeName(event) {
-    dispatch(changeRestaurantName(event.target.value));
+    dispatch(changeRestaurantField({ name: 'changeRestaurantName', value: event.target.value }));
   }
 
   function handleChangeCategory(event) {
-    dispatch(changeRestaurantCategory(event.target.value));
+    dispatch(changeRestaurantField({ name: 'changeRestaurantCategory', value: event.target.value }));
   }
 
   function handleChangeAddress(event) {
-    dispatch(changeRestaurantAddress(event.target.value));
+    dispatch(changeRestaurantField({ name: 'changeRestaurantAddress', value: event.target.value }));
   }
 
   function handleClickAddRestaurant() {

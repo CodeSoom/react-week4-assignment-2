@@ -7,6 +7,28 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  function changeFieldSelector(payloadName, payloadValue) {
+    if (payloadName === 'changeRestaurantName') {
+      return {
+        ...state,
+        restaurantName: payloadValue,
+      };
+    }
+    if (payloadName === 'changeRestaurantCategory') {
+      return {
+        ...state,
+        restaurantCategory: payloadValue,
+      };
+    }
+    if (payloadName === 'changeRestaurantAddress') {
+      return {
+        ...state,
+        restaurantAddress: payloadValue,
+      };
+    }
+    return state;
+  }
+
   if (action.type === 'addRestaurant') {
     const {
       newId, restaurantName, restaurantCategory, restaurantAddress, restaurants,
@@ -28,25 +50,9 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'changeRestaurantName') {
-    return {
-      ...state,
-      restaurantName: action.payload.restaurantName,
-    };
+  if (action.type === 'changeRestaurantField') {
+    changeFieldSelector(action.payload.name, action.payload.value);
   }
 
-  if (action.type === 'changeRestaurantCategory') {
-    return {
-      ...state,
-      restaurantCategory: action.payload.restaurantCategory,
-    };
-  }
-
-  if (action.type === 'changeRestaurantAddress') {
-    return {
-      ...state,
-      restaurantAddress: action.payload.restaurantAddress,
-    };
-  }
   return state;
 }
