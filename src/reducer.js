@@ -68,7 +68,9 @@ function reducer(previousState = initState, action) {
         ...restaurants,
         {
           id: newId + 1,
-          restaurant,
+          name: restaurant.name,
+          type: restaurant.type,
+          address: restaurant.address,
         },
       ],
     };
