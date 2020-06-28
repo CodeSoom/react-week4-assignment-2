@@ -7,7 +7,7 @@ import { render, fireEvent } from '@testing-library/react';
 import InputContainer from './InputContainer';
 
 import {
-  updateTitle, addRestaurant,
+  updateRestaurant, addRestaurant,
 } from './actions';
 
 jest.mock('react-redux');
@@ -32,9 +32,12 @@ describe('InputContainer', () => {
         },
       });
 
-      expect(dispatch).toBeCalledWith(updateTitle(
-        '마녀들의 주방',
-      ));
+      const target = {
+        name: 'title',
+        value: '마녀들의 주방',
+      };
+
+      expect(dispatch).toBeCalledWith(updateRestaurant(target));
     });
   });
 
