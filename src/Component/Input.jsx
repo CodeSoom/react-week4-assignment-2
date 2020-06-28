@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Input({ information, onChange, onClick }) {
-  const { name, category, address } = information;
+export default function Input({ restaurant, onChange, onClick }) {
+  const { name, category, address } = restaurant;
 
   return (
     <p>

@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import {
   updateRestaurantInformation,
-  addInformation,
+  addRestaurant,
   setRestaurants,
 } from './actions';
 
@@ -31,7 +31,7 @@ describe('reducer', () => {
 
   context('빈 state 값 파라미터로 전달한 경우', () => {
     it('initialState가 반환된다', () => {
-      const state = reducer(undefined, { type: 'addInformation' });
+      const state = reducer(undefined, { type: 'addRestaurant' });
 
       expect(state).toEqual(initialState);
     });
@@ -61,18 +61,18 @@ describe('reducer', () => {
     });
   });
 
-  describe('addInformation', () => {
+  describe('addRestaurant', () => {
     context('이름, 분류, 주소등 모든 정보가 있을 경우', () => {
       const restaurantState = setRestaurantState('돈스파이크', '양식', '인천');
 
       it('레스토랑 정보가 추가된다', () => {
-        const state = reducer(restaurantState, addInformation());
+        const state = reducer(restaurantState, addRestaurant());
 
-        expect(state.informations).toHaveLength(1);
+        expect(state.restaurants).toHaveLength(1);
       });
 
       it('레스토랑 정보가 추가된 후 입력정보가 초기화된다.', () => {
-        const state = reducer(restaurantState, addInformation());
+        const state = reducer(restaurantState, addRestaurant());
 
         expect(state.name).toBe('');
         expect(state.category).toBe('');
@@ -82,9 +82,9 @@ describe('reducer', () => {
 
     context('이름, 분류, 주소 중 정보가 하나라도 없을 경우', () => {
       it('레스토랑 정보가 추가되지 않는다.', () => {
-        const state = reducer(setRestaurantState('', '양식', '인천'), addInformation());
+        const state = reducer(setRestaurantState('', '양식', '인천'), addRestaurant());
 
-        expect(state.informations).toHaveLength(0);
+        expect(state.restaurants).toHaveLength(0);
       });
     });
   });
@@ -93,7 +93,7 @@ describe('reducer', () => {
     it('레스토랑 정보가 추가된다.', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.informations).toHaveLength(3);
+      expect(state.restaurants).toHaveLength(3);
     });
   });
 });

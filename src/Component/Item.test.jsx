@@ -6,7 +6,7 @@ import Item from './Item';
 
 describe('Item', () => {
   it('화면에 이름, 분류, 주소가 나타난다.', () => {
-    const information = {
+    const restaurant = {
       name: '마녀주방',
       category: '한식',
       address: '강남',
@@ -14,7 +14,7 @@ describe('Item', () => {
 
     const { getByText } = render((
       <Item
-        information={information}
+        restaurant={restaurant}
       />
     ));
 

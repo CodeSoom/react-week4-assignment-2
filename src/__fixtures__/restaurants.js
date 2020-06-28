@@ -22,7 +22,7 @@ const initialState = {
   name: '',
   category: '',
   address: '',
-  informations: [],
+  restaurants: [],
 };
 
 export { restaurants, initialState };

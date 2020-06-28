@@ -8,7 +8,7 @@ import InputContainer from './InputContainer';
 
 import {
   updateRestaurantInformation,
-  addInformation,
+  addRestaurant,
 } from '../actions';
 
 jest.mock('react-redux');
@@ -17,7 +17,7 @@ describe('InputContainer', () => {
   context('이름, 분류, 주소가 없는 경우', () => {
     const dispatch = jest.fn();
 
-    const information = {
+    const restaurant = {
       name: '',
       category: '',
       address: '',
@@ -25,7 +25,8 @@ describe('InputContainer', () => {
 
     beforeEach(() => {
       useDispatch.mockImplementation(() => dispatch);
-      useSelector.mockImplementation((selector) => selector(information));
+      useSelector.mockImplementation((selector) => selector(restaurant));
+      dispatch.mockClear();
     });
 
     it('입력 창과 등록 버튼을 보여준다', () => {
@@ -77,13 +78,13 @@ describe('InputContainer', () => {
   });
 
   context('이름, 분류, 주소가 있는 경우', () => {
-    const information = {
+    const restaurant = {
       name: '불짬뽕',
       category: '중식',
       address: '대구',
     };
     it('입력 창에 이름, 분류, 주소 정보가 입력되어있다.', () => {
-      useSelector.mockImplementation((selector) => selector(information));
+      useSelector.mockImplementation((selector) => selector(restaurant));
 
       const { getByTestId } = render((
         <InputContainer />
@@ -94,8 +95,8 @@ describe('InputContainer', () => {
       expect(getByTestId(/address/)).toHaveValue('대구');
     });
 
-    it('등록 버튼을 누르면 AddInformation 액션이 전달된다.', () => {
-      useSelector.mockImplementation((selector) => selector(information));
+    it('등록 버튼을 누르면 addRestaurant 액션이 전달된다.', () => {
+      useSelector.mockImplementation((selector) => selector(restaurant));
 
       const dispatch = jest.fn();
 
@@ -107,7 +108,7 @@ describe('InputContainer', () => {
 
       fireEvent.click(getByText('등록'));
 
-      expect(dispatch).toBeCalledWith(addInformation());
+      expect(dispatch).toBeCalledWith(addRestaurant());
     });
   });
 });

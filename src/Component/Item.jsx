@@ -1,14 +1,18 @@
 import React from 'react';
 
-export default function Item({ information }) {
-  const { name, category, address } = information;
+export default function Item({ restaurant }) {
+  const { name, category, address } = restaurant;
 
   return (
     <li>
       {name}
+      {' '}
       |
+      {' '}
       {category}
+      {' '}
       |
+      {' '}
       {address}
     </li>
   );

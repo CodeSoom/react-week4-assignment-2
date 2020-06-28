@@ -6,13 +6,13 @@ import Input from './Input';
 
 import {
   updateRestaurantInformation,
-  addInformation,
+  addRestaurant,
 } from '../actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  const information = useSelector((state) => ({
+  const restaurant = useSelector((state) => ({
     name: state.name,
     category: state.category,
     address: state.address,
@@ -23,15 +23,15 @@ export default function InputContainer() {
     dispatch(updateRestaurantInformation(name, value));
   }
 
-  function handleClickAddInformation() {
-    dispatch(addInformation());
+  function handleClickaddRestaurant() {
+    dispatch(addRestaurant());
   }
 
   return (
     <Input
-      information={information}
+      restaurant={restaurant}
       onChange={handleInputChange}
-      onClick={handleClickAddInformation}
+      onClick={handleClickaddRestaurant}
     />
   );
 }

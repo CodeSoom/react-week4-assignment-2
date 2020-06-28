@@ -13,15 +13,15 @@ jest.mock('react-redux');
 describe('ListContainer', () => {
   context('레스토랑 정보가 없다면', () => {
     it('화면에 아무것도 나타나지 않는다.', () => {
-      const informations = [];
+      const emptyRestaurants = [];
 
       useSelector.mockImplementation((selector) => selector({
-        informations,
+        restaurants: emptyRestaurants,
       }));
 
       const { container } = render((
         <ListContainer
-          informations={informations}
+          restaurants={restaurants}
         />
       ));
 
@@ -32,7 +32,7 @@ describe('ListContainer', () => {
   context('레스토랑 정보가 있다면', () => {
     it('화면에 레스토랑 정보를 보여준다.', () => {
       useSelector.mockImplementation((selector) => selector({
-        informations: restaurants,
+        restaurants,
       }));
 
       const { container, getAllByText } = render((

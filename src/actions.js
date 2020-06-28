@@ -8,21 +8,23 @@ function updateRestaurantInformation(name, value) {
   };
 }
 
-function addInformation() {
+function addRestaurant() {
   return {
-    type: 'addInformation',
+    type: 'addRestaurant',
   };
 }
 
 function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
-    payload: { informations: restaurants },
+    payload: {
+      restaurants,
+    },
   };
 }
 
 export {
   updateRestaurantInformation,
-  addInformation,
+  addRestaurant,
   setRestaurants,
 };

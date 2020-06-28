@@ -8,7 +8,7 @@ const handleInputChange = jest.fn();
 
 describe('Input', () => {
   context('이름, 분류, 주소 정보가 없을 경우', () => {
-    const information = {
+    const restaurant = {
       name: '',
       category: '',
       address: '',
@@ -17,7 +17,7 @@ describe('Input', () => {
     it('초기화면이 나타난다.', () => {
       const { getByText, getByTestId } = render((
         <Input
-          information={information}
+          restaurant={restaurant}
           onChange={handleInputChange}
         />
       ));
@@ -31,7 +31,7 @@ describe('Input', () => {
     it('이름, 분류, 주소 값을 변경할 수 있다. ', () => {
       const { getByTestId } = render((
         <Input
-          information={information}
+          restaurant={restaurant}
           onChange={handleInputChange}
         />
       ));
@@ -57,7 +57,7 @@ describe('Input', () => {
   });
 
   context('이름, 분류, 주소 정보가 있을 경우', () => {
-    const information = {
+    const restaurant = {
       name: '마녀주방',
       category: '한식',
       address: '강남',
@@ -66,7 +66,7 @@ describe('Input', () => {
     it('화면에 이름, 분류, 주소 정보가 표시된다.', () => {
       const { getByDisplayValue } = render((
         <Input
-          information={information}
+          restaurant={restaurant}
           onChange={handleInputChange}
         />
       ));
@@ -81,7 +81,7 @@ describe('Input', () => {
 
       const { getByText } = render((
         <Input
-          information={information}
+          restaurant={restaurant}
           onChange={handleInputChange}
           onClick={handleClickEnroll}
         />

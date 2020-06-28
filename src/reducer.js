@@ -3,7 +3,7 @@ const initialState = {
   name: '',
   category: '',
   address: '',
-  informations: [],
+  restaurants: [],
 };
 
 const reducers = {
@@ -17,11 +17,11 @@ const reducers = {
   },
   setRestaurants: (state, action) => ({
     ...state,
-    informations: [...state.informations, ...action.payload.informations],
+    restaurants: [...state.restaurants, ...action.payload.restaurants],
   }),
-  addInformation: (state) => {
+  addRestaurant: (state) => {
     const {
-      newId, name, category, address, informations,
+      newId, name, category, address, restaurants,
     } = state;
 
     if (!name || !category || !address) return state;
@@ -32,7 +32,7 @@ const reducers = {
       name: '',
       category: '',
       address: '',
-      informations: [...informations, {
+      restaurants: [...restaurants, {
         id: newId, name, category, address,
       }],
     };
