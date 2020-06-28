@@ -8,7 +8,7 @@ const initState = {
 
 export default function reducer(state = initState, action = {}) {
   const reducers = {
-    updateRestaurant: ({ target: { name, value } }) => ({
+    updateRestaurant: ({ name, value }) => ({
       ...state,
       [name]: value,
     }),
