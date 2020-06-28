@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
       newId, restaurantName, restaurantCategory, restaurantAddress, restaurants,
     } = state;
 
-    if (!restaurantName.length || !restaurantCategory.length || !restaurantAddress.length) {
+    if (!restaurantName || !restaurantCategory || !restaurantAddress) {
       return state;
     }
 
