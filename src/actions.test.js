@@ -3,6 +3,7 @@ import {
   updateRestaurantCategory,
   updateRestaurantAddress,
   registerReservation,
+  setReservations,
 } from './actions';
 
 describe('actions', () => {
@@ -38,5 +39,23 @@ describe('actions', () => {
 
     expect(action.type).toBe('registerReservation');
     expect(action.payload).toBeUndefined();
+  });
+
+  test('setReservations', () => {
+    const reservations = [
+      {
+        id: 1,
+        restaurant: {
+          name: '맘스터치',
+          category: '패스트푸드',
+          address: '서울시 구로구',
+        },
+      }
+    ];
+
+    const action = setReservations(reservations);
+
+    expect(action.type).toBe('setReservations');
+    expect(action.payload.reservations).toBe(reservations);
   });
 });
