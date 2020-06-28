@@ -24,7 +24,7 @@ describe('List', () => {
       ));
 
       restaurants.forEach(({ title, kind, address }) => {
-        expect(getByText(`${title} | ${kind} | ${address}`));
+        expect(getByText(`${title} | ${kind} | ${address}`)).toBeInTheDocument();
       });
     });
   });
