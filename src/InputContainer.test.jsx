@@ -7,7 +7,7 @@ import { render, fireEvent } from '@testing-library/react';
 import InputContainer from './InputContainer';
 
 import {
-  updateTitle,
+  updateTitle, addRestaurant,
 } from './actions';
 
 jest.mock('react-redux');
@@ -35,6 +35,27 @@ describe('InputContainer', () => {
       expect(dispatch).toBeCalledWith(updateTitle(
         '마녀들의 주방',
       ));
+    });
+  });
+
+  context('레스토랑을 등록하면', () => {
+    it('목록에 등록된다.', () => {
+      const dispatch = jest.fn();
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        title: '시카고 피자',
+        restaurants: [],
+      }));
+
+      const { getByText, getByDisplayValue } = render((
+        <InputContainer />
+      ));
+
+      expect(getByText(/등록/)).not.toBeNull();
+      expect(getByDisplayValue(/시카고 피자/)).not.toBeNull();
+
+      fireEvent.click(getByText(/등록/));
+      expect(dispatch).toBeCalledWith(addRestaurant());
     });
   });
 });
