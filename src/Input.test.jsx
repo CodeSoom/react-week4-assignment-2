@@ -8,11 +8,13 @@ describe('Input', () => {
   context('updateTitle', () => {
     it('식당 이름이 입력되어 value가 바뀐다', () => {
       const handleChange = jest.fn();
+      const handleAddRestaurant = jest.fn();
 
-      const { getByDisplayValue, getByPlaceholderText } = render((
+      const { getByDisplayValue, getByPlaceholderText, getByText } = render((
         <Input
           title=""
           onChangeTitle={handleChange}
+          onClickAddRestaurant={handleAddRestaurant}
         />
       ));
 
@@ -23,6 +25,10 @@ describe('Input', () => {
       });
 
       expect(handleChange).toBeCalled();
+
+      fireEvent.click(getByText(/등록/));
+
+      expect(handleAddRestaurant).toBeCalled();
     });
   });
 });
