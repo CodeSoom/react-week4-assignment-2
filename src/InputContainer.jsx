@@ -30,9 +30,27 @@ export default function InputContainer() {
   return (
     <div>
       <p>
-        <input type="text" placeholder="이름" value={restaurantName} onChange={handleChangeName} />
-        <input type="text" placeholder="분류" value={restaurantCategory} onChange={handleChangeCategory} />
-        <input type="text" placeholder="주소" value={restaurantAddress} onChange={handleChangeAddress} />
+        <input
+          name="name"
+          type="text"
+          placeholder="이름"
+          value={restaurantName}
+          onChange={handleChangeName}
+        />
+        <input
+          name="category"
+          type="text"
+          placeholder="분류"
+          value={restaurantCategory}
+          onChange={handleChangeCategory}
+        />
+        <input
+          name="address"
+          type="text"
+          placeholder="주소"
+          value={restaurantAddress}
+          onChange={handleChangeAddress}
+        />
         <button type="button" onClick={handleClickAddRestaurant}>
           등록
         </button>

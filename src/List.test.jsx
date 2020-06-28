@@ -20,7 +20,7 @@ describe('List', () => {
       useSelector.mockImplementation((selector) => selector({ restaurants }));
 
       const { container } = render((
-        <List restaurants={restaurants}/>
+        <List restaurants={restaurants} />
       ));
       restaurants.forEach((restaurant) => {
         expect(container).toHaveTextContent(restaurant.name);
