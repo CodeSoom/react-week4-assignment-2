@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   updateTitle,
+  addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -32,6 +33,7 @@ describe('reducer', () => {
     it('추가된 상태를 받는다.', () => {
       const newState = reducer({
         title: '시카고 피자',
+        restaurants: [],
       }, addRestaurant());
 
       expect(newState.restaurants).toHaveLength(1);
