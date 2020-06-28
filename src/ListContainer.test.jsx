@@ -4,6 +4,8 @@ import { render, screen } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import restaurants from '../__fixtures__/restaurants';
+
 import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
@@ -18,19 +20,6 @@ function renderListContainer() {
 
 describe('<ListContainer />', () => {
   const dispatch = jest.fn();
-  // given
-  const restaurants = [{
-    id: 1,
-    name: '시카고피자',
-    category: '양식',
-    address: '이태원동',
-  },
-  {
-    id: 2,
-    name: '마녀주방',
-    category: '한식',
-    address: '서울시 강남구',
-  }];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -47,7 +36,7 @@ describe('<ListContainer />', () => {
 
       // then
       const restaurantListItems = getRestaurantListItems();
-      expect(restaurantListItems).toHaveLength(2);
+      expect(restaurantListItems).toHaveLength(restaurants.length);
       restaurantListItems.forEach((item, index) => {
         expect(item.innerHTML).toBe(`${restaurants[index].name} | ${restaurants[index].category} | ${restaurants[index].address}`);
       });

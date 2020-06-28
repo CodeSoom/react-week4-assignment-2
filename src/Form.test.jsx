@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render, screen, fireEvent } from '@testing-library/react';
 
+import restaurants from '../__fixtures__/restaurants';
+
 import Form from './Form';
 
 const handleChangeInput = jest.fn();
@@ -23,11 +25,8 @@ function renderForm(value) {
 
 describe('<Form />', () => {
   // given
-  const restaurant = {
-    name: '시카고피자',
-    category: '양식',
-    address: '이태원동',
-  };
+  const restaurant = restaurants[0];
+
   context('with input value', () => {
     it('print value on input box', () => {
       // when

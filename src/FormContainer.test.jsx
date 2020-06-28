@@ -4,6 +4,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import restaurants from '../__fixtures__/restaurants';
+
 import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
@@ -64,22 +66,10 @@ describe('<FormContainer />', () => {
   });
 
   describe('register restaurant', () => {
-    // given
-    const inputValues = [{
-      name: '시카고피자',
-      category: '양식',
-      address: '이태원동',
-    },
-    {
-      name: '마녀주방',
-      category: '한식',
-      address: '서울시 강남구',
-    }];
-
     context('when entering restaurant information', () => {
       it('renders the entered value', () => {
         // given
-        const restaurant = inputValues[0];
+        const restaurant = restaurants[0];
 
         // when
         const { nameInput, categoryInput, addressInput } = renderFormContainer();
@@ -109,13 +99,13 @@ describe('<FormContainer />', () => {
           nameInput, categoryInput, addressInput, registerButton,
         } = renderFormContainer();
 
-        inputValues.forEach((restaurant) => {
+        restaurants.forEach((restaurant) => {
           enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
           fireEvent.click(registerButton);
         });
 
         // then
-        inputValues.forEach(() => {
+        restaurants.forEach(() => {
           expect(dispatch).toBeCalledWith({
             type: 'registerRestaurant',
             payload: {},
