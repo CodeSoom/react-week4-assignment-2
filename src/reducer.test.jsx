@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  updateTitle,
+  updateRestaurant,
   addRestaurant,
 } from './actions';
 
@@ -9,6 +9,8 @@ describe('reducer', () => {
   const previousState = {
     newId: 1,
     title: '',
+    kind: '',
+    address: '',
     restaurants: [],
   };
 
