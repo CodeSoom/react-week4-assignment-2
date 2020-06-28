@@ -72,7 +72,7 @@ function setReservations(state, action) {
   return {
     ...state,
     reservations: [...reservations, ...action.payload.reservations],
-  }
+  };
 }
 
 const handleAction = {

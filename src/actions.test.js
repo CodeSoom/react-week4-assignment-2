@@ -50,7 +50,7 @@ describe('actions', () => {
           category: '패스트푸드',
           address: '서울시 구로구',
         },
-      }
+      },
     ];
 
     const action = setReservations(reservations);

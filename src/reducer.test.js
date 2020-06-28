@@ -111,8 +111,7 @@ describe('reducer', () => {
       },
       reservations: [],
     },
-    setReservations(reservations),
-    );
+    setReservations(reservations));
 
     expect(state.reservations).toHaveLength(2);
   });
