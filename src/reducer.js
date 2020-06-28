@@ -24,6 +24,10 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
     const { name, category, address } = restaurant;
 
+    if (name === '' || category === '' || address === '') {
+      return state;
+    }
+
     return {
       ...state,
       newId: newId + 1,
