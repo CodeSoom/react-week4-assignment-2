@@ -93,10 +93,6 @@ describe('InputContainer', () => {
 
         expect(getByText(/등록/)).not.toBeNull();
         fireEvent.click(getByText(/등록/));
-
-        expect(getByText(/시카고 피자/)).not.toBeNull();
-        expect(getByText(/양식/)).not.toBeNull();
-        expect(getByText(/인천 학익동/)).not.toBeNull();
         expect(dispatch).toBeCalledWith(addRestaurant());
       });
     });
