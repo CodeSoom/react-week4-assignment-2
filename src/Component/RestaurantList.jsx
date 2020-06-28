@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Item from './Item';
+import Restaurant from './Restaurant';
 
-export default function List({ restaurants }) {
+export default function RestaurantList({ restaurants }) {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <Item
+        <Restaurant
           key={restaurant.id}
           restaurant={restaurant}
         />

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Input({ restaurant, onChange, onClick }) {
+export default function RestaurantCreator({ restaurant, onChange, onClick }) {
   const { name, category, address } = restaurant;
 
   return (

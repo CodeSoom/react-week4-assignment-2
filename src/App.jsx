@@ -1,14 +1,14 @@
 import React from 'react';
 
-import ListContainer from './Component/ListContainer';
-import InputContainer from './Component/InputContainer';
+import RestaurantListContainer from './Component/RestaurantListContainer';
+import RestaurantCreateContainer from './Component/RestaurantCreateContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ListContainer />
-      <InputContainer />
+      <RestaurantListContainer />
+      <RestaurantCreateContainer />
     </div>
   );
 }

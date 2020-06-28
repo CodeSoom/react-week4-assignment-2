@@ -4,13 +4,13 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantListContainer from './RestaurantListContainer';
 
 import { restaurants } from '../__fixtures__/restaurants';
 
 jest.mock('react-redux');
 
-describe('ListContainer', () => {
+describe('RestaurantListContainer', () => {
   context('레스토랑 정보가 없다면', () => {
     it('화면에 아무것도 나타나지 않는다.', () => {
       const emptyRestaurants = [];
@@ -20,7 +20,7 @@ describe('ListContainer', () => {
       }));
 
       const { container } = render((
-        <ListContainer
+        <RestaurantListContainer
           restaurants={restaurants}
         />
       ));
@@ -36,7 +36,7 @@ describe('ListContainer', () => {
       }));
 
       const { container, getAllByText } = render((
-        <ListContainer />
+        <RestaurantListContainer />
       ));
 
       expect(container).toHaveTextContent(/마녀주방/);

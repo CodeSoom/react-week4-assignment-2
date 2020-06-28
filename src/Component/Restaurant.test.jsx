@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Item from './Item';
+import Restaurant from './Restaurant';
 
-describe('Item', () => {
+describe('Restaurant', () => {
   it('화면에 이름, 분류, 주소가 나타난다.', () => {
     const restaurant = {
       name: '마녀주방',
@@ -13,7 +13,7 @@ describe('Item', () => {
     };
 
     const { getByText } = render((
-      <Item
+      <Restaurant
         restaurant={restaurant}
       />
     ));

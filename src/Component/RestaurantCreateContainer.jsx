@@ -2,14 +2,14 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Input from './Input';
+import RestaurantCreator from './RestaurantCreator';
 
 import {
   updateRestaurantInformation,
   addRestaurant,
 } from '../actions';
 
-export default function InputContainer() {
+export default function RestaurantCreate() {
   const dispatch = useDispatch();
 
   const restaurant = useSelector((state) => ({
@@ -28,7 +28,7 @@ export default function InputContainer() {
   }
 
   return (
-    <Input
+    <RestaurantCreator
       restaurant={restaurant}
       onChange={handleInputChange}
       onClick={handleClickaddRestaurant}

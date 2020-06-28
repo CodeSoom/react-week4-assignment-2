@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import RestaurantCreate from './RestaurantCreateContainer';
 
 import {
   updateRestaurantInformation,
@@ -13,7 +13,7 @@ import {
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('RestaurantCreate', () => {
   context('이름, 분류, 주소가 없는 경우', () => {
     const dispatch = jest.fn();
 
@@ -31,7 +31,7 @@ describe('InputContainer', () => {
 
     it('입력 창과 등록 버튼을 보여준다', () => {
       const { getByTestId, getByText } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       expect(getByTestId(/name/)).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('InputContainer', () => {
 
     it('이름을 입력하면 updateRestaurantInformation 액션이 전달된다.', () => {
       const { getByTestId } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       fireEvent.change(getByTestId(/name/), {
@@ -54,7 +54,7 @@ describe('InputContainer', () => {
 
     it('분류 정보를 입력하면 updateRestaurantInformation 액션이 전달된다.', () => {
       const { getByTestId } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       fireEvent.change(getByTestId(/category/), {
@@ -66,7 +66,7 @@ describe('InputContainer', () => {
 
     it('주소 정보를 입력하면 updateRestaurantInformation 액션이 전달된다.', () => {
       const { getByTestId } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       fireEvent.change(getByTestId(/address/), {
@@ -87,7 +87,7 @@ describe('InputContainer', () => {
       useSelector.mockImplementation((selector) => selector(restaurant));
 
       const { getByTestId } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       expect(getByTestId(/name/)).toHaveValue('불짬뽕');
@@ -103,7 +103,7 @@ describe('InputContainer', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       const { getByText } = render((
-        <InputContainer />
+        <RestaurantCreate />
       ));
 
       fireEvent.click(getByText('등록'));

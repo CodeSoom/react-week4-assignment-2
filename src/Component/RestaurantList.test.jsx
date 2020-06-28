@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import RestaurantList from './RestaurantList';
 
-describe('List', () => {
+describe('RestaurantList', () => {
   context('레스토랑 정보가 없을 경우', () => {
     it('화면에 아무것도 나타나지 않는다.', () => {
       const { container } = render((
-        <List
+        <RestaurantList
           restaurants={[]}
         />
       ));
@@ -35,7 +35,7 @@ describe('List', () => {
       ];
 
       const { getByText, getAllByText } = render((
-        <List
+        <RestaurantList
           restaurants={restaurants}
         />
       ));
