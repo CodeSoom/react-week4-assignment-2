@@ -1,14 +1,12 @@
 import React from 'react';
 
+import RestaurantList from './RestaurantList'
+
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        <li>
-        호식당
-        </li>
-      </ul>    
+      <RestaurantList />   
     </div>
   )
 }
