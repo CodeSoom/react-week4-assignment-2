@@ -9,24 +9,32 @@ import {
 function selector(state) {
   return {
     restaurants: state.restaurants,
+    restaurantName: state.restaurantName,
+    restaurantType: state.restaurantType,
+    restaurantAddress: state.restaurantAddress,
   };
 }
 
 export default function App() {
-  const { restaurants } = useSelector(selector);
+  const {
+    restaurants,
+    restaurantName,
+    restaurantType,
+    restaurantAddress,
+  } = useSelector(selector);
 
   const dispatch = useDispatch();
 
-  function handleChangeName() {
-    dispatch(changeName());
+  function handleChangeName(event) {
+    dispatch(changeName(event.target.value));
   }
 
-  function handleChangeType() {
-    dispatch(changeType());
+  function handleChangeType(event) {
+    dispatch(changeType(event.target.value));
   }
 
-  function handleChangeAddress() {
-    dispatch(changeAddress());
+  function handleChangeAddress(event) {
+    dispatch(changeAddress(event.target.value));
   }
 
   function handleAddRestaurant() {
@@ -47,10 +55,28 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <input name="name" type="text" onChange={handleChangeName} placeholder="이름" />
-      <input name="category" type="text" onChange={handleChangeType} placeholder="분류" />
-      <input name="address" type="text" onChange={handleChangeAddress} placeholder="주소" />
-      <button onClick={handleAddRestaurant} type="button">
+      <input
+        name="name"
+        type="text"
+        value={restaurantName}
+        onChange={handleChangeName}
+        placeholder="이름"
+      />
+      <input
+        name="category"
+        type="text"
+        value={restaurantType}
+        onChange={handleChangeType}
+        placeholder="분류"
+      />
+      <input
+        name="address"
+        type="text"
+        value={restaurantAddress}
+        onChange={handleChangeAddress}
+        placeholder="주소"
+      />
+      <button onClick={handleAddRestaurant} type="submit">
         등록
       </button>
     </div>

@@ -1,4 +1,5 @@
 const initState = {
+  restaurantId: 100,
   restaurantName: '',
   restaurantType: '',
   restaurantAddress: '',
@@ -12,27 +13,28 @@ function reducer(previousState = initState, action) {
 
   if (action.type === 'changeName') {
     return {
-      ...initState,
+      ...previousState,
       restaurantName: action.payload.restaurantName,
     };
   }
 
   if (action.type === 'changeType') {
     return {
-      ...initState,
+      ...previousState,
       restaurantType: action.payload.restaurantType,
     };
   }
 
   if (action.type === 'changeAddress') {
     return {
-      ...initState,
+      ...previousState,
       restaurantAddress: action.payload.restaurantAddress,
     };
   }
 
   if (action.type === 'addRestaurant') {
     const {
+      restaurantId,
       restaurantName,
       restaurantType,
       restaurantAddress,
@@ -40,13 +42,15 @@ function reducer(previousState = initState, action) {
     } = previousState;
 
     return {
-      ...initState,
+      ...previousState,
+      restaurantId: restaurantId + 1,
       restaurantName: '',
       restaurantType: '',
       restaurantAddress: '',
       restaurants: [
         ...restaurants,
         {
+          id: restaurantId + 1,
           name: restaurantName,
           type: restaurantType,
           address: restaurantAddress,
