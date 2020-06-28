@@ -1,5 +1,9 @@
 import reducer from './reducer';
 
+import {
+  updateTitle,
+} from './actions';
+
 describe('reducer', () => {
   context('상태가 없으면', () => {
     it('이전 상태 그대로 반환한다.', () => {
@@ -19,12 +23,7 @@ describe('reducer', () => {
         title: '',
         restaurants: [],
       };
-      const newState = reducer(previousState, {
-        type: 'updateTitle',
-        payload: {
-          title: '마녀주방',
-        },
-      });
+      const newState = reducer(previousState, updateTitle('마녀주방'));
 
       expect(newState.title).toBe('마녀주방');
     });
