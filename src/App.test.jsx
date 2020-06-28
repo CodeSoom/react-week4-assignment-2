@@ -28,14 +28,12 @@ describe('<App />', () => {
       const dispatch = jest.fn();
       useDispatch.mockImplementation(() => dispatch);
 
-
       const { container } = renderApp();
 
       expect(container).toHaveTextContent('Restaurants');
     });
 
     context('with restaurants', () => {
-      
       it('shows restaurants', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants,
@@ -62,7 +60,6 @@ describe('<App />', () => {
 
     context('without restaurants', () => {
       it('shows nothing', () => {
-
         const dispatch = jest.fn();
         useDispatch.mockImplementation(() => dispatch);
 
@@ -87,7 +84,6 @@ describe('<App />', () => {
     });
 
     it('shows 3 inputs', () => {
-
       const dispatch = jest.fn();
       useDispatch.mockImplementation(() => dispatch);
 
@@ -110,9 +106,6 @@ describe('<App />', () => {
       it('shows a new restaurant name in input', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
-          // restaurantName: '',
-          // restaurantType: '',
-          // restaurantAddresss: '',
         }));
 
         const dispatch = jest.fn();
@@ -136,9 +129,6 @@ describe('<App />', () => {
       it('shows a new restaurant type in inputs', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
-          // restaurantName: '',
-          // restaurantType: '',
-          // restaurantAddress: '',
         }));
 
         const dispatch = jest.fn();
@@ -162,9 +152,6 @@ describe('<App />', () => {
       it('shows a new restaurant address in inputs', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
-          // restaurantName: '',
-          // restaurantType: '',
-          // restaurantAddress: '',
         }));
 
         const dispatch = jest.fn();
@@ -226,8 +213,6 @@ describe('<App />', () => {
         expect(container).not.toHaveTextContent(/레스토랑1/i);
         expect(container).not.toHaveTextContent(/분류1/i);
         expect(container).not.toHaveTextContent(/주소1/i);
-
-
 
         expect(dispatch).toHaveBeenCalledWith(addRestaurant());
 
