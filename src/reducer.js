@@ -1,8 +1,4 @@
 const initState = {
-  // restaurantId: 100,
-  // restaurantName: '',
-  // restaurantType: '',
-  // restaurantAddress: '',
   newId: 100,
   restaurant: {
     name: '',
@@ -55,10 +51,6 @@ function reducer(previousState = initState, action) {
 
   if (action.type === 'addRestaurant') {
     const {
-      // restaurantId,
-      // restaurantName,
-      // restaurantType,
-      // restaurantAddress,
       newId,
       restaurant,
       restaurants,
@@ -66,10 +58,6 @@ function reducer(previousState = initState, action) {
 
     return {
       ...previousState,
-      // restaurantId: restaurantId + 1,
-      // restaurantName: '',
-      // restaurantType: '',
-      // restaurantAddress: '',
       newId: newId + 1,
       restaurant: {
         name: '',
@@ -79,10 +67,6 @@ function reducer(previousState = initState, action) {
       restaurants: [
         ...restaurants,
         {
-          // id: restaurantId + 1,
-          // name: restaurantName,
-          // type: restaurantType,
-          // address: restaurantAddress,
           id: newId + 1,
           restaurant,
         },
