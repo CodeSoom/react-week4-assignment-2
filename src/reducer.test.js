@@ -1,8 +1,8 @@
 import reducer from './reducer';
 
-import { addRestaurnt } from './actions';
-describe('reducer', () => {
+import { addRestaurant } from './actions';
 
+describe('reducer', () => {
   const restaurants = [
     {
       id: 0, name: 'test_0', category: 'test_0_category', address: 'test_0_address',
@@ -25,22 +25,22 @@ describe('reducer', () => {
       it('append a new restaurant into restaurants', () => {
         const state = reducer({
           newId: 3,
-          name: 'test_name',
-          category: 'test_category',
-          address: 'test_address',
+          restaurantName: 'test_name',
+          restaurantCategory: 'test_category',
+          restaurantAddress: 'test_address',
           restaurants,
-        }, addRestaurnt());
+        }, addRestaurant());
 
-        expect(state.name).toBe('');
-        expect(state.category).toBe('');
-        expect(state.address).toBe('');
+        expect(state.restaurantName).toBe('');
+        expect(state.restaurantCategory).toBe('');
+        expect(state.restaurantAddress).toBe('');
 
         expect(state.restaurants.length).toEqual(3);
 
-        state.restaurants.forEach((eachRestaruant) => {
-          expect(state.restaurants[eachRestaruant].name).toBe(restaurants[eachRestaruant].name);
-          expect(state.restaurants[eachRestaruant].category).toBe(restaurants[eachRestaruant].category);
-          expect(state.restaurants[eachRestaruant].address).toBe(restaurants[eachRestaruant].address);
+        restaurants.forEach((data, index) => {
+          expect(state.restaurants[index].name).toBe(restaurants[index].name);
+          expect(state.restaurants[index].category).toBe(restaurants[index].category);
+          expect(state.restaurants[index].address).toBe(restaurants[index].address);
         });
       });
     });
