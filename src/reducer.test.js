@@ -111,21 +111,21 @@ describe('reducer', () => {
     it('when change restaurantName input form', () => {
       const state = reducer({
         restaurantName: '',
-      }, changeRestaurantField({ name: 'changeRestaurantName', value: 'Change restaurant name' }));
-
+      }, changeRestaurantField({ name: 'restaurantName', value: 'Change restaurant name' }));
+      console.log(state);
       expect(state.restaurantName).toBe('Change restaurant name');
     });
     it('when change restaurantCategory input form', () => {
       const state = reducer({
         restaurantCategory: '',
-      }, changeRestaurantField({ name: 'changeRestaurantCategory', value: 'Change restaurant category' }));
+      }, changeRestaurantField({ name: 'restaurantCategory', value: 'Change restaurant category' }));
 
       expect(state.restaurantCategory).toBe('Change restaurant category');
     });
     it('when change restaurantAddress input form', () => {
       const state = reducer({
         restaurantAddress: '',
-      }, changeRestaurantField({ name: 'changeRestaurantAddress', value: 'Change restaurant address' }));
+      }, changeRestaurantField({ name: 'restaurantAddress', value: 'Change restaurant address' }));
 
       expect(state.restaurantAddress).toBe('Change restaurant address');
     });
