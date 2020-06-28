@@ -1,20 +1,20 @@
 import reducer from './reducer';
 
 import {
-  updateRestaurant,
+  updateName,
   updateClassify,
   updateAddress,
   addRestaurant,
 } from './action';
 
 describe('reducer', () => {
-  describe('updateRestaurant', () => {
+  describe('updateName', () => {
     it('식당 입력', () => {
       const state = reducer({
-        restaurant: '',
-      }, updateRestaurant('바른 치킨'));
+        name: '',
+      }, updateName('바른 치킨'));
 
-      expect(state.restaurant).toBe('바른 치킨');
+      expect(state.name).toBe('바른 치킨');
     });
   });
 
@@ -39,10 +39,10 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    function reduceAddTask(restaurant, classify, address) {
+    function reduceAddTask(name, classify, address) {
       return reducer({
         newId: 100,
-        restaurant,
+        name,
         classify,
         address,
         restaurants: [],
@@ -55,7 +55,7 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).not.toBeUndefined();
-        expect(state.restaurants[0].restaurant).toBe('바른 치킨');
+        expect(state.restaurants[0].name).toBe('바른 치킨');
         expect(state.restaurants[0].classify).toBe('치킨');
         expect(state.restaurants[0].address).toBe('시립대로');
       });
@@ -63,7 +63,7 @@ describe('reducer', () => {
       it('식당 추가 후 인풋 초기화', () => {
         const state = reduceAddTask('바른 치킨', '치킨', '시립대로');
 
-        expect(state.restaurant).toBe('');
+        expect(state.name).toBe('');
         expect(state.classify).toBe('');
         expect(state.address).toBe('');
       });

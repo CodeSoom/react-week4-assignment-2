@@ -1,5 +1,5 @@
-export function updateRestaurant(restaurant) {
-  return { type: 'updateRestaurant', payload: { restaurant } };
+export function updateName(name) {
+  return { type: 'updateName', payload: { name } };
 }
 
 export function updateClassify(classify) {

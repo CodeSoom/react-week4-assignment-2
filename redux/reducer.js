@@ -1,15 +1,15 @@
 const initialState = {
   newId: 100,
-  restaurant: '',
+  name: '',
   classify: '',
   address: '',
   restaurants: [],
 };
 
 const type = {
-  updateRestaurant: (state, action) => ({
+  updateName: (state, action) => ({
     ...state,
-    restaurant: action.payload.restaurant,
+    name: action.payload.name,
   }),
   updateClassify: (state, action) => ({
     ...state,
@@ -22,25 +22,25 @@ const type = {
   addRestaurant: (state) => {
     const {
       newId,
-      restaurant,
+      name,
       classify,
       address,
       restaurants,
     } = state;
 
-    if (!restaurant || !classify || !address) {
+    if (!name || !classify || !address) {
       return state;
     }
 
     return {
       ...state,
       newId: newId + 1,
-      restaurant: '',
+      name: '',
       classify: '',
       address: '',
       restaurants: [...restaurants, {
         id: newId,
-        restaurant,
+        name,
         classify,
         address,
       }],
