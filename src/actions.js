@@ -12,3 +12,12 @@ export function saveNewRestaurant() {
     type: 'saveNewRestaurant',
   };
 }
+
+export function setInitialRestaurants(restaurants) {
+  return {
+    type: 'setInitialRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
