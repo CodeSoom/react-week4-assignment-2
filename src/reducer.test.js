@@ -127,7 +127,7 @@ describe('reducer', () => {
         restaurantAddress: '',
       }, changeRestaurantField({ name: 'changeRestaurantAddress', value: 'Change restaurant address' }));
 
-      expect(state.restaurantAddress).toBe();
+      expect(state.restaurantAddress).toBe('Change restaurant address');
     });
   });
 });
