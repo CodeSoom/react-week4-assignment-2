@@ -82,17 +82,21 @@ describe('InputContainer', () => {
       it('목록에 등록된다.', () => {
         useSelector.mockImplementation((selector) => selector({
           title: '시카고 피자',
+          kind: '양식',
+          address: '인천 학익동',
           restaurants: [],
         }));
 
-        const { getByText, getByDisplayValue } = render((
+        const { getByText } = render((
           <InputContainer />
         ));
 
         expect(getByText(/등록/)).not.toBeNull();
-        expect(getByDisplayValue(/시카고 피자/)).not.toBeNull();
-
         fireEvent.click(getByText(/등록/));
+
+        expect(getByText(/시카고 피자/)).not.toBeNull();
+        expect(getByText(/양식/)).not.toBeNull();
+        expect(getByText(/인천 학익동/)).not.toBeNull();
         expect(dispatch).toBeCalledWith(addRestaurant());
       });
     });
