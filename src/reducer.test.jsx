@@ -33,10 +33,12 @@ describe('reducer', () => {
   context('레스토랑을 추가하면', () => {
     it('추가된 상태를 받는다.', () => {
       const newState = reducer({
+        newId: 1,
         title: '시카고 피자',
         restaurants: [],
       }, addRestaurant());
 
+      expect(newState.newId).toBe(2);
       expect(newState.restaurants).toHaveLength(1);
     });
   });
