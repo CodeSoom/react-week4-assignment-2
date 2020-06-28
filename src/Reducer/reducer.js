@@ -6,15 +6,10 @@ export const defaultState = {
   restaurants: [],
 };
 
-const defaultAction = {
-  type: '',
-};
+const reducers = {
+  updateRestaurantName: (state, action) => {
+    const { restaurant } = state;
 
-export function reducer(state = defaultState, action = defaultAction) {
-  const { newId, restaurant, restaurants } = state;
-
-  // TODO: Computed property names 활용 예정
-  if (action.type === 'updateRestaurantName') {
     return {
       ...state,
       restaurant: {
@@ -23,9 +18,10 @@ export function reducer(state = defaultState, action = defaultAction) {
         address: restaurant.address,
       },
     };
-  }
+  },
+  updateRestaurantCategory: (state, action) => {
+    const { restaurant } = state;
 
-  if (action.type === 'updateRestaurantCategory') {
     return {
       ...state,
       restaurant: {
@@ -34,9 +30,10 @@ export function reducer(state = defaultState, action = defaultAction) {
         address: restaurant.address,
       },
     };
-  }
+  },
+  updateRestaurantAddress: (state, action) => {
+    const { restaurant } = state;
 
-  if (action.type === 'updateRestaurantAddress') {
     return {
       ...state,
       restaurant: {
@@ -45,9 +42,10 @@ export function reducer(state = defaultState, action = defaultAction) {
         address: action.payload.restaurantAddress,
       },
     };
-  }
+  },
+  addRestaurant: (state) => {
+    const { newId, restaurant, restaurants } = state;
 
-  if (action.type === 'addRestaurant') {
     if (!restaurant.name || !restaurant.category || !restaurant.address) {
       return state;
     }
@@ -65,7 +63,13 @@ export function reducer(state = defaultState, action = defaultAction) {
         address: restaurant.address,
       }],
     };
+  },
+};
+
+export function reducer(state = defaultState, action) {
+  if (!action || !reducers[action.type]) {
+    return state;
   }
 
-  return state;
+  return reducers[action.type](state, action);
 }
