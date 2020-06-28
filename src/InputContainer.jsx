@@ -8,6 +8,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  registerReservation,
 } from './actions';
 
 export default function InputContainer() {
@@ -28,12 +29,17 @@ export default function InputContainer() {
     dispatch(updateRestaurantAddress(event.target.value));
   }
 
+  function handleClickRegisterReservation() {
+    dispatch(registerReservation());
+  }
+
   return (
     <Input
       value={restaurant}
       onChangeName={handleChangeRestaurantName}
       onChangeCategory={handleChangeRestaurantCategory}
       onChangeAddress={handleChangeRestaurantAddress}
+      onClick={handleClickRegisterReservation}
     />
   );
 }
