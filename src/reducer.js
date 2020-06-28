@@ -1,8 +1,9 @@
 const initState = {
+  title: '',
   restaurants: [],
 };
 
-export default function reducer(state = initState, action) {
+export default function reducer(state = initState, action = {}) {
   const reducers = {
     updateTitle: ({ title }) => ({
       ...state,
