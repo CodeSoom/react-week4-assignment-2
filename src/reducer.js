@@ -1,7 +1,7 @@
 const initState = {
   newId: 1,
-  title: '',
-  kind: '',
+  name: '',
+  category: '',
   address: '',
   restaurants: [],
 };
@@ -14,18 +14,18 @@ export default function reducer(state = initState, action = {}) {
     }),
     addRestaurant: () => {
       const {
-        newId, title, kind, address, restaurants,
+        newId, name, category, address, restaurants,
       } = state;
       return {
         ...state,
         newId: newId + 1,
-        title: '',
-        kind: '',
+        name: '',
+        category: '',
         address: '',
         restaurants: [
           ...restaurants,
           {
-            id: newId, title, kind, address,
+            id: newId, name, category, address,
           },
         ],
       };

@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Item({ restaurant: { title, kind, address } }) {
+export default function Item({ restaurant: { name, category, address } }) {
   return (
-    <li>{`${title} | ${kind} | ${address}`}</li>
+    <li>{`${name} | ${category} | ${address}`}</li>
   );
 }

@@ -12,7 +12,7 @@ import {
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  function handleChange(event) {
+  function handleUpdateRestaurant(event) {
     dispatch(updateRestaurant(event.target));
   }
 
@@ -20,19 +20,19 @@ export default function InputContainer() {
     dispatch(addRestaurant());
   }
 
-  const { title, kind, address } = useSelector((state) => ({
-    title: state.title,
-    kind: state.kind,
+  const { name, category, address } = useSelector((state) => ({
+    name: state.name,
+    category: state.category,
     address: state.address,
   }));
 
   return (
     <Input
-      title={title}
-      kind={kind}
+      name={name}
+      category={category}
       address={address}
-      onChange={handleChange}
-      onClickAddRestaurant={handleAddRestaurant}
+      onChange={handleUpdateRestaurant}
+      onClick={handleAddRestaurant}
     />
   );
 }

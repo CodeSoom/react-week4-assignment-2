@@ -12,11 +12,11 @@ describe('Input', () => {
     it('식당 이름이 입력되어 value가 바뀐다', () => {
       const { getAllByDisplayValue, getByPlaceholderText, getByText } = render((
         <Input
-          title=""
-          kind=""
+          name=""
+          category=""
           address=""
           onChange={handleChange}
-          onClickAddRestaurant={handleAddRestaurant}
+          onClick={handleAddRestaurant}
         />
       ));
 
@@ -26,13 +26,12 @@ describe('Input', () => {
         target: { value: '마녀주방' },
       });
       expect(handleChange).toBeCalled();
-
       fireEvent.change(getByPlaceholderText('분류'), {
-        target: { value: '마녀주방' },
+        target: { value: '한식' },
       });
       expect(handleChange).toBeCalled();
       fireEvent.change(getByPlaceholderText('주소'), {
-        target: { value: '마녀주방' },
+        target: { value: '서울' },
       });
       expect(handleChange).toBeCalled();
       fireEvent.click(getByText(/등록/));

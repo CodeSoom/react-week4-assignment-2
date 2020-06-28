@@ -13,10 +13,10 @@ describe('<App />', () => {
     it('화면에 보여준다.', () => {
       const restaurants = [
         {
-          id: 1, title: '시카고피자', kind: '양식', address: '이태원동',
+          id: 1, name: '시카고피자', category: '양식', address: '이태원동',
         },
         {
-          id: 2, title: '키와미', kind: '일식', address: '분당구',
+          id: 2, name: '키와미', category: '일식', address: '분당구',
         },
       ];
 
@@ -25,8 +25,8 @@ describe('<App />', () => {
       }));
 
       const { getByText } = render(<App />);
-      restaurants.forEach(({ title, kind, address }) => {
-        expect(getByText(`${title} | ${kind} | ${address}`));
+      restaurants.forEach(({ name, category, address }) => {
+        expect(getByText(`${name} | ${category} | ${address}`));
       });
     });
   });

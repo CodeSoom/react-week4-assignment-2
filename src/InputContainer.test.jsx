@@ -16,17 +16,18 @@ describe('InputContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    title: '',
+    name: '',
   }));
 
   function renderInputContainer() {
-    const { getByPlaceholderText } = render((
+    const { getByText, getByPlaceholderText } = render((
       <InputContainer />
     ));
     return {
       inputTitle: getByPlaceholderText(/이름/),
       inputKind: getByPlaceholderText(/분류/),
       inputAddress: getByPlaceholderText(/주소/),
+      addButton: getByText(/등록/),
     };
   }
 
@@ -45,7 +46,7 @@ describe('InputContainer', () => {
             value: '마녀들의 주방',
           },
         });
-        const target = getTarget('title', '마녀들의 주방');
+        const target = getTarget('name', '마녀들의 주방');
         expect(dispatch).toBeCalledWith(updateRestaurant(target));
       });
     });
@@ -58,7 +59,7 @@ describe('InputContainer', () => {
             value: '한식',
           },
         });
-        const target = getTarget('kind', '한식');
+        const target = getTarget('category', '한식');
         expect(dispatch).toBeCalledWith(updateRestaurant(target));
       });
     });
@@ -81,18 +82,16 @@ describe('InputContainer', () => {
     context('레스토랑을 등록하면', () => {
       it('목록에 등록된다.', () => {
         useSelector.mockImplementation((selector) => selector({
-          title: '시카고 피자',
-          kind: '양식',
+          name: '시카고 피자',
+          category: '양식',
           address: '인천 학익동',
           restaurants: [],
         }));
 
-        const { getByText } = render((
-          <InputContainer />
-        ));
+        const { addButton } = renderInputContainer();
+        expect(addButton).not.toBeNull();
 
-        expect(getByText(/등록/)).not.toBeNull();
-        fireEvent.click(getByText(/등록/));
+        fireEvent.click(addButton);
         expect(dispatch).toBeCalledWith(addRestaurant());
       });
     });
