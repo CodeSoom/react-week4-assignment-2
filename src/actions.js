@@ -1,26 +1,9 @@
-function updateName(name) {
+function updateRestaurantInformation(name, value) {
   return {
-    type: 'updateName',
+    type: 'updateRestaurantInformation',
     payload: {
       name,
-    },
-  };
-}
-
-function updateCategory(category) {
-  return {
-    type: 'updateCategory',
-    payload: {
-      category,
-    },
-  };
-}
-
-function updateAddress(address) {
-  return {
-    type: 'updateAddress',
-    payload: {
-      address,
+      value,
     },
   };
 }
@@ -39,9 +22,7 @@ function setRestaurants(restaurants) {
 }
 
 export {
-  updateName,
-  updateCategory,
-  updateAddress,
+  updateRestaurantInformation,
   addInformation,
   setRestaurants,
 };

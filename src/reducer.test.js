@@ -1,12 +1,24 @@
 import reducer from './reducer';
 
 import {
-  updateName,
-  updateCategory,
-  updateAddress,
+  updateRestaurantInformation,
   addInformation,
   setRestaurants,
 } from './actions';
+
+import {
+  restaurants,
+  initialState,
+} from './__fixtures__/restaurants';
+
+function setRestaurantState(name, category, address) {
+  return {
+    ...initialState,
+    name,
+    category,
+    address,
+  };
+}
 
 describe('reducer', () => {
   context('존재하지 않는 action을 전달한 경우', () => {
@@ -19,14 +31,6 @@ describe('reducer', () => {
 
   context('빈 state 값 파라미터로 전달한 경우', () => {
     it('initialState가 반환된다', () => {
-      const initialState = {
-        newId: 100,
-        name: '',
-        category: '',
-        address: '',
-        informations: [],
-      };
-
       const state = reducer(undefined, { type: 'addInformation' });
 
       expect(state).toEqual(initialState);
@@ -35,11 +39,7 @@ describe('reducer', () => {
 
   describe('updateName', () => {
     it('이름이 변경된다.', () => {
-      const previousState = {
-        name: '',
-      };
-
-      const state = reducer(previousState, updateName('콩나물해장국'));
+      const state = reducer(initialState, updateRestaurantInformation('name', '콩나물해장국'));
 
       expect(state.name).toBe('콩나물해장국');
     });
@@ -47,11 +47,7 @@ describe('reducer', () => {
 
   describe('updateCategory', () => {
     it('분류가 변경된다.', () => {
-      const previousState = {
-        category: '',
-      };
-
-      const state = reducer(previousState, updateCategory('한식'));
+      const state = reducer(initialState, updateRestaurantInformation('category', '한식'));
 
       expect(state.category).toBe('한식');
     });
@@ -59,11 +55,7 @@ describe('reducer', () => {
 
   describe('updateAddress', () => {
     it('주소가 변경된다.', () => {
-      const previousState = {
-        address: '',
-      };
-
-      const state = reducer(previousState, updateAddress('강릉'));
+      const state = reducer(initialState, updateRestaurantInformation('address', '강릉'));
 
       expect(state.address).toBe('강릉');
     });
@@ -71,21 +63,16 @@ describe('reducer', () => {
 
   describe('addInformation', () => {
     context('이름, 분류, 주소등 모든 정보가 있을 경우', () => {
-      const previousState = {
-        newId: 100,
-        name: '돈스파이크',
-        category: '양식',
-        address: '인천',
-        informations: [],
-      };
+      const restaurantState = setRestaurantState('돈스파이크', '양식', '인천');
+
       it('레스토랑 정보가 추가된다', () => {
-        const state = reducer(previousState, addInformation());
+        const state = reducer(restaurantState, addInformation());
 
         expect(state.informations).toHaveLength(1);
       });
 
       it('레스토랑 정보가 추가된 후 입력정보가 초기화된다.', () => {
-        const state = reducer(previousState, addInformation());
+        const state = reducer(restaurantState, addInformation());
 
         expect(state.name).toBe('');
         expect(state.category).toBe('');
@@ -95,15 +82,7 @@ describe('reducer', () => {
 
     context('이름, 분류, 주소 중 정보가 하나라도 없을 경우', () => {
       it('레스토랑 정보가 추가되지 않는다.', () => {
-        const previousState = {
-          newId: 100,
-          name: '',
-          category: '양식',
-          address: '인천',
-          informations: [],
-        };
-
-        const state = reducer(previousState, addInformation());
+        const state = reducer(setRestaurantState('', '양식', '인천'), addInformation());
 
         expect(state.informations).toHaveLength(0);
       });
@@ -112,34 +91,7 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('레스토랑 정보가 추가된다.', () => {
-      const previousState = {
-        newId: 100,
-        name: '',
-        category: '양식',
-        address: '인천',
-        informations: [],
-      };
-
-      const restaurants = [
-        {
-          id: 1,
-          name: '마녀주방',
-          category: '한식',
-          address: '강남',
-        }, {
-          id: 2,
-          name: '할머니뼈해장국',
-          category: '한식',
-          address: '강서',
-        }, {
-          id: 3,
-          name: '엄마손파이',
-          category: '한식',
-          address: '강북',
-        },
-      ];
-
-      const state = reducer(previousState, setRestaurants(restaurants));
+      const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.informations).toHaveLength(3);
     });

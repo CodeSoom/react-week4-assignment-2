@@ -18,8 +18,8 @@ describe('Item', () => {
       />
     ));
 
-    expect(getByText(/마녀주방/)).not.toBeNull();
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/강남/)).not.toBeNull();
+    expect(getByText(/마녀주방/)).toBeInTheDocument();
+    expect(getByText(/한식/)).toBeInTheDocument();
+    expect(getByText(/강남/)).toBeInTheDocument();
   });
 });

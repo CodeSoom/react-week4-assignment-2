@@ -5,9 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Input from './Input';
 
 import {
-  updateName,
-  updateCategory,
-  updateAddress,
+  updateRestaurantInformation,
   addInformation,
 } from '../actions';
 
@@ -20,11 +18,10 @@ export default function InputContainer() {
     address: state.address,
   }));
 
-  const changeHandlers = {
-    handleChangeName: (event) => dispatch(updateName(event.target.value)),
-    handleChangeCategory: (event) => dispatch(updateCategory(event.target.value)),
-    handleChangeAddress: (event) => dispatch(updateAddress(event.target.value)),
-  };
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    dispatch(updateRestaurantInformation(name, value));
+  }
 
   function handleClickAddInformation() {
     dispatch(addInformation());
@@ -33,7 +30,7 @@ export default function InputContainer() {
   return (
     <Input
       information={information}
-      onChangeHandlers={changeHandlers}
+      onChange={handleInputChange}
       onClick={handleClickAddInformation}
     />
   );

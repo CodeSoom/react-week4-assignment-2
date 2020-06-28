@@ -42,11 +42,11 @@ describe('List', () => {
         />
       ));
 
-      expect(getByText(/마녀주방/)).not.toBeNull();
-      expect(getByText(/할머니뼈해장국/)).not.toBeNull();
-      expect(getAllByText(/한식/)[0]).not.toBeNull();
-      expect(getByText(/강남/)).not.toBeNull();
-      expect(getByText(/강서/)).not.toBeNull();
+      expect(getByText(/마녀주방/)).toBeInTheDocument();
+      expect(getByText(/할머니뼈해장국/)).toBeInTheDocument();
+      expect(getAllByText(/한식/)[0]).toBeInTheDocument();
+      expect(getByText(/강남/)).toBeInTheDocument();
+      expect(getByText(/강서/)).toBeInTheDocument();
     });
   });
 });

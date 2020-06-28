@@ -1,9 +1,7 @@
 import React from 'react';
 
-export default function Input({ information, onChangeHandlers, onClick }) {
+export default function Input({ information, onChange, onClick }) {
   const { name, category, address } = information;
-
-  const { handleChangeName, handleChangeCategory, handleChangeAddress } = onChangeHandlers;
 
   return (
     <p>
@@ -13,7 +11,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         data-testid="name"
         name="name"
         value={name}
-        onChange={handleChangeName}
+        onChange={onChange}
       />
       <input
         type="text"
@@ -21,7 +19,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         data-testid="category"
         name="category"
         value={category}
-        onChange={handleChangeCategory}
+        onChange={onChange}
       />
       <input
         type="text"
@@ -29,7 +27,7 @@ export default function Input({ information, onChangeHandlers, onClick }) {
         data-testid="address"
         name="address"
         value={address}
-        onChange={handleChangeAddress}
+        onChange={onChange}
       />
       <button type="button" onClick={onClick}>등록</button>
     </p>

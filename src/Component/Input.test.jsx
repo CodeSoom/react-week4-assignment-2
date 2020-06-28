@@ -4,11 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Input from './Input';
 
-const handlers = {
-  handleChangeName: jest.fn(),
-  handleChangeCategory: jest.fn(),
-  handleChangeAddress: jest.fn(),
-};
+const handleInputChange = jest.fn();
 
 describe('Input', () => {
   context('이름, 분류, 주소 정보가 없을 경우', () => {
@@ -22,21 +18,21 @@ describe('Input', () => {
       const { getByText, getByTestId } = render((
         <Input
           information={information}
-          onChangeHandlers={handlers}
+          onChange={handleInputChange}
         />
       ));
 
-      expect(getByTestId(/name/)).not.toBeNull();
-      expect(getByTestId(/category/)).not.toBeNull();
-      expect(getByTestId(/address/)).not.toBeNull();
-      expect(getByText(/등록/)).not.toBeNull();
+      expect(getByTestId(/name/)).toBeInTheDocument();
+      expect(getByTestId(/category/)).toBeInTheDocument();
+      expect(getByTestId(/address/)).toBeInTheDocument();
+      expect(getByText(/등록/)).toBeInTheDocument();
     });
 
     it('이름, 분류, 주소 값을 변경할 수 있다. ', () => {
       const { getByTestId } = render((
         <Input
           information={information}
-          onChangeHandlers={handlers}
+          onChange={handleInputChange}
         />
       ));
 
@@ -44,19 +40,19 @@ describe('Input', () => {
         target: { value: '마녀주방' },
       });
 
-      expect(handlers.handleChangeName).toBeCalled();
+      expect(handleInputChange).toBeCalled();
 
       fireEvent.change(getByTestId(/category/), {
         target: { value: '한식' },
       });
 
-      expect(handlers.handleChangeCategory).toBeCalled();
+      expect(handleInputChange).toBeCalled();
 
       fireEvent.change(getByTestId(/address/), {
         target: { value: '강남구' },
       });
 
-      expect(handlers.handleChangeAddress).toBeCalled();
+      expect(handleInputChange).toBeCalled();
     });
   });
 
@@ -71,13 +67,13 @@ describe('Input', () => {
       const { getByDisplayValue } = render((
         <Input
           information={information}
-          onChangeHandlers={handlers}
+          onChange={handleInputChange}
         />
       ));
 
-      expect(getByDisplayValue(/마녀주방/)).not.toBeNull();
-      expect(getByDisplayValue(/한식/)).not.toBeNull();
-      expect(getByDisplayValue(/강남/)).not.toBeNull();
+      expect(getByDisplayValue(/마녀주방/)).toBeInTheDocument();
+      expect(getByDisplayValue(/한식/)).toBeInTheDocument();
+      expect(getByDisplayValue(/강남/)).toBeInTheDocument();
     });
 
     it('등록 버튼을 누를 수 있다.', () => {
@@ -86,7 +82,7 @@ describe('Input', () => {
       const { getByText } = render((
         <Input
           information={information}
-          onChangeHandlers={handlers}
+          onChange={handleInputChange}
           onClick={handleClickEnroll}
         />
       ));

@@ -1,4 +1,4 @@
-export default [
+const restaurants = [
   {
     id: 1,
     name: '마녀주방',
@@ -16,3 +16,13 @@ export default [
     address: '강북',
   },
 ];
+
+const initialState = {
+  newId: 100,
+  name: '',
+  category: '',
+  address: '',
+  informations: [],
+};
+
+export { restaurants, initialState };

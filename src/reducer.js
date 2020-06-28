@@ -7,18 +7,14 @@ const initialState = {
 };
 
 const reducers = {
-  updateName: (state, action) => ({
-    ...state,
-    name: action.payload.name,
-  }),
-  updateCategory: (state, action) => ({
-    ...state,
-    category: action.payload.category,
-  }),
-  updateAddress: (state, action) => ({
-    ...state,
-    address: action.payload.address,
-  }),
+  updateRestaurantInformation: (state, action) => {
+    const { name, value } = action.payload;
+
+    return {
+      ...state,
+      [name]: value,
+    };
+  },
   setRestaurants: (state, action) => ({
     ...state,
     informations: [...state.informations, ...action.payload.informations],
