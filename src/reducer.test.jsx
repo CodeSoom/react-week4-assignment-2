@@ -23,25 +23,38 @@ describe('reducer', () => {
 
   context('updateRestaurant', () => {
     it('이름이 바뀐 상태를 받는다.', () => {
+      const target = {
+        name: 'title',
+        title: '마녀주방',
+      };
+
       const newState = reducer(
         previousState,
-        updateRestaurant('마녀주방'),
+        updateRestaurant(target),
       );
 
       expect(newState.title).toBe('마녀주방');
     });
     it('분류가 바뀐 상태를 받는다.', () => {
+      const target = {
+        name: 'kind',
+        kind: '한식',
+      };
       const newState = reducer(
         previousState,
-        updateRestaurant('한식'),
+        updateRestaurant(target),
       );
 
       expect(newState.kind).toBe('한식');
     });
     it('주소가 바뀐 상태를 받는다.', () => {
+      const target = {
+        name: 'address',
+        address: '서울시 강남구',
+      };
       const newState = reducer(
         previousState,
-        updateRestaurant('서울시 강남구'),
+        updateRestaurant(target),
       );
 
       expect(newState.address).toBe('서울시 강남구');
