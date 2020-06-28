@@ -19,6 +19,14 @@ describe('InputsContainer', () => {
 
   context('when change input restaurant infomation', () => {
     it('dispatch updateRestaurant', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
+      }));
+
       const { container } = render((
         <InputsContainer />
       ));
@@ -36,9 +44,23 @@ describe('InputsContainer', () => {
       fireEvent.change(inputAddressBox, testInputAddressEvent);
 
       expect(dispatch).toBeCalledWith({
-        type: 'updateRestaurant',
+        type: 'updateRestaurantName',
         payload: {
-          restaurant: testRestaurant,
+          restaurantName: testRestaurant.name,
+        },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantCategory',
+        payload: {
+          restaurantCategory: testRestaurant.category,
+        },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantAddress',
+        payload: {
+          restaurantAddress: testRestaurant.address,
         },
       });
     });
