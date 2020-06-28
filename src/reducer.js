@@ -13,12 +13,21 @@ export default function reducer(state = initState, action = {}) {
       [name]: value,
     }),
     addRestaurant: () => {
-      const { newId, title, restaurants } = state;
+      const {
+        newId, title, kind, address, restaurants,
+      } = state;
       return {
         ...state,
         newId: newId + 1,
         title: '',
-        restaurants: [...restaurants, { id: newId, title }],
+        kind: '',
+        address: '',
+        restaurants: [
+          ...restaurants,
+          {
+            id: newId, title, kind, address,
+          },
+        ],
       };
     },
   };
