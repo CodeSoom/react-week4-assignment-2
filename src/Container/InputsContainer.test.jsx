@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {
-  render, fireEvent, useDispatch, useSelector,
-} from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputsContainer from './InputsContainer';
 
