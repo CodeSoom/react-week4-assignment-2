@@ -12,11 +12,7 @@ const handlers = {
   registerRestaurant: (state) => ({
     ...state,
     id: state.id + 1,
-    input: {
-      name: '',
-      category: '',
-      address: '',
-    },
+    input: initialState.input,
     restaurants: [
       ...state.restaurants,
       {
