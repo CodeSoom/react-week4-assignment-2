@@ -6,6 +6,7 @@ import Input from './Input';
 
 import {
   updateTitle,
+  addRestaurant,
 } from './actions';
 
 export default function InputContainer() {
@@ -13,6 +14,10 @@ export default function InputContainer() {
 
   function handleChangeTitle(event) {
     dispatch(updateTitle(event.target.value));
+  }
+
+  function handleAddRestaurant() {
+    dispatch(addRestaurant());
   }
 
   const { title } = useSelector((state) => ({
@@ -23,6 +28,7 @@ export default function InputContainer() {
     <Input
       title={title}
       onChangeTitle={handleChangeTitle}
+      onClickAddRestaurant={handleAddRestaurant}
     />
   );
 }
