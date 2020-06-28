@@ -8,7 +8,7 @@ import {
   updateClassify,
   updateAddress,
   addRestaurant,
-} from '../redux/action';
+} from '../redux/actions';
 
 export default function FormContainer() {
   const { name, classify, address } = useSelector((state) => ({

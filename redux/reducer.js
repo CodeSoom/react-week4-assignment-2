@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   newId: 100,
   name: '',
   classify: '',
@@ -48,6 +48,6 @@ const type = {
   },
 };
 
-export default function reducer(state = initialState, action) {
-  return type[action.type] ? (type[action.type])(state, action) : state;
+export function reducer(state = initialState, action) {
+  return action && type[action.type] ? (type[action.type])(state, action) : state;
 }

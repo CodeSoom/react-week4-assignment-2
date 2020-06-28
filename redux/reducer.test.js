@@ -1,11 +1,11 @@
-import reducer from './reducer';
+import { reducer, initialState } from './reducer';
 
 import {
   updateName,
   updateClassify,
   updateAddress,
   addRestaurant,
-} from './action';
+} from './actions';
 
 describe('reducer', () => {
   describe('updateName', () => {
@@ -110,6 +110,32 @@ describe('reducer', () => {
         const state = reduceAddTask('', '', '');
 
         expect(state.restaurants).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('액션값이 없을 때', () => {
+    it('state 값을 그대로 보내준다', () => {
+      const state = reducer({
+        newId: 100,
+        name: '',
+        classify: '',
+        address: '',
+        restaurants: [],
+      });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
+  describe('초기값', () => {
+    it('initialState', () => {
+      expect(initialState).toEqual({
+        newId: 100,
+        name: '',
+        classify: '',
+        address: '',
+        restaurants: [],
       });
     });
   });

@@ -30,6 +30,74 @@ describe('<FormContainer />', () => {
     });
   });
 
+  context('handleChang 테스트', () => {
+    it('식당 입력', () => {
+      const dispatch = jest.fn();
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        name: '',
+        classify: '',
+        address: '',
+      }));
+      const { getByPlaceholderText } = render((
+        <FormContainer />
+      ));
+
+      fireEvent.change(getByPlaceholderText(/식당/), {
+        target:
+          { value: '바른 치킨' },
+      });
+      expect(dispatch).toBeCalledWith({
+        type: 'updateName',
+        payload: { name: '바른 치킨' },
+      });
+    });
+
+    it('분류 입력', () => {
+      const dispatch = jest.fn();
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        name: '',
+        classify: '',
+        address: '',
+      }));
+      const { getByPlaceholderText } = render((
+        <FormContainer />
+      ));
+
+      fireEvent.change(getByPlaceholderText(/분류/), {
+        target:
+          { value: '치킨' },
+      });
+      expect(dispatch).toBeCalledWith({
+        type: 'updateClassify',
+        payload: { classify: '치킨' },
+      });
+    });
+
+    it('주소 입력', () => {
+      const dispatch = jest.fn();
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        name: '',
+        classify: '',
+        address: '',
+      }));
+      const { getByPlaceholderText } = render((
+        <FormContainer />
+      ));
+
+      fireEvent.change(getByPlaceholderText(/주소/), {
+        target:
+          { value: '시립대로' },
+      });
+      expect(dispatch).toBeCalledWith({
+        type: 'updateAddress',
+        payload: { address: '시립대로' },
+      });
+    });
+  });
+
   context('입력값 있을 때', () => {
     it('식당 추가', () => {
       const dispatch = jest.fn();
