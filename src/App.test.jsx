@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import {render} from '@testing-library/react'
+import { render } from '@testing-library/react';
 
-import App from './App'
+import App from './App';
 
-test('App', ()=>{
-    const {getByText} = render((
-        <App />
-    ));
+test('App', () => {
+  const { getByText } = render((
+    <App />
+  ));
 
-    expect(getByText(/호식당/)).not.toBeNull();
-})
+  expect(getByText(/호식당/)).not.toBeNull();
+});
