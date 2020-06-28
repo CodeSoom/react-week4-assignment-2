@@ -10,6 +10,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  registerReservation,
 } from './actions';
 
 describe('InputContainer', () => {
@@ -95,5 +96,29 @@ describe('InputContainer', () => {
     expect(dispatch).toBeCalledWith(
       updateRestaurantAddress('Handle Change Restaurant Address'),
     );
+  });
+
+  test('registerReservation', () => {
+    const dispatch = jest.fn();
+
+    useSelector.mockImplementation((selector) => selector({
+      id: 1,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      reservations: [],
+    }));
+    useDispatch.mockImplementation(() => dispatch);
+
+    const { getByText } = render(
+      <InputContainer />,
+    );
+
+    fireEvent.click(getByText('등록'));
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toBeCalledWith(registerReservation());
   });
 });
