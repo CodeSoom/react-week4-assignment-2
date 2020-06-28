@@ -1,0 +1,12 @@
+export const useDispatch = jest.fn();
+
+export const useSelector = jest.fn((selector) => selector({
+  restaurants: [
+    {
+      id: 1, name: 'Seoul Pizza', category: 'Western', address: 'Seoul Iteawon',
+    },
+    {
+      id: 2, name: 'Busan Rice', category: 'Korean', address: 'Busan Daeyeon',
+    },
+  ],
+}));
