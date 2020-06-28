@@ -1,15 +1,13 @@
 import React from 'react';
 
-import List from './List';
+import ListContainer from './ListContainer';
 import InputContainer from './InputContainer';
 
 export default function Page() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <List
-        restaurants={[]}
-      />
+      <ListContainer />
       <InputContainer />
     </div>
   );
