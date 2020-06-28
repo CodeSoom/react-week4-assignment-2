@@ -21,16 +21,16 @@ describe('ListContainer', () => {
 
     it('select tasks to List component', () => {
       useSelector.mockImplementation((selector) => selector({
-        testRestaurants,
+        restaurants: testRestaurants,
       }));
 
       const { getByText } = render((
         <ListContainer />
       ));
 
-      expect(getByText(testRestaurants[0].name)).toBeInTheDocument();
-      expect(getByText(testRestaurants[0].category)).toBeInTheDocument();
-      expect(getByText(testRestaurants[0].address)).toBeInTheDocument();
+      expect(
+        getByText(`${testRestaurants[0].name} | ${testRestaurants[0].category} | ${testRestaurants[0].address}`),
+      ).toBeInTheDocument();
     });
   });
 });
