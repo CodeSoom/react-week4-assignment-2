@@ -1,7 +1,7 @@
 export const initialState = {
   newId: 100,
   name: '',
-  classify: '',
+  category: '',
   address: '',
   restaurants: [],
 };
@@ -11,9 +11,9 @@ const type = {
     ...state,
     name: action.payload.name,
   }),
-  updateClassify: (state, action) => ({
+  updateCategory: (state, action) => ({
     ...state,
-    classify: action.payload.classify,
+    category: action.payload.category,
   }),
   updateAddress: (state, action) => ({
     ...state,
@@ -23,12 +23,12 @@ const type = {
     const {
       newId,
       name,
-      classify,
+      category,
       address,
       restaurants,
     } = state;
 
-    if (!name || !classify || !address) {
+    if (!name || !category || !address) {
       return state;
     }
 
@@ -36,18 +36,18 @@ const type = {
       ...state,
       newId: newId + 1,
       name: '',
-      classify: '',
+      category: '',
       address: '',
       restaurants: [...restaurants, {
         id: newId,
         name,
-        classify,
+        category,
         address,
       }],
     };
   },
 };
 
-export function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   return action && type[action.type] ? (type[action.type])(state, action) : state;
 }

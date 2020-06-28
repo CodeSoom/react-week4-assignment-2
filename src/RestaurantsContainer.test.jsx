@@ -15,7 +15,7 @@ describe('<RestaurantsContainer />', () => {
         {
           id: 1,
           name: '바른 치킨',
-          classify: '치킨',
+          category: '치킨',
           address: '시립대로',
         },
       ];

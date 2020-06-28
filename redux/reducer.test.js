@@ -1,8 +1,8 @@
-import { reducer, initialState } from './reducer';
+import reducer, { initialState } from './reducer';
 
 import {
   updateName,
-  updateClassify,
+  updateCategory,
   updateAddress,
   addRestaurant,
 } from './actions';
@@ -18,13 +18,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('updateClassify', () => {
+  describe('updateCategory', () => {
     it('분류 입력', () => {
       const state = reducer({
-        classify: '',
-      }, updateClassify('치킨'));
+        category: '',
+      }, updateCategory('치킨'));
 
-      expect(state.classify).toBe('치킨');
+      expect(state.category).toBe('치킨');
     });
   });
 
@@ -39,11 +39,11 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    function reduceAddTask(name, classify, address) {
+    function reduceAddTask(name, category, address) {
       return reducer({
         newId: 100,
         name,
-        classify,
+        category,
         address,
         restaurants: [],
       }, addRestaurant());
@@ -56,7 +56,7 @@ describe('reducer', () => {
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).not.toBeUndefined();
         expect(state.restaurants[0].name).toBe('바른 치킨');
-        expect(state.restaurants[0].classify).toBe('치킨');
+        expect(state.restaurants[0].category).toBe('치킨');
         expect(state.restaurants[0].address).toBe('시립대로');
       });
 
@@ -64,7 +64,7 @@ describe('reducer', () => {
         const state = reduceAddTask('바른 치킨', '치킨', '시립대로');
 
         expect(state.name).toBe('');
-        expect(state.classify).toBe('');
+        expect(state.category).toBe('');
         expect(state.address).toBe('');
       });
     });
@@ -119,7 +119,7 @@ describe('reducer', () => {
       const state = reducer({
         newId: 100,
         name: '',
-        classify: '',
+        category: '',
         address: '',
         restaurants: [],
       });
@@ -131,7 +131,7 @@ describe('reducer', () => {
       const state = reducer({
         newId: 100,
         name: '',
-        classify: '',
+        category: '',
         address: '',
         restaurants: [],
       }, { type: 'deleteRestaurant' });

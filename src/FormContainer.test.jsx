@@ -15,7 +15,7 @@ describe('<FormContainer />', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         name: '바른 치킨',
-        classify: '치킨',
+        category: '치킨',
         address: '시립대로',
       }));
 
@@ -36,7 +36,7 @@ describe('<FormContainer />', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         name: '',
-        classify: '',
+        category: '',
         address: '',
       }));
       const { getByPlaceholderText } = render((
@@ -58,7 +58,7 @@ describe('<FormContainer />', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         name: '',
-        classify: '',
+        category: '',
         address: '',
       }));
       const { getByPlaceholderText } = render((
@@ -70,8 +70,8 @@ describe('<FormContainer />', () => {
           { value: '치킨' },
       });
       expect(dispatch).toBeCalledWith({
-        type: 'updateClassify',
-        payload: { classify: '치킨' },
+        type: 'updateCategory',
+        payload: { category: '치킨' },
       });
     });
 
@@ -80,7 +80,7 @@ describe('<FormContainer />', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         name: '',
-        classify: '',
+        category: '',
         address: '',
       }));
       const { getByPlaceholderText } = render((
@@ -104,7 +104,7 @@ describe('<FormContainer />', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         name: '바른 치킨',
-        classify: '치킨',
+        category: '치킨',
         address: '시립대로',
       }));
       const { getByText } = render((

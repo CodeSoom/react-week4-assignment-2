@@ -2,8 +2,8 @@ export function updateName(name) {
   return { type: 'updateName', payload: { name } };
 }
 
-export function updateClassify(classify) {
-  return { type: 'updateClassify', payload: { classify } };
+export function updateCategory(category) {
+  return { type: 'updateCategory', payload: { category } };
 }
 
 export function updateAddress(address) {

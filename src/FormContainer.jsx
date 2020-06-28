@@ -5,15 +5,15 @@ import Form from './Form';
 
 import {
   updateName,
-  updateClassify,
+  updateCategory,
   updateAddress,
   addRestaurant,
 } from '../redux/actions';
 
 export default function FormContainer() {
-  const { name, classify, address } = useSelector((state) => ({
+  const { name, category, address } = useSelector((state) => ({
     name: state.name,
-    classify: state.classify,
+    category: state.category,
     address: state.address,
   }));
 
@@ -23,8 +23,8 @@ export default function FormContainer() {
     dispatch(updateName(event.target.value));
   }
 
-  function handleChangeClassify(event) {
-    dispatch(updateClassify(event.target.value));
+  function handleChangeCategory(event) {
+    dispatch(updateCategory(event.target.value));
   }
 
   function handleChangeAddress(event) {
@@ -39,10 +39,10 @@ export default function FormContainer() {
   return (
     <Form
       nameValue={name}
-      classifyValue={classify}
+      categoryValue={category}
       addressValue={address}
       onChangeName={handleChangName}
-      onChangeClassify={handleChangeClassify}
+      onChangeCategory={handleChangeCategory}
       onChangeAddress={handleChangeAddress}
       onSubmit={handleSubmitAddRestaurant}
     />
