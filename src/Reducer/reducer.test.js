@@ -1,7 +1,9 @@
 import reducer from './reducer';
 
 import {
-  updateRestaurant,
+  updateRestaurantName,
+  updateRestaurantCategory,
+  updateRestaurantAddress,
   addRestaurant,
 } from '../Action/actions';
 
@@ -10,16 +12,44 @@ describe('reducer', () => {
     name: '버튼업', category: '경양식', address: '마포구',
   };
 
-  describe('updateRestaurant', () => {
-    context('when input restaurant infomation', () => {
-      it('change restaurant obejct', () => {
+  describe('updateRestaurantName', () => {
+    context('when input restaurant name', () => {
+      it('change restaurant name', () => {
         const state = reducer({
           restaurant: {
             name: '', category: '', address: '',
           },
-        }, updateRestaurant(testRestaurant));
+        }, updateRestaurantName(testRestaurant.name));
 
-        expect(state.restaurant).toBe(testRestaurant);
+        expect(state.restaurant.name).toBe(testRestaurant.name);
+      });
+    });
+  });
+
+  describe('updateRestaurantCategory', () => {
+    context('when input restaurant cateogory', () => {
+      it('change restaurant category', () => {
+        const state = reducer({
+          restaurant: {
+            name: '', category: '', address: '',
+          },
+        }, updateRestaurantCategory(testRestaurant.category));
+
+        expect(state.restaurant.category).toBe(testRestaurant.category);
+      });
+    });
+  });
+
+  describe('updateRestaurantAddress', () => {
+    context('when input restaurant address', () => {
+      it('change restaurant address', () => {
+        const state = reducer({
+          restaurant: {
+            name: '', category: '', address: '',
+          },
+        }, updateRestaurantAddress(testRestaurant.address));
+
+        expect(state.restaurant.address).toBe(testRestaurant.address);
       });
     });
   });
