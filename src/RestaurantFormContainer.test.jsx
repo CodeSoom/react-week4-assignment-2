@@ -6,8 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantFormContainer from './RestaurantFormContainer';
 
-import { updateRestaurantField } from './actions';
-
 jest.mock('react-redux');
 
 describe('RestaurantFormContainer', () => {
