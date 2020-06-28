@@ -21,14 +21,30 @@ describe('reducer', () => {
     });
   });
 
-  context('이름을 입력하면', () => {
+  context('updateRestaurant', () => {
     it('이름이 바뀐 상태를 받는다.', () => {
       const newState = reducer(
         previousState,
-        updateTitle('마녀주방'),
+        updateRestaurant('마녀주방'),
       );
 
       expect(newState.title).toBe('마녀주방');
+    });
+    it('분류가 바뀐 상태를 받는다.', () => {
+      const newState = reducer(
+        previousState,
+        updateRestaurant('한식'),
+      );
+
+      expect(newState.kind).toBe('한식');
+    });
+    it('주소가 바뀐 상태를 받는다.', () => {
+      const newState = reducer(
+        previousState,
+        updateRestaurant('서울시 강남구'),
+      );
+
+      expect(newState.address).toBe('서울시 강남구');
     });
   });
 

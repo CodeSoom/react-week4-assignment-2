@@ -1,4 +1,4 @@
-export function updateTitle(title) {
+export function updateRestaurant(title) {
   return {
     type: 'updateTitle',
     payload: {
