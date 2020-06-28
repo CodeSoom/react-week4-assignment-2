@@ -1,6 +1,8 @@
 const initState = {
   newId: 1,
   title: '',
+  kind: '',
+  address: '',
   restaurants: [],
 };
 
