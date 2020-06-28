@@ -1,10 +1,13 @@
 import reducer from './reducer';
 
+import reservations from '../data/reservations';
+
 import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
   registerReservation,
+  setReservations,
 } from './actions';
 
 describe('reducer', () => {
@@ -96,5 +99,21 @@ describe('reducer', () => {
 
       expect(state.reservations).toHaveLength(0);
     });
+  });
+
+  test('setReservations', () => {
+    const state = reducer({
+      id: 1,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      reservations: [],
+    },
+    setReservations(reservations),
+    );
+
+    expect(state.reservations).toHaveLength(2);
   });
 });
