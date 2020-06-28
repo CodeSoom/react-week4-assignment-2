@@ -1,21 +1,8 @@
 import reducer from './reducer';
 
-import {
-  changeName, changeType, changeAddress, addRestaurant,
-} from './action';
+import { changeName, changeType, changeAddress, addRestaurant } from './action';
 
 describe('reducer', () => {
-  describe('without parameter', () => {
-    const newState = reducer();
-
-    it('state is initState', () => {
-      expect(newState.restaurantName).toBe('');
-      expect(newState.restaurantType).toBe('');
-      expect(newState.restaurantAddress).toBe('');
-      expect(newState.restaurants).toHaveLength(0);
-    });
-  });
-
   describe('changeRestaurant', () => {
     const prevState = {
       restaurants: [],
@@ -53,7 +40,7 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    it('clear New restaurant', () => {
+    it('clear a restaurant input', () => {
       const prevState = {
         restaurants: [],
         restaurantName: 'New restaurantName',
@@ -82,10 +69,28 @@ describe('reducer', () => {
     });
   });
 
-  describe('previousState is undefined', () => {
-    const newState = reducer(undefined, {});
+  describe('without previousState', () => {
+    it('returns previousState', () => {
+      const newState = reducer(undefined, {});
 
-    it('state is initState', () => {
+      expect(newState.restaurantName).toBe('');
+      expect(newState.restaurantType).toBe('');
+      expect(newState.restaurantAddress).toBe('');
+      expect(newState.restaurants).toHaveLength(0);
+    });
+  });
+
+  describe('without action', () => {
+    it('returns previousState', () => {
+      const prevState = {
+        restaurants: [],
+        restaurantName: '',
+        restaurantType: '',
+        restaurantAddress: '',
+      };
+
+      const newState = reducer(prevState, null);
+
       expect(newState.restaurantName).toBe('');
       expect(newState.restaurantType).toBe('');
       expect(newState.restaurantAddress).toBe('');
