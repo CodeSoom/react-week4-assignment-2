@@ -53,5 +53,49 @@ describe('reducer', () => {
         expect(state.restaurants.length).toEqual(3);
       });
     });
+    context('when one of blank value about restaurantName, restaurantCategory, restaurantAddress', () => {
+      it("doesn't work when restaurantName is blank", () => {
+        const state = reducer({
+          newId: 3,
+          restaurantName: '',
+          restaurantCategory: 'test',
+          restaurantAddress: 'test',
+          restaurants: [],
+        }, addRestaurant());
+
+        expect(state.restaurantName).toBe('');
+        expect(state.restaurantCategory).not.toBe('');
+        expect(state.restaurantAddress).not.toBe('');
+        expect(state.restaurants.length).toBe(0);
+      });
+      it("doesn't work when restaurantaCategory is blank", () => {
+        const state = reducer({
+          newId: 3,
+          restaurantName: 'test',
+          restaurantCategory: '',
+          restaurantAddress: 'test',
+          restaurants: [],
+        }, addRestaurant());
+
+        expect(state.restaurantName).not.toBe('');
+        expect(state.restaurantCategory).toBe('');
+        expect(state.restaurantAddress).not.toBe('');
+        expect(state.restaurants.length).toBe(0);
+      });
+      it("doesn't work when restaurantaAddress is blank", () => {
+        const state = reducer({
+          newId: 3,
+          restaurantName: 'test',
+          restaurantCategory: 'test',
+          restaurantAddress: '',
+          restaurants: [],
+        }, addRestaurant());
+
+        expect(state.restaurantName).not.toBe('');
+        expect(state.restaurantCategory).not.toBe('');
+        expect(state.restaurantAddress).toBe('');
+        expect(state.restaurants.length).toBe(0);
+      });
+    });
   });
 });
