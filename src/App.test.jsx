@@ -48,87 +48,71 @@ describe('<App />', () => {
     }));
   });
 
-  context('when initialized', () => {
-    it('renders title', () => {
-      // when
-      const { heading } = renderApp();
+  it('renders title', () => {
+    // when
+    const { heading } = renderApp();
 
-      // then
-      expect(heading).toBeInTheDocument();
-    });
-
-    it('renders input boxes', () => {
-      // when
-      const { nameInput, categoryInput, addressInput } = renderApp();
-
-      // then
-      expect(nameInput).toBeInTheDocument();
-      expect(categoryInput).toBeInTheDocument();
-      expect(addressInput).toBeInTheDocument();
-    });
-
-    it('renders register button', () => {
-      // when
-      const { registerButton } = renderApp();
-
-      // then
-      expect(registerButton).toBeInTheDocument();
-    });
+    // then
+    expect(heading).toBeInTheDocument();
   });
 
-  describe('register restaurant', () => {
-    // given
-    const inputValues = [{
-      name: '시카고피자',
-      category: '양식',
-      address: '이태원동',
-    },
-    {
-      name: '마녀주방',
-      category: '한식',
-      address: '서울시 강남구',
-    }];
+  it('renders input boxes', () => {
+    // when
+    const { nameInput, categoryInput, addressInput } = renderApp();
 
-    context('when entering restaurant information', () => {
-      it('renders the entered value', () => {
-        // given
-        const restaurant = inputValues[0];
+    // then
+    expect(nameInput).toBeInTheDocument();
+    expect(categoryInput).toBeInTheDocument();
+    expect(addressInput).toBeInTheDocument();
+  });
 
-        // when
-        const { nameInput, categoryInput, addressInput } = renderApp();
-        enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
+  it('renders register button', () => {
+    // when
+    const { registerButton } = renderApp();
 
-        // then
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch).toBeCalledWith({
-          type: 'updateInput',
-          payload: { name: 'name', value: restaurant.name },
-        });
-        expect(dispatch).toBeCalledWith({
-          type: 'updateInput',
-          payload: { name: 'category', value: restaurant.category },
-        });
-        expect(dispatch).toBeCalledWith({
-          type: 'updateInput',
-          payload: { name: 'address', value: restaurant.address },
-        });
+    // then
+    expect(registerButton).toBeInTheDocument();
+  });
+
+  describe('enter restaurant', () => {
+    it('renders the entered value', () => {
+      // given
+      const restaurant = restaurants[0];
+
+      // when
+      const { nameInput, categoryInput, addressInput } = renderApp();
+      enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
+
+      // then
+      expect(dispatch).toHaveBeenCalledTimes(3);
+      expect(dispatch).toBeCalledWith({
+        type: 'updateInput',
+        payload: { name: 'name', value: restaurant.name },
+      });
+      expect(dispatch).toBeCalledWith({
+        type: 'updateInput',
+        payload: { name: 'category', value: restaurant.category },
+      });
+      expect(dispatch).toBeCalledWith({
+        type: 'updateInput',
+        payload: { name: 'address', value: restaurant.address },
       });
     });
 
-    context('When the registration button is clicked', () => {
+    describe('click registration button', () => {
       it('add restaurant to the list', () => {
         // when
         const {
           nameInput, categoryInput, addressInput, registerButton,
         } = renderApp();
 
-        inputValues.forEach((restaurant) => {
+        restaurants.forEach((restaurant) => {
           enterRestaurantInformation({ nameInput, categoryInput, addressInput }, restaurant);
           fireEvent.click(registerButton);
         });
 
         // then
-        inputValues.forEach(() => {
+        restaurants.forEach(() => {
           expect(dispatch).toBeCalledWith({
             type: 'registerRestaurant',
             payload: {},
