@@ -9,6 +9,14 @@ export default function reducer(state = initState, action = {}) {
       ...state,
       title,
     }),
+    addRestaurant: () => {
+      const { title, restaurants } = state;
+      return {
+        ...state,
+        title: '',
+        restaurants: [...restaurants, { id: 2, title }],
+      };
+    },
   };
 
   return reducers[action.type] ? (

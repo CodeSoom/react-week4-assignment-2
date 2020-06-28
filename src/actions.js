@@ -6,3 +6,9 @@ export function updateTitle(title) {
     },
   };
 }
+
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
+}
