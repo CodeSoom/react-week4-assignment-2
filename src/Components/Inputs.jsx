@@ -12,6 +12,7 @@ export default function Inputs({ value, onChanges, onClick }) {
         onChange={onChanges.name}
       />
       <input
+        name="category"
         id="input-category"
         type="text"
         placeholder="분류"
@@ -19,6 +20,7 @@ export default function Inputs({ value, onChanges, onClick }) {
         onChange={onChanges.category}
       />
       <input
+        name="address"
         id="input-address"
         type="text"
         placeholder="주소"
