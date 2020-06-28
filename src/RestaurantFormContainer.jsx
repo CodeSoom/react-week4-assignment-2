@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantForm from './RestaurantForm';
 
-import { changeName, changeType, changeAddress, addRestaurant } from './action';
+import {
+  changeName, changeType, changeAddress, addRestaurant,
+} from './action';
 
 function selector(state) {
   return {

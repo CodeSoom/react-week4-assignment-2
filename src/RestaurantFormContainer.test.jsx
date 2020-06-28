@@ -94,7 +94,6 @@ describe('<RestaurantFormContainer />', () => {
   context('when the user add a new restaurant', () => {
     it('input is empty', () => {
       useSelector.mockImplementation((selector) => selector({
-        // restaurants: [],
         restaurant: {
           name: '레스토랑',
           type: '분류4',
@@ -105,7 +104,6 @@ describe('<RestaurantFormContainer />', () => {
       const dispatch = jest.fn();
       useDispatch.mockImplementation(() => dispatch);
 
-      const handleAddRestaurant = jest.fn();
       const { getByText } = render(
         <RestaurantFormContainer />,
       );

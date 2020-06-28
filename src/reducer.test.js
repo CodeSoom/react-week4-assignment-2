@@ -1,6 +1,8 @@
 import reducer from './reducer';
 
-import { changeName, changeType, changeAddress, addRestaurant } from './action';
+import {
+  changeName, changeType, changeAddress, addRestaurant,
+} from './action';
 
 describe('reducer', () => {
   describe('changeRestaurant', () => {

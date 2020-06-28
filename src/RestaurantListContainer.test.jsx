@@ -12,7 +12,6 @@ jest.mock('react-redux');
 
 describe('<RestaurantListContainer />', () => {
   describe('Initial Rendering', () => {
-
     context('with restaurants', () => {
       it('shows restaurants', () => {
         useSelector.mockImplementation((selector) => selector({
@@ -62,6 +61,5 @@ describe('<RestaurantListContainer />', () => {
         expect(container).not.toHaveTextContent(/주소3/i);
       });
     });
-
   });
 });
