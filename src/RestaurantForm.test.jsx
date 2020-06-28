@@ -3,12 +3,9 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantForm from './RestaurantForm';
+import { newRestaurant } from '../fixture/test-data';
 
 test('RestaurantForm', () => {
-  const newRestaurant = {
-    name: '맘스터치', category: '패스트푸드', address: '용인수지',
-  };
-
   const handleChange = jest.fn();
   const handleClickSubmit = jest.fn();
 

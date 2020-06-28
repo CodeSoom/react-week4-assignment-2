@@ -6,14 +6,13 @@ import RestaurantFormContainer from './RestaurantFormContainer';
 import {
   changeRestaurant, saveNewRestaurant,
 } from './actions';
+import {
+  newRestaurant, name,
+} from '../fixture/test-data';
 
 jest.mock('react-redux');
 
 describe('RestaurantForm', () => {
-  const newRestaurant = {
-    name: '맘스터치', category: '패스트푸드', address: '용인수지',
-  };
-
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -26,10 +25,10 @@ describe('RestaurantForm', () => {
       );
 
       fireEvent.change(getByPlaceholderText(/이름/), {
-        target: { value: '버거킹' },
+        target: { value: name },
       });
 
-      expect(dispatch).toBeCalledWith(changeRestaurant('name', '버거킹'));
+      expect(dispatch).toBeCalledWith(changeRestaurant('name', name));
     });
   });
 

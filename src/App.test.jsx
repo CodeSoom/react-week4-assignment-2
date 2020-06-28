@@ -5,6 +5,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 import { changeRestaurant, saveNewRestaurant } from './actions';
+import {
+  name, category, address, newRestaurant, restaurants,
+} from '../fixture/test-data';
 
 jest.mock('react-redux');
 
@@ -12,12 +15,8 @@ describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    newRestaurant: {
-      name: '김밥헤븐',
-      category: '분식',
-      address: '강남',
-    },
-    restaurants: [],
+    newRestaurant,
+    restaurants,
   }));
 
   it('renders title', () => {
@@ -29,7 +28,6 @@ describe('App', () => {
 
   context('when name is changed', () => {
     it('occurs changeRestaurants action', () => {
-      const name = '깐부치킨';
       const { getByPlaceholderText } = render((
         <App />
       ));
@@ -41,7 +39,6 @@ describe('App', () => {
 
   context('when category is changed', () => {
     it('occurs changeRestaurants action', () => {
-      const category = '치킨';
       const { getByPlaceholderText } = render((
         <App />
       ));
@@ -53,7 +50,6 @@ describe('App', () => {
 
   context('when address is changed', () => {
     it('occurs changeRestaurants action', () => {
-      const address = '용인수지';
       const { getByPlaceholderText } = render((
         <App />
       ));
