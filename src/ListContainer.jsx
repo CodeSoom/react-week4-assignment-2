@@ -10,8 +10,6 @@ export default function ListContainer() {
   }));
 
   return (
-    <>
-      <List restaurants={restaurants} />
-    </>
+    <List restaurants={restaurants} />
   );
 }
