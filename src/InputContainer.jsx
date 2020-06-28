@@ -5,29 +5,33 @@ import { useSelector, useDispatch } from 'react-redux';
 import Input from './Input';
 
 import {
-  updateTitle,
+  updateRestaurant,
   addRestaurant,
 } from './actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  function handleChangeTitle(event) {
-    dispatch(updateTitle(event.target.value));
+  function handleChange(event) {
+    dispatch(updateRestaurant(event.target));
   }
 
   function handleAddRestaurant() {
     dispatch(addRestaurant());
   }
 
-  const { title } = useSelector((state) => ({
+  const { title, kind, address } = useSelector((state) => ({
     title: state.title,
+    kind: state.kind,
+    address: state.address,
   }));
 
   return (
     <Input
       title={title}
-      onChangeTitle={handleChangeTitle}
+      kind={kind}
+      address={address}
+      onChange={handleChange}
       onClickAddRestaurant={handleAddRestaurant}
     />
   );
