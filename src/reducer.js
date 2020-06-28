@@ -66,11 +66,21 @@ function registerReservation(state) {
   };
 }
 
+function setReservations(state, action) {
+  const { reservations } = state;
+
+  return {
+    ...state,
+    reservations: [...reservations, ...action.payload.reservations],
+  }
+}
+
 const handleAction = {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
   registerReservation,
+  setReservations,
 };
 
 export default function reducer(state = initialState, action) {
