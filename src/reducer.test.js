@@ -31,17 +31,26 @@ describe('reducer', () => {
           restaurants,
         }, addRestaurant());
 
-        expect(state.restaurantName).toBe('');
-        expect(state.restaurantCategory).toBe('');
-        expect(state.restaurantAddress).toBe('');
-
-        expect(state.restaurants.length).toEqual(3);
-
         restaurants.forEach((data, index) => {
           expect(state.restaurants[index].name).toBe(restaurants[index].name);
           expect(state.restaurants[index].category).toBe(restaurants[index].category);
           expect(state.restaurants[index].address).toBe(restaurants[index].address);
         });
+      });
+      it('clears all value of name, category, address after append a new restaurant', () => {
+        const state = reducer({
+          newId: 3,
+          restaurantName: 'test_name',
+          restaurantCategory: 'test_category',
+          restaurantAddress: 'test_address',
+          restaurants,
+        }, addRestaurant());
+
+        expect(state.restaurantName).toBe('');
+        expect(state.restaurantCategory).toBe('');
+        expect(state.restaurantAddress).toBe('');
+
+        expect(state.restaurants.length).toEqual(3);
       });
     });
   });
