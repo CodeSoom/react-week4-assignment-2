@@ -7,6 +7,7 @@ import {
 
 describe('reducer', () => {
   const previousState = {
+    newId: 1,
     title: '',
     restaurants: [],
   };

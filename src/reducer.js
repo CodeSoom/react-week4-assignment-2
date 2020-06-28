@@ -1,4 +1,5 @@
 const initState = {
+  newId: 1,
   title: '',
   restaurants: [],
 };
