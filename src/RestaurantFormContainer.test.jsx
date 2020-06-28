@@ -20,11 +20,13 @@ describe('RestaurantForm', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({ newRestaurant }));
 
+  const renderRestaurantFormContainer = () => render(
+    <RestaurantFormContainer />,
+  );
+
   context('when input value is changed', () => {
     it('occurs changeRestarant action', () => {
-      const { getByPlaceholderText } = render(
-        <RestaurantFormContainer />,
-      );
+      const { getByPlaceholderText } = renderRestaurantFormContainer();
 
       fireEvent.change(getByPlaceholderText(/이름/), {
         target: { value: name },
@@ -36,9 +38,7 @@ describe('RestaurantForm', () => {
 
   context('wheh submit button is clicked', () => {
     it('occurs saveNewRestaurant', () => {
-      const { getByText } = render(
-        <RestaurantFormContainer />,
-      );
+      const { getByText } = renderRestaurantFormContainer();
 
       fireEvent.click(getByText(/등록/));
 

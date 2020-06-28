@@ -11,15 +11,22 @@ import {
 describe('reducer', () => {
   const triggerMockAction = () => ({ action: 'mockAction' });
 
+  function expectToBeSame(expected, matched) {
+    expect(expected.id).not.toBeUndefined();
+    expect(expected.name).toBe(matched.name);
+    expect(expected.category).toBe(matched.category);
+    expect(expected.address).toBe(matched.address);
+  }
+
   context('when reducer is executed first time', () => {
     it('set initial state', () => {
       const state = reducer(undefined, triggerMockAction());
 
       expect(state.newId).not.toBeNull();
-      expect(state.newRestaurant.name).toHaveLength(0);
-      expect(state.newRestaurant.category).toHaveLength(0);
-      expect(state.newRestaurant.address).toHaveLength(0);
-      expect(state.restaurants).toHaveLength(0);
+
+      Object.values(state.newRestaurant).forEach((value) => {
+        expect(value).toHaveLength(0);
+      });
     });
   });
 
@@ -61,10 +68,10 @@ describe('reducer', () => {
     it('appends a new restaurant into restaurants', () => {
       const state = reducer(testState, saveNewRestaurant());
 
-      expect(state.restaurants[1].id).not.toBeUndefined();
-      expect(state.restaurants[1].name).toBe(testState.newRestaurant.name);
-      expect(state.restaurants[1].category).toBe(testState.newRestaurant.category);
-      expect(state.restaurants[1].address).toBe(testState.newRestaurant.address);
+      const newState = state.restaurants[1];
+      const savedRestaurant = testState.newRestaurant;
+
+      expectToBeSame(newState, savedRestaurant);
     });
   });
 
@@ -75,11 +82,10 @@ describe('reducer', () => {
         setInitialRestaurants(restaurants),
       );
 
-      expect(state.restaurants).toHaveLength(1);
-      expect(state.restaurants[0].id).not.toBeUndefined();
-      expect(state.restaurants[0].name).toBe(restaurants[0].name);
-      expect(state.restaurants[0].category).toBe(restaurants[0].category);
-      expect(state.restaurants[0].address).toBe(restaurants[0].address);
+      const newState = state.restaurants[0];
+      const initializedRestaurant = restaurants[0];
+
+      expectToBeSame(newState, initializedRestaurant);
     });
   });
 });

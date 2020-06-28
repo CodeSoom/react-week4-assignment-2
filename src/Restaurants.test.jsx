@@ -6,17 +6,17 @@ import Restaurants from './Restaurants';
 import { restaurants } from '../fixture/test-data';
 
 describe('Restaurants', () => {
-  function renderList(listItems) {
+  function renderRestaurants(value) {
     return render((
       <Restaurants
-        restaurants={listItems}
+        restaurants={value}
       />
     ));
   }
 
   context('with restaurants', () => {
     it('renders list', () => {
-      const { getByText } = renderList(restaurants);
+      const { getByText } = renderRestaurants(restaurants);
 
       expect(getByText('치뽈레 | 양식 | 산호세')).not.toBeNull();
     });
@@ -24,7 +24,7 @@ describe('Restaurants', () => {
 
   context('without restaurants', () => {
     it('renders ', () => {
-      const { container } = renderList([]);
+      const { container } = renderRestaurants([]);
 
       expect(container.innerText).toBeUndefined();
     });
