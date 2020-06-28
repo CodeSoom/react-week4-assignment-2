@@ -22,7 +22,6 @@ describe('Input', () => {
         target: { value: '마녀주방' },
       });
 
-      expect(getByDisplayValue('마녀주방')).not.toBeNull();
       expect(handleChange).toBeCalled();
     });
   });
