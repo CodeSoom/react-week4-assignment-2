@@ -3,7 +3,16 @@ const initState = {
 };
 
 export default function reducer(state = initState, action) {
-  const reducers = {};
+  const reducers = {
+    updateTitle: ({ title }) => ({
+      ...state,
+      title,
+    }),
+  };
 
-  return state;
+  return reducers[action.type] ? (
+    reducers[action.type](action.payload)
+  ) : (
+    state
+  );
 }
