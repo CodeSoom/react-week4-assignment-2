@@ -59,6 +59,24 @@ describe('reducer', () => {
         expect(address).toBe('');
       });
     });
+
+    context('without new restaurant', () => {
+      const previousState = {
+        newId: 1,
+        restaurant: {
+          name: '한식당',
+          category: '한식',
+          address: '',
+        },
+        restaurants: [],
+      };
+
+      it('restaurant값이 하나라도 없으면 이전상태를 반환합니다.', () => {
+        const newState = reducer(previousState, addRestaurant());
+
+        expect(newState).toEqual(previousState);
+      });
+    });
   });
 
   context('without existed action', () => {
