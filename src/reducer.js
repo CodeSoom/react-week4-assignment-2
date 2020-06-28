@@ -43,6 +43,13 @@ function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setInitialRestaurants') {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
+    };
+  }
+
   return state;
 }
 
