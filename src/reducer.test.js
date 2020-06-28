@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  addRestaurant, changeRestaurantName, changeRestaurantCategory, changeRestaurantAddress
+  addRestaurant, changeRestaurantName, changeRestaurantCategory, changeRestaurantAddress,
 } from './actions';
 
 describe('reducer', () => {

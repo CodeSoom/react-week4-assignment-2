@@ -7,15 +7,10 @@ import {
 } from './actions';
 
 export default function InputContainer() {
-  const restaurantName = useSelector((state) => ({
-    restaurantName: state,
-  }));
-  const restaurantCategory = useSelector((state) => ({
-    restaurantCategory: state.restaurantCategory,
-  }));
-  const restaurantAddress = useSelector((state) => ({
-    restaurantAddress: state.restaurantAddress,
-  }));
+  // ASK: 구조분해 할당
+  const restaurantName = useSelector((state) => (state.restaurantName));
+  const restaurantCategory = useSelector((state) => (state.restaurantCategory));
+  const restaurantAddress = useSelector((state) => (state.restaurantAddress));
 
   const dispatch = useDispatch();
 
