@@ -1,6 +1,9 @@
 import React from 'react';
 
-export default function Input({ title, onChangeTitle, onClickAddRestaurant }) {
+export default function Input({
+  title, onChangeTitle, onClickAddRestaurant,
+  kind, onChangeKind,
+}) {
   return (
     <div>
       <input
@@ -8,6 +11,12 @@ export default function Input({ title, onChangeTitle, onClickAddRestaurant }) {
         onChange={onChangeTitle}
         value={title}
         placeholder="이름"
+      />
+      <input
+        type="text"
+        onChange={onChangeKind}
+        value={kind}
+        placeholder="분류"
       />
       <button
         type="button"
