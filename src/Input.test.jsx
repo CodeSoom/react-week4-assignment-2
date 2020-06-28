@@ -41,7 +41,7 @@ describe('Input', () => {
       const handleChangeRestaurant = jest.fn();
       const handleClick = jest.fn();
 
-      const { container } = render(
+      const { getByRole } = render(
         <Input
           restaurant={restaurant}
           onChange={handleChangeRestaurant}
@@ -49,9 +49,9 @@ describe('Input', () => {
         />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
+      const nameInput = getByRole('textbox', { name: 'name' });
+      const categoryInput = getByRole('textbox', { name: 'category' });
+      const addressInput = getByRole('textbox', { name: 'address' });
 
       fireEvent.change(nameInput, { target: { value: '한식당' } });
 

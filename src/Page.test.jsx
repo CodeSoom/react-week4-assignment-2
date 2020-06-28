@@ -38,17 +38,15 @@ describe('Page', () => {
     });
 
     it('3개의 input이 있다.', () => {
-      const { container } = render(
+      const { getAllByRole } = render(
         <Page />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
+      const Inputs = getAllByRole('textbox');
 
-      expect(nameInput).not.toBeNull();
-      expect(categoryInput).not.toBeNull();
-      expect(addressInput).not.toBeNull();
+      Inputs.forEach((Input) => {
+        expect(Input).not.toBeNull();
+      });
     });
 
     it('등록 버튼이 보인다.', () => {

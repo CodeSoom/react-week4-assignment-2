@@ -25,43 +25,37 @@ describe('InputContainer', () => {
 
   context('without values', () => {
     it('3개의 input이 보입니다.', () => {
-      const { container } = render(
+      const { getAllByRole } = render(
         <InputContainer />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
+      const Inputs = getAllByRole('textbox');
 
-      expect(nameInput).not.toBeNull();
-      expect(categoryInput).not.toBeNull();
-      expect(addressInput).not.toBeNull();
+      Inputs.forEach((Input) => {
+        expect(Input).not.toBeNull();
+      });
     });
   });
 
   context('with values', () => {
-    it('restaurant의 값이 보입니다.', () => {
-      const { container } = render(
+    it('restaurant의 이름, 구분, 주소값이 보인다.', () => {
+      const { getByDisplayValue } = render(
         <InputContainer />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
-
-      expect(nameInput.value).toBe('한식당');
-      expect(categoryInput.value).toBe('한식');
-      expect(addressInput.value).toBe('강남구');
+      expect(getByDisplayValue('한식당')).not.toBeNull();
+      expect(getByDisplayValue('한식')).not.toBeNull();
+      expect(getByDisplayValue('강남구')).not.toBeNull();
     });
   });
 
   context('when change values', () => {
     it('name input이 변경되면 dispatch가 실행됩니다.', () => {
-      const { container } = render(
+      const { getByRole } = render(
         <InputContainer />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
+      const nameInput = getByRole('textbox', { name: 'name' });
 
       fireEvent.change(nameInput, { target: { value: '마녀식당' } });
 
@@ -69,11 +63,11 @@ describe('InputContainer', () => {
     });
 
     it('category input이 변경되면 dispatch가 실행됩니다.', () => {
-      const { container } = render(
+      const { getByRole } = render(
         <InputContainer />,
       );
 
-      const categoryInput = container.querySelector('input[name = category]');
+      const categoryInput = getByRole('textbox', { name: 'category' });
 
       fireEvent.change(categoryInput, { target: { value: '중식' } });
 
@@ -81,13 +75,13 @@ describe('InputContainer', () => {
     });
 
     it('name input이 변경되면 dispatch가 실행됩니다.', () => {
-      const { container } = render(
+      const { getByRole } = render(
         <InputContainer />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
+      const addressInput = getByRole('textbox', { name: 'address' });
 
-      fireEvent.change(nameInput, { target: { value: '마녀식당' } });
+      fireEvent.change(addressInput, { target: { value: '마녀식당' } });
 
       expect(dispatch).toBeCalled();
     });
