@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Input(
-  { informations: { name, category, address }, onChange, onClick },
+  { restaurant: { name, category, address }, onChange, onClick },
 ) {
   return (
     <>

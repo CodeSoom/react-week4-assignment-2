@@ -9,45 +9,43 @@ import App from './App';
 jest.mock('react-redux');
 
 describe('App', () => {
-  const informations = {
+  const restaurant = {
     name: '한식당',
     category: '한식',
     address: '강남구',
   };
 
   useSelector.mockImplementation((selector) => selector({
-    informations,
+    restaurant,
   }));
 
-  context('when start application', () => {
-    it('Restaurants가 보인다.', () => {
-      const { container } = render(
-        <App />,
-      );
+  it('Restaurants가 보인다.', () => {
+    const { container } = render(
+      <App />,
+    );
 
-      expect(container).toHaveTextContent('Restaurants');
-    });
+    expect(container).toHaveTextContent('Restaurants');
+  });
 
-    it('3개의 input이 있다.', () => {
-      const { container } = render(
-        <App />,
-      );
+  it('3개의 input이 있다.', () => {
+    const { container } = render(
+      <App />,
+    );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
+    const nameInput = container.querySelector('input[name = name]');
+    const categoryInput = container.querySelector('input[name = category]');
+    const addressInput = container.querySelector('input[name = address]');
 
-      expect(nameInput).not.toBeNull();
-      expect(categoryInput).not.toBeNull();
-      expect(addressInput).not.toBeNull();
-    });
+    expect(nameInput).not.toBeNull();
+    expect(categoryInput).not.toBeNull();
+    expect(addressInput).not.toBeNull();
+  });
 
-    it('등록 버튼이 보인다.', () => {
-      const { container } = render(
-        <App />,
-      );
+  it('등록 버튼이 보인다.', () => {
+    const { container } = render(
+      <App />,
+    );
 
-      expect(container).toHaveTextContent('등록');
-    });
+    expect(container).toHaveTextContent('등록');
   });
 });

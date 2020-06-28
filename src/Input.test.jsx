@@ -5,78 +5,46 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  context('without input values', () => {
-    it('값이 없는 3개의 input이 보인다.', () => {
-      const informations = {
-        name: '',
-        category: '',
-        address: '',
-      };
-
-      const { container } = render(
-        <Input
-          informations={informations}
-        />,
-      );
-
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
-
-      expect(nameInput).not.toBeNull();
-      expect(categoryInput).not.toBeNull();
-      expect(addressInput).not.toBeNull();
-
-      expect(nameInput.value).toBe('');
-      expect(categoryInput.value).toBe('');
-      expect(addressInput.value).toBe('');
-    });
-  });
-
   context('with input values', () => {
     it('input에 value가 보인다.', () => {
-      const informations = {
+      const restaurant = {
         name: '한식당',
         category: '한식',
         address: '강남구',
       };
 
-      const handleChangeInformations = jest.fn();
+      const handleChangeRestaurant = jest.fn();
       const handleClick = jest.fn();
 
-      const { container } = render(
+      const { getByDisplayValue } = render(
         <Input
-          informations={informations}
-          onChange={handleChangeInformations}
+          restaurant={restaurant}
+          onChange={handleChangeRestaurant}
           handleClick={handleClick}
         />,
       );
 
-      const nameInput = container.querySelector('input[name = name]');
-      const categoryInput = container.querySelector('input[name = category]');
-      const addressInput = container.querySelector('input[name = address]');
-
-      expect(nameInput.value).toBe(informations.name);
-      expect(categoryInput.value).toBe(informations.category);
-      expect(addressInput.value).toBe(informations.address);
+      expect(getByDisplayValue('한식당')).not.toBeNull();
+      expect(getByDisplayValue('한식')).not.toBeNull();
+      expect(getByDisplayValue('강남구')).not.toBeNull();
     });
   });
 
   context('when input change', () => {
-    it('handleChangeInformations 함수가 실행된다.', () => {
-      const informations = {
+    it('handleChangeRestaurant 함수가 실행된다.', () => {
+      const restaurant = {
         name: '',
         category: '',
         address: '',
       };
 
-      const handleChangeInformations = jest.fn();
+      const handleChangeRestaurant = jest.fn();
       const handleClick = jest.fn();
 
       const { container } = render(
         <Input
-          informations={informations}
-          onChange={handleChangeInformations}
+          restaurant={restaurant}
+          onChange={handleChangeRestaurant}
           handleClick={handleClick}
         />,
       );
@@ -87,33 +55,33 @@ describe('Input', () => {
 
       fireEvent.change(nameInput, { target: { value: '한식당' } });
 
-      expect(handleChangeInformations).toBeCalled();
+      expect(handleChangeRestaurant).toBeCalled();
 
       fireEvent.change(categoryInput, { target: { value: '한식' } });
 
-      expect(handleChangeInformations).toBeCalled();
+      expect(handleChangeRestaurant).toBeCalled();
 
       fireEvent.change(addressInput, { target: { value: '강남구' } });
 
-      expect(handleChangeInformations).toBeCalled();
+      expect(handleChangeRestaurant).toBeCalled();
     });
   });
 
   context('when click 등록', () => {
     it('handleClick 함수가 실행된다.', () => {
-      const informations = {
+      const restaurant = {
         name: '',
         category: '',
         address: '',
       };
 
-      const handleChangeInformations = jest.fn();
+      const handleChangeRestaurant = jest.fn();
       const handleClick = jest.fn();
 
       const { getByText } = render(
         <Input
-          informations={informations}
-          onChange={handleChangeInformations}
+          restaurant={restaurant}
+          onChange={handleChangeRestaurant}
           onClick={handleClick}
         />,
       );

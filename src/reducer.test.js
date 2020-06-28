@@ -1,46 +1,34 @@
 import reducer from './reducer';
 
 import {
-  updateInformations,
+  updateRestaurant,
   addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
-  describe('updateInformations', () => {
-    context('with new informations', () => {
+  describe('updateRestaurant', () => {
+    context('with new restaurant', () => {
       const previousState = {
-        informations: {
+        restaurant: {
           name: '',
           category: '',
           address: '',
         },
       };
 
-      it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, updateInformations('name', '한식당'));
+      it('restaurant이 값이 업데이트된다.', () => {
+        const newState = reducer(previousState, updateRestaurant('name', '한식당'));
 
-        expect(newState.informations.name).toEqual('한식당');
-      });
-
-      it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, updateInformations('category', '한식'));
-
-        expect(newState.informations.category).toEqual('한식');
-      });
-
-      it('new state를 반환한다.', () => {
-        const newState = reducer(previousState, updateInformations('address', '강남구'));
-
-        expect(newState.informations.address).toEqual('강남구');
+        expect(newState.restaurant.name).toEqual('한식당');
       });
     });
   });
 
   describe('addRestaurant', () => {
-    context('with new informations', () => {
+    context('with new restaurant', () => {
       const previousState = {
         newId: 1,
-        informations: {
+        restaurant: {
           name: '한식당',
           category: '한식',
           address: '강남구',
@@ -61,10 +49,10 @@ describe('reducer', () => {
         expect(newState.newId).toBe(1 + 1);
       });
 
-      it('informations가 초기화 된다.', () => {
+      it('restaurant가 초기화 된다.', () => {
         const newState = reducer(previousState, addRestaurant());
 
-        const { name, category, address } = newState.informations;
+        const { name, category, address } = newState.restaurant;
 
         expect(name).toBe('');
         expect(category).toBe('');
@@ -76,7 +64,7 @@ describe('reducer', () => {
   context('without existed action', () => {
     it('state를 반환한다.', () => {
       const state = reducer({
-        informations: {
+        restaurant: {
           name: '마녀식당',
           category: '한식',
           address: '강남구',
@@ -86,7 +74,7 @@ describe('reducer', () => {
       });
 
       expect(state).toEqual({
-        informations: {
+        restaurant: {
           name: '마녀식당',
           category: '한식',
           address: '강남구',
@@ -97,9 +85,9 @@ describe('reducer', () => {
 
   context('without state', () => {
     it('initialState를 사용한다.', () => {
-      const state = reducer(undefined, updateInformations('name', '한식당'));
+      const state = reducer(undefined, updateRestaurant('name', '한식당'));
 
-      expect(state.informations.name).toBe('한식당');
+      expect(state.restaurant.name).toBe('한식당');
     });
   });
 });

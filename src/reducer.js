@@ -1,6 +1,6 @@
 const initialState = {
   newId: 1,
-  informations: {
+  restaurant: {
     name: '',
     category: '',
     address: '',
@@ -9,25 +9,25 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  const { newId, informations, restaurants } = state;
+  const { newId, restaurant, restaurants } = state;
 
-  if (action.type === 'updateInformations') {
+  if (action.type === 'updateRestaurant') {
     return {
       ...state,
-      informations: {
-        ...informations,
-        [action.payload.target]: action.payload.value,
+      restaurant: {
+        ...restaurant,
+        [action.payload.target]: action.payload.inputValue,
       },
     };
   }
 
   if (action.type === 'addRestaurant') {
-    const { name, category, address } = informations;
+    const { name, category, address } = restaurant;
 
     return {
       ...state,
       newId: newId + 1,
-      informations: {
+      restaurant: {
         name: '',
         category: '',
         address: '',

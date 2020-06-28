@@ -5,19 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import Input from './Input';
 
 import {
-  updateInformations,
+  updateRestaurant,
   addRestaurant,
 } from './actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  const informations = useSelector((state) => state.informations);
+  const restaurant = useSelector((state) => state.restaurant);
 
-  function handleChangeInformations(event) {
+  function handleChangeRestaurant(event) {
     const target = event.target.name;
     const { value } = event.target;
-    dispatch(updateInformations(target, value));
+
+    dispatch(updateRestaurant(target, value));
   }
 
   function handleClick() {
@@ -26,8 +27,8 @@ export default function InputContainer() {
 
   return (
     <Input
-      informations={informations}
-      onChange={handleChangeInformations}
+      restaurant={restaurant}
+      onChange={handleChangeRestaurant}
       onClick={handleClick}
     />
   );

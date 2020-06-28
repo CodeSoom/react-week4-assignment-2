@@ -13,14 +13,14 @@ describe('InputContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  const informations = {
+  const restaurant = {
     name: '한식당',
     category: '한식',
     address: '강남구',
   };
 
   useSelector.mockImplementation((selector) => selector({
-    informations,
+    restaurant,
   }));
 
   context('without values', () => {
@@ -40,7 +40,7 @@ describe('InputContainer', () => {
   });
 
   context('with values', () => {
-    it('informations의 값이 보입니다.', () => {
+    it('restaurant의 값이 보입니다.', () => {
       const { container } = render(
         <InputContainer />,
       );

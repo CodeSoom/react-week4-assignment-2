@@ -9,14 +9,14 @@ import Page from './Page';
 jest.mock('react-redux');
 
 describe('Page', () => {
-  const informations = {
+  const restaurant = {
     name: '한식당',
     category: '한식',
     address: '강남구',
   };
 
   useSelector.mockImplementation((selector) => selector({
-    informations,
+    restaurant,
   }));
 
   context('when start application', () => {
