@@ -25,7 +25,7 @@ describe('reducer', () => {
     it('이름이 바뀐 상태를 받는다.', () => {
       const target = {
         name: 'title',
-        title: '마녀주방',
+        value: '마녀주방',
       };
 
       const newState = reducer(
@@ -38,7 +38,7 @@ describe('reducer', () => {
     it('분류가 바뀐 상태를 받는다.', () => {
       const target = {
         name: 'kind',
-        kind: '한식',
+        value: '한식',
       };
       const newState = reducer(
         previousState,
@@ -50,7 +50,7 @@ describe('reducer', () => {
     it('주소가 바뀐 상태를 받는다.', () => {
       const target = {
         name: 'address',
-        address: '서울시 강남구',
+        value: '서울시 강남구',
       };
       const newState = reducer(
         previousState,
