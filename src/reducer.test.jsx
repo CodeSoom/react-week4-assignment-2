@@ -66,11 +66,16 @@ describe('reducer', () => {
       const newState = reducer({
         newId: 1,
         title: '시카고 피자',
+        kind: '양식',
+        address: '인천 학익동',
         restaurants: [],
       }, addRestaurant());
 
       expect(newState.newId).toBe(2);
       expect(newState.restaurants).toHaveLength(1);
+      expect(newState.title).toBe('');
+      expect(newState.kind).toBe('');
+      expect(newState.address).toBe('');
     });
   });
 });
