@@ -9,18 +9,21 @@ export default function Input({
         type="text"
         onChange={onChange}
         value={title}
+        name="title"
         placeholder="이름"
       />
       <input
         type="text"
         onChange={onChange}
         value={kind}
+        name="kind"
         placeholder="분류"
       />
       <input
         type="text"
         onChange={onChange}
         value={address}
+        name="address"
         placeholder="주소"
       />
       <button
