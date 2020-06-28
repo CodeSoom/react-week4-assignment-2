@@ -9,6 +9,7 @@ describe('reducer', () => {
     title: '',
     restaurants: [],
   };
+
   context('상태가 없으면', () => {
     it('이전 상태 그대로 반환한다.', () => {
       const newState = reducer(undefined);
@@ -24,6 +25,16 @@ describe('reducer', () => {
       );
 
       expect(newState.title).toBe('마녀주방');
+    });
+  });
+
+  context('레스토랑을 추가하면', () => {
+    it('추가된 상태를 받는다.', () => {
+      const newState = reducer({
+        title: '시카고 피자',
+      }, addRestaurant());
+
+      expect(newState.restaurants).toHaveLength(1);
     });
   });
 });
