@@ -25,12 +25,12 @@ describe('reducer', () => {
         // when
         const state = reduceRegisterRestaurant();
         // then
-        const newRestaurant = state.restaurants[state.restaurants.length - 1];
+        const restaurant = state.restaurants[state.restaurants.length - 1];
         expect(state.restaurants).toHaveLength(previousState.restaurants.length + 1);
-        expect(newRestaurant.id).toBe(2);
-        expect(newRestaurant.name).toBe(previousState.input.name);
-        expect(newRestaurant.category).toBe(previousState.input.category);
-        expect(newRestaurant.address).toBe(previousState.input.address);
+        expect(restaurant.id).toBe(previousState.id);
+        expect(restaurant.name).toBe(previousState.input.name);
+        expect(restaurant.category).toBe(previousState.input.category);
+        expect(restaurant.address).toBe(previousState.input.address);
       });
 
       it('increases new id by one', () => {
