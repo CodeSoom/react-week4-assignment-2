@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
+
 import { restaurants } from '../fixture/test-data';
 
 describe('Restaurants', () => {

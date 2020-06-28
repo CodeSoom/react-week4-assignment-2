@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   changeRestaurant, saveNewRestaurant, setInitialRestaurants,
 } from './actions';
+
 import {
   testState, name, category, address, restaurants,
 } from '../fixture/test-data';

@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
+
 import { changeRestaurant, saveNewRestaurant } from './actions';
+
 import {
   name, category, address, newRestaurant, restaurants,
 } from '../fixture/test-data';
@@ -33,6 +35,7 @@ describe('App', () => {
       ));
 
       fireEvent.change(getByPlaceholderText(/이름/), { target: { value: name } });
+
       expect(dispatch).toBeCalledWith(changeRestaurant('name', name));
     });
   });
@@ -44,6 +47,7 @@ describe('App', () => {
       ));
 
       fireEvent.change(getByPlaceholderText(/분류/), { target: { value: category } });
+
       expect(dispatch).toBeCalledWith(changeRestaurant('category', category));
     });
   });
@@ -55,6 +59,7 @@ describe('App', () => {
       ));
 
       fireEvent.change(getByPlaceholderText(/주소/), { target: { value: address } });
+
       expect(dispatch).toBeCalledWith(changeRestaurant('address', address));
     });
   });
@@ -64,7 +69,9 @@ describe('App', () => {
       const { getByText } = render((
         <App />
       ));
+
       fireEvent.click(getByText(/등록/));
+
       expect(dispatch).toBeCalledWith(saveNewRestaurant());
     });
   });
