@@ -36,7 +36,7 @@ describe('App', () => {
       { target: { value: 'Handle Change Restaurant Name' } },
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toBeCalledWith(
       updateRestaurantName('Handle Change Restaurant Name'),
     );
@@ -64,7 +64,7 @@ describe('App', () => {
       { target: { value: 'Handle Change Restaurant Category' } },
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toBeCalledWith(
       updateRestaurantCategory('Handle Change Restaurant Category'),
     );
@@ -92,7 +92,7 @@ describe('App', () => {
       { target: { value: 'Handle Change Restaurant Address' } },
     );
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toBeCalledWith(
       updateRestaurantAddress('Handle Change Restaurant Address'),
     );
@@ -118,7 +118,7 @@ describe('App', () => {
 
     fireEvent.click(getByText('등록'));
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toBeCalledWith(registerReservation());
   });
 
