@@ -23,7 +23,7 @@ function renderForm(value) {
 
 describe('<Form />', () => {
   // given
-  const inputValue = {
+  const restaurant = {
     name: '시카고피자',
     category: '양식',
     address: '이태원동',
@@ -33,12 +33,12 @@ describe('<Form />', () => {
       // when
       const {
         nameInput, categoryInput, addressInput,
-      } = renderForm(inputValue);
+      } = renderForm(restaurant);
 
       // then
-      expect(nameInput.value).toBe(inputValue.name);
-      expect(categoryInput.value).toBe(inputValue.category);
-      expect(addressInput.value).toBe(inputValue.address);
+      expect(nameInput.value).toBe(restaurant.name);
+      expect(categoryInput.value).toBe(restaurant.category);
+      expect(addressInput.value).toBe(restaurant.address);
     });
   });
 
@@ -49,20 +49,20 @@ describe('<Form />', () => {
         nameInput, categoryInput, addressInput,
       } = renderForm({ name: '', category: '', address: '' });
 
-      fireEvent.change(nameInput, { target: { value: inputValue.name } });
-      fireEvent.change(categoryInput, { target: { value: inputValue.category } });
-      fireEvent.change(addressInput, { target: { value: inputValue.address } });
+      fireEvent.change(nameInput, { target: { value: restaurant.name } });
+      fireEvent.change(categoryInput, { target: { value: restaurant.category } });
+      fireEvent.change(addressInput, { target: { value: restaurant.address } });
 
       // then
       expect(handleChangeInput).toBeCalledTimes(3);
-      expect(handleChangeInput).toBeCalledWith({ name: 'name', value: inputValue.name });
-      expect(handleChangeInput).toBeCalledWith({ name: 'category', value: inputValue.category });
-      expect(handleChangeInput).toBeCalledWith({ name: 'address', value: inputValue.address });
+      expect(handleChangeInput).toBeCalledWith({ name: 'name', value: restaurant.name });
+      expect(handleChangeInput).toBeCalledWith({ name: 'category', value: restaurant.category });
+      expect(handleChangeInput).toBeCalledWith({ name: 'address', value: restaurant.address });
     });
 
     it('can press the submit button', () => {
       // when
-      const { registerButton } = renderForm(inputValue);
+      const { registerButton } = renderForm(restaurant);
       fireEvent.submit(registerButton);
 
       // then
