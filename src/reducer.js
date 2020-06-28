@@ -27,5 +27,26 @@ export default function reducer(state = initialState, action) {
       }],
     };
   }
+
+  if (action.type === 'changeRestaurantName') {
+    return {
+      ...state,
+      restaurantName: action.payload.restaurantName,
+    };
+  }
+
+  if (action.type === 'changeRestaurantCategory') {
+    return {
+      ...state,
+      restaurantCategory: action.payload.restaurantCategory,
+    };
+  }
+
+  if (action.type === 'changeRestaurantAddress') {
+    return {
+      ...state,
+      restaurantAddress: action.payload.restaurantAddress,
+    };
+  }
   return state;
 }
