@@ -3,3 +3,13 @@ export function addRestaurant() {
     type: 'addRestaurant',
   };
 }
+
+export function updateRestaurantField({ name, value }) {
+  return {
+    type: 'updateRestaurantField',
+    payload: {
+      name,
+      value,
+    },
+  };
+}

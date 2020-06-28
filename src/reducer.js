@@ -1,29 +1,37 @@
-const initialState = {
-  newId: 100,
+const initialRestaurant = {
   name: '',
   type: '',
   address: '',
+};
+
+const initialState = {
+  newId: 100,
   restaurants: [],
+  restaurant: { initialRestaurant },
 };
 
 const reducers = {
+  updateRestaurantField: (state, action) => {
+    const { name, value } = action.payload;
+    return {
+      ...state,
+      restaurant: {
+        ...state.restaurant,
+        [name]: value,
+      },
+    };
+  },
   addRestaurant: (state) => {
     const {
-      newId, name, type, address, restaurants,
+      newId, restaurant, restaurants,
     } = state;
-
-    if (!name) {
-      return state;
-    }
 
     return {
       ...state,
       newId: newId + 1,
-      name: '',
-      type: '',
-      address: '',
+      restaurant: initialRestaurant,
       restaurants: [...restaurants, {
-        id: newId, name, type, address,
+        id: newId, ...restaurant,
       }],
     };
   },

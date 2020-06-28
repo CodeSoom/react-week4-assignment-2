@@ -11,7 +11,9 @@ jest.mock('react-redux');
 describe('InputContainer', () => {
   it('add restaurant', () => {
     useSelector.mockImplementation((selector) => selector({
-      name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
+      restaurant: {
+        id: 101, name: 'Busan Rice', type: 'Korean', address: 'Busan Daeyeon',
+      },
     }));
 
     const { getByText, getByDisplayValue } = render((

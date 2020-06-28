@@ -9,13 +9,13 @@ describe('Input', () => {
   const handleClick = jest.fn();
 
   it('should get input', () => {
-    const registration = {
+    const restaurant = {
       name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
     };
 
     const { getByDisplayValue, getByPlaceholderText } = render((
       <Input
-        registration={registration}
+        restaurant={restaurant}
         onChange={handleChange}
         onClick={handleClick}
       />
@@ -41,13 +41,13 @@ describe('Input', () => {
   });
 
   it('should be clicked for adding', () => {
-    const registration = {
+    const restaurant = {
       name: 'Seoul Pizza', type: 'Western', address: 'Seoul Itaewon',
     };
 
     const { getByText } = render((
       <Input
-        registration={registration}
+        restaurant={restaurant}
         onChange={handleChange}
         onClick={handleClick}
       />
