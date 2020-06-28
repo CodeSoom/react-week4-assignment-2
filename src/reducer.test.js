@@ -112,7 +112,6 @@ describe('reducer', () => {
       const state = reducer({
         restaurantName: '',
       }, changeRestaurantField({ name: 'restaurantName', value: 'Change restaurant name' }));
-      console.log(state);
       expect(state.restaurantName).toBe('Change restaurant name');
     });
     it('when change restaurantCategory input form', () => {
