@@ -55,9 +55,6 @@ describe('<Form />', () => {
 
       // then
       expect(handleChangeInput).toBeCalledTimes(3);
-      expect(handleChangeInput).toBeCalledWith({ name: 'name', value: restaurant.name });
-      expect(handleChangeInput).toBeCalledWith({ name: 'category', value: restaurant.category });
-      expect(handleChangeInput).toBeCalledWith({ name: 'address', value: restaurant.address });
     });
 
     it('can press the submit button', () => {

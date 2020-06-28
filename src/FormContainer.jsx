@@ -17,8 +17,11 @@ export default function FormContainer() {
     event.preventDefault();
   };
 
-  const handleChangeInput = ({ name, value }) => {
-    dispatch(updateInput({ name, value }));
+  const handleChangeInput = (e) => {
+    dispatch(updateInput({
+      name: e.target.name,
+      value: e.target.value,
+    }));
   };
 
   return (
