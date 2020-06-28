@@ -8,9 +8,9 @@ const initState = {
 
 export default function reducer(state = initState, action = {}) {
   const reducers = {
-    updateTitle: ({ title }) => ({
+    updateRestaurant: ({ target: { name, value } }) => ({
       ...state,
-      title,
+      [name]: value,
     }),
     addRestaurant: () => {
       const { newId, title, restaurants } = state;

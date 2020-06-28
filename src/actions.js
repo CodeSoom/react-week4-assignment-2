@@ -1,8 +1,8 @@
-export function updateRestaurant(title) {
+export function updateRestaurant(target) {
   return {
-    type: 'updateTitle',
+    type: 'updateRestaurant',
     payload: {
-      title,
+      target,
     },
   };
 }
