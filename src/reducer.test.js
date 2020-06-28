@@ -1,6 +1,8 @@
 import reducer from './reducer';
 
-import { addRestaurant } from './actions';
+import {
+  addRestaurant, changeRestaurantName, changeRestaurantCategory, changeRestaurantAddress
+} from './actions';
 
 describe('reducer', () => {
   const restaurants = [
@@ -96,6 +98,30 @@ describe('reducer', () => {
         expect(state.restaurantAddress).toBe('');
         expect(state.restaurants.length).toBe(0);
       });
+    });
+  });
+
+  describe('update input forms value', () => {
+    it('when change restaurantName input form', () => {
+      const state = reducer({
+        restaurantName: '',
+      }, changeRestaurantName('Change restaurant name'));
+
+      expect(state.restaurantName).toBe('Change restaurant name');
+    });
+    it('when change restaurantCategory input form', () => {
+      const state = reducer({
+        restaurantCategory: '',
+      }, changeRestaurantCategory('Change restaurant category'));
+
+      expect(state.restaurantCategory).toBe('Change restaurant category');
+    });
+    it('when change restaurantAddress input form', () => {
+      const state = reducer({
+        restaurantAddress: '',
+      }, changeRestaurantAddress('Change restaurant address'));
+
+      expect(state.restaurantAddress).toBe('Change restaurant address');
     });
   });
 });
