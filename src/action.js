@@ -2,7 +2,9 @@ export function changeName(newRestaurantName) {
   return {
     type: 'changeName',
     payload: {
-      restaurantName: newRestaurantName,
+      restaurant: {
+        name: newRestaurantName,
+      },
     },
   };
 }
@@ -11,7 +13,9 @@ export function changeType(newRestaurantType) {
   return {
     type: 'changeType',
     payload: {
-      restaurantType: newRestaurantType,
+      restaurant: {
+        type: newRestaurantType,
+      },
     },
   };
 }
@@ -20,7 +24,9 @@ export function changeAddress(newRestaurantAddress) {
   return {
     type: 'changeAddress',
     payload: {
-      restaurantAddress: newRestaurantAddress,
+      restaurant: {
+        address: newRestaurantAddress,
+      },
     },
   };
 }

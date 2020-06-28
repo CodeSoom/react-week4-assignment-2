@@ -9,18 +9,14 @@ import {
 function selector(state) {
   return {
     restaurants: state.restaurants,
-    restaurantName: state.restaurantName,
-    restaurantType: state.restaurantType,
-    restaurantAddress: state.restaurantAddress,
+    restaurant: state.restaurant,
   };
 }
 
 export default function App() {
   const {
     restaurants,
-    restaurantName,
-    restaurantType,
-    restaurantAddress,
+    restaurant,
   } = useSelector(selector);
 
   const dispatch = useDispatch();
@@ -58,21 +54,21 @@ export default function App() {
       <input
         name="name"
         type="text"
-        value={restaurantName}
+        value={restaurant.name}
         onChange={handleChangeName}
         placeholder="이름"
       />
       <input
         name="category"
         type="text"
-        value={restaurantType}
+        value={restaurant.type}
         onChange={handleChangeType}
         placeholder="분류"
       />
       <input
         name="address"
         type="text"
-        value={restaurantAddress}
+        value={restaurant.address}
         onChange={handleChangeAddress}
         placeholder="주소"
       />

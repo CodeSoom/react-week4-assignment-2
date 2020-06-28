@@ -23,6 +23,7 @@ describe('<App />', () => {
     it('shows a app title', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: [],
+        restaurant: {},
       }));
 
       const dispatch = jest.fn();
@@ -37,6 +38,7 @@ describe('<App />', () => {
       it('shows restaurants', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants,
+          restaurant: {},
         }));
 
         const dispatch = jest.fn();
@@ -65,6 +67,7 @@ describe('<App />', () => {
 
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
+          restaurant: {},
         }));
 
         const { container } = renderApp();
@@ -106,6 +109,7 @@ describe('<App />', () => {
       it('shows a new restaurant name in input', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
+          restaurant: {},
         }));
 
         const dispatch = jest.fn();
@@ -129,6 +133,7 @@ describe('<App />', () => {
       it('shows a new restaurant type in inputs', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
+          restaurant: {},
         }));
 
         const dispatch = jest.fn();
@@ -152,6 +157,7 @@ describe('<App />', () => {
       it('shows a new restaurant address in inputs', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
+          restaurant: {},
         }));
 
         const dispatch = jest.fn();
@@ -177,9 +183,11 @@ describe('<App />', () => {
       it('input is empty', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
-          restaurantName: '레스토랑4',
-          restaurantType: '분류4',
-          restaurantAddress: '주소4',
+          restaurant: {
+            name: '레스토랑',
+            type: '분류4',
+            address: '주소4',
+          },
         }));
 
         const dispatch = jest.fn();
@@ -197,9 +205,11 @@ describe('<App />', () => {
       it('shows a new restaurant into restaurants', () => {
         useSelector.mockImplementation((selector) => selector({
           restaurants: [],
-          restaurantName: '레스토랑4',
-          restaurantType: '분류4',
-          restaurantAddress: '주소4',
+          restaurant: {
+            name: '레스토랑',
+            type: '분류4',
+            address: '주소4',
+          },
         }));
 
         const dispatch = jest.fn();
