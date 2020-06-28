@@ -6,7 +6,7 @@ import ListContainer from './Container/ListContainer';
 export default function App() {
   return (
     <div>
-      <h1>Restaurant</h1>
+      <h1>Restaurants</h1>
       <InputsContainer />
       <ListContainer />
     </div>

@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import { reducer, defaultState } from './reducer';
 
 import {
   updateRestaurantName,
@@ -11,6 +11,16 @@ describe('reducer', () => {
   const testRestaurant = {
     name: '버튼업', category: '경양식', address: '마포구',
   };
+
+  context('with default state', () => {
+    it("doesn't change anything", () => {
+      const state = reducer();
+
+      expect(state.newId).toBe(defaultState.newId);
+      expect(state.restaurant).toBe(defaultState.restaurant);
+      expect(state.restaurants).toBe(defaultState.restaurants);
+    });
+  });
 
   describe('updateRestaurantName', () => {
     context('when input restaurant name', () => {
@@ -55,6 +65,22 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
+    context('with empty data in restaurant infomation', () => {
+      it("doesn't change anything", () => {
+        const state = reducer({
+          newId: 20,
+          restaurant: {
+            name: testRestaurant.name,
+            category: testRestaurant.category,
+            address: '',
+          },
+          restaurants: [],
+        }, addRestaurant());
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
     context('with restaurant infomation', () => {
       it('add a new restaurant into restaurants', () => {
         const state = reducer({

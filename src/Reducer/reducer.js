@@ -1,4 +1,4 @@
-const defaultState = {
+export const defaultState = {
   newId: 20,
   restaurant: {
     name: '', category: '', address: '',
@@ -6,7 +6,11 @@ const defaultState = {
   restaurants: [],
 };
 
-export default function reducer(state = defaultState, action) {
+const defaultAction = {
+  type: '',
+};
+
+export function reducer(state = defaultState, action = defaultAction) {
   const { newId, restaurant, restaurants } = state;
 
   // TODO: Computed property names 활용 예정

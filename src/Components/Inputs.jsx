@@ -4,6 +4,7 @@ export default function Inputs({ value, onChanges, onClick }) {
   return (
     <p>
       <input
+        name="name"
         id="input-name"
         type="text"
         placeholder="이름"
