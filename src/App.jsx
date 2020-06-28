@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import RestaurantList from './RestaurantList';
+
 import {
   changeName, changeType, changeAddress, addRestaurant,
 } from './action';
@@ -40,7 +42,11 @@ export default function App() {
   return (
     <div>
       <h2>Restaurants</h2>
-      <ul>
+      <RestaurantList 
+        restaurants={restaurants}
+      />
+
+      {/* <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id}>
             {restaurant.name}
@@ -50,7 +56,7 @@ export default function App() {
             {restaurant.address}
           </li>
         ))}
-      </ul>
+      </ul> */}
       <input
         name="name"
         type="text"
