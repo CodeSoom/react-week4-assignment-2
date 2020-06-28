@@ -14,9 +14,18 @@ describe('Page', () => {
     category: '한식',
     address: '강남구',
   };
+  const restaurants = [
+    {
+      id: 1, name: '한식당', category: '한식', address: '강남구',
+    },
+    {
+      id: 2, name: '중식당', category: '중식', address: '송파구',
+    },
+  ];
 
   useSelector.mockImplementation((selector) => selector({
     restaurant,
+    restaurants,
   }));
 
   context('when start application', () => {
