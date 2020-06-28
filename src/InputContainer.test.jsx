@@ -51,7 +51,7 @@ describe('InputContainer', () => {
         restaurantAddress: 'New Address',
       }));
 
-      const { container, getByPlaceholderText } = render((
+      const { container, getByText, getByPlaceholderText } = render((
         <InputContainer />
       ));
 
@@ -64,7 +64,8 @@ describe('InputContainer', () => {
       fireEvent.change(getByPlaceholderText(/주소/), { target: { value: 'test address' } });
       expect(container).toBeInTheDocument('test address');
 
-      expect(dispatch).toBeCalled({ type: 'addRestaurant' });
+      fireEvent.click(getByText(/등록/));
+      expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });
     });
   });
 });
