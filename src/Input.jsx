@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Input({ title, onChangeTitle }) {
+export default function Input({ title, onChangeTitle, onClickAddRestaurant }) {
   return (
     <div>
       <input
@@ -9,7 +9,12 @@ export default function Input({ title, onChangeTitle }) {
         value={title}
         placeholder="이름"
       />
-      <button type="button">등록</button>
+      <button
+        type="button"
+        onClick={onClickAddRestaurant}
+      >
+        등록
+      </button>
     </div>
   );
 }
