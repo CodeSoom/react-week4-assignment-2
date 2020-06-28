@@ -1,4 +1,4 @@
-export default function updateTitle(title) {
+export function updateTitle(title) {
   return {
     type: 'updateTitle',
     payload: {
