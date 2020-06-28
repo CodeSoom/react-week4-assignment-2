@@ -1,22 +1,27 @@
 import React from 'react';
 
 export default function Input({
-  title, onChangeTitle, onClickAddRestaurant,
-  kind, onChangeKind,
+  title, kind, address, onChange, onClickAddRestaurant,
 }) {
   return (
     <div>
       <input
         type="text"
-        onChange={onChangeTitle}
+        onChange={onChange}
         value={title}
         placeholder="이름"
       />
       <input
         type="text"
-        onChange={onChangeKind}
+        onChange={onChange}
         value={kind}
         placeholder="분류"
+      />
+      <input
+        type="text"
+        onChange={onChange}
+        value={address}
+        placeholder="주소"
       />
       <button
         type="button"

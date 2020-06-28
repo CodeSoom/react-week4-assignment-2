@@ -5,15 +5,17 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
+  const handleChange = jest.fn();
+  const handleAddRestaurant = jest.fn();
+
   context('updateTitle', () => {
     it('식당 이름이 입력되어 value가 바뀐다', () => {
-      const handleChange = jest.fn();
-      const handleAddRestaurant = jest.fn();
-
       const { getAllByDisplayValue, getByPlaceholderText, getByText } = render((
         <Input
           title=""
-          onChangeTitle={handleChange}
+          kind=""
+          address=""
+          onChange={handleChange}
           onClickAddRestaurant={handleAddRestaurant}
         />
       ));
@@ -23,35 +25,18 @@ describe('Input', () => {
       fireEvent.change(getByPlaceholderText('이름'), {
         target: { value: '마녀주방' },
       });
-
       expect(handleChange).toBeCalled();
 
-      fireEvent.click(getByText(/등록/));
-
-      expect(handleAddRestaurant).toBeCalled();
-    });
-  });
-
-  context('updateKind', () => {
-    it('식당 이름이 입력되어 value가 바뀐다', () => {
-      const handleChangeKind = jest.fn();
-      const handleAddRestaurant = jest.fn();
-
-      const { getAllByDisplayValue, getByPlaceholderText } = render((
-        <Input
-          kind=""
-          onChangeKind={handleChangeKind}
-          onClickAddRestaurant={handleAddRestaurant}
-        />
-      ));
-
-      expect(getAllByDisplayValue('')).not.toBeNull();
-
       fireEvent.change(getByPlaceholderText('분류'), {
-        target: { value: '한식' },
+        target: { value: '마녀주방' },
       });
-
-      expect(handleChangeKind).toBeCalled();
+      expect(handleChange).toBeCalled();
+      fireEvent.change(getByPlaceholderText('주소'), {
+        target: { value: '마녀주방' },
+      });
+      expect(handleChange).toBeCalled();
+      fireEvent.click(getByText(/등록/));
+      expect(handleAddRestaurant).toBeCalled();
     });
   });
 });
