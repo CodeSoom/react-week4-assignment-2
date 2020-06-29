@@ -19,16 +19,16 @@ export default function FormContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChangName(event) {
-    dispatch(updateName(event.target.value));
-  }
+  const actionCreator = {
+    name: (value) => updateName(value),
+    category: (value) => updateCategory(value),
+    address: (value) => updateAddress(value),
+  };
 
-  function handleChangeCategory(event) {
-    dispatch(updateCategory(event.target.value));
-  }
+  function handleInputChange(event) {
+    const { value, name: inputName } = event.target;
 
-  function handleChangeAddress(event) {
-    dispatch(updateAddress(event.target.value));
+    dispatch(actionCreator[inputName](value));
   }
 
   function handleSubmitAddRestaurant(event) {
@@ -41,9 +41,9 @@ export default function FormContainer() {
       nameValue={name}
       categoryValue={category}
       addressValue={address}
-      onChangeName={handleChangName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
+      onChangeName={handleInputChange}
+      onChangeCategory={handleInputChange}
+      onChangeAddress={handleInputChange}
       onSubmit={handleSubmitAddRestaurant}
     />
   );
