@@ -48,6 +48,12 @@ const type = {
   },
 };
 
+const defaultReducer = (state) => state;
+
 export default function reducer(state = initialState, action) {
-  return action && type[action.type] ? (type[action.type])(state, action) : state;
+  if(!action) {
+    return state
+  }
+
+  return (type[action.type] || defaultReducer)(state, action);
 }
