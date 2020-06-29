@@ -27,7 +27,7 @@ describe('<Restaurants />', () => {
     });
 
     context('리스트가 없을 때', () => {
-      it('리스트', () => {
+      it('리스트가 없습니다. 보여줍니다.', () => {
         const restaurants = [];
 
         const { container } = render((

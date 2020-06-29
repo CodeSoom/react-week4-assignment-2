@@ -41,9 +41,7 @@ export default function FormContainer() {
       nameValue={name}
       categoryValue={category}
       addressValue={address}
-      onChangeName={handleInputChange}
-      onChangeCategory={handleInputChange}
-      onChangeAddress={handleInputChange}
+      onChange={handleInputChange}
       onSubmit={handleSubmitAddRestaurant}
     />
   );
