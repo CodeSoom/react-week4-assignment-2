@@ -3,37 +3,32 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRestaurant, updateInput } from './actions';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
 
   const { name, category, address } = useSelector((selector) => ({
-    name: selector.input.name,
-    category: selector.input.category,
-    address: selector.input.address,
+    name: selector.restaurant.name,
+    category: selector.restaurant.category,
+    address: selector.restaurant.address,
   }));
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
     dispatch(updateInput({
-      [name]: value,
+      key: e.target.name,
+      value: e.target.value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addRestaurant({
-      name: e.target[0] ? e.target[0].value : '',
-      category: e.target[1] ? e.target[1].value : '',
-      address: e.target[2] ? e.target[2].value : '',
-    }));
+    dispatch(addRestaurant());
   };
 
   return (
-    <Input
+    <RestaurantForm
       onChange={handleInputChange}
       onClick={handleSubmit}
       name={name}

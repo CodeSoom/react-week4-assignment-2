@@ -4,10 +4,10 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
-describe('ListContainer', () => {
+describe('RestaurantsContainer', () => {
   context('with restaurants data', () => {
     it('renders data with restaurants data', () => {
       const dispatch = jest.fn((e) => e.preventDefault);
@@ -23,7 +23,7 @@ describe('ListContainer', () => {
         }],
       }));
 
-      const { getByText } = render(<ListContainer />);
+      const { getByText } = render(<RestaurantsContainer />);
 
       expect(getByText(/하하/)).not.toBeNull();
     });

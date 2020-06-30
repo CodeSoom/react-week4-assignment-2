@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   context('with restaurants', () => {
     it('renders restaurants', () => {
-      const { getByText } = render(<List restaurants={
+      const { getByText } = render(<Restaurants restaurants={
         [
           {
             id: '100',
@@ -26,7 +26,7 @@ describe('List', () => {
 
   context('without restaurants', () => {
     it('renders empty', () => {
-      const { container } = render(<List restaurants={[]} />);
+      const { container } = render(<Restaurants restaurants={[]} />);
 
       expect(container.querySelector('ul').textContent).toBe('');
     });
@@ -34,7 +34,7 @@ describe('List', () => {
 
   context('without restaurants prop', () => {
     it('renders empty string', () => {
-      const { container } = render(<List />);
+      const { container } = render(<Restaurants />);
       expect(container.childElementCount).toBe(0);
     });
   });

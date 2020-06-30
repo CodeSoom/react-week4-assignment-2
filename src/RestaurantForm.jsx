@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Input({
+export default function RestaurantForm({
   onChange, onClick, name, category, address,
 }) {
   return (

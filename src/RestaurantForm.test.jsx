@@ -4,11 +4,11 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
 jest.mock('react-redux');
 
-describe('Input', () => {
+describe('RestaurantForm', () => {
   context('with input value', () => {
     it('exist value in input value', () => {
       const handleChange = jest.fn();
@@ -22,7 +22,7 @@ describe('Input', () => {
       }));
 
       const { getByPlaceholderText, getByText } = render(
-        <Input onChange={handleChange} onClick={handleClick} />,
+        <RestaurantForm onChange={handleChange} onClick={handleClick} />,
       );
 
       expect(getByPlaceholderText(/이름/)).not.toBeNull();
@@ -43,7 +43,10 @@ describe('Input', () => {
         },
       }));
 
-      const { getByTestId } = render(<Input onChange={handleChange} onClick={handleClick} />);
+      const { getByTestId } = render(<RestaurantForm
+        onChange={handleChange}
+        onClick={handleClick}
+      />);
 
       expect(handleClick).not.toBeCalled();
 
@@ -62,7 +65,10 @@ describe('Input', () => {
         },
       }));
 
-      const { getByTestId } = render(<Input onChange={handleChange} onClick={handleClick} />);
+      const { getByTestId } = render(<RestaurantForm
+        onChange={handleChange}
+        onClick={handleClick}
+      />);
 
       expect(handleClick).not.toBeCalled();
 
@@ -80,7 +86,10 @@ describe('Input', () => {
         },
       }));
 
-      const { getByTestId } = render(<Input onChange={handleChange} onClick={handleClick} />);
+      const { getByTestId } = render(<RestaurantForm
+        onChange={handleChange}
+        onClick={handleClick}
+      />);
 
       expect(handleClick).not.toBeCalled();
 
@@ -98,7 +107,10 @@ describe('Input', () => {
         },
       }));
 
-      const { getByTestId } = render(<Input onChange={handleChange} onClick={handleClick} />);
+      const { getByTestId } = render(<RestaurantForm
+        onChange={handleChange}
+        onClick={handleClick}
+      />);
 
       expect(handleClick).not.toBeCalled();
 
@@ -114,7 +126,7 @@ describe('Input', () => {
       const handleClick = jest.fn((e) => e.preventDefault);
 
       const { getByPlaceholderText, getByDisplayValue } = render(
-        <Input onChange={handleChange} onClick={handleClick} />,
+        <RestaurantForm onChange={handleChange} onClick={handleClick} />,
       );
 
       fireEvent.change(getByPlaceholderText(/이름/), {
@@ -132,7 +144,7 @@ describe('Input', () => {
       const handleClick = jest.fn((e) => e.preventDefault);
 
       const { getByPlaceholderText, getByDisplayValue } = render(
-        <Input onChange={handleChange} onClick={handleClick} />,
+        <RestaurantForm onChange={handleChange} onClick={handleClick} />,
       );
 
       fireEvent.change(getByPlaceholderText(/분류/), {
@@ -150,7 +162,7 @@ describe('Input', () => {
       const handleClick = jest.fn((e) => e.preventDefault);
 
       const { getByPlaceholderText, getByDisplayValue } = render(
-        <Input onChange={handleChange} onClick={handleClick} />,
+        <RestaurantForm onChange={handleChange} onClick={handleClick} />,
       );
 
       fireEvent.change(getByPlaceholderText(/주소/), {

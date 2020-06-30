@@ -4,10 +4,10 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 jest.mock('react-redux');
-describe('InputContainer', () => {
+describe('RestaurantFormContainer', () => {
   context('when add restaurants', () => {
     it('fire form event', () => {
       const dispatch = jest.fn((e) => e.preventDefault);
@@ -15,14 +15,14 @@ describe('InputContainer', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        input: {
+        restaurant: {
           name: '하하',
           category: '호호',
           address: '히히',
         },
       }));
 
-      const { getByTestId } = render(<InputContainer />);
+      const { getByTestId } = render(<RestaurantFormContainer />);
 
       expect(dispatch).not.toBeCalled();
 
@@ -39,12 +39,12 @@ describe('InputContainer', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        input: {
+        restaurant: {
           name: '',
         },
       }));
 
-      const { getByPlaceholderText } = render(<InputContainer />);
+      const { getByPlaceholderText } = render(<RestaurantFormContainer />);
 
       expect(dispatch).not.toBeCalled();
 
