@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 export const initialState = {
-  input: {
+  restaurant: {
     name: '',
     category: '',
     address: '',
@@ -11,7 +11,7 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
-    const { name, category, address } = action.payload.input;
+    const { name, category, address } = state.restaurant;
 
     if (!name || !category || !address) {
       return state;
@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
-      input: {
+      restaurant: {
         name: '',
         category: '',
         address: '',
@@ -34,13 +34,13 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'updateInput') {
-    const { input } = action.payload;
+    const restaurant = action.payload;
 
     return {
       ...state,
-      input: {
-        ...state.input,
-        ...input,
+      restaurant: {
+        ...state.restaurant,
+        ...restaurant,
       },
     };
   }

@@ -1,13 +1,10 @@
-export const addRestaurant = (input) => ({
+export const addRestaurant = () => ({
   type: 'addRestaurant',
-  payload: {
-    input,
-  },
 });
 
-export const updateInput = (input) => ({
+export const updateInput = ({ key, value }) => ({
   type: 'updateInput',
   payload: {
-    input,
+    [key]: value,
   },
 });
