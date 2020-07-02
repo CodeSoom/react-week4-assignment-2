@@ -5,11 +5,10 @@ import {
   updateRestaurantInfo, addRestaurant,
 } from './stores/action/action-creators';
 
-import List from './components/List';
+import RestaurantsListContainer from './containers/RestaurantsListContainer';
 
 export default function App() {
-  const { restaurants, restaurant } = useSelector((state) => ({
-    restaurants: state.restaurants,
+  const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
 
@@ -26,7 +25,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <List restaurants={restaurants} />
+      <RestaurantsListContainer />
       <input type="text" name="name" value={restaurant.name} onChange={handleUpdateRestaurantInfo} />
       <input type="text" name="category" value={restaurant.category} onChange={handleUpdateRestaurantInfo} />
       <input type="text" name="address" value={restaurant.address} onChange={handleUpdateRestaurantInfo} />
