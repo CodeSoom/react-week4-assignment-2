@@ -37,13 +37,17 @@ export default function App() {
           restaurants.map((e) => (
             <li key={e.id}>
               {e.name}
+              |
+              {e.category}
+              |
+              {e.address}
             </li>
           ))
         }
       </ol>
-      <input type="text" id="name" value={restaurant.name} onChange={handleInputRestaurantName} />
-      <input type="text" id="category" value={restaurant.category} onChange={handleInputRestaurantCategory} />
-      <input type="text" id="address" value={restaurant.address} onChange={handleInputRestaurantAddress} />
+      <input type="text" name="name" value={restaurant.name} onChange={handleInputRestaurantName} />
+      <input type="text" name="category" value={restaurant.category} onChange={handleInputRestaurantCategory} />
+      <input type="text" name="address" value={restaurant.address} onChange={handleInputRestaurantAddress} />
       <button type="button" onClick={handleAddRestaurant}>등록</button>
     </div>
   );
