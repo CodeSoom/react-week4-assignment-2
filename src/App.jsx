@@ -1,52 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const initialState = {
-  restaurants: [],
-  restaurant: {
-    id: 0,
-    name: '',
-    category: '',
-    address: '',
-  },
-};
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  updateRestaurantName, updateRestaurantCategory, updateRestaurantAddress, addRestaurant,
+} from './stores/action/action-creators';
 
 export default function App() {
-  const [state, setState] = useState(initialState);
+  const { restaurants, restaurant } = useSelector((state) => ({
+    restaurants: state.restaurants,
+    restaurant: state.restaurant,
+  }));
 
-  function updateRestaurantInfo(property, value) {
-    setState({
-      ...state,
-      restaurant: {
-        ...state.restaurant,
-        [property]: value,
-      },
-    });
-  }
+  const dispatch = useDispatch();
 
   function handleInputRestaurantName(ev) {
-    updateRestaurantInfo('name', ev.target.value);
+    dispatch(updateRestaurantName(ev.target.value));
   }
 
   function handleInputRestaurantCategory(ev) {
-    updateRestaurantInfo('category', ev.target.value);
+    dispatch(updateRestaurantCategory(ev.target.value));
   }
 
   function handleInputRestaurantAddress(ev) {
-    updateRestaurantInfo('address', ev.target.value);
+    dispatch(updateRestaurantAddress(ev.target.value));
   }
 
   function handleAddRestaurant() {
-    const { restaurants, restaurant } = state;
-    setState({
-      ...state,
-      restaurants: [...restaurants, restaurant],
-      restaurant: {
-        id: restaurant.id + 1,
-        name: '',
-        category: '',
-        address: '',
-      },
-    });
+    dispatch(addRestaurant());
   }
 
   return (
@@ -54,16 +34,16 @@ export default function App() {
       <h1>Restaurants</h1>
       <ol>
         {
-          state.restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {restaurant.name}
+          restaurants.map((e) => (
+            <li key={e.id}>
+              {e.name}
             </li>
           ))
         }
       </ol>
-      <input type="text" id="name" value={state.restaurant.name} onChange={handleInputRestaurantName} />
-      <input type="text" id="category" value={state.restaurant.category} onChange={handleInputRestaurantCategory} />
-      <input type="text" id="address" value={state.restaurant.address} onChange={handleInputRestaurantAddress} />
+      <input type="text" id="name" value={restaurant.name} onChange={handleInputRestaurantName} />
+      <input type="text" id="category" value={restaurant.category} onChange={handleInputRestaurantCategory} />
+      <input type="text" id="address" value={restaurant.address} onChange={handleInputRestaurantAddress} />
       <button type="button" onClick={handleAddRestaurant}>등록</button>
     </div>
   );

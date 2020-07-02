@@ -2,16 +2,37 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  updateRestaurantName, updateRestaurantCategory, updateRestaurantAddress, addRestaurant,
+} from './stores/action/action-creators';
+
 import RESTAURANTS from './__fixtures__/restaurants.json';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 function renderComponent() {
   return render(<App />);
 }
 
 describe('<App />', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   context('without restaurants', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
+        restaurant: {},
+      }));
+    });
+
     it('display empty restaurants', () => {
       const { container, getByRole } = renderComponent();
 
@@ -34,12 +55,15 @@ describe('<App />', () => {
 
       fireEvent.change(nameInputBox, { target: { value: newRestaurant.name } });
       expect(nameInputBox.value).toBe(newRestaurant.name);
+      expect(dispatch).toBeCalledWith(updateRestaurantName(newRestaurant.name));
 
       fireEvent.change(categoryInputBox, { target: { value: newRestaurant.category } });
       expect(categoryInputBox.value).toBe(newRestaurant.category);
+      expect(dispatch).toBeCalledWith(updateRestaurantCategory(newRestaurant.category));
 
       fireEvent.change(addressInputBox, { target: { value: newRestaurant.address } });
       expect(addressInputBox.value).toBe(newRestaurant.address);
+      expect(dispatch).toBeCalledWith(updateRestaurantAddress(newRestaurant.address));
     });
 
     it('add new restaurant', () => {
@@ -55,33 +79,26 @@ describe('<App />', () => {
 
       const button = getByRole('button');
       fireEvent.click(button);
-
-      expect(nameInputBox.value).toBe('');
-      expect(categoryInputBox.value).toBe('');
-      expect(addressInputBox.value).toBe('');
+      expect(dispatch).toBeCalledWith(addRestaurant());
     });
   });
 
   context('with restaurants', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: RESTAURANTS,
+        restaurant: {},
+      }));
+    });
+
     it('display restaurants', () => {
       const { getAllByRole, getByRole } = renderComponent();
 
-      const inputBoxes = getAllByRole('textbox');
-      const button = getByRole('button');
-
-      const [nameInputBox, categoryInputBox, addressInputBox] = inputBoxes;
-      RESTAURANTS.forEach(({ name, category, address }) => {
-        fireEvent.change(nameInputBox, { target: { value: name } });
-        fireEvent.change(categoryInputBox, { target: { value: category } });
-        fireEvent.change(addressInputBox, { target: { value: address } });
-        fireEvent.click(button);
-      });
-
       const restaurantList = getByRole('list');
-      expect(restaurantList.children).toHaveLength(3);
+      expect(restaurantList.children).toHaveLength(RESTAURANTS.length);
 
       const restaurantListItems = getAllByRole('listitem');
-      expect(restaurantListItems).toHaveLength(3);
+      expect(restaurantListItems).toHaveLength(RESTAURANTS.length);
     });
   });
 });
