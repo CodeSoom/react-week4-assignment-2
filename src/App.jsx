@@ -6,6 +6,8 @@ import {
 } from './stores/action/action-creators';
 
 import RestaurantsListContainer from './containers/RestaurantsListContainer';
+import InputBox from './components/InputBox';
+import AddButton from './components/AddButton';
 
 export default function App() {
   const { restaurant } = useSelector((state) => ({
@@ -26,10 +28,10 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantsListContainer />
-      <input type="text" name="name" value={restaurant.name} onChange={handleUpdateRestaurantInfo} />
-      <input type="text" name="category" value={restaurant.category} onChange={handleUpdateRestaurantInfo} />
-      <input type="text" name="address" value={restaurant.address} onChange={handleUpdateRestaurantInfo} />
-      <button type="button" onClick={handleAddRestaurant}>등록</button>
+      <InputBox inputProperty="name" inputValue={restaurant.name} handleChangeInputValue={handleUpdateRestaurantInfo} />
+      <InputBox inputProperty="category" inputValue={restaurant.category} handleChangeInputValue={handleUpdateRestaurantInfo} />
+      <InputBox inputProperty="address" inputValue={restaurant.address} handleChangeInputValue={handleUpdateRestaurantInfo} />
+      <AddButton handleClickButton={handleAddRestaurant} />
     </div>
   );
 }
