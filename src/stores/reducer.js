@@ -3,12 +3,12 @@ import { UPDATE_RESTAURANT_INFO, ADD_RESTAURANT } from './action/action-types';
 const ReducerRouter = {
   [UPDATE_RESTAURANT_INFO]: (previousState, payload) => {
     const { restaurant } = previousState;
-    const { restaurant: newRestaurant } = payload;
+    const { property, value } = payload;
     return {
       ...previousState,
       restaurant: {
         ...restaurant,
-        ...newRestaurant,
+        [property]: value,
       },
     };
   },

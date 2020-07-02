@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  updateRestaurantName, updateRestaurantCategory, updateRestaurantAddress, addRestaurant,
+  updateRestaurantInfo, addRestaurant,
 } from './stores/action/action-creators';
 
 export default function App() {
@@ -13,16 +13,8 @@ export default function App() {
 
   const dispatch = useDispatch();
 
-  function handleInputRestaurantName(ev) {
-    dispatch(updateRestaurantName(ev.target.value));
-  }
-
-  function handleInputRestaurantCategory(ev) {
-    dispatch(updateRestaurantCategory(ev.target.value));
-  }
-
-  function handleInputRestaurantAddress(ev) {
-    dispatch(updateRestaurantAddress(ev.target.value));
+  function handleUpdateRestaurantInfo(ev) {
+    dispatch(updateRestaurantInfo(ev.target.name, ev.target.value));
   }
 
   function handleAddRestaurant() {
@@ -45,9 +37,9 @@ export default function App() {
           ))
         }
       </ol>
-      <input type="text" name="name" value={restaurant.name} onChange={handleInputRestaurantName} />
-      <input type="text" name="category" value={restaurant.category} onChange={handleInputRestaurantCategory} />
-      <input type="text" name="address" value={restaurant.address} onChange={handleInputRestaurantAddress} />
+      <input type="text" name="name" value={restaurant.name} onChange={handleUpdateRestaurantInfo} />
+      <input type="text" name="category" value={restaurant.category} onChange={handleUpdateRestaurantInfo} />
+      <input type="text" name="address" value={restaurant.address} onChange={handleUpdateRestaurantInfo} />
       <button type="button" onClick={handleAddRestaurant}>등록</button>
     </div>
   );

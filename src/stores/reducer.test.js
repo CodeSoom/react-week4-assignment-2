@@ -1,6 +1,6 @@
 import reducer from './reducer';
 import {
-  updateRestaurantName, updateRestaurantCategory, updateRestaurantAddress, addRestaurant,
+  updateRestaurantInfo, addRestaurant,
 } from './action/action-creators';
 
 import RESTAURANTS from '../__fixtures__/restaurants.json';
@@ -28,19 +28,19 @@ describe('reducer', () => {
     it('changes restaurant-name-property', () => {
       const previousState = undefined;
       const newRestaurantName = '레스토랑 이름';
-      const nextState = reducer(previousState, updateRestaurantName(newRestaurantName));
+      const nextState = reducer(previousState, updateRestaurantInfo('name', newRestaurantName));
       expect(nextState.restaurant.name).toBe(newRestaurantName);
     });
     it('changes restaurant-category-property', () => {
       const previousState = undefined;
       const newRestaurantCategory = '레스토랑 카테고리';
-      const nextState = reducer(previousState, updateRestaurantCategory(newRestaurantCategory));
+      const nextState = reducer(previousState, updateRestaurantInfo('category', newRestaurantCategory));
       expect(nextState.restaurant.category).toBe(newRestaurantCategory);
     });
     it('changes restaurant-address-property', () => {
       const previousState = undefined;
       const newRestaurantAddress = '레스토랑 주소';
-      const nextState = reducer(previousState, updateRestaurantAddress(newRestaurantAddress));
+      const nextState = reducer(previousState, updateRestaurantInfo('address', newRestaurantAddress));
       expect(nextState.restaurant.address).toBe(newRestaurantAddress);
     });
   });

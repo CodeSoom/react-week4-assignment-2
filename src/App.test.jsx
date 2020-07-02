@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  updateRestaurantName, updateRestaurantCategory, updateRestaurantAddress, addRestaurant,
+  updateRestaurantInfo, addRestaurant,
 } from './stores/action/action-creators';
 
 import RESTAURANTS from './__fixtures__/restaurants.json';
@@ -55,15 +55,15 @@ describe('<App />', () => {
 
       fireEvent.change(nameInputBox, { target: { value: newRestaurant.name } });
       expect(nameInputBox.value).toBe(newRestaurant.name);
-      expect(dispatch).toBeCalledWith(updateRestaurantName(newRestaurant.name));
+      expect(dispatch).toBeCalledWith(updateRestaurantInfo('name', newRestaurant.name));
 
       fireEvent.change(categoryInputBox, { target: { value: newRestaurant.category } });
       expect(categoryInputBox.value).toBe(newRestaurant.category);
-      expect(dispatch).toBeCalledWith(updateRestaurantCategory(newRestaurant.category));
+      expect(dispatch).toBeCalledWith(updateRestaurantInfo('category', newRestaurant.category));
 
       fireEvent.change(addressInputBox, { target: { value: newRestaurant.address } });
       expect(addressInputBox.value).toBe(newRestaurant.address);
-      expect(dispatch).toBeCalledWith(updateRestaurantAddress(newRestaurant.address));
+      expect(dispatch).toBeCalledWith(updateRestaurantInfo('address', newRestaurant.address));
     });
 
     it('add new restaurant', () => {
