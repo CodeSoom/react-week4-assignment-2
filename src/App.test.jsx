@@ -26,79 +26,70 @@ describe('<App />', () => {
   });
 
   context('without restaurants', () => {
+    // Given
+    const restaurants = [];
+    const restaurantInfo = RESTAURANTS[0];
+
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: [],
+        restaurants,
         restaurant: {},
       }));
     });
 
     it('display empty restaurants', () => {
-      const { container, getByRole } = renderComponent();
+      const { getByRole } = renderComponent();
+      expect(getByRole('list').children).toHaveLength(0);
+    });
 
-      expect(container).toHaveTextContent('Restaurants');
-      expect(container).toHaveTextContent('등록');
-
-      const restaurantList = getByRole('list');
-      expect(restaurantList.children).toHaveLength(0);
+    it('display restaurant-info input-boxes ', () => {
+      const { getAllByRole } = renderComponent();
+      expect(getAllByRole('textbox')).toHaveLength(3);
     });
 
     it('input restaurant-info', () => {
       const { getAllByRole } = renderComponent();
-
-      const inputBoxes = getAllByRole('textbox');
-      expect(inputBoxes).toHaveLength(3);
-
-      const newRestaurant = RESTAURANTS[0];
-
-      const [nameInputBox, categoryInputBox, addressInputBox] = inputBoxes;
-
-      fireEvent.change(nameInputBox, { target: { value: newRestaurant.name } });
-      expect(nameInputBox.value).toBe(newRestaurant.name);
-      expect(dispatch).toBeCalledWith(updateRestaurantInfo('name', newRestaurant.name));
-
-      fireEvent.change(categoryInputBox, { target: { value: newRestaurant.category } });
-      expect(categoryInputBox.value).toBe(newRestaurant.category);
-      expect(dispatch).toBeCalledWith(updateRestaurantInfo('category', newRestaurant.category));
-
-      fireEvent.change(addressInputBox, { target: { value: newRestaurant.address } });
-      expect(addressInputBox.value).toBe(newRestaurant.address);
-      expect(dispatch).toBeCalledWith(updateRestaurantInfo('address', newRestaurant.address));
+      getAllByRole('textbox').forEach((inputBox) => {
+        const infoProperty = inputBox.name;
+        const infoValue = restaurantInfo[infoProperty];
+        // When
+        fireEvent.change(inputBox, { target: { value: infoValue } });
+        // Then
+        expect(dispatch).toBeCalledWith(updateRestaurantInfo(infoProperty, infoValue));
+        expect(inputBox.value).toBe(infoValue);
+      });
     });
 
     it('add new restaurant', () => {
       const { getAllByRole, getByRole } = renderComponent();
-
-      const newRestaurant = RESTAURANTS[0];
-
-      const inputBoxes = getAllByRole('textbox');
-      const [nameInputBox, categoryInputBox, addressInputBox] = inputBoxes;
-      fireEvent.change(nameInputBox, { target: { value: newRestaurant.name } });
-      fireEvent.change(categoryInputBox, { target: { value: newRestaurant.category } });
-      fireEvent.change(addressInputBox, { target: { value: newRestaurant.address } });
-
-      const button = getByRole('button');
-      fireEvent.click(button);
+      getAllByRole('textbox').forEach((inputBox) => {
+        const infoProperty = inputBox.name;
+        const infoValue = restaurantInfo[infoProperty];
+        fireEvent.change(inputBox, { target: { value: infoValue } });
+      });
+      // When
+      fireEvent.click(getByRole('button'));
+      // Then
       expect(dispatch).toBeCalledWith(addRestaurant());
     });
   });
 
   context('with restaurants', () => {
+    // Given
+    const restaurants = RESTAURANTS;
+    const restaurantInfo = {};
+
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: RESTAURANTS,
-        restaurant: {},
+        restaurants,
+        restaurant: restaurantInfo,
       }));
     });
 
     it('display restaurants', () => {
       const { getAllByRole, getByRole } = renderComponent();
-
-      const restaurantList = getByRole('list');
-      expect(restaurantList.children).toHaveLength(RESTAURANTS.length);
-
-      const restaurantListItems = getAllByRole('listitem');
-      expect(restaurantListItems).toHaveLength(RESTAURANTS.length);
+      expect(getByRole('list').children).toHaveLength(RESTAURANTS.length);
+      expect(getAllByRole('listitem')).toHaveLength(RESTAURANTS.length);
     });
   });
 });

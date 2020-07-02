@@ -25,21 +25,23 @@ describe('reducer', () => {
   });
 
   describe('updateRestaurantInfo', () => {
+    // Given
+    const previousState = undefined;
+    const newRestaurantName = '레스토랑 이름';
+    const newRestaurantCategory = '레스토랑 카테고리';
+    const newRestaurantAddress = '레스토랑 주소';
+
     it('changes restaurant-name-property', () => {
-      const previousState = undefined;
-      const newRestaurantName = '레스토랑 이름';
       const nextState = reducer(previousState, updateRestaurantInfo('name', newRestaurantName));
       expect(nextState.restaurant.name).toBe(newRestaurantName);
     });
+
     it('changes restaurant-category-property', () => {
-      const previousState = undefined;
-      const newRestaurantCategory = '레스토랑 카테고리';
       const nextState = reducer(previousState, updateRestaurantInfo('category', newRestaurantCategory));
       expect(nextState.restaurant.category).toBe(newRestaurantCategory);
     });
+
     it('changes restaurant-address-property', () => {
-      const previousState = undefined;
-      const newRestaurantAddress = '레스토랑 주소';
       const nextState = reducer(previousState, updateRestaurantInfo('address', newRestaurantAddress));
       expect(nextState.restaurant.address).toBe(newRestaurantAddress);
     });
