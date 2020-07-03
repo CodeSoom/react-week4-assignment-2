@@ -8,6 +8,10 @@ import RestaurantListContainer from './RestaurantListContainer';
 
 import restaurantList from '../fixtures/restaurantList';
 
+// react-redux mock을 생성
+// TODO: why use
+jest.mock('react-redux');
+
 test('RestaurantListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantList,
