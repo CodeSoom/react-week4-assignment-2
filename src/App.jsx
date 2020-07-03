@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RestaurantListContainer from './RestaurantListContainer';
+import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 import restaurantList from '../fixtures/restaurantList';
 
@@ -22,6 +23,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantListContainer />
+      <RestaurantCreateContainer />
     </div>
   );
 }
