@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import RestaurantList from './RestaurantList'
+import { useDispatch } from 'react-redux';
+
+import RestaurantListContainer from './RestaurantListContainer';
+
+import restaurantList from '../fixtures/restaurantList';
+
+import {
+  setRestaurantList,
+} from './actions';
 
 export default function App() {
-  const restaurantList = [
-    {
-    id: 1,
-    name: '호식당',
-    category: '일식',
-    address: '경기도 수정구 태평동',
-    },
-  ];
+  const dispatch = useDispatch();
+  // TODO: 초기 실행
+  // restaurantList에 데이터 넣기 => dispatch
+  useEffect(() => {
+    dispatch(setRestaurantList(restaurantList));
+  }, []);
 
   return (
     <div>
       <h1>Restaurants</h1>
-      <RestaurantList 
-        restaurantList={restaurantList}
-      />   
+      <RestaurantListContainer />
     </div>
-  )
+  );
 }
