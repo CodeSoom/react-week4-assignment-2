@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  updateRestaurantInfo, addRestaurant,
+  updateRestaurantProperty, addRestaurant,
 } from '../stores/action/action-creators';
 
 import RESTAURANTS from '../__fixtures__/restaurants.json';
@@ -30,22 +30,22 @@ describe('<RestaurantsInputContainer />', () => {
   });
 
   // Given
-  const restaurantInfo = RESTAURANTS[0];
+  const restaurant = RESTAURANTS[0];
 
-  it('display restaurant-info input-boxes ', () => {
+  it('display restaurant input-boxes ', () => {
     const { getAllByRole } = renderComponent();
     expect(getAllByRole('textbox')).toHaveLength(3);
   });
 
-  it('input restaurant-info', () => {
+  it('input restaurant', () => {
     const { getAllByRole } = renderComponent();
     getAllByRole('textbox').forEach((inputBox) => {
       const infoProperty = inputBox.name;
-      const infoValue = restaurantInfo[infoProperty];
+      const infoValue = restaurant[infoProperty];
       // When
       fireEvent.change(inputBox, { target: { value: infoValue } });
       // Then
-      expect(dispatch).toBeCalledWith(updateRestaurantInfo(infoProperty, infoValue));
+      expect(dispatch).toBeCalledWith(updateRestaurantProperty(infoProperty, infoValue));
       expect(inputBox.value).toBe(infoValue);
     });
   });
@@ -54,7 +54,7 @@ describe('<RestaurantsInputContainer />', () => {
     const { getAllByRole, getByRole } = renderComponent();
     getAllByRole('textbox').forEach((inputBox) => {
       const infoProperty = inputBox.name;
-      const infoValue = restaurantInfo[infoProperty];
+      const infoValue = restaurant[infoProperty];
       fireEvent.change(inputBox, { target: { value: infoValue } });
     });
     // When

@@ -1,6 +1,6 @@
 import reducer from './reducer';
 import {
-  updateRestaurantInfo, addRestaurant,
+  updateRestaurantProperty, addRestaurant,
 } from './action/action-creators';
 
 import RESTAURANTS from '../__fixtures__/restaurants.json';
@@ -24,7 +24,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('updateRestaurantInfo', () => {
+  describe('updateRestaurantProperty', () => {
     // Given
     const previousState = undefined;
     const newRestaurantName = '레스토랑 이름';
@@ -32,23 +32,23 @@ describe('reducer', () => {
     const newRestaurantAddress = '레스토랑 주소';
 
     it('changes restaurant-name-property', () => {
-      const nextState = reducer(previousState, updateRestaurantInfo('name', newRestaurantName));
+      const nextState = reducer(previousState, updateRestaurantProperty('name', newRestaurantName));
       expect(nextState.restaurant.name).toBe(newRestaurantName);
     });
 
     it('changes restaurant-category-property', () => {
-      const nextState = reducer(previousState, updateRestaurantInfo('category', newRestaurantCategory));
+      const nextState = reducer(previousState, updateRestaurantProperty('category', newRestaurantCategory));
       expect(nextState.restaurant.category).toBe(newRestaurantCategory);
     });
 
     it('changes restaurant-address-property', () => {
-      const nextState = reducer(previousState, updateRestaurantInfo('address', newRestaurantAddress));
+      const nextState = reducer(previousState, updateRestaurantProperty('address', newRestaurantAddress));
       expect(nextState.restaurant.address).toBe(newRestaurantAddress);
     });
   });
 
   describe('addRestaurant', () => {
-    context('with restaurant-info', () => {
+    context('with restaurant', () => {
       it('appends a new-restaurant into restaurants', () => {
         const previousState = {
           restaurants: [],
@@ -64,7 +64,7 @@ describe('reducer', () => {
       });
     });
 
-    context('with empty-restaurant', () => {
+    context('with empty-restaurant-properties', () => {
       it('does not work', () => {
         const previousState = {
           restaurants: RESTAURANTS,
@@ -79,7 +79,7 @@ describe('reducer', () => {
       });
     });
 
-    context('without restaurant-info', () => {
+    context('without restaurant', () => {
       it('does not work', () => {
         const previousState = {
           restaurants: RESTAURANTS,

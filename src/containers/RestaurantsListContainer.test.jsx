@@ -42,12 +42,12 @@ describe('<RestaurantsListContainer />', () => {
   context('with restaurants', () => {
     // Given
     const restaurants = RESTAURANTS;
-    const restaurantInfo = {};
+    const restaurant = {};
 
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurants,
-        restaurant: restaurantInfo,
+        restaurant,
       }));
     });
 

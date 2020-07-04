@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  updateRestaurantInfo, addRestaurant,
+  updateRestaurantProperty, addRestaurant,
 } from './stores/action/action-creators';
 
 import RESTAURANTS from './__fixtures__/restaurants.json';
@@ -28,7 +28,7 @@ describe('<App />', () => {
   context('without restaurants', () => {
     // Given
     const restaurants = [];
-    const restaurantInfo = RESTAURANTS[0];
+    const restaurant = RESTAURANTS[0];
 
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -42,30 +42,30 @@ describe('<App />', () => {
       expect(getByRole('list').children).toHaveLength(0);
     });
 
-    it('display restaurant-info input-boxes ', () => {
+    it('display restaurant input-boxes ', () => {
       const { getAllByRole } = renderComponent();
       expect(getAllByRole('textbox')).toHaveLength(3);
     });
 
-    it('input restaurant-info', () => {
+    it('input restaurant-properties', () => {
       const { getAllByRole } = renderComponent();
       getAllByRole('textbox').forEach((inputBox) => {
-        const infoProperty = inputBox.name;
-        const infoValue = restaurantInfo[infoProperty];
+        const propertyName = inputBox.name;
+        const propertyValue = restaurant[propertyName];
         // When
-        fireEvent.change(inputBox, { target: { value: infoValue } });
+        fireEvent.change(inputBox, { target: { value: propertyValue } });
         // Then
-        expect(dispatch).toBeCalledWith(updateRestaurantInfo(infoProperty, infoValue));
-        expect(inputBox.value).toBe(infoValue);
+        expect(dispatch).toBeCalledWith(updateRestaurantProperty(propertyName, propertyValue));
+        expect(inputBox.value).toBe(propertyValue);
       });
     });
 
     it('add new restaurant', () => {
       const { getAllByRole, getByRole } = renderComponent();
       getAllByRole('textbox').forEach((inputBox) => {
-        const infoProperty = inputBox.name;
-        const infoValue = restaurantInfo[infoProperty];
-        fireEvent.change(inputBox, { target: { value: infoValue } });
+        const propertyName = inputBox.name;
+        const propertyValue = restaurant[propertyName];
+        fireEvent.change(inputBox, { target: { value: propertyValue } });
       });
       // When
       fireEvent.click(getByRole('button'));
@@ -77,12 +77,12 @@ describe('<App />', () => {
   context('with restaurants', () => {
     // Given
     const restaurants = RESTAURANTS;
-    const restaurantInfo = {};
+    const restaurant = {};
 
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurants,
-        restaurant: restaurantInfo,
+        restaurant,
       }));
     });
 

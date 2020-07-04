@@ -1,9 +1,9 @@
-import { UPDATE_RESTAURANT_INFO, ADD_RESTAURANT } from './action-types';
+import { UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT } from './action-types';
 
-export function updateRestaurantInfo(property, value) {
+export function updateRestaurantProperty(propertyName, propertyValue) {
   return {
-    type: UPDATE_RESTAURANT_INFO,
-    payload: { property, value },
+    type: UPDATE_RESTAURANT_PROPERTY,
+    payload: { propertyName, propertyValue },
   };
 }
 

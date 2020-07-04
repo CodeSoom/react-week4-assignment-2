@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  updateRestaurantInfo, addRestaurant,
+  updateRestaurantProperty, addRestaurant,
 } from '../stores/action/action-creators';
 
 import InputBox from '../components/InputBox';
@@ -15,8 +15,8 @@ export default function RestaurantsInputContainer() {
 
   const dispatch = useDispatch();
 
-  function handleUpdateRestaurantInfo(ev) {
-    dispatch(updateRestaurantInfo(ev.target.name, ev.target.value));
+  function handleupdateRestaurantProperty(ev) {
+    dispatch(updateRestaurantProperty(ev.target.name, ev.target.value));
   }
 
   function handleAddRestaurant() {
@@ -25,9 +25,9 @@ export default function RestaurantsInputContainer() {
 
   return (
     <>
-      <InputBox inputProperty="name" inputValue={restaurant.name} handleChangeInputValue={handleUpdateRestaurantInfo} />
-      <InputBox inputProperty="category" inputValue={restaurant.category} handleChangeInputValue={handleUpdateRestaurantInfo} />
-      <InputBox inputProperty="address" inputValue={restaurant.address} handleChangeInputValue={handleUpdateRestaurantInfo} />
+      <InputBox inputProperty="name" inputValue={restaurant.name} handleChangeInputValue={handleupdateRestaurantProperty} />
+      <InputBox inputProperty="category" inputValue={restaurant.category} handleChangeInputValue={handleupdateRestaurantProperty} />
+      <InputBox inputProperty="address" inputValue={restaurant.address} handleChangeInputValue={handleupdateRestaurantProperty} />
       <AddButton handleClickButton={handleAddRestaurant} />
     </>
   );
