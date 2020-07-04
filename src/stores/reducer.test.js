@@ -27,23 +27,17 @@ describe('reducer', () => {
   describe('updateRestaurantProperty', () => {
     // Given
     const previousState = undefined;
-    const newRestaurantName = '레스토랑 이름';
-    const newRestaurantCategory = '레스토랑 카테고리';
-    const newRestaurantAddress = '레스토랑 주소';
+    const restaurant = {
+      name: '레스토랑 이름',
+      category: '레스토랑 카테고리',
+      address: '레스토랑 주소',
+    };
 
-    it('changes restaurant-name-property', () => {
-      const nextState = reducer(previousState, updateRestaurantProperty('name', newRestaurantName));
-      expect(nextState.restaurant.name).toBe(newRestaurantName);
-    });
-
-    it('changes restaurant-category-property', () => {
-      const nextState = reducer(previousState, updateRestaurantProperty('category', newRestaurantCategory));
-      expect(nextState.restaurant.category).toBe(newRestaurantCategory);
-    });
-
-    it('changes restaurant-address-property', () => {
-      const nextState = reducer(previousState, updateRestaurantProperty('address', newRestaurantAddress));
-      expect(nextState.restaurant.address).toBe(newRestaurantAddress);
+    it('updates restaurant property', () => {
+      Object.entries(restaurant).forEach(([name, value]) => {
+        const state = reducer(previousState, updateRestaurantProperty(name, value));
+        expect(state.restaurant[name]).toBe(value);
+      });
     });
   });
 
