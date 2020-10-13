@@ -3,7 +3,17 @@ import React from 'react';
 export default function App() {
   return (
     <div>
-      Hello
+      <h1>Restaurants</h1>
+      <ul>
+        <li>마녀주방 | 한식 | 서울시 강남구</li>
+        <li>시카고피자 | 양식 | 이태원동</li>
+      </ul>
+      <div>
+        <input type="text" placeholder="이름" />
+        <input type="text" placeholder="분류" />
+        <input type="text" placeholder="주소" />
+        <button type="button" onClick={() => {}}>등록</button>
+      </div>
     </div>
   );
 }
