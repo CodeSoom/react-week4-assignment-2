@@ -1,21 +1,28 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Input from './Input';
 
 test('Input', () => {
   const placeholderText = '이름';
-  const value = '마녀주방';
+  const newText = '마녀주방';
+
+  const handleChangeInput = jest.fn();
 
   const { getByRole, getByPlaceholderText } = render((
     <Input
       placeholderText={placeholderText}
-      value={value}
+      onChange={handleChangeInput}
     />
   ));
 
   expect(getByRole('textbox')).not.toBeNull();
 
-  expect(getByPlaceholderText(placeholderText)).toHaveDisplayValue(value);
+  expect(getByPlaceholderText(placeholderText)).not.toBeNull();
+
+  fireEvent.change(getByPlaceholderText(placeholderText),
+    { target: { value: newText } });
+
+  expect(handleChangeInput).toBeCalled();
 });
