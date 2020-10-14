@@ -8,6 +8,15 @@ const handleChangeInput = jest.fn();
 const handleClickAddRestaurant = jest.fn();
 
 describe('Form', () => {
+  function renderForm() {
+    return render((
+      <Form
+        onChangeInput={handleChangeInput}
+        onClickAddRestautant={handleClickAddRestaurant}
+      />
+    ));
+  }
+
   it('renders 3 inputs with different placeholder ', () => {
     const inputs = [
       { placehoder: '이름', value: '마녀주방' },
@@ -15,11 +24,9 @@ describe('Form', () => {
       { placehoder: '주소', value: '서울시 강남구' },
     ];
 
-    const { getAllByRole, getByPlaceholderText } = render((
-      <Form onChangeInput={handleChangeInput} />
-    ));
+    const { getAllByRole, getByPlaceholderText } = renderForm();
 
-    expect(getAllByRole('textbox')).toHaveLength(3);
+    expect(getAllByRole('textbox')).toHaveLength(inputs.length);
 
     inputs.forEach((input) => {
       expect(getByPlaceholderText(input.placehoder)).not.toBeNull();
@@ -28,15 +35,13 @@ describe('Form', () => {
 
       fireEvent.change(getByPlaceholderText(input.placehoder),
         { target: { value: '쏘이연남' } });
-      });
-      
-      expect(handleChangeInput).toBeCalledTimes(inputs.length);
+    });
+
+    expect(handleChangeInput).toBeCalledTimes(inputs.length);
   });
 
   it('renders "등록" button', () => {
-    const { container, getByText } = render((
-      <Form onClickAddRestautant={handleClickAddRestaurant} />
-    ));
+    const { container, getByText } = renderForm();
 
     expect(container).toHaveTextContent('등록');
 
