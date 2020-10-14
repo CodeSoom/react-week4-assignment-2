@@ -18,10 +18,11 @@ describe('List', () => {
         { name: '시카고피자', category: '양식', address: '이태원동' },
       ];
 
-      const { getByText } = renderList(restaurants);
+      const { container } = renderList(restaurants);
 
-      expect(getByText('마녀주방 | 한식 | 서울시 강남구')).not.toBeNull();
-      expect(getByText('시카고피자 | 양식 | 이태원동')).not.toBeNull();
+      restaurants.forEach((restaurant) => {
+        expect(container).toHaveTextContent(`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`);
+      });
     });
   });
 
