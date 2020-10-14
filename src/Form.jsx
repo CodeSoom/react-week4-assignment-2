@@ -3,11 +3,15 @@ import React from 'react';
 import Input from './Input';
 
 export default function Form() {
+  const inputs = [
+    { placehoder: '이름' },
+    { placehoder: '분류' },
+    { placehoder: '주소' },
+  ];
+
   return (
     <div>
-      <Input placeholderText="이름" />
-      <Input placeholderText="분류" />
-      <Input placeholderText="주소" />
+      {inputs.map((input) => <Input placeholderText={input.placehoder} />)}
     </div>
   );
 }
