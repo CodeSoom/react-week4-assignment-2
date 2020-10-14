@@ -6,9 +6,9 @@ import Form from './Form';
 
 test('Form', () => {
   const inputs = [
-    { placehoder: '이름' },
-    { placehoder: '분류' },
-    { placehoder: '주소' },
+    { placehoder: '이름', value: '마녀주방' },
+    { placehoder: '분류', value: '한식' },
+    { placehoder: '주소', value: '서울시 강남구' },
   ];
   const { getAllByRole, getByPlaceholderText } = render((
     <Form />
@@ -18,5 +18,7 @@ test('Form', () => {
 
   inputs.forEach((input) => {
     expect(getByPlaceholderText(input.placehoder)).not.toBeNull();
+
+    expect(getByPlaceholderText(input.placehoder)).toHaveDisplayValue(input.value);
   });
 });
