@@ -13,6 +13,7 @@ export default function Form() {
     <div>
       {inputs.map((input) => (
         <Input
+          key={input.placehoder}
           placeholderText={input.placehoder}
           value={input.value}
         />
