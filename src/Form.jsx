@@ -5,9 +5,9 @@ import Input from './Input';
 export default function Form() {
   return (
     <div>
-      <Input />
-      <Input />
-      <Input />
+      <Input placeholderText="이름" />
+      <Input placeholderText="분류" />
+      <Input placeholderText="주소" />
     </div>
   );
 }
