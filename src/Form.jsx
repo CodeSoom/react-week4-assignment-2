@@ -18,6 +18,7 @@ export default function Form() {
           value={input.value}
         />
       ))}
+      <button>등록</button>
     </div>
   );
 }
