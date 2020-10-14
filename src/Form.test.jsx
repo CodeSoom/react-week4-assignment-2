@@ -4,6 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Form from './Form';
 
+const handleChangeInput = jest.fn();
 const handleClickAddRestaurant = jest.fn();
 
 describe('Form', () => {
@@ -15,7 +16,7 @@ describe('Form', () => {
     ];
 
     const { getAllByRole, getByPlaceholderText } = render((
-      <Form />
+      <Form onChangeInput={handleChangeInput} />
     ));
 
     expect(getAllByRole('textbox')).toHaveLength(3);
@@ -24,7 +25,12 @@ describe('Form', () => {
       expect(getByPlaceholderText(input.placehoder)).not.toBeNull();
 
       expect(getByPlaceholderText(input.placehoder)).toHaveDisplayValue(input.value);
-    });
+
+      fireEvent.change(getByPlaceholderText(input.placehoder),
+        { target: { value: '쏘이연남' } });
+      });
+      
+      expect(handleChangeInput).toBeCalledTimes(inputs.length);
   });
 
   it('renders "등록" button', () => {
