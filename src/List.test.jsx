@@ -18,15 +18,15 @@ test('List', () => {
     },
   ];
 
-  const { getByText } = render((
+  const { container } = render((
     <List
       restaurants={restaurants}
     />
   ));
 
   restaurants.forEach((restaurant) => {
-    expect(getByText(restaurant.name)).not.toBeNull();
-    expect(getByText(restaurant.classification)).not.toBeNull();
-    expect(getByText(restaurant.location)).not.toBeNull();
+    expect(container).toHaveTextContent(restaurant.name);
+    expect(container).toHaveTextContent(restaurant.classification);
+    expect(container).toHaveTextContent(restaurant.location);
   });
 });
