@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Input() {
+export default function Input({ placeholderText }) {
   return (
-    <input type="text" placeholder="이름" />
+    <input type="text" placeholder={placeholderText} />
   );
 }
