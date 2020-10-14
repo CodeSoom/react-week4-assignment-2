@@ -2,7 +2,7 @@ import React from 'react';
 
 import Input from './Input';
 
-export default function Form() {
+export default function Form({ onClickAdd }) {
   const inputs = [
     { placehoder: '이름', value: '마녀주방' },
     { placehoder: '분류', value: '한식' },
@@ -18,7 +18,7 @@ export default function Form() {
           value={input.value}
         />
       ))}
-      <button type="button" onClick={() => {}}>등록</button>
+      <button type="button" onClick={onClickAdd}>등록</button>
     </div>
   );
 }
