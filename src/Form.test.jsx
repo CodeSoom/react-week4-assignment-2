@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Form from './Form';
 
-const onClickAdd = jest.fn();
+const handleClickAddRestaurant = jest.fn();
 
 describe('Form', () => {
   it('renders 3 inputs with different placeholder ', () => {
@@ -29,13 +29,13 @@ describe('Form', () => {
 
   it('renders "등록" button', () => {
     const { container, getByText } = render((
-      <Form onClickAdd={onClickAdd} />
+      <Form onClickAddRestautant={handleClickAddRestaurant} />
     ));
 
     expect(container).toHaveTextContent('등록');
 
     fireEvent.click(getByText('등록'));
 
-    expect(onClickAdd).toBeCalled();
+    expect(handleClickAddRestaurant).toBeCalled();
   });
 });
