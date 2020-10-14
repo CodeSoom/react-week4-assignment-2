@@ -2,7 +2,7 @@ import React from 'react';
 
 import Input from './Input';
 
-export default function Form({ onClickAddRestautant }) {
+export default function Form({ onClickAddRestautant, onChangeInput }) {
   const inputs = [
     { placehoder: '이름', value: '마녀주방' },
     { placehoder: '분류', value: '한식' },
@@ -16,6 +16,7 @@ export default function Form({ onClickAddRestautant }) {
           key={input.placehoder}
           placeholderText={input.placehoder}
           value={input.value}
+          onChange={onChangeInput}
         />
       ))}
       <button type="button" onClick={onClickAddRestautant}>등록</button>
