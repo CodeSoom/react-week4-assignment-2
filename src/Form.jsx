@@ -4,6 +4,10 @@ import Input from './Input';
 
 export default function Form() {
   return (
-    <Input />
+    <div>
+      <Input />
+      <Input />
+      <Input />
+    </div>
   );
 }
