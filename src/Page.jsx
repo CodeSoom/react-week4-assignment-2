@@ -1,5 +1,22 @@
 import React from 'react';
 
-export default function Page() {
-  return('마녀주방 | 한식 | 서울시 강남구');
+import Input from './Input';
+import List from './List';
+
+export default function Page({ name, category, address, onChangeTitle, onClickAddItem, items }) {
+  return(
+    <div>
+      <h1>Restaurants</h1>
+      <Input
+        name={name}
+        categoryTitle={category}
+        addressTitle={address}
+        onChange={onChangeTitle}
+        onClick={onClickAddItem} 
+      />
+      <List 
+        items={items}
+      />
+    </div>
+  );
 };
