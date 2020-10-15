@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
-describe('Restaurant App', () => {
-  const { getByText, getByPlaceholder } = render((
+test('Restaurant App', () => {
+  const { getByText, getByPlaceholderText } = render((
     <App />
   ));
 
@@ -13,9 +13,9 @@ describe('Restaurant App', () => {
   expect(getByText('Restaurants')).not.toBeNull();
 
   // Input List
-  expect(getByPlaceholder('이름')).not.toBeNull();
-  expect(getByPlaceholder('분류')).not.toBeNull();
-  expect(getByPlaceholder('주소')).not.toBeNull();
+  expect(getByPlaceholderText('이름')).not.toBeNull();
+  expect(getByPlaceholderText('분류')).not.toBeNull();
+  expect(getByPlaceholderText('주소')).not.toBeNull();
 
   // Add Button
   expect(getByText('등록')).not.toBeNull();
