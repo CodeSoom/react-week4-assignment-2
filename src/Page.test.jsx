@@ -18,5 +18,5 @@ test('Page', () => {
   ));
 
   expect(container).toHaveTextContent(/Restaurants/);
-  expect(container).toHaveTextContent(restaurants.restaurants[0].name);
+  expect(container).toHaveTextContent(restaurants[0].name);
 });
