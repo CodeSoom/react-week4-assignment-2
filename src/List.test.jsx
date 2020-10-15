@@ -5,7 +5,7 @@ import { render } from '@testing-library/jest-dom';
 import List from './List';
 
 describe('List', () => {
-  context('restourantInfos가 3개 주어졌을 때', () => {
+  context('restaurantInfos가 3개 주어졌을 때', () => {
     const restaurantInfos = [
       {
         name: '마녀주방',
@@ -24,7 +24,7 @@ describe('List', () => {
       },
     ];
 
-    it('retourantInfo 리스트가 잘 출력된다.', () => {
+    it('restaurantInfo 리스트가 잘 출력된다.', () => {
       const { container } = render(<List restaurantInfos={restaurantInfos} />);
 
       restaurantInfos.forEach(({ name, type, location }) => {
