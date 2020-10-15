@@ -1,5 +1,10 @@
 import reducer from './reducer';
 
+import {
+  updateInputText,
+  addRestaurant,
+} from './actions';
+
 describe('reducer', () => {
   const initalRestaurants = [];
   const initalInputs = [
@@ -22,16 +27,6 @@ describe('reducer', () => {
       const newInputText = '마녀주방';
       const { placeholder } = initalInputs[0];
 
-      function updateInputText(placeholder, value) {
-        return ({
-          type: 'updateInputText',
-          payload: {
-            placeholder,
-            value,
-          },
-        });
-      }
-
       const { inputs } = reducer({
         restaurants: initalRestaurants,
         inputs: initalInputs,
@@ -48,12 +43,6 @@ describe('reducer', () => {
         { placeholder: '분류', value: '양식' },
         { placeholder: '주소', value: '이태원동' },
       ];
-
-      function addRestaurant() {
-        return ({
-          type: 'addRestaurant',
-        });
-      }
 
       const { restaurants } = reducer({
         restaurants: initalRestaurants,
