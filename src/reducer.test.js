@@ -17,6 +17,12 @@ describe('reducer', () => {
 
       const newState = reducer(previousState, action);
 
+      expect(newState.newId).toBe(previousState.newId + 1);
+      expect(newState.restaurant).toEqual({
+        name: '',
+        category: '',
+        address: '',
+      });
       expect(newState.restaurants).toContainEqual({
         ...previousState.restaurant,
         id: previousState.newId,
