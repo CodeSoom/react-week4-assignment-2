@@ -10,7 +10,17 @@ const initialState = {
 const initialAction = { type: 'initialType' };
 
 const reducers = {
-  updateInputText: (state, payload) => ({ ...state, inputs: [{ placeholder: '이름', value: '마녀주방' }] }),
+  updateInputText: (state, payload) => {
+    const newInputs = state.inputs
+      .map(({ placeholder, value }) => ({
+        placeholder,
+        value: placeholder === payload.placeholder
+          ? payload.value
+          : value,
+      }));
+
+    return { ...state, inputs: newInputs };
+  },
 };
 
 export default function reducer(state = initialState, action = initialAction) {
