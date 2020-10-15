@@ -20,7 +20,15 @@ export default function FormContainer() {
     dispatch(state, updateInputText(placeholder, value));
   }
 
+  function handleClickAddRestautant() {
+    dispatch();
+  }
+
   return (
-    <Form inputs={state.inputs} onChangeInput={handleChangeInput} />
+    <Form
+      inputs={state.inputs}
+      onChangeInput={handleChangeInput}
+      onClickAddRestautant={handleClickAddRestautant}
+    />
   );
 }
