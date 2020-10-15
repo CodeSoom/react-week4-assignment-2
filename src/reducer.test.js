@@ -34,4 +34,25 @@ describe('reducer', () => {
       expect(inputs[0].value).toBe('마녀주방');
     });
   });
+
+  describe('addRestaurant', () => {
+    it('add restaurant to restaurants', () => {
+      const previousInputs = [
+        { placeholder: '이름', value: '시카고피자' },
+        { placeholder: '분류', value: '양식' },
+        { placeholder: '주소', value: '이태원동' },
+      ];
+
+      const action = {
+        type: 'addRestaurant',
+      };
+
+      const { restaurants } = reducer({
+        restaurants: initalRestaurants,
+        inputs: previousInputs,
+      }, action);
+
+      expect(restaurants).toHaveLength(initalRestaurants.length + 1);
+    });
+  });
 });
