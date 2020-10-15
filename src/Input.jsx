@@ -1,10 +1,12 @@
 import React from 'react';
 
 export default function Input({
-  name, group, address,
+  restaurantInfo,
   onChangeName, onChangeGroup, onChangeAddress,
   onClick,
 }) {
+  const { name, group, address } = restaurantInfo;
+
   return (
     <div>
       <input
