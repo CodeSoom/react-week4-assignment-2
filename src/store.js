@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-const initialState = { restaurants: [] };
+const initialState = { restaurants: [], inputs: [] };
 const initialType = { type: 'initialType' };
 
 function reducer(state = initialState, action = initialType) {
