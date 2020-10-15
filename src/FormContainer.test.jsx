@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -30,10 +30,19 @@ test('FormContainer', () => {
     <FormContainer />
   ));
 
-  expect(getAllByRole('textbox')).not.toBeNull();
-  expect(container).toHaveTextContent('등록');
-
   inputs.forEach(({ value }) => {
     expect(getByDisplayValue(value)).not.toBeNull();
   });
+
+  expect(container).toHaveTextContent('등록');
+
+  const textBoxes = getAllByRole('textbox');
+
+  expect(textBoxes).not.toBeNull();
+
+  textBoxes.forEach((textBox) => {
+    fireEvent.change(textBox, { target: { value: '마녀주방' } });
+  });
+
+  expect(dispatch).toBeCalledTimes(3);
 });
