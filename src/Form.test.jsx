@@ -7,6 +7,10 @@ import Form from './Form';
 const handleChangeInput = jest.fn();
 const handleClickAddRestaurant = jest.fn();
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Form', () => {
   function renderForm() {
     return render((
@@ -19,21 +23,21 @@ describe('Form', () => {
 
   it('renders 3 inputs with different placeholder ', () => {
     const inputs = [
-      { placehoder: '이름', value: '마녀주방' },
-      { placehoder: '분류', value: '한식' },
-      { placehoder: '주소', value: '서울시 강남구' },
+      { placeholder: '이름', value: '마녀주방' },
+      { placeholder: '분류', value: '한식' },
+      { placeholder: '주소', value: '서울시 강남구' },
     ];
 
     const { getAllByRole, getByPlaceholderText } = renderForm();
 
     expect(getAllByRole('textbox')).toHaveLength(inputs.length);
 
-    inputs.forEach((input) => {
-      expect(getByPlaceholderText(input.placehoder)).not.toBeNull();
+    inputs.forEach(({ placeholder, value }) => {
+      expect(getByPlaceholderText(placeholder)).not.toBeNull();
 
-      expect(getByPlaceholderText(input.placehoder)).toHaveDisplayValue(input.value);
+      expect(getByPlaceholderText(placeholder)).toHaveDisplayValue(value);
 
-      fireEvent.change(getByPlaceholderText(input.placehoder),
+      fireEvent.change(getByPlaceholderText(placeholder),
         { target: { value: '쏘이연남' } });
     });
 
