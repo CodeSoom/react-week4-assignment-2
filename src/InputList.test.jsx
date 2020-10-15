@@ -16,6 +16,10 @@ describe('InputList', () => {
     address: '분당구 정자동',
   };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders elements', () => {
     const { getByDisplayValue, getByText } = render((
       <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
@@ -57,5 +61,25 @@ describe('InputList', () => {
     fireEvent.click(button);
 
     expect(handleClick).toBeCalledTimes(1);
+  });
+
+  it('cannot call click handler when one of input is blank', () => {
+    const blankRestaurant = {
+      name: '',
+      category: '일식',
+      address: '서울',
+    };
+
+    const { getByText } = render((
+      <InputList restaurant={blankRestaurant} onChange={handleChange} onClick={handleClick} />
+    ));
+
+    const button = getByText(/등록/);
+
+    expect(handleClick).not.toBeCalled();
+
+    fireEvent.click(button);
+
+    expect(handleClick).not.toBeCalled();
   });
 });
