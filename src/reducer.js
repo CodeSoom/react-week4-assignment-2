@@ -1,3 +1,5 @@
+import utils from './utils';
+
 const initialState = {
   newId: 100,
   restaurant: {
@@ -19,7 +21,7 @@ const reducers = {
         category: '',
         address: '',
       },
-      restaurants: [...restaurants, { ...restaurant, id: newId }],
+      restaurants: [...restaurants, { ...utils.trimValues(restaurant), id: newId }],
     });
   },
   updateRestaurant(state, action) {
