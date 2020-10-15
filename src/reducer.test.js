@@ -1,21 +1,20 @@
 import reducer from './reducer';
+import { updateRestaurant, addRestaurant } from './actions';
 
 describe('reducer', () => {
+  const previousState = {
+    newId: 103,
+    restaurant: {
+      name: '키와미',
+      category: '일식',
+      address: '분당구 정자동',
+    },
+    restaurants: [],
+  };
+
   describe('addRestaurant', () => {
     it('returns new state with new restaurant added to restaurants', () => {
-      const previousState = {
-        newId: 103,
-        restaurant: {
-          name: '키와미',
-          category: '일식',
-          address: '분당구 정자동',
-        },
-        restaurants: [],
-      };
-
-      const action = { type: 'addRestaurant' };
-
-      const newState = reducer(previousState, action);
+      const newState = reducer(previousState, addRestaurant());
 
       expect(newState.newId).toBe(previousState.newId + 1);
       expect(newState.restaurant).toEqual({
@@ -38,23 +37,8 @@ describe('reducer', () => {
         address: '우주',
       };
 
-      const previousState = {
-        newId: 103,
-        restaurant: {
-          name: '키와미',
-          category: '일식',
-          address: '분당구 정자동',
-        },
-        restaurants: [],
-      };
-
       Object.entries(updatedRestaurant).forEach(([field, value]) => {
-        const action = {
-          type: 'updateRestaurant',
-          payload: { field, value },
-        };
-
-        const newState = reducer(previousState, action);
+        const newState = reducer(previousState, updateRestaurant(field, value));
 
         expect(newState.restaurant[field]).toBe(updatedRestaurant[field]);
       });
