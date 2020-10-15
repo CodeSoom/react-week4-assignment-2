@@ -13,7 +13,7 @@ test('Input', () => {
     <Input value={value} onChange={handleChange} />
   ));
 
-  expect(getByDisplayValue(value).toBeInTheDocument());
+  expect(getByDisplayValue(value)).toBeInTheDocument();
 
   expect(handleChange).not.toBeCalled();
 
