@@ -17,7 +17,10 @@ describe('reducer', () => {
 
       const newState = reducer(previousState, action);
 
-      expect(newState.restaurants).toContainEqual(previousState.restaurant);
+      expect(newState.restaurants).toContainEqual({
+        ...previousState.restaurant,
+        id: previousState.newId,
+      });
     });
   });
 });
