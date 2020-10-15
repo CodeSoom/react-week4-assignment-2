@@ -29,4 +29,35 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('updateRestaurant', () => {
+    it('returns new state with updated restaurant', () => {
+      const updatedRestaurant = {
+        name: '마녀식당',
+        category: '중식',
+        address: '우주',
+      };
+
+      const previousState = {
+        newId: 103,
+        restaurant: {
+          name: '키와미',
+          category: '일식',
+          address: '분당구 정자동',
+        },
+        restaurants: [],
+      };
+
+      Object.entries(updatedRestaurant).forEach(([field, value]) => {
+        const action = {
+          type: 'updateRestaurant',
+          payload: { field, value },
+        };
+
+        const newState = reducer(previousState, action);
+
+        expect(newState.restaurant[field]).toBe(updatedRestaurant[field]);
+      });
+    });
+  });
 });
