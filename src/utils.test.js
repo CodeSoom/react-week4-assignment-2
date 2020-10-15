@@ -1,4 +1,4 @@
-import { trimValue } from './utils';
+import utils from './utils';
 
 describe('utils', () => {
   describe('trimValues', () => {
@@ -8,7 +8,7 @@ describe('utils', () => {
         value2: '    www    ',
       };
 
-      expect(trimValues(prevObj)).toEqual({
+      expect(utils.trimValues(prevObj)).toEqual({
         value1: 'wel',
         value2: 'www',
       });
