@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Form from './Form';
 
-test('Input', () => {
+test('Form', () => {
   const restaurant = {
     name: '마녀주방',
     classification: '한식',
