@@ -24,9 +24,9 @@ test('List', () => {
     />
   ));
 
-  restaurants.forEach((restaurant) => {
-    expect(container).toHaveTextContent(restaurant.name);
-    expect(container).toHaveTextContent(restaurant.classification);
-    expect(container).toHaveTextContent(restaurant.location);
+  restaurants.forEach(({ name, classification, location }) => {
+    expect(container).toHaveTextContent(name);
+    expect(container).toHaveTextContent(classification);
+    expect(container).toHaveTextContent(location);
   });
 });
