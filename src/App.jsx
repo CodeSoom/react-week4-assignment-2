@@ -7,7 +7,7 @@ import List from './List';
 export default function App() {
   const initialState = {
     nameTitle: '',
-    classify: '',
+    classification: '',
     location: '',
   };
 
@@ -18,7 +18,7 @@ export default function App() {
     restaurantLists: [],
   });
 
-  const { nameTitle, classify, location } = inputState;
+  const { nameTitle, classification, location } = inputState;
 
   const { newId, restaurantLists } = state;
 
@@ -38,7 +38,7 @@ export default function App() {
         {
           id: newId,
           nameTitle,
-          classify,
+          classification,
           location,
         },
       ],

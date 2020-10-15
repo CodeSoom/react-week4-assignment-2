@@ -5,15 +5,22 @@ export default function List({ restaurantLists }) {
     <>
       <h1>Restaurants</h1>
       <ul>
-        {restaurantLists.map(({ nameTitle, classify, location }) => (
-          <li>
-            {nameTitle}
+        {restaurantLists.map(({
+          nameTitle,
+          classification,
+          location,
+          id,
+        }) => (
+            <li key={id}>
+              {nameTitle}
             |
-            {classify}
+              {classification}
+              {' '}
             |
-            {location}
-          </li>
-        ))}
+              {' '}
+              {location}
+            </li>
+          ))}
       </ul>
     </>
 
