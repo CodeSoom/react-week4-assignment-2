@@ -34,13 +34,13 @@ describe('reducer', () => {
         const state = reduceAddRestaurant(restaurant);
 
         expect(state.restaurants).toHaveLength(1);
-        expect(state.tasks[0].restaurant.classification).toBe('한식');
+        expect(state.restaurants[0].classification).toBe('한식');
       });
 
       it('clears task restaurant', () => {
         const state = reduceAddRestaurant(restaurant);
 
-        expect(state.name).toBe('');
+        expect(state.restaurant.name).toBe('');
       });
     });
 

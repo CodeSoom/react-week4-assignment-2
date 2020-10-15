@@ -18,6 +18,39 @@ export default function reducer(state = initialState, action) {
         restaurant: { ...restaurant, name: action.payload.value },
       };
     }
+
+    if (action.payload.placeholder === '분류') {
+      return {
+        ...state,
+        restaurant: { ...restaurant, classification: action.payload.value },
+      };
+    }
+
+    if (action.payload.placeholder === '주소') {
+      return {
+        ...state,
+        restaurant: { ...restaurant, location: action.payload.value },
+      };
+    }
+  }
+
+  if (action.type === 'addRestaurant') {
+    const { restaurants, restaurant } = state;
+    const { name, classification, location } = restaurant;
+
+    if (!name || !classification || !location) {
+      return state;
+    }
+
+    return {
+      ...state,
+      restaurant: {
+        name: '',
+        classification: '',
+        location: '',
+      },
+      restaurants: [...restaurants, restaurant],
+    };
   }
 
   return state;
