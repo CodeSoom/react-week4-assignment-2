@@ -8,6 +8,11 @@ import App from './App';
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
+    restaurant: {
+      name: '',
+      classification: '',
+      location: '',
+    },
     restaurants: [
       {
         name: '마녀주방',
@@ -20,6 +25,7 @@ test('App', () => {
         location: '이태원동',
       },
     ],
+    placeholders: [],
   }));
 
   const { container, getByText } = render((
