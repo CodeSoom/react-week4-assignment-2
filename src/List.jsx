@@ -9,8 +9,13 @@ export default function Page({ restaurants }) {
 
   return (
     <ul>
-      {restaurants.map(({ name, category, address }) => (
-        <li>
+      {restaurants.map(({
+        id,
+        name,
+        category,
+        address,
+      }) => (
+        <li key={id}>
           {name}
           |
           {category}
