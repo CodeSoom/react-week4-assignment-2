@@ -20,8 +20,8 @@ describe('List', () => {
 
       const { container } = renderList(restaurants);
 
-      restaurants.forEach((restaurant) => {
-        expect(container).toHaveTextContent(`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`);
+      restaurants.forEach(({ name, category, address }) => {
+        expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
       });
     });
   });
