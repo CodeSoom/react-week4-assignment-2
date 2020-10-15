@@ -12,5 +12,7 @@ describe('Input', () => {
     const { getByPlaceholderText } = inputRender();
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
+    expect(getByPlaceholderText(/분류/)).not.toBeNull();
+    expect(getByPlaceholderText(/주소/)).not.toBeNull();
   });
 });
