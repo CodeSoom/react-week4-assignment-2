@@ -10,20 +10,26 @@ describe('InputList', () => {
 
   const handleChange = () => handleChangeName;
 
+  const renderInputList = (restaurant) => render((
+    <InputList
+      restaurant={restaurant}
+      onChange={handleChange}
+      onClick={handleClick}
+    />
+  ));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const restaurant = {
     name: '키와미',
     category: '일식',
     address: '분당구 정자동',
   };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('renders elements', () => {
-    const { getByDisplayValue, getByText } = render((
-      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
-    ));
+    const { getByDisplayValue, getByText } = renderInputList(restaurant);
 
     expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();
     expect(getByDisplayValue(restaurant.category)).toBeInTheDocument();
@@ -32,9 +38,7 @@ describe('InputList', () => {
   });
 
   it('calls change handler when one of fields change', () => {
-    const { getByDisplayValue } = render((
-      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
-    ));
+    const { getByDisplayValue } = renderInputList(restaurant);
 
     const nameInput = getByDisplayValue(restaurant.name);
 
@@ -50,9 +54,7 @@ describe('InputList', () => {
   });
 
   it('calls click handler when button is clicked', () => {
-    const { getByText } = render((
-      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
-    ));
+    const { getByText } = renderInputList(restaurant);
 
     const button = getByText(/등록/);
 
@@ -70,9 +72,7 @@ describe('InputList', () => {
       address: '서울',
     };
 
-    const { getByText } = render((
-      <InputList restaurant={blankRestaurant} onChange={handleChange} onClick={handleClick} />
-    ));
+    const { getByText } = renderInputList(blankRestaurant);
 
     const button = getByText(/등록/);
 
