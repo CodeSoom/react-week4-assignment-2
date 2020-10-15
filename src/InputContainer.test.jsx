@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -60,12 +61,10 @@ describe('<InputContainer />', () => {
       const { getByPlaceholderText } = renderInput();
 
       // When
-      fireEvent.change(getByPlaceholderText('분류'), {
-        target: { value: '사용자 입력' },
-      });
+      userEvent.type(getByPlaceholderText('분류'), 'korean');
 
       // Then
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toHaveBeenCalledTimes(6);
     });
   });
 });
