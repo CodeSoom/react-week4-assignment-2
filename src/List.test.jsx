@@ -9,12 +9,14 @@ describe('List', () => {
     <List restaurantLists={restaurantLists} />
   ));
 
+  beforeEach(() => jest.clearAllMocks());
+
   it('Empty Lists', () => {
     const { getAllByText } = renderList();
     getAllByText('');
   });
 
-  it('List over 1 in Lists', () => {
+  it('show all List in Lists length over 1', () => {
     const restaurantLists = [
       {
         id: 1,
@@ -26,19 +28,19 @@ describe('List', () => {
         id: 2,
         nameTitle: '도미노피자',
         classification: '양식',
-        location: '대구',
+        location: '부산',
       },
+
     ];
+
     const { getByText } = renderList(restaurantLists);
 
     restaurantLists.forEach(({
       id, nameTitle, classification, location,
     }) => {
-      getByText(nameTitle).not.toBeNull();
-      getByText(classification).not.toBeNull();
-      getByText(location).not.toBeNull();
+      expect(getByText(`${nameTitle}|${classification}|${location}`)).not.toBeNull();
 
-      expect();
+      expect(id).not.toBeUndefined();
     });
   });
 });

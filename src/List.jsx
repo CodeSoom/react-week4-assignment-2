@@ -15,9 +15,7 @@ export default function List({ restaurantLists }) {
               {nameTitle}
             |
               {classification}
-              {' '}
             |
-              {' '}
               {location}
             </li>
           ))}
