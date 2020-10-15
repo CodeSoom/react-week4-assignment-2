@@ -6,7 +6,7 @@ import Item from './Item';
 
 describe('Item', () => {
   const restaurant = {
-    name: '마녀주방', type: '약식', adress: '강남구 서현동',
+    id: 100, name: '마녀주방', type: '약식', address: '강남구 서현동',
   };
 
   it('shows a restaurants', () => {

@@ -14,19 +14,19 @@ describe('List', () => {
   context('with restaurants', () => {
     const restaurants = [
       {
-        key: 100,
+        id: 100,
         name: '마녀주방',
         type: '양식',
         address: '강남구 서현동',
       },
       {
-        key: 101,
+        id: 101,
         name: '시카고피자',
         type: '양식',
         address: '용산구 이태원동',
       },
       {
-        key: 102,
+        id: 102,
         name: '카와미',
         type: '일식',
         address: '분당구 정자동',

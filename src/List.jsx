@@ -6,7 +6,7 @@ export default function List({ restaurants }) {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <Item restaurant={restaurant} />
+        <Item key={restaurant.id} restaurant={restaurant} />
       ))}
     </ul>
   );
