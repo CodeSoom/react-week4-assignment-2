@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Form from './Form';
 
-describe('InputList', () => {
+describe('Form', () => {
   const handleChangeName = jest.fn();
   const handleClick = jest.fn();
 

@@ -5,7 +5,7 @@ import { addRestaurant, updateRestaurant } from './actions';
 
 import Form from './Form';
 
-export default function App() {
+export default function FormContainer() {
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
