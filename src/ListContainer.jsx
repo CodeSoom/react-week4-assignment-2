@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 
 import List from './List';
 
-function selector(state) {
-  return { restaurants: state.restaurants };
-}
-
 export default function ListContainer() {
-  const { restaurants } = useSelector(selector);
+  const { restaurants } = useSelector(({ state }) => ({
+    restaurants: state.restaurants,
+  }));
 
   return (
     <List restaurants={restaurants} />
