@@ -1,29 +1,53 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const [state, setState] = useState({
+  const initialState = {
     nameTitle: '',
     classify: '',
     location: '',
+  };
+  const [inputState, setInput] = useState(initialState);
+
+  const [state, setState] = useState({
+    newId: 100,
+    restaurantLists: [
+      {
+        id: 0,
+        ...initialState,
+      },
+    ],
   });
 
-  const { nameTitle, classify, location } = state;
+  const { nameTitle, classify, location } = inputState;
 
+  const { newId, restaurantLists } = state;
   const handleChange = (e) => {
     const { value, name } = e.target;
-    setState({
-      ...state,
+    setInput({
+      ...inputState,
       [name]: value,
     });
   };
+
   const handleClick = () => {
     setState({
-      ...state,
-      nameTitle,
-      classify,
-      location,
+      newId: newId + 1,
+      restaurantLists: [
+        ...restaurantLists,
+        {
+          id: newId,
+          nameTitle,
+          classify,
+          location,
+        },
+      ],
+    });
+
+    setInput({
+      ...initialState,
     });
   };
+
   return (
     <>
       <h1>Restaurants</h1>
