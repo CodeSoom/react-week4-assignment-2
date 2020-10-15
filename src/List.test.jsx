@@ -14,9 +14,9 @@ test('List', () => {
     <List restaurants={restaurants} />
   ));
 
-  restaurants.forEach((restaurant) => {
-    Object.entries(restaurant).forEach(([, value]) => {
-      expect(container).toHaveTextContent(value);
-    });
+  restaurants.forEach(({ name, category, address }) => {
+    expect(container).toHaveTextContent(
+      `${name}|${category}|${address}`,
+    );
   });
 });
