@@ -6,21 +6,18 @@ export default function App() {
     classify: '',
     location: '',
   };
+
   const [inputState, setInput] = useState(initialState);
 
   const [state, setState] = useState({
     newId: 100,
-    restaurantLists: [
-      {
-        id: 0,
-        ...initialState,
-      },
-    ],
+    restaurantLists: [],
   });
 
   const { nameTitle, classify, location } = inputState;
 
   const { newId, restaurantLists } = state;
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setInput({
@@ -52,7 +49,19 @@ export default function App() {
     <>
       <h1>Restaurants</h1>
       <ul>
-        <li>마녀주방 | 한식 | 서울시 강남구</li>
+        {restaurantLists.map(({ nameTitle, classify, location }) => (
+          <li>
+            {nameTitle}
+            {' '}
+            |
+            {' '}
+            {classify}
+            {' '}
+            |
+            {' '}
+            {location}
+          </li>
+        ))}
       </ul>
       <div>
         <input name="nameTitle" value={nameTitle} type="text" placeholder="이름" onChange={handleChange} />

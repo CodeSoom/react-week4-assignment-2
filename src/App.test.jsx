@@ -16,4 +16,6 @@ describe('App', () => {
 
     getByText('등록');
   });
+
+  it('shou');
 });
