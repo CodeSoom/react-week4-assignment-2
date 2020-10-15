@@ -4,18 +4,23 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Form from './Form';
 
+import {
+  updateInputText,
+} from './actions';
+
 export default function FormContainer() {
   const dispatch = useDispatch();
 
-  const { inputs } = useSelector((state) => ({
-    inputs: state.inputs,
+  const state = useSelector(({ restaurants, inputs }) => ({
+    restaurants,
+    inputs,
   }));
 
-  function handleChangeInput() {
-    dispatch();
+  function handleChangeInput(placeholder, value) {
+    dispatch(state, updateInputText(placeholder, value));
   }
 
   return (
-    <Form inputs={inputs} onChangeInput={handleChangeInput} />
+    <Form inputs={state.inputs} onChangeInput={handleChangeInput} />
   );
 }

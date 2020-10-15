@@ -6,7 +6,7 @@ export default function Input({ placeholderText, value, onChange }) {
       type="text"
       placeholder={placeholderText}
       value={value}
-      onChange={onChange}
+      onChange={(e) => onChange(placeholderText, e.target.value)}
     />
   );
 }
