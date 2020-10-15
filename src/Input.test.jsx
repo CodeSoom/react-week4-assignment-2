@@ -5,7 +5,15 @@ import { fireEvent, render } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  const handleChange = jest.fn();
+  const handleChangeName = jest.fn();
+  const handleChangeCategory = jest.fn();
+  const handleChangeAddress = jest.fn();
+
+  const handleChange = (field) => ({
+    name: handleChangeName,
+    category: handleChangeCategory,
+    address: handleChangeAddress,
+  }[field]);
 
   const restaurant = {
     name: '키와미',
@@ -31,15 +39,15 @@ describe('Input', () => {
 
     const nameInput = getByDisplayValue(restaurant.name);
 
-    expect(handleChange).not.toBeCalled();
+    expect(handleChangeName).not.toBeCalled();
 
-    fireEvent(nameInput, {
+    fireEvent.change(nameInput, {
       target: {
-        name: 'something',
+        value: 'something',
       },
     });
 
-    expect(handleChange).toBeCalledTimes(1);
+    expect(handleChangeName).toBeCalledTimes(1);
   });
 
   it('calls change handler when category changes', () => {
@@ -49,15 +57,15 @@ describe('Input', () => {
 
     const categoryInput = getByDisplayValue(restaurant.category);
 
-    expect(handleChange).not.toBeCalled();
+    expect(handleChangeCategory).not.toBeCalled();
 
-    fireEvent(categoryInput, {
+    fireEvent.change(categoryInput, {
       target: {
-        name: 'something',
+        value: 'something',
       },
     });
 
-    expect(handleChange).toBeCalledTimes(1);
+    expect(handleChangeCategory).toBeCalledTimes(1);
   });
 
   it('calls change handler when address change', () => {
@@ -67,14 +75,14 @@ describe('Input', () => {
 
     const addressInput = getByDisplayValue(restaurant.address);
 
-    expect(handleChange).not.toBeCalled();
+    expect(handleChangeAddress).not.toBeCalled();
 
-    fireEvent(addressInput, {
+    fireEvent.change(addressInput, {
       target: {
-        name: 'something',
+        value: 'something',
       },
     });
 
-    expect(handleChange).toBeCalledTimes(1);
+    expect(handleChangeAddress).toBeCalledTimes(1);
   });
 });
