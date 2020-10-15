@@ -2,11 +2,18 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
+
+const dispatch = jest.fn();
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  useDispatch.mockImplementation(() => dispatch);
+});
 
 test('FormContainer', () => {
   const inputs = [
