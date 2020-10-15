@@ -43,7 +43,7 @@ describe('FormContainer', () => {
   });
 
   describe('handleChangeRestaurant', () => {
-    it('dispatchs handleChangeRestaurant action', () => {
+    it('dispatchs updateRestaurant action', () => {
       const { getByPlaceholderText } = renderFormContainer();
 
       fireEvent.change(getByPlaceholderText('이름'), {
@@ -52,7 +52,7 @@ describe('FormContainer', () => {
 
       expect(dispatch).toBeCalledWith(
         {
-          type: 'handleChangeRestaurant',
+          type: 'updateRestaurant',
           payload: {
             placeholder: '이름',
             value: '시카고피자',
