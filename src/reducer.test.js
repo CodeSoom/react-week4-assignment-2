@@ -20,16 +20,22 @@ describe('reducer', () => {
   describe('updateInputText', () => {
     it('changes input texts', () => {
       const newInputText = '마녀주방';
-      const payload = { ...initalInputs[0], value: newInputText };
-      const action = {
-        type: 'updateInputText',
-        payload,
-      };
+      const { placeholder } = initalInputs[0];
+
+      function updateInputText(placeholder, value) {
+        return ({
+          type: 'updateInputText',
+          payload: {
+            placeholder,
+            value,
+          },
+        });
+      }
 
       const { inputs } = reducer({
         restaurants: initalRestaurants,
         inputs: initalInputs,
-      }, action);
+      }, updateInputText(placeholder, newInputText));
 
       expect(inputs[0].value).toBe('마녀주방');
     });
