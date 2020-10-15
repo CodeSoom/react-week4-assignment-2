@@ -13,5 +13,17 @@ export default function reducer(state, action) {
     });
   }
 
+  if (action.type === 'updateRestaurant') {
+    const { field, value } = action.payload;
+
+    return ({
+      ...state,
+      restaurant: {
+        ...restaurant,
+        [field]: value,
+      },
+    });
+  }
+
   return state;
 }
