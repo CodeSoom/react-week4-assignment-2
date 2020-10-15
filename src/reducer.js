@@ -1,3 +1,13 @@
+const initialState = {
+  newId: 100,
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
+  restaurants: [],
+};
+
 const reducers = {
   addRestaurant(state) {
     const { newId, restaurant, restaurants } = state;
@@ -26,7 +36,7 @@ const reducers = {
   },
 };
 
-export default (state, action = {}) => {
+export default (state = initialState, action = {}) => {
   const { type } = action;
   const reducer = reducers[type];
 
