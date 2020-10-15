@@ -14,8 +14,15 @@ test('App', () => {
     { name: '시카고피자', category: '양식', address: '이태원동' },
   ];
 
+  const inputs = [
+    { placeholder: '이름', value: '시카고피자' },
+    { placeholder: '분류', value: '양식' },
+    { placeholder: '주소', value: '이태원동' },
+  ];
+
   useSelector.mockImplementation(() => ({
     restaurants,
+    inputs,
   }));
 
   const { getByText, getByPlaceholderText } = render(
