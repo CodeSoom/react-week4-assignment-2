@@ -44,7 +44,7 @@ describe('Form', () => {
     expect(handleChangeInput).toBeCalledTimes(inputs.length);
   });
 
-  it('renders "등록" button', () => {
+  it('renders add restaurant button', () => {
     const { container, getByText } = renderForm();
 
     expect(container).toHaveTextContent('등록');
