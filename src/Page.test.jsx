@@ -10,7 +10,13 @@ test('Page', () => {
     { name: '시카고피자', category: '양식', address: '이태원동' },
   ];
 
-  const { container } = render((
+  const restaurant = {
+    name: '키와미',
+    category: '일식',
+    address: '분당구 정자동',
+  };
+
+  const { container, getByDisplayValue } = render((
     <Page
       restaurants={restaurants}
     />
@@ -18,4 +24,5 @@ test('Page', () => {
 
   expect(container).toHaveTextContent(/Restaurants/);
   expect(container).toHaveTextContent(restaurants[0].name);
+  expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();  
 });
