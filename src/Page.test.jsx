@@ -19,6 +19,7 @@ test('Page', () => {
   const { container, getByDisplayValue } = render((
     <Page
       restaurants={restaurants}
+      restaurant={restaurant}
     />
   ));
 
