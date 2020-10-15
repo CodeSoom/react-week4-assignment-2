@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Input({ onChange }) {
+export default function Input({ value, placeholder, onChange }) {
   return (
     <input
       type="text"
-      placeholder="분류"
-      value="한식"
+      placeholder={placeholder}
+      value={value}
       onChange={onChange}
     />
   );
