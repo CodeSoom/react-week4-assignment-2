@@ -33,11 +33,11 @@ describe('Form', () => {
     expect(getAllByRole('textbox')).toHaveLength(inputs.length);
 
     inputs.forEach(({ placeholder, value }) => {
-      expect(getByPlaceholderText(placeholder)).not.toBeNull();
+      const input = getByPlaceholderText(placeholder);
 
-      expect(getByPlaceholderText(placeholder)).toHaveDisplayValue(value);
+      expect(input).toHaveDisplayValue(value);
 
-      fireEvent.change(getByPlaceholderText(placeholder),
+      fireEvent.change(input,
         { target: { value: '쏘이연남' } });
     });
 
