@@ -1,7 +1,9 @@
 import React from 'react';
 
+const isEmpty = (array) => array.length === 0;
+
 export default function Page({ restaurants }) {
-  if (restaurants.length === 0) {
+  if (isEmpty(restaurants)) {
     return '식당이 없어요!';
   }
 
