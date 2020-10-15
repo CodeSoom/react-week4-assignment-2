@@ -18,11 +18,11 @@ test('ListContainer', () => {
     restaurants,
   }));
 
-  const { getByText } = render(
+  const { container } = render(
     <ListContainer />,
   );
 
   restaurants.forEach(({ name, category, address }) => {
-    expect(getByText(`${name} | ${category} | ${address}`)).not.toBeNull();
+    expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
   });
 });
