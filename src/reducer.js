@@ -1,7 +1,7 @@
-export default function reducer(state, action) {
-  const { restaurants, restaurant, newId } = state;
+const reducers = {
+  addRestaurant(state) {
+    const { newId, restaurant, restaurants } = state;
 
-  if (action.type === 'addRestaurant') {
     return ({
       newId: newId + 1,
       restaurant: {
@@ -11,9 +11,9 @@ export default function reducer(state, action) {
       },
       restaurants: [...restaurants, { ...restaurant, id: newId }],
     });
-  }
-
-  if (action.type === 'updateRestaurant') {
+  },
+  updateRestaurant(state, action) {
+    const { restaurant } = state;
     const { field, value } = action.payload;
 
     return ({
@@ -23,7 +23,16 @@ export default function reducer(state, action) {
         [field]: value,
       },
     });
+  },
+};
+
+export default (state, action = {}) => {
+  const { type } = action;
+  const reducer = reducers[type];
+
+  if (!reducer) {
+    return state;
   }
 
-  return state;
-}
+  return reducer(state, action);
+};
