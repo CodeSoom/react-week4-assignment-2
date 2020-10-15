@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from './Input';
+import InputList from './InputList';
 import List from './List';
 
 export default function Page({
@@ -13,7 +13,7 @@ export default function Page({
     <div>
       <h1>Restaurants</h1>
       <List restaurants={restaurants} />
-      <Input restaurant={restaurant} onClick={onClickAdd} onChange={onChange} />
+      <InputList restaurant={restaurant} onClick={onClickAdd} onChange={onChange} />
     </div>
   );
 }
