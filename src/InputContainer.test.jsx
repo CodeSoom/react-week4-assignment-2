@@ -1,10 +1,17 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+
+import { useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
+jest.mock('react-redux');
+
 describe('<InputContainer />', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   const renderInput = () => render((
     <InputContainer />
   ));
@@ -24,6 +31,19 @@ describe('<InputContainer />', () => {
 
       // Then
       expect(getByText('등록')).toBeInTheDocument();
+    });
+  });
+
+  describe('events', () => {
+    it('call dispatch on click 등록 button', () => {
+      // Given
+      const { getByText } = renderInput();
+
+      // When
+      fireEvent.click(getByText('등록'));
+
+      // Then
+      expect(dispatch).toBeCalled();
     });
   });
 });
