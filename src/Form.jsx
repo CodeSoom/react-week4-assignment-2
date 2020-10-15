@@ -16,6 +16,7 @@ export default function Form({ restaurant, onChange, onClick }) {
       {Object.entries(restaurant).map(([key, value]) => (
         <input
           key={key}
+          name={key}
           value={value}
           onChange={onChange(key)}
           placeholder={placeholders[key]}
