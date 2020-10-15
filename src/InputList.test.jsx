@@ -2,18 +2,13 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from './InputList';
+import InputList from './InputList';
 
-describe('Input', () => {
+describe('InputList', () => {
   const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+  const handleClick = jest.fn();
 
-  const handleChange = (field) => ({
-    name: handleChangeName,
-    category: handleChangeCategory,
-    address: handleChangeAddress,
-  }[field]);
+  const handleChange = () => handleChangeName;
 
   const restaurant = {
     name: '키와미',
@@ -21,9 +16,9 @@ describe('Input', () => {
     address: '분당구 정자동',
   };
 
-  it('renders elements with restaurant', () => {
+  it('renders elements', () => {
     const { getByDisplayValue, getByText } = render((
-      <Input restaurant={restaurant} onChange={handleChange} />
+      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
     ));
 
     expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();
@@ -32,9 +27,9 @@ describe('Input', () => {
     expect(getByText(/등록/));
   });
 
-  it('calls change handler when name change', () => {
+  it('calls change handler when one of fields change', () => {
     const { getByDisplayValue } = render((
-      <Input restaurant={restaurant} onChange={handleChange} />
+      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
     ));
 
     const nameInput = getByDisplayValue(restaurant.name);
@@ -50,39 +45,17 @@ describe('Input', () => {
     expect(handleChangeName).toBeCalledTimes(1);
   });
 
-  it('calls change handler when category changes', () => {
-    const { getByDisplayValue } = render((
-      <Input restaurant={restaurant} onChange={handleChange} />
+  it('calls click handler when button is clicked', () => {
+    const { getByText } = render((
+      <InputList restaurant={restaurant} onChange={handleChange} onClick={handleClick} />
     ));
 
-    const categoryInput = getByDisplayValue(restaurant.category);
+    const button = getByText(/등록/);
 
-    expect(handleChangeCategory).not.toBeCalled();
+    expect(handleClick).not.toBeCalled();
 
-    fireEvent.change(categoryInput, {
-      target: {
-        value: 'something',
-      },
-    });
+    fireEvent.click(button);
 
-    expect(handleChangeCategory).toBeCalledTimes(1);
-  });
-
-  it('calls change handler when address change', () => {
-    const { getByDisplayValue } = render((
-      <Input restaurant={restaurant} onChange={handleChange} />
-    ));
-
-    const addressInput = getByDisplayValue(restaurant.address);
-
-    expect(handleChangeAddress).not.toBeCalled();
-
-    fireEvent.change(addressInput, {
-      target: {
-        value: 'something',
-      },
-    });
-
-    expect(handleChangeAddress).toBeCalledTimes(1);
+    expect(handleClick).toBeCalledTimes(1);
   });
 });
