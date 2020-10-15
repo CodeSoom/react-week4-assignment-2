@@ -4,18 +4,18 @@ import Input from './Input';
 
 export default function Form({ onClickAddRestautant, onChangeInput }) {
   const inputs = [
-    { placehoder: '이름', value: '마녀주방' },
-    { placehoder: '분류', value: '한식' },
-    { placehoder: '주소', value: '서울시 강남구' },
+    { placeholder: '이름', value: '마녀주방' },
+    { placeholder: '분류', value: '한식' },
+    { placeholder: '주소', value: '서울시 강남구' },
   ];
 
   return (
     <div>
-      {inputs.map((input) => (
+      {inputs.map(({ placeholder, value }) => (
         <Input
-          key={input.placehoder}
-          placeholderText={input.placehoder}
-          value={input.value}
+          key={placeholder}
+          placeholderText={placeholder}
+          value={value}
           onChange={onChangeInput}
         />
       ))}
