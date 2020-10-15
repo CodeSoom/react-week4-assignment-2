@@ -2,14 +2,14 @@ import React from 'react';
 
 const isBlank = (string) => string.trim().length === 0;
 
-export default function Form({ restaurant, onChange, onClick }) {
+export default function Form({ restaurant, getChangeHandler, onClick }) {
   const placeholders = {
     name: '이름',
     category: '분류',
     address: '주소',
   };
 
-  const isAddable = Object.entries((restaurant)).every(([, value]) => !isBlank(value));
+  const isAddable = Object.values(restaurant).every((value) => !isBlank(value));
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function Form({ restaurant, onChange, onClick }) {
           key={key}
           name={key}
           value={value}
-          onChange={onChange(key)}
+          onChange={getChangeHandler(key)}
           placeholder={placeholders[key]}
         />
       ))}

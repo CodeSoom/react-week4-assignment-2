@@ -5,15 +5,15 @@ import { fireEvent, render } from '@testing-library/react';
 import Form from './Form';
 
 describe('Form', () => {
-  const handleChangeName = jest.fn();
+  const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const handleChange = () => handleChangeName;
+  const getChangeHandler = () => handleChange;
 
   const renderForm = (restaurant) => render((
     <Form
       restaurant={restaurant}
-      onChange={handleChange}
+      getChangeHandler={getChangeHandler}
       onClick={handleClick}
     />
   ));
@@ -42,7 +42,7 @@ describe('Form', () => {
 
     const nameInput = getByDisplayValue(restaurant.name);
 
-    expect(handleChangeName).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
     fireEvent.change(nameInput, {
       target: {
@@ -50,7 +50,7 @@ describe('Form', () => {
       },
     });
 
-    expect(handleChangeName).toBeCalledTimes(1);
+    expect(handleChange).toBeCalledTimes(1);
   });
 
   it('calls click handler when button is clicked', () => {

@@ -16,7 +16,7 @@ export default function FormContainer() {
     dispatch(addRestaurant());
   };
 
-  const handleChange = (field) => (event) => {
+  const getChangeHandler = (field) => (event) => {
     dispatch(updateRestaurant(field, event.target.value));
   };
 
@@ -24,7 +24,7 @@ export default function FormContainer() {
     <Form
       restaurant={restaurant}
       onClick={handleClickAdd}
-      onChange={handleChange}
+      getChangeHandler={getChangeHandler}
     />
   );
 }

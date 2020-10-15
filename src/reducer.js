@@ -21,7 +21,13 @@ const reducers = {
         category: '',
         address: '',
       },
-      restaurants: [...restaurants, { ...utils.trimValues(restaurant), id: newId }],
+      restaurants: [
+        ...restaurants,
+        {
+          id: newId,
+          ...utils.trimValues(restaurant),
+        },
+      ],
     });
   },
   updateRestaurant(state, action) {

@@ -28,7 +28,7 @@ test('FormContainer', () => {
 
   expect(dispatch).toBeCalled();
 
-  jest.clearAllMocks();
+  dispatch.mockClear();
 
   fireEvent.change(getByDisplayValue(/키와미/), {
     target: {
