@@ -5,7 +5,24 @@ import { render } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  const renderInput = () => render(<Input />);
+  const handleChangeName = jest.fn();
+  const handleChangeGroup = jest.fn();
+  const handleChangeAddress = jest.fn();
+  const handleClick = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderInput = () => render(<Input
+    name=""
+    group=""
+    address=""
+    onChangeName={handleChangeName}
+    onChangeGroup={handleChangeGroup}
+    onChangeAddress={handleChangeAddress}
+    onClick={handleClick}
+  />);
 
   context('renders', () => {
     it('placholder text', () => {
