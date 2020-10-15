@@ -8,33 +8,34 @@ const initialState = {
   placeholders: ['이름', '분류', '주소'],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'updateRestaurant') {
+const reducers = {
+  updateRestaurant: (state, { placeholder, value }) => {
     const { restaurant } = state;
 
-    if (action.payload.placeholder === '이름') {
+    if (placeholder === '이름') {
       return {
         ...state,
-        restaurant: { ...restaurant, name: action.payload.value },
+        restaurant: { ...restaurant, name: value },
       };
     }
 
-    if (action.payload.placeholder === '분류') {
+    if (placeholder === '분류') {
       return {
         ...state,
-        restaurant: { ...restaurant, classification: action.payload.value },
+        restaurant: { ...restaurant, classification: value },
       };
     }
 
-    if (action.payload.placeholder === '주소') {
+    if (placeholder === '주소') {
       return {
         ...state,
-        restaurant: { ...restaurant, location: action.payload.value },
+        restaurant: { ...restaurant, location: value },
       };
     }
-  }
 
-  if (action.type === 'addRestaurant') {
+    return state;
+  },
+  addRestaurant: (state) => {
     const { restaurants, restaurant } = state;
     const { name, classification, location } = restaurant;
 
@@ -51,7 +52,13 @@ export default function reducer(state = initialState, action) {
       },
       restaurants: [...restaurants, restaurant],
     };
+  },
+};
+
+export default function reducer(state = initialState, action) {
+  if (!reducers[action.type]) {
+    return state;
   }
 
-  return state;
+  return reducers[action.type](state, action.payload);
 }
