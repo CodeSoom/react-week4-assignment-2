@@ -17,7 +17,33 @@ export default function App() {
 
   const { restaurants, restaurant } = state;
 
+  const handleClickAdd = () => {
+    setState({
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [...restaurants, restaurant],
+    });
+  };
+
+  const handleChange = (field) => (event) => {
+    setState({
+      ...state,
+      restaurant: {
+        ...restaurant,
+        [field]: event.target.value,
+      },
+    });
+  };
+
   return (
-    <Page restaurants={restaurants} restaurant={restaurant} />
+    <Page
+      restaurants={restaurants}
+      restaurant={restaurant}
+      onClickAdd={handleClickAdd}
+      onChange={handleChange}
+    />
   );
 }
