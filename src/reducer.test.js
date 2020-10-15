@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import updateRestaurant from './actions';
+import { addRestaurant, updateRestaurant } from './actions';
 
 describe('reducer', () => {
   describe('updateRestaurant', () => {
@@ -17,16 +17,58 @@ describe('reducer', () => {
     });
   });
 
-  context('with not existed action type', () => {
-    const action = () => ({
-      type: 'notExistedActionType',
-    });
-    it('return state', () => {
-      const state = reducer(undefined, action());
+  describe('addRestaurant', () => {
+    function reduceAddRestaurant(restaurant) {
+      return reducer({
+        restaurants: [],
+        restaurant,
+      }, addRestaurant());
+    }
+    context('with restaurant', () => {
+      const restaurant = {
+        name: '마녀주방',
+        classification: '한식',
+        location: '서울시 강남구',
+      };
+      it('appends a new restaurant into restaurants', () => {
+        const state = reduceAddRestaurant(restaurant);
 
-      expect(state.restaurants).toHaveLength(0);
-      expect(state.restaurant.name).toBe('');
-      expect(state.placeholders).toHaveLength(3);
+        expect(state.restaurants).toHaveLength(1);
+        expect(state.tasks[0].restaurant.classification).toBe('한식');
+      });
+
+      it('clears task restaurant', () => {
+        const state = reduceAddRestaurant(restaurant);
+
+        expect(state.name).toBe('');
+      });
+    });
+
+    context('with empty restaurant', () => {
+      const restaurant = {
+        name: '',
+        classification: '',
+        location: '',
+      };
+
+      it("doesn't work", () => {
+        const state = reduceAddRestaurant(restaurant);
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
+    context('with not existed action type', () => {
+      const action = () => ({
+        type: 'notExistedActionType',
+      });
+      it('return state', () => {
+        const state = reducer(undefined, action());
+
+        expect(state.restaurants).toHaveLength(0);
+        expect(state.restaurant.name).toBe('');
+        expect(state.placeholders).toHaveLength(3);
+      });
     });
   });
 });
