@@ -6,9 +6,8 @@ import Input from './Input';
 describe('Input', () => {
   const handleChange = jest.fn();
 
-  const inputRender = (value) => render((
+  const inputRender = () => render((
     <Input
-      text={value}
       onChange={handleChange}
     />
   ));
