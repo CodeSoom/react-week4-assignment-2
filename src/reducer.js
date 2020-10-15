@@ -21,14 +21,18 @@ const reducers = {
 
     return { ...state, inputs: newInputs };
   },
-  addRestaurant: (state) => ({
-    ...state,
-    restaurants: [{
-      name: '시카고피자',
-      category: '양식',
-      address: '이태원동',
-    }],
-  }),
+  addRestaurant: (state) => {
+    const { restaurants, inputs } = state;
+
+    return {
+      ...state,
+      restaurants: [...restaurants, {
+        name: inputs[0].value,
+        category: inputs[1].value,
+        address: inputs[1].value,
+      }],
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = initialAction) {
