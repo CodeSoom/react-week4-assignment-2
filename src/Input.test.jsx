@@ -7,12 +7,13 @@ describe('Input', () => {
   const inputRender = () => render((
     <Input />
   ));
+  const placeholderName = ['이름', '분류', '주소'];
 
   it('"input"이 존재하는지 확인한다.', () => {
     const { getByPlaceholderText } = inputRender();
 
-    expect(getByPlaceholderText(/이름/)).not.toBeNull();
-    expect(getByPlaceholderText(/분류/)).not.toBeNull();
-    expect(getByPlaceholderText(/주소/)).not.toBeNull();
+    placeholderName.forEach((placeholder) => {
+      expect(getByPlaceholderText(placeholder)).not.toBeNull();
+    });
   });
 });
