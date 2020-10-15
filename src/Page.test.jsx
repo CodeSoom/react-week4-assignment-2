@@ -6,6 +6,7 @@ import Page from './Page';
 
 test('Page', () => {
   const handleClickAdd = jest.fn();
+  const handleChange = jest.fn();
 
   const restaurants = [
     { name: '마녀주방', category: '한식', address: '서울시 강남구' },
@@ -23,6 +24,7 @@ test('Page', () => {
       restaurants={restaurants}
       restaurant={restaurant}
       onClickAdd={handleClickAdd}
+      onChange={handleChange}
     />
   ));
 
