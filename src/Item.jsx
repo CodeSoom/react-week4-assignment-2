@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default function Item() {
+export default function Item({
+  key,
+  name,
+  type,
+  address,
+}) {
   return (
-    <div>
-      <li />
-    </div>
+    <li key={key}>
+      {`${name} | ${type} | ${address}`}
+    </li>
   );
 }
