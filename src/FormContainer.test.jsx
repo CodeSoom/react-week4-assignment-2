@@ -61,4 +61,14 @@ describe('FormContainer', () => {
       );
     });
   });
+
+  describe('handleClickAddRestaurant', () => {
+    it('dispatchs addRestaurant action', () => {
+      const { getByText } = renderFormContainer();
+
+      fireEvent.click(getByText(/등록/));
+
+      expect(dispatch).toBeCalledWith({ type: 'AddRestaurant' });
+    });
+  });
 });
