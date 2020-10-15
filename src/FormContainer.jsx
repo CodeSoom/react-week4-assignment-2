@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Form from './Form';
 
 import {
+  addRestaurant,
   updateInputText,
 } from './actions';
 
@@ -21,7 +22,7 @@ export default function FormContainer() {
   }
 
   function handleClickAddRestautant() {
-    dispatch();
+    dispatch(state, addRestaurant());
   }
 
   return (
