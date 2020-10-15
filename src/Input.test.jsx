@@ -19,9 +19,11 @@ test('Input', () => {
 
   expect(getByRole('textbox')).not.toBeNull();
 
-  expect(getByPlaceholderText(placeholderText)).not.toBeNull();
+  const input = getByPlaceholderText(placeholderText);
 
-  fireEvent.change(getByPlaceholderText(placeholderText),
+  expect(input).not.toBeNull();
+
+  fireEvent.change(input,
     { target: { value: newText } });
 
   expect(handleChangeInput).toBeCalled();
