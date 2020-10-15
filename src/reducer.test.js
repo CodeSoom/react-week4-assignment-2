@@ -43,14 +43,16 @@ describe('reducer', () => {
         { placeholder: '주소', value: '이태원동' },
       ];
 
-      const action = {
-        type: 'addRestaurant',
-      };
+      function addRestaurant() {
+        return ({
+          type: 'addRestaurant',
+        });
+      }
 
       const { restaurants } = reducer({
         restaurants: initalRestaurants,
         inputs: previousInputs,
-      }, action);
+      }, addRestaurant());
 
       expect(restaurants).toHaveLength(initalRestaurants.length + 1);
     });
