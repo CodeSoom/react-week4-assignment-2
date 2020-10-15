@@ -21,6 +21,14 @@ const reducers = {
 
     return { ...state, inputs: newInputs };
   },
+  addRestaurant: (state) => ({
+    ...state,
+    restaurants: [{
+      name: '시카고피자',
+      category: '양식',
+      address: '이태원동',
+    }],
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {
