@@ -1,5 +1,7 @@
 import reducer from './reducer';
 
+import updateRestaurant from './actions';
+
 describe('reducer', () => {
   describe('updateRestaurant', () => {
     it('changes restaurant', () => {
