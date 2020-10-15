@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Page from './Page';
+
 export default function App() {
   const [state, setState] = useState({
     restaurants: [
@@ -11,14 +13,6 @@ export default function App() {
   const { restaurants } = state;
 
   return (
-    restaurants.map(({ name, category, address }) => (
-      <p>
-        {name}
-        |
-        {category}
-        |
-        {address}
-      </p>
-    ))
+    <Page restaurants={restaurants} />
   );
 }
