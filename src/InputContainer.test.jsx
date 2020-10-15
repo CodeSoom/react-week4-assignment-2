@@ -8,6 +8,10 @@ import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('<InputContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -35,12 +39,25 @@ describe('<InputContainer />', () => {
   });
 
   describe('events', () => {
-    it('call dispatch on click 등록 button', () => {
+    it('calls dispatch on click 등록 button', () => {
       // Given
       const { getByText } = renderInput();
 
       // When
       fireEvent.click(getByText('등록'));
+
+      // Then
+      expect(dispatch).toBeCalled();
+    });
+
+    it('calls dispatch on typing in the input', () => {
+      // Given
+      const { getByPlaceholderText } = renderInput();
+
+      // When
+      fireEvent.change(getByPlaceholderText('분류'), {
+        target: { value: '사용자 입력' },
+      });
 
       // Then
       expect(dispatch).toBeCalled();
