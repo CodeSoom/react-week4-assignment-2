@@ -27,4 +27,20 @@ test('FormContainer', () => {
   fireEvent.click(getByText(/등록/));
 
   expect(dispatch).toBeCalled();
+
+  jest.clearAllMocks();
+
+  fireEvent.change(getByDisplayValue(/키와미/), {
+    target: {
+      value: '마녀식당',
+    },
+  });
+
+  expect(dispatch).toBeCalledWith({
+    type: 'updateRestaurant',
+    payload: {
+      field: 'name',
+      value: '마녀식당',
+    },
+  });
 });
