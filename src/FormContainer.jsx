@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Form from './Form';
 
-import updateRestaurant from './actions';
+import { updateRestaurant, addRestaurant } from './actions';
 
 export default function FormContainer() {
   const { restaurant, placeholders } = useSelector((state) => ({
@@ -18,12 +18,17 @@ export default function FormContainer() {
     dispatch(updateRestaurant(event.target.placeholder, event.target.value));
   }
 
+  function handleClickAddRestaurant() {
+    dispatch(addRestaurant());
+  }
+
   return (
     <div>
       <Form
         placeholders={placeholders}
         restaurant={restaurant}
         onChange={handleChangeRestaurant}
+        onClick={handleClickAddRestaurant}
       />
     </div>
   );

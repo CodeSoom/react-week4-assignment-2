@@ -68,7 +68,7 @@ describe('FormContainer', () => {
 
       fireEvent.click(getByText(/등록/));
 
-      expect(dispatch).toBeCalledWith({ type: 'AddRestaurant' });
+      expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });
     });
   });
 });
