@@ -1,11 +1,15 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
 
 import App from './App';
 
 test('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     newId: 100,
     restaurant: {
@@ -21,6 +25,7 @@ test('App', () => {
 
   const { container } = render(<App />);
 
+  expect(container).toHaveTextContent(/Restaurants/);
   expect(container).toHaveTextContent(/마녀주방/);
   expect(container).toHaveTextContent(/시카고피자/);
 });
