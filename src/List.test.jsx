@@ -11,14 +11,14 @@ describe('List', () => {
     ));
   }
 
-  context('with tasks', () => {
+  context('with restaurants', () => {
     const restaurants = [
       { name: '마녀주방', type: '약식', adress: '강남구 서현동' },
       { name: '시카고피자', type: '양식', adress: '용산구 이태원동' },
       { name: '카와미', type: '일식', adress: '분당구 정자동' },
     ];
 
-    it('show tasks', () => {
+    it('renders restaurants', () => {
       const { getByText } = renderList(restaurants);
 
       restaurants.forEach(({ name, type, address }) => {
@@ -27,10 +27,10 @@ describe('List', () => {
     });
   });
 
-  context('without tasks', () => {
+  context('without restaurants', () => {
     const restaurants = [];
 
-    it('do not show anything', () => {
+    it('do not render anything', () => {
       const { getByText } = renderList(restaurants);
 
       expect(getByText('레스토랑 목록 없습니다.')).toBeNull();
