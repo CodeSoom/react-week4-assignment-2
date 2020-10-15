@@ -2,7 +2,7 @@ import React from 'react';
 
 const isBlank = (string) => string.trim().length === 0;
 
-export default function InputList({ restaurant, onChange, onClick }) {
+export default function Form({ restaurant, onChange, onClick }) {
   const placeholders = {
     name: '이름',
     category: '분류',
