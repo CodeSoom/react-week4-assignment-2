@@ -25,5 +25,5 @@ test('Page', () => {
 
   expect(container).toHaveTextContent(/Restaurants/);
   expect(container).toHaveTextContent(restaurants[0].name);
-  expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();  
+  expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();
 });
