@@ -3,13 +3,9 @@ import React from 'react';
 export default function List({ restaurants }) {
   return (
     <ul>
-      {restaurants.map((restaurant) => (
-        <li key={restaurant.name}>
-          {restaurant.name}
-          |
-          {restaurant.classification}
-          |
-          {restaurant.location}
+      {restaurants.map(({name, classification, location}) => (
+        <li key={name}>
+          {name} | {classification} | {location}
         </li>
       ))}
     </ul>
