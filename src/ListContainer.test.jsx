@@ -22,7 +22,7 @@ test('ListContainer', () => {
     <ListContainer />,
   );
 
-  restaurants.forEach((item) => {
-    expect(getByText(`${item.name} | ${item.category} | ${item.address}`)).not.toBeNull();
+  restaurants.forEach(({ name, category, address }) => {
+    expect(getByText(`${name} | ${category} | ${address}`)).not.toBeNull();
   });
 });
