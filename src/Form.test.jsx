@@ -12,9 +12,16 @@ beforeEach(() => {
 });
 
 describe('Form', () => {
+  const inputs = [
+    { placeholder: '이름', value: '마녀주방' },
+    { placeholder: '분류', value: '한식' },
+    { placeholder: '주소', value: '서울시 강남구' },
+  ];
+
   function renderForm() {
     return render((
       <Form
+        inputs={inputs}
         onChangeInput={handleChangeInput}
         onClickAddRestautant={handleClickAddRestaurant}
       />
@@ -22,12 +29,6 @@ describe('Form', () => {
   }
 
   it('renders 3 inputs with different placeholder ', () => {
-    const inputs = [
-      { placeholder: '이름', value: '마녀주방' },
-      { placeholder: '분류', value: '한식' },
-      { placeholder: '주소', value: '서울시 강남구' },
-    ];
-
     const { getAllByRole, getByPlaceholderText } = renderForm();
 
     expect(getAllByRole('textbox')).toHaveLength(inputs.length);
