@@ -1,11 +1,13 @@
 import reducer from './reducer';
 
+import actions, { ADD_RESTAURANT } from './actions';
+
 describe('reducer', () => {
-  describe('ADD_RESTAURANT', () => {
+  describe(ADD_RESTAURANT, () => {
     it('add restaurant to the list', () => {
       // Given
       const previousState = { restaurants: [] };
-      const action = { type: 'ADD_RESTAURANT', payload: '이름 | 분류 | 주소' };
+      const action = actions.addRestaurant('이름 | 분류 | 주소');
 
       // When
       const state = reducer(previousState, action);

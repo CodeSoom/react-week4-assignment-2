@@ -2,13 +2,15 @@ import React from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import actions from './actions';
+
 import Input from './Input';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch({ type: 'ADD_RESTAURANT', payload: '이름 | 분류 | 주소' });
+    dispatch(actions.addRestaurant('이름 | 분류 | 주소'));
   };
 
   return (
