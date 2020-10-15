@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+import { useSelector, useDispatch } from 'redux';
+import Input from './Input';
+import List from './List';
+
 export default function App() {
   const initialState = {
     nameTitle: '',
@@ -47,28 +51,12 @@ export default function App() {
 
   return (
     <>
-      <h1>Restaurants</h1>
-      <ul>
-        {restaurantLists.map(({ nameTitle, classify, location }) => (
-          <li>
-            {nameTitle}
-            {' '}
-            |
-            {' '}
-            {classify}
-            {' '}
-            |
-            {' '}
-            {location}
-          </li>
-        ))}
-      </ul>
-      <div>
-        <input name="nameTitle" value={nameTitle} type="text" placeholder="이름" onChange={handleChange} />
-        <input name="classify" value={classify} type="text" placeholder="분류" onChange={handleChange} />
-        <input name="location" value={location} type="text" placeholder="장소" onChange={handleChange} />
-        <button type="button" onClick={handleClick}>등록</button>
-      </div>
+      <List restaurantLists={restaurantLists} />
+      <Input
+        onChange={handleChange}
+        onClick={handleClick}
+        inputState={inputState}
+      />
     </>
   );
 }

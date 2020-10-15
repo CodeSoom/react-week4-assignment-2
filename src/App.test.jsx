@@ -5,7 +5,7 @@ import App from './App';
 
 describe('App', () => {
   const renderApp = () => render(<App />);
-  it('should visible input', () => {
+  it('should visible all component', () => {
     const { getByText, getByPlaceholderText } = renderApp();
 
     getByText('Restaurants');
@@ -16,6 +16,4 @@ describe('App', () => {
 
     getByText('등록');
   });
-
-  it('shou');
 });
