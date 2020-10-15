@@ -60,4 +60,18 @@ describe('reducer', () => {
       });
     });
   });
+
+  it('returns intial state when state is not defined', () => {
+    const initialState = {
+      newId: 100,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [],
+    };
+
+    expect(reducer()).toEqual(initialState);
+  });
 });
