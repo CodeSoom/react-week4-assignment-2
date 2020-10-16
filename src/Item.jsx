@@ -1,9 +1,7 @@
 import React from 'react';
 
-export default function Item() {
-  return (
-    <div>
-      Hello
-    </div>
-  );
+export default function Item({ restaurantInfo }) {
+  const { name, type, location } = restaurantInfo;
+
+  return <li>{`${name} | ${type} | ${location}`}</li>;
 }
