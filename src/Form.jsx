@@ -4,7 +4,6 @@ import Input from './Input';
 
 export default function Form(
   {
-    placeholders,
     restaurant: { name, classification, location },
     onChange,
     onClick,
@@ -13,17 +12,17 @@ export default function Form(
   return (
     <p>
       <Input
-        placeholder={placeholders[0]}
+        placeholder='이름'
         value={name}
         onChange={onChange}
       />
       <Input
-        placeholder={placeholders[1]}
+        placeholder='분류'
         value={classification}
         onChange={onChange}
       />
       <Input
-        placeholder={placeholders[2]}
+        placeholder='주소'
         value={location}
         onChange={onChange}
       />
