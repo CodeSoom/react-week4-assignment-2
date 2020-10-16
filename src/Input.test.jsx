@@ -6,7 +6,7 @@ import Input from './Input';
 
 describe('Input', () => {
   const handleChangeName = jest.fn();
-  const handleChangeGroup = jest.fn();
+  const handleChangeCategory = jest.fn();
   const handleChangeAddress = jest.fn();
   const handleClick = jest.fn();
 
@@ -23,7 +23,7 @@ describe('Input', () => {
   const renderInput = () => render(<Input
     restaurant={restaurant}
     onChangeName={handleChangeName}
-    onChangeGroup={handleChangeGroup}
+    onChangeCategory={handleChangeCategory}
     onChangeAddress={handleChangeAddress}
     onClick={handleClick}
   />);
@@ -69,14 +69,14 @@ describe('Input', () => {
       expect(handleChangeName).toBeCalled();
     });
 
-    it('called with handleChangeGroup', () => {
+    it('called with handleChangeCategory', () => {
       const { getByPlaceholderText } = renderInput();
 
       fireEvent.change(getByPlaceholderText('분류'), {
         target: { value: category },
       });
 
-      expect(handleChangeGroup).toBeCalled();
+      expect(handleChangeCategory).toBeCalled();
     });
 
     it('called with handleChangeAddress', () => {

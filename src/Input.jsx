@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Input({
   restaurant,
-  onChangeName, onChangeGroup, onChangeAddress,
+  onChangeName, onChangeCategory, onChangeAddress,
   onClick,
 }) {
   const { name, category, address } = restaurant;
@@ -19,7 +19,7 @@ export default function Input({
         type="text"
         value={category}
         placeholder="분류"
-        onChange={onChangeGroup}
+        onChange={onChangeCategory}
       />
       <input
         type="text"
