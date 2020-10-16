@@ -11,7 +11,7 @@ const initialAction = { type: 'initialType' };
 
 const reducers = {
   updateInputText: (state, payload) => {
-    const newInputs = state.inputInfos
+    const newInputInfos = state.inputInfos
       .map((input) => ({
         ...input,
         value: input.placeholder === payload.placeholder
@@ -19,11 +19,11 @@ const reducers = {
           : input.value,
       }));
 
-    return { ...state, inputInfos: newInputs };
+    return { ...state, inputInfos: newInputInfos };
   },
   addRestaurant: (state) => {
     const { restaurants, inputInfos } = state;
-    const newInputs = inputInfos
+    const newInputInfos = inputInfos
       .map((inputInfo) => ({
         ...inputInfo,
         value: '',
@@ -31,7 +31,7 @@ const reducers = {
 
     return {
       ...state,
-      inputInfos: newInputs,
+      inputInfos: newInputInfos,
       restaurants: [...restaurants, {
         name: inputInfos[0].value,
         category: inputInfos[1].value,
