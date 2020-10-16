@@ -2,7 +2,7 @@ import React from 'react';
 
 const isEmpty = (array) => array.length === 0;
 
-export default function Page({ restaurants }) {
+export default function List({ restaurants }) {
   if (isEmpty(restaurants)) {
     return '식당이 없어요!';
   }
@@ -16,11 +16,7 @@ export default function Page({ restaurants }) {
         address,
       }) => (
         <li key={id}>
-          {name}
-          |
-          {category}
-          |
-          {address}
+          {`${name} | ${category} | ${address}`}
         </li>
       ))}
     </ul>

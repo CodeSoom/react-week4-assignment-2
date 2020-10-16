@@ -18,7 +18,7 @@ describe('List', () => {
 
       restaurants.forEach(({ name, category, address }) => {
         expect(container).toHaveTextContent(
-          `${name}|${category}|${address}`,
+          `${name} | ${category} | ${address}`,
         );
       });
     });
