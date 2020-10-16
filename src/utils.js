@@ -1,9 +1,3 @@
-function trimValues(object) {
-  return Object.entries(object).reduce((trimmed, [key, value]) => (
-    { ...trimmed, [key]: value.trim() }
-  ), {});
-}
-
 function mapValues(object, mapFn) {
   return Object.entries(object).reduce((trimmed, [key, value]) => (
     { ...trimmed, [key]: mapFn(value) }
@@ -11,6 +5,5 @@ function mapValues(object, mapFn) {
 }
 
 export default {
-  trimValues,
   mapValues,
 };
