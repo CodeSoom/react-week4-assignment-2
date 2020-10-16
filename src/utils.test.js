@@ -1,4 +1,4 @@
-import utils from './utils';
+import { mapValues } from './utils';
 
 describe('utils', () => {
   const prevObj = {
@@ -11,7 +11,7 @@ describe('utils', () => {
       const mapFn = () => '';
 
       it('returns new object with values of empty string', () => {
-        expect(utils.mapValues(prevObj, mapFn)).toEqual({
+        expect(mapValues(prevObj, mapFn)).toEqual({
           value1: '',
           value2: '',
         });
@@ -22,7 +22,7 @@ describe('utils', () => {
       const mapFn = (value) => value.trim();
 
       it('returns new object with trimmed values', () => {
-        expect(utils.mapValues(prevObj, mapFn)).toEqual({
+        expect(mapValues(prevObj, mapFn)).toEqual({
           value1: 'wel',
           value2: 'www',
         });

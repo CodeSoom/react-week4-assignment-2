@@ -1,4 +1,4 @@
-import utils from './utils';
+import { mapValues } from './utils';
 
 const initialState = {
   newId: 100,
@@ -17,13 +17,13 @@ const reducers = {
     return ({
       newId: newId + 1,
       restaurant: {
-        ...utils.mapValues(restaurant, () => ''),
+        ...mapValues(restaurant, () => ''),
       },
       restaurants: [
         ...restaurants,
         {
           id: newId,
-          ...utils.mapValues(restaurant, (value) => value.trim()),
+          ...mapValues(restaurant, (value) => value.trim()),
         },
       ],
     });
