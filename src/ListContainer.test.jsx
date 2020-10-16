@@ -14,7 +14,7 @@ test('ListContainer', () => {
     { name: '시카고피자', category: '양식', address: '이태원동' },
   ];
 
-  useSelector.mockImplementation(() => ({
+  useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
 
