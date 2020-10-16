@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Input from './Input';
+
 export default function App() {
   return (
     <div>
-      <button type="button">등록</button>
+      <Input />
     </div>
   );
 }
