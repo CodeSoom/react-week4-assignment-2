@@ -16,48 +16,65 @@ describe('input', () => {
     />
   ));
 
-  describe('when typing text', () => {
-    context('with typed text', () => {
-      it('render typed text', () => {
-        const inputState = {
-          nameTitle: '치킨',
-          classification: '천상계',
-          location: '헤븐',
-        };
-        const { getByDisplayValue } = renderInput(inputState);
+  context('when typing text with typed text', () => {
+    it('render typed text', () => {
+      const inputState = {
+        nameTitle: '치킨',
+        classification: '천상계',
+        location: '헤븐',
+      };
 
-        expect(getByDisplayValue('치킨')).not.toBeNull();
-        expect(getByDisplayValue('천상계')).not.toBeNull();
-        expect(getByDisplayValue('헤븐')).not.toBeNull();
-      });
+      const { getByDisplayValue } = renderInput(inputState);
 
-      it('calls onChange function', () => {
-        const { getByPlaceholderText } = renderInput();
-        const placeHolders = ['이름', '분류', '장소'];
-
-        placeHolders.forEach((placeholder) => {
-          fireEvent.change(getByPlaceholderText(`${placeholder}`),
-            { target: { value: 'randomText' } });
-
-          expect(handleChange).toBeCalled();
-
-          expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('randomText');
-        });
-      });
+      expect(getByDisplayValue('치킨')).not.toBeNull();
+      expect(getByDisplayValue('천상계')).not.toBeNull();
+      expect(getByDisplayValue('헤븐')).not.toBeNull();
     });
 
-    context('with not typed text', () => {
-      it('not render any text', () => {
-        const inputState = {};
+    it('calls onChange function', () => {
+      const { getByPlaceholderText } = renderInput();
 
-        const placeHolders = ['이름', '분류', '장소'];
+      const placeHolders = ['이름', '분류', '장소'];
 
-        const { getByPlaceholderText } = renderInput(inputState);
+      placeHolders.forEach((placeholder) => {
+        fireEvent.change(getByPlaceholderText(`${placeholder}`),
+          { target: { value: 'randomText' } });
 
-        placeHolders.forEach((placeholder) => {
-          expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('');
-        });
+        expect(handleChange).toBeCalled();
+
+        expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('randomText');
       });
+    });
+  });
+
+  context('when typing text with not typed text', () => {
+    it('not render any text', () => {
+      const inputState = {};
+
+      const placeHolders = ['이름', '분류', '장소'];
+
+      const { getByPlaceholderText } = renderInput(inputState);
+
+      placeHolders.forEach((placeholder) => {
+        expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('');
+      });
+    });
+  });
+
+  context('when one is being typed', () => {
+    it('The other value does not change', () => {
+      const inputState = {
+        nameTitle: '치킨',
+        classification: '천상계',
+        location: '헤븐',
+      };
+
+      const { getByPlaceholderText } = renderInput(inputState);
+
+      fireEvent.change(getByPlaceholderText('이름'), { target: { value: '피자' } });
+
+      expect(getByPlaceholderText('분류')).toHaveValue('천상계');
+      expect(getByPlaceholderText('장소')).toHaveValue('헤븐');
     });
   });
 

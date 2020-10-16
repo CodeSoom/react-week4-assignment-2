@@ -8,12 +8,12 @@ describe('App', () => {
   it('should visible all component', () => {
     const { getByText, getByPlaceholderText } = renderApp();
 
-    getByText('Restaurants');
+    expect(getByText('Restaurants')).not.toBeNull();
 
-    getByPlaceholderText('이름');
-    getByPlaceholderText('분류');
-    getByPlaceholderText('장소');
+    expect(getByPlaceholderText('이름')).not.toBeNull();
+    expect(getByPlaceholderText('분류')).not.toBeNull();
+    expect(getByPlaceholderText('장소')).not.toBeNull();
 
-    getByText('등록');
+    expect(getByText('등록')).not.toBeNull();
   });
 });

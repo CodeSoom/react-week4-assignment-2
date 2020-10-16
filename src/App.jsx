@@ -4,12 +4,51 @@ import { useSelector, useDispatch } from 'redux';
 import Input from './Input';
 import List from './List';
 
-export default function App() {
-  const initialState = {
-    nameTitle: '',
-    classification: '',
-    location: '',
+const initialState = {
+  nameTitle: '',
+  classification: '',
+  location: '',
+};
+
+function reducer(state = initialState, action) {
+
+}
+
+
+
+function updateInformation(inputState, { name, value }) {
+  return {
+    ...inputState,
+    [name]: value,
   };
+}
+
+function addInformation({ newId, restaurants }, { nameTitle, classification, location }) {
+  return {
+    newId: newId + 1,
+    restaurants: [
+      ...restaurants,
+      {
+        id: newId,
+        nameTitle,
+        classification,
+        location,
+      },
+    ],
+  };
+}
+
+function initializeInformation(initialState) {
+  return {
+    ...initialState,
+  };
+}
+
+export default function App() {
+  const { inputState, state } = useSelector((state, inputState) => {
+    state,
+      inputState
+  })
 
   const [inputState, setInput] = useState(initialState);
 
@@ -18,35 +57,16 @@ export default function App() {
     restaurants: [],
   });
 
-  const { nameTitle, classification, location } = inputState;
-
-  const { newId, restaurants } = state;
+  const { restaurants } = state;
 
   const handleChange = (e) => {
-    const { value, name } = e.target;
-    setInput({
-      ...inputState,
-      [name]: value,
-    });
+    setInput(updateInformation(inputState, e.target));
   };
 
   const handleClick = () => {
-    setState({
-      newId: newId + 1,
-      restaurants: [
-        ...restaurants,
-        {
-          id: newId,
-          nameTitle,
-          classification,
-          location,
-        },
-      ],
-    });
+    setState(addInformation(state, inputState));
 
-    setInput({
-      ...initialState,
-    });
+    setInput(initializeInformation(initialState));
   };
 
   return (
