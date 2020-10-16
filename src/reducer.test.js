@@ -40,4 +40,21 @@ describe('reducer', () => {
       expect(state.restaurants[0].location).toBe('서울');
     });
   });
+
+  describe('initializeInformation', () => {
+    it('clears all information after appending', () => {
+      const state = reducer({
+        infoValue: {
+          nameTitle: '밥',
+          classification: '한식',
+          location: '서울',
+        },
+        newId: 100,
+      }, initializeInformation());
+
+      expect(state.infoValue.nameTitle).toBe('');
+      expect(state.infoValue.classification).toBe('');
+      expect(state.infoValue.location).toBe('');
+    });
+  });
 });
