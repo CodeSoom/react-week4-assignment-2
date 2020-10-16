@@ -5,7 +5,7 @@ import Input from './Input';
 export default function Form({
   inputInfos,
   onClickAddRestautant,
-  onChangeInput,
+  onChangeInputText,
 }) {
   return (
     <div>
@@ -16,7 +16,7 @@ export default function Form({
             name={name}
             placeholderText={placeholder}
             value={value}
-            onChange={onChangeInput}
+            onChange={onChangeInputText}
           />
         ))
       }

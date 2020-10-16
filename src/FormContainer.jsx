@@ -16,7 +16,7 @@ export default function FormContainer() {
     inputInfos,
   }));
 
-  function handleChangeInput(placeholder, value) {
+  function handleChangeInputText(placeholder, value) {
     dispatch(updateInputText(placeholder, value));
   }
 
@@ -27,7 +27,7 @@ export default function FormContainer() {
   return (
     <Form
       inputInfos={state.inputInfos}
-      onChangeInput={handleChangeInput}
+      onChangeInputText={handleChangeInputText}
       onClickAddRestautant={handleClickAddRestautant}
     />
   );

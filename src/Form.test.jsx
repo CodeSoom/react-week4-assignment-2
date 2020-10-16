@@ -20,7 +20,7 @@ describe('Form', () => {
     return render((
       <Form
         inputInfos={inputInfos}
-        onChangeInput={handleChangeInput}
+        onChangeInputText={handleChangeInput}
         onClickAddRestautant={handleClickAddRestaurant}
       />
     ));
