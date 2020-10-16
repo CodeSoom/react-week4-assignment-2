@@ -5,35 +5,14 @@ const initialState = {
 };
 
 const reducers = {
-  updateRestaurantName(state, action) {
-    const { name } = action.payload;
+  updateRestaurant(state, action) {
+    const { name, value } = action.payload;
 
     return {
       ...state,
       restaurant: {
         name,
-      },
-    };
-  },
-
-  updateRestaurantCategory(state, action) {
-    const { category } = action.payload;
-
-    return {
-      ...state,
-      restaurant: {
-        category,
-      },
-    };
-  },
-
-  updateRestaurantAddress(state, action) {
-    const { address } = action.payload;
-
-    return {
-      ...state,
-      restaurant: {
-        address,
+        value,
       },
     };
   },
