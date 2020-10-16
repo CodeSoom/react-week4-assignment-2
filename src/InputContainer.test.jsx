@@ -14,8 +14,8 @@ describe('InputContainer', () => {
   const handleChangeRestaurantType = jest.fn();
   const handleChangeRestaurantLocation = jest.fn();
 
-  const renderForm = (restourantInfo = { name: '', type: '', location: '' }) => render((
-    <Form
+  const renderInputContainer = (restourantInfo = { name: '', type: '', location: '' }) => render((
+    <InputContainer
       restourantInfo={restourantInfo}
       handleClickAdd={handleClickAdd}
       handleChangeRestaurantName={handleChangeRestaurantName}
@@ -25,13 +25,13 @@ describe('InputContainer', () => {
   ));
 
   it('버튼에 "등록" 문구가 나온다.', () => {
-    const { container } = renderForm();
+    const { container } = renderInputContainer();
 
     expect(container).toHaveTextContent('등록');
   });
 
   it('버튼이 클릭되면 handleClick이 호출된다.', () => {
-    const { getDisplayValue } = renderForm();
+    const { getDisplayValue } = renderInputContainer();
     const buttonAdd = getDisplayValue('등록');
 
     expect(handleClickAdd).not.toBeCalled();
@@ -41,19 +41,19 @@ describe('InputContainer', () => {
 
   context('restaurantInfo가 주어지지 않을 때', () => {
     it('placeholder에 "이름" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { container } = renderInputContainer();
 
       expect(container).toHaveAttribute('placeholder', '이름');
     });
 
     it('placeholder에 "분류" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { container } = renderInputContainer();
 
       expect(container).toHaveAttribute('placeholder', '분류');
     });
 
     it('placeholder에 "주소" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { container } = renderInputContainer();
 
       expect(container).toHaveAttribute('placeholder', '주소');
     });
