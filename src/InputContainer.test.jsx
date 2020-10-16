@@ -55,4 +55,25 @@ describe('InputContainer', () => {
       });
     });
   });
+
+  context('with restaurant category is changed', () => {
+    it('dispatches handleChangeCategory', () => {
+      const { getByPlaceholderText, getByDisplayValue } = render(
+        <InputContainer />,
+      );
+
+      expect(getByDisplayValue('한식')).not.toBeNull();
+
+      fireEvent.change(getByPlaceholderText('분류'), {
+        target: { value: '중식' },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantCategory',
+        payload: {
+          category: '중식',
+        },
+      });
+    });
+  });
 });
