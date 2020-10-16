@@ -10,17 +10,22 @@ jest.mock('react-redux');
 
 const dispatch = jest.fn();
 
-beforeEach(() => {
-  jest.clearAllMocks();
-  useDispatch.mockImplementation(() => dispatch);
-});
-
 describe('FormContainer', () => {
   const inputInfos = [
     { name: 'name', placeholder: '이름', value: '시카고피자' },
     { name: 'category', placeholder: '분류', value: '양식' },
     { name: 'address', placeholder: '주소', value: '이태원동' },
   ];
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      inputInfos,
+    }));
+  });
 
   function renderFormContainer() {
     return render((
@@ -29,10 +34,6 @@ describe('FormContainer', () => {
   }
 
   describe('change each input text', () => {
-    useSelector.mockImplementation((selector) => selector({
-      inputInfos,
-    }));
-
     it('dispatches updateInputText action', () => {
       const { getAllByRole, getByDisplayValue } = renderFormContainer();
 
