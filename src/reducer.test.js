@@ -7,19 +7,21 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  it('changes restaurant information', () => {
-    const state = reducer({
-      infoValue: {
-        nameTitle: '',
-        classification: '',
-        location: '',
-      },
-    }, updateInformation({
-      name: 'nameTitle',
-      value: 'New info',
-    }));
+  describe('updateInformation', () => {
+    it('changes typed restaurant information', () => {
+      const state = reducer({
+        infoValue: {
+          nameTitle: '',
+          classification: '',
+          location: '',
+        },
+      }, updateInformation({
+        name: 'nameTitle',
+        value: 'New info',
+      }));
 
-    expect(state.infoValue.nameTitle).toBe('New info');
+      expect(state.infoValue.nameTitle).toBe('New info');
+    });
   });
 
   describe('addInformation', () => {
@@ -55,6 +57,14 @@ describe('reducer', () => {
       expect(state.infoValue.nameTitle).toBe('');
       expect(state.infoValue.classification).toBe('');
       expect(state.infoValue.location).toBe('');
+    });
+  });
+
+  describe('Unhandled action type', () => {
+    it("reducer doesn't work", () => {
+      const state = reducer(undefined, { type: 'Unhandled action type' });
+
+      expect(state).toBe(state);
     });
   });
 });
