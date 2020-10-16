@@ -24,3 +24,9 @@ export function updateRestaurantAddress(address) {
     },
   };
 }
+
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
+}
