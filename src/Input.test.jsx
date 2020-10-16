@@ -8,23 +8,23 @@ describe('input', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const renderInput = (inputState = {}) => render((
+  const renderInput = (infoValue = {}) => render((
     <Input
       onChange={handleChange}
       onClick={handleClick}
-      inputState={inputState}
+      infoValue={infoValue}
     />
   ));
 
   context('when typing text with typed text', () => {
     it('render typed text', () => {
-      const inputState = {
+      const infoValue = {
         nameTitle: '치킨',
         classification: '천상계',
         location: '헤븐',
       };
 
-      const { getByDisplayValue } = renderInput(inputState);
+      const { getByDisplayValue } = renderInput(infoValue);
 
       expect(getByDisplayValue('치킨')).not.toBeNull();
       expect(getByDisplayValue('천상계')).not.toBeNull();
@@ -49,11 +49,11 @@ describe('input', () => {
 
   context('when typing text with not typed text', () => {
     it('not render any text', () => {
-      const inputState = {};
+      const infoValue = {};
 
       const placeHolders = ['이름', '분류', '장소'];
 
-      const { getByPlaceholderText } = renderInput(inputState);
+      const { getByPlaceholderText } = renderInput(infoValue);
 
       placeHolders.forEach((placeholder) => {
         expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('');
@@ -63,13 +63,13 @@ describe('input', () => {
 
   context('when one is being typed', () => {
     it('The other value does not change', () => {
-      const inputState = {
+      const infoValue = {
         nameTitle: '치킨',
         classification: '천상계',
         location: '헤븐',
       };
 
-      const { getByPlaceholderText } = renderInput(inputState);
+      const { getByPlaceholderText } = renderInput(infoValue);
 
       fireEvent.change(getByPlaceholderText('이름'), { target: { value: '피자' } });
 

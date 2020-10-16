@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Input({
   onChange, onClick,
-  inputState: { nameTitle, classification, location },
+  infoValue: { nameTitle, classification, location },
 }) {
   return (
     <div>
