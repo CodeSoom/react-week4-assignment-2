@@ -15,12 +15,12 @@ export default function App() {
 
   const [state, setState] = useState({
     newId: 100,
-    restaurantLists: [],
+    restaurants: [],
   });
 
   const { nameTitle, classification, location } = inputState;
 
-  const { newId, restaurantLists } = state;
+  const { newId, restaurants } = state;
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -33,8 +33,8 @@ export default function App() {
   const handleClick = () => {
     setState({
       newId: newId + 1,
-      restaurantLists: [
-        ...restaurantLists,
+      restaurants: [
+        ...restaurants,
         {
           id: newId,
           nameTitle,
@@ -51,7 +51,7 @@ export default function App() {
 
   return (
     <>
-      <List restaurantLists={restaurantLists} />
+      <List restaurants={restaurants} />
       <Input
         onChange={handleChange}
         onClick={handleClick}

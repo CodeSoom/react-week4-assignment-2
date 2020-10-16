@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function List({ restaurantLists }) {
+export default function List({ restaurants }) {
   return (
     <>
       <h1>Restaurants</h1>
       <ul>
-        {restaurantLists.map(({
+        {restaurants.map(({
           nameTitle,
           classification,
           location,

@@ -5,8 +5,8 @@ import { render } from '@testing-library/react';
 import List from './List';
 
 describe('List', () => {
-  const renderList = (restaurantLists = []) => render((
-    <List restaurantLists={restaurantLists} />
+  const renderList = (restaurants = []) => render((
+    <List restaurants={restaurants} />
   ));
 
   beforeEach(() => jest.clearAllMocks());
@@ -17,7 +17,7 @@ describe('List', () => {
   });
 
   it('show all List in Lists length over 1', () => {
-    const restaurantLists = [
+    const restaurants = [
       {
         id: 1,
         nameTitle: '고봉민 김밥',
@@ -33,9 +33,9 @@ describe('List', () => {
 
     ];
 
-    const { getByText } = renderList(restaurantLists);
+    const { getByText } = renderList(restaurants);
 
-    restaurantLists.forEach(({
+    restaurants.forEach(({
       id, nameTitle, classification, location,
     }) => {
       expect(getByText(`${nameTitle}|${classification}|${location}`)).not.toBeNull();
