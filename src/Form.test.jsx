@@ -9,12 +9,12 @@ import Form from './Form';
 const handleChangeInput = jest.fn();
 const handleClickAddRestaurant = jest.fn();
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('Form', () => {
   const { inputInfos } = fixture;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   function renderForm() {
     return render((
@@ -27,9 +27,7 @@ describe('Form', () => {
   }
 
   it('renders 3 inputs with different placeholder and name attirbute', () => {
-    const { getAllByRole, getByPlaceholderText } = renderForm();
-
-    expect(getAllByRole('textbox')).toHaveLength(inputInfos.length);
+    const { getByPlaceholderText } = renderForm();
 
     inputInfos.forEach(({ name, placeholder, value }) => {
       const input = getByPlaceholderText(placeholder);
