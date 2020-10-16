@@ -5,11 +5,7 @@ export default function List({ restaurants }) {
     <ul>
       {restaurants.map(({ name, classification, location }) => (
         <li key={name}>
-          {name}
-          |
-          {classification}
-          |
-          {location}
+          {`${name} | ${classification} | ${location}`}
         </li>
       ))}
     </ul>
