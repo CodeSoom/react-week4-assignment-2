@@ -12,11 +12,11 @@ const initialAction = { type: 'initialType' };
 const reducers = {
   updateInputText: (state, payload) => {
     const newInputs = state.inputs
-      .map(({ placeholder, value }) => ({
-        placeholder,
-        value: placeholder === payload.placeholder
+      .map((input) => ({
+        ...input,
+        value: input.placeholder === payload.placeholder
           ? payload.value
-          : value,
+          : input.value,
       }));
 
     return { ...state, inputs: newInputs };
