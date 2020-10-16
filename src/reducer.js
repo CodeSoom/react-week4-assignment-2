@@ -26,6 +26,11 @@ const reducers = {
 
     return {
       ...state,
+      inputInfos: [
+        { name: 'name', placeholder: '이름', value: '' },
+        { name: 'category', placeholder: '분류', value: '' },
+        { name: 'address', placeholder: '주소', value: '' },
+      ],
       restaurants: [...restaurants, {
         name: inputInfos[0].value,
         category: inputInfos[1].value,
