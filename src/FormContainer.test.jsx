@@ -16,7 +16,7 @@ beforeEach(() => {
 });
 
 describe('FormContainer', () => {
-  const inputs = [
+  const inputInfos = [
     { name: 'name', placeholder: '이름', value: '시카고피자' },
     { name: 'category', placeholder: '분류', value: '양식' },
     { name: 'address', placeholder: '주소', value: '이태원동' },
@@ -30,13 +30,13 @@ describe('FormContainer', () => {
 
   describe('change each input text', () => {
     useSelector.mockImplementation((selector) => selector({
-      inputs,
+      inputInfos,
     }));
 
     it('dispatches updateInputText action', () => {
       const { getAllByRole, getByDisplayValue } = renderFormContainer();
 
-      inputs.forEach(({ name, value }) => {
+      inputInfos.forEach(({ name, value }) => {
         expect(getByDisplayValue(value)).not.toBeNull();
         expect(getByDisplayValue(value)).toHaveAttribute('name', name);
       });
