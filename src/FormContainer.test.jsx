@@ -33,22 +33,16 @@ describe('FormContainer', () => {
 
   describe('change each input text', () => {
     it('dispatches updateInputText action', () => {
-      const { getAllByRole, getByDisplayValue } = renderFormContainer();
-
-      inputInfos.forEach(({ name, value }) => {
-        expect(getByDisplayValue(value)).not.toBeNull();
-        expect(getByDisplayValue(value)).toHaveAttribute('name', name);
-      });
-
+      const { getAllByRole } = renderFormContainer();
       const textBoxes = getAllByRole('textbox');
 
-      expect(textBoxes).not.toBeNull();
+      textBoxes.forEach((textBox, index) => {
+        expect(textBox).toHaveAttribute('name', inputInfos[index].name);
 
-      textBoxes.forEach((textBox) => {
         fireEvent.change(textBox, { target: { value: '마녀주방' } });
       });
 
-      expect(dispatch).toBeCalledTimes(3);
+      expect(dispatch).toBeCalledTimes(inputInfos.length);
     });
   });
 
