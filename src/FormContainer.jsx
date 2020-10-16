@@ -25,7 +25,6 @@ export default function FormContainer() {
   return (
     <div>
       <Form
-        placeholders={placeholders}
         restaurant={restaurant}
         onChange={handleChangeRestaurant}
         onClick={handleClickAddRestaurant}
