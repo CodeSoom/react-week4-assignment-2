@@ -8,9 +8,9 @@ import {
 describe('reducer', () => {
   const initalRestaurants = [];
   const initalInputs = [
-    { placeholder: '이름', value: '' },
-    { placeholder: '분류', value: '' },
-    { placeholder: '주소', value: '' },
+    { name: 'name', placeholder: '이름', value: '' },
+    { name: 'category', placeholder: '분류', value: '' },
+    { name: 'address', placeholder: '주소', value: '' },
   ];
 
   describe('undefined action', () => {
@@ -39,9 +39,9 @@ describe('reducer', () => {
   describe('addRestaurant', () => {
     it('add restaurant to restaurants', () => {
       const previousInputs = [
-        { placeholder: '이름', value: '시카고피자' },
-        { placeholder: '분류', value: '양식' },
-        { placeholder: '주소', value: '이태원동' },
+        { name: 'name', placeholder: '이름', value: '시카고피자' },
+        { name: 'category', placeholder: '분류', value: '양식' },
+        { name: 'address', placeholder: '주소', value: '이태원동' },
       ];
 
       const { restaurants } = reducer({
