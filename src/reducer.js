@@ -36,7 +36,7 @@ const reducers = {
 };
 
 export default function reducer(state = initialState, action = initialAction) {
-  if (action.type === 'initialType') return state;
+  if (!reducers[action.type]) return state;
 
   return reducers[action.type](state, action.payload);
 }
