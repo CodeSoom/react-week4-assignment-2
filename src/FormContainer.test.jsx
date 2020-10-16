@@ -29,7 +29,7 @@ describe('FormContainer', () => {
   }
 
   describe('change each input text', () => {
-    useSelector.mockImplementation(() => ({
+    useSelector.mockImplementation((selector) => selector({
       inputs,
     }));
 
