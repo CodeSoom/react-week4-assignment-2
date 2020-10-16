@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
+import fixture from '../__fixtuers__/fixture';
+
 import Form from './Form';
 
 const handleChangeInput = jest.fn();
@@ -12,11 +14,7 @@ beforeEach(() => {
 });
 
 describe('Form', () => {
-  const inputInfos = [
-    { name: 'name', placeholder: '이름', value: '마녀주방' },
-    { name: 'category', placeholder: '분류', value: '한식' },
-    { name: 'address', placeholder: '주소', value: '서울시 강남구' },
-  ];
+  const { inputInfos } = fixture;
 
   function renderForm() {
     return render((
