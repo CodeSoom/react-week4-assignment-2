@@ -4,39 +4,19 @@ import { addRestaurant, updateRestaurant } from './actions';
 
 describe('reducer', () => {
   describe('updateRestaurant', () => {
-    context('with vaild key', () => {
-      const key = '이름';
+    it('changes restaurant', () => {
+      const state = reducer({
+        restaurant: {
+          name: '',
+          classification: '',
+          location: '',
+        },
+      }, updateRestaurant('name', '시카고피자'));
 
-      it('changes restaurant', () => {
-        const state = reducer({
-          restaurant: {
-            name: '',
-            classification: '',
-            location: '',
-          },
-        }, updateRestaurant(key, '시카고피자'));
-
-        expect(state.restaurant.name).toBe('시카고피자');
-      });
-    });
-
-    context('with invaild key', () => {
-      const key = '';
-
-      it('changes restaurant', () => {
-        const state = reducer({
-          restaurant: {
-            name: '',
-            classification: '',
-            location: '',
-          },
-        }, updateRestaurant(key, '시카고피자'));
-
-        expect(state.restaurant.name).toBe('');
-      });
+      expect(state.restaurant.name).toBe('시카고피자');
     });
   });
-
+  
   describe('addRestaurant', () => {
     function reduceAddRestaurant(restaurant) {
       return reducer({
