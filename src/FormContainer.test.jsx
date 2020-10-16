@@ -55,9 +55,7 @@ describe('FormContainer', () => {
 
   describe('click add restaurant button', () => {
     it('dispatches addRestaurant action', () => {
-      const { container, getByText } = renderFormContainer();
-
-      expect(container).toHaveTextContent('등록');
+      const { getByText } = renderFormContainer();
 
       fireEvent.click(getByText('등록'));
 
