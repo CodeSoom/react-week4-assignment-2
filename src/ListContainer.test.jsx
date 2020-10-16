@@ -14,15 +14,15 @@ describe('ListContainer', () => {
       restaurants: [
         {
           id: 100,
-          nameTitle: '치킨',
-          classification: '한식',
-          location: '서울',
+          name: '치킨',
+          category: '한식',
+          address: '서울',
         },
         {
           id: 101,
-          nameTitle: '피자',
-          classification: '양식',
-          location: '대구',
+          name: '피자',
+          category: '양식',
+          address: '대구',
         },
       ],
     }));

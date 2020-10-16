@@ -1,8 +1,8 @@
 const initialState = {
   infoValue: {
-    nameTitle: '',
-    classification: '',
-    location: '',
+    name: '',
+    category: '',
+    address: '',
   },
   newId: 100,
   restaurants: [],
@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'addInformation') {
     const { restaurants, newId } = state;
     const {
-      nameTitle, classification, location,
+      name, category, address,
     } = action.payload;
 
     return {
@@ -34,9 +34,9 @@ export default function reducer(state = initialState, action) {
         ...restaurants,
         {
           id: newId,
-          nameTitle,
-          classification,
-          location,
+          name,
+          category,
+          address,
         },
       ],
     };

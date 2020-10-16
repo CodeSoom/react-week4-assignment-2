@@ -13,9 +13,9 @@ describe('InputContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     infoValue: {
-      nameTitle: '밥',
-      classification: '한식',
-      location: '서울',
+      name: '밥',
+      category: '한식',
+      address: '서울',
     },
   }));
 
@@ -32,7 +32,7 @@ describe('InputContainer', () => {
       expect(dispatch).toBeCalledWith({
         type: 'updateInformation',
         payload: {
-          name: 'nameTitle',
+          name: 'name',
           value: '피자',
         },
       });
@@ -48,9 +48,9 @@ describe('InputContainer', () => {
       expect(dispatch).toBeCalledWith({
         type: 'addInformation',
         payload: {
-          nameTitle: '밥',
-          classification: '한식',
-          location: '서울',
+          name: '밥',
+          category: '한식',
+          address: '서울',
         },
       });
     });

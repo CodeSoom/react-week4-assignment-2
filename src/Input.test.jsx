@@ -19,9 +19,9 @@ describe('input', () => {
   context('when typing text with typed text', () => {
     it('render typed text', () => {
       const infoValue = {
-        nameTitle: '치킨',
-        classification: '천상계',
-        location: '헤븐',
+        name: '치킨',
+        category: '천상계',
+        address: '헤븐',
       };
 
       const { getByDisplayValue } = renderInput(infoValue);
@@ -64,9 +64,9 @@ describe('input', () => {
   context('when one is being typed', () => {
     it('The other value does not change', () => {
       const infoValue = {
-        nameTitle: '치킨',
-        classification: '천상계',
-        location: '헤븐',
+        name: '치킨',
+        category: '천상계',
+        address: '헤븐',
       };
 
       const { getByPlaceholderText } = renderInput(infoValue);

@@ -11,16 +11,16 @@ describe('reducer', () => {
     it('changes typed restaurant information', () => {
       const state = reducer({
         infoValue: {
-          nameTitle: '',
-          classification: '',
-          location: '',
+          name: '',
+          category: '',
+          address: '',
         },
       }, updateInformation({
-        name: 'nameTitle',
+        name: 'name',
         value: 'New info',
       }));
 
-      expect(state.infoValue.nameTitle).toBe('New info');
+      expect(state.infoValue.name).toBe('New info');
     });
   });
 
@@ -30,16 +30,16 @@ describe('reducer', () => {
         restaurants: [],
         newId: 100,
       }, addInformation({
-        nameTitle: '밥',
-        classification: '한식',
-        location: '서울',
+        name: '밥',
+        category: '한식',
+        address: '서울',
       }));
 
       expect(state.restaurants).toHaveLength(1);
 
-      expect(state.restaurants[0].nameTitle).toBe('밥');
-      expect(state.restaurants[0].classification).toBe('한식');
-      expect(state.restaurants[0].location).toBe('서울');
+      expect(state.restaurants[0].name).toBe('밥');
+      expect(state.restaurants[0].category).toBe('한식');
+      expect(state.restaurants[0].address).toBe('서울');
     });
   });
 
@@ -47,16 +47,16 @@ describe('reducer', () => {
     it('clears all information after appending', () => {
       const state = reducer({
         infoValue: {
-          nameTitle: '밥',
-          classification: '한식',
-          location: '서울',
+          name: '밥',
+          category: '한식',
+          address: '서울',
         },
         newId: 100,
       }, initializeInformation());
 
-      expect(state.infoValue.nameTitle).toBe('');
-      expect(state.infoValue.classification).toBe('');
-      expect(state.infoValue.location).toBe('');
+      expect(state.infoValue.name).toBe('');
+      expect(state.infoValue.category).toBe('');
+      expect(state.infoValue.address).toBe('');
     });
   });
 

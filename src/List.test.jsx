@@ -20,15 +20,15 @@ describe('List', () => {
     const restaurants = [
       {
         id: 1,
-        nameTitle: '고봉민 김밥',
-        classification: '한식',
-        location: '서울',
+        name: '고봉민 김밥',
+        category: '한식',
+        address: '서울',
       },
       {
         id: 2,
-        nameTitle: '도미노피자',
-        classification: '양식',
-        location: '부산',
+        name: '도미노피자',
+        category: '양식',
+        address: '부산',
       },
 
     ];
@@ -36,9 +36,9 @@ describe('List', () => {
     const { getByText } = renderList(restaurants);
 
     restaurants.forEach(({
-      id, nameTitle, classification, location,
+      id, name, category, address,
     }) => {
-      expect(getByText(`${nameTitle}|${classification}|${location}`)).not.toBeNull();
+      expect(getByText(`${name}|${category}|${address}`)).not.toBeNull();
 
       expect(id).not.toBeUndefined();
     });
