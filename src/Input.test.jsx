@@ -5,9 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+  const handleChange = jest.fn();
   const handleClick = jest.fn();
 
   beforeEach(() => {
@@ -15,16 +13,14 @@ describe('Input', () => {
   });
 
   const restaurant = {
-    name: '한식이 좋아!',
+    name: '마녀주방',
     category: '한식',
     address: '서울시 강남구',
   };
 
   const renderInput = () => render(<Input
     restaurant={restaurant}
-    onChangeName={handleChangeName}
-    onChangeCategory={handleChangeCategory}
-    onChangeAddress={handleChangeAddress}
+    onChange={handleChange}
     onClick={handleClick}
   />);
 
@@ -38,8 +34,8 @@ describe('Input', () => {
     });
   });
 
-  context('with restaurant info', () => {
-    it('renders name, category, address', () => {
+  context('with restaurant', () => {
+    it('renders name, category and address', () => {
       const { getByPlaceholderText } = renderInput();
 
       const { name, category, address } = restaurant;
@@ -50,43 +46,23 @@ describe('Input', () => {
     });
   });
 
-  context('when restaurant info is changed', () => {
-    const newRestaurant = {
-      name: '중식이 좋아!',
-      category: '중식',
-      address: '경기도 분당구',
-    };
-
-    const { name, category, address } = newRestaurant;
-
-    it('called with handleChangeName', () => {
+  context('changing restaurant', () => {
+    it('called with handleChange', () => {
       const { getByPlaceholderText } = renderInput();
 
       fireEvent.change(getByPlaceholderText('이름'), {
-        target: { value: name },
+        target: { value: '시카고피자' },
       });
-
-      expect(handleChangeName).toBeCalled();
-    });
-
-    it('called with handleChangeCategory', () => {
-      const { getByPlaceholderText } = renderInput();
 
       fireEvent.change(getByPlaceholderText('분류'), {
-        target: { value: category },
+        target: { value: '양식' },
       });
-
-      expect(handleChangeCategory).toBeCalled();
-    });
-
-    it('called with handleChangeAddress', () => {
-      const { getByPlaceholderText } = renderInput();
 
       fireEvent.change(getByPlaceholderText('주소'), {
-        target: { value: address },
+        target: { value: '이태원동' },
       });
 
-      expect(handleChangeAddress).toBeCalled();
+      expect(handleChange).toBeCalledTimes(3);
     });
   });
 
