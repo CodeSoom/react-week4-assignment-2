@@ -12,8 +12,8 @@ Scenario('이름, 분류 그리고 주소를 입력한 후 확인을 누르면 �
   const { name, category, address } = restaurant;
 
   I.fillField('input[name=name]', name);
-  I.fillField('input[name=category]', category);
-  I.fillField('input[name=address]', address);
+  I.fillField('input[name=classification]', category);
+  I.fillField('input[name=location]', address);
 
   I.click('등록');
 
