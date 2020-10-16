@@ -13,9 +13,9 @@ beforeEach(() => {
 
 describe('Form', () => {
   const inputs = [
-    { placeholder: '이름', value: '마녀주방' },
-    { placeholder: '분류', value: '한식' },
-    { placeholder: '주소', value: '서울시 강남구' },
+    { name: 'name', placeholder: '이름', value: '마녀주방' },
+    { name: 'category', placeholder: '분류', value: '한식' },
+    { name: 'address', placeholder: '주소', value: '서울시 강남구' },
   ];
 
   function renderForm() {
@@ -28,15 +28,16 @@ describe('Form', () => {
     ));
   }
 
-  it('renders 3 inputs with different placeholder ', () => {
+  it('renders 3 inputs with different placeholder and name attirbute', () => {
     const { getAllByRole, getByPlaceholderText } = renderForm();
 
     expect(getAllByRole('textbox')).toHaveLength(inputs.length);
 
-    inputs.forEach(({ placeholder, value }) => {
+    inputs.forEach(({name, placeholder, value }) => {
       const input = getByPlaceholderText(placeholder);
 
       expect(input).toHaveDisplayValue(value);
+      expect(input).toHaveAttribute('name', name);
 
       fireEvent.change(input,
         { target: { value: '쏘이연남' } });
