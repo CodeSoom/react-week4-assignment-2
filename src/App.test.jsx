@@ -13,5 +13,13 @@ describe('App', () => {
 
       expect(container).toHaveTextContent('Restaurant');
     });
+
+    it('show input that add Restaurant into list', () => {
+
+    });
+
+    it('show Restaurant list', () => {
+
+    });
   });
 });
