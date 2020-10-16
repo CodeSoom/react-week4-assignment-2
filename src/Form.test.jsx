@@ -11,14 +11,11 @@ test('Form', () => {
     location: '서울시 강남구',
   };
 
-  const placeholders = ['이름', '분류', '주소'];
-
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
   const { getByDisplayValue, getByPlaceholderText, getByText } = render((
     <Form
-      placeholders={placeholders}
       restaurant={restaurant}
       onChange={handleChange}
       onClick={handleClick}
@@ -29,13 +26,19 @@ test('Form', () => {
   expect(getByDisplayValue('한식')).not.toBeNull();
   expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
 
-  placeholders.forEach((placeholder) => {
-    fireEvent.change(getByPlaceholderText(placeholder), {
-      target: { value: placeholder },
-    });
-
-    expect(handleChange).toBeCalled();
+  fireEvent.change(getByPlaceholderText('이름'), {
+    target: { value: '파스타' },
   });
+
+  fireEvent.change(getByPlaceholderText('분류'), {
+    target: { value: '양식' },
+  });
+
+  fireEvent.change(getByPlaceholderText('주소'), {
+    target: { value: '강남' },
+  });
+
+  expect(handleChange).toBeCalledTimes(3);
 
   fireEvent.click(getByText('등록'));
 
