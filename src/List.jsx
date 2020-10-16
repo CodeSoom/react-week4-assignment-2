@@ -11,18 +11,14 @@ export default function List({ restaurants }) {
           location,
           id,
         }) => (
-            <li key={id}>
-              {nameTitle}
-              {' '}
+          <li key={id}>
+            {nameTitle}
             |
-              {' '}
-              {classification}
-              {' '}
+            {classification}
             |
-              {' '}
-              {location}
-            </li>
-          ))}
+            {location}
+          </li>
+        ))}
         ;
       </ul>
     </>
