@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/react';
 
 import Input from './Input';
 
@@ -11,7 +11,7 @@ describe('Input', () => {
 
   const handleChange = jest.fn();
 
-  const renderInput = ({ placeholder = '', value = '' }) => render((
+  const renderInput = (placeholder = '', value = '') => render((
     <Input
       placeholder={placeholder}
       value={value}
@@ -29,12 +29,11 @@ describe('Input', () => {
 
   context('value가 없을 때', () => {
     const parameter = {
-      placeholder: '이름',
-      value: '',
+
     };
 
     it('주어진 placeholder가 출력된다.', () => {
-      const { container } = renderInput(parameter);
+      const { container } = renderInput('이름', '');
 
       expect(container).toHaveAttribute('placeholder', parameter.placeholder);
     });
