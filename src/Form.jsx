@@ -3,14 +3,14 @@ import React from 'react';
 import Input from './Input';
 
 export default function Form({
-  inputs,
+  inputInfos,
   onClickAddRestautant,
   onChangeInput,
 }) {
   return (
     <div>
       {
-        inputs.map(({ name, placeholder, value }) => (
+        inputInfos.map(({ name, placeholder, value }) => (
           <Input
             key={placeholder}
             name={name}
