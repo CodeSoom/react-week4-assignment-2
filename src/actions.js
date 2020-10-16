@@ -6,3 +6,12 @@ export function updateRestaurantName(name) {
     },
   };
 }
+
+export function updateRestaurantCategory(category) {
+  return {
+    type: 'updateRestaurantCategory',
+    payload: {
+      category,
+    },
+  };
+}
