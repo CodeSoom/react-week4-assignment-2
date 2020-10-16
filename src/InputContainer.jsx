@@ -10,7 +10,7 @@ import {
   initializeInformation,
 } from './actions';
 
-export default function App() {
+export default function InputContainer() {
   const { infoValue } = useSelector((state) => ({
     infoValue: state.infoValue,
   }));

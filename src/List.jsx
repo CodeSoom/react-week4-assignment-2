@@ -13,12 +13,17 @@ export default function List({ restaurants }) {
         }) => (
             <li key={id}>
               {nameTitle}
+              {' '}
             |
+              {' '}
               {classification}
+              {' '}
             |
+              {' '}
               {location}
             </li>
           ))}
+        ;
       </ul>
     </>
 
