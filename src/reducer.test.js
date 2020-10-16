@@ -9,14 +9,14 @@ import {
 
 describe('reducer', () => {
   describe('undefined action', () => {
-    const initalRestaurants = [];
-    const initalInputInfos = [
-      { name: 'name', placeholder: '이름', value: '' },
-      { name: 'category', placeholder: '분류', value: '' },
-      { name: 'address', placeholder: '주소', value: '' },
-    ];
-
     it('changes nothing', () => {
+      const initalRestaurants = [];
+      const initalInputInfos = [
+        { name: 'name', placeholder: '이름', value: '' },
+        { name: 'category', placeholder: '분류', value: '' },
+        { name: 'address', placeholder: '주소', value: '' },
+      ];
+
       const { restaurants, inputInfos } = reducer();
 
       expect(restaurants).toStrictEqual(initalRestaurants);
@@ -51,7 +51,6 @@ describe('reducer', () => {
       expect(state.restaurants).toHaveLength(restaurants.length + 1);
 
       state.inputInfos.forEach((inputInfo) => {
-        console.log(inputInfo.value);
         expect(inputInfo.value).toBe('');
       });
     });
