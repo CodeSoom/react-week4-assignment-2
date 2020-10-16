@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function List() {
+import Item from './Item';
+
+export default function List({ restaurantInfos }) {
   return (
-    <div>
-      Hello
-    </div>
+    <ol>
+      {restaurantInfos.map((restaurantInfo) => (
+        <Item key={restaurantInfo.id} restaurantInfo={restaurantInfo} />
+      ))}
+    </ol>
   );
 }
