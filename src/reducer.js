@@ -17,15 +17,13 @@ const reducers = {
     return ({
       newId: newId + 1,
       restaurant: {
-        name: '',
-        category: '',
-        address: '',
+        ...utils.mapValues(restaurant, () => ''),
       },
       restaurants: [
         ...restaurants,
         {
           id: newId,
-          ...utils.trimValues(restaurant),
+          ...utils.mapValues(restaurant, (value) => value.trim()),
         },
       ],
     });
