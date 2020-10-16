@@ -14,6 +14,7 @@ export default function reducer(
 ) {
   if (action.type === 'updateInformation') {
     const { name, value } = action.payload;
+
     return {
       ...state,
       infoValue: {
@@ -28,6 +29,7 @@ export default function reducer(
     const {
       nameTitle, classification, location,
     } = action.payload;
+
     return {
       ...state,
       newId: newId + 1,

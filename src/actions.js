@@ -5,15 +5,10 @@ export function updateInformation({ name, value }) {
   };
 }
 
-export function addInformation({
-  nameTitle, classification, location,
-}) {
+export function addInformation({ nameTitle, classification, location }) {
   return {
     type: 'addInformation',
-    payload: {
-      nameTitle, classification, location,
-    },
-
+    payload: { nameTitle, classification, location },
   };
 }
 
