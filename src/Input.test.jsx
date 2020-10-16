@@ -51,13 +51,13 @@ describe('Input', () => {
   });
 
   context('when restaurant info is changed', () => {
-    const newRestaurantInfo = {
+    const newRestaurant = {
       name: '중식이 좋아!',
       category: '중식',
       address: '경기도 분당구',
     };
 
-    const { name, category, address } = newRestaurantInfo;
+    const { name, category, address } = newRestaurant;
 
     it('called with handleChangeName', () => {
       const { getByPlaceholderText } = renderInput();
