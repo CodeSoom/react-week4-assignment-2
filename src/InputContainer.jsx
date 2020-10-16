@@ -5,6 +5,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  addRestaurant,
 } from './actions';
 
 import Input from './Input';
@@ -29,6 +30,7 @@ export default function InputContainer() {
   }
 
   function handleClick() {
+    dispatch(addRestaurant());
   }
 
   return (
