@@ -1,9 +1,9 @@
 const initialState = {
   restaurants: [],
   inputs: [
-    { placeholder: '이름', value: '' },
-    { placeholder: '분류', value: '' },
-    { placeholder: '주소', value: '' },
+    { name: 'name', placeholder: '이름', value: '' },
+    { name: 'category', placeholder: '분류', value: '' },
+    { name: 'address', placeholder: '주소', value: '' },
   ],
 };
 
