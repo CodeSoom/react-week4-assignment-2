@@ -1,16 +1,18 @@
 import reducer from './reducer';
 
 import {
-  updateRestaurantName,
-  updateRestaurantCategory,
-  updateRestaurantAddress,
+  updateRestaurant,
   addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
   const previousState = {
     id: 100,
-    restaurant: {},
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
     restaurants: [],
   };
 
@@ -24,27 +26,39 @@ describe('reducer', () => {
     });
   });
 
-  context('updateRestaurantName', () => {
-    it('changes restaurant name', () => {
-      const state = reducer(previousState, updateRestaurantName('중식이 좋아!'));
+  context('changing restaurant name', () => {
+    it('called updateRestaurant with restaurant name', () => {
+      const state = reducer(
+        previousState,
+        updateRestaurant('name', '시카고피자'),
+      );
 
-      expect(state.restaurant.name).toBe('중식이 좋아!');
+      expect(state.restaurant.name).toBe('name');
+      expect(state.restaurant.value).toBe('시카고피자');
     });
   });
 
-  context('updateRestaurantCategory', () => {
-    it('changes restaurant category', () => {
-      const state = reducer(previousState, updateRestaurantCategory('중식'));
+  context('changing restaurant category', () => {
+    it('called updateRestaurant with restaurant category', () => {
+      const state = reducer(
+        previousState,
+        updateRestaurant('category', '양식'),
+      );
 
-      expect(state.restaurant.category).toBe('중식');
+      expect(state.restaurant.name).toBe('category');
+      expect(state.restaurant.value).toBe('양식');
     });
   });
 
-  context('updateRestaurantAddress', () => {
-    it('changes restaurant Address', () => {
-      const state = reducer(previousState, updateRestaurantAddress('경기도 분당구'));
+  context('changing restaurant address', () => {
+    it('called updateRestaurant with restaurant address', () => {
+      const state = reducer(
+        previousState,
+        updateRestaurant('address', '이태원동'),
+      );
 
-      expect(state.restaurant.address).toBe('경기도 분당구');
+      expect(state.restaurant.name).toBe('address');
+      expect(state.restaurant.value).toBe('이태원동');
     });
   });
 
@@ -59,9 +73,9 @@ describe('reducer', () => {
 
     it('add new restaurant to restaurants', () => {
       const newRestaurant = {
-        name: '중식이 좋아!',
-        category: '중식',
-        address: '경기도 분당구',
+        name: '시카고피자',
+        category: '양식',
+        address: '이태원동',
       };
 
       const state = reduceAddRestaurant(newRestaurant);
