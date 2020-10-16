@@ -29,7 +29,7 @@ const reducers = {
       restaurants: [...restaurants, {
         name: inputs[0].value,
         category: inputs[1].value,
-        address: inputs[1].value,
+        address: inputs[2].value,
       }],
     };
   },
