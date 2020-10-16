@@ -4,6 +4,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import fixture from '../__fixtuers__/fixture';
+
 import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
@@ -11,11 +13,7 @@ jest.mock('react-redux');
 const dispatch = jest.fn();
 
 describe('FormContainer', () => {
-  const inputInfos = [
-    { name: 'name', placeholder: '이름', value: '시카고피자' },
-    { name: 'category', placeholder: '분류', value: '양식' },
-    { name: 'address', placeholder: '주소', value: '이태원동' },
-  ];
+  const { inputInfos } = fixture;
 
   beforeEach(() => {
     jest.clearAllMocks();
