@@ -1,8 +1,8 @@
-export function updateRestaurant(placeholder, value) {
+export function updateRestaurant(name, value) {
   return {
     type: 'updateRestaurant',
     payload: {
-      placeholder,
+      name,
       value,
     },
   };
