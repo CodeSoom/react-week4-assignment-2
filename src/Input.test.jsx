@@ -20,35 +20,35 @@ describe('Input', () => {
   ));
 
   it('Input이 변화되면 handelChange가 호출된다.', () => {
-    const { container } = renderInput();
+    const { getByPlaceholderText } = renderInput();
+    const input = getByPlaceholderText('');
 
     expect(handleChange).not.toBeCalled();
-    fireEvent.change(container, { target: { value: '마녀식당' } });
+    fireEvent.change(input, { target: { value: '마녀식당' } });
     expect(handleChange).toBeCalled();
   });
 
   context('value가 없을 때', () => {
-    const parameter = {
-
-    };
+    const placeholder = '이름';
+    const value = '';
 
     it('주어진 placeholder가 출력된다.', () => {
-      const { container } = renderInput('이름', '');
+      const { getByPlaceholderText } = renderInput(placeholder, value);
+      const input = getByPlaceholderText(placeholder);
 
-      expect(container).toHaveAttribute('placeholder', parameter.placeholder);
+      expect(input).not.toBeNull();
     });
   });
 
   context('value가 있을 때', () => {
-    const parameter = {
-      placeholder: '이름',
-      value: '마녀주방',
-    };
+    const placeholder = '이름';
+    const value = '마녀주방';
 
     it('주어진 value가 출력된다.', () => {
-      const { container } = renderInput(parameter);
+      const { getByPlaceholderText } = renderInput(placeholder, value);
+      const input = getByPlaceholderText(placeholder);
 
-      expect(container).toHaveDisplayValue(parameter.value);
+      expect(input).toHaveDisplayValue(value);
     });
   });
 });
