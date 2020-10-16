@@ -17,9 +17,9 @@ beforeEach(() => {
 
 describe('FormContainer', () => {
   const inputs = [
-    { placeholder: '이름', value: '시카고피자' },
-    { placeholder: '분류', value: '양식' },
-    { placeholder: '주소', value: '이태원동' },
+    { name: 'name', placeholder: '이름', value: '시카고피자' },
+    { name: 'category', placeholder: '분류', value: '양식' },
+    { name: 'address', placeholder: '주소', value: '이태원동' },
   ];
 
   function renderFormContainer() {
@@ -36,8 +36,9 @@ describe('FormContainer', () => {
     it('dispatches updateInputText action', () => {
       const { getAllByRole, getByDisplayValue } = renderFormContainer();
 
-      inputs.forEach(({ value }) => {
+      inputs.forEach(({ name, value }) => {
         expect(getByDisplayValue(value)).not.toBeNull();
+        expect(getByDisplayValue(value)).toHaveAttribute('name', name);
       });
 
       const textBoxes = getAllByRole('textbox');
