@@ -18,11 +18,11 @@ export default function FormContainer() {
   }));
 
   function handleChangeInput(placeholder, value) {
-    dispatch(state, updateInputText(placeholder, value));
+    dispatch(updateInputText(placeholder, value));
   }
 
   function handleClickAddRestautant() {
-    dispatch(state, addRestaurant());
+    dispatch(addRestaurant());
   }
 
   return (
