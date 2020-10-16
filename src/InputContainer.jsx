@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updateRestaurantName,
   updateRestaurantCategory,
+  updateRestaurantAddress,
 } from './actions';
 
 import Input from './Input';
@@ -23,7 +24,8 @@ export default function InputContainer() {
     dispatch(updateRestaurantCategory(event.target.value));
   }
 
-  function handleChangeAddress() {
+  function handleChangeAddress(event) {
+    dispatch(updateRestaurantAddress(event.target.value));
   }
 
   function handleClick() {
