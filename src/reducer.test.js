@@ -49,6 +49,11 @@ describe('reducer', () => {
       }, addRestaurant());
 
       expect(state.restaurants).toHaveLength(restaurants.length + 1);
+
+      state.inputInfos.forEach((inputInfo) => {
+        console.log(inputInfo.value);
+        expect(inputInfo.value).toBe('');
+      });
     });
   });
 });
