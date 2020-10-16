@@ -1,11 +1,27 @@
 import React from 'react';
 
 import { render } from '@testing-library/react';
+
+import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
+
+jest.mock('react-redux');
 
 describe('App', () => {
   const renderApp = () => render(<App />);
+  const dispatch = jest.fn();
   it('should visible all component', () => {
+    useSelector.mockImplementation((selector) => selector({
+      infoValue: {
+        nameTitle: '',
+        classification: '',
+        location: '',
+      },
+      restaurants: [],
+    }));
+
+    useDispatch.mockImplementation(() => dispatch);
     const { getByText, getByPlaceholderText } = renderApp();
 
     expect(getByText('Restaurants')).not.toBeNull();

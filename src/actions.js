@@ -6,12 +6,12 @@ export function updateInformation({ name, value }) {
 }
 
 export function addInformation({
-  newId, nameTitle, classification, location,
+  nameTitle, classification, location,
 }) {
   return {
     type: 'addInformation',
     payload: {
-      newId, nameTitle, classification, location,
+      nameTitle, classification, location,
     },
 
   };

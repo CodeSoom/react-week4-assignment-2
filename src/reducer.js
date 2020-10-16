@@ -1,33 +1,35 @@
 const initialState = {
-  nameTitle: '',
-  classification: '',
-  location: '',
+  infoValue: {
+    nameTitle: '',
+    classification: '',
+    location: '',
+  },
   newId: 100,
+  restaurants: [],
 };
-
-const infoValue = {
-  ...initialState,
-};
-
-const restaurants = [];
 
 export default function reducer(
-  state = { initialState, infoValue, restaurants },
+  state = initialState,
   action,
 ) {
   if (action.type === 'updateInformation') {
     const { name, value } = action.payload;
     return {
-      ...state.infoValue,
-      [name]: value,
+      ...state,
+      infoValue: {
+        ...state.infoValue,
+        [name]: value,
+      },
     };
   }
 
   if (action.type === 'addInformation') {
+    const { restaurants, newId } = state;
     const {
-      newId, nameTitle, classification, location,
+      nameTitle, classification, location,
     } = action.payload;
     return {
+      ...state,
       newId: newId + 1,
       restaurants: [
         ...restaurants,
@@ -42,8 +44,10 @@ export default function reducer(
   }
 
   if (action.type === 'initializeInformation') {
+    const { infoValue } = initialState;
     return {
-      ...infoValue,
+      ...state,
+      infoValue,
     };
   }
 
