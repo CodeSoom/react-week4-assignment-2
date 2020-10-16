@@ -45,9 +45,7 @@ describe('Form', () => {
   });
 
   it('renders add restaurant button', () => {
-    const { container, getByText } = renderForm();
-
-    expect(container).toHaveTextContent('등록');
+    const { getByText } = renderForm();
 
     fireEvent.click(getByText('등록'));
 
