@@ -12,17 +12,17 @@ export default function Form(
   return (
     <p>
       <Input
-        placeholder='이름'
+        placeholder="이름"
         value={name}
         onChange={onChange}
       />
       <Input
-        placeholder='분류'
+        placeholder="분류"
         value={classification}
         onChange={onChange}
       />
       <Input
-        placeholder='주소'
+        placeholder="주소"
         value={location}
         onChange={onChange}
       />

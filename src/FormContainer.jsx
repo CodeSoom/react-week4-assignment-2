@@ -7,9 +7,8 @@ import Form from './Form';
 import { updateRestaurant, addRestaurant } from './actions';
 
 export default function FormContainer() {
-  const { restaurant, placeholders } = useSelector((state) => ({
+  const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
-    placeholders: state.placeholders,
   }));
 
   const dispatch = useDispatch();
