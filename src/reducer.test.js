@@ -7,7 +7,7 @@ import {
 
 describe('reducer', () => {
   const initalRestaurants = [];
-  const initalInputs = [
+  const initalInputInfos = [
     { name: 'name', placeholder: '이름', value: '' },
     { name: 'category', placeholder: '분류', value: '' },
     { name: 'address', placeholder: '주소', value: '' },
@@ -15,30 +15,30 @@ describe('reducer', () => {
 
   describe('undefined action', () => {
     it('changes nothing', () => {
-      const { restaurants, inputs } = reducer();
+      const { restaurants, inputInfos } = reducer();
 
       expect(restaurants).toStrictEqual(initalRestaurants);
-      expect(inputs).toStrictEqual(initalInputs);
+      expect(inputInfos).toStrictEqual(initalInputInfos);
     });
   });
 
   describe('updateInputText', () => {
     it('changes input texts', () => {
       const newInputText = '마녀주방';
-      const { placeholder } = initalInputs[0];
+      const { placeholder } = initalInputInfos[0];
 
-      const { inputs } = reducer({
+      const { inputInfos } = reducer({
         restaurants: initalRestaurants,
-        inputs: initalInputs,
+        inputInfos: initalInputInfos,
       }, updateInputText(placeholder, newInputText));
 
-      expect(inputs[0].value).toBe('마녀주방');
+      expect(inputInfos[0].value).toBe('마녀주방');
     });
   });
 
   describe('addRestaurant', () => {
     it('add restaurant to restaurants', () => {
-      const previousInputs = [
+      const previousInputInfos = [
         { name: 'name', placeholder: '이름', value: '시카고피자' },
         { name: 'category', placeholder: '분류', value: '양식' },
         { name: 'address', placeholder: '주소', value: '이태원동' },
@@ -46,7 +46,7 @@ describe('reducer', () => {
 
       const { restaurants } = reducer({
         restaurants: initalRestaurants,
-        inputs: previousInputs,
+        inputInfos: previousInputInfos,
       }, addRestaurant());
 
       expect(restaurants).toHaveLength(initalRestaurants.length + 1);
