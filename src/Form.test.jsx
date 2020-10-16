@@ -33,7 +33,7 @@ describe('Form', () => {
 
     expect(getAllByRole('textbox')).toHaveLength(inputs.length);
 
-    inputs.forEach(({name, placeholder, value }) => {
+    inputs.forEach(({ name, placeholder, value }) => {
       const input = getByPlaceholderText(placeholder);
 
       expect(input).toHaveDisplayValue(value);
