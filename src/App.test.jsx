@@ -8,6 +8,6 @@ test('App', () => {
   const { getByText } = render((
     <App />
   ));
-  
+
   expect(getByText(/등록/)).not.toBeNull();
 });

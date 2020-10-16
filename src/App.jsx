@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Input from './Input';
+import Page from './Page';
 
 export default function App() {
   return (
     <div>
-      <Input />
+      <Page />
     </div>
   );
 }
