@@ -59,7 +59,7 @@ describe('FormContainer', () => {
         {
           type: 'updateRestaurant',
           payload: {
-            placeholder: '이름',
+            name: 'name',
             value: '시카고피자',
           },
         },
