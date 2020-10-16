@@ -1,4 +1,4 @@
-import reducer from '../../src/reducers';
+import restaurant from '../../src/reducers/restaurant';
 
 import {
   updateRestaurantName,
@@ -9,7 +9,7 @@ import {
 
 describe('restaurant reducer', () => {
   describe('updateRestaurantName', () => {
-    const reduceUpdateRestaurantName = () => reducer({
+    const reduceUpdateRestaurantName = () => restaurant({
       name: '',
     }, updateRestaurantName('마녀주방'));
 
@@ -21,7 +21,7 @@ describe('restaurant reducer', () => {
   });
 
   describe('updateRestaurantCategory', () => {
-    const reduceUpdateRestaurantCategory = () => reducer({
+    const reduceUpdateRestaurantCategory = () => restaurant({
       category: '',
     }, updateRestaurantCategory('한식'));
     it('change restaurnt category', () => {
@@ -32,7 +32,7 @@ describe('restaurant reducer', () => {
   });
 
   describe('updateRestaurantAddr', () => {
-    const reduceUpdateRestaurantAddr = () => reducer({
+    const reduceUpdateRestaurantAddr = () => restaurant({
       address: '',
     }, updateRestaurantAddr('서울시 성동구'));
     it('change restaurnt category', () => {
@@ -43,7 +43,8 @@ describe('restaurant reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    const reduceAddRestaurant = ({ name, category, address }) => reducer({
+    const reduceAddRestaurant = ({ name, category, address }) => restaurant({
+      newId: 100,
       name,
       category,
       address,
