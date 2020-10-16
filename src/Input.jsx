@@ -1,12 +1,15 @@
 import React from 'react';
 
 export default function Input({
-  placeholderText, value, onChange,
+  name,
+  placeholderText,
+  value,
+  onChange,
 }) {
   return (
     <input
       type="text"
-      name="name"
+      name={name}
       placeholder={placeholderText}
       value={value}
       onChange={(e) => onChange(placeholderText, e.target.value)}
