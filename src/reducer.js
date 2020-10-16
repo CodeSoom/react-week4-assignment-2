@@ -7,24 +7,13 @@ const initialState = {
   },
 };
 
-const getKeyByPlaceholder = {
-  이름: 'name',
-  분류: 'classification',
-  주소: 'location',
-};
-
 const reducers = {
-  updateRestaurant: (state, { placeholder, value }) => {
+  updateRestaurant: (state, { name, value }) => {
     const { restaurant } = state;
-    const key = getKeyByPlaceholder[placeholder];
-
-    if (!key) {
-      return state;
-    }
 
     return {
       ...state,
-      restaurant: { ...restaurant, [key]: value },
+      restaurant: { ...restaurant, [name]: value },
     };
   },
   addRestaurant: (state) => {
