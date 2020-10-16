@@ -1,9 +1,22 @@
-import action from './actions';
+import reducer, { initialState } from './reducer';
 
-import reducer from './reducer';
+describe('initialState', () => {
+  it('초기 restaurantInfo 객체는 빈칸으로 초기화됩니다.', () => {
+    const { name, type, location } = initialState.restaurantInfo;
+
+    expect(name).toBe('');
+    expect(type).toBe('');
+    expect(location).toBe('');
+  });
+
+  it('초기 listRestaurantInfo은 빈 배열로 초기화됩니다.', () => {
+    const { listRestaurantInfo } = initialState.listRestaurantInfo;
+
+    expect(listRestaurantInfo).toHaveLength(0);
+  });
+});
 
 describe('reducer', () => {
-
   const updateRestaurantName = jest.fn();
   const updateRestaurantType = jest.fn();
   const updateRestaurantLocation = jest.fn();
@@ -76,7 +89,5 @@ describe('reducer', () => {
       expect(state.restaurantInfo.type).toBe('');
       expect(state.restaurantInfo.location).toBe('');
     });
-
-    expect(state.restaurantInfo.name)
   });
 });
