@@ -12,8 +12,7 @@ import {
 export default function FormContainer() {
   const dispatch = useDispatch();
 
-  const state = useSelector(({ restaurants, inputInfos }) => ({
-    restaurants,
+  const state = useSelector(({ inputInfos }) => ({
     inputInfos,
   }));
 
