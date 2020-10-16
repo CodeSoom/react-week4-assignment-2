@@ -25,7 +25,6 @@ test('App', () => {
         location: '이태원동',
       },
     ],
-    placeholders: [],
   }));
 
   const { container, getByText } = render((
