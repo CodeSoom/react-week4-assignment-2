@@ -9,8 +9,9 @@ test('Input', () => {
 
   const { getByPlaceholderText } = render((
     <Input
-      value="한식"
+      name="classification"
       placeholder="분류"
+      value="한식"
       onChange={handleChange}
     />
   ));
