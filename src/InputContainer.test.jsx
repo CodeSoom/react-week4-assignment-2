@@ -76,4 +76,25 @@ describe('InputContainer', () => {
       });
     });
   });
+
+  context('when restaurant address is changed', () => {
+    it('dispatches handleChangeAddress', () => {
+      const { getByPlaceholderText, getByDisplayValue } = render(
+        <InputContainer />,
+      );
+
+      expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
+
+      fireEvent.change(getByPlaceholderText('주소'), {
+        target: { value: '경기도 분당구' },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantAddress',
+        payload: {
+          address: '경기도 분당구',
+        },
+      });
+    });
+  });
 });
