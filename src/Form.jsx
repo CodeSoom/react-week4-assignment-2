@@ -12,7 +12,7 @@ export default function Form({
       {
         inputInfos.map(({ name, placeholder, value }) => (
           <Input
-            key={placeholder}
+            key={name}
             name={name}
             placeholderText={placeholder}
             value={value}
