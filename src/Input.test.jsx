@@ -16,7 +16,7 @@ describe('Input', () => {
 
   const restaurant = {
     name: '한식이 좋아!',
-    group: '한식',
+    category: '한식',
     address: '서울시 강남구',
   };
 
@@ -39,13 +39,13 @@ describe('Input', () => {
   });
 
   context('with restaurant info', () => {
-    it('renders name, group, address', () => {
+    it('renders name, category, address', () => {
       const { getByPlaceholderText } = renderInput();
 
-      const { name, group, address } = restaurant;
+      const { name, category, address } = restaurant;
 
       expect(getByPlaceholderText('이름')).toHaveDisplayValue(name);
-      expect(getByPlaceholderText('분류')).toHaveDisplayValue(group);
+      expect(getByPlaceholderText('분류')).toHaveDisplayValue(category);
       expect(getByPlaceholderText('주소')).toHaveDisplayValue(address);
     });
   });
@@ -53,11 +53,11 @@ describe('Input', () => {
   context('when restaurant info is changed', () => {
     const newRestaurantInfo = {
       name: '중식이 좋아!',
-      group: '중식',
+      category: '중식',
       address: '경기도 분당구',
     };
 
-    const { name, group, address } = newRestaurantInfo;
+    const { name, category, address } = newRestaurantInfo;
 
     it('called with handleChangeName', () => {
       const { getByPlaceholderText } = renderInput();
@@ -73,7 +73,7 @@ describe('Input', () => {
       const { getByPlaceholderText } = renderInput();
 
       fireEvent.change(getByPlaceholderText('분류'), {
-        target: { value: group },
+        target: { value: category },
       });
 
       expect(handleChangeGroup).toBeCalled();

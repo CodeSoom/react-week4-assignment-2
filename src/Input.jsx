@@ -5,7 +5,7 @@ export default function Input({
   onChangeName, onChangeGroup, onChangeAddress,
   onClick,
 }) {
-  const { name, group, address } = restaurant;
+  const { name, category, address } = restaurant;
 
   return (
     <div>
@@ -17,7 +17,7 @@ export default function Input({
       />
       <input
         type="text"
-        value={group}
+        value={category}
         placeholder="분류"
         onChange={onChangeGroup}
       />
