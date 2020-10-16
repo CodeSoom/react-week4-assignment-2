@@ -12,9 +12,9 @@ import {
 export default function FormContainer() {
   const dispatch = useDispatch();
 
-  const state = useSelector(({ restaurants, inputs }) => ({
+  const state = useSelector(({ restaurants, inputInfos }) => ({
     restaurants,
-    inputs,
+    inputInfos,
   }));
 
   function handleChangeInput(placeholder, value) {
@@ -27,7 +27,7 @@ export default function FormContainer() {
 
   return (
     <Form
-      inputs={state.inputs}
+      inputInfos={state.inputInfos}
       onChangeInput={handleChangeInput}
       onClickAddRestautant={handleClickAddRestautant}
     />
