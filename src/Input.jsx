@@ -22,7 +22,7 @@ export default function Input({
       />
       <input
         type="text"
-        name={address}
+        name="address"
         value={address}
         placeholder="주소"
         onChange={onChange}
