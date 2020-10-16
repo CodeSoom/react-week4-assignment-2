@@ -16,7 +16,7 @@ describe('reducer', () => {
       expect(state.restaurant.name).toBe('시카고피자');
     });
   });
-  
+
   describe('addRestaurant', () => {
     function reduceAddRestaurant(restaurant) {
       return reducer({
