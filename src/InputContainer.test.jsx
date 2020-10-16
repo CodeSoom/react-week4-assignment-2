@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/jest-dom';
 
-import Form from './Form';
+import InputContainer from './InputContainer';
 
-describe('Form', () => {
+describe('InputContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
