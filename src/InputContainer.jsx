@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateRestaurantName } from './actions';
 
 import Input from './Input';
 
@@ -9,7 +10,10 @@ export default function InputContainer() {
     restaurant: state.restaurant,
   }));
 
-  function handleChangeName() {
+  const dispatch = useDispatch();
+
+  function handleChangeName(event) {
+    dispatch(updateRestaurantName(event.target.value));
   }
 
   function handleChangeCategory() {
