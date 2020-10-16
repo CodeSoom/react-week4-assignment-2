@@ -97,4 +97,18 @@ describe('InputContainer', () => {
       });
     });
   });
+
+  context('when add button is clicked', () => {
+    it('dispatches addRestaurant', () => {
+      const { getByText } = render(<InputContainer />);
+
+      expect(getByText('등록')).not.toBeNull();
+
+      fireEvent.click(getByText('등록'));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'addRestaurant',
+      });
+    });
+  });
 });
