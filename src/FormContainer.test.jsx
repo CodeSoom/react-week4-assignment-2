@@ -19,7 +19,6 @@ describe('FormContainer', () => {
       classification: '한식',
       location: '서울시 강남구',
     },
-    placeholders: ['이름', '분류', '주소'],
   }));
 
   function renderFormContainer() {
