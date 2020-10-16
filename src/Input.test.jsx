@@ -14,14 +14,14 @@ describe('Input', () => {
     jest.clearAllMocks();
   });
 
-  const restaurantInfo = {
+  const restaurant = {
     name: '한식이 좋아!',
     group: '한식',
     address: '서울시 강남구',
   };
 
   const renderInput = () => render(<Input
-    restaurantInfo={restaurantInfo}
+    restaurant={restaurant}
     onChangeName={handleChangeName}
     onChangeGroup={handleChangeGroup}
     onChangeAddress={handleChangeAddress}
@@ -42,7 +42,7 @@ describe('Input', () => {
     it('renders name, group, address', () => {
       const { getByPlaceholderText } = renderInput();
 
-      const { name, group, address } = restaurantInfo;
+      const { name, group, address } = restaurant;
 
       expect(getByPlaceholderText('이름')).toHaveDisplayValue(name);
       expect(getByPlaceholderText('분류')).toHaveDisplayValue(group);
