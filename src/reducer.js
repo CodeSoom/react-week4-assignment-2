@@ -12,18 +12,21 @@ export default function reducer(state = initialState, action) {
     updateRestaurantName: {
       ...state,
       restaurantInfo: {
+        ...state.restaurantInfo,
         name: action.payload,
       },
     },
     updateRestaurantType: {
       ...state,
       restaurantInfo: {
+        ...state.restaurantInfo,
         type: action.payload,
       },
     },
     updateRestaurantLocation: {
       ...state,
       restaurantInfo: {
+        ...state.restaurantInfo,
         location: action.payload,
       },
     },
