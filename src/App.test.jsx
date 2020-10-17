@@ -5,11 +5,11 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  function utils() {
+  function app() {
     return render((<App />));
   }
 
-  context('When first loaded', () => {
+  describe('first loaded', () => {
     it('show Restaurant title', () => {
       const { container } = utils();
       expect(container).toHaveTextContent('Restaurant');
