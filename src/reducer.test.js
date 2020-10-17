@@ -1,9 +1,9 @@
 import reducer from './reducer';
 
 import {
-  changeRestaurantName,
-  changeRestaurantCuisine,
-  changeRestaurantLocation,
+  changeName,
+  changeCuisine,
+  changeLocation,
   clickAddRestaurant,
 } from './actions';
 
@@ -13,9 +13,9 @@ describe('reducer', () => {
       const initialState = {
         newId: 1,
         restaurants: [],
-        restaurantName: '',
-        restaurantCuisine: '',
-        restaurantLocation: '',
+        name: '',
+        cuisine: '',
+        location: '',
       };
 
       expect(reducer()).toEqual(initialState);
@@ -25,9 +25,9 @@ describe('reducer', () => {
   context('without action', () => {
     it('returns state', () => {
       const previousState = {
-        restaurantName: '시카고 피자',
-        restaurantCuisine: '양식',
-        restaurantLocation: '이태원동',
+        name: '시카고 피자',
+        cuisine: '양식',
+        location: '이태원동',
       };
 
       const state = reducer(previousState);
@@ -37,48 +37,48 @@ describe('reducer', () => {
   });
 
   context('with action', () => {
-    describe('changeRestaurantName', () => {
+    describe('changeName', () => {
       it('changes restaurant name', () => {
         const previousState = {
-          restaurantName: '',
+          name: '',
         };
 
         const state = reducer(
           previousState,
-          changeRestaurantName('시카고 피자'),
+          changeName('시카고 피자'),
         );
 
-        expect(state.restaurantName).toBe('시카고 피자');
+        expect(state.name).toBe('시카고 피자');
       });
     });
 
-    describe('changeRestaurantCuisine', () => {
+    describe('changeCuisine', () => {
       it('changes restaurant cuisine', () => {
         const previousState = {
-          restaurantCuisine: '',
+          cuisine: '',
         };
 
         const state = reducer(
           previousState,
-          changeRestaurantCuisine('양식'),
+          changeCuisine('양식'),
         );
 
-        expect(state.restaurantCuisine).toBe('양식');
+        expect(state.cuisine).toBe('양식');
       });
     });
 
-    describe('changeRestaurantLocation', () => {
+    describe('changeLocation', () => {
       it('changes restaurant cuisine', () => {
         const previousState = {
-          restaurantLocation: '',
+          location: '',
         };
 
         const state = reducer(
           previousState,
-          changeRestaurantLocation('이태원동'),
+          changeLocation('이태원동'),
         );
 
-        expect(state.restaurantLocation).toBe('이태원동');
+        expect(state.location).toBe('이태원동');
       });
     });
 
@@ -86,9 +86,9 @@ describe('reducer', () => {
       it('adds restaurant to the list', () => {
         const previousState = {
           restaurants: [],
-          restaurantName: '시카고 피자',
-          restaurantCuisine: '양식',
-          restaurantLocation: '이태원동',
+          name: '시카고 피자',
+          cuisine: '양식',
+          location: '이태원동',
         };
 
         const state = reducer(
@@ -97,18 +97,18 @@ describe('reducer', () => {
         );
 
         expect(state.restaurants[0]).toEqual({
-          restaurantName: '시카고 피자',
-          restaurantCuisine: '양식',
-          restaurantLocation: '이태원동',
+          name: '시카고 피자',
+          cuisine: '양식',
+          location: '이태원동',
         });
       });
 
       it('clears restaurant name, cuisine, and location', () => {
         const previousState = {
           restaurants: [],
-          restaurantName: '시카고 피자',
-          restaurantCuisine: '양식',
-          restaurantLocation: '이태원동',
+          name: '시카고 피자',
+          cuisine: '양식',
+          location: '이태원동',
         };
 
         const state = reducer(
@@ -116,9 +116,11 @@ describe('reducer', () => {
           clickAddRestaurant(),
         );
 
-        expect(state.restaurantName).toBe('');
-        expect(state.restaurantCuisine).toBe('');
-        expect(state.restaurantLocation).toBe('');
+        const { name, cuisine, location } = state;
+
+        expect(name).toBe('');
+        expect(cuisine).toBe('');
+        expect(location).toBe('');
       });
     });
   });

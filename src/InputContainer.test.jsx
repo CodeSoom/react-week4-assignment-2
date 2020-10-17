@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, getByTitle } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -18,7 +18,7 @@ function change(target, { value }) {
 
 describe('InputContainer', () => {
   function renderInputContainer() {
-    const { container, getByText } = render(<InputContainer />);
+    const { container, getByText, getByTitle } = render(<InputContainer />);
 
     return {
       container,
@@ -43,7 +43,7 @@ describe('InputContainer', () => {
   useSelector.mockImplementation((selector) => selector(restaurants));
   useDispatch.mockReturnValue(dispatch);
 
-  it('changes restaurant name', () => {
+  it('calls changeName', () => {
     const {
       inputName,
     } = renderInputContainer();
@@ -56,12 +56,12 @@ describe('InputContainer', () => {
 
     change(inputName, { value: restaurant.name });
     expect(dispatch).toBeCalledWith({
-      type: 'handleChangeRestaurantName',
+      type: 'changeName',
       payload: { name: restaurant.name },
     });
   });
 
-  it('changes restaurant cuisine', () => {
+  it('calls changeCuisine', () => {
     const {
       inputCuisine,
     } = renderInputContainer();
@@ -74,12 +74,12 @@ describe('InputContainer', () => {
 
     change(inputCuisine, { value: restaurant.cuisine });
     expect(dispatch).toBeCalledWith({
-      type: 'handleChangeRestaurantCuisine',
-      payload: { name: restaurant.cuisine },
+      type: 'changeCuisine',
+      payload: { cuisine: restaurant.cuisine },
     });
   });
 
-  it('changes restaurant location', () => {
+  it('calls changeLocation', () => {
     const {
       inputLocation,
     } = renderInputContainer();
@@ -92,28 +92,21 @@ describe('InputContainer', () => {
 
     change(inputLocation, { value: restaurant.location });
     expect(dispatch).toBeCalledWith({
-      type: 'handleChangeRestaurantLocation',
-      payload: { name: restaurant.location },
+      type: 'changeLocation',
+      payload: { location: restaurant.location },
     });
   });
 
-  it('adds restaurant to the list', () => {
+  it('calls clickAddRestaurant', () => {
     const {
       buttonAdd,
     } = renderInputContainer();
-
-    const restaurant = {
-      name: '시카고피자',
-      cuisine: '양식',
-      location: '이태원동',
-    };
 
     expect(buttonAdd).not.toBeNull();
 
     click(buttonAdd);
     expect(dispatch).toBeCalledWith({
-      type: 'handleClickAddRestaurant',
-      payload: { restaurant },
+      type: 'clickAddRestaurant',
     });
   });
 });
