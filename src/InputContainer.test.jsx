@@ -12,15 +12,15 @@ describe('InputContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurant: { name: '마녀주방', category: '한식', address: '서울시 강남구' },
-  }));
-
   const renderInputContainer = () => render((
     <InputContainer />
   ));
 
   it('"restaurant"을 등록한다.', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: { name: '마녀주방', category: '한식', address: '서울시 강남구' },
+    }));
+
     const inputValue = ['마녀주방', '한식', '서울시 강남구'];
 
     const { getByDisplayValue, getByText } = renderInputContainer();
@@ -38,25 +38,23 @@ describe('InputContainer', () => {
   });
 
   it('레스토랑 정보를 입력한다.', () => {
-    const inputType = [
-      { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
-      { placeholderName: '분류', inputName: 'category', value: '한식' },
-      { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
-    ];
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: { name: '', category: '', address: '' },
+    }));
+
+    const { inputName, value, placeholderName } = { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' };
 
     const { getByPlaceholderText } = renderInputContainer();
 
-    inputType.forEach(({ placeholderName, inputName, value }) => {
-      fireEvent.change(getByPlaceholderText(placeholderName), {
-        target: { value, name: inputName },
-      });
-      expect(dispatch).toBeCalledWith({
-        type: 'updateRestaurant',
-        payload: {
-          value,
-          name: inputName,
-        },
-      });
+    fireEvent.change(getByPlaceholderText(placeholderName), {
+      target: { value, name: inputName },
+    });
+    expect(dispatch).toBeCalledWith({
+      type: 'updateRestaurant',
+      payload: {
+        value,
+        name: inputName,
+      },
     });
   });
 });
