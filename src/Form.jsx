@@ -14,16 +14,19 @@ export default function Form({
   return (
     <>
       <Input
+        name="name"
         placeholder="이름"
         value={name}
         onChange={handleChangeRestaurantName}
       />
       <Input
+        name="category"
         placeholder="분류"
         value={type}
         onChange={handleChangeRestaurantType}
       />
       <Input
+        name="address"
         placeholder="주소"
         value={location}
         onChange={handleChangeRestaurantLocation}
