@@ -10,10 +10,16 @@ import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-const dispatch = jest.fn();
-
 describe('FormContainer', () => {
   const { inputInfos } = fixture;
+
+  const dispatch = jest.fn();
+
+  function renderFormContainer() {
+    return render((
+      <FormContainer />
+    ));
+  }
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -24,12 +30,6 @@ describe('FormContainer', () => {
       inputInfos,
     }));
   });
-
-  function renderFormContainer() {
-    return render((
-      <FormContainer />
-    ));
-  }
 
   describe('change each input text', () => {
     it('dispatches updateInputText action', () => {
