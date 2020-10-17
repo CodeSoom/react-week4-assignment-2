@@ -23,6 +23,7 @@ const reducers = {
   },
   addRestaurant: (state) => {
     const { restaurants, inputInfos } = state;
+    const [name, category, address] = inputInfos;
     const newInputInfos = inputInfos
       .map((inputInfo) => ({
         ...inputInfo,
@@ -33,9 +34,9 @@ const reducers = {
       ...state,
       inputInfos: newInputInfos,
       restaurants: [...restaurants, {
-        name: inputInfos[0].value,
-        category: inputInfos[1].value,
-        address: inputInfos[2].value,
+        name: name.value,
+        category: category.value,
+        address: address.value,
       }],
     };
   },
