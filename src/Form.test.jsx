@@ -31,8 +31,8 @@ describe('Form', () => {
   });
 
   it('버튼이 클릭되면 handleClick이 호출된다.', () => {
-    const { getDisplayValue } = renderForm();
-    const buttonAdd = getDisplayValue('등록');
+    const { getByText } = renderForm();
+    const buttonAdd = getByText('등록');
 
     expect(handleClickAdd).not.toBeCalled();
     fireEvent.click(buttonAdd);
