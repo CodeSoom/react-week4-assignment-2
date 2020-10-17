@@ -30,8 +30,9 @@ describe('InputReservation', () => {
   });
 
   it('onChangeName 테스트', () => {
-    const { getByPlaceholderText } = screen;
-    const input = getByPlaceholderText('이름');
+    renderInputReservation();
+
+    const input = screen.getByPlaceholderText('이름');
 
     expect(handleChangeName).not.toBeCalled();
 
@@ -41,8 +42,9 @@ describe('InputReservation', () => {
   });
 
   it('onChangeCategory 테스트', () => {
-    const { getByPlaceholderText } = screen;
-    const input = getByPlaceholderText('분류');
+    renderInputReservation();
+
+    const input = screen.getByPlaceholderText('분류');
 
     expect(handleChangeCategory).not.toBeCalled();
 
@@ -52,8 +54,9 @@ describe('InputReservation', () => {
   });
 
   it('onChangeAddress 테스트', () => {
-    const { getByPlaceholderText } = screen;
-    const input = getByPlaceholderText('주소');
+    renderInputReservation();
+
+    const input = screen.getByPlaceholderText('주소');
 
     expect(handleChangeAddress).not.toBeCalled();
 
@@ -63,8 +66,9 @@ describe('InputReservation', () => {
   });
 
   it('onClick 테스트', () => {
-    const { getByRole } = screen;
-    const button = getByRole('button', { name: '등록' });
+    renderInputReservation();
+
+    const button = screen.getByRole('button', { name: '등록' });
 
     expect(handleClick).not.toBeCalled();
 
