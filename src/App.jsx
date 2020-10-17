@@ -1,42 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Page from './Page';
 
-export default function App() {
-  const [state, setState] = useState({
-    id: 1,
-    restaurant: {
-      name: '',
-      category: '',
-      address: '',
-    },
-    restaurants: [],
-  });
+import { addRestaurant, updateRestaurant } from './actions';
 
-  const { id, restaurant, restaurants } = state;
+export default function App() {
+  const dispatch = useDispatch();
+
+  const { restaurant, restaurants } = useSelector((state) => ({
+    restaurant: state.restaurant,
+    restaurants: state.restaurant,
+  }));
 
   function handleChangeRestaurant(event) {
     const { value, name } = event.target;
-    setState({
-      ...state,
-      restaurant: {
-        ...restaurant,
-        [name]: value,
-      },
-    });
+
+    dispatch(updateRestaurant({ value, name }));
   }
 
   function handleClickSubmit() {
-    setState({
-      ...state,
-      restaurant: {
-        name: '',
-        category: '',
-        address: '',
-      },
-      id: id + 1,
-      restaurants: [...restaurants, { id, ...restaurant }],
-    });
+    dispatch(addRestaurant());
   }
 
   return (
