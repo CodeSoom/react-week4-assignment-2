@@ -1,9 +1,12 @@
 import React from 'react';
 
+import Form from './Form';
+
 export default function App() {
   return (
     <div>
-      Hello
+      <h1>Restaurants</h1>
+      <Form />
     </div>
   );
 }
