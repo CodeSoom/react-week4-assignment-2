@@ -1,10 +1,19 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 export default function ListContainer() {
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
+
   return (
     <ul>
-      <li>마녀주방 | 한식 | 서울시 강남구</li>
-      <li>시카고피자 | 양식 | 이태원</li>
+      {
+        restaurants.map(({ name, category, location }) => (
+          <li key={name}>{`${name} | ${category} | ${location}`}</li>
+        ))
+      }
     </ul>
   );
 }
