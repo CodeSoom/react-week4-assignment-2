@@ -1,4 +1,9 @@
-import { updateRestaurantName, updateRestaurantType, updateRestaurantLocation, addRestaurantInfo } from './actions';
+import {
+  updateRestaurantName,
+  updateRestaurantType,
+  updateRestaurantLocation,
+  addRestaurantInfo,
+} from './actions';
 
 describe('updateRestaurantName', () => {
   it('restaurantInfoName action을 반환합니다.', () => {

@@ -42,4 +42,4 @@ export default function reducer(state = initialState, action) {
   };
 
   return router[action.type];
-};
+}
