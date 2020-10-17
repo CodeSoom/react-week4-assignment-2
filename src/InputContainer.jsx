@@ -10,12 +10,12 @@ export default function InputContainer() {
   const dispatch = useDispatch();
   const {
     name,
-    type,
-    place,
+    category,
+    address,
   } = useSelector((state) => state);
 
   const handleClick = () => {
-    dispatch(actions.addRestaurant(`${name} | ${type} | ${place}`));
+    dispatch(actions.addRestaurant(`${name} | ${category} | ${address}`));
   };
 
   const handleChange = (event) => {
@@ -33,14 +33,14 @@ export default function InputContainer() {
         onChange={handleChange}
       />
       <Input
-        name="type"
-        value={type}
+        name="category"
+        value={category}
         placeholder="분류"
         onChange={handleChange}
       />
       <Input
-        name="place"
-        value={place}
+        name="address"
+        value={address}
         placeholder="주소"
         onChange={handleChange}
       />
