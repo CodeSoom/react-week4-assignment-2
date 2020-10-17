@@ -60,22 +60,16 @@ describe('FormContainer', () => {
 
   it('등록 버튼을 클릭하면 addRestaurantInfo action이 dispatch 됩니다.', () => {
     const { getByPlaceholderText, getByText } = render(<FormContainer />);
-    const inputRestaurantName = getByPlaceholderText('이름');
-    const inputRestaurantType = getByPlaceholderText('분류');
-    const inputRestaurantLocation = getByPlaceholderText('주소');
     const buttonAdd = getByText('등록');
 
-    fireEvent.change(inputRestaurantName, { target: { value: '마녀주방' } });
-    fireEvent.change(inputRestaurantType, { target: { value: '한식' } });
-    fireEvent.change(inputRestaurantLocation, { target: { value: '서울시 강남구' } });
     fireEvent.click(buttonAdd);
 
     expect(dispatch).toBeCalledWith({
       type: 'addRestaurantInfo',
       payload: {
-        name: '마녀주방',
-        type: '한식',
-        location: '서울시 강남구',
+        name: '',
+        type: '',
+        location: '',
       },
     });
   });
