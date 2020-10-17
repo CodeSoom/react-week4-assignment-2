@@ -1,14 +1,13 @@
 import React from 'react';
 
+import ListContainer from './ListContainer';
+
 export default function App() {
   return (
     <div>
       <h1> Restaurant</h1>
 
-      <ul>
-        <li>마녀주방 | 한식 | 서울시 강남구</li>
-        <li>시카고피자 | 양식 | 이태원</li>
-      </ul>
+      <ListContainer />
 
       <input placeholder="이름" />
       <input placeholder="분류" />
