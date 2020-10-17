@@ -5,6 +5,12 @@ import { render, fireEvent } from '@testing-library/jest-dom';
 import App from './App';
 
 describe('App', () => {
+  it('"Restaurant"가 제목으로 출력된다.', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('Restaurants');
+  });
+
   it('이름 Input의 값이 입력되면 이름 Input 값이 변화된다.', () => {
     const { getByPlaceholderText } = render(<App />);
     const inputRestaurantName = getByPlaceholderText('이름');
