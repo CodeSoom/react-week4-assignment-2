@@ -18,8 +18,8 @@ describe('<InputContainer />', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     name: '',
-    type: '',
-    place: '',
+    category: '',
+    address: '',
   }));
 
   const renderInput = () => render((
