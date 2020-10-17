@@ -8,7 +8,7 @@ describe('Button', () => {
 
   const renderButton = (value) => render((
     <Button
-      onChange={handleClick}
+      onClick={handleClick}
     >
       {value}
     </Button>
@@ -25,7 +25,7 @@ describe('Button', () => {
   });
 
   it('onClick 테스트', () => {
-    renderButton('');
+    renderButton(value);
 
     const { getByRole } = screen;
 
