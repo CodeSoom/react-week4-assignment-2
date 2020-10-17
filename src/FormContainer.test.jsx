@@ -40,7 +40,7 @@ describe('FormContainer', () => {
     const { getByPlaceholderText } = render(<FormContainer />);
     const inputRestaurantType = getByPlaceholderText('분류');
 
-    fireEvent.change(inputRestaurantType, { target: { value: '힌식' } });
+    fireEvent.change(inputRestaurantType, { target: { value: '한식' } });
     expect(dispatch).toBeCalledWith({
       type: 'updateRestaurantType',
       payload: '한식',
