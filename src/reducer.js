@@ -22,6 +22,9 @@ export default function reducer(state = initialState, action) {
         ...restaurants,
         { id: newId, value: action.payload },
       ],
+      name: initialState.name,
+      type: initialState.type,
+      place: initialState.place,
     };
   }
 
