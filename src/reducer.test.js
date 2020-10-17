@@ -10,8 +10,8 @@ describe('reducer', () => {
         newId: 1,
         restaurants: [],
         name: '호호식당',
-        type: '양식',
-        place: '서울 성동구',
+        category: '양식',
+        address: '서울 성동구',
       };
       const action = actions.addRestaurant('이름 | 분류 | 주소');
 
@@ -23,8 +23,8 @@ describe('reducer', () => {
         newId: 2,
         restaurants: [{ id: 1, value: '이름 | 분류 | 주소' }],
         name: '',
-        type: '',
-        place: '',
+        category: '',
+        address: '',
       });
     });
   });
@@ -43,31 +43,31 @@ describe('reducer', () => {
     });
   });
 
-  describe(CHANGE_RESTAURANT_INPUT.TYPE, () => {
-    it('changes restaurant type', () => {
+  describe(CHANGE_RESTAURANT_INPUT.CATEGORY, () => {
+    it('changes restaurant category', () => {
       // Given
-      const previousState = { type: '' };
-      const action = actions.changeRestaurantInput('type', '한식');
+      const previousState = { category: '' };
+      const action = actions.changeRestaurantInput('category', '한식');
 
       // When
       const state = reducer(previousState, action);
 
       // Then
-      expect(state).toMatchObject({ type: '한식' });
+      expect(state).toMatchObject({ category: '한식' });
     });
   });
 
-  describe(CHANGE_RESTAURANT_INPUT.PLACE, () => {
+  describe(CHANGE_RESTAURANT_INPUT.ADDRESS, () => {
     it('changes restaurant address', () => {
       // Given
-      const previousState = { place: '' };
-      const action = actions.changeRestaurantInput('place', '서울 강남구');
+      const previousState = { ADDRESS: '' };
+      const action = actions.changeRestaurantInput('address', '서울 강남구');
 
       // When
       const state = reducer(previousState, action);
 
       // Then
-      expect(state).toMatchObject({ place: '서울 강남구' });
+      expect(state).toMatchObject({ address: '서울 강남구' });
     });
   });
 
@@ -78,8 +78,8 @@ describe('reducer', () => {
         newId: 1,
         restaurants: [],
         name: '마녀주방',
-        type: '한식',
-        place: '서울 강남구',
+        category: '한식',
+        address: '서울 강남구',
       };
       const action = { type: 'NOTHING' };
 
