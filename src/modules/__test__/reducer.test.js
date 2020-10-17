@@ -67,8 +67,8 @@ describe('reducer', () => {
       });
     });
 
-    context('without some reservation fields', () => {
-      it('appends a new reservation', () => {
+    context('without reservation name', () => {
+      it('not append reservation', () => {
         const state = reduceAddReservation({
           reservationName: '',
           reservationCategory: 'New Category',
@@ -77,6 +77,46 @@ describe('reducer', () => {
 
         expect(state.reservations).toHaveLength(0);
       });
+    });
+
+    context('without reservation category', () => {
+      it('not append reservation', () => {
+        const state = reduceAddReservation({
+          reservationName: 'New Name',
+          reservationCategory: '',
+          reservationAddress: 'New Address',
+        });
+
+        expect(state.reservations).toHaveLength(0);
+      });
+    });
+
+    context('without reservation address', () => {
+      it('not append reservation', () => {
+        const state = reduceAddReservation({
+          reservationName: 'New Name',
+          reservationCategory: 'New Category',
+          reservationAddress: '',
+        });
+
+        expect(state.reservations).toHaveLength(0);
+      });
+    });
+
+    context('without state', () => {
+      it('not append reservation', () => {
+        const state = reducer(undefined, addReservation());
+
+        expect(state.reservations).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('undefined action', () => {
+    it('no action', () => {
+      const state = reducer(undefined, { type: 'undefined', payload: {} });
+
+      expect(state.reservations).toHaveLength(0);
     });
   });
 });
