@@ -19,7 +19,7 @@ describe('Input', () => {
     { placeholderName: '주소', inputName: 'address' },
   ];
 
-  it('"input"이 존재하는지 확인한다.', () => {
+  it('"input"이 보인다.', () => {
     const { getByPlaceholderText } = inputRender();
 
     inputType.forEach(({ placeholderName }) => {
