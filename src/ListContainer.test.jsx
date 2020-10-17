@@ -9,7 +9,7 @@ import ListContainer from './ListContainer';
 jest.mock('react-redux');
 
 describe('<ListContainer />', () => {
-  useSelector.mockImplementation(() => ({
+  useSelector.mockImplementation((selector) => selector({
     restaurants: [{ id: 1, value: '낙원관 | 중식 | 서울 성동구' }],
   }));
   const renderList = () => render(<ListContainer />);
