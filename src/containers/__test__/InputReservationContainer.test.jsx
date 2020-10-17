@@ -27,14 +27,10 @@ test('InputReservationContainer', () => {
   fireEvent.change(reservationNameInput, { target: { value: 'New Name' } });
   fireEvent.change(reservationCategoryInput, { target: { value: 'New Category' } });
   fireEvent.change(reservationAddressInput, { target: { value: 'New Address' } });
+
   fireEvent.click(reservationAddButton);
 
   expect(dispatch).toBeCalledWith({
     type: 'addReservation',
-    payload: {
-      name: 'New Name',
-      category: 'New Category',
-      address: 'New Address',
-    },
   });
 });
