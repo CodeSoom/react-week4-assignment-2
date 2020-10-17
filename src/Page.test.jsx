@@ -8,8 +8,9 @@ describe('Page', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const pageRender = (restaurants) => render((
+  const pageRender = ({ restaurants, restaurant }) => render((
     <Page
+      restaurant={restaurant}
       restaurants={restaurants}
       onChangeRestaurant={handleChange}
       onClickSubmit={handleClick}
@@ -34,20 +35,24 @@ describe('Page', () => {
     },
   ];
 
-  it('"input"값이 변경되는지 확인한다.', () => {
-    const { getByPlaceholderText } = pageRender(restaurants);
+  const restaurant = { name: '', type: '', address: '' };
+
+  it('handleChange 호출을 확인한다.', () => {
+    const { getByPlaceholderText } = pageRender({ restaurants, restaurant });
+
+    expect(handleChange).not.toBeCalled();
 
     inputType.forEach(({ placeholderName, inputName, value }) => {
       fireEvent.change(getByPlaceholderText(placeholderName), {
         target: { value, name: inputName },
       });
-
-      expect(getByPlaceholderText(placeholderName)).toHaveDisplayValue(value);
     });
+
+    expect(handleChange).toBeCalled();
   });
 
   it('등록 버튼 클릭시 호출되는지 확인한다.', () => {
-    const { getByText, getByPlaceholderText } = pageRender(restaurants);
+    const { getByText, getByPlaceholderText } = pageRender({ restaurants, restaurant });
     const button = getByText(/등록/);
 
     expect(button).not.toBeNull();
@@ -64,7 +69,7 @@ describe('Page', () => {
   });
 
   it('"restaurants"가 보인다.', () => {
-    const { container } = pageRender(restaurants);
+    const { container } = pageRender({ restaurants, restaurant });
 
     restaurants.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);

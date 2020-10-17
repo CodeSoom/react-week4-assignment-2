@@ -4,7 +4,7 @@ import Page from './Page';
 
 export default function App() {
   const [state, setState] = useState({
-    id: 0,
+    id: 1,
     restaurant: {
       name: '',
       type: '',
