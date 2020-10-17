@@ -54,4 +54,30 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('with undefined action', () => {
+    it('returns previous state', () => {
+      const { restaurants } = reducer(
+        {
+          restaurants: [
+            {
+              id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
+            },
+          ],
+        },
+        { type: 'undefined', payload: {} },
+      );
+
+      expect(restaurants).toHaveLength(1);
+    });
+
+    it("don't returns previous state", () => {
+      const { restaurants } = reducer(
+        undefined,
+        { type: 'undefined', payload: {} },
+      );
+
+      expect(restaurants).toHaveLength(0);
+    });
+  });
 });
