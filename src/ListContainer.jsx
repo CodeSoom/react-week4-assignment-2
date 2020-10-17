@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import Item from './Item';
+import List from './List';
 
 export default function ListContainer() {
   const { restaurants } = useSelector((state) => ({
@@ -10,12 +10,6 @@ export default function ListContainer() {
   }));
 
   return (
-    <ul>
-      {
-        restaurants.map((info) => (
-          <Item key={info.name} info={info} />
-        ))
-      }
-    </ul>
+    <List restaurants={restaurants} />
   );
 }
