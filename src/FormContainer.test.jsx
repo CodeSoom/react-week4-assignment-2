@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormContainer from './FormContainer';
 
@@ -16,6 +16,14 @@ describe('FormContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    restaurantInfo: {
+      name: '',
+      type: '',
+      location: '',
+    },
+    listRestaurantInfo: [],
+  }));
 
   it('이름 Input의 값이 입력되면 updateRestaurantName action이 dispatch 됩니다.', () => {
     const { getByPlaceholderText } = render(<FormContainer />);
