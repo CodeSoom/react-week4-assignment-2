@@ -10,7 +10,12 @@ export default function List({ items }) {
   return (
     <ol>
       {items.map((restaurant) => (
-        <Restaurant key={restaurant.id} items={restaurant} />
+        <Restaurant
+          key={`${restaurant.id}^${Date.now()}`}
+          name={restaurant.name}
+          category={restaurant.category}
+          address={restaurant.address}
+        />
       ))}
     </ol>
   );
