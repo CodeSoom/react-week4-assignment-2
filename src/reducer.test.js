@@ -6,14 +6,17 @@ describe('reducer', () => {
   describe(ADD_RESTAURANT, () => {
     it('add restaurant to the list', () => {
       // Given
-      const previousState = { restaurants: [] };
+      const previousState = {
+        newId: 1,
+        restaurants: [],
+      };
       const action = actions.addRestaurant('이름 | 분류 | 주소');
 
       // When
       const state = reducer(previousState, action);
 
       // Then
-      expect(state).toMatchObject({ restaurants: ['이름 | 분류 | 주소'] });
+      expect(state).toMatchObject({ restaurants: [{ id: 1, value: '이름 | 분류 | 주소' }] });
     });
   });
 
