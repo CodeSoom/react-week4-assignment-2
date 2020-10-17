@@ -4,6 +4,7 @@ import {
 } from './actions';
 
 const initialState = {
+  newId: 1,
   restaurants: [],
   name: '',
   type: '',
@@ -12,11 +13,14 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === ADD_RESTAURANT) {
+    const { newId, restaurants } = state;
+
     return {
       ...state,
+      newId: newId + 1,
       restaurants: [
-        ...state.restaurants,
-        action.payload,
+        ...restaurants,
+        { id: newId, value: action.payload },
       ],
     };
   }
