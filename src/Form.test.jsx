@@ -41,21 +41,21 @@ describe('Form', () => {
 
   context('restaurantInfo가 주어지지 않을 때', () => {
     it('placeholder에 "이름" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { getByPlaceholderText } = renderForm();
 
-      expect(container).toHaveAttribute('placeholder', '이름');
+      expect(getByPlaceholderText('이름')).not.toBeNull();
     });
 
     it('placeholder에 "분류" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { getByPlaceholderText } = renderForm();
 
-      expect(container).toHaveAttribute('placeholder', '분류');
+      expect(getByPlaceholderText('분류')).not.toBeNull();
     });
 
     it('placeholder에 "주소" 문구가 나온다.', () => {
-      const { container } = renderForm();
+      const { getByPlaceholderText } = renderForm();
 
-      expect(container).toHaveAttribute('placeholder', '주소');
+      expect(getByPlaceholderText('주소')).not.toBeNull();
     });
   });
 });
