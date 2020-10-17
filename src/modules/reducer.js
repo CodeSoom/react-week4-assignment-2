@@ -3,7 +3,7 @@ const initialState = {
   reservationName: '',
   reservationCategory: '',
   reservationAddress: '',
-  reservationse: [],
+  reservations: [],
 };
 
 export default function reducer(state = initialState, action) {
