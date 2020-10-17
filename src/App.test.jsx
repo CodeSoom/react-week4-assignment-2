@@ -5,16 +5,19 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  const { container, getByText, getByPlaceholderText } = render((
-    <App />
-  ));
+  function utils() {
+    return render((<App />));
+  }
 
   context('When first loaded', () => {
     it('show Restaurant title', () => {
+      const { container } = utils();
       expect(container).toHaveTextContent('Restaurant');
     });
 
     it('show input that add Restaurant into list', () => {
+      const { getByPlaceholderText, getByText } = utils();
+
       expect(getByPlaceholderText(/이름/)).not.toBeNull();
       expect(getByPlaceholderText(/분류/)).not.toBeNull();
       expect(getByPlaceholderText(/주소/)).not.toBeNull();
@@ -22,7 +25,8 @@ describe('App', () => {
     });
 
     it('show Restaurant list', () => {
-      expect(getByText(/마녀주방 | 한식 | 서울시 강남구/)).not.toBeNull();
+      const { container } = utils();
+      expect(container).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
     });
   });
 });
