@@ -29,7 +29,7 @@ describe('Input', () => {
     const value = 'some';
 
     it('value 확인', () => {
-      renderInput('');
+      renderInput(value);
 
       const { getByDisplayValue } = screen;
 
