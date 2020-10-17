@@ -12,7 +12,6 @@ import {
 import Form from './Form';
 
 export default function FormContainer() {
-
   const dispatch = useDispatch();
 
   const { restaurantInfo } = useSelector((state) => state);
