@@ -23,6 +23,16 @@ describe('initialState', () => {
 });
 
 describe('reducer', () => {
+
+  it('잘못된 값을 입력하면 자기 자신이 출력됩니다.', () => {
+    const state = reducer(
+      initialState,
+      { type: 'incorrectType' },
+    );
+
+    expect(state).toEqual(initialState);
+  });
+
   describe('updateRestaurantName', () => {
     it('restaurantName을 반환합니다.', () => {
       const { restaurantInfo: { name } } = reducer(
