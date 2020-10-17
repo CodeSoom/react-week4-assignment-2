@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/jest-dom';
 
-import InputContainer from './InputContainer';
+import Form from './Form';
 
-describe('InputContainer', () => {
+describe('Form', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -15,7 +15,7 @@ describe('InputContainer', () => {
   const handleChangeRestaurantLocation = jest.fn();
 
   const renderInputContainer = (restourantInfo = { name: '', type: '', location: '' }) => render((
-    <InputContainer
+    <Form
       restourantInfo={restourantInfo}
       handleClickAdd={handleClickAdd}
       handleChangeRestaurantName={handleChangeRestaurantName}
