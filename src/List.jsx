@@ -4,10 +4,10 @@ import Item from './Item';
 
 export default function List({ restaurantInfos }) {
   return (
-    <ol>
+    <ul>
       {restaurantInfos.map((restaurantInfo) => (
         <Item key={restaurantInfo.id} restaurantInfo={restaurantInfo} />
       ))}
-    </ol>
+    </ul>
   );
 }
