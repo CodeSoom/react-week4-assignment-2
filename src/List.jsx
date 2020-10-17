@@ -5,7 +5,7 @@ import Item from './Item';
 const List = ({ restaurants }) => {
   if (restaurants.length === 0) {
     return (
-      <></>
+      <div title="empty" />
     );
   }
   return (
