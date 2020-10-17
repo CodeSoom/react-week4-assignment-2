@@ -5,8 +5,8 @@ import { render } from '@testing-library/react';
 import Page from './Page';
 
 describe('Page', () => {
-  context('Value is entered in 3 blanks.', () => {
-    it('Preserve the value.', () => {
+  context('Value is existed.', () => {
+    it('Preserve and pass the value.', () => {
       const restaurants = [
         {
           id: 1, 
@@ -25,7 +25,7 @@ describe('Page', () => {
       const onClickAddItem = jest.fn();
       const onChange = jest.fn();
 
-      const { container } = render((
+      const { getByText } = render((
         <Page
           onClickAddItem={onClickAddItem}
           onChange={onChange}
@@ -33,9 +33,7 @@ describe('Page', () => {
         />
       ));
 
-      expect(container).toHaveTextContent('Restaurant');
-      expect(container).toHaveTextContent('한식');
-      expect(container).toHaveTextContent('서울시 강남구');
+      expect(getByText(/마녀주방/)).not.toBeNull();
     });
   });
 });

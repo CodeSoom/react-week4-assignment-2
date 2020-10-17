@@ -22,6 +22,4 @@ describe ('App', () => {
       expect(getByPlaceholderText('이름').value).toBe('nameExample');
     });
   });
-
-  context("")
 });
