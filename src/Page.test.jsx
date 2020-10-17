@@ -8,8 +8,9 @@ describe('Page', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const pageRender = () => render((
+  const pageRender = (restaurants) => render((
     <Page
+      restaurants={restaurants}
       onChangeRestaurant={handleChange}
       onClickSubmit={handleClick}
     />
@@ -21,8 +22,20 @@ describe('Page', () => {
     { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
   ];
 
+  const restaurants = [
+    {
+      id: 1, name: '마녀주방', type: '한식', address: '서울시 강남구',
+    },
+    {
+      id: 2, name: '시카고피자', type: '양식', address: '이태원동',
+    },
+    {
+      id: 3, name: '키와미', type: '일식', address: '분당구 정자동',
+    },
+  ];
+
   it('"input"값이 변경되는지 확인한다.', () => {
-    const { getByPlaceholderText } = pageRender();
+    const { getByPlaceholderText } = pageRender(restaurants);
 
     inputType.forEach(({ placeholderName, inputName, value }) => {
       fireEvent.change(getByPlaceholderText(placeholderName), {
@@ -34,7 +47,7 @@ describe('Page', () => {
   });
 
   it('등록 버튼 클릭시 호출되는지 확인한다.', () => {
-    const { getByText, getByPlaceholderText } = pageRender();
+    const { getByText, getByPlaceholderText } = pageRender(restaurants);
     const button = getByText(/등록/);
 
     expect(button).not.toBeNull();
@@ -47,6 +60,14 @@ describe('Page', () => {
 
     inputType.forEach(({ placeholderName }) => {
       expect(getByPlaceholderText(placeholderName)).toHaveDisplayValue('');
+    });
+  });
+
+  it('"restaurants"가 보인다.', () => {
+    const { container } = pageRender(restaurants);
+
+    restaurants.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
     });
   });
 });
