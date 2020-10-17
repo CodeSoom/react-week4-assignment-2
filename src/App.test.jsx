@@ -1,10 +1,10 @@
 import React from 'react';
-import { getByPlaceholderText, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import App from './App';
 
 test('App', () => {
-  const { getByText } = render((
+  const { getByText, getByPlaceholderText } = render((
     <App />
   ));
 
