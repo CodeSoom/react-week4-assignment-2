@@ -33,8 +33,8 @@ describe('Page', () => {
     });
   });
 
-  it('버튼 클릭시 호출되는지 확인한다.', () => {
-    const { getByText } = pageRender();
+  it('등록 버튼 클릭시 호출되는지 확인한다.', () => {
+    const { getByText, getByPlaceholderText } = pageRender();
     const button = getByText(/등록/);
 
     expect(button).not.toBeNull();
@@ -44,5 +44,9 @@ describe('Page', () => {
     fireEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(1);
+
+    inputType.forEach(({ placeholderName }) => {
+      expect(getByPlaceholderText(placeholderName)).toHaveDisplayValue('');
+    });
   });
 });
