@@ -15,7 +15,7 @@ export default function InputContainer() {
   } = useSelector((state) => state);
 
   const handleClick = () => {
-    dispatch(actions.addRestaurant('이름 | 분류 | 주소'));
+    dispatch(actions.addRestaurant(`${name} | ${type} | ${place}`));
   };
 
   const handleChange = (event) => {
