@@ -9,6 +9,9 @@ describe('reducer', () => {
       const previousState = {
         newId: 1,
         restaurants: [],
+        name: '호호식당',
+        type: '양식',
+        place: '서울 성동구',
       };
       const action = actions.addRestaurant('이름 | 분류 | 주소');
 
@@ -16,7 +19,13 @@ describe('reducer', () => {
       const state = reducer(previousState, action);
 
       // Then
-      expect(state).toMatchObject({ restaurants: [{ id: 1, value: '이름 | 분류 | 주소' }] });
+      expect(state).toMatchObject({
+        newId: 2,
+        restaurants: [{ id: 1, value: '이름 | 분류 | 주소' }],
+        name: '',
+        type: '',
+        place: '',
+      });
     });
   });
 
