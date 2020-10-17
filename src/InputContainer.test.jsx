@@ -16,7 +16,7 @@ beforeEach(() => {
 describe('<InputContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation(() => ({
+  useSelector.mockImplementation((selector) => selector({
     name: '',
     type: '',
     place: '',
