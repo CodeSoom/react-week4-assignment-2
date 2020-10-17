@@ -33,21 +33,15 @@ describe('reducer', () => {
     }, addRestaurant());
 
     context('with restaurant', () => {
-      const restaurantInfo = [
-        { name: '마녀주방', type: '한식', address: '서울시 강남구' },
-        { name: '시카고피자', type: '양식', address: '이태원동' },
-        { name: '키와미', type: '일식', address: '분당구 정자동' },
-      ];
+      const restaurantInfo = { name: '마녀주방', type: '한식', address: '서울시 강남구' };
 
       it('레스토랑에 대한 정보를 등록한다.', () => {
-        restaurantInfo.forEach((item, index) => {
-          const { restaurant, restaurants } = addRestaurantReducer(item);
+        const { restaurant, restaurants } = addRestaurantReducer(restaurantInfo);
 
-          expect(restaurants[0].id).not.toBeUndefined();
-          expect(restaurants).toHaveLength(index + 1);
-          expect(restaurants[restaurants.length - 1].id).toBe(index);
-          expect(restaurant).toBe({ name: '', type: '', address: '' });
-        });
+        expect(restaurants[0].id).not.toBeUndefined();
+        expect(restaurants).toHaveLength(1);
+        expect(restaurants[restaurants.length - 1].id).toBe(1);
+        expect(restaurant).toEqual({ name: '', type: '', address: '' });
       });
     });
 
