@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default function Restaurant({
-  items: {
-    id, name, category, address,
-  },
-}) {
+export default function Restaurant({ name, category, address }) {
   return (
     <li>
       {name}

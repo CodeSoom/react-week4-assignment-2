@@ -39,6 +39,7 @@ const restaurant = (state = initialState, action) => {
 
     return {
       ...state,
+      newId: newId + 1,
       name: '',
       category: '',
       address: '',
@@ -50,6 +51,8 @@ const restaurant = (state = initialState, action) => {
       ],
     };
   }
+
+  return state;
 };
 
 export default restaurant;
