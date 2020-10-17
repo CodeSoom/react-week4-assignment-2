@@ -11,11 +11,11 @@ import App from './App';
 jest.mock('react-redux');
 
 test('App', () => {
-  const { restaurants, inputInfos } = fixture;
+  const { restaurants, inputs } = fixture;
 
   useSelector.mockImplementation(() => ({
     restaurants,
-    inputInfos,
+    inputs,
   }));
 
   const { getByText, getByPlaceholderText } = render(
@@ -28,7 +28,7 @@ test('App', () => {
     expect(getByText(`${name} | ${category} | ${address}`)).not.toBeNull();
   });
 
-  inputInfos.forEach(({ placeholder, value }) => {
+  inputs.forEach(({ placeholder, value }) => {
     expect(getByPlaceholderText(placeholder)).toHaveDisplayValue(value);
   });
 

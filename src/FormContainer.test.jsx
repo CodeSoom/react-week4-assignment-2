@@ -11,7 +11,7 @@ import FormContainer from './FormContainer';
 jest.mock('react-redux');
 
 describe('FormContainer', () => {
-  const { inputInfos } = fixture;
+  const { inputs } = fixture;
 
   const dispatch = jest.fn();
 
@@ -27,7 +27,7 @@ describe('FormContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      inputInfos,
+      inputs,
     }));
   });
 
@@ -37,12 +37,12 @@ describe('FormContainer', () => {
       const textBoxes = getAllByRole('textbox');
 
       textBoxes.forEach((textBox, index) => {
-        expect(textBox).toHaveAttribute('name', inputInfos[index].name);
+        expect(textBox).toHaveAttribute('name', inputs[index].name);
 
         fireEvent.change(textBox, { target: { value: '마녀주방' } });
       });
 
-      expect(dispatch).toBeCalledTimes(inputInfos.length);
+      expect(dispatch).toBeCalledTimes(inputs.length);
     });
   });
 

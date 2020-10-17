@@ -7,7 +7,7 @@ import fixture from '../__fixtuers__/fixture';
 import Form from './Form';
 
 describe('Form', () => {
-  const { inputInfos } = fixture;
+  const { inputs } = fixture;
 
   const handleChangeInput = jest.fn();
   const handleClickAddRestaurant = jest.fn();
@@ -15,7 +15,7 @@ describe('Form', () => {
   function renderForm() {
     return render((
       <Form
-        inputInfos={inputInfos}
+        inputs={inputs}
         onChangeInputText={handleChangeInput}
         onClickAddRestautant={handleClickAddRestaurant}
       />
@@ -29,7 +29,7 @@ describe('Form', () => {
   it('renders 3 inputs with different placeholder and name attirbute', () => {
     const { getByPlaceholderText } = renderForm();
 
-    inputInfos.forEach(({ name, placeholder, value }) => {
+    inputs.forEach(({ name, placeholder, value }) => {
       const input = getByPlaceholderText(placeholder);
 
       expect(input).toHaveDisplayValue(value);
@@ -39,7 +39,7 @@ describe('Form', () => {
         { target: { value: '쏘이연남' } });
     });
 
-    expect(handleChangeInput).toBeCalledTimes(inputInfos.length);
+    expect(handleChangeInput).toBeCalledTimes(inputs.length);
   });
 
   it('renders add restaurant button', () => {

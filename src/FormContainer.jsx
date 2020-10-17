@@ -12,8 +12,8 @@ import {
 export default function FormContainer() {
   const dispatch = useDispatch();
 
-  const state = useSelector(({ inputInfos }) => ({
-    inputInfos,
+  const state = useSelector(({ inputs }) => ({
+    inputs,
   }));
 
   function handleChangeInputText(placeholder, value) {
@@ -26,7 +26,7 @@ export default function FormContainer() {
 
   return (
     <Form
-      inputInfos={state.inputInfos}
+      inputs={state.inputs}
       onChangeInputText={handleChangeInputText}
       onClickAddRestautant={handleClickAddRestautant}
     />

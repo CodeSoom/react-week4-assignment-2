@@ -11,47 +11,47 @@ describe('reducer', () => {
   describe('undefined action', () => {
     it('changes nothing', () => {
       const initalRestaurants = [];
-      const initalInputInfos = [
+      const initalInputs = [
         { name: 'name', placeholder: '이름', value: '' },
         { name: 'category', placeholder: '분류', value: '' },
         { name: 'address', placeholder: '주소', value: '' },
       ];
 
-      const { restaurants, inputInfos } = reducer();
+      const { restaurants, inputs } = reducer();
 
       expect(restaurants).toStrictEqual(initalRestaurants);
-      expect(inputInfos).toStrictEqual(initalInputInfos);
+      expect(inputs).toStrictEqual(initalInputs);
     });
   });
 
   describe('updateInputText', () => {
     it('changes input texts', () => {
-      const { restaurants, inputInfos } = fixture;
-      const { placeholder } = inputInfos[0];
+      const { restaurants, inputs } = fixture;
+      const { placeholder } = inputs[0];
       const newInputText = '마녀주방';
 
       const state = reducer({
         restaurants,
-        inputInfos,
+        inputs,
       }, updateInputText(placeholder, newInputText));
 
-      expect(state.inputInfos[0].value).toBe('마녀주방');
+      expect(state.inputs[0].value).toBe('마녀주방');
     });
   });
 
   describe('addRestaurant', () => {
     it('add restaurant to restaurants', () => {
-      const { restaurants, inputInfos } = fixture;
+      const { restaurants, inputs } = fixture;
 
       const state = reducer({
         restaurants,
-        inputInfos,
+        inputs,
       }, addRestaurant());
 
       expect(state.restaurants).toHaveLength(restaurants.length + 1);
 
-      state.inputInfos.forEach((inputInfo) => {
-        expect(inputInfo.value).toBe('');
+      state.inputs.forEach((input) => {
+        expect(input.value).toBe('');
       });
     });
   });

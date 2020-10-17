@@ -8,6 +8,11 @@ const fixture = {
     { name: 'category', placeholder: '분류', value: '양식' },
     { name: 'address', placeholder: '주소', value: '이태원동' },
   ],
+  inputs: [
+    { name: 'name', placeholder: '이름', value: '시카고피자' },
+    { name: 'category', placeholder: '분류', value: '양식' },
+    { name: 'address', placeholder: '주소', value: '이태원동' },
+  ],
 };
 
 export default fixture;
