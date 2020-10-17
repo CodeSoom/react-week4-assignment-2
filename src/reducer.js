@@ -3,7 +3,7 @@ import {
   CHANGE_RESTAURANT_INPUT,
 } from './actions';
 
-const initialState = {
+export const initialState = {
   newId: 1,
   restaurants: [],
   name: '',
