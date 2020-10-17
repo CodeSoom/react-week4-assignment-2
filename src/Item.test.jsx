@@ -7,9 +7,13 @@ import Item from './Item';
 test('Item', () => {
   const { container } = render((
     <Item
-      name="마녀주방"
-      category="한식"
-      location="서울시 강남구"
+      info={
+        {
+          name: '마녀주방',
+          category: '한식',
+          location: '서울시 강남구',
+        }
+      }
     />
   ));
 

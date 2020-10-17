@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import Item from './Item';
+
 export default function ListContainer() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
@@ -10,8 +12,8 @@ export default function ListContainer() {
   return (
     <ul>
       {
-        restaurants.map(({ name, category, location }) => (
-          <li key={name}>{`${name} | ${category} | ${location}`}</li>
+        restaurants.map((info) => (
+          <Item key={info.name} info={info} />
         ))
       }
     </ul>
