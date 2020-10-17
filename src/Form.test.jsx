@@ -6,15 +6,11 @@ import fixture from '../__fixtuers__/fixture';
 
 import Form from './Form';
 
-const handleChangeInput = jest.fn();
-const handleClickAddRestaurant = jest.fn();
-
 describe('Form', () => {
   const { inputInfos } = fixture;
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  const handleChangeInput = jest.fn();
+  const handleClickAddRestaurant = jest.fn();
 
   function renderForm() {
     return render((
@@ -25,6 +21,10 @@ describe('Form', () => {
       />
     ));
   }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders 3 inputs with different placeholder and name attirbute', () => {
     const { getByPlaceholderText } = renderForm();
