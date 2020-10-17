@@ -7,8 +7,8 @@ export const initialState = {
   newId: 1,
   restaurants: [],
   name: '',
-  type: '',
-  place: '',
+  category: '',
+  address: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,8 +23,8 @@ export default function reducer(state = initialState, action) {
         { id: newId, value: action.payload },
       ],
       name: initialState.name,
-      type: initialState.type,
-      place: initialState.place,
+      category: initialState.category,
+      address: initialState.address,
     };
   }
 
@@ -35,17 +35,17 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === CHANGE_RESTAURANT_INPUT.TYPE) {
+  if (action.type === CHANGE_RESTAURANT_INPUT.CATEGORY) {
     return {
       ...state,
-      type: action.payload,
+      category: action.payload,
     };
   }
 
-  if (action.type === CHANGE_RESTAURANT_INPUT.PLACE) {
+  if (action.type === CHANGE_RESTAURANT_INPUT.ADDRESS) {
     return {
       ...state,
-      place: action.payload,
+      address: action.payload,
     };
   }
 
