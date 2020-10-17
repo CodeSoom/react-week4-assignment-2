@@ -12,7 +12,7 @@ describe('Item', () => {
   ));
 
   const restaurant = {
-    name: '마녀주방', type: '한식', address: '서울시 강남구',
+    name: '마녀주방', category: '한식', address: '서울시 강남구',
   };
 
   it('"restaurant"이 보인다.', () => {

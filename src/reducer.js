@@ -2,7 +2,7 @@ const initialState = {
   id: 1,
   restaurant: {
     name: '',
-    type: '',
+    category: '',
     address: '',
   },
   restaurants: [],
@@ -18,8 +18,8 @@ const reducers = {
   }),
   addRestaurant: (state) => {
     const { id, restaurant, restaurants } = state;
-    const { name, type, address } = restaurant;
-    if (!name || !type || !address) {
+    const { name, category, address } = restaurant;
+    if (!name || !category || !address) {
       return state;
     }
 
@@ -28,7 +28,7 @@ const reducers = {
       id: id + 1,
       restaurant: {
         name: '',
-        type: '',
+        category: '',
         address: '',
       },
       restaurants: [...restaurants, { id, ...restaurant }],

@@ -19,23 +19,23 @@ describe('Page', () => {
 
   const inputType = [
     { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
-    { placeholderName: '분류', inputName: 'type', value: '한식' },
+    { placeholderName: '분류', inputName: 'category', value: '한식' },
     { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
   ];
 
   const restaurants = [
     {
-      id: 1, name: '마녀주방', type: '한식', address: '서울시 강남구',
+      id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
     },
     {
-      id: 2, name: '시카고피자', type: '양식', address: '이태원동',
+      id: 2, name: '시카고피자', category: '양식', address: '이태원동',
     },
     {
-      id: 3, name: '키와미', type: '일식', address: '분당구 정자동',
+      id: 3, name: '키와미', category: '일식', address: '분당구 정자동',
     },
   ];
 
-  const restaurant = { name: '', type: '', address: '' };
+  const restaurant = { name: '', category: '', address: '' };
 
   it('handleChange 호출을 확인한다.', () => {
     const { getByPlaceholderText } = pageRender({ restaurants, restaurant });

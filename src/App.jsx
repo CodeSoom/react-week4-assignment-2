@@ -7,7 +7,7 @@ export default function App() {
     id: 1,
     restaurant: {
       name: '',
-      type: '',
+      category: '',
       address: '',
     },
     restaurants: [],
@@ -31,7 +31,7 @@ export default function App() {
       ...state,
       restaurant: {
         name: '',
-        type: '',
+        category: '',
         address: '',
       },
       id: id + 1,

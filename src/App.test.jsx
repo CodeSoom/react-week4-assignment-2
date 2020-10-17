@@ -11,7 +11,7 @@ describe('App', () => {
 
   const inputType = [
     { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
-    { placeholderName: '분류', inputName: 'type', value: '한식' },
+    { placeholderName: '분류', inputName: 'category', value: '한식' },
     { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
   ];
 

@@ -16,11 +16,11 @@ describe('Input', () => {
 
   const inputType = [
     { placeholderName: '이름', inputName: 'name' },
-    { placeholderName: '분류', inputName: 'type' },
+    { placeholderName: '분류', inputName: 'category' },
     { placeholderName: '주소', inputName: 'address' },
   ];
 
-  const restaurant = { name: '', type: '', address: '' };
+  const restaurant = { name: '', category: '', address: '' };
 
   it('"input"이 보인다.', () => {
     const { getByPlaceholderText } = inputRender(restaurant);

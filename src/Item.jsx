@@ -1,11 +1,11 @@
 import React from 'react';
 
-const item = ({ restaurant: { name, type, address } }) => (
+const item = ({ restaurant: { name, category, address } }) => (
   <li>
     {name}
     {' '}
     |
-    {type}
+    {category}
     {' '}
     |
     {address}
