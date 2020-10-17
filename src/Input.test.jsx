@@ -9,6 +9,8 @@ describe('<Input />', () => {
 
   const renderInput = () => render((
     <Input
+      name="name"
+      value
       placeholder="이름"
       onChange={handleChange}
     />
