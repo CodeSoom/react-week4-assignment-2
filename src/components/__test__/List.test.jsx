@@ -37,10 +37,10 @@ describe('List', () => {
 
       const { getByText } = screen;
 
-      reservations.forEach((reservation) => {
-        expect(getByText(new RegExp(reservation.name, 'i'))).toBeInTheDocument();
-        expect(getByText(new RegExp(reservation.categoty, 'i'))).toBeInTheDocument();
-        expect(getByText(new RegExp(reservation.address, 'i'))).toBeInTheDocument();
+      reservations.forEach(({ name, category, address }) => {
+        expect(getByText(new RegExp(name, 'i'))).toBeInTheDocument();
+        expect(getByText(new RegExp(category, 'i'))).toBeInTheDocument();
+        expect(getByText(new RegExp(address, 'i'))).toBeInTheDocument();
       });
     });
   });
