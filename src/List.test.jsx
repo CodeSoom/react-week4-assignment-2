@@ -32,4 +32,14 @@ describe('List', () => {
       expect(getByText(/키와미/)).not.toBeNull();
     });
   });
+
+  context('without restaurants', () => {
+    const restaurants = [];
+
+    it('nothing renders restaurants', () => {
+      const { getByTitle } = listRender(restaurants);
+
+      expect(getByTitle(/empty/)).not.toBeNull();
+    });
+  });
 });
