@@ -14,9 +14,9 @@ describe('Form', () => {
   const handleChangeRestaurantType = jest.fn();
   const handleChangeRestaurantLocation = jest.fn();
 
-  const renderInputContainer = (restourantInfo = { name: '', type: '', location: '' }) => render((
+  const renderInputContainer = (restaurantInfo = { name: '', type: '', location: '' }) => render((
     <Form
-      restourantInfo={restourantInfo}
+      restaurantInfo={restaurantInfo}
       handleClickAdd={handleClickAdd}
       handleChangeRestaurantName={handleChangeRestaurantName}
       handleChangeRestaurantType={handleChangeRestaurantType}
