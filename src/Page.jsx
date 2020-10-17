@@ -3,13 +3,13 @@ import React from 'react';
 import Button from './Button';
 import Input from './Input';
 
-const Page = ({ onChangeRestaurant }) => (
+const Page = ({ onChangeRestaurant, onClickSubmit }) => (
   <>
     <div>
       Restaurants
     </div>
     <Input onChange={onChangeRestaurant} />
-    <Button />
+    <Button onClick={onClickSubmit} />
   </>
 );
 
