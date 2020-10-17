@@ -32,6 +32,7 @@ describe('reducer', () => {
       restaurants: [],
     }, addRestaurant());
 
+    const initRestaurant = { name: '', category: '', address: '' };
     context('with restaurant', () => {
       const restaurantInfo = { name: '마녀주방', category: '한식', address: '서울시 강남구' };
 
@@ -41,14 +42,13 @@ describe('reducer', () => {
         expect(restaurants[0].id).not.toBeUndefined();
         expect(restaurants).toHaveLength(1);
         expect(restaurants[restaurants.length - 1].id).toBe(1);
-        expect(restaurant).toEqual({ name: '', category: '', address: '' });
+        expect(restaurant).toEqual(initRestaurant);
       });
     });
 
     context('without restaurant', () => {
-      const restaurantInfo = { name: '', category: '', address: '' };
       it('할 일이 추가되지 않는다.', () => {
-        const { restaurants } = addRestaurantReducer(restaurantInfo);
+        const { restaurants } = addRestaurantReducer(initRestaurant);
 
         expect(restaurants).toHaveLength(0);
       });
