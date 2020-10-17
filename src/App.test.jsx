@@ -1,36 +1,34 @@
 import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
+import { useSelector } from 'react-redux';
 
 import App from './App';
 
-describe('App', () => {
-  const appRender = () => render((
+jest.mock('react-redux');
+
+test('App', () => {
+  const restaurants = [
+    {
+      id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
+    },
+    {
+      id: 2, name: '시카고피자', category: '양식', address: '이태원동',
+    },
+  ];
+
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+    restaurant: { name: '', category: '', address: '' },
+  }));
+
+  const { getByText, container } = render((
     <App />
   ));
 
-  const inputType = [
-    { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
-    { placeholderName: '분류', inputName: 'category', value: '한식' },
-    { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
-  ];
+  expect(getByText(/등록/)).not.toBeNull();
 
-  it('"input" 입력 후 등록 버튼 클릭 후 화면에 나타나는지 확인한다.', () => {
-    const { getByPlaceholderText, getByText, container } = appRender();
-
-    inputType.forEach(({ placeholderName, inputName, value }) => {
-      fireEvent.change(getByPlaceholderText(placeholderName), {
-        target: { value, name: inputName },
-      });
-
-      expect(getByPlaceholderText(placeholderName)).toHaveDisplayValue(value);
-    });
-
-    fireEvent.click(getByText(/등록/));
-
-    inputType.forEach(({ placeholderName, value }) => {
-      expect(getByPlaceholderText(placeholderName)).toHaveDisplayValue('');
-      expect(container).toHaveTextContent(value);
-    });
+  restaurants.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
   });
 });
