@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function ListItem() {
+export default function ListItem({ restaurant: { name, category, address } }) {
   return (
     <li>
-      마녀주방 | 한식 | 서울시 강남구
+      {name}
+      &nbsp;
+      |
+      &nbsp;
+      {category}
+      &nbsp;
+      |
+      &nbsp;
+      {address}
     </li>
   );
 }
