@@ -9,7 +9,9 @@ describe('List', () => {
     <List restaurants={restaurants} />
   ));
 
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('Empty Lists', () => {
     const { getAllByText } = renderList();

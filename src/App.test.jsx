@@ -11,7 +11,7 @@ jest.mock('react-redux');
 describe('App', () => {
   const renderApp = () => render(<App />);
 
-  it('should visible all component', () => {
+  beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
         name: '',
@@ -21,6 +21,10 @@ describe('App', () => {
       restaurants: [],
     }));
 
+    jest.clearAllMocks();
+  });
+
+  it('should visible all component', () => {
     const { getByText, getByPlaceholderText } = renderApp();
 
     expect(getByText('Restaurants')).not.toBeNull();

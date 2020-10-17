@@ -16,6 +16,10 @@ describe('RestaurantForm', () => {
     />
   ));
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   context('when typing text with typed text', () => {
     it('render typed text', () => {
       const restaurant = {

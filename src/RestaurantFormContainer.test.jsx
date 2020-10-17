@@ -11,17 +11,19 @@ jest.mock('react-redux');
 describe('RestaurantFormContainer', () => {
   const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurant: {
-      name: '밥',
-      category: '한식',
-      address: '서울',
-    },
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: {
+        name: '밥',
+        category: '한식',
+        address: '서울',
+      },
+    }));
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
 
-  beforeEach(() => jest.clearAllMocks());
+    jest.clearAllMocks();
+  });
 
   context('when change restaurant information in RestaurantForms', () => {
     it('calls update dispatch', () => {
