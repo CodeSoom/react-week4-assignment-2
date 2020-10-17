@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 
 import InputContainer from './InputContainer';
@@ -8,6 +8,15 @@ import InputContainer from './InputContainer';
 jest.mock('react-redux');
 
 describe('InputContainer', () => {
+  useSelector.mockImplementation((selector) => selector({
+    name: '마녀주방',
+    category: '한식',
+    location: '서울사 강남구',
+  }));
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   function renderInpuContainer() {
     return render((
       <InputContainer />
@@ -27,12 +36,14 @@ describe('InputContainer', () => {
 
   describe('add restaurant', () => {
     context('with existed all input value', () => {
-      const { getByText } = renderInpuContainer();
+      it('', () => {
+        const { getByText } = renderInpuContainer();
 
-      fireEvent.click(getByText(/등록/));
+        fireEvent.click(getByText(/등록/));
 
-      expect(getByText(dispatch)).toBeCalledWith({
-        type: 'add restaurant',
+        expect(getByText(dispatch)).toBeCalledWith({
+          type: 'add restaurant',
+        });
       });
     });
   });
