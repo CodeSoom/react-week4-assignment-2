@@ -2,29 +2,29 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
-describe('input', () => {
+describe('RestaurantForm', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const renderInput = (infoValue = {}) => render((
-    <Input
+  const renderRestaurantForm = (restaurant = {}) => render((
+    <RestaurantForm
       onChange={handleChange}
       onClick={handleClick}
-      infoValue={infoValue}
+      restaurant={restaurant}
     />
   ));
 
   context('when typing text with typed text', () => {
     it('render typed text', () => {
-      const infoValue = {
+      const restaurant = {
         name: '치킨',
         category: '천상계',
         address: '헤븐',
       };
 
-      const { getByDisplayValue } = renderInput(infoValue);
+      const { getByDisplayValue } = renderRestaurantForm(restaurant);
 
       expect(getByDisplayValue('치킨')).not.toBeNull();
       expect(getByDisplayValue('천상계')).not.toBeNull();
@@ -32,7 +32,7 @@ describe('input', () => {
     });
 
     it('calls onChange function', () => {
-      const { getByPlaceholderText } = renderInput();
+      const { getByPlaceholderText } = renderRestaurantForm();
 
       const placeHolders = ['이름', '분류', '장소'];
 
@@ -49,11 +49,11 @@ describe('input', () => {
 
   context('when typing text with not typed text', () => {
     it('not render any text', () => {
-      const infoValue = {};
+      const restaurant = {};
 
       const placeHolders = ['이름', '분류', '장소'];
 
-      const { getByPlaceholderText } = renderInput(infoValue);
+      const { getByPlaceholderText } = renderRestaurantForm(restaurant);
 
       placeHolders.forEach((placeholder) => {
         expect(getByPlaceholderText(`${placeholder}`)).toHaveValue('');
@@ -63,13 +63,13 @@ describe('input', () => {
 
   context('when one is being typed', () => {
     it('The other value does not change', () => {
-      const infoValue = {
+      const restaurant = {
         name: '치킨',
         category: '천상계',
         address: '헤븐',
       };
 
-      const { getByPlaceholderText } = renderInput(infoValue);
+      const { getByPlaceholderText } = renderRestaurantForm(restaurant);
 
       fireEvent.change(getByPlaceholderText('이름'), { target: { value: '피자' } });
 
@@ -81,7 +81,7 @@ describe('input', () => {
   describe('등록 button', () => {
     context('when click', () => {
       it('calls onClick function', () => {
-        const { getByText } = renderInput();
+        const { getByText } = renderRestaurantForm();
 
         const button = getByText('등록');
 
@@ -90,8 +90,8 @@ describe('input', () => {
         expect(handleClick).toBeCalled();
       });
 
-      it('Empty all input value', () => {
-        const { getByText, getByPlaceholderText } = renderInput();
+      it('Empty all RestaurantForm value', () => {
+        const { getByText, getByPlaceholderText } = renderRestaurantForm();
 
         const button = getByText('등록');
 

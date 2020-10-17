@@ -2,17 +2,17 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
 import {
   updateInformation,
   addInformation,
-  initializeInformation,
+  initializeRestaurantForm,
 } from './actions';
 
-export default function InputContainer() {
-  const { infoValue } = useSelector((state) => ({
-    infoValue: state.infoValue,
+export default function RestaurantFormContainer() {
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
   }));
 
   const dispatch = useDispatch();
@@ -22,16 +22,16 @@ export default function InputContainer() {
   };
 
   const handleClick = () => {
-    dispatch(addInformation(infoValue));
+    dispatch(addInformation(restaurant));
 
-    dispatch(initializeInformation());
+    dispatch(initializeRestaurantForm());
   };
 
   return (
-    <Input
+    <RestaurantForm
       onChange={handleChange}
       onClick={handleClick}
-      infoValue={infoValue}
+      restaurant={restaurant}
     />
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Input({
+export default function RestaurantForm({
   onChange, onClick,
-  infoValue: { name, category, address },
+  restaurant: { name, category, address },
 }) {
   return (
     <div>

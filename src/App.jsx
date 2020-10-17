@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 import ListContainer from './ListContainer';
 
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <ListContainer />
-      <InputContainer />
+      <RestaurantFormContainer />
     </>
   );
 }

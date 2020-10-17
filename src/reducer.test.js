@@ -3,14 +3,14 @@ import reducer from './reducer';
 import {
   updateInformation,
   addInformation,
-  initializeInformation,
+  initializeRestaurantForm,
 } from './actions';
 
 describe('reducer', () => {
   describe('updateInformation', () => {
     it('changes typed restaurant information', () => {
       const state = reducer({
-        infoValue: {
+        restaurant: {
           name: '',
           category: '',
           address: '',
@@ -20,7 +20,7 @@ describe('reducer', () => {
         value: 'New info',
       }));
 
-      expect(state.infoValue.name).toBe('New info');
+      expect(state.restaurant.name).toBe('New info');
     });
   });
 
@@ -43,25 +43,25 @@ describe('reducer', () => {
     });
   });
 
-  describe('initializeInformation', () => {
-    it('clears all information after appending', () => {
+  describe('initializeRestaurantForm', () => {
+    it('clears all information', () => {
       const state = reducer({
-        infoValue: {
+        restaurant: {
           name: '밥',
           category: '한식',
           address: '서울',
         },
         newId: 100,
-      }, initializeInformation());
+      }, initializeRestaurantForm());
 
-      expect(state.infoValue.name).toBe('');
-      expect(state.infoValue.category).toBe('');
-      expect(state.infoValue.address).toBe('');
+      expect(state.restaurant.name).toBe('');
+      expect(state.restaurant.category).toBe('');
+      expect(state.restaurant.address).toBe('');
     });
   });
 
   describe('Unhandled action type', () => {
-    it("reducer doesn't work", () => {
+    it('returns initialState', () => {
       const state = reducer(undefined, { type: 'Unhandled action type' });
 
       expect(state).toBe(state);

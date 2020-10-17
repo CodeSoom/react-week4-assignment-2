@@ -4,15 +4,15 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('RestaurantFormContainer', () => {
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
-    infoValue: {
+    restaurant: {
       name: '밥',
       category: '한식',
       address: '서울',
@@ -23,9 +23,9 @@ describe('InputContainer', () => {
 
   beforeEach(() => jest.clearAllMocks());
 
-  context('when change restaurant information in inputs', () => {
+  context('when change restaurant information in RestaurantForms', () => {
     it('calls update dispatch', () => {
-      const { getByDisplayValue } = render(<InputContainer />);
+      const { getByDisplayValue } = render(<RestaurantFormContainer />);
 
       fireEvent.change(getByDisplayValue(/밥/), { target: { value: '피자' } });
 
@@ -41,7 +41,7 @@ describe('InputContainer', () => {
 
   context('when click 등록 button', () => {
     it('calls add dispatch', () => {
-      const { getByText } = render(<InputContainer />);
+      const { getByText } = render(<RestaurantFormContainer />);
 
       fireEvent.click(getByText('등록'));
 
@@ -55,12 +55,12 @@ describe('InputContainer', () => {
       });
     });
 
-    it('calls initializeInformation dispatch', () => {
-      const { getByText } = render(<InputContainer />);
+    it('calls initializeRestaurantForm dispatch', () => {
+      const { getByText } = render(<RestaurantFormContainer />);
 
       fireEvent.click(getByText('등록'));
 
-      expect(dispatch).toBeCalledWith({ type: 'initializeInformation' });
+      expect(dispatch).toBeCalledWith({ type: 'initializeRestaurantForm' });
     });
   });
 });

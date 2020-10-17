@@ -12,8 +12,8 @@ export function addInformation({ name, category, address }) {
   };
 }
 
-export function initializeInformation() {
+export function initializeRestaurantForm() {
   return {
-    type: 'initializeInformation',
+    type: 'initializeRestaurantForm',
   };
 }

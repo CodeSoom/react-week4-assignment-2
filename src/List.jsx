@@ -19,9 +19,7 @@ export default function List({ restaurants }) {
             {address}
           </li>
         ))}
-        ;
       </ul>
     </>
-
   );
 }

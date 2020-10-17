@@ -1,5 +1,5 @@
 const initialState = {
-  infoValue: {
+  restaurant: {
     name: '',
     category: '',
     address: '',
@@ -14,8 +14,8 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
-      infoValue: {
-        ...state.infoValue,
+      restaurant: {
+        ...state.restaurant,
         [name]: value,
       },
     };
@@ -42,11 +42,11 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'initializeInformation') {
-    const { infoValue } = initialState;
+  if (action.type === 'initializeRestaurantForm') {
+    const { restaurant } = initialState;
     return {
       ...state,
-      infoValue,
+      restaurant,
     };
   }
 

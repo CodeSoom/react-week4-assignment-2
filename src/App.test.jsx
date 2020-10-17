@@ -13,7 +13,7 @@ describe('App', () => {
 
   it('should visible all component', () => {
     useSelector.mockImplementation((selector) => selector({
-      infoValue: {
+      restaurant: {
         name: '',
         category: '',
         address: '',
