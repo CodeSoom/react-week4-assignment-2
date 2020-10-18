@@ -54,12 +54,13 @@ const reduce = {
   addRestaurant: (state) => {
     const { newId, inputs, restaurants } = state;
     const [name, category, address] = inputs;
+    const haveInputsValueEmpty = inputs.filter((input) => input.value === '').length;
     const initializeInputs = inputs.map((input) => ({
       ...input,
       value: '',
     }));
 
-    if (!inputs) {
+    if (haveInputsValueEmpty) {
       return state;
     }
 
