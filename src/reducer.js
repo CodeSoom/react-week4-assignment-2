@@ -9,14 +9,14 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   const router = {
-    updateRestaurantInfo: {
+    updateRestaurantInfo: () => ({
       ...state,
       restaurantInfo: {
         ...state.restaurantInfo,
         [action.payload.type]: action.payload.value,
       },
-    },
-    addRestaurantInfo: {
+    }),
+    addRestaurantInfo: () => ({
       ...state,
       restaurantInfo: {
         name: '',
@@ -27,8 +27,8 @@ export default function reducer(state = initialState, action) {
         ...state.restaurantInfoList,
         action.payload,
       ],
-    },
+    }),
   };
 
-  return router[action.type] || state;
+  return (router[action.type] || (() => state))();
 }
