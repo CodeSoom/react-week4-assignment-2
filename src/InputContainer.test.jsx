@@ -59,4 +59,18 @@ describe('InputContainer', () => {
       },
     });
   });
+
+  it('change restrant category input', () => {
+    const { getByPlaceholderText } = renderInputContainer();
+    const category = '일식';
+
+    fireEvent.change(getByPlaceholderText(/분류/), { target: { value: category } });
+
+    expect(dispatch).toBeCalledWith({
+      type: 'updateRestaurantCategory',
+      payload: {
+        category,
+      },
+    });
+  });
 });
