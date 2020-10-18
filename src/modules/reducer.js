@@ -14,17 +14,26 @@ export default function reducer(state = initialState, action) {
   const actions = {
     updateReservationName: () => ({
       ...state,
-      reservationName: action.payload.reservationName,
+      reservation: {
+        ...state.reservation,
+        name: action.payload.reservationName,
+      },
     }),
 
     updateReservationCategory: () => ({
       ...state,
-      reservationCategory: action.payload.reservationCategory,
+      reservation: {
+        ...state.reservation,
+        category: action.payload.reservationCategory,
+      },
     }),
 
     updateReservationAddress: () => ({
       ...state,
-      reservationAddress: action.payload.reservationAddress,
+      reservation: {
+        ...state.reservation,
+        address: action.payload.reservationAddress,
+      },
     }),
 
     addReservation: () => {
@@ -41,7 +50,7 @@ export default function reducer(state = initialState, action) {
       return ({
         ...state,
         newId: newId + 1,
-        reservation: initialReservation,
+        reservation: { ...initialReservation },
         reservations: [
           ...reservations,
           {

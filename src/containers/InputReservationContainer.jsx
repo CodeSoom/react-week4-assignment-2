@@ -10,14 +10,10 @@ import {
 } from '../modules/actions';
 
 export default function ListContainer() {
-  const {
-    reservationName,
-    reservationCategory,
-    reservationAddress,
-  } = useSelector((state) => ({
-    reservationName: state.reservationName,
-    reservationCategory: state.reservationCategory,
-    reservationAddress: state.reservationAddress,
+  const { name, category, address } = useSelector((state) => ({
+    name: state.reservation.name,
+    category: state.reservation.category,
+    address: state.reservation.address,
   }));
 
   const dispatch = useDispatch();
@@ -40,13 +36,13 @@ export default function ListContainer() {
 
   return (
     <InputReservation
-      name={reservationName}
+      name={name}
       onChangeName={handleChangeReservationName}
 
-      category={reservationCategory}
+      category={category}
       onChangeCategory={handleChangeReservationCategory}
 
-      address={reservationAddress}
+      address={address}
       onChangeAddress={handleChangeReservationAddress}
 
       onClick={handleClick}
