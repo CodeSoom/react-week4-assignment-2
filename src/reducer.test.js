@@ -7,27 +7,26 @@ import {
 
 describe('reducer', () => {
   describe('updateText', () => {
+    const state = reducer({
+      inputs: [
+        {
+          name: 'name',
+          placeholder: '이름',
+          value: '',
+        },
+        {
+          name: 'category',
+          placeholder: '분류',
+          value: '',
+        },
+        {
+          name: 'address',
+          placeholder: '주소',
+          value: '',
+        },
+      ],
+    }, updateText('name', '코드숨 식당'));
     it('change name text', () => {
-      const state = reducer({
-        inputs: [
-          {
-            name: 'name',
-            placeholder: '이름',
-            value: '',
-          },
-          {
-            name: 'category',
-            placeholder: '분류',
-            value: '',
-          },
-          {
-            name: 'address',
-            placeholder: '주소',
-            value: '',
-          },
-        ],
-      }, updateText('name', '코드숨 식당'));
-
       expect(state.inputs[0].value).toBe('코드숨 식당');
     });
   });
