@@ -1,5 +1,7 @@
 import reducer from './reducer';
 
+import { addRestaurant } from './actions';
+
 describe('reducer', () => {
   describe('state undefined', () => {
     it('returns initial state', () => {
@@ -10,8 +12,13 @@ describe('reducer', () => {
 
   describe('addRestaurant', () => {
     it('add new restaurant into restaurants', () => {
-      const state = reducer(undefined, addRestaurant());
-      expect(state).toHaveLength(1);
+      const state = reducer({
+        name: '마녀주방',
+        category: '한식',
+        location: '서울시 강남구',
+        restaurants: [],
+      }, addRestaurant());
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
