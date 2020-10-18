@@ -6,9 +6,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 import {
-  updateRestaurantName,
-  updateRestaurantCategory,
-  updateRestaurantAddr,
+  changeRestaurantField,
   addRestaurant,
 } from '../actions';
 
@@ -21,17 +19,19 @@ export default function InputContainer() {
     address: state.restaurant.address,
   }));
 
-  function onChangeUpdateRestaurantName(event) {
-    dispath(updateRestaurantName(event.target.value));
-  }
+  const field = {
+    name: (eventValue) => ({ name: eventValue }),
+    catgory: (eventValue) => ({ category: eventValue }),
+    address: (eventValue) => ({ address: eventValue }),
+  };
 
-  function onClickUpdateRestaurantCategory(event) {
-    dispath(updateRestaurantCategory(event.target.value));
-  }
+  const onChangeRestaurantField = ({ fieldKey, eventValue }) => {
+    const getFieldObject = field[fieldKey];
 
-  function onClickUpdateRestaurantAddr(event) {
-    dispath(updateRestaurantAddr(event.target.value));
-  }
+    dispath(changeRestaurantField(
+      getFieldObject(eventValue),
+    ));
+  };
 
   function onClickAddRestaurant() {
     dispath(addRestaurant());
@@ -39,9 +39,21 @@ export default function InputContainer() {
 
   return (
     <div>
-      <Input placeholder="이름" value={name} onChange={onChangeUpdateRestaurantName} />
-      <Input placeholder="분류" value={category} onChange={onClickUpdateRestaurantCategory} />
-      <Input placeholder="주소" value={address} onChange={onClickUpdateRestaurantAddr} />
+      <Input
+        placeholder="이름"
+        value={name}
+        onChange={(event) => onChangeRestaurantField({ fieldKey: 'name', eventValue: event.target.value })}
+      />
+      <Input
+        placeholder="분류"
+        value={category}
+        onChange={(event) => onChangeRestaurantField({ fieldKey: 'category', eventValue: event.target.value })}
+      />
+      <Input
+        placeholder="주소"
+        value={address}
+        onChange={(event) => onChangeRestaurantField({ fieldKey: 'address', eventValue: event.target.value })}
+      />
       <Button text="등록" onClick={onClickAddRestaurant} />
     </div>
   );

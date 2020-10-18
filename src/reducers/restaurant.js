@@ -7,23 +7,11 @@ const initialState = {
 };
 
 const restaurant = (state = initialState, action) => {
-  if (action.type === 'updateRestaurantName') {
+  if (action.type === 'changeRestaurantField') {
     return {
       ...state,
       name: action.payload.name,
-    };
-  }
-
-  if (action.type === 'updateRestaurantCategory') {
-    return {
-      ...state,
       category: action.payload.category,
-    };
-  }
-
-  if (action.type === 'updateRestaurantAddr') {
-    return {
-      ...state,
       address: action.payload.address,
     };
   }
