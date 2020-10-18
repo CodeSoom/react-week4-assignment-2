@@ -13,10 +13,10 @@ describe('initialState', () => {
     expect(location).toBe('');
   });
 
-  it('초기 listRestaurantInfo은 빈 배열로 초기화됩니다.', () => {
-    const { listRestaurantInfo } = initialState;
+  it('초기 restaurantInfoList은 빈 배열로 초기화됩니다.', () => {
+    const { restaurantInfoList } = initialState;
 
-    expect(listRestaurantInfo).toHaveLength(0);
+    expect(restaurantInfoList).toHaveLength(0);
   });
 });
 
@@ -62,15 +62,15 @@ describe('reducer', () => {
 
   describe('AddRestaurantInfo', () => {
     it('restaurantInfo을 리스트에 추가합니다.', () => {
-      const { listRestaurantInfo } = reducer(
+      const { restaurantInfoList } = reducer(
         initialState,
         addRestaurantInfo({ name: '마녀주방', type: '한식', location: '서울시 강남구' }),
       );
 
-      expect(listRestaurantInfo).toHaveLength(1);
-      expect(listRestaurantInfo[0].name).toBe('마녀주방');
-      expect(listRestaurantInfo[0].type).toBe('한식');
-      expect(listRestaurantInfo[0].location).toBe('서울시 강남구');
+      expect(restaurantInfoList).toHaveLength(1);
+      expect(restaurantInfoList[0].name).toBe('마녀주방');
+      expect(restaurantInfoList[0].type).toBe('한식');
+      expect(restaurantInfoList[0].location).toBe('서울시 강남구');
     });
 
     it('restaurantInfo가 초기화 됩니다.', () => {
@@ -80,7 +80,7 @@ describe('reducer', () => {
           type: '한식',
           location: '서울시 강남구',
         },
-        listRestaurantInfo: [],
+        restaurantInfoList: [],
       }, addRestaurantInfo({ name: '마녀주방', type: '한식', location: '서울시 강남구' }));
 
       expect(name).toBe('');
