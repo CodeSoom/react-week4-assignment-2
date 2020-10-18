@@ -9,25 +9,11 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   const router = {
-    updateRestaurantName: {
+    updateRestaurantInfo: {
       ...state,
       restaurantInfo: {
         ...state.restaurantInfo,
-        name: action.payload,
-      },
-    },
-    updateRestaurantType: {
-      ...state,
-      restaurantInfo: {
-        ...state.restaurantInfo,
-        type: action.payload,
-      },
-    },
-    updateRestaurantLocation: {
-      ...state,
-      restaurantInfo: {
-        ...state.restaurantInfo,
-        location: action.payload,
+        [action.payload.type]: action.payload.value,
       },
     },
     addRestaurantInfo: {
