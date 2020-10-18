@@ -13,17 +13,17 @@ import {
 
 function selector(state) {
   return {
-    restaurantName: state.restaurantName,
-    restaurantCuisine: state.restaurantCuisine,
-    restaurantLocation: state.restaurantLocation,
+    name: state.name,
+    cuisine: state.cuisine,
+    location: state.location,
   };
 }
 
 function renderInputs() {
   const {
-    restaurantName,
-    restaurantCuisine,
-    restaurantLocation,
+    name,
+    cuisine,
+    location,
   } = useSelector(selector);
 
   const dispatch = useDispatch();
@@ -44,19 +44,19 @@ function renderInputs() {
     {
       id: 'input-restaurant-name',
       placeholder: '이름',
-      value: restaurantName,
+      value: name,
       onChange: handlechangeName,
     },
     {
       id: 'input-restaurant-cuisine',
       placeholder: '분류',
-      value: restaurantCuisine,
+      value: cuisine,
       onChange: handlechangeCuisine,
     },
     {
       id: 'input-restaurant-location',
       placeholder: '주소',
-      value: restaurantLocation,
+      value: location,
       onChange: handlechangeLocation,
     },
   ];
