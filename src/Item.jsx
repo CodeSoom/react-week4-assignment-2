@@ -2,15 +2,7 @@ import React from 'react';
 
 const item = ({ restaurant: { name, category, address } }) => (
   <li>
-    {name}
-    {' '}
-    |
-    {' '}
-    {category}
-    {' '}
-    |
-    {' '}
-    {address}
+    {`${name} | ${category} | ${address}`}
   </li>
 );
 
