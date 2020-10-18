@@ -34,7 +34,7 @@ describe('reducer', () => {
     it('restaurantInfo name을 업데이트합니다.', () => {
       const { restaurantInfo: { name } } = reducer(
         initialState,
-        updateRestaurantInfo({ key: 'name', value: '마녀주방' }),
+        updateRestaurantInfo({ type: 'name', value: '마녀주방' }),
       );
 
       expect(name).toBe('마녀주방');
@@ -43,7 +43,7 @@ describe('reducer', () => {
     it('restaurantInfo type을 업데이트합니다.', () => {
       const { restaurantInfo: { type } } = reducer(
         initialState,
-        updateRestaurantInfo({ key: 'type', value: '한식' }),
+        updateRestaurantInfo({ type: 'type', value: '한식' }),
       );
 
       expect(type).toBe('한식');
@@ -53,7 +53,7 @@ describe('reducer', () => {
     it('restaurantInfo location을 업데이트합니다.', () => {
       const { restaurantInfo: { location } } = reducer(
         initialState,
-        updateRestaurantInfo({ key: 'location', value: '서울시 강남구' }),
+        updateRestaurantInfo({ type: 'location', value: '서울시 강남구' }),
       );
 
       expect(location).toBe('서울시 강남구');
