@@ -46,7 +46,7 @@ describe('reducer', () => {
   });
 
   describe('with undefined action', () => {
-    it('returns previous state', () => {
+    it('returns initialState', () => {
       const { restaurants } = reducer(
         {
           restaurants: restaurantsFixture,
@@ -57,7 +57,7 @@ describe('reducer', () => {
       expect(restaurants).toHaveLength(3);
     });
 
-    it("don't returns previous state", () => {
+    it("don't returns initialState", () => {
       const { restaurants } = reducer(
         undefined,
         { type: 'undefined', payload: {} },
