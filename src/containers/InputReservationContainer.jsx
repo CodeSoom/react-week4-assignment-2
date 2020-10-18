@@ -9,7 +9,7 @@ import {
   addReservation,
 } from '../modules/actions';
 
-export default function ListContainer() {
+export default function InputReservationContainer() {
   const { name, category, address } = useSelector((state) => ({
     name: state.reservation.name,
     category: state.reservation.category,
