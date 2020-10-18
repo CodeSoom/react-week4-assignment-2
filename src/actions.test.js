@@ -1,40 +1,16 @@
 import {
-  updateRestaurantName,
-  updateRestaurantType,
-  updateRestaurantLocation,
+  updateRestaurantInfo,
   addRestaurantInfo,
 } from './actions';
 
-describe('updateRestaurantName', () => {
+describe('updateRestaurantInfo', () => {
   it('restaurantInfoName action을 반환합니다.', () => {
-    const restaurantName = '마녀주방';
+    const updateInfo = { type: 'name', value: '마녀주방' };
 
-    const action = updateRestaurantName(restaurantName);
+    const action = updateRestaurantInfo(updateInfo);
 
-    expect(action.type).toBe('updateRestaurantName');
-    expect(action.payload).toBe(restaurantName);
-  });
-});
-
-describe('updateRestaurantType', () => {
-  it('restaurantInfoType action을 반환합니다.', () => {
-    const restaurantType = '한식';
-
-    const action = updateRestaurantType(restaurantType);
-
-    expect(action.type).toBe('updateRestaurantType');
-    expect(action.payload).toBe(restaurantType);
-  });
-});
-
-describe('updateRestaurantLocation', () => {
-  it('restaurantInfoLocation action을 반환합니다.', () => {
-    const restaurantLocation = '서울시 강남구';
-
-    const action = updateRestaurantLocation(restaurantLocation);
-
-    expect(action.type).toBe('updateRestaurantLocation');
-    expect(action.payload).toBe(restaurantLocation);
+    expect(action.type).toBe('updateRestaurantInfo');
+    expect(action.payload).toEqual(updateInfo);
   });
 });
 
