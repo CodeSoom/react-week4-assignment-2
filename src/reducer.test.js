@@ -37,4 +37,17 @@ describe('reducer', () => {
       expect(state.name).toBe('김가네');
     });
   });
+
+  describe('updateRestaurantCategory', () => {
+    it('changes new restaurant category', () => {
+      const state = reducer(
+        {
+          category: '일식',
+        },
+        updateRestaurantCategory('한식'),
+      );
+
+      expect(state.name).toBe('한식');
+    });
+  });
 });
