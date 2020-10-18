@@ -22,4 +22,30 @@ describe ('App', () => {
       expect(getByPlaceholderText('이름').value).toBe('nameExample');
     });
   });
+  
+  context("Button is clicked, ", () =>  {
+    const restaurants = [
+      {
+        id: 1, 
+        name: '마녀주방', 
+        category: '한식', 
+        address: '서울시 강남구',
+      },
+      {
+        id: 2, 
+        name: '시카고피자', 
+        category: '양식', 
+        address: '이태원동',
+      },
+    ];
+  
+    it("Values are contained seperately.", () => {
+      const { getByText, container } = render((<App />));
+
+      fireEvent.click(getByText('등록'));
+      expect(container).toHaveTextContent('마녀주방');
+      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent('서울시 강남구');
+    });
+  });
 });
