@@ -1,25 +1,9 @@
-export function updateRestaurantName(name) {
+export function changeRestaurantField({ name = '', category = '', address = '' }) {
   return {
-    type: 'updateRestaurantName',
+    type: 'changeRestaurantField',
     payload: {
       name,
-    },
-  };
-}
-
-export function updateRestaurantCategory(category) {
-  return {
-    type: 'updateRestaurantCategory',
-    payload: {
       category,
-    },
-  };
-}
-
-export function updateRestaurantAddr(address) {
-  return {
-    type: 'updateRestaurantAddr',
-    payload: {
       address,
     },
   };

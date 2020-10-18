@@ -1,43 +1,30 @@
 import restaurant from './restaurant';
 
 import {
-  updateRestaurantName,
-  updateRestaurantCategory,
-  updateRestaurantAddr,
+  changeRestaurantField,
   addRestaurant,
 } from '../actions';
 
 describe('restaurant reducer', () => {
-  describe('updateRestaurantName', () => {
-    const reduceUpdateRestaurantName = () => restaurant({
-      name: '',
-    }, updateRestaurantName('마녀주방'));
+  describe('changeRestaurantField', () => {
+    function reduceChangeRestaurantField() {
+      const action = changeRestaurantField({
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 성동구',
+      });
 
-    it('change restaurnt name', () => {
-      const state = reduceUpdateRestaurantName();
+      return restaurant({
+        name: '',
+        category: '',
+        address: '',
+      }, action);
+    }
+    it('change restaurnt field(name, category, address)', () => {
+      const state = reduceChangeRestaurantField();
 
       expect(state.name).toBe('마녀주방');
-    });
-  });
-
-  describe('updateRestaurantCategory', () => {
-    const reduceUpdateRestaurantCategory = () => restaurant({
-      category: '',
-    }, updateRestaurantCategory('한식'));
-    it('change restaurnt category', () => {
-      const state = reduceUpdateRestaurantCategory();
-
       expect(state.category).toBe('한식');
-    });
-  });
-
-  describe('updateRestaurantAddr', () => {
-    const reduceUpdateRestaurantAddr = () => restaurant({
-      address: '',
-    }, updateRestaurantAddr('서울시 성동구'));
-    it('change restaurnt category', () => {
-      const state = reduceUpdateRestaurantAddr();
-
       expect(state.address).toBe('서울시 성동구');
     });
   });

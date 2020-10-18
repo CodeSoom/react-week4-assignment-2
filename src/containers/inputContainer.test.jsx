@@ -33,10 +33,12 @@ test('InputContainer', () => {
   fireEvent.change(getByPlaceholderText('이름'), {
     target: { value: '시카고피자' },
   });
+
   expect(dispatch).toBeCalledWith(
-    { type: 'updateRestaurantName', payload: { name: '시카고피자' } },
+    { type: 'changeRestaurantField', payload: { name: '시카고피자', category: '', address: '' } },
   );
 
   fireEvent.click(getByText(/등록/));
+
   expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });
 });
