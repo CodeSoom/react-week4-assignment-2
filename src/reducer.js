@@ -4,7 +4,7 @@ export const initialState = {
     type: '',
     location: '',
   },
-  listRestaurantInfo: [],
+  restaurantInfoList: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,8 +23,8 @@ export default function reducer(state = initialState, action) {
         type: '',
         location: '',
       },
-      listRestaurantInfo: [
-        ...state.listRestaurantInfo,
+      restaurantInfoList: [
+        ...state.restaurantInfoList,
         action.payload,
       ],
     },
