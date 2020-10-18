@@ -10,9 +10,13 @@ export default function InputContainer() {
     dispatch(addRestaurant());
   }
 
+  function handleChangeName(event) {
+    dispatch(updateRestaurantName(event.target.value));
+  }
+
   return (
     <div>
-      <input placeholder="이름" />
+      <input placeholder="이름" onChange={handleChangeName} />
       <input placeholder="분류" />
       <input placeholder="주소" />
       <button type="button" onClick={handleClickAddRestaurant}>
