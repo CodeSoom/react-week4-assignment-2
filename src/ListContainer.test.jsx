@@ -6,24 +6,16 @@ import { render } from '@testing-library/react';
 
 import ListContainer from './ListContainer';
 
+import restaurantTestData from './fixtures';
+
 jest.mock('react-redux');
 
 describe('ListContainer', () => {
   it('rendering all restaurants', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
-        {
-          id: 100,
-          name: '치킨',
-          category: '한식',
-          address: '서울',
-        },
-        {
-          id: 101,
-          name: '피자',
-          category: '양식',
-          address: '대구',
-        },
+        restaurantTestData(100, '치킨', '한식', '서울'),
+        restaurantTestData(101, '피자', '양식', '대구'),
       ],
     }));
 
