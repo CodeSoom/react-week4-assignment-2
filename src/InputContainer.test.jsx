@@ -78,7 +78,7 @@ describe('InputContainer', () => {
     const { getByPlaceholderText } = renderInputContainer();
     const location = '서울시 성북구';
 
-    fireEvent.change(getByPlaceholderText(/장소/), { target: { value: location } });
+    fireEvent.change(getByPlaceholderText(/주소/), { target: { value: location } });
 
     expect(dispatch).toBeCalledWith({
       type: 'updateRestaurantLocation',
