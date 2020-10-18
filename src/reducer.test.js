@@ -56,16 +56,19 @@ describe('reducer', () => {
         });
 
         expect(state.restaurants).toHaveLength(1);
-        expect(state.restaurant[0].id).not.toBeUndefined();
-        expect(state.restaurant[0].name).toBe('마녀주방');
-        expect(state.restaurant[0].category).toBe('양식');
-        expect(state.restaurant[0].address).toBe('강남구 서현동');
+        expect(state.restaurants[0].id).not.toBeUndefined();
+        expect(state.restaurants[0].id).toBe(100);
+        expect(state.restaurants[0].name).toBe('마녀주방');
+        expect(state.restaurants[0].category).toBe('양식');
+        expect(state.restaurants[0].address).toBe('강남구 서현동');
       });
     });
 
     context('without one of information of restaurant', () => {
       it('nothing happens', () => {
-        const state = reduceAddRestaurant();
+        const state = reduceAddRestaurant({
+          name: '', category: '', address: '',
+        });
 
         expect(state.restaurants).toHaveLength(0);
       });
