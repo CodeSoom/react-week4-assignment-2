@@ -4,15 +4,15 @@ import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-describe('<ListContainer />', () => {
+describe('<RestaurantsContainer />', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [{ id: 1, value: '낙원관 | 중식 | 서울 성동구' }],
   }));
-  const renderList = () => render(<ListContainer />);
+  const renderList = () => render(<RestaurantsContainer />);
 
   it('renders restaurants list', () => {
     // When

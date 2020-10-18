@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 jest.mock('react-redux');
 
@@ -13,7 +13,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe('<InputContainer />', () => {
+describe('<RestaurantCreateContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
@@ -25,7 +25,7 @@ describe('<InputContainer />', () => {
   }));
 
   const renderInput = () => render((
-    <InputContainer />
+    <RestaurantCreateContainer />
   ));
 
   it('renders 3 inputs', () => {
