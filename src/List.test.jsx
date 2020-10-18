@@ -13,12 +13,7 @@ describe('List', () => {
     jest.clearAllMocks();
   });
 
-  it('Empty Lists', () => {
-    const { getAllByText } = renderList();
-    getAllByText('');
-  });
-
-  it('show all List in Lists length over 1', () => {
+  context('with restaurants', () => {
     const restaurants = [
       {
         id: 1,
@@ -35,14 +30,26 @@ describe('List', () => {
 
     ];
 
-    const { getByText } = renderList(restaurants);
+    it('show all List in Lists length over 1', () => {
+      const { getByText } = renderList(restaurants);
 
-    restaurants.forEach(({
-      id, name, category, address,
-    }) => {
-      expect(getByText(`${name}|${category}|${address}`)).not.toBeNull();
+      restaurants.forEach(({
+        id, name, category, address,
+      }) => {
+        expect(getByText(`${name}|${category}|${address}`)).not.toBeNull();
 
-      expect(id).not.toBeUndefined();
+        expect(id).not.toBeUndefined();
+      });
+    });
+  });
+
+  context('with empty', () => {
+    const restaurants = [];
+
+    it('Empty Lists', () => {
+      const { container } = renderList(restaurants);
+
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 });
