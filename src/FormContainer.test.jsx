@@ -31,8 +31,8 @@ describe('FormContainer', () => {
 
     fireEvent.change(inputRestaurantName, { target: { value: '마녀주방' } });
     expect(dispatch).toBeCalledWith({
-      type: 'updateRestaurantName',
-      payload: '마녀주방',
+      type: 'updateRestaurantInfo',
+      payload: { type: 'name', value: '마녀주방' },
     });
   });
 
@@ -42,8 +42,8 @@ describe('FormContainer', () => {
 
     fireEvent.change(inputRestaurantType, { target: { value: '한식' } });
     expect(dispatch).toBeCalledWith({
-      type: 'updateRestaurantType',
-      payload: '한식',
+      type: 'updateRestaurantInfo',
+      payload: { type: 'type', value: '한식' },
     });
   });
 
