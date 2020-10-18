@@ -1,14 +1,16 @@
 import {
   ADD_RESTAURANT,
-  CHANGE_RESTAURANT_INPUT,
+  CHANGE_RESTAURANT_FIELD,
 } from './actions';
 
 export const initialState = {
   newId: 1,
   restaurants: [],
-  name: '',
-  category: '',
-  address: '',
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,30 +24,19 @@ export default function reducer(state = initialState, action) {
         ...restaurants,
         { id: newId, value: action.payload },
       ],
-      name: initialState.name,
-      category: initialState.category,
-      address: initialState.address,
+      restaurant: initialState.restaurant,
     };
   }
 
-  if (action.type === CHANGE_RESTAURANT_INPUT.NAME) {
-    return {
-      ...state,
-      name: action.payload,
-    };
-  }
+  if (action.type === CHANGE_RESTAURANT_FIELD) {
+    const { restaurant } = state;
 
-  if (action.type === CHANGE_RESTAURANT_INPUT.CATEGORY) {
     return {
       ...state,
-      category: action.payload,
-    };
-  }
-
-  if (action.type === CHANGE_RESTAURANT_INPUT.ADDRESS) {
-    return {
-      ...state,
-      address: action.payload,
+      restaurant: {
+        ...restaurant,
+        ...action.payload,
+      },
     };
   }
 

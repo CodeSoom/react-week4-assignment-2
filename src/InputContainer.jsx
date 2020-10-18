@@ -8,11 +8,8 @@ import Input from './Input';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
-  const {
-    name,
-    category,
-    address,
-  } = useSelector((state) => state);
+  const { restaurant } = useSelector((state) => state);
+  const { name, category, address } = restaurant;
 
   const handleClick = () => {
     dispatch(actions.addRestaurant(`${name} | ${category} | ${address}`));
@@ -21,7 +18,7 @@ export default function InputContainer() {
   const handleChange = (event) => {
     const { name: inputName, value } = event.target;
 
-    dispatch(actions.changeRestaurantInput(inputName, value));
+    dispatch(actions.changeRestaurantField(inputName, value));
   };
 
   return (

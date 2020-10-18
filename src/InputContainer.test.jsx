@@ -17,9 +17,11 @@ describe('<InputContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    name: '',
-    category: '',
-    address: '',
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
   }));
 
   const renderInput = () => render((

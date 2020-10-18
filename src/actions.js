@@ -1,10 +1,6 @@
 // action types
 export const ADD_RESTAURANT = 'ADD_RESTAURANT';
-export const CHANGE_RESTAURANT_INPUT = {
-  NAME: 'CHANGE_RESTAURANT_INPUT_NAME',
-  CATEGORY: 'CHANGE_RESTAURANT_INPUT_CATEGORY',
-  ADDRESS: 'CHANGE_RESTAURANT_INPUT_ADDRESS',
-};
+export const CHANGE_RESTAURANT_FIELD = 'CHANGE_RESTAURANT_FIELD';
 
 // action creators
 function addRestaurant(value) {
@@ -14,14 +10,14 @@ function addRestaurant(value) {
   };
 }
 
-function changeRestaurantInput(type, value) {
+function changeRestaurantField(name, value) {
   return {
-    type: CHANGE_RESTAURANT_INPUT[type.toUpperCase()],
-    payload: value,
+    type: CHANGE_RESTAURANT_FIELD,
+    payload: { name: value },
   };
 }
 
 export default {
   addRestaurant,
-  changeRestaurantInput,
+  changeRestaurantField,
 };
