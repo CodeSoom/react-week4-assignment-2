@@ -2,11 +2,17 @@ import reducer from './reducer';
 
 import { updateRestaurant, addRestaurant } from './actions';
 import {
-  inputTypes, restaurantsFixture, restaurantFixture, initRestaurant,
+  restaurantsFixture, restaurantFixture, initRestaurant,
 } from './fixtures/fixtures';
 
 describe('reducer', () => {
   describe('updateRestaurant', () => {
+    const inputTypes = [
+      { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
+      { placeholderName: '분류', inputName: 'category', value: '한식' },
+      { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
+    ];
+
     it('레스토랑에 대한 정보를 입력한다.', () => {
       inputTypes.forEach(({ value, inputName }) => {
         const { restaurant } = reducer({
