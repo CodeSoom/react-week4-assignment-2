@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { restaurantInfo } from './fixtures/fixtures';
+import { restaurantFixture } from './fixtures/fixtures';
 import Item from './Item';
 
 describe('Item', () => {
@@ -13,9 +13,9 @@ describe('Item', () => {
   ));
 
   it('"restaurant"이 보인다.', () => {
-    const { container } = itemRender(restaurantInfo);
+    const { container } = itemRender(restaurantFixture);
 
-    const { address, category, name } = restaurantInfo;
+    const { address, category, name } = restaurantFixture;
 
     expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
   });

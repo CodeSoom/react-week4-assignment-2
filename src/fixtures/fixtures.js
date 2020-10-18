@@ -16,6 +16,6 @@ export const inputTypes = [
   { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
 ];
 
-export const restaurantInfo = { name: '마녀주방', category: '한식', address: '서울시 강남구' };
+export const restaurantFixture = { name: '마녀주방', category: '한식', address: '서울시 강남구' };
 
 export const initRestaurant = { name: '', category: '', address: '' };

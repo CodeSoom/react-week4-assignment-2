@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { restaurantInfo, initRestaurant, inputTypes } from './fixtures/fixtures';
+import { restaurantFixture, initRestaurant, inputTypes } from './fixtures/fixtures';
 import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
@@ -25,14 +25,14 @@ describe('FormContainer', () => {
 
   it('"restaurant"을 등록한다.', () => {
     useSelector.mockImplementation((selector) => selector({
-      restaurant: restaurantInfo,
+      restaurant: restaurantFixture,
     }));
 
     const { getByDisplayValue, getByText } = renderFormContainer();
     const addButton = getByText(/등록/);
 
-    Object.entries(restaurantInfo).forEach((restaurant) => {
-      expect(getByDisplayValue(restaurant[1])).not.toBeNull();
+    Object.values(restaurantFixture).forEach((value) => {
+      expect(getByDisplayValue(value)).not.toBeNull();
     });
 
     expect(addButton).not.toBeNull();

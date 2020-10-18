@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import { updateRestaurant, addRestaurant } from './actions';
 import {
-  inputTypes, restaurantsFixture, restaurantInfo, initRestaurant,
+  inputTypes, restaurantsFixture, restaurantFixture, initRestaurant,
 } from './fixtures/fixtures';
 
 describe('reducer', () => {
@@ -27,7 +27,7 @@ describe('reducer', () => {
 
     context('with restaurant', () => {
       it('레스토랑에 대한 정보를 등록한다.', () => {
-        const { restaurant, restaurants } = addRestaurantReducer(restaurantInfo);
+        const { restaurant, restaurants } = addRestaurantReducer(restaurantFixture);
 
         expect(restaurants[0].id).not.toBeUndefined();
         expect(restaurants).toHaveLength(1);
