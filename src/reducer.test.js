@@ -49,7 +49,6 @@ describe('reducer', () => {
       expect(category).toBe('한식');
     });
 
-
     it('restaurantInfo address 업데이트합니다.', () => {
       const { restaurantInfo: { address } } = reducer(
         initialState,
