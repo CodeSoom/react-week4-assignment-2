@@ -39,16 +39,10 @@ describe('reducer', () => {
   });
 
   describe('addReservation', () => {
-    function reduceAddReservation({
-      reservationName,
-      reservationCategory,
-      reservationAddress,
-    }) {
+    function reduceAddReservation({ name, category, address }) {
       return reducer({
         newId: 1,
-        reservationName,
-        reservationCategory,
-        reservationAddress,
+        reservation: { name, category, address },
         reservations: [],
       }, addReservation());
     }
@@ -56,9 +50,9 @@ describe('reducer', () => {
     context('with all reservation fields', () => {
       it('appends a new reservation', () => {
         const state = reduceAddReservation({
-          reservationName: 'New Name',
-          reservationCategory: 'New Category',
-          reservationAddress: 'New Address',
+          name: 'New Name',
+          category: 'New Category',
+          address: 'New Address',
         });
 
         expect(state.reservations[0].name).toBe('New Name');
@@ -70,9 +64,9 @@ describe('reducer', () => {
     context('without reservation name', () => {
       it('not append reservation', () => {
         const state = reduceAddReservation({
-          reservationName: '',
-          reservationCategory: 'New Category',
-          reservationAddress: 'New Address',
+          name: '',
+          category: 'New Category',
+          address: 'New Address',
         });
 
         expect(state.reservations).toHaveLength(0);
@@ -82,9 +76,9 @@ describe('reducer', () => {
     context('without reservation category', () => {
       it('not append reservation', () => {
         const state = reduceAddReservation({
-          reservationName: 'New Name',
-          reservationCategory: '',
-          reservationAddress: 'New Address',
+          name: 'New Name',
+          category: '',
+          address: 'New Address',
         });
 
         expect(state.reservations).toHaveLength(0);
@@ -94,9 +88,11 @@ describe('reducer', () => {
     context('without reservation address', () => {
       it('not append reservation', () => {
         const state = reduceAddReservation({
-          reservationName: 'New Name',
-          reservationCategory: 'New Category',
-          reservationAddress: '',
+          reservation: {
+            name: 'New Name',
+            category: 'New Category',
+            address: '',
+          },
         });
 
         expect(state.reservations).toHaveLength(0);

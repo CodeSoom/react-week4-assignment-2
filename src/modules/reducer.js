@@ -1,8 +1,12 @@
+const initialReservation = {
+  name: '',
+  category: '',
+  address: '',
+};
+
 const initialState = {
   newId: 1,
-  reservationName: '',
-  reservationCategory: '',
-  reservationAddress: '',
+  reservation: initialReservation,
   reservations: [],
 };
 
@@ -27,28 +31,24 @@ export default function reducer(state = initialState, action) {
       const {
         newId,
         reservations,
-        reservationName,
-        reservationCategory,
-        reservationAddress,
+        reservation: { name, category, address },
       } = state;
 
-      if (!reservationName) return state;
-      if (!reservationCategory) return state;
-      if (!reservationAddress) return state;
+      if (!name) return state;
+      if (!category) return state;
+      if (!address) return state;
 
       return ({
         ...state,
         newId: newId + 1,
-        reservationName: '',
-        reservationCategory: '',
-        reservationAddress: '',
+        reservation: initialReservation,
         reservations: [
           ...reservations,
           {
             id: newId,
-            name: reservationName,
-            category: reservationCategory,
-            address: reservationAddress,
+            name,
+            category,
+            address,
           },
         ],
       });
