@@ -5,28 +5,32 @@ import { render, fireEvent } from '@testing-library/react';
 import Form from './Form';
 
 describe('Form Component', () => {
+  const inputs = [
+    {
+      name: 'name',
+      placeholder: '이름',
+      value: '',
+    },
+    {
+      name: 'category',
+      placeholder: '분류',
+      value: '',
+    },
+    {
+      name: 'address',
+      placeholder: '주소',
+      value: '',
+    },
+  ];
+
+  const handleChange = jest.fn();
+  const handleClick = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('send inputs information', () => {
-    const handleChange = jest.fn();
-    const handleClick = jest.fn();
-
-    const inputs = [
-      {
-        name: 'name',
-        placeholder: '이름',
-        value: '',
-      },
-      {
-        name: 'category',
-        placeholder: '분류',
-        value: '',
-      },
-      {
-        name: 'address',
-        placeholder: '주소',
-        value: '',
-      },
-    ];
-
     const { getByPlaceholderText } = render((
       <Form
         inputs={inputs}
