@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   addRestaurant,
@@ -9,6 +9,12 @@ import {
 } from './actions';
 
 export default function InputContainer() {
+  const { name, category, location } = useSelector((state) => ({
+    name: state.name,
+    category: state.category,
+    location: state.location,
+  }));
+
   const dispatch = useDispatch();
 
   function handleClickAddRestaurant() {
@@ -29,9 +35,9 @@ export default function InputContainer() {
 
   return (
     <div>
-      <input placeholder="이름" onChange={handleChangeName} />
-      <input placeholder="분류" onChange={handleChangeCategory} />
-      <input placeholder="주소" onChange={handleChangeLocation} />
+      <input placeholder="이름" name="name" onChange={handleChangeName} value={name} />
+      <input placeholder="분류" name="category" onChange={handleChangeCategory} value={category} />
+      <input placeholder="주소" name="address" onChange={handleChangeLocation} value={location} />
       <button type="button" onClick={handleClickAddRestaurant}>
         등록
       </button>

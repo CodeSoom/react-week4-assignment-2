@@ -59,9 +59,9 @@ describe('InputContainer', () => {
 
     fireEvent.click(getByText(/등록/));
 
-    expect(nameInput).not.toHaveValue();
-    expect(categoryInput).not.toHaveValue();
-    expect(locationInput).not.toHaveValue();
+    expect(nameInput).not.toHaveDisplayValue();
+    expect(categoryInput).not.toHaveDisplayValue();
+    expect(locationInput).not.toHaveDisplayValue();
   });
 
   it('change restrant name input', () => {
