@@ -30,16 +30,6 @@ describe('RestaurantCreateContainer', () => {
     address: '',
   };
 
-  it('render restaurant form', () => {
-    const { getByPlaceholderText, getByText } = render(<RestaurantCreateContainer />);
-
-    expect(getByPlaceholderText('이름')).not.toBeNull();
-    expect(getByPlaceholderText('분류')).not.toBeNull();
-    expect(getByPlaceholderText('주소')).not.toBeNull();
-
-    expect(getByText('등록')).not.toBeNull();
-  });
-
   describe('input restaurant information', () => {
     it('changes a name of restaurant', () => {
       useSelector.mockImplementation((selector) => selector({
