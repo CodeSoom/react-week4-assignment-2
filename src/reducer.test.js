@@ -1,6 +1,9 @@
 import reducer from './reducer';
 
-import { addRestaurant } from './actions';
+import {
+  addRestaurant,
+  updateRestaurantName,
+} from './actions';
 
 describe('reducer', () => {
   describe('state undefined', () => {

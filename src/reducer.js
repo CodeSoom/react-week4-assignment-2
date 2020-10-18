@@ -16,8 +16,14 @@ const addRestaurant = ({ state }) => {
   };
 };
 
+const updateRestaurantName = ({ state, payload }) => ({
+  ...state,
+  name: payload.name,
+});
+
 const reducers = {
   addRestaurant,
+  updateRestaurantName,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
