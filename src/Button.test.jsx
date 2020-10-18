@@ -10,7 +10,7 @@ describe('Button', () => {
     <Button onClick={handleClick} />
   ));
 
-  it('버튼 클릭시 호출되는지 확인한다.', () => {
+  it('버튼 클릭 시 onClick 핸들러가 실행된다.', () => {
     const { getByText } = buttonRender();
     const button = getByText(/등록/);
 
