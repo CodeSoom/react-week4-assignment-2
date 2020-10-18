@@ -18,8 +18,8 @@ describe('addRestaurantInfo', () => {
   it('addRestaurantInfo action을 반환합니다.', () => {
     const restaurantInfo = {
       name: '마녀주방',
-      type: '일식',
-      location: '서울시 강남구',
+      category: '일식',
+      address: '서울시 강남구',
     };
 
     const action = addRestaurantInfo(restaurantInfo);

@@ -1,8 +1,8 @@
 export const initialState = {
   restaurantInfo: {
     name: '',
-    type: '',
-    location: '',
+    category: '',
+    address: '',
   },
   restaurantInfoList: [],
 };
@@ -20,8 +20,8 @@ export default function reducer(state = initialState, action) {
       ...state,
       restaurantInfo: {
         name: '',
-        type: '',
-        location: '',
+        category: '',
+        address: '',
       },
       restaurantInfoList: [
         ...state.restaurantInfoList,

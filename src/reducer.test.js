@@ -6,11 +6,11 @@ import reducer, { initialState } from './reducer';
 
 describe('initialState', () => {
   it('초기 restaurantInfo 객체는 빈칸으로 초기화됩니다.', () => {
-    const { name, type, location } = initialState.restaurantInfo;
+    const { name, category, address } = initialState.restaurantInfo;
 
     expect(name).toBe('');
-    expect(type).toBe('');
-    expect(location).toBe('');
+    expect(category).toBe('');
+    expect(address).toBe('');
   });
 
   it('초기 restaurantInfoList은 빈 배열로 초기화됩니다.', () => {
@@ -40,23 +40,23 @@ describe('reducer', () => {
       expect(name).toBe('마녀주방');
     });
 
-    it('restaurantInfo type을 업데이트합니다.', () => {
-      const { restaurantInfo: { type } } = reducer(
+    it('restaurantInfo category 업데이트합니다.', () => {
+      const { restaurantInfo: { category } } = reducer(
         initialState,
-        updateRestaurantInfo({ type: 'type', value: '한식' }),
+        updateRestaurantInfo({ type: 'category', value: '한식' }),
       );
 
-      expect(type).toBe('한식');
+      expect(category).toBe('한식');
     });
 
 
-    it('restaurantInfo location을 업데이트합니다.', () => {
-      const { restaurantInfo: { location } } = reducer(
+    it('restaurantInfo address 업데이트합니다.', () => {
+      const { restaurantInfo: { address } } = reducer(
         initialState,
-        updateRestaurantInfo({ type: 'location', value: '서울시 강남구' }),
+        updateRestaurantInfo({ type: 'address', value: '서울시 강남구' }),
       );
 
-      expect(location).toBe('서울시 강남구');
+      expect(address).toBe('서울시 강남구');
     });
   });
 
@@ -64,28 +64,28 @@ describe('reducer', () => {
     it('restaurantInfo을 리스트에 추가합니다.', () => {
       const { restaurantInfoList } = reducer(
         initialState,
-        addRestaurantInfo({ name: '마녀주방', type: '한식', location: '서울시 강남구' }),
+        addRestaurantInfo({ name: '마녀주방', category: '한식', address: '서울시 강남구' }),
       );
 
       expect(restaurantInfoList).toHaveLength(1);
       expect(restaurantInfoList[0].name).toBe('마녀주방');
-      expect(restaurantInfoList[0].type).toBe('한식');
-      expect(restaurantInfoList[0].location).toBe('서울시 강남구');
+      expect(restaurantInfoList[0].category).toBe('한식');
+      expect(restaurantInfoList[0].address).toBe('서울시 강남구');
     });
 
     it('restaurantInfo가 초기화 됩니다.', () => {
-      const { restaurantInfo: { name, type, location } } = reducer({
+      const { restaurantInfo: { name, category, address } } = reducer({
         restaurantInfo: {
           name: '마녀주방',
-          type: '한식',
-          location: '서울시 강남구',
+          category: '한식',
+          address: '서울시 강남구',
         },
         restaurantInfoList: [],
-      }, addRestaurantInfo({ name: '마녀주방', type: '한식', location: '서울시 강남구' }));
+      }, addRestaurantInfo({ name: '마녀주방', category: '한식', address: '서울시 강남구' }));
 
       expect(name).toBe('');
-      expect(type).toBe('');
-      expect(location).toBe('');
+      expect(category).toBe('');
+      expect(address).toBe('');
     });
   });
 });

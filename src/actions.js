@@ -5,13 +5,13 @@ export function updateRestaurantInfo({ type, value }) {
   };
 }
 
-export function addRestaurantInfo({ name, type, location }) {
+export function addRestaurantInfo({ name, category, address }) {
   return {
     type: 'addRestaurantInfo',
     payload: {
       name,
-      type,
-      location,
+      category,
+      address,
     },
   };
 }

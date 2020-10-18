@@ -19,8 +19,8 @@ describe('FormContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantInfo: {
       name: '',
-      type: '',
-      location: '',
+      category: '',
+      address: '',
     },
     listRestaurantInfo: [],
   }));
@@ -43,7 +43,7 @@ describe('FormContainer', () => {
     fireEvent.change(inputRestaurantType, { target: { value: '한식' } });
     expect(dispatch).toBeCalledWith({
       type: 'updateRestaurantInfo',
-      payload: { type: 'type', value: '한식' },
+      payload: { type: 'category', value: '한식' },
     });
   });
 
@@ -54,7 +54,7 @@ describe('FormContainer', () => {
     fireEvent.change(inputRestaurantLocation, { target: { value: '서울시 강남구' } });
     expect(dispatch).toBeCalledWith({
       type: 'updateRestaurantInfo',
-      payload: { type: 'location', value: '서울시 강남구' },
+      payload: { type: 'address', value: '서울시 강남구' },
     });
   });
 
@@ -68,8 +68,8 @@ describe('FormContainer', () => {
       type: 'addRestaurantInfo',
       payload: {
         name: '',
-        type: '',
-        location: '',
+        category: '',
+        address: '',
       },
     });
   });
