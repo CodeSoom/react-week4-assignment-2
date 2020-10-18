@@ -18,18 +18,12 @@ export default function FormContainer() {
     dispatch(addRestaurantInfo(restaurantInfo));
   }
 
-  function handleChangeRestaurantName(event) {
-    const updateInfo = { type: 'name', value: event.target.value };
-    dispatch(updateRestaurantInfo(updateInfo));
-  }
+  function handleChangeRestaurantInfo(event) {
+    const updateInfo = {
+      type: event.target.name,
+      value: event.target.value,
+    };
 
-  function handleChangeRestaurantType(event) {
-    const updateInfo = { type: 'type', value: event.target.value };
-    dispatch(updateRestaurantInfo(updateInfo));
-  }
-
-  function handleChangeRestaurantLocation(event) {
-    const updateInfo = { type: 'location', value: event.target.value };
     dispatch(updateRestaurantInfo(updateInfo));
   }
 
@@ -37,9 +31,7 @@ export default function FormContainer() {
     <Form
       restaurantInfo={restaurantInfo}
       handleClickAdd={handleClickAdd}
-      handleChangeRestaurantName={handleChangeRestaurantName}
-      handleChangeRestaurantType={handleChangeRestaurantType}
-      handleChangeRestaurantLocation={handleChangeRestaurantLocation}
+      handleChangeRestaurantInfo={handleChangeRestaurantInfo}
     />
   );
 }

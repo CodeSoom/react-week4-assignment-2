@@ -10,17 +10,13 @@ describe('Form', () => {
   });
 
   const handleClickAdd = jest.fn();
-  const handleChangeRestaurantName = jest.fn();
-  const handleChangeRestaurantType = jest.fn();
-  const handleChangeRestaurantLocation = jest.fn();
+  const handleChangeRestaurantInfo = jest.fn();
 
   const renderForm = (restaurantInfo = { name: '', type: '', location: '' }) => render((
     <Form
       restaurantInfo={restaurantInfo}
       handleClickAdd={handleClickAdd}
-      handleChangeRestaurantName={handleChangeRestaurantName}
-      handleChangeRestaurantType={handleChangeRestaurantType}
-      handleChangeRestaurantLocation={handleChangeRestaurantLocation}
+      handleChangeRestaurantInfo={handleChangeRestaurantInfo}
     />
   ));
 
@@ -28,27 +24,27 @@ describe('Form', () => {
     const { getByPlaceholderText } = renderForm();
     const input = getByPlaceholderText('이름');
 
-    expect(handleChangeRestaurantName).not.toBeCalled();
+    expect(handleChangeRestaurantInfo).not.toBeCalled();
     fireEvent.change(input, { target: { value: '마녀식당' } });
-    expect(handleChangeRestaurantName).toBeCalled();
+    expect(handleChangeRestaurantInfo).toBeCalled();
   });
 
   it('분류 Input이 변화되면 handelChangeRestaurantName이 호출된다.', () => {
     const { getByPlaceholderText } = renderForm();
     const input = getByPlaceholderText('분류');
 
-    expect(handleChangeRestaurantType).not.toBeCalled();
+    expect(handleChangeRestaurantInfo).not.toBeCalled();
     fireEvent.change(input, { target: { value: '한식' } });
-    expect(handleChangeRestaurantType).toBeCalled();
+    expect(handleChangeRestaurantInfo).toBeCalled();
   });
 
   it('주소 Input이 변화되면 handelChangeRestaurantName이 호출된다.', () => {
     const { getByPlaceholderText } = renderForm();
     const input = getByPlaceholderText('주소');
 
-    expect(handleChangeRestaurantLocation).not.toBeCalled();
+    expect(handleChangeRestaurantInfo).not.toBeCalled();
     fireEvent.change(input, { target: { value: '서울시 강남구' } });
-    expect(handleChangeRestaurantLocation).toBeCalled();
+    expect(handleChangeRestaurantInfo).toBeCalled();
   });
 
   it('버튼에 "등록" 문구가 나온다.', () => {

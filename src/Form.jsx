@@ -3,9 +3,7 @@ import React from 'react';
 export default function Form({
   restaurantInfo,
   handleClickAdd,
-  handleChangeRestaurantName,
-  handleChangeRestaurantType,
-  handleChangeRestaurantLocation,
+  handleChangeRestaurantInfo,
 }) {
   const { name, type, location } = restaurantInfo;
 
@@ -15,19 +13,19 @@ export default function Form({
         name="name"
         placeholder="이름"
         value={name}
-        onChange={handleChangeRestaurantName}
+        onChange={handleChangeRestaurantInfo}
       />
       <input
         name="category"
         placeholder="분류"
         value={type}
-        onChange={handleChangeRestaurantType}
+        onChange={handleChangeRestaurantInfo}
       />
       <input
         name="address"
         placeholder="주소"
         value={location}
-        onChange={handleChangeRestaurantLocation}
+        onChange={handleChangeRestaurantInfo}
       />
       <button
         type="submit"
