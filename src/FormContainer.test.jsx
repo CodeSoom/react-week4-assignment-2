@@ -53,8 +53,8 @@ describe('FormContainer', () => {
 
     fireEvent.change(inputRestaurantLocation, { target: { value: '서울시 강남구' } });
     expect(dispatch).toBeCalledWith({
-      type: 'updateRestaurantLocation',
-      payload: '서울시 강남구',
+      type: 'updateRestaurantInfo',
+      payload: { type: 'location', value: '서울시 강남구' },
     });
   });
 
