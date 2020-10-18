@@ -46,6 +46,24 @@ describe('InputContainer', () => {
     });
   });
 
+  it('after add restaurant, reset value of inputs', () => {
+    const { getByText, getByPlaceholderText } = renderInputContainer();
+
+    const nameInput = getByPlaceholderText(/이름/);
+    const categoryInput = getByPlaceholderText(/분류/);
+    const locationInput = getByPlaceholderText(/주소/);
+
+    fireEvent.change(nameInput, { target: { value: '마녀주방' } });
+    fireEvent.change(categoryInput, { target: { value: '한식' } });
+    fireEvent.change(locationInput, { target: { value: '서울시 강남구' } });
+
+    fireEvent.click(getByText(/등록/));
+
+    expect(nameInput).not.toHaveValue();
+    expect(categoryInput).not.toHaveValue();
+    expect(locationInput).not.toHaveValue();
+  });
+
   it('change restrant name input', () => {
     const { getByPlaceholderText } = renderInputContainer();
     const name = '김가네';
