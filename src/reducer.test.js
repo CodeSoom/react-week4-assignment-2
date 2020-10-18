@@ -1,6 +1,11 @@
 import reducer, { initialState } from './reducer';
 
-import actions, { ADD_RESTAURANT, CHANGE_RESTAURANT_FIELD } from './actions';
+import {
+  addRestaurant,
+  changeRestaurantField,
+  ADD_RESTAURANT,
+  CHANGE_RESTAURANT_FIELD,
+} from './actions';
 
 describe('reducer', () => {
   describe(ADD_RESTAURANT, () => {
@@ -15,7 +20,7 @@ describe('reducer', () => {
           address: '서울 성동구',
         },
       };
-      const action = actions.addRestaurant('이름 | 분류 | 주소');
+      const action = addRestaurant('이름 | 분류 | 주소');
 
       // When
       const state = reducer(previousState, action);
@@ -37,7 +42,7 @@ describe('reducer', () => {
     it('changes restaurant name', () => {
       // Given
       const previousState = { restaurant: { name: '' } };
-      const action = actions.changeRestaurantField('name', '마포설렁탕');
+      const action = changeRestaurantField('name', '마포설렁탕');
 
       // When
       const state = reducer(previousState, action);

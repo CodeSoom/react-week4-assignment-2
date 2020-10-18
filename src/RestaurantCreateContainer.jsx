@@ -2,7 +2,10 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import actions from './actions';
+import {
+  addRestaurant,
+  changeRestaurantField,
+} from './actions';
 
 import Input from './Input';
 
@@ -12,13 +15,13 @@ export default function RestaurantCreateContainer() {
   const { name, category, address } = restaurant;
 
   const handleClick = () => {
-    dispatch(actions.addRestaurant(`${name} | ${category} | ${address}`));
+    dispatch(addRestaurant(`${name} | ${category} | ${address}`));
   };
 
   const handleChange = (event) => {
     const { name: inputName, value } = event.target;
 
-    dispatch(actions.changeRestaurantField(inputName, value));
+    dispatch(changeRestaurantField(inputName, value));
   };
 
   return (
