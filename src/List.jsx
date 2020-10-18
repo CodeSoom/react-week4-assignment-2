@@ -1,16 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
-
-function selector(state) {
-  const { restaurants } = state;
-
-  return { restaurants };
-}
-
-function renderRestaurants() {
-  const { restaurants } = useSelector(selector);
-
+function renderRestaurants(restaurants) {
   return restaurants.map(({
     id,
     name,
@@ -23,12 +13,10 @@ function renderRestaurants() {
   ));
 }
 
-export default function List() {
-  const { restaurants } = useSelector(selector);
-
+export default function List({ restaurants }) {
   return (
     <ul>
-      {restaurants ? renderRestaurants() : null}
+      {restaurants ? renderRestaurants(restaurants) : null}
     </ul>
   );
 }
