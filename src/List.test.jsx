@@ -14,11 +14,11 @@ describe('List', () => {
 
   context('with restaurants', () => {
     it('"restaurants"가 보인다.', () => {
-      const { getByText } = listRender(restaurantsFixture);
+      const { container } = listRender(restaurantsFixture);
 
-      expect(getByText(/마녀주방/)).not.toBeNull();
-      expect(getByText(/시카고피자/)).not.toBeNull();
-      expect(getByText(/키와미/)).not.toBeNull();
+      restaurantsFixture.forEach(({ name, address, category }) => {
+        expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
+      });
     });
   });
 

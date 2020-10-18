@@ -13,10 +13,10 @@ describe('Item', () => {
   ));
 
   it('"restaurant"이 보인다.', () => {
-    const { getByText } = itemRender(restaurantInfo);
+    const { container } = itemRender(restaurantInfo);
 
-    expect(getByText(/마녀주방/)).not.toBeNull();
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/서울시 강남구/)).not.toBeNull();
+    const { address, category, name } = restaurantInfo;
+
+    expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
   });
 });

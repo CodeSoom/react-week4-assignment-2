@@ -5,9 +5,11 @@ const item = ({ restaurant: { name, category, address } }) => (
     {name}
     {' '}
     |
+    {' '}
     {category}
     {' '}
     |
+    {' '}
     {address}
   </li>
 );
