@@ -1,7 +1,5 @@
 import {
-  updateRestaurantName,
-  updateRestaurantType,
-  updateRestaurantLocation,
+  updateRestaurantInfo,
   addRestaurantInfo,
 } from './actions';
 import reducer, { initialState } from './reducer';
@@ -32,33 +30,30 @@ describe('reducer', () => {
     expect(state).toEqual(initialState);
   });
 
-  describe('updateRestaurantName', () => {
-    it('restaurantName을 반환합니다.', () => {
+  describe('updateRestaurantInfo', () => {
+    it('restaurantInfo name을 업데이트합니다.', () => {
       const { restaurantInfo: { name } } = reducer(
         initialState,
-        updateRestaurantName('마녀주방'),
+        updateRestaurantInfo({ key: 'name', value: '마녀주방' }),
       );
 
       expect(name).toBe('마녀주방');
     });
-  });
 
-  describe('updateRestaurantType', () => {
-    it('restaurantType을 반환합니다.', () => {
+    it('restaurantInfo type을 업데이트합니다.', () => {
       const { restaurantInfo: { type } } = reducer(
         initialState,
-        updateRestaurantType('한식'),
+        updateRestaurantInfo({ key: 'type', value: '한식' }),
       );
 
       expect(type).toBe('한식');
     });
-  });
 
-  describe('updateRestaurantLocation', () => {
-    it('restaurantLocation을 반환합니다.', () => {
+
+    it('restaurantInfo location을 업데이트합니다.', () => {
       const { restaurantInfo: { location } } = reducer(
         initialState,
-        updateRestaurantLocation('서울시 강남구'),
+        updateRestaurantInfo({ key: 'location', value: '서울시 강남구' }),
       );
 
       expect(location).toBe('서울시 강남구');
