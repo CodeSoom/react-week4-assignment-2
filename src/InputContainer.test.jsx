@@ -27,28 +27,36 @@ describe('InputContainer', () => {
     ));
   }
 
-  describe('first loaded', () => {
-    it('show aform for add restaurant\'s info', () => {
-      const { getByPlaceholderText, getByText } = renderInputContainer();
+  it('show aform for add restaurant\'s info', () => {
+    const { getByPlaceholderText, getByText } = renderInputContainer();
 
-      expect(getByPlaceholderText(/이름/)).not.toBeNull();
-      expect(getByPlaceholderText(/분류/)).not.toBeNull();
-      expect(getByPlaceholderText(/주소/)).not.toBeNull();
-      expect(getByText(/등록/)).not.toBeNull();
+    expect(getByPlaceholderText(/이름/)).not.toBeNull();
+    expect(getByPlaceholderText(/분류/)).not.toBeNull();
+    expect(getByPlaceholderText(/주소/)).not.toBeNull();
+    expect(getByText(/등록/)).not.toBeNull();
+  });
+
+  it('add restautant with input value', () => {
+    const { getByText } = renderInputContainer();
+
+    fireEvent.click(getByText(/등록/));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'addRestaurant',
     });
   });
 
-  describe('add restaurant', () => {
-    context('with existed all input value', () => {
-      it('', () => {
-        const { getByText } = renderInputContainer();
+  it('change restrant name input', () => {
+    const { getByPlaceholderText } = renderInputContainer();
+    const name = '김가네';
 
-        fireEvent.click(getByText(/등록/));
+    fireEvent.change(getByPlaceholderText(/이름/), { target: { value: name } });
 
-        expect(dispatch).toBeCalledWith({
-          type: 'addRestaurant',
-        });
-      });
+    expect(dispatch).toBeCalledWith({
+      type: 'updateRestaurantName',
+      payload: {
+        name,
+      },
     });
   });
 });
