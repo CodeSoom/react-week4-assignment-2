@@ -31,9 +31,7 @@ export default function InputReservationContainer() {
   return (
     <InputReservation
       values={reservation}
-      onChangeName={(event) => handleChange({ event, target: 'name' })}
-      onChangeCategory={(event) => handleChange({ event, target: 'category' })}
-      onChangeAddress={(event) => handleChange({ event, target: 'address' })}
+      onChange={handleChange}
       onClick={handleClick}
     />
   );

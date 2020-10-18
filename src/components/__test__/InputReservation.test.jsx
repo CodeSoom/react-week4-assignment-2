@@ -3,17 +3,17 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import InputReservation from '../InputReservation';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('InputReservation', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+  const handleChange = jest.fn();
   const handleClick = jest.fn();
 
   const renderInputReservation = () => render((
     <InputReservation
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
+      onChange={handleChange}
       onClick={handleClick}
     />
   ));
@@ -34,11 +34,11 @@ describe('InputReservation', () => {
 
     const input = screen.getByPlaceholderText('이름');
 
-    expect(handleChangeName).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
     fireEvent.change(input, { target: { value: '마녀주방' } });
 
-    expect(handleChangeName).toBeCalled();
+    expect(handleChange).toBeCalled();
   });
 
   it('onChangeCategory 테스트', () => {
@@ -46,11 +46,11 @@ describe('InputReservation', () => {
 
     const input = screen.getByPlaceholderText('분류');
 
-    expect(handleChangeCategory).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
     fireEvent.change(input, { target: { value: '한식' } });
 
-    expect(handleChangeCategory).toBeCalled();
+    expect(handleChange).toBeCalled();
   });
 
   it('onChangeAddress 테스트', () => {
@@ -58,11 +58,11 @@ describe('InputReservation', () => {
 
     const input = screen.getByPlaceholderText('주소');
 
-    expect(handleChangeAddress).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
     fireEvent.change(input, { target: { value: '서울시 강남구' } });
 
-    expect(handleChangeAddress).toBeCalled();
+    expect(handleChange).toBeCalled();
   });
 
   it('onClick 테스트', () => {

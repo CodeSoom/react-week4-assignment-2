@@ -4,9 +4,7 @@ export default function InputReservation({
   values: {
     name, category, address,
   } = { name: '', category: '', address: '' },
-  onChangeName,
-  onChangeCategory,
-  onChangeAddress,
+  onChange,
   onClick,
 }) {
   return (
@@ -16,21 +14,21 @@ export default function InputReservation({
         name="name"
         value={name}
         placeholder="이름"
-        onChange={onChangeName}
+        onChange={(event) => onChange({ target: 'name', event })}
       />
       <input
         type="text"
         name="category"
         value={category}
         placeholder="분류"
-        onChange={onChangeCategory}
+        onChange={(event) => onChange({ target: 'category', event })}
       />
       <input
         type="text"
         name="address"
         value={address}
         placeholder="주소"
-        onChange={onChangeAddress}
+        onChange={(event) => onChange({ target: 'address', event })}
       />
       <button
         type="button"
