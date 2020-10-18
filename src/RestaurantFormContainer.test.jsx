@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import FormContainer from './FormContainer';
+import FormContainer from './RestaurantFormContainer';
 
 test('FormContainer', () => {
   const dispatch = jest.fn();

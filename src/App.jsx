@@ -1,14 +1,14 @@
 import React from 'react';
 
-import FormContainer from './FormContainer';
-import ListContainer from './ListContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ListContainer />
-      <FormContainer />
+      <RestaurantsContainer />
+      <RestaurantFormContainer />
     </div>
   );
 }

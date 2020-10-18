@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   context('with restarants', () => {
     const restaurants = [
       { name: '마녀주방', category: '한식', address: '서울시 강남구' },
@@ -13,7 +13,7 @@ describe('List', () => {
 
     it('renders information of restaurants', () => {
       const { container } = render((
-        <List restaurants={restaurants} />
+        <Restaurants restaurants={restaurants} />
       ));
 
       restaurants.forEach(({ name, category, address }) => {
@@ -31,7 +31,7 @@ describe('List', () => {
       const defaultMessage = '식당이 없어요!';
 
       const { container } = render((
-        <List restaurants={restaurants} />
+        <Restaurants restaurants={restaurants} />
       ));
 
       expect(container).toHaveTextContent(defaultMessage);

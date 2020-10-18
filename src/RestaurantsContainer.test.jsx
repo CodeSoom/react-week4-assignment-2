@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 test('ListContainer', () => {
   const restaurants = [
@@ -16,7 +16,7 @@ test('ListContainer', () => {
   }));
 
   const { container } = render((
-    <ListContainer />
+    <RestaurantsContainer />
   ));
 
   expect(container).toHaveTextContent(restaurants[0].name);

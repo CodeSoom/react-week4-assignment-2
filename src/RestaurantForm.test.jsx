@@ -2,19 +2,19 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Form from './Form';
+import Form from './RestaurantForm';
 
 describe('Form', () => {
-  const handleChange = jest.fn();
-  const handleClick = jest.fn();
+  const handleChangeRestaurant = jest.fn();
+  const handleClickAddRestaurant = jest.fn();
 
-  const getChangeHandler = () => handleChange;
+  const getHandleChangeRestaurant = () => handleChangeRestaurant;
 
   const renderForm = (restaurant) => render((
     <Form
       restaurant={restaurant}
-      getChangeHandler={getChangeHandler}
-      onClick={handleClick}
+      getOnChangeRestaurant={getHandleChangeRestaurant}
+      onClickAddRestaurant={handleClickAddRestaurant}
     />
   ));
 
@@ -42,7 +42,7 @@ describe('Form', () => {
 
     const nameInput = getByDisplayValue(restaurant.name);
 
-    expect(handleChange).not.toBeCalled();
+    expect(handleChangeRestaurant).not.toBeCalled();
 
     fireEvent.change(nameInput, {
       target: {
@@ -50,7 +50,7 @@ describe('Form', () => {
       },
     });
 
-    expect(handleChange).toBeCalledTimes(1);
+    expect(handleChangeRestaurant).toBeCalledTimes(1);
   });
 
   it('calls click handler when button is clicked', () => {
@@ -58,11 +58,11 @@ describe('Form', () => {
 
     const button = getByText(/등록/);
 
-    expect(handleClick).not.toBeCalled();
+    expect(handleClickAddRestaurant).not.toBeCalled();
 
     fireEvent.click(button);
 
-    expect(handleClick).toBeCalledTimes(1);
+    expect(handleClickAddRestaurant).toBeCalledTimes(1);
   });
 
   it('cannot call click handler when one of input is blank', () => {
@@ -76,10 +76,10 @@ describe('Form', () => {
 
     const button = getByText(/등록/);
 
-    expect(handleClick).not.toBeCalled();
+    expect(handleClickAddRestaurant).not.toBeCalled();
 
     fireEvent.click(button);
 
-    expect(handleClick).not.toBeCalled();
+    expect(handleClickAddRestaurant).not.toBeCalled();
   });
 });

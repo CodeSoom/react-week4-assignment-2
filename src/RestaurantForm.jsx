@@ -2,7 +2,7 @@ import React from 'react';
 
 const isBlank = (string) => string.trim().length === 0;
 
-export default function Form({ restaurant, getChangeHandler, onClick }) {
+export default function Form({ restaurant, getOnChangeRestaurant, onClickAddRestaurant }) {
   const placeholders = {
     name: '이름',
     category: '분류',
@@ -18,11 +18,11 @@ export default function Form({ restaurant, getChangeHandler, onClick }) {
           key={key}
           name={key}
           value={value}
-          onChange={getChangeHandler(key)}
+          onChange={getOnChangeRestaurant(key)}
           placeholder={placeholders[key]}
         />
       ))}
-      <button type="button" onClick={onClick} disabled={!isAddable}>등록</button>
+      <button type="button" onClick={onClickAddRestaurant} disabled={!isAddable}>등록</button>
     </div>
   );
 }
