@@ -9,6 +9,7 @@ test('Input', () => {
 
   const { getByDisplayValue, getByPlaceholderText } = render((
     <Input
+      name="이름"
       placeholder="이름"
       value="시카고피자"
       onChange={handleChange}

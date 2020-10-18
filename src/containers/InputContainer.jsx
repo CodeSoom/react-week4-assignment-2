@@ -50,16 +50,19 @@ export default function InputContainer() {
   return (
     <div>
       <Input
+        name="name"
         placeholder="이름"
         value={name}
         onChange={(event) => onChangeRestaurantField({ fieldKey: 'name', eventValue: event.target.value })}
       />
       <Input
+        name="category"
         placeholder="분류"
         value={category}
         onChange={(event) => onChangeRestaurantField({ fieldKey: 'category', eventValue: event.target.value })}
       />
       <Input
+        name="address"
         placeholder="주소"
         value={address}
         onChange={(event) => onChangeRestaurantField({ fieldKey: 'address', eventValue: event.target.value })}
