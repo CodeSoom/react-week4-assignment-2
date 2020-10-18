@@ -3,9 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  updateRestaurantName,
-  updateRestaurantType,
-  updateRestaurantLocation,
+  updateRestaurantInfo,
   addRestaurantInfo,
 } from './actions';
 
@@ -21,15 +19,18 @@ export default function FormContainer() {
   }
 
   function handleChangeRestaurantName(event) {
-    dispatch(updateRestaurantName(event.target.value));
+    const updateInfo = { type: 'name', value: event.target.value };
+    dispatch(updateRestaurantInfo(updateInfo));
   }
 
   function handleChangeRestaurantType(event) {
-    dispatch(updateRestaurantType(event.target.value));
+    const updateInfo = { type: 'type', value: event.target.value };
+    dispatch(updateRestaurantInfo(updateInfo));
   }
 
   function handleChangeRestaurantLocation(event) {
-    dispatch(updateRestaurantLocation(event.target.value));
+    const updateInfo = { type: 'location', value: event.target.value };
+    dispatch(updateRestaurantInfo(updateInfo));
   }
 
   return (
