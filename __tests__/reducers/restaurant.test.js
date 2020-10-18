@@ -48,25 +48,25 @@ describe('restaurant reducer', () => {
       name,
       category,
       address,
-      restaurants: [],
+      items: [],
     }, addRestaurant());
 
     context('add restaurnt category', () => {
-      it('appends a new state into tasks', () => {
+      it('appends a new state into restaurant', () => {
         const state = reduceAddRestaurant({
           name: '마녀사냥',
           category: '한식',
           address: '서울시 성동구',
         });
 
-        expect(state.restaurants).toHaveLength(1);
-        expect(state.restaurants[0].id).not.toBeUndefined();
-        expect(state.restaurants[0].name).toBe('마녀사냥');
-        expect(state.restaurants[0].category).toBe('한식');
-        expect(state.restaurants[0].address).toBe('서울시 성동구');
+        expect(state.items).toHaveLength(1);
+        expect(state.items[0].id).not.toBeUndefined();
+        expect(state.items[0].name).toBe('마녀사냥');
+        expect(state.items[0].category).toBe('한식');
+        expect(state.items[0].address).toBe('서울시 성동구');
       });
 
-      it('clear name', () => {
+      it('clear input value', () => {
         const state = reduceAddRestaurant({
           name: '마녀사냥',
           category: '한식',
@@ -74,25 +74,7 @@ describe('restaurant reducer', () => {
         });
 
         expect(state.name).toBe('');
-      });
-
-      it('clear category', () => {
-        const state = reduceAddRestaurant({
-          name: '마녀사냥',
-          category: '한식',
-          address: '서울시 성동구',
-        });
-
         expect(state.category).toBe('');
-      });
-
-      it('clear address', () => {
-        const state = reduceAddRestaurant({
-          name: '마녀사냥',
-          category: '한식',
-          address: '서울시 성동구',
-        });
-
         expect(state.address).toBe('');
       });
     });
@@ -105,7 +87,7 @@ describe('restaurant reducer', () => {
           address: '',
         });
 
-        expect(state.restaurants).toHaveLength(0);
+        expect(state.items).toHaveLength(0);
       });
     });
   });

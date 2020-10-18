@@ -13,9 +13,11 @@ test('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    name: '마녀주방',
-    category: '한식',
-    address: '서울시 성동구',
+    restaurant: {
+      name: '마녀주방',
+      category: '한식',
+      address: '서울시 성동구',
+    },
   }));
 
   const { getByText, getByDisplayValue, getByPlaceholderText } = render((

@@ -6,7 +6,7 @@ import List from '../src/components/List';
 
 describe('List', () => {
   const renderList = (restaurants) => render((
-    <List items={restaurants} />
+    <List restaurants={restaurants} />
   ));
 
   context('renderList is exist', () => {
