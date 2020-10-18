@@ -64,7 +64,7 @@ describe('reducer', () => {
         type: 'notExistedActionType',
       });
 
-      it('return state', () => {
+      it('returns initial state', () => {
         const state = reducer(undefined, action());
 
         expect(state.restaurants).toHaveLength(0);
