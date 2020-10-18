@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addRestaurant } from './actions';

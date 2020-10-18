@@ -21,4 +21,17 @@ describe('reducer', () => {
       expect(state.restaurants).toHaveLength(1);
     });
   });
+
+  describe('updateRestaurantName', () => {
+    it('changes new restaurant name', () => {
+      const state = reducer(
+        {
+          name: '마녀주방',
+        },
+        updateRestaurantName('김가네'),
+      );
+
+      expect(state.name).toBe('김가네');
+    });
+  });
 });

@@ -17,15 +17,19 @@ describe('InputContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  function renderInpuContainer() {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  function renderInputContainer() {
     return render((
       <InputContainer />
     ));
   }
 
   describe('first loaded', () => {
-    it('show aform for add restaurant\'info', () => {
-      const { getByPlaceholderText, getByText } = renderInpuContainer();
+    it('show aform for add restaurant\'s info', () => {
+      const { getByPlaceholderText, getByText } = renderInputContainer();
 
       expect(getByPlaceholderText(/이름/)).not.toBeNull();
       expect(getByPlaceholderText(/분류/)).not.toBeNull();
@@ -37,7 +41,7 @@ describe('InputContainer', () => {
   describe('add restaurant', () => {
     context('with existed all input value', () => {
       it('', () => {
-        const { getByText } = renderInpuContainer();
+        const { getByText } = renderInputContainer();
 
         fireEvent.click(getByText(/등록/));
 
