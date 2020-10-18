@@ -73,4 +73,18 @@ describe('InputContainer', () => {
       },
     });
   });
+
+  it('change restrant location input', () => {
+    const { getByPlaceholderText } = renderInputContainer();
+    const location = '서울시 성북구';
+
+    fireEvent.change(getByPlaceholderText(/장소/), { target: { value: location } });
+
+    expect(dispatch).toBeCalledWith({
+      type: 'updateRestaurantLocation',
+      payload: {
+        location,
+      },
+    });
+  });
 });
