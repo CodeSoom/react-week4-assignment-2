@@ -13,7 +13,7 @@ function addRestaurant(value) {
 function changeRestaurantField(name, value) {
   return {
     type: CHANGE_RESTAURANT_FIELD,
-    payload: { name: value },
+    payload: { [name]: value },
   };
 }
 
