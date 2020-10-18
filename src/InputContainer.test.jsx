@@ -42,7 +42,7 @@ describe('InputContainer', () => {
         fireEvent.click(getByText(/등록/));
 
         expect(dispatch).toBeCalledWith({
-          type: 'add restaurant',
+          type: 'addRestaurant',
         });
       });
     });
