@@ -40,7 +40,7 @@ test('RestaurantFormContainer', () => {
   expect(dispatch).toBeCalledWith({
     type: 'updateRestaurant',
     payload: {
-      field: 'name',
+      name: 'name',
       value: '마녀식당',
     },
   });

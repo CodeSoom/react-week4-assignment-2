@@ -1,10 +1,12 @@
 export function addRestaurant() {
-  return { type: 'addRestaurant' };
+  return {
+    type: 'addRestaurant',
+  };
 }
 
-export function updateRestaurant(field, value) {
+export function updateRestaurant(name, value) {
   return {
     type: 'updateRestaurant',
-    payload: { field, value },
+    payload: { name, value },
   };
 }
