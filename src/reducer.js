@@ -12,20 +12,17 @@ const initialState = {
 
 const reducers = {
   addRestaurant(state) {
-    const { newId, restaurant, restaurants } = state;
+    const { newId, restaurant: inputRestaurant, restaurants } = state;
+
+    const restaurant = mapValues(inputRestaurant, (value) => value.trim());
 
     return ({
       newId: newId + 1,
-      restaurant: {
-        ...mapValues(restaurant, () => ''),
-      },
-      restaurants: [
-        ...restaurants,
-        {
-          id: newId,
-          ...mapValues(restaurant, (value) => value.trim()),
-        },
-      ],
+      restaurant: { ...initialState.restaurant },
+      restaurants: [...restaurants, {
+        ...restaurant,
+        id: newId,
+      }],
     });
   },
   updateRestaurant(state, action) {
