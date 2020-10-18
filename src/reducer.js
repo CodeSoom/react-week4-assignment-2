@@ -38,6 +38,7 @@ const initialState = {
     },
   ],
 };
+
 const reduce = {
   updateText: (state, action) => {
     const changeInput = state.inputs.map((input) => ({
