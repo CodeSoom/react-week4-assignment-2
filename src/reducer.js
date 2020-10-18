@@ -1,6 +1,6 @@
 const initialState = {
+  newId: 100,
   restaurant: {
-    id: 100,
     name: '',
     category: '',
     address: '',
