@@ -11,7 +11,9 @@ const addRestaurant = ({ state }) => {
   } = state;
 
   return {
-    ...state,
+    name: '',
+    category: '',
+    location: '',
     restaurants: [...restaurants, { name, category, location }],
   };
 };
