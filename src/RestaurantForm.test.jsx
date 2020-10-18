@@ -35,7 +35,7 @@ describe('Form', () => {
     expect(getByText(/등록/));
   });
 
-  it('calls change handler when one of fields change', () => {
+  it('calls change handler when one of values (name) change', () => {
     const { getByDisplayValue } = renderRestaurantForm(restaurant);
 
     const nameInput = getByDisplayValue(restaurant.name);

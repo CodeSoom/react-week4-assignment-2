@@ -2,7 +2,7 @@ import reducer from './reducer';
 import { updateRestaurant, addRestaurant } from './actions';
 
 describe('reducer', () => {
-  const previousState = {
+  const initialState = {
     newId: 103,
     restaurant: {
       name: '키와미',
@@ -14,39 +14,34 @@ describe('reducer', () => {
 
   describe('addRestaurant', () => {
     it('add restaurant, empty state and update id', () => {
-      const state = reducer(previousState, addRestaurant());
+      const state = reducer(initialState, addRestaurant());
 
-      expect(state.newId).toBe(previousState.newId + 1);
+      expect(state.newId).toBe(initialState.newId + 1);
       expect(state.restaurant).toEqual({
         name: '',
         category: '',
         address: '',
       });
       expect(state.restaurants).toContainEqual({
-        ...previousState.restaurant,
-        id: previousState.newId,
+        ...initialState.restaurant,
+        id: initialState.newId,
       });
     });
   });
 
   describe('updateRestaurant', () => {
-    it('update each field', () => {
-      const restaurant = {
-        name: '마녀식당',
-        category: '중식',
-        address: '우주',
-      };
+    it('updates value correctly', () => {
+      const state = reducer(initialState, updateRestaurant(
+        'name',
+        '마녀식당',
+      ));
 
-      Object.entries(restaurant).forEach(([field, value]) => {
-        const state = reducer(previousState, updateRestaurant(field, value));
-
-        expect(state.restaurant[field]).toBe(restaurant[field]);
-      });
+      expect(state.restaurant.name).toBe('마녀식당');
     });
   });
 
   it('returns intial state when state is not defined', () => {
-    const initialState = {
+    expect(reducer()).toEqual({
       newId: 100,
       restaurant: {
         name: '',
@@ -54,8 +49,6 @@ describe('reducer', () => {
         address: '',
       },
       restaurants: [],
-    };
-
-    expect(reducer()).toEqual(initialState);
+    });
   });
 });
