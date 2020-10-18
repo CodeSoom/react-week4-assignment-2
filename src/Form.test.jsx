@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import { inputTypes, initRestaurant } from './fixtures/fixtures';
+import { initRestaurant } from './fixtures/fixtures';
 import Form from './Form';
 
 describe('Form', () => {
@@ -18,8 +18,8 @@ describe('Form', () => {
   it('"input"이 보인다.', () => {
     const { getByPlaceholderText } = formRender(initRestaurant);
 
-    inputTypes.forEach(({ placeholderName }) => {
-      expect(getByPlaceholderText(placeholderName)).not.toBeNull();
+    ['이름', '분류', '주소'].forEach((placeholder) => {
+      expect(getByPlaceholderText(placeholder)).not.toBeNull();
     });
   });
 
