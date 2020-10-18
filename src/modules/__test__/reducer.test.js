@@ -88,11 +88,9 @@ describe('reducer', () => {
     context('without reservation address', () => {
       it('not append reservation', () => {
         const state = reduceAddReservation({
-          reservation: {
-            name: 'New Name',
-            category: 'New Category',
-            address: '',
-          },
+          name: 'New Name',
+          category: 'New Category',
+          address: '',
         });
 
         expect(state.reservations).toHaveLength(0);

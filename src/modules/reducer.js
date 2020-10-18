@@ -43,30 +43,6 @@ export default function reducer(state = initialState, action) {
       return targets[target];
     },
 
-    updateReservationName: () => ({
-      ...state,
-      reservation: {
-        ...state.reservation,
-        name: action.payload.reservationName,
-      },
-    }),
-
-    updateReservationCategory: () => ({
-      ...state,
-      reservation: {
-        ...state.reservation,
-        category: action.payload.reservationCategory,
-      },
-    }),
-
-    updateReservationAddress: () => ({
-      ...state,
-      reservation: {
-        ...state.reservation,
-        address: action.payload.reservationAddress,
-      },
-    }),
-
     addReservation: () => {
       const {
         newId,
