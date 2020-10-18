@@ -22,17 +22,18 @@ describe('Item', () => {
 
   function renderRestaurantForm() {
     return render((
-    <RestaurantForm
-      form={restaurant}
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
-      onClick={handleClickAddRestaurant}
-    />
-  ));
+      <RestaurantForm
+        form={restaurant}
+        onChangeName={handleChangeName}
+        onChangeCategory={handleChangeCategory}
+        onChangeAddress={handleChangeAddress}
+        onClick={handleClickAddRestaurant}
+      />
+    ));
+  }
 
   it('chages a new name', () => {
-    renderRestaurantForm();
+    const { getByPlaceholderText } = renderRestaurantForm();
 
     expect(handleChangeName).not.toBeCalled();
 
@@ -42,7 +43,7 @@ describe('Item', () => {
   });
 
   it('chages a new category', () => {
-    renderRestaurantForm();
+    const { getByPlaceholderText } = renderRestaurantForm();
 
     expect(handleChangeCategory).not.toBeCalled();
 
@@ -52,7 +53,7 @@ describe('Item', () => {
   });
 
   it('chages a new address', () => {
-    renderRestaurantForm();
+    const { getByPlaceholderText } = renderRestaurantForm();
 
     expect(handleChangeAddress).not.toBeCalled();
 
@@ -62,8 +63,8 @@ describe('Item', () => {
   });
 
   it('clicks add button', () => {
-    renderRestaurantForm();
-    
+    const { getByText } = renderRestaurantForm();
+
     expect(handleClickAddRestaurant).not.toBeCalled();
 
     fireEvent.click(getByText('등록'));
