@@ -37,9 +37,9 @@ describe('List', () => {
     const restaurants = [];
 
     it('nothing renders restaurants', () => {
-      const { getByTitle } = listRender(restaurants);
+      const { container } = listRender(restaurants);
 
-      expect(getByTitle(/empty/)).not.toBeNull();
+      expect(container).toBeEmptyDOMElement();
     });
   });
 });
