@@ -63,7 +63,7 @@ describe('Form', () => {
   });
 
   context('restaurantInfo가 주어졌을 때', () => {
-    const restaurantInfo = { name: '마녀주방', type: '한식', location: '서울시 강남구' };
+    const restaurantInfo = { name: '마녀주방', category: '한식', address: '서울시 강남구' };
 
     it('이름 Input에 주어진 입력 value가 출력된다.', () => {
       const { getByPlaceholderText } = renderForm(restaurantInfo);
@@ -76,14 +76,14 @@ describe('Form', () => {
       const { getByPlaceholderText } = renderForm(restaurantInfo);
       const input = getByPlaceholderText('분류');
 
-      expect(input).toHaveDisplayValue(restaurantInfo.type);
+      expect(input).toHaveDisplayValue(restaurantInfo.category);
     });
 
     it('주소 Input에 주어진 입력 value가 출력된다.', () => {
       const { getByPlaceholderText } = renderForm(restaurantInfo);
       const input = getByPlaceholderText('주소');
 
-      expect(input).toHaveDisplayValue(restaurantInfo.location);
+      expect(input).toHaveDisplayValue(restaurantInfo.address);
     });
   });
 

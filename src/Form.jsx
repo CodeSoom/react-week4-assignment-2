@@ -5,7 +5,7 @@ export default function Form({
   handleClickAdd,
   handleChangeRestaurantInfo,
 }) {
-  const { name, type, location } = restaurantInfo;
+  const { name, category, address } = restaurantInfo;
 
   return (
     <>
@@ -18,13 +18,13 @@ export default function Form({
       <input
         name="category"
         placeholder="분류"
-        value={type}
+        value={category}
         onChange={handleChangeRestaurantInfo}
       />
       <input
         name="address"
         placeholder="주소"
-        value={location}
+        value={address}
         onChange={handleChangeRestaurantInfo}
       />
       <button

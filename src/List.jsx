@@ -9,8 +9,8 @@ export default function List({ restaurantInfos }) {
         <Item
           key={restaurantInfo.id}
           name={restaurantInfo.name}
-          type={restaurantInfo.type}
-          location={restaurantInfo.location}
+          category={restaurantInfo.category}
+          address={restaurantInfo.address}
         />
       ))}
     </ul>
