@@ -8,7 +8,7 @@ const initialState = {
   restaurants: [],
 };
 
-const reduces = {
+const reducers = {
   updateRestaurantName: (state, action) => ({
     ...state,
     restaurant: {
@@ -59,10 +59,14 @@ const reduces = {
   },
 };
 
+function unknownReducer(state) {
+  return state;
+}
+
 export default function reducer(state = initialState, action) {
-  if (!reduces[action.type]) {
+  if (typeof action === 'undefined') {
     return state;
   }
 
-  return reduces[action.type](state, action);
+  return (reducers[action.type] || unknownReducer)(state, action);
 }
