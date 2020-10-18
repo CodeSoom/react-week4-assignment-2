@@ -2,6 +2,7 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
+import { inputTypes, initRestaurant } from './fixtures/fixtures';
 import Form from './Form';
 
 describe('Form', () => {
@@ -14,16 +15,8 @@ describe('Form', () => {
     />
   ));
 
-  const inputTypes = [
-    { placeholderName: '이름', inputName: 'name' },
-    { placeholderName: '분류', inputName: 'category' },
-    { placeholderName: '주소', inputName: 'address' },
-  ];
-
-  const restaurant = { name: '', category: '', address: '' };
-
   it('"input"이 보인다.', () => {
-    const { getByPlaceholderText } = formRender(restaurant);
+    const { getByPlaceholderText } = formRender(initRestaurant);
 
     inputTypes.forEach(({ placeholderName }) => {
       expect(getByPlaceholderText(placeholderName)).not.toBeNull();
@@ -31,7 +24,7 @@ describe('Form', () => {
   });
 
   it('handleChange 호출을 확인한다.', () => {
-    const { getByPlaceholderText } = formRender(restaurant);
+    const { getByPlaceholderText } = formRender(initRestaurant);
 
     expect(handleChange).not.toBeCalled();
 
