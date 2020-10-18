@@ -4,7 +4,7 @@ import Input from './Input';
 
 export default function Form({ inputs, onChange, onClick }) {
   return (
-    <p>
+    <div>
       {inputs.map((input) => (
         <Input
           key={input.name}
@@ -17,6 +17,6 @@ export default function Form({ inputs, onChange, onClick }) {
       <button type="button" onClick={onClick}>
         등록
       </button>
-    </p>
+    </div>
   );
 }
