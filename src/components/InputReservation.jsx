@@ -1,9 +1,12 @@
 import React from 'react';
 
 export default function InputReservation({
-  name, onChangeName,
-  category, onChangeCategory,
-  address, onChangeAddress,
+  values: {
+    name, category, address,
+  } = { name: '', category: '', address: '' },
+  onChangeName,
+  onChangeCategory,
+  onChangeAddress,
   onClick,
 }) {
   return (

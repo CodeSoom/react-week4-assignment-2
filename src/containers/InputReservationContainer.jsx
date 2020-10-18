@@ -10,8 +10,8 @@ import {
 } from '../modules/actions';
 
 export default function InputReservationContainer() {
-  const { name, category, address } = useSelector((state) => ({
-    ...state.reservation,
+  const { reservation } = useSelector((state) => ({
+    reservation: state.reservation,
   }));
 
   const dispatch = useDispatch();
@@ -34,15 +34,10 @@ export default function InputReservationContainer() {
 
   return (
     <InputReservation
-      name={name}
+      values={reservation}
       onChangeName={handleChangeReservationName}
-
-      category={category}
       onChangeCategory={handleChangeReservationCategory}
-
-      address={address}
       onChangeAddress={handleChangeReservationAddress}
-
       onClick={handleClick}
     />
   );
