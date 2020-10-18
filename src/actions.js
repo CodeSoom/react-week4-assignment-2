@@ -21,3 +21,12 @@ export function updateRestaurantCategory(category) {
     },
   };
 }
+
+export function updateRestaurantLocation(location) {
+  return {
+    type: 'updateRestaurantLocation',
+    payload: {
+      location,
+    },
+  };
+}

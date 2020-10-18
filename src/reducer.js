@@ -28,10 +28,16 @@ const updateRestaurantCategory = ({ state, payload }) => ({
   category: payload.category,
 });
 
+const updateRestaurantLocation = ({ state, payload }) => ({
+  ...state,
+  location: payload.location,
+});
+
 const reducers = {
   addRestaurant,
   updateRestaurantName,
   updateRestaurantCategory,
+  updateRestaurantLocation,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
