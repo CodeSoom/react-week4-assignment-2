@@ -11,24 +11,22 @@ test('InputReservationContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    reservationName: '',
-    reservationCategory: '',
-    reservationAddress: '',
+    reservation: {
+      name: '',
+      category: '',
+      address: '',
+    },
   }));
 
   render(<InputReservationContainer />);
 
   const { getByPlaceholderText, getByRole } = screen;
-  const reservationNameInput = getByPlaceholderText('이름');
-  const reservationCategoryInput = getByPlaceholderText('분류');
-  const reservationAddressInput = getByPlaceholderText('주소');
-  const reservationAddButton = getByRole('button', { name: '등록' });
 
-  fireEvent.change(reservationNameInput, { target: { value: 'New Name' } });
-  fireEvent.change(reservationCategoryInput, { target: { value: 'New Category' } });
-  fireEvent.change(reservationAddressInput, { target: { value: 'New Address' } });
+  fireEvent.change(getByPlaceholderText('이름'), { target: { value: 'New Name' } });
+  fireEvent.change(getByPlaceholderText('분류'), { target: { value: 'New Category' } });
+  fireEvent.change(getByPlaceholderText('주소'), { target: { value: 'New Address' } });
 
-  fireEvent.click(reservationAddButton);
+  fireEvent.click(getByRole('button', { name: '등록' }));
 
   expect(dispatch).toBeCalledWith({
     type: 'addReservation',
