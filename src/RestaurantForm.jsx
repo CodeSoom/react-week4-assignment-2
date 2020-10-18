@@ -11,9 +11,21 @@ export default function RestaurantForm({
 }) {
   return (
     <div>
-      <Input value={name} onChage={onChangeName} />
-      <Input value={category} onChage={onChangeCategory} />
-      <Input value={address} onChage={onChangeAddress} />
+      <Input
+        placehoder="이름"
+        value={name}
+        onChage={onChangeName}
+      />
+      <Input
+        placehoder="분류"
+        value={category}
+        onChage={onChangeCategory}
+      />
+      <Input
+        placehoder="주소"
+        value={address}
+        onChage={onChangeAddress}
+      />
       <button type="button" onClick={onClick}>등록</button>
     </div>
   );

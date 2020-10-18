@@ -1,7 +1,12 @@
 import React from 'react';
 
-export default function Input() {
+export default function Input({ placehoder, value, onChange }) {
   return (
-    <input type="text" />
+    <input
+      type="text"
+      placeholder={placehoder}
+      value={value}
+      onChange={onChange}
+    />
   );
 }

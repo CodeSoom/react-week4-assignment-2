@@ -16,6 +16,10 @@ describe('Item', () => {
   const handleChangeAddress = jest.fn();
   const handleClickAddRestaurant = jest.fn();
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const { getByPlaceholderText, getByText } = render((
     <RestaurantForm
       form={restaurant}
@@ -57,7 +61,7 @@ describe('Item', () => {
   it('clicks add button', () => {
     expect(handleClickAddRestaurant).not.toBeCalled();
 
-    fireEvent.click(getByText('완료'));
+    fireEvent.click(getByText('등록'));
 
     expect(handleClickAddRestaurant).toBeCalledWith(1);
   });
