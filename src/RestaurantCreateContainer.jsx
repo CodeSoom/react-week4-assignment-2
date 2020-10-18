@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Form from './Form';
+import RestaurantForm from './RestaurantForm';
 
 export default function RestaurantCreateContainer() {
   return (
-    <Form />
+    <RestaurantForm />
   );
 }
