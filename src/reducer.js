@@ -1,8 +1,22 @@
 const initialState = {
-  newId: 100,
-  name: '',
-  category: '',
-  address: '',
+  newId: 103,
+  inputs: [
+    {
+      name: 'name',
+      placeholder: '이름',
+      value: '',
+    },
+    {
+      name: 'category',
+      placeholder: '분류',
+      value: '',
+    },
+    {
+      name: 'address',
+      placeholder: '주소',
+      value: '',
+    },
+  ],
   restaurants: [
     {
       id: 101,
@@ -24,7 +38,49 @@ const initialState = {
     },
   ],
 };
+const reduce = {
+  updateText: (state, action) => {
+    const changeInput = state.inputs.map((input) => ({
+      ...input,
+      value: input.name === action.payload.name ? action.payload.value : input.value,
+    }));
 
-export default function reducer(state = initialState) {
-  return state;
+    return {
+      ...state,
+      inputs: changeInput,
+    };
+  },
+
+  addRestaurant: (state) => {
+    const { newId, inputs, restaurants } = state;
+    const [name, category, address] = inputs;
+    const initializeInputs = inputs.map((input) => ({
+      ...input,
+      value: '',
+    }));
+
+    if (!inputs) {
+      return state;
+    }
+
+    return {
+      ...state,
+      newId: newId + 1,
+      inputs: initializeInputs,
+      restaurants: [...restaurants, {
+        id: newId,
+        name: name.value,
+        category: category.value,
+        address: address.value,
+      }],
+    };
+  },
+};
+
+export default function reducer(state = initialState, action) {
+  if (!reduce[action.type]) {
+    return state;
+  }
+
+  return reduce[action.type](state, action);
 }
