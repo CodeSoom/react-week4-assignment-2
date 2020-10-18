@@ -14,9 +14,9 @@ test('ListContainer', () => {
     { name: '바토스', type: '양식', address: '이태원동' },
   ];
 
-  useSelector.mockImplementation((selector) => selector({
+  useSelector.mockImplementation((selector) => (selector({
     reservations,
-  }));
+  })));
 
   const { getByText } = render((
     <ListContainer />
