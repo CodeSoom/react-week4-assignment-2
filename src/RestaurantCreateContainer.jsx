@@ -6,7 +6,7 @@ import actions from './actions';
 
 import Input from './Input';
 
-export default function InputContainer() {
+export default function RestaurantCreateContainer() {
   const dispatch = useDispatch();
   const { restaurant } = useSelector((state) => state);
   const { name, category, address } = restaurant;
