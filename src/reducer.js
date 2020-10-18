@@ -40,15 +40,13 @@ const reducers = {
       },
     });
   },
-};
-
-export default (state = initialState, action = {}) => {
-  const { type } = action;
-  const reducer = reducers[type];
-
-  if (!reducer) {
+  default(state) {
     return state;
-  }
-
-  return reducer(state, action);
+  },
 };
+
+export default function reducer(state = initialState, action = {}) {
+  const { type } = action;
+
+  return (reducers[type] || reducers.default)(state, action);
+}
