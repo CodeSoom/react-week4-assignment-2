@@ -24,7 +24,7 @@ describe('reducer', () => {
   it('잘못된 action을 입력하면 현재 state이 반환합니다.', () => {
     const state = reducer(
       initialState,
-      { type: 'incorrectType' },
+      { type: 'incorrectType', payload: { type: '', value: '' } },
     );
 
     expect(state).toEqual(initialState);
