@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import FormContainer from './RestaurantFormContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
-test('FormContainer', () => {
+test('RestaurantFormContainer', () => {
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
@@ -19,7 +19,7 @@ test('FormContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   const { getByDisplayValue, getByText } = render((
-    <FormContainer />
+    <RestaurantFormContainer />
   ));
 
   expect(getByDisplayValue(/키와미/)).toBeInTheDocument();

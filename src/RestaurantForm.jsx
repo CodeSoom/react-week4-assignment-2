@@ -2,27 +2,42 @@ import React from 'react';
 
 const isBlank = (string) => string.trim().length === 0;
 
-export default function Form({ restaurant, getOnChangeRestaurant, onClickAddRestaurant }) {
-  const placeholders = {
-    name: '이름',
-    category: '분류',
-    address: '주소',
-  };
+export default function RestaurantForm({
+  restaurant,
+  onChangeRestaurantField,
+  onClickAddRestaurant,
+}) {
+  const { name, category, address } = restaurant;
 
-  const isAddable = Object.values(restaurant).every((value) => !isBlank(value));
+  const isOneOfValueBlank = Object.values(restaurant).some(isBlank);
 
   return (
     <div>
-      {Object.entries(restaurant).map(([key, value]) => (
-        <input
-          key={key}
-          name={key}
-          value={value}
-          onChange={getOnChangeRestaurant(key)}
-          placeholder={placeholders[key]}
-        />
-      ))}
-      <button type="button" onClick={onClickAddRestaurant} disabled={!isAddable}>등록</button>
+      <input
+        name="name"
+        placeholder="이름"
+        value={name}
+        onChange={onChangeRestaurantField}
+      />
+      <input
+        name="category"
+        placeholder="분류"
+        value={category}
+        onChange={onChangeRestaurantField}
+      />
+      <input
+        name="address"
+        placeholder="주소"
+        value={address}
+        onChange={onChangeRestaurantField}
+      />
+      <button
+        type="button"
+        onClick={onClickAddRestaurant}
+        disabled={isOneOfValueBlank}
+      >
+        등록
+      </button>
     </div>
   );
 }

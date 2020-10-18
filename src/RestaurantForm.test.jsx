@@ -2,18 +2,16 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Form from './RestaurantForm';
+import RestaurantForm from './RestaurantForm';
 
 describe('Form', () => {
-  const handleChangeRestaurant = jest.fn();
+  const handleChangeRestaurantField = jest.fn();
   const handleClickAddRestaurant = jest.fn();
 
-  const getHandleChangeRestaurant = () => handleChangeRestaurant;
-
-  const renderForm = (restaurant) => render((
-    <Form
+  const renderRestaurantForm = (restaurant) => render((
+    <RestaurantForm
       restaurant={restaurant}
-      getOnChangeRestaurant={getHandleChangeRestaurant}
+      onChangeRestaurantField={handleChangeRestaurantField}
       onClickAddRestaurant={handleClickAddRestaurant}
     />
   ));
@@ -29,7 +27,7 @@ describe('Form', () => {
   };
 
   it('renders elements', () => {
-    const { getByDisplayValue, getByText } = renderForm(restaurant);
+    const { getByDisplayValue, getByText } = renderRestaurantForm(restaurant);
 
     expect(getByDisplayValue(restaurant.name)).toBeInTheDocument();
     expect(getByDisplayValue(restaurant.category)).toBeInTheDocument();
@@ -38,23 +36,24 @@ describe('Form', () => {
   });
 
   it('calls change handler when one of fields change', () => {
-    const { getByDisplayValue } = renderForm(restaurant);
+    const { getByDisplayValue } = renderRestaurantForm(restaurant);
 
     const nameInput = getByDisplayValue(restaurant.name);
 
-    expect(handleChangeRestaurant).not.toBeCalled();
+    expect(handleChangeRestaurantField).not.toBeCalled();
 
     fireEvent.change(nameInput, {
       target: {
+        name: 'name',
         value: 'something',
       },
     });
 
-    expect(handleChangeRestaurant).toBeCalledTimes(1);
+    expect(handleChangeRestaurantField).toBeCalledTimes(1);
   });
 
   it('calls click handler when button is clicked', () => {
-    const { getByText } = renderForm(restaurant);
+    const { getByText } = renderRestaurantForm(restaurant);
 
     const button = getByText(/등록/);
 
@@ -66,13 +65,11 @@ describe('Form', () => {
   });
 
   it('cannot call click handler when one of input is blank', () => {
-    const blankRestaurant = {
+    const { getByText } = renderRestaurantForm({
       name: '',
-      category: '일식',
-      address: '서울',
-    };
-
-    const { getByText } = renderForm(blankRestaurant);
+      category: 'not blank',
+      address: 'not blank',
+    });
 
     const button = getByText(/등록/);
 

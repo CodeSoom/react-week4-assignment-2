@@ -5,7 +5,7 @@ import { addRestaurant, updateRestaurant } from './actions';
 
 import RestaurantForm from './RestaurantForm';
 
-export default function FormContainer() {
+export default function RestaurantFormContainer() {
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
@@ -16,15 +16,17 @@ export default function FormContainer() {
     dispatch(addRestaurant());
   };
 
-  const getHandleChagneRestaurant = (field) => (event) => {
-    dispatch(updateRestaurant(field, event.target.value));
+  const handleChangeRestaurantField = (event) => {
+    const { name, value } = event.target;
+
+    dispatch(updateRestaurant(name, value));
   };
 
   return (
     <RestaurantForm
       restaurant={restaurant}
-      onClickAdd={handleClickAddRestaurant}
-      getOnChangeRestaurant={getHandleChagneRestaurant}
+      onClickAddRestaurant={handleClickAddRestaurant}
+      onChangeRestaurantField={handleChangeRestaurantField}
     />
   );
 }
