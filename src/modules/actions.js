@@ -1,3 +1,10 @@
+export function updateReservation({ target, value }) {
+  return {
+    type: 'updateReservation',
+    payload: { target, value },
+  };
+}
+
 export function updateReservationName(reservationName) {
   return {
     type: 'updateReservationName',

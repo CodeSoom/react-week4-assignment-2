@@ -1,44 +1,38 @@
 import reducer from '../reducer';
 
 import {
-  updateReservationName,
-  updateReservationCategory,
-  updateReservationAddress,
+  updateReservation,
   addReservation,
 } from '../actions';
 
 describe('reducer', () => {
-  describe('updateReservationName', () => {
-    it('changes reservation title', () => {
+  describe('updateReservation', () => {
+    it('changes reservation name', () => {
       const state = reducer({
         reservation: {
           name: '',
         },
-      }, updateReservationName('New Name'));
+      }, updateReservation({ target: 'name', value: 'New Name' }));
 
       expect(state.reservation.name).toBe('New Name');
     });
-  });
 
-  describe('updateReservationCategory', () => {
     it('changes reservation category', () => {
       const state = reducer({
         reservation: {
           category: '',
         },
-      }, updateReservationCategory('New Category'));
+      }, updateReservation({ target: 'category', value: 'New Category' }));
 
       expect(state.reservation.category).toBe('New Category');
     });
-  });
 
-  describe('updateReservationAddress', () => {
     it('changes reservation address', () => {
       const state = reducer({
         reservation: {
           address: '',
         },
-      }, updateReservationAddress('New Address'));
+      }, updateReservation({ target: 'address', value: 'New Address' }));
 
       expect(state.reservation.address).toBe('New Address');
     });
