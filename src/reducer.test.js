@@ -51,4 +51,17 @@ describe('reducer', () => {
       expect(state.category).toBe('한식');
     });
   });
+
+  describe('updateRestaurantLocation', () => {
+    it('changes new restaurant location', () => {
+      const state = reducer(
+        {
+          location: '서울시 강남구',
+        },
+        updateRestaurantLocation('서울시 성북구'),
+      );
+
+      expect(state.location).toBe('서울시 성북구');
+    });
+  });
 });
