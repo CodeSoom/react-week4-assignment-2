@@ -16,31 +16,13 @@ export default function reducer(state = initialState, action) {
       const { reservation } = state;
       const { target, value } = action.payload;
 
-      const targets = {
-        name: {
-          ...state,
-          reservation: {
-            ...reservation,
-            name: value,
-          },
-        },
-        category: {
-          ...state,
-          reservation: {
-            ...reservation,
-            category: value,
-          },
-        },
-        address: {
-          ...state,
-          reservation: {
-            ...reservation,
-            address: value,
-          },
+      return {
+        ...state,
+        reservation: {
+          ...reservation,
+          [target]: value,
         },
       };
-
-      return targets[target];
     },
 
     addReservation: () => {
