@@ -27,13 +27,13 @@ const reducers = {
   },
   updateRestaurant(state, action) {
     const { restaurant } = state;
-    const { field, value } = action.payload;
+    const { name, value } = action.payload;
 
     return ({
       ...state,
       restaurant: {
         ...restaurant,
-        [field]: value,
+        [name]: value,
       },
     });
   },
