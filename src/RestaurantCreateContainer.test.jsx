@@ -15,7 +15,9 @@ beforeEach(() => {
 
 describe('<RestaurantCreateContainer />', () => {
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
       name: '',

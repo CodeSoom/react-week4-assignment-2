@@ -12,6 +12,7 @@ describe('<RestaurantsContainer />', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [{ id: 1, value: '낙원관 | 중식 | 서울 성동구' }],
   }));
+
   const renderList = () => render(<RestaurantsContainer />);
 
   it('renders restaurants list', () => {
