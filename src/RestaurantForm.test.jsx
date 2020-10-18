@@ -26,7 +26,7 @@ describe('Item', () => {
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}
       onChangeAddress={handleChangeAddress}
-      onClickDelete={handleClickAddRestaurant}
+      onClick={handleClickAddRestaurant}
     />
   ));
 
