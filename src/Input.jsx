@@ -1,12 +1,13 @@
 import React from 'react';
 
 export default function Input({
-  id, title, placeholder, value, onChange,
+  id, name, title, placeholder, value, onChange,
 }) {
   return (
     <input
       type="text"
       id={id}
+      name={name}
       title={title}
       placeholder={placeholder}
       value={value}

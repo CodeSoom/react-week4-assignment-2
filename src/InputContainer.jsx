@@ -43,18 +43,21 @@ function renderInputs() {
   const inputs = [
     {
       id: 'input-restaurant-name',
+      inputName: 'name',
       placeholder: '이름',
       value: name,
       onChange: handlechangeName,
     },
     {
       id: 'input-restaurant-cuisine',
+      inputName: 'category',
       placeholder: '분류',
       value: cuisine,
       onChange: handlechangeCuisine,
     },
     {
       id: 'input-restaurant-location',
+      inputName: 'address',
       placeholder: '주소',
       value: location,
       onChange: handlechangeLocation,
@@ -62,10 +65,11 @@ function renderInputs() {
   ];
 
   return inputs.map(({
-    id, placeholder, value, onChange,
+    id, inputName, placeholder, value, onChange,
   }) => (
     <Input
       id={id}
+      name={inputName}
       title={placeholder}
       placeholder={placeholder}
       value={value}
