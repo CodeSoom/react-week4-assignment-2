@@ -23,9 +23,15 @@ const updateRestaurantName = ({ state, payload }) => ({
   name: payload.name,
 });
 
+const updateRestaurantCategory = ({ state, payload }) => ({
+  ...state,
+  category: payload.category,
+});
+
 const reducers = {
   addRestaurant,
   updateRestaurantName,
+  updateRestaurantCategory,
 };
 
 export default function reducer(state = initialState, { type, payload }) {

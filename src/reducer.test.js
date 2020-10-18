@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   addRestaurant,
   updateRestaurantName,
+  updateRestaurantCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -47,7 +48,7 @@ describe('reducer', () => {
         updateRestaurantCategory('한식'),
       );
 
-      expect(state.name).toBe('한식');
+      expect(state.category).toBe('한식');
     });
   });
 });
