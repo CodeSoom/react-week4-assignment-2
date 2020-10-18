@@ -10,6 +10,7 @@ jest.mock('react-redux');
 
 test('InputContainer', () => {
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({

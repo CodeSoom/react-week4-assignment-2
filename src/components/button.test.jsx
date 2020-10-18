@@ -15,6 +15,7 @@ test('Button', () => {
   expect(getByText(/등록/)).not.toBeNull();
 
   expect(handleClick).not.toBeCalled();
+
   fireEvent.click(getByText(/등록/));
 
   expect(handleClick).toBeCalled();

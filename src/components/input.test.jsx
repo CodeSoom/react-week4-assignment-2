@@ -6,6 +6,7 @@ import Input from './Input';
 
 test('Input', () => {
   const handleChange = jest.fn();
+
   const { getByDisplayValue, getByPlaceholderText } = render((
     <Input
       placeholder="이름"
