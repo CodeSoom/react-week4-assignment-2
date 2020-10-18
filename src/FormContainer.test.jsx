@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { restaurantFixture, initRestaurant, inputTypes } from './fixtures/fixtures';
+import { restaurantFixture, initRestaurant } from './fixtures/fixtures';
 import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
@@ -22,6 +22,12 @@ describe('FormContainer', () => {
   const renderFormContainer = () => render((
     <FormContainer />
   ));
+
+  const inputTypes = [
+    { placeholderName: '이름', inputName: 'name', value: '마녀주방' },
+    { placeholderName: '분류', inputName: 'category', value: '한식' },
+    { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' },
+  ];
 
   it('"restaurant"을 등록한다.', () => {
     useSelector.mockImplementation((selector) => selector({
