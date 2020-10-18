@@ -20,7 +20,8 @@ describe('Item', () => {
     jest.clearAllMocks();
   });
 
-  const { getByPlaceholderText, getByText } = render((
+  function renderRestaurantForm() {
+    return render((
     <RestaurantForm
       form={restaurant}
       onChangeName={handleChangeName}
@@ -30,11 +31,9 @@ describe('Item', () => {
     />
   ));
 
-  expect(getByPlaceholderText('이름')).not.toBeNull();
-  expect(getByPlaceholderText('분류')).not.toBeNull();
-  expect(getByPlaceholderText('주소')).not.toBeNull();
-
   it('chages a new name', () => {
+    renderRestaurantForm();
+
     expect(handleChangeName).not.toBeCalled();
 
     fireEvent.change(getByPlaceholderText('이름'));
@@ -43,6 +42,8 @@ describe('Item', () => {
   });
 
   it('chages a new category', () => {
+    renderRestaurantForm();
+
     expect(handleChangeCategory).not.toBeCalled();
 
     fireEvent.change(getByPlaceholderText('분류'));
@@ -51,6 +52,8 @@ describe('Item', () => {
   });
 
   it('chages a new address', () => {
+    renderRestaurantForm();
+
     expect(handleChangeAddress).not.toBeCalled();
 
     fireEvent.change(getByPlaceholderText('주소'));
@@ -59,6 +62,8 @@ describe('Item', () => {
   });
 
   it('clicks add button', () => {
+    renderRestaurantForm();
+    
     expect(handleClickAddRestaurant).not.toBeCalled();
 
     fireEvent.click(getByText('등록'));

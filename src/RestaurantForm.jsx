@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Input from './Input';
-
 export default function RestaurantForm({
   form: { name, category, address },
   onChangeName,
@@ -11,20 +9,23 @@ export default function RestaurantForm({
 }) {
   return (
     <div>
-      <Input
-        placehoder="이름"
+      <input
+        type="text"
+        placeholder="이름"
         value={name}
-        onChage={onChangeName}
+        onChange={onChangeName}
       />
-      <Input
-        placehoder="분류"
+      <input
+        type="text"
+        placeholder="분류"
         value={category}
-        onChage={onChangeCategory}
+        onChange={onChangeCategory}
       />
-      <Input
-        placehoder="주소"
+      <input
+        type="text"
+        placeholder="주소"
         value={address}
-        onChage={onChangeAddress}
+        onChange={onChangeAddress}
       />
       <button type="button" onClick={onClick}>등록</button>
     </div>
