@@ -16,16 +16,14 @@ export default function InputReservationContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChangeReservationName(event) {
-    dispatch(updateReservationName(event.target.value));
-  }
+  function handleChange({ event, target }) {
+    const targets = {
+      name: () => dispatch(updateReservationName(event.target.value)),
+      category: () => dispatch(updateReservationCategory(event.target.value)),
+      address: () => dispatch(updateReservationAddress(event.target.value)),
+    };
 
-  function handleChangeReservationCategory(event) {
-    dispatch(updateReservationCategory(event.target.value));
-  }
-
-  function handleChangeReservationAddress(event) {
-    dispatch(updateReservationAddress(event.target.value));
+    targets[target]();
   }
 
   function handleClick() {
@@ -35,9 +33,9 @@ export default function InputReservationContainer() {
   return (
     <InputReservation
       values={reservation}
-      onChangeName={handleChangeReservationName}
-      onChangeCategory={handleChangeReservationCategory}
-      onChangeAddress={handleChangeReservationAddress}
+      onChangeName={(event) => handleChange({ event, target: 'name' })}
+      onChangeCategory={(event) => handleChange({ event, target: 'category' })}
+      onChangeAddress={(event) => handleChange({ event, target: 'address' })}
       onClick={handleClick}
     />
   );
