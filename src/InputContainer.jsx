@@ -1,7 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addRestaurant, updateRestaurantName } from './actions';
+import {
+  addRestaurant,
+  updateRestaurantCategory,
+  updateRestaurantName,
+} from './actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
@@ -14,10 +18,14 @@ export default function InputContainer() {
     dispatch(updateRestaurantName(event.target.value));
   }
 
+  function handleChangeCategory(event) {
+    dispatch(updateRestaurantCategory(event.target.value));
+  }
+
   return (
     <div>
       <input placeholder="이름" onChange={handleChangeName} />
-      <input placeholder="분류" />
+      <input placeholder="분류" onChange={handleChangeCategory} />
       <input placeholder="주소" />
       <button type="button" onClick={handleClickAddRestaurant}>
         등록
