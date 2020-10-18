@@ -1,10 +1,13 @@
 import React from 'react';
 
-export default function List() {
+export default function List({ reservations }) {
   return (
     <ul>
-      <li>대천부양꼬치 | 중식 | 경기도 남양주시</li>
-      <li>바토스 | 양식 | 이태원동</li>
+      {reservations.map(({ name, type, address }) => (
+        <li key={name + type + address}>
+          { `${name} | ${type} | ${address}` }
+        </li>
+      ))}
     </ul>
   );
 }
