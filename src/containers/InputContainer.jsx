@@ -16,9 +16,9 @@ export default function InputContainer() {
   const dispath = useDispatch();
 
   const { name, category, address } = useSelector((state) => ({
-    name: state.name,
-    category: state.category,
-    address: state.address,
+    name: state.restaurant.name,
+    category: state.restaurant.category,
+    address: state.restaurant.address,
   }));
 
   function onChangeUpdateRestaurantName(event) {

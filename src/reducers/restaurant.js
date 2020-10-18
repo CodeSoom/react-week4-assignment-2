@@ -3,7 +3,7 @@ const initialState = {
   name: '',
   category: '',
   address: '',
-  restaurants: [],
+  items: [],
 };
 
 const restaurant = (state = initialState, action) => {
@@ -30,7 +30,7 @@ const restaurant = (state = initialState, action) => {
 
   if (action.type === 'addRestaurant') {
     const {
-      newId, name, category, address, restaurants,
+      newId, name, category, address, items,
     } = state;
 
     if (!name && !category && !address) {
@@ -43,8 +43,8 @@ const restaurant = (state = initialState, action) => {
       name: '',
       category: '',
       address: '',
-      restaurants: [
-        ...restaurants,
+      items: [
+        ...items,
         {
           id: newId, name, category, address,
         },
