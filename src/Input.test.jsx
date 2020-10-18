@@ -16,28 +16,24 @@ describe('<Input />', () => {
     />
   ));
 
-  describe('renders', () => {
-    it('placeholder', () => {
-      // When
-      const { getByPlaceholderText } = renderInput();
+  it('renders placeholder text', () => {
+    // When
+    const { getByPlaceholderText } = renderInput();
 
-      // Then
-      expect(getByPlaceholderText('이름')).toBeInTheDocument();
-    });
+    // Then
+    expect(getByPlaceholderText('이름')).toBeInTheDocument();
   });
 
-  describe('onChange', () => {
-    it('calls onChange callback', () => {
-      // Given
-      const { getByPlaceholderText } = renderInput();
+  it('listens input change event', () => {
+    // Given
+    const { getByPlaceholderText } = renderInput();
 
-      // When
-      fireEvent.change(getByPlaceholderText('이름'), {
-        target: { value: '한식' },
-      });
-
-      // Then
-      expect(handleChange).toHaveBeenCalled();
+    // When
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: { value: '한식' },
     });
+
+    // Then
+    expect(handleChange).toHaveBeenCalled();
   });
 });

@@ -28,45 +28,41 @@ describe('<InputContainer />', () => {
     <InputContainer />
   ));
 
-  describe('renders', () => {
-    it('3 inputs', () => {
-      // When
-      const { getAllByRole } = renderInput();
+  it('renders 3 inputs', () => {
+    // When
+    const { getAllByRole } = renderInput();
 
-      // Then
-      expect(getAllByRole('textbox')).toHaveLength(3);
-    });
-
-    it('등록 button', () => {
-      // When
-      const { getByText } = renderInput();
-
-      // Then
-      expect(getByText('등록')).toBeInTheDocument();
-    });
+    // Then
+    expect(getAllByRole('textbox')).toHaveLength(3);
   });
 
-  describe('events', () => {
-    it('calls dispatch on click 등록 button', () => {
-      // Given
-      const { getByText } = renderInput();
+  it('renders 등록 button', () => {
+    // When
+    const { getByText } = renderInput();
 
-      // When
-      fireEvent.click(getByText('등록'));
+    // Then
+    expect(getByText('등록')).toBeInTheDocument();
+  });
 
-      // Then
-      expect(dispatch).toBeCalled();
-    });
+  it('listens 등록 button click event', () => {
+    // Given
+    const { getByText } = renderInput();
 
-    it('calls dispatch on typing in the input', () => {
-      // Given
-      const { getByPlaceholderText } = renderInput();
+    // When
+    fireEvent.click(getByText('등록'));
 
-      // When
-      userEvent.type(getByPlaceholderText('분류'), 'korean');
+    // Then
+    expect(dispatch).toBeCalled();
+  });
 
-      // Then
-      expect(dispatch).toHaveBeenCalledTimes(6);
-    });
+  it('listens input change event', () => {
+    // Given
+    const { getByPlaceholderText } = renderInput();
+
+    // When
+    userEvent.type(getByPlaceholderText('분류'), 'korean');
+
+    // Then
+    expect(dispatch).toHaveBeenCalledTimes(6);
   });
 });

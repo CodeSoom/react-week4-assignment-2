@@ -14,13 +14,11 @@ describe('<ListContainer />', () => {
   }));
   const renderList = () => render(<ListContainer />);
 
-  describe('render', () => {
-    it('restaurants list', () => {
-      // When
-      const { getByRole } = renderList();
+  it('renders restaurants list', () => {
+    // When
+    const { getByRole } = renderList();
 
-      // Then
-      expect(getByRole('list')).toHaveTextContent('낙원관 | 중식 | 서울 성동구');
-    });
+    // Then
+    expect(getByRole('list')).toHaveTextContent('낙원관 | 중식 | 서울 성동구');
   });
 });
