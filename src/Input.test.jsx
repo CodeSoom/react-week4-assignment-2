@@ -5,20 +5,24 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input Component', () => {
+  const inputs = {
+    name: 'name',
+    placeholder: '이름',
+    value: '',
+  };
+
+  const handleChange = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('Initialize input information', () => {
-    const handleChange = jest.fn();
-
-    const inputTypes = {
-      name: 'name',
-      placeholder: '이름',
-      value: '',
-    };
-
     const { getByPlaceholderText } = render((
       <Input
-        name={inputTypes.name}
-        placeholder={inputTypes.placeholder}
-        value={inputTypes.value}
+        name={inputs.name}
+        placeholder={inputs.placeholder}
+        value={inputs.value}
         onChange={handleChange}
       />
     ));
