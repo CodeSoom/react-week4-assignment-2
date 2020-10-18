@@ -14,8 +14,7 @@ export default function InputReservationContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChange({ event, target }) {
-    const { value } = event.target;
+  function handleChange({ target, value }) {
     const eventTargets = {
       name: updateReservation({ target, value }),
       category: updateReservation({ target, value }),
