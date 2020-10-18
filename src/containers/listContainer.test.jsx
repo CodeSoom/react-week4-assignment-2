@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import ListContainer from '../src/containers/ListContainer';
+import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Restaurant from '../src/components/Restaurant';
+import Restaurant from './Restaurant';
 
 test('Restaurant', () => {
   const { getByText } = render((

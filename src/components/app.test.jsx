@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import App from '../src/components/App';
+import App from './App';
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({

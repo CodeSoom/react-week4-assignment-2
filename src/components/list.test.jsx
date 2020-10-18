@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from '../src/components/List';
+import List from './List';
 
 describe('List', () => {
   const renderList = (restaurants) => render((

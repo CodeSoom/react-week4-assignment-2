@@ -1,11 +1,11 @@
-import restaurant from '../../src/reducers/restaurant';
+import restaurant from './restaurant';
 
 import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddr,
   addRestaurant,
-} from '../../src/actions';
+} from '../actions';
 
 describe('restaurant reducer', () => {
   describe('updateRestaurantName', () => {
