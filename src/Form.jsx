@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Input from './Input';
-
 export default function Form({
   restaurantInfo,
   handleClickAdd,
@@ -13,19 +11,19 @@ export default function Form({
 
   return (
     <>
-      <Input
+      <input
         name="name"
         placeholder="이름"
         value={name}
         onChange={handleChangeRestaurantName}
       />
-      <Input
+      <input
         name="category"
         placeholder="분류"
         value={type}
         onChange={handleChangeRestaurantType}
       />
-      <Input
+      <input
         name="address"
         placeholder="주소"
         value={location}

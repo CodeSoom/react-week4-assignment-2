@@ -24,6 +24,33 @@ describe('Form', () => {
     />
   ));
 
+  it('이름 Input이 변화되면 handelChangeRestaurantName이 호출된다.', () => {
+    const { getByPlaceholderText } = renderForm();
+    const input = getByPlaceholderText('이름');
+
+    expect(handleChangeRestaurantName).not.toBeCalled();
+    fireEvent.change(input, { target: { value: '마녀식당' } });
+    expect(handleChangeRestaurantName).toBeCalled();
+  });
+
+  it('분류 Input이 변화되면 handelChangeRestaurantName이 호출된다.', () => {
+    const { getByPlaceholderText } = renderForm();
+    const input = getByPlaceholderText('분류');
+
+    expect(handleChangeRestaurantType).not.toBeCalled();
+    fireEvent.change(input, { target: { value: '한식' } });
+    expect(handleChangeRestaurantType).toBeCalled();
+  });
+
+  it('주소 Input이 변화되면 handelChangeRestaurantName이 호출된다.', () => {
+    const { getByPlaceholderText } = renderForm();
+    const input = getByPlaceholderText('주소');
+
+    expect(handleChangeRestaurantLocation).not.toBeCalled();
+    fireEvent.change(input, { target: { value: '서울시 강남구' } });
+    expect(handleChangeRestaurantLocation).toBeCalled();
+  });
+
   it('버튼에 "등록" 문구가 나온다.', () => {
     const { container } = renderForm();
 
@@ -37,6 +64,31 @@ describe('Form', () => {
     expect(handleClickAdd).not.toBeCalled();
     fireEvent.click(buttonAdd);
     expect(handleClickAdd).toBeCalled();
+  });
+
+  context('restaurantInfo가 주어졌을 때', () => {
+    const restaurantInfo = { name: '마녀주방', type: '한식', location: '서울시 강남구' };
+
+    it('이름 Input에 주어진 입력 value가 출력된다.', () => {
+      const { getByPlaceholderText } = renderForm(restaurantInfo);
+      const input = getByPlaceholderText('이름');
+
+      expect(input).toHaveDisplayValue(restaurantInfo.name);
+    });
+
+    it('분류 Input에 주어진 입력 value가 출력된다.', () => {
+      const { getByPlaceholderText } = renderForm(restaurantInfo);
+      const input = getByPlaceholderText('분류');
+
+      expect(input).toHaveDisplayValue(restaurantInfo.type);
+    });
+
+    it('주소 Input에 주어진 입력 value가 출력된다.', () => {
+      const { getByPlaceholderText } = renderForm(restaurantInfo);
+      const input = getByPlaceholderText('주소');
+
+      expect(input).toHaveDisplayValue(restaurantInfo.location);
+    });
   });
 
   context('restaurantInfo가 주어지지 않을 때', () => {
