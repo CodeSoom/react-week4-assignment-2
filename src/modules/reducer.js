@@ -6,7 +6,7 @@ const initialReservation = {
 
 const initialState = {
   newId: 1,
-  reservation: initialReservation,
+  reservation: { ...initialReservation },
   reservations: [],
 };
 

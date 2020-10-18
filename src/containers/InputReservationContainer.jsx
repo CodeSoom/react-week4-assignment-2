@@ -11,9 +11,7 @@ import {
 
 export default function InputReservationContainer() {
   const { name, category, address } = useSelector((state) => ({
-    name: state.reservation.name,
-    category: state.reservation.category,
-    address: state.reservation.address,
+    ...state.reservation,
   }));
 
   const dispatch = useDispatch();
