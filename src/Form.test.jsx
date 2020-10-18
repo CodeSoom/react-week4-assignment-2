@@ -14,7 +14,7 @@ describe('Form', () => {
     />
   ));
 
-  const inputType = [
+  const inputTypes = [
     { placeholderName: '이름', inputName: 'name' },
     { placeholderName: '분류', inputName: 'category' },
     { placeholderName: '주소', inputName: 'address' },
@@ -25,7 +25,7 @@ describe('Form', () => {
   it('"input"이 보인다.', () => {
     const { getByPlaceholderText } = formRender(restaurant);
 
-    inputType.forEach(({ placeholderName }) => {
+    inputTypes.forEach(({ placeholderName }) => {
       expect(getByPlaceholderText(placeholderName)).not.toBeNull();
     });
   });
@@ -35,7 +35,7 @@ describe('Form', () => {
 
     expect(handleChange).not.toBeCalled();
 
-    inputType.forEach(({ placeholderName, inputName }) => {
+    inputTypes.forEach(({ placeholderName, inputName }) => {
       fireEvent.change(getByPlaceholderText(placeholderName), {
         target: { value: '시카고 피자', name: inputName },
       });
