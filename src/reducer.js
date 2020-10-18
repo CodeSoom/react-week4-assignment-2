@@ -18,9 +18,8 @@ const reducers = {
   },
   addRestaurant: (state) => {
     const { restaurants, restaurant } = state;
-    const { name, classification, location } = restaurant;
 
-    if (!name || !classification || !location) {
+    if (Object.values(restaurant).some((it) => !it)) {
       return state;
     }
 
