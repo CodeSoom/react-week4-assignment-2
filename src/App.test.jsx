@@ -8,7 +8,7 @@ test('App', () => {
     <App />
   ));
 
-  expect(getByText('대천부양꼬치 | 양식 | 경기도 남양주시')).not.toBeNull();
+  expect(getByText('대천부양꼬치 | 중식 | 경기도 남양주시')).not.toBeNull();
   expect(getByText('바토스 | 양식 | 이태원동')).not.toBeNull();
 
   expect(getByText(/Restaurants/)).not.toBeNull();
