@@ -17,13 +17,13 @@ export default function InputReservationContainer() {
   const dispatch = useDispatch();
 
   function handleChange({ event, target }) {
-    const targets = {
-      name: () => dispatch(updateReservationName(event.target.value)),
-      category: () => dispatch(updateReservationCategory(event.target.value)),
-      address: () => dispatch(updateReservationAddress(event.target.value)),
+    const eventTargets = {
+      name: updateReservationName(event.target.value),
+      category: updateReservationCategory(event.target.value),
+      address: updateReservationAddress(event.target.value),
     };
 
-    targets[target]();
+    dispatch(eventTargets[target]);
   }
 
   function handleClick() {
