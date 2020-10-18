@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputReservation from '../components/InputReservation';
 import {
-  updateReservationName,
-  updateReservationCategory,
-  updateReservationAddress,
+  updateReservation,
   addReservation,
 } from '../modules/actions';
 
@@ -18,9 +16,9 @@ export default function InputReservationContainer() {
 
   function handleChange({ event, target }) {
     const eventTargets = {
-      name: updateReservationName(event.target.value),
-      category: updateReservationCategory(event.target.value),
-      address: updateReservationAddress(event.target.value),
+      name: updateReservation({ target: 'name', value: event.target.value }),
+      category: updateReservation({ target: 'category', value: event.target.value }),
+      address: updateReservation({ target: 'address', value: event.target.value }),
     };
 
     dispatch(eventTargets[target]);
