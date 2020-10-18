@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Input from './Input';
+import Form from './Form';
 import { addRestaurant, updateRestaurant } from './actions';
 import Button from './Button';
 
@@ -24,7 +24,7 @@ export default function InputContainer() {
 
   return (
     <>
-      <Input
+      <Form
         restaurant={restaurant}
         onChange={handleChangeRestaurant}
       />

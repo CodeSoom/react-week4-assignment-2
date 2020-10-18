@@ -1,6 +1,6 @@
 import React from 'react';
 
-import InputContainer from './InputContainer';
+import FormContainer from './FormContainer';
 import ListContainer from './ListContainer';
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
         Restaurants
       </div>
       <ListContainer />
-      <InputContainer />
+      <FormContainer />
     </>
   );
 }

@@ -2,13 +2,13 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from './Input';
+import Form from './Form';
 
-describe('Input', () => {
+describe('Form', () => {
   const handleChange = jest.fn();
 
-  const inputRender = (restaurant) => render((
-    <Input
+  const formRender = (restaurant) => render((
+    <Form
       restaurant={restaurant}
       onChange={handleChange}
     />
@@ -23,7 +23,7 @@ describe('Input', () => {
   const restaurant = { name: '', category: '', address: '' };
 
   it('"input"이 보인다.', () => {
-    const { getByPlaceholderText } = inputRender(restaurant);
+    const { getByPlaceholderText } = formRender(restaurant);
 
     inputType.forEach(({ placeholderName }) => {
       expect(getByPlaceholderText(placeholderName)).not.toBeNull();
@@ -31,7 +31,7 @@ describe('Input', () => {
   });
 
   it('handleChange 호출을 확인한다.', () => {
-    const { getByPlaceholderText } = inputRender(restaurant);
+    const { getByPlaceholderText } = formRender(restaurant);
 
     expect(handleChange).not.toBeCalled();
 

@@ -3,17 +3,17 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('FormContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
-  const renderInputContainer = () => render((
-    <InputContainer />
+  const renderFormContainer = () => render((
+    <FormContainer />
   ));
 
   it('"restaurant"을 등록한다.', () => {
@@ -23,7 +23,7 @@ describe('InputContainer', () => {
 
     const inputValue = ['마녀주방', '한식', '서울시 강남구'];
 
-    const { getByDisplayValue, getByText } = renderInputContainer();
+    const { getByDisplayValue, getByText } = renderFormContainer();
     const addButton = getByText(/등록/);
 
     inputValue.forEach((value) => {
@@ -44,7 +44,7 @@ describe('InputContainer', () => {
 
     const { inputName, value, placeholderName } = { placeholderName: '주소', inputName: 'address', value: '서울시 강남구' };
 
-    const { getByPlaceholderText } = renderInputContainer();
+    const { getByPlaceholderText } = renderFormContainer();
 
     fireEvent.change(getByPlaceholderText(placeholderName), {
       target: { value, name: inputName },
