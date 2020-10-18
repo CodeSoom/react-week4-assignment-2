@@ -11,30 +11,36 @@ describe('reducer', () => {
   describe('updateReservationName', () => {
     it('changes reservation title', () => {
       const state = reducer({
-        reservationName: '',
+        reservation: {
+          name: '',
+        },
       }, updateReservationName('New Name'));
 
-      expect(state.reservationName).toBe('New Name');
+      expect(state.reservation.name).toBe('New Name');
     });
   });
 
   describe('updateReservationCategory', () => {
     it('changes reservation category', () => {
       const state = reducer({
-        reservationCategory: '',
+        reservation: {
+          category: '',
+        },
       }, updateReservationCategory('New Category'));
 
-      expect(state.reservationCategory).toBe('New Category');
+      expect(state.reservation.category).toBe('New Category');
     });
   });
 
   describe('updateReservationAddress', () => {
     it('changes reservation address', () => {
       const state = reducer({
-        reservationAddress: '',
+        reservation: {
+          address: '',
+        },
       }, updateReservationAddress('New Address'));
 
-      expect(state.reservationAddress).toBe('New Address');
+      expect(state.reservation.address).toBe('New Address');
     });
   });
 
