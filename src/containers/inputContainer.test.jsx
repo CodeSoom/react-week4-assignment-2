@@ -36,7 +36,23 @@ test('InputContainer', () => {
   });
 
   expect(dispatch).toBeCalledWith(
-    { type: 'changeRestaurantField', payload: { name: '시카고피자', category: '', address: '' } },
+    { type: 'changeRestaurantField', payload: { name: '시카고피자', category: '한식', address: '서울시 성동구' } },
+  );
+
+  fireEvent.change(getByPlaceholderText('분류'), {
+    target: { value: '양식' },
+  });
+
+  expect(dispatch).toBeCalledWith(
+    { type: 'changeRestaurantField', payload: { name: '마녀주방', category: '양식', address: '서울시 성동구' } },
+  );
+
+  fireEvent.change(getByPlaceholderText('주소'), {
+    target: { value: '서울시 이태원' },
+  });
+
+  expect(dispatch).toBeCalledWith(
+    { type: 'changeRestaurantField', payload: { name: '마녀주방', category: '한식', address: '서울시 이태원' } },
   );
 
   fireEvent.click(getByText(/등록/));

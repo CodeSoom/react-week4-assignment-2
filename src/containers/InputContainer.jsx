@@ -20,17 +20,27 @@ export default function InputContainer() {
   }));
 
   const field = {
-    name: (eventValue) => ({ name: eventValue }),
-    catgory: (eventValue) => ({ category: eventValue }),
-    address: (eventValue) => ({ address: eventValue }),
+    name: (eventValue) => ({
+      name: eventValue,
+      category,
+      address,
+    }),
+    category: (eventValue) => ({
+      name,
+      category: eventValue,
+      address,
+    }),
+    address: (eventValue) => ({
+      name,
+      category,
+      address: eventValue,
+    }),
   };
 
   const onChangeRestaurantField = ({ fieldKey, eventValue }) => {
     const getFieldObject = field[fieldKey];
 
-    dispath(changeRestaurantField(
-      getFieldObject(eventValue),
-    ));
+    dispath(changeRestaurantField(getFieldObject(eventValue)));
   };
 
   function onClickAddRestaurant() {

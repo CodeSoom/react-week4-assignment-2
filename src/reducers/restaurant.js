@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const restaurant = (state = initialState, action) => {
-  if (action.type === 'changeRestaurantField') {
+  if (action?.type === 'changeRestaurantField') {
     return {
       ...state,
       name: action.payload.name,
@@ -16,7 +16,7 @@ const restaurant = (state = initialState, action) => {
     };
   }
 
-  if (action.type === 'addRestaurant') {
+  if (action?.type === 'addRestaurant') {
     const {
       newId, name, category, address, items,
     } = state;

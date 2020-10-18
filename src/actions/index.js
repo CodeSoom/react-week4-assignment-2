@@ -1,4 +1,4 @@
-export function changeRestaurantField({ name = '', category = '', address = '' }) {
+export function changeRestaurantField({ name, category, address }) {
   return {
     type: 'changeRestaurantField',
     payload: {

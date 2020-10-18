@@ -78,4 +78,12 @@ describe('restaurant reducer', () => {
       });
     });
   });
+
+  describe('undefined action', () => {
+    it("doesn't work", () => {
+      const state = restaurant();
+
+      expect(state.items).toHaveLength(0);
+    });
+  });
 });
