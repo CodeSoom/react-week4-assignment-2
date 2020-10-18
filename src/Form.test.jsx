@@ -28,11 +28,10 @@ describe('Form', () => {
 
     expect(handleChange).not.toBeCalled();
 
-    inputTypes.forEach(({ placeholderName, inputName }) => {
-      fireEvent.change(getByPlaceholderText(placeholderName), {
-        target: { value: '시카고 피자', name: inputName },
-      });
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: { value: '시카고 피자' },
     });
+
     expect(handleChange).toBeCalled();
   });
 });
