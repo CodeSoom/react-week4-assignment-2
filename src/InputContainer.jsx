@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Input from './Input';
+import Inputs from './Inputs';
 
 import {
   changeName,
@@ -19,7 +19,7 @@ function selector(state) {
   };
 }
 
-function renderInputs() {
+export default function InputContainer() {
   const {
     name,
     cuisine,
@@ -28,65 +28,31 @@ function renderInputs() {
 
   const dispatch = useDispatch();
 
-  function handlechangeName({ target: { value } }) {
+  function handleChangeName({ target: { value } }) {
     dispatch(changeName(value));
   }
 
-  function handlechangeCuisine({ target: { value } }) {
+  function handleChangeCuisine({ target: { value } }) {
     dispatch(changeCuisine(value));
   }
 
-  function handlechangeLocation({ target: { value } }) {
+  function handleChangeLocation({ target: { value } }) {
     dispatch(changeLocation(value));
   }
 
-  const inputs = [
-    {
-      id: 'input-restaurant-name',
-      inputName: 'name',
-      placeholder: '이름',
-      value: name,
-      onChange: handlechangeName,
-    },
-    {
-      id: 'input-restaurant-cuisine',
-      inputName: 'category',
-      placeholder: '분류',
-      value: cuisine,
-      onChange: handlechangeCuisine,
-    },
-    {
-      id: 'input-restaurant-location',
-      inputName: 'address',
-      placeholder: '주소',
-      value: location,
-      onChange: handlechangeLocation,
-    },
-  ];
-
-  return inputs.map(({
-    id, inputName, placeholder, value, onChange,
-  }) => (
-    <Input
-      id={id}
-      name={inputName}
-      title={placeholder}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      key={id}
-    />
-  ));
-}
-
-export default function InputContainer() {
-  const dispatch = useDispatch();
   function handleClickAddRestaurant() {
     dispatch(clickAddRestaurant());
   }
   return (
     <>
-      {renderInputs()}
+      <Inputs
+        name={name}
+        cuisine={cuisine}
+        location={location}
+        onChangeName={handleChangeName}
+        onChangeCuisine={handleChangeCuisine}
+        onChangeLocation={handleChangeLocation}
+      />
       <button
         type="button"
         onClick={handleClickAddRestaurant}
