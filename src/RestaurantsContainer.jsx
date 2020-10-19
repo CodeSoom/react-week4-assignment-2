@@ -6,7 +6,7 @@ import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
   const { restaurants } = useSelector((state) => ({
-    restaurant: state.restaurnt,
+    restaurants: state.restaurants,
   }));
   return (
     <div>
