@@ -4,10 +4,20 @@ import App from './App';
 
 import { render } from '@testing-library/react';
 
-test('App', () => {
-const { getByText} = render((
-  <App />
-));
+import { useSelector } from 'react-redux';
 
-expect(getByText(/김밥제국/)).not.toBeNull();
+import restaurants from '../fixtures/restaurants';
+
+jest.mock('react-redux');
+
+test('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
+
+  const { getByText } = render((
+    <App />
+  ));
+
+  expect(getByText(/김밥제국/)).not.toBeNull();
 });
