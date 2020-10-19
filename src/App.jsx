@@ -1,11 +1,11 @@
 import React from 'react';
+import Restaurants from './Restaurants';
 
 export default function App() {
   return (
-    <ul>
-      <li>
-        김밥제국
-      </li>
-    </ul>
+    <div>
+      <h1>Restaurants</h1>
+      <Restaurants />
+    </div>
   );
 }
