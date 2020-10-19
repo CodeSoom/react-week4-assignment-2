@@ -2,8 +2,10 @@ import React from 'react';
 
 export default function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <ul>
+      <li>
+        김밥제국
+      </li>
+    </ul>
   );
 }
