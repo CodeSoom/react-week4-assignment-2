@@ -4,7 +4,7 @@ import Restaurants from './Restaurants';
 
 test('Restaurants', () => {
  const { getByText } = render((
-    <Restaurants restaurants={restaurants} />
+    <Restaurants restaurants />
  ));
 
   expect(getByText('김밥제국')).not.toBeNull();
