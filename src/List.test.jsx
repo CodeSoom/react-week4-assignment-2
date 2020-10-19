@@ -4,19 +4,11 @@ import { render } from '@testing-library/react';
 
 import List from './List';
 
+import restaurants from '../fixtures/restaurants';
+
 describe('List', () => {
   it('renders', () => {
-    const { container } = render(<List restaurants={
-      [
-        {
-          id: 1,
-          name: '마녀주방',
-          cuisine: '한식',
-          location: '서울시 강남구',
-        },
-      ]
-    }
-    />);
+    const { container } = render(<List restaurants={restaurants} />);
 
     expect(container).not.toBeNull();
     expect(container).toContainHTML('<li');

@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
+import restaurants from '../fixtures/restaurants';
+
 jest.mock('react-redux');
 
 const { click } = fireEvent;
@@ -28,15 +30,6 @@ describe('InputContainer', () => {
       buttonAdd: getByText(/등록/),
     };
   }
-
-  const restaurants = [
-    {
-      id: 1,
-      name: '마녀주방',
-      cuisine: '한식',
-      location: '서울시 강남구',
-    },
-  ];
 
   const dispatch = jest.fn();
 

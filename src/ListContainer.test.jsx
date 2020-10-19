@@ -6,21 +6,14 @@ import { useSelector } from 'react-redux';
 
 import ListContainer from './ListContainer';
 
+import restaurants from '../fixtures/restaurants';
+
 jest.mock('react-redux');
 
 describe('ListContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector(
-      {
-        restaurants: [
-          {
-            id: 1,
-            name: '마녀주방',
-            cuisine: '한식',
-            location: '서울시 강남구',
-          },
-        ],
-      },
+      { restaurants },
     ));
   });
 
