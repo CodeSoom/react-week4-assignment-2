@@ -19,6 +19,15 @@ function change(target, { value }) {
 }
 
 describe('InputContainer', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useSelector.mockImplementation((selector) => selector(restaurants));
+    useDispatch.mockReturnValue(dispatch);
+  });
+
   function renderInputContainer() {
     const { container, getByText, getByTitle } = render(<InputContainer />);
 
@@ -30,11 +39,6 @@ describe('InputContainer', () => {
       buttonAdd: getByText(/등록/),
     };
   }
-
-  const dispatch = jest.fn();
-
-  useSelector.mockImplementation((selector) => selector(restaurants));
-  useDispatch.mockReturnValue(dispatch);
 
   it('calls changeName', () => {
     const {
