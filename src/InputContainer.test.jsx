@@ -45,16 +45,10 @@ describe('InputContainer', () => {
       inputName,
     } = renderInputContainer();
 
-    const restaurant = {
-      name: '시카고피자',
-      cuisine: '양식',
-      location: '이태원동',
-    };
-
-    change(inputName, { value: restaurant.name });
+    change(inputName, { value: restaurants[0].name });
     expect(dispatch).toBeCalledWith({
       type: 'changeName',
-      payload: { name: restaurant.name },
+      payload: { name: restaurants[0].name },
     });
   });
 
@@ -63,16 +57,10 @@ describe('InputContainer', () => {
       inputCuisine,
     } = renderInputContainer();
 
-    const restaurant = {
-      name: '시카고피자',
-      cuisine: '양식',
-      location: '이태원동',
-    };
-
-    change(inputCuisine, { value: restaurant.cuisine });
+    change(inputCuisine, { value: restaurants[0].cuisine });
     expect(dispatch).toBeCalledWith({
       type: 'changeCuisine',
-      payload: { cuisine: restaurant.cuisine },
+      payload: { cuisine: restaurants[0].cuisine },
     });
   });
 
@@ -81,16 +69,10 @@ describe('InputContainer', () => {
       inputLocation,
     } = renderInputContainer();
 
-    const restaurant = {
-      name: '시카고피자',
-      cuisine: '양식',
-      location: '이태원동',
-    };
-
-    change(inputLocation, { value: restaurant.location });
+    change(inputLocation, { value: restaurants[0].location });
     expect(dispatch).toBeCalledWith({
       type: 'changeLocation',
-      payload: { location: restaurant.location },
+      payload: { location: restaurants[0].location },
     });
   });
 
