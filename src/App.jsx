@@ -1,9 +1,16 @@
 import React from 'react';
 
+import FormContainer from './FormContainer';
+import ListContainer from './ListContainer';
+
 export default function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <>
+      <div>
+        Restaurants
+      </div>
+      <ListContainer />
+      <FormContainer />
+    </>
   );
 }
