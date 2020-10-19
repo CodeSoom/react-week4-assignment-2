@@ -9,5 +9,5 @@ const { getByText} = render((
   <App />
 ));
 
-expect(getByText('김밥제국')).not.toBeNull();
+expect(getByText(/김밥제국/)).not.toBeNull();
 });
