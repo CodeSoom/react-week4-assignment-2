@@ -11,6 +11,5 @@ describe('List', () => {
     const { container } = render(<List restaurants={restaurants} />);
 
     expect(container).not.toBeNull();
-    expect(container).toContainHTML('<li');
   });
 });
