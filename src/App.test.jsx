@@ -5,7 +5,7 @@ import App from './App';
 import { render } from '@testing-library/react';
 
 test('App', () => {
-const { getByText } = render((
+const { getByText} = render((
   <App />
 ));
 
