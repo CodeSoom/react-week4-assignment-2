@@ -5,8 +5,25 @@ import { render } from '@testing-library/react';
 import Inputs from './Inputs';
 
 describe('Inputs', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders', () => {
-    const { container } = render(<Inputs />);
+    const handleChangeName = jest.fn();
+    const handleChangeCuisine = jest.fn();
+    const handleChangeLocation = jest.fn();
+
+    const { container } = render(
+      <Inputs
+        name=""
+        cuisine=""
+        location=""
+        onChangeName={handleChangeName}
+        onChangeCuisine={handleChangeCuisine}
+        onChangeLocation={handleChangeLocation}
+      />,
+    );
 
     expect(container).not.toBeNull();
   });
