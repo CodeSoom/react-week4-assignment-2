@@ -8,7 +8,9 @@ test('RestaurantForm', () => {
   const handleClick = jest.fn();
 
   const { getByText } = render((
-    <RestaurantForm onClick={handleClick} />
+    <RestaurantForm
+      onClick={handleClick}
+    />
   ));
 
   expect(getByText(/등록/)).not.toBeNull();

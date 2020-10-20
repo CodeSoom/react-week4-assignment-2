@@ -1,11 +1,9 @@
 import React from 'react';
 
+import RestaurantForm from './RestaurantForm';
+
 export default function RestaurantCreateContainer() {
   return (
-    <div>
-      <button type="button">
-        등록
-      </button>
-    </div>
+    <RestaurantForm />
   );
 }
