@@ -1,10 +1,10 @@
 import React from 'react';
 
-import App from './App';
-
 import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
+
+import App from './App';
 
 import restaurants from '../fixtures/restaurants';
 

@@ -1,11 +1,18 @@
 import reducer from './reducer';
 
-import {
+import { setRestaurants } from './actions';
 
-} from './actions';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
-  it('', () => {
-    
+  describe('setRestaurants', () => {
+    it('sets initial state', () => {
+      const initialState = {
+        restaurants: [],
+      };
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state).not.toHaveLength(0);
+    });
   });
 });
