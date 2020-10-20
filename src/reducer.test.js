@@ -12,7 +12,7 @@ describe('reducer', () => {
       };
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state).not.toHaveLength(0);
+      expect(state.restaurants).not.toHaveLength(0);
     });
   });
 });
