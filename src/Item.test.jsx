@@ -7,7 +7,7 @@ import Item from './Item';
 test('Item', () => {
   const { container } = render((
     <Item
-      info={
+      restaurant={
         {
           name: '마녀주방',
           category: '한식',

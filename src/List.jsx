@@ -6,8 +6,8 @@ export default function List({ restaurants }) {
   return (
     <ul>
       {
-        restaurants.map((info) => (
-          <Item key={info.name} info={info} />
+        restaurants.map((restaurant) => (
+          <Item key={restaurant.name} restaurant={restaurant} />
         ))
       }
     </ul>

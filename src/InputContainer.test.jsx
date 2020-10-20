@@ -64,7 +64,7 @@ describe('InputContainer', () => {
     expect(locationInput).not.toHaveDisplayValue();
   });
 
-  it('change restrant name input', () => {
+  it('change restaurant name input', () => {
     const { getByPlaceholderText } = renderInputContainer();
     const name = '김가네';
 

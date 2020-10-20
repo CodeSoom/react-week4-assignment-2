@@ -3,16 +3,12 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import List from './List';
+import { restaurants } from '../fixtures/fixtures';
 
 test('List', () => {
   const { container } = render((
     <List
-      restaurants={
-        [
-          { name: '마녀주방', category: '한식', location: '서울시 강남구' },
-          { name: '역전우동', category: '일식', location: '서울시 강남구' },
-        ]
-      }
+      restaurants={restaurants}
     />
   ));
 

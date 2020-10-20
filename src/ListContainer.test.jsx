@@ -5,6 +5,8 @@ import { render } from '@testing-library/react';
 
 import ListContainer from './ListContainer';
 
+import { restaurants } from '../fixtures/fixtures';
+
 jest.mock('react-redux');
 
 describe('ListContainer', () => {
@@ -14,29 +16,25 @@ describe('ListContainer', () => {
     ));
   }
 
-  describe('first loaded', () => {
-    context('with restaurants', () => {
-      it('show restaurant', () => {
-        useSelector.mockImplementation((selector) => selector({
-          restaurants: [
-            { name: '마녀주방', category: '한식', location: '서울시 강남구' },
-          ],
-        }));
+  context('with restaurants', () => {
+    it('show restaurant', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants,
+      }));
 
-        const { getByText } = restaurantList();
-        expect(getByText(/마녀주방 | 한식 | 서울시 강남구/)).not.toBeNull();
-      });
+      const { container } = restaurantList();
+      expect(container).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
     });
+  });
 
-    context('without restaurants', () => {
-      it("doesn't work", () => {
-        useSelector.mockImplementation((selector) => selector({
-          restaurants: [],
-        }));
+  context('without restaurants', () => {
+    it("doesn't work", () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
+      }));
 
-        const { container } = restaurantList();
-        expect(container).not.toHaveTextContent(/마녀주방 | 한식 | 서울시 강남구/);
-      });
+      const { container } = restaurantList();
+      expect(container.firstChild).toBeEmptyDOMElement();
     });
   });
 });
