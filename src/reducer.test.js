@@ -6,7 +6,7 @@ import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
-    it('sets initial state', () => {
+    it('changes restaurants array', () => {
       const initialState = {
         restaurants: [],
       };
