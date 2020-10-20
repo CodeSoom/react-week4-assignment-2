@@ -17,7 +17,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch((setRestaurants(restaurants)));
   }, []);
 
   return (
