@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Restaurants({ restaurants }) {
-  return(
+  return (
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
@@ -13,5 +13,5 @@ export default function Restaurants({ restaurants }) {
         </li>
       ))}
     </ul>
-    );
+  );
 }
