@@ -2,9 +2,9 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantsContainer from './RestaurantsContainer';
-
 import { render } from '@testing-library/react';
+
+import RestaurantsContainer from './RestaurantsContainer';
 
 import restaurants from '../fixtures/restaurants';
 
