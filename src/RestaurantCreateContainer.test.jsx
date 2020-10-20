@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render, fireEvent, getByDisplayValue } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
@@ -20,7 +20,7 @@ test('RestaurantCreateContainer', () => {
     },
   }));
 
-  const { getByText } = render((
+  const { getByText, getByDisplayValue } = render((
     <RestaurantCreateContainer />
   ));
 
