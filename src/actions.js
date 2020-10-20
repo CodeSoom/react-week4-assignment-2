@@ -1,32 +1,15 @@
-export function changeName(name) {
+export function onChange({ name, value }) {
   return {
-    type: 'changeName',
+    type: 'onChange',
     payload: {
       name,
+      value,
     },
   };
 }
 
-export function changeCuisine(cuisine) {
+export function onClick() {
   return {
-    type: 'changeCuisine',
-    payload: {
-      cuisine,
-    },
-  };
-}
-
-export function changeLocation(location) {
-  return {
-    type: 'changeLocation',
-    payload: {
-      location,
-    },
-  };
-}
-
-export function clickAddRestaurant() {
-  return {
-    type: 'clickAddRestaurant',
+    type: 'onClick',
   };
 }

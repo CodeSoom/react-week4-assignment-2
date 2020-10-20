@@ -1,48 +1,44 @@
 const initialState = {
   newId: 1,
   restaurants: [],
-  name: '',
-  cuisine: '',
-  location: '',
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
 };
 
 const reducers = {
-  changeName: (state, { payload }) => ({
+  onChange: (state, { payload: { name, value } }) => ({
     ...state,
-    name: payload.name,
+    restaurant: {
+      ...state.restaurant,
+      [name]: value,
+    },
   }),
-  changeCuisine: (state, { payload }) => ({
-    ...state,
-    cuisine: payload.cuisine,
-  }),
-  changeLocation: (state, { payload }) => ({
-    ...state,
-    location: payload.location,
-  }),
-  clickAddRestaurant: (state) => {
+  onClick: (state) => {
     const {
+      id,
       newId,
-      name,
-      cuisine,
-      location,
+      restaurant,
       restaurants,
     } = state;
 
     return {
       ...state,
-      newId: state.id + 1,
+      newId: id + 1,
       restaurants: [
         ...restaurants,
         {
+          ...restaurant,
           id: newId,
-          name,
-          cuisine,
-          location,
         },
       ],
-      name: '',
-      cuisine: '',
-      location: '',
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
     };
   },
 };

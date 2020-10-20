@@ -1,10 +1,8 @@
 import reducer from './reducer';
 
 import {
-  changeName,
-  changeCuisine,
-  changeLocation,
-  clickAddRestaurant,
+  onChange,
+  onClick,
 } from './actions';
 
 describe('reducer', () => {
@@ -13,9 +11,11 @@ describe('reducer', () => {
       const initialState = {
         newId: 1,
         restaurants: [],
-        name: '',
-        cuisine: '',
-        location: '',
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
       };
 
       expect(reducer()).toEqual(initialState);
@@ -25,9 +25,11 @@ describe('reducer', () => {
   context('without action', () => {
     it('returns state', () => {
       const previousState = {
-        name: '시카고 피자',
-        cuisine: '양식',
-        location: '이태원동',
+        restaurant: {
+          name: '시카고 피자',
+          category: '양식',
+          address: '이태원동',
+        },
       };
 
       const state = reducer(previousState);
@@ -40,87 +42,95 @@ describe('reducer', () => {
     describe('changeName', () => {
       it('changes restaurant name', () => {
         const previousState = {
-          name: '',
+          restaurant: {
+            name: '',
+          },
         };
 
         const state = reducer(
           previousState,
-          changeName('시카고 피자'),
+          onChange({ name: 'name', value: '시카고 피자' }),
         );
 
-        expect(state.name).toBe('시카고 피자');
+        expect(state.restaurant.name).toBe('시카고 피자');
       });
     });
 
-    describe('changeCuisine', () => {
-      it('changes restaurant cuisine', () => {
+    describe('changeCategory', () => {
+      it('changes restaurant category', () => {
         const previousState = {
-          cuisine: '',
+          category: '',
         };
 
         const state = reducer(
           previousState,
-          changeCuisine('양식'),
+          onChange({ name: 'category', value: '양식' }),
         );
 
-        expect(state.cuisine).toBe('양식');
+        expect(state.restaurant.category).toBe('양식');
       });
     });
 
-    describe('changeLocation', () => {
-      it('changes restaurant cuisine', () => {
+    describe('changeAddress', () => {
+      it('changes restaurant category', () => {
         const previousState = {
-          location: '',
+          address: '',
         };
 
         const state = reducer(
           previousState,
-          changeLocation('이태원동'),
+          onChange({ name: 'address', value: '이태원동' }),
         );
 
-        expect(state.location).toBe('이태원동');
+        expect(state.restaurant.address).toBe('이태원동');
       });
     });
 
     describe('clickAddRestaurant', () => {
       it('adds restaurant to the list', () => {
         const previousState = {
+          newId: 1,
           restaurants: [],
-          name: '시카고 피자',
-          cuisine: '양식',
-          location: '이태원동',
+          restaurant: {
+            name: '시카고 피자',
+            category: '양식',
+            address: '이태원동',
+          },
         };
 
         const state = reducer(
           previousState,
-          clickAddRestaurant(),
+          onClick(),
         );
 
         expect(state.restaurants[0]).toEqual({
+          id: 1,
           name: '시카고 피자',
-          cuisine: '양식',
-          location: '이태원동',
+          category: '양식',
+          address: '이태원동',
         });
       });
 
-      it('clears restaurant name, cuisine, and location', () => {
+      it('clears restaurant name, category, and address', () => {
         const previousState = {
           restaurants: [],
-          name: '시카고 피자',
-          cuisine: '양식',
-          location: '이태원동',
+          restaurant: {
+            name: '시카고 피자',
+            category: '양식',
+            address: '이태원동',
+          },
         };
 
         const state = reducer(
           previousState,
-          clickAddRestaurant(),
+          onClick(),
         );
 
-        const { name, cuisine, location } = state;
+        const { restaurant } = state;
 
-        expect(name).toBe('');
-        expect(cuisine).toBe('');
-        expect(location).toBe('');
+        expect(restaurant).toEqual({
+          name: '', category: '', address: '',
+        });
       });
     });
   });

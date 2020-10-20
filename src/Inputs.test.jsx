@@ -10,18 +10,16 @@ describe('Inputs', () => {
   });
 
   it('renders', () => {
-    const handleChangeName = jest.fn();
-    const handleChangeCuisine = jest.fn();
-    const handleChangeLocation = jest.fn();
+    const handleChange = jest.fn();
 
     const { container } = render(
       <Inputs
-        name=""
-        cuisine=""
-        location=""
-        onChangeName={handleChangeName}
-        onChangeCuisine={handleChangeCuisine}
-        onChangeLocation={handleChangeLocation}
+        restaurant={{
+          name: '',
+          category: '',
+          address: '',
+        }}
+        onChange={handleChange}
       />,
     );
 

@@ -34,49 +34,49 @@ describe('InputContainer', () => {
     return {
       container,
       inputName: getByTitle(/이름/),
-      inputCuisine: getByTitle(/분류/),
-      inputLocation: getByTitle(/주소/),
+      inputCategory: getByTitle(/분류/),
+      inputAddress: getByTitle(/주소/),
       buttonAdd: getByText(/등록/),
     };
   }
 
-  it('calls changeName', () => {
+  it('calls onChange', () => {
     const {
       inputName,
     } = renderInputContainer();
 
     change(inputName, { value: restaurants[0].name });
     expect(dispatch).toBeCalledWith({
-      type: 'changeName',
-      payload: { name: restaurants[0].name },
+      type: 'onChange',
+      payload: { name: 'name', value: restaurants[0].name },
     });
   });
 
-  it('calls changeCuisine', () => {
+  it('calls onChange', () => {
     const {
-      inputCuisine,
+      inputCategory,
     } = renderInputContainer();
 
-    change(inputCuisine, { value: restaurants[0].cuisine });
+    change(inputCategory, { value: restaurants[0].category });
     expect(dispatch).toBeCalledWith({
-      type: 'changeCuisine',
-      payload: { cuisine: restaurants[0].cuisine },
+      type: 'onChange',
+      payload: { name: 'category', value: restaurants[0].category },
     });
   });
 
-  it('calls changeLocation', () => {
+  it('calls onChange', () => {
     const {
-      inputLocation,
+      inputAddress,
     } = renderInputContainer();
 
-    change(inputLocation, { value: restaurants[0].location });
+    change(inputAddress, { value: restaurants[0].address });
     expect(dispatch).toBeCalledWith({
-      type: 'changeLocation',
-      payload: { location: restaurants[0].location },
+      type: 'onChange',
+      payload: { name: 'address', value: restaurants[0].address },
     });
   });
 
-  it('calls clickAddRestaurant', () => {
+  it('calls handleClick', () => {
     const {
       buttonAdd,
     } = renderInputContainer();
@@ -85,7 +85,7 @@ describe('InputContainer', () => {
 
     click(buttonAdd);
     expect(dispatch).toBeCalledWith({
-      type: 'clickAddRestaurant',
+      type: 'onClick',
     });
   });
 });

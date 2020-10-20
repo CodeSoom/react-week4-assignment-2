@@ -4,11 +4,11 @@ export default function Restaurants({ restaurants }) {
   return restaurants.map(({
     id,
     name,
-    cuisine,
-    location,
+    category,
+    address,
   }) => (
     <li key={id}>
-      {`${name} | ${cuisine} | ${location}`}
+      {`${name} | ${category} | ${address}`}
     </li>
   ));
 }

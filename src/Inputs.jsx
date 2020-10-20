@@ -3,38 +3,35 @@ import React from 'react';
 import Input from './Input';
 
 export default function Inputs({
-  name, cuisine, location, onChangeName, onChangeCuisine, onChangeLocation,
+  restaurant, onChange,
 }) {
   const inputs = [
     {
       id: 'input-restaurant-name',
-      inputName: 'name',
+      name: 'name',
       placeholder: '이름',
-      value: name,
-      onChange: onChangeName,
+      value: restaurant && restaurant.name,
     },
     {
-      id: 'input-restaurant-cuisine',
-      inputName: 'category',
+      id: 'input-restaurant-category',
+      name: 'category',
       placeholder: '분류',
-      value: cuisine,
-      onChange: onChangeCuisine,
+      value: restaurant && restaurant.category,
     },
     {
-      id: 'input-restaurant-location',
-      inputName: 'address',
+      id: 'input-restaurant-address',
+      name: 'address',
       placeholder: '주소',
-      value: location,
-      onChange: onChangeLocation,
+      value: restaurant && restaurant.address,
     },
   ];
 
   return inputs.map(({
-    id, inputName, placeholder, value, onChange,
+    id, name, placeholder, value,
   }) => (
     <Input
       id={id}
-      name={inputName}
+      name={name}
       title={placeholder}
       placeholder={placeholder}
       value={value}

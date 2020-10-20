@@ -5,57 +5,36 @@ import { useSelector, useDispatch } from 'react-redux';
 import Inputs from './Inputs';
 
 import {
-  changeName,
-  changeCuisine,
-  changeLocation,
-  clickAddRestaurant,
+  onChange,
+  onClick,
 } from './actions';
 
 function selector(state) {
-  return {
-    name: state.name,
-    cuisine: state.cuisine,
-    location: state.location,
-  };
+  const { restaurant } = state;
+  return { restaurant };
 }
 
 export default function InputContainer() {
-  const {
-    name,
-    cuisine,
-    location,
-  } = useSelector(selector);
+  const { restaurant } = useSelector(selector);
 
   const dispatch = useDispatch();
 
-  function handleChangeName({ target: { value } }) {
-    dispatch(changeName(value));
+  function handleChange({ target: { name, value } }) {
+    dispatch(onChange({ name, value }));
   }
 
-  function handleChangeCuisine({ target: { value } }) {
-    dispatch(changeCuisine(value));
-  }
-
-  function handleChangeLocation({ target: { value } }) {
-    dispatch(changeLocation(value));
-  }
-
-  function handleClickAddRestaurant() {
-    dispatch(clickAddRestaurant());
+  function handleClick() {
+    dispatch(onClick());
   }
   return (
     <>
       <Inputs
-        name={name}
-        cuisine={cuisine}
-        location={location}
-        onChangeName={handleChangeName}
-        onChangeCuisine={handleChangeCuisine}
-        onChangeLocation={handleChangeLocation}
+        restaurant={restaurant}
+        onChange={handleChange}
       />
       <button
         type="button"
-        onClick={handleClickAddRestaurant}
+        onClick={handleClick}
       >
         등록
       </button>
