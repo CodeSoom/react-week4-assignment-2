@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
+jest.mock('react-redux');
+
 test('RestaurantCreateContainer', () => {
   useSelector.mockImplementation((selector) => selector({}));
 
