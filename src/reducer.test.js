@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   changeRestaurantField,
   setRestaurants,
+  addRestaurant,
 } from './actions';
 
 import restaurants from '../fixtures/restaurants';
@@ -34,7 +35,7 @@ describe('reducer', () => {
         value: '서울시 강남구 역삼동',
       }));
 
-      expect(state.restaurant.name).toBe('서울시 강남구 역삼동');
+      expect(state.restaurant.address).toBe('서울시 강남구 역삼동');
     });
   });
 
@@ -49,7 +50,7 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, addRestaurant({}));
+      const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
       expect(state.restaurant.name).toBe('');
