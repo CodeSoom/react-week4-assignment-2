@@ -7,9 +7,9 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function changeRestaurantField({ name, value }) {
+export function changeRestaurant({ name, value }) {
   return {
-    type: 'changeRestaurantField',
+    type: 'changeRestaurant',
     payload: {
       name,
       value,

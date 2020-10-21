@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'changeRestaurantField') {
+  if (action.type === 'changeRestaurant') {
     const { name, value } = action.payload;
     return {
       ...state,
