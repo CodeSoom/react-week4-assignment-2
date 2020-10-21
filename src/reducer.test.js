@@ -44,6 +44,7 @@ describe('reducer', () => {
       const initialState = {
         restaurants: [],
         restaurant: {
+          id: 101,
           name: '마법사 주방',
           category: '이탈리안',
           address: '서울시 강남구 역삼동',
@@ -52,8 +53,10 @@ describe('reducer', () => {
 
       const state = reducer(initialState, addRestaurant());
 
+      expect(state.restaurant.id).toBe(101);
       expect(state.restaurants).toHaveLength(1);
       expect(state.restaurant.name).toBe('');
+      expect(state.newId).toBe(102);
     });
   });
 });
