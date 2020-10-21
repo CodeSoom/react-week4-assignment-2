@@ -23,7 +23,9 @@ test('RestaurantForm', () => {
     />
   ));
 
-  fireEvent.change(getByDisplayValue('서울시 강남구'), { target: { value: '서울시 강남구 역삼동' } });
+  fireEvent.change(getByDisplayValue('서울시 강남구'), {
+    target: { value: '서울시 강남구 역삼동' },
+  });
 
   expect(handleChange).toBeCalled();
 
