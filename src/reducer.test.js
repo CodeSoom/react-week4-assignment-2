@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { changeRestaurant, setRestaurants } from './actions';
+import { changeRestaurantField, setRestaurants } from './actions';
 
 import restaurants from '../fixtures/restaurants';
 
@@ -16,7 +16,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('changeRestaurant', () => {
+  describe('changeRestaurantField', () => {
     it('changes restaurant form', () => {
       const initialState = {
         restaurant: {
@@ -26,7 +26,7 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, changeRestaurant({
+      const state = reducer(initialState, changeRestaurantField({
         name: 'name',
         value: '마법사주방',
       }));

@@ -34,7 +34,7 @@ test('RestaurantCreateContainer', () => {
   });
 
   expect(dispatch).toBeCalledWith({
-    type: 'changeRestaurant',
+    type: 'changeRestaurantField',
     payload: {
       name: 'address',
       value: '서울시 강남구 역삼동',
