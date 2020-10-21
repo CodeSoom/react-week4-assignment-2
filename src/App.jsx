@@ -8,6 +8,8 @@ import {
   setRestaurants,
 } from './actions';
 
+import restaurants from './fixtures/restaurants';
+
 export default function App() {
   const dispatch = useDispatch();
 
