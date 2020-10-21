@@ -27,7 +27,10 @@ test('RestaurantForm', () => {
     target: { value: '서울시 강남구 역삼동' },
   });
 
-  expect(handleChange).toBeCalled();
+  expect(handleChange).toBeCalledWith({
+    name: 'address',
+    value: '서울시 강남구 역삼동',
+  });
 
   expect(getByDisplayValue('마법사주방')).not.toBeNull();
   expect(getByDisplayValue('이탈리안')).not.toBeNull();

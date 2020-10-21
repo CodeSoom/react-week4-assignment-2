@@ -19,10 +19,15 @@ export default function RestaurantCreateContainer() {
     dispatch(addRestaurant());
   }
 
+  function handleChange() {
+    // todo
+  }
+
   return (
     <RestaurantForm
       restaurant={restaurant}
       onClick={handleClick}
+      onChange={handleChange}
     />
   );
 }
