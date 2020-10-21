@@ -13,13 +13,19 @@ test('RestaurantForm', () => {
   };
 
   const handleClick = jest.fn();
+  const handleChange = jest.fn();
 
   const { getByText, getByDisplayValue } = render((
     <RestaurantForm
       restaurant={restaurant}
+      onChange={handleChange}
       onClick={handleClick}
     />
   ));
+
+  fireEvent.change(getByDisplayValue('서울시 강남구'), { target: { value: '서울시 강남구 역삼동' } });
+
+  expect(handleChange).toBeCalled();
 
   expect(getByDisplayValue('마법사주방')).not.toBeNull();
   expect(getByDisplayValue('이탈리안')).not.toBeNull();
