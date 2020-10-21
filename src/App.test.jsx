@@ -16,6 +16,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants,
+    restaurant: {},
   }));
 
   const { getByText } = render((
