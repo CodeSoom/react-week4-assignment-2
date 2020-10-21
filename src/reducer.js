@@ -1,12 +1,12 @@
 const initialRestaurant = {
-  restaurant: {
-    name: '',
-    category: '',
-    address: '',
-  },
+  id: '',
+  name: '',
+  category: '',
+  address: '',
 };
 
 const initialState = {
+  newId: 100,
   restaurants: [],
   restaurant: initialRestaurant,
 };
@@ -32,10 +32,11 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'addRestaurant') {
-    const { restaurants, restaurant } = state;
+    const { newId, restaurants, restaurant } = state;
     return {
       ...state,
-      restaurants: [...restaurants, restaurant],
+      newId: newId + 1,
+      restaurants: [...restaurants, { ...restaurant, id: newId }],
       restaurant: initialRestaurant,
     };
   }
