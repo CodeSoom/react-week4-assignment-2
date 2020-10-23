@@ -64,4 +64,25 @@ describe('reducer', () => {
       expect(state.newId).toBe(102);
     });
   });
+
+  describe('undefined action', () => {
+    it("doesn't work", () => {
+      const initialState = {
+        newId: 101,
+        restaurants: [],
+        restaurant: {
+          name: '마법사주방',
+          category: '이탈리안',
+          address: '서울시 강남구 역삼동',
+        },
+      };
+      const state = reducer(initialState, { type: 'undefined action', payload: {} });
+
+      expect(state.restaurant.name).toBe('마법사주방');
+      expect(state.restaurant.category).toBe('이탈리안');
+      expect(state.restaurant.address).toBe('서울시 강남구 역삼동');
+
+      expect(reducer).toBeCalled();
+    });
+  });
 });
