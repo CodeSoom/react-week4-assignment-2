@@ -1,9 +1,14 @@
 import React from 'react';
 
+import RestaurantFormContainer from './RestaurantFormContainer';
+import RestaurantsContainer from './RestaurantsContainer';
+
 export default function App() {
   return (
     <div>
-      Hello
+      <h1>Restaurants</h1>
+      <RestaurantsContainer />
+      <RestaurantFormContainer />
     </div>
   );
 }
