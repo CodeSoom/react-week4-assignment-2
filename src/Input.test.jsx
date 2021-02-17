@@ -12,12 +12,12 @@ describe('Input은', () => {
 
   beforeEach(() => jest.clearAllMocks());
 
-  function renderInput(NameValue = '', CategoryValue = '', AddressValue = '') {
+  function renderInput(nameValue = '', categoryValue = '', addressValue = '') {
     return render(
       <Input
-        NameValue={NameValue}
-        CategoryValue={CategoryValue}
-        AddressValue={AddressValue}
+        nameValue={nameValue}
+        categoryValue={categoryValue}
+        addressValue={addressValue}
         onChangeName={handleChangeName}
         onChangeCategory={handleChangeCategory}
         onChangeAddress={handleChangeAddress}
