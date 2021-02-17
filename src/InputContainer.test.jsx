@@ -1,13 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from './App';
+import InputContainer from './InputContainer';
 
-describe('App', () => {
-  it('should render Child Component', () => {
-    const { getByText, getByPlaceholderText } = render(<App />);
-
-    expect(getByText('Restaurants')).toBeInTheDocument();
+describe('InputContainer', () => {
+  it('should render three inputs and one button', () => {
+    const { getByPlaceholderText, getByText } = render(<InputContainer />);
 
     expect(getByPlaceholderText('이름')).toBeInTheDocument();
     expect(getByPlaceholderText('분류')).toBeInTheDocument();
