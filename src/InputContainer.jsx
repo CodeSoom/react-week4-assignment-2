@@ -1,13 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import RestaurantInput from './RestaurantInput';
 
 function InputContainer() {
+  const dispatch = useDispatch();
+
+  function handleChange(action) {
+    dispatch(action);
+  }
   return (
-    <div className="input-container">
-      <input type="text" placeholder="이름" />
-      <input type="text" placeholder="분류" />
-      <input type="text" placeholder="주소" />
-      <button type="button">등록</button>
-    </div>
+    <RestaurantInput onChange={handleChange} />
   );
 }
 
