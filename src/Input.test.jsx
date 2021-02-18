@@ -24,12 +24,6 @@ describe('Input', () => {
   it('changes inputs', () => {
     const { getByPlaceholderText } = renderInput();
 
-    fireEvent.change(getByPlaceholderText(/이름/), {
-      target: { value: '마녀주방' },
-    });
-
-    expect(getByPlaceholderText(/이름/).value).toBe('마녀주방');
-
     fireEvent.change(getByPlaceholderText(/분류/), {
       target: { value: '한식' },
     });
