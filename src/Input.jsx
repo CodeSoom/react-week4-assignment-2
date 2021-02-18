@@ -1,5 +1,7 @@
 import React from 'react';
 
+import NameInput from './NameInput';
+
 export default function Input({
   name,
   type,
@@ -8,11 +10,8 @@ export default function Input({
 }) {
   return (
     <div>
-      <input
-        type="text"
-        placeholder="이름"
-        name="name"
-        value={name}
+      <NameInput
+        name={name}
         onChange={onChange}
       />
       <input
