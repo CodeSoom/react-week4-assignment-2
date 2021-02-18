@@ -2,25 +2,21 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from './Input';
+import InputForm from './InputForm';
 
-describe('Input은', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+describe('InputFrom', () => {
+  const handleChange = jest.fn();
   const handleClick = jest.fn();
 
   beforeEach(() => jest.clearAllMocks());
 
   function renderInput(nameValue = '', categoryValue = '', addressValue = '') {
     return render(
-      <Input
+      <InputForm
         nameValue={nameValue}
         categoryValue={categoryValue}
         addressValue={addressValue}
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
+        onChange={handleChange}
         onClick={handleClick}
       />,
     );
@@ -34,25 +30,23 @@ describe('Input은', () => {
     expect(getByDisplayValue('서울시 강남구')).toBeInTheDocument();
   });
 
-  it('입력을 받으면 매칭되어 있는 handleChange함수를 실행한다.', () => {
+  it('이름을 입력받으면 handleChange함수를 실행한다.', () => {
     const { getByPlaceholderText } = renderInput();
-
     const inputInfos = [
-      { placeholder: '이름', value: '마녀 주방', callback: handleChangeName },
-      { placeholder: '종류', value: '한식', callback: handleChangeCategory },
-      { placeholder: '주소', value: '서울시 강남구', callback: handleChangeAddress },
+      { placeHolder: '이름', value: '마녀 주방' },
+      { placeHolder: '종류', value: '한식' },
+      { placeHolder: '주소', value: '서울시 강남구' },
     ];
 
-    inputInfos.forEach(({ placeholder, value, callback }) => {
-      fireEvent.change(getByPlaceholderText(placeholder), {
+    inputInfos.forEach(({ placeHolder, value }) => {
+      fireEvent.change(getByPlaceholderText(placeHolder), {
         target: { value },
       });
-
-      expect(callback).toBeCalled();
+      expect(handleChange).toBeCalled();
     });
   });
 
-  it('등록 버튼을 누르면 handleClick함수가 실행된다.', () => {
+  it('등록버튼을 클릭하면 handleClick을 실행한다.', () => {
     const { getByText } = renderInput('마녀 주방', '한식', '서울시 강남구');
 
     fireEvent.click(getByText('등록'));
