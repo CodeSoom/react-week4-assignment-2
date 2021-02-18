@@ -34,7 +34,7 @@ describe('InputFrom', () => {
     const { getByPlaceholderText } = renderInput();
     const inputInfos = [
       { placeHolder: '이름', value: '마녀 주방' },
-      { placeHolder: '종류', value: '한식' },
+      { placeHolder: '분류', value: '한식' },
       { placeHolder: '주소', value: '서울시 강남구' },
     ];
 

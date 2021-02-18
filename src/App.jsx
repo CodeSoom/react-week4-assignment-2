@@ -18,21 +18,21 @@ export default function App() {
   } = state;
 
   function updateInput(event) {
-    if (event.target.name === '이름') {
+    if (event.target.name === 'name') {
       setState({
         ...state,
         name: event.target.value,
       });
     }
 
-    if (event.target.name === '종류') {
+    if (event.target.name === 'category') {
       setState({
         ...state,
         category: event.target.value,
       });
     }
 
-    if (event.target.name === '주소') {
+    if (event.target.name === 'address') {
       setState({
         ...state,
         address: event.target.value,
