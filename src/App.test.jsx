@@ -66,6 +66,6 @@ describe('App', () => {
     expect(queryByPlaceholderText('이름')).toHaveValue('');
     expect(queryByPlaceholderText('종류')).toHaveValue('');
     expect(queryByPlaceholderText('주소')).toHaveValue('');
-    expect(queryByText('마녀주방 | 한식 | 서울시 강남구')).toBeInTheDocument();
+    expect(queryByText('마녀 주방 | 한식 | 서울시 강남구')).toBeInTheDocument();
   });
 });
