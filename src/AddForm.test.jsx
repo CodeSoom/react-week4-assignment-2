@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import AddForm from './AddForm';
 
@@ -13,9 +13,9 @@ import AddForm from './AddForm';
 
 describe('AddForm', () => {
   const inputTitles = {
-    name: '마녀주방',
-    category: '한식',
-    address: '서울시 강남구',
+    name: '',
+    category: '',
+    address: '',
   };
 
   const handleChangeName = jest.fn();
@@ -40,5 +40,41 @@ describe('AddForm', () => {
     expect(getByPlaceholderText('주소')).not.toBeNull();
 
     expect(getByText('등록')).not.toBeNull();
+  });
+
+  it('listens change event', () => {
+    const { getByPlaceholderText } = render((
+      <AddForm
+        inputTitles={inputTitles}
+        onChangeName={handleChangeName}
+        onChangeCategory={handleChangeCategory}
+        onChangeAddress={handleChangeAddress}
+        onClickButton={handleClickButton}
+      />
+    ));
+
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        value: '한식',
+      },
+    });
+
+    expect(handleChangeName).toBeCalled();
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        value: '한식',
+      },
+    });
+
+    expect(handleChangeCategory).toBeCalled();
+
+    fireEvent.change(getByPlaceholderText('주소'), {
+      target: {
+        value: '서울 강남구',
+      },
+    });
+
+    expect(handleChangeAddress).toBeCalled();
   });
 });
