@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function List() {
+export default function List({ tasks = [] }) {
   return (
     <ul>
-      <li>마녀주방 | 한식 | 서울시 강남구</li>
+      {tasks.map((task) => (
+        <li key={task.id}>
+          {task.title}
+        </li>
+      ))}
     </ul>
   );
 }
