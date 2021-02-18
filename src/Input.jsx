@@ -2,6 +2,7 @@ import React from 'react';
 
 import NameInput from './NameInput';
 import TypeInput from './TypeInput';
+import AddressInput from './AddressInput';
 
 export default function Input({
   name,
@@ -19,10 +20,7 @@ export default function Input({
         type={type}
         onChange={onChange}
       />
-      <input
-        type="text"
-        placeholder="주소"
-        name="address"
+      <AddressInput
         value={address}
         onChange={onChange}
       />
