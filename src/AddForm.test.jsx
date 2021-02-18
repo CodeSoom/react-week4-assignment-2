@@ -12,20 +12,68 @@ import AddForm from './AddForm';
  */
 
 describe('AddForm', () => {
-  const inputTitles = {
-    name: '',
-    category: '',
-    address: '',
-  };
-
   const handleChangeName = jest.fn();
   const handleChangeCategory = jest.fn();
   const handleChangeAddress = jest.fn();
 
   const handleClickButton = jest.fn();
 
-  it('renders inputs and button', () => {
-    const { getByText, getByPlaceholderText } = render((
+  context('without input value', () => {
+    it('renders input placeholder', () => {
+      const inputTitles = {
+        name: '',
+        category: '',
+        address: '',
+      };
+
+      const { getByPlaceholderText } = render((
+        <AddForm
+          inputTitles={inputTitles}
+          onChangeName={handleChangeName}
+          onChangeCategory={handleChangeCategory}
+          onChangeAddress={handleChangeAddress}
+          onClickButton={handleClickButton}
+        />
+      ));
+
+      expect(getByPlaceholderText('이름')).not.toBeNull();
+      expect(getByPlaceholderText('분류')).not.toBeNull();
+      expect(getByPlaceholderText('주소')).not.toBeNull();
+    });
+  });
+
+  context('with input value', () => {
+    it('renders input value', () => {
+      const inputTitles = {
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+      };
+
+      const { getByDisplayValue } = render((
+        <AddForm
+          inputTitles={inputTitles}
+          onChangeName={handleChangeName}
+          onChangeCategory={handleChangeCategory}
+          onChangeAddress={handleChangeAddress}
+          onClickButton={handleClickButton}
+        />
+      ));
+
+      expect(getByDisplayValue('마녀주방')).not.toBeNull();
+      expect(getByDisplayValue('한식')).not.toBeNull();
+      expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
+    });
+  });
+
+  it("renders '등록' button", () => {
+    const inputTitles = {
+      name: '',
+      category: '',
+      address: '',
+    };
+
+    const { getByText } = render((
       <AddForm
         inputTitles={inputTitles}
         onChangeName={handleChangeName}
@@ -35,14 +83,16 @@ describe('AddForm', () => {
       />
     ));
 
-    expect(getByPlaceholderText('이름')).not.toBeNull();
-    expect(getByPlaceholderText('분류')).not.toBeNull();
-    expect(getByPlaceholderText('주소')).not.toBeNull();
-
     expect(getByText('등록')).not.toBeNull();
   });
 
   it('listens change event', () => {
+    const inputTitles = {
+      name: '',
+      category: '',
+      address: '',
+    };
+
     const { getByPlaceholderText } = render((
       <AddForm
         inputTitles={inputTitles}
