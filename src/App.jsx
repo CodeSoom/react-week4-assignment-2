@@ -5,9 +5,15 @@ import Input from './Input';
 export default function App() {
   const [state, setstate] = useState({
     name: '',
+    type: '',
+    address: '',
   });
 
-  const { name } = state;
+  const {
+    name,
+    type,
+    address,
+  } = state;
 
   function handleChange(event) {
     const { name: targetName, value } = event.target;
@@ -22,6 +28,8 @@ export default function App() {
       <h1>Restaurants</h1>
       <Input
         name={name}
+        type={type}
+        address={address}
         onChange={handleChange}
       />
     </div>
