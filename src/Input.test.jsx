@@ -12,11 +12,13 @@ describe('Input', () => {
   }
 
   it('renders restaurant inputs', () => {
-    const { getByPlaceholderText } = renderInput();
+    const { getByPlaceholderText, getByText } = renderInput();
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
     expect(getByPlaceholderText(/주소/)).not.toBeNull();
+
+    expect(getByText(/등록/)).not.toBeNull();
   });
 
   it('changes inputs', () => {
