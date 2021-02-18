@@ -7,14 +7,14 @@ export default function App() {
   const [state, setState] = useState({
     id: 0,
     name: '',
-    type: '',
+    category: '',
     address: '',
     restaurants: [],
   });
 
   const {
     name,
-    type,
+    category,
     address,
     restaurants,
   } = state;
@@ -31,14 +31,14 @@ export default function App() {
     setState({
       id: state.id + 1,
       name: '',
-      type: '',
+      category: '',
       address: '',
       restaurants: [
         ...state.restaurants,
         {
           id: state.id,
           name: state.name,
-          type: state.type,
+          category: state.category,
           address: state.address,
         },
       ],
@@ -53,7 +53,7 @@ export default function App() {
       />
       <Input
         name={name}
-        type={type}
+        category={category}
         address={address}
         onChange={handleChange}
         onClick={handleClick}

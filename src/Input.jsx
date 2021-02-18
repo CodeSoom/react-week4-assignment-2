@@ -1,12 +1,12 @@
 import React from 'react';
 
 import NameInput from './NameInput';
-import TypeInput from './TypeInput';
+import CategoryInput from './CategoryInput';
 import AddressInput from './AddressInput';
 
 export default function Input({
   name,
-  type,
+  category,
   address,
   onChange,
   onClick,
@@ -17,8 +17,8 @@ export default function Input({
         name={name}
         onChange={onChange}
       />
-      <TypeInput
-        type={type}
+      <CategoryInput
+        category={category}
         onChange={onChange}
       />
       <AddressInput

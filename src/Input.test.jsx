@@ -16,7 +16,7 @@ describe('Input', () => {
     return render((
       <Input
         name=""
-        type=""
+        category=""
         address=""
         onChange={handleChange}
         onClick={handleClick}

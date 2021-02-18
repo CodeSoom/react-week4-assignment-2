@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function TypeInput({ type, onChange }) {
+export default function CategoryInput({ category, onChange }) {
   return (
     <input
       type="text"
       placeholder="분류"
-      name="type"
-      value={type}
+      name="category"
+      value={category}
       onChange={onChange}
     />
   );

@@ -2,15 +2,15 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import TypeInput from './TypeInput';
+import CategoryInput from './CategoryInput';
 
-describe('TypeInput', () => {
+describe('CategoryInput', () => {
   it('changes inputs', () => {
     const handleChange = jest.fn();
 
     const { getByPlaceholderText } = render((
-      <TypeInput
-        type=""
+      <CategoryInput
+        category=""
         onChange={handleChange}
       />
     ));

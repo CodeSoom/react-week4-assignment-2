@@ -6,12 +6,12 @@ export default function List({ restaurants }) {
   return (
     <div>
       { restaurants.map(({
-        id, name, type, address,
+        id, name, category, address,
       }) => (
         <Restaurant
           key={id}
           name={name}
-          type={type}
+          category={category}
           address={address}
         />
       ))}
