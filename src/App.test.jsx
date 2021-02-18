@@ -46,4 +46,26 @@ describe('App', () => {
 
     expect(queryByDisplayValue('서울시 강남구')).toBeInTheDocument();
   });
+
+  it('등록 버튼을 누르면 입력란은 비워지고 음식점 정보가 화면에 보인다.', () => {
+    const { queryByText, queryByPlaceholderText } = render(<App />);
+    const inputInfo = [
+      { placeHolder: '이름', value: '마녀 주방' },
+      { placeHolder: '종류', value: '한식' },
+      { placeHolder: '주소', value: '서울시 강남구' },
+    ];
+
+    inputInfo.forEach(({ placeHolder, value }) => {
+      fireEvent.change(queryByPlaceholderText(placeHolder), {
+        target: { value },
+      });
+    });
+
+    fireEvent.click(queryByText('등록'));
+
+    expect(queryByPlaceholderText('이름')).toHaveValue('');
+    expect(queryByPlaceholderText('종류')).toHaveValue('');
+    expect(queryByPlaceholderText('주소')).toHaveValue('');
+    expect(queryByText('마녀주방 | 한식 | 서울시 강남구')).toBeInTheDocument();
+  });
 });
