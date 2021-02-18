@@ -1,8 +1,25 @@
 import React from 'react';
 
-function List() {
+function List({
+  list,
+}) {
   return (
-    <div />
+    <ul>
+      {
+        list.map(({
+          id,
+          name,
+          category,
+          address,
+        }) => (
+          <li key={id}>
+            <span>{name}</span>
+            <span>{category}</span>
+            <span>{address}</span>
+          </li>
+        ))
+      }
+    </ul>
   );
 }
 
