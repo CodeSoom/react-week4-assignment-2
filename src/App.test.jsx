@@ -12,4 +12,12 @@ describe('App', () => {
 
     expect(getByText(/Restaurants/)).not.toBeNull();
   });
+
+  it('renders restaurant inputs', () => {
+    const { getByPlaceholderText } = render((
+      <App />
+    ));
+
+    expect(getByPlaceholderText(/이름/)).not.toBeNull();
+  });
 });
