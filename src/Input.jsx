@@ -9,6 +9,7 @@ export default function Input({
   type,
   address,
   onChange,
+  onClick,
 }) {
   return (
     <div>
@@ -24,7 +25,13 @@ export default function Input({
         value={address}
         onChange={onChange}
       />
-      <button type="button">등록</button>
+      <button
+        type="button"
+        onClick={onClick}
+      >
+        등록
+
+      </button>
     </div>
   );
 }

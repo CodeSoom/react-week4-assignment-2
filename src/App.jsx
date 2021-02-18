@@ -23,6 +23,10 @@ export default function App() {
     });
   }
 
+  function handleClick() {
+
+  }
+
   return (
     <div>
       <h1>Restaurants</h1>
@@ -31,6 +35,7 @@ export default function App() {
         type={type}
         address={address}
         onChange={handleChange}
+        onClick={handleClick}
       />
     </div>
   );
