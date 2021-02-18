@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 import List from './List';
 
 describe('List', () => {
-  it('renders restaurant information', () => {
+  context('with information', () => {
     const restaurants = [
       {
         id: 1,
@@ -15,12 +15,28 @@ describe('List', () => {
       },
     ];
 
-    const { getByText } = render((
-      <List
-        restaurants={restaurants}
-      />
-    ));
+    it('renders restaurant information', () => {
+      const { getByText } = render((
+        <List
+          restaurants={restaurants}
+        />
+      ));
 
-    expect(getByText(/마녀주방/)).not.toBeNull();
+      expect(getByText(/마녀주방/)).not.toBeNull();
+    });
+  });
+
+  context('without information', () => {
+    const restaurants = [];
+
+    it('renders nothing', () => {
+      const { container } = render((
+        <List
+          restaurants={restaurants}
+        />
+      ));
+
+      expect(container).not.toHaveTextContent(/\|/);
+    });
   });
 });
