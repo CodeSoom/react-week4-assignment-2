@@ -29,6 +29,7 @@ export default function Input({
         value={address}
         onChange={onChange}
       />
+      <button type="button">등록</button>
     </div>
   );
 }
