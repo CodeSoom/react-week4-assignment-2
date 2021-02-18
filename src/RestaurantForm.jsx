@@ -5,9 +5,24 @@ export default function RestaurantForm({ restaurantInformation = {}, handleChang
 
   return (
     <div>
-      <input placeholder="이름" value={name} onChange={handleChange} />
-      <input placeholder="분류" value={category} onChange={handleChange} />
-      <input placeholder="주소" value={address} onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="이름"
+        value={name}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="분류"
+        value={category}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="주소"
+        value={address}
+        onChange={handleChange}
+      />
       <button type="button" onClick={handleClick}>등록</button>
     </div>
   );
