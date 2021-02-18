@@ -17,5 +17,13 @@ describe('Input', () => {
     });
 
     expect(getByPlaceholderText(/이름/).value).toBe('마녀주방');
+
+    expect(getByPlaceholderText(/분류/)).not.toBeNull();
+
+    fireEvent.change(getByPlaceholderText(/분류/), {
+      target: { value: '한식' },
+    });
+
+    expect(getByPlaceholderText(/분류/).value).toBe('한식');
   });
 });
