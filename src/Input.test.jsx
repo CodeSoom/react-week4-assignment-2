@@ -24,12 +24,6 @@ describe('Input', () => {
   it('changes inputs', () => {
     const { getByPlaceholderText } = renderInput();
 
-    fireEvent.change(getByPlaceholderText(/분류/), {
-      target: { value: '한식' },
-    });
-
-    expect(getByPlaceholderText(/분류/).value).toBe('한식');
-
     fireEvent.change(getByPlaceholderText(/주소/), {
       target: { value: '서울시 강남구' },
     });
