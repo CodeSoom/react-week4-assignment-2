@@ -1,8 +1,12 @@
 import React from 'react';
 
-function ListItem() {
+function ListItem({ name, category, address }) {
   return (
-    <div />
+    <li>
+      <span>{name}</span>
+      <span>{category}</span>
+      <span>{address}</span>
+    </li>
   );
 }
 
