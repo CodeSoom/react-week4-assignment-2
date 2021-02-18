@@ -5,7 +5,17 @@ import { render } from '@testing-library/react';
 import RestaurantForm from './RestaurantForm';
 
 describe('RestaurantForm', () => {
-  const renderRestaurantForm = () => render(<RestaurantForm />);
+  const renderRestaurantForm = (restaurantInformation) => render((
+    <RestaurantForm
+      restaurantInformation={restaurantInformation}
+    />
+  ));
+
+  const restaurantInformation = {
+    name: '베이징',
+    category: '중식',
+    address: '파주시',
+  };
 
   it('renders input elemetns', () => {
     const { getByPlaceholderText } = renderRestaurantForm();
@@ -23,5 +33,15 @@ describe('RestaurantForm', () => {
     const { getByText } = renderRestaurantForm();
 
     expect(getByText(/등록/)).not.toBeNull();
+  });
+
+  it('renders values of the input elements ', () => {
+    const { getByDisplayValue } = renderRestaurantForm(restaurantInformation);
+
+    const informations = Object.values(restaurantInformation);
+
+    informations.forEach((information) => {
+      expect(getByDisplayValue(information)).not.toBeNull();
+    });
   });
 });
