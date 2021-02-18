@@ -1,8 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import List from './List';
 
 function ListContainer() {
+  const { list } = useSelector((state) => ({
+    list: state.list,
+  }));
+
   return (
-    <div />
+    <List list={list} />
   );
 }
 
