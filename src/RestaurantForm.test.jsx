@@ -8,17 +8,17 @@ describe('RestaurantForm', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const restaurantInformation = {
+  const restaurant = {
     name: '베이징',
     category: '중식',
     address: '파주시',
   };
 
-  const informations = Object.values(restaurantInformation);
+  const restaurantData = Object.values(restaurant);
 
   const renderRestaurantForm = () => render((
     <RestaurantForm
-      restaurantInformation={restaurantInformation}
+      restaurant={restaurant}
       handleChange={handleChange}
       handleClick={handleClick}
     />
@@ -47,16 +47,16 @@ describe('RestaurantForm', () => {
   it('renders values of the input elements ', () => {
     const { getByDisplayValue } = renderRestaurantForm();
 
-    informations.forEach((information) => {
-      expect(getByDisplayValue(information)).not.toBeNull();
+    restaurantData.forEach((data) => {
+      expect(getByDisplayValue(data)).not.toBeNull();
     });
   });
 
   it('calls handleChange function upon changing value of the input elements', () => {
     const { getByDisplayValue } = renderRestaurantForm();
 
-    informations.forEach((information) => {
-      fireEvent.change(getByDisplayValue(information), {
+    restaurantData.forEach((data) => {
+      fireEvent.change(getByDisplayValue(data), {
         target: { value: '본즈패밀리' },
       });
     });

@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function RestaurantForm({ restaurantInformation = {}, handleChange, handleClick }) {
-  const { name, category, address } = restaurantInformation;
+export default function RestaurantForm({ restaurant = {}, handleChange, handleClick }) {
+  const { name, category, address } = restaurant;
 
   return (
     <div>
