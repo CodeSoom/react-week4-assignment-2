@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NameInput from './NameInput';
+import TypeInput from './TypeInput';
 
 export default function Input({
   name,
@@ -14,11 +15,8 @@ export default function Input({
         name={name}
         onChange={onChange}
       />
-      <input
-        type="text"
-        placeholder="분류"
-        name="type"
-        value={type}
+      <TypeInput
+        type={type}
         onChange={onChange}
       />
       <input
