@@ -5,15 +5,33 @@ import InputForm from './InputForm';
 export default function App() {
   const [state, setState] = useState({
     name: '',
+    category: '',
+    address: '',
   });
 
-  const { name } = state;
+  const { name, category, address } = state;
 
-  function updateName(event) {
-    setState({
-      ...state,
-      name: event.target.value,
-    });
+  function updateInput(event) {
+    if (event.target.name === '이름') {
+      setState({
+        ...state,
+        name: event.target.value,
+      });
+    }
+
+    if (event.target.name === '종류') {
+      setState({
+        ...state,
+        category: event.target.value,
+      });
+    }
+
+    if (event.target.name === '주소') {
+      setState({
+        ...state,
+        address: event.target.value,
+      });
+    }
   }
 
   return (
@@ -21,9 +39,9 @@ export default function App() {
       <h1>Restaurants</h1>
       <InputForm
         nameValue={name}
-        categoryValue
-        addressValue
-        onChange={updateName}
+        categoryValue={category}
+        addressValue={address}
+        onChange={updateInput}
         onClick
       />
     </div>
