@@ -26,8 +26,8 @@ describe('Inputs', () => {
         handleClickButton={handleClickAddButton}
       />
     ));
-
-    fireEvent.click(getByText('등록'));
+    expect(getByText(/등록/)).not.toBeNull();
+    fireEvent.click(getByText(/등록/));
 
     expect(handleClickAddButton).toBeCalled();
 
