@@ -25,5 +25,13 @@ describe('Input', () => {
     });
 
     expect(getByPlaceholderText(/분류/).value).toBe('한식');
+
+    expect(getByPlaceholderText(/주소/)).not.toBeNull();
+
+    fireEvent.change(getByPlaceholderText(/주소/), {
+      target: { value: '서울시 강남구' },
+    });
+
+    expect(getByPlaceholderText(/주소/).value).toBe('서울시 강남구');
   });
 });
