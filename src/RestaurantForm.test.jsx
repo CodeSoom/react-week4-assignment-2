@@ -6,6 +6,7 @@ import RestaurantForm from './RestaurantForm';
 
 describe('RestaurantForm', () => {
   const handleChange = jest.fn();
+  const handleClick = jest.fn();
 
   const restaurantInformation = {
     name: '베이징',
@@ -19,6 +20,7 @@ describe('RestaurantForm', () => {
     <RestaurantForm
       restaurantInformation={restaurantInformation}
       handleChange={handleChange}
+      handleClick={handleClick}
     />
   ));
 
@@ -60,5 +62,13 @@ describe('RestaurantForm', () => {
     });
 
     expect(handleChange).toBeCalled();
+  });
+
+  it('calls handleClick function upon clicking 등록 button', () => {
+    const { getByText } = renderRestaurantForm();
+
+    fireEvent.click(getByText(/등록/));
+
+    expect(handleClick).toBeCalled();
   });
 });
