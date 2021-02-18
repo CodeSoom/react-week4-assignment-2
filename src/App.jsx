@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
 
+import List from './List';
 import Input from './Input';
-
-function List({ restaurants }) {
-  return (
-    <div>
-      { JSON.stringify(restaurants) }
-    </div>
-  );
-}
 
 export default function App() {
   const [state, setState] = useState({
+    id: 0,
     name: '',
     type: '',
     address: '',
@@ -39,6 +33,7 @@ export default function App() {
       restaurants: [
         ...state.restaurants,
         {
+          id: state.id + 1,
           name: state.name,
           type: state.type,
           address: state.address,
