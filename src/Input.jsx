@@ -22,7 +22,7 @@ export default function Input({
         onChange={onChange}
       />
       <AddressInput
-        value={address}
+        address={address}
         onChange={onChange}
       />
       <button
@@ -30,7 +30,6 @@ export default function Input({
         onClick={onClick}
       >
         등록
-
       </button>
     </div>
   );

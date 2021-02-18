@@ -29,11 +29,14 @@ export default function App() {
 
   function handleClick() {
     setState({
-      ...state,
+      id: state.id + 1,
+      name: '',
+      type: '',
+      address: '',
       restaurants: [
         ...state.restaurants,
         {
-          id: state.id + 1,
+          id: state.id,
           name: state.name,
           type: state.type,
           address: state.address,
