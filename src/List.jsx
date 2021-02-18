@@ -1,4 +1,5 @@
 import React from 'react';
+import ListItem from './ListItem';
 
 function List({
   list,
@@ -12,11 +13,12 @@ function List({
           category,
           address,
         }) => (
-          <li key={id}>
-            <span>{name}</span>
-            <span>{category}</span>
-            <span>{address}</span>
-          </li>
+          <ListItem
+            key={id}
+            name={name}
+            category={category}
+            address={address}
+          />
         ))
       }
     </ul>
