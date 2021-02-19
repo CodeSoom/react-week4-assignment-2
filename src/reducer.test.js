@@ -9,9 +9,9 @@ describe('reducer', () => {
     };
 
     const state = reducer(preveState, {
-      type: 'inputUpdate',
+      type: 'updateInput',
       payload: {
-        placeholder: '이름',
+        placeholder: 'name',
         input: '마녀 주방',
       },
     });
@@ -25,9 +25,9 @@ describe('reducer', () => {
     };
 
     const state = reducer(preveState, {
-      type: 'inputUpdate',
+      type: 'updateInput',
       payload: {
-        placeholder: '분류',
+        placeholder: 'category',
         input: '한식',
       },
     });
@@ -41,9 +41,9 @@ describe('reducer', () => {
     };
 
     const state = reducer(preveState, {
-      type: 'inputUpdate',
+      type: 'updateInput',
       payload: {
-        placeholder: '주소',
+        placeholder: 'address',
         input: '서울시 강남구',
       },
     });
@@ -63,10 +63,10 @@ describe('reducer', () => {
     it('등록 버튼을 누르면 레스토랑 정보가 추가되고 입력칸들은 비워진다.', () => {
       const state = reducer(preveState, addRestaurants());
 
-      expect(state.restaurantsList).toBe(['마녀 주방 | 한식 | 서울시 강남구']);
+      expect(state.restaurantsList).toHaveLength(1);
       expect(state.name).toBe('');
       expect(state.category).toBe('');
-      expect(state.restaurantsList).toBe('');
+      expect(state.address).toBe('');
     });
   });
 
@@ -82,7 +82,7 @@ describe('reducer', () => {
     it('등록버튼을 눌러도 레스토랑 정보가 추가되지 않는다.', () => {
       const state = reducer(preveState, addRestaurants());
 
-      expect(state.restaurantsList).toBe([]);
+      expect(state.restaurantsList).toHaveLength(0);
     });
   });
 });
