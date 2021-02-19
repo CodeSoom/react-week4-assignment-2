@@ -9,7 +9,7 @@ test('Input', () => {
   const handleClick = jest.fn();
 
   const { queryByText, queryByPlaceholderText } = render((
-    <Input onChnage={handleChange} onClick={handleClick} />
+    <Input onChange={handleChange} onClick={handleClick} />
   ));
 
   fireEvent.change(queryByPlaceholderText('이름'), {
