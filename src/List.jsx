@@ -1,11 +1,9 @@
 import React from 'react';
 
-export default function List() {
-  const registers = [{
-    id: 1,
-    information: '마녀식당 | 한식 | 서울시 강남구',
-  }];
-
+export default function List({ registers }) {
+  if (registers.length === 0) {
+    return (<div />);
+  }
   return (
     <div>
       <ul>
