@@ -12,37 +12,33 @@ import AddForm from './AddForm';
  */
 
 describe('AddForm', () => {
+  const handleChageInput = jest.fn();
+
+  const handleClickAddButton = jest.fn();
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
-
-  const handleClickButton = jest.fn();
-
-  function renderAddForm(inputTitles) {
+  function renderAddForm(inputs) {
     return render((
       <AddForm
-        inputTitles={inputTitles}
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
-        onClickButton={handleClickButton}
+        inputs={inputs}
+        onChangeInput={handleChageInput}
+        onClickAddButton={handleClickAddButton}
       />
     ));
   }
 
-  context('without inputTitles', () => {
+  context('without inputs', () => {
     it('renders input placeholder', () => {
-      const inputTitles = {
+      const inputs = {
         name: '',
         category: '',
         address: '',
       };
 
-      const { getByPlaceholderText } = renderAddForm(inputTitles);
+      const { getByPlaceholderText } = renderAddForm(inputs);
 
       expect(getByPlaceholderText('이름')).not.toBeNull();
       expect(getByPlaceholderText('분류')).not.toBeNull();
@@ -50,15 +46,15 @@ describe('AddForm', () => {
     });
   });
 
-  context('with inputTitles', () => {
+  context('with inputs', () => {
     it('renders input value', () => {
-      const inputTitles = {
+      const inputs = {
         name: '마녀주방',
         category: '한식',
         address: '서울시 강남구',
       };
 
-      const { getByDisplayValue } = renderAddForm(inputTitles);
+      const { getByDisplayValue } = renderAddForm(inputs);
 
       expect(getByDisplayValue('마녀주방')).not.toBeNull();
       expect(getByDisplayValue('한식')).not.toBeNull();
@@ -67,32 +63,30 @@ describe('AddForm', () => {
   });
 
   it("renders '등록' button", () => {
-    const inputTitles = {
+    const inputs = {
       name: '',
       category: '',
       address: '',
     };
 
-    const { getByText } = renderAddForm(inputTitles);
+    const { getByText } = renderAddForm(inputs);
 
     expect(getByText('등록')).not.toBeNull();
   });
 
-  it('listens change event', () => {
-    const inputTitles = {
+  it('listens change events', () => {
+    const inputs = {
       name: '',
       category: '',
       address: '',
     };
 
-    const { getByPlaceholderText } = renderAddForm(inputTitles);
+    const { getByPlaceholderText } = renderAddForm(inputs);
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
         value: '한식',
       },
     });
-
-    expect(handleChangeName).toBeCalled();
 
     fireEvent.change(getByPlaceholderText('분류'), {
       target: {
@@ -100,7 +94,34 @@ describe('AddForm', () => {
       },
     });
 
-    expect(handleChangeCategory).toBeCalled();
+    fireEvent.change(getByPlaceholderText('주소'), {
+      target: {
+        value: '서울 강남구',
+      },
+    });
+
+    expect(handleChageInput).toBeCalled();
+  });
+
+  it('listens click event', () => {
+    const inputs = {
+      name: '',
+      category: '',
+      address: '',
+    };
+
+    const { getByPlaceholderText, getByText } = renderAddForm(inputs);
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        value: '한식',
+      },
+    });
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        value: '한식',
+      },
+    });
 
     fireEvent.change(getByPlaceholderText('주소'), {
       target: {
@@ -108,6 +129,8 @@ describe('AddForm', () => {
       },
     });
 
-    expect(handleChangeAddress).toBeCalled();
+    fireEvent.click(getByText('등록'));
+
+    expect(handleClickAddButton).toBeCalled();
   });
 });

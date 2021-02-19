@@ -1,36 +1,36 @@
 import React from 'react';
 
-function AddForm({
-  inputTitles,
-  onChangeName,
-  onChangeCategory,
-  onChangeAddress,
+export default function AddForm({
+  inputs,
+  onChangeInput,
+  onClickAddButton,
 }) {
-  const { name, category, address } = inputTitles;
+  const { name, category, address } = inputs;
 
   return (
-    <form>
+    <div>
       <input
         type="text"
         placeholder="이름"
         value={name}
-        onChange={onChangeName}
+        name="name"
+        onChange={onChangeInput}
       />
       <input
         type="text"
         placeholder="분류"
         value={category}
-        onChange={onChangeCategory}
+        name="category"
+        onChange={onChangeInput}
       />
       <input
         type="text"
         placeholder="주소"
         value={address}
-        onChange={onChangeAddress}
+        name="address"
+        onChange={onChangeInput}
       />
-      <button type="submit">등록</button>
-    </form>
+      <button type="submit" onClick={onClickAddButton}>등록</button>
+    </div>
   );
 }
-
-export default AddForm;
