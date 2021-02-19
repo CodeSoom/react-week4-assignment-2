@@ -1,6 +1,12 @@
 import { createStore } from 'redux';
 
-const reducer = () => ({});
+const initialState = {
+  registers: [],
+};
+
+function reducer(state = initialState) {
+  return state;
+}
 
 const store = createStore(reducer);
 
