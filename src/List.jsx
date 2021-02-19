@@ -3,9 +3,11 @@ import React from 'react';
 export default function List({ restaurants = [] }) {
   return (
     <ul>
-      {restaurants.map((task) => (
-        <li key={task.id}>
-          {task.title}
+      {!!restaurants.length && restaurants.map(({
+        id, name, category, address,
+      }) => (
+        <li key={id}>
+          {`${name} | ${category} | ${address}`}
         </li>
       ))}
     </ul>

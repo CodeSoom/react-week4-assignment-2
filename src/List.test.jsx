@@ -8,11 +8,15 @@ describe('List', () => {
   it(' 예약 목록을 보여준다.', () => {
     const restaurants = [
       {
-        title: '마녀주방 | 한식 | 서울시 강남구',
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
         id: 1,
       },
       {
-        title: '시카고피자 | 양식 | 이태원동',
+        name: '시카고피자',
+        category: '양식',
+        address: '이태원동',
         id: 2,
       },
     ];
@@ -21,8 +25,10 @@ describe('List', () => {
       <List restaurants={restaurants} />
     ));
 
-    restaurants.forEach((task) => {
-      expect(container).toHaveTextContent(task.title);
+    restaurants.forEach((restaurant) => {
+      const { name, category, address } = restaurant;
+
+      expect(container).toHaveTextContent(`${name} | ${category} | ${address}`);
     });
   });
 });
