@@ -4,6 +4,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  addRestaurantInformation,
 } from './actions';
 
 describe('reducer', () => {

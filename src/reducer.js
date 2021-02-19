@@ -19,6 +19,10 @@ const actionTypeFunctions = {
     ...state,
     address: action.payload.address,
   }),
+  addRestaurantInformation: (state) => ({
+    ...state,
+    restaurants: [...state.restaurants, state],
+  }),
 };
 
 const defaultFunction = (state) => (state);
