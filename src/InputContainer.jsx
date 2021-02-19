@@ -9,8 +9,11 @@ function InputContainer() {
   function handleChange(event) {
     dispatch(updateRestaurantInfo({ [event.target.name]: event.target.value }));
   }
+  function handleClick(action) {
+    dispatch(action);
+  }
   return (
-    <RestaurantInput onChange={handleChange} />
+    <RestaurantInput onChange={handleChange} onClick={handleClick} />
   );
 }
 
