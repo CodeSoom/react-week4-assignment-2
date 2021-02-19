@@ -37,7 +37,7 @@ describe('FormContainer', () => {
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
-        name: 'name',
+        name: 'title',
         value: '마녀주방',
       },
     });
@@ -45,8 +45,46 @@ describe('FormContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'changeInput',
       payload: {
-        name: 'name',
+        name: 'title',
         value: '마녀주방',
+      },
+    });
+  });
+
+  it('listens category input change event', () => {
+    const { getByPlaceholderText } = render(<FormContainer />);
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        name: 'category',
+        value: '한식',
+      },
+    });
+
+    expect(dispatch).toBeCalledWith({
+      type: 'changeInput',
+      payload: {
+        name: 'category',
+        value: '한식',
+      },
+    });
+  });
+
+  it('listens address input change event', () => {
+    const { getByPlaceholderText } = render(<FormContainer />);
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        name: 'address',
+        value: '서울시 강남구',
+      },
+    });
+
+    expect(dispatch).toBeCalledWith({
+      type: 'changeInput',
+      payload: {
+        name: 'address',
+        value: '서울시 강남구',
       },
     });
   });
