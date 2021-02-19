@@ -4,18 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Input from './Input';
 
-function updateInputText(target) {
-  return {
-    type: 'updateInputText',
-    payload: { [target.name]: target.value },
-  };
-}
-
-function addRegister() {
-  return {
-    type: 'addRegister',
-  };
-}
+import { updateInputText, addRegister } from './actions';
 
 export default function InputContainer() {
   const { restaurant, type, address } = useSelector((state) => ({
