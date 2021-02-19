@@ -13,6 +13,32 @@ describe('reducer', () => {
     address: '파주시',
   };
 
+  it('sets state as default parameter', () => {
+    const state = reducer();
+
+    const {
+      restaurant: {
+        id, name, category, address,
+      }, restaurants,
+    } = state;
+
+    expect(id).toBe(100);
+    expect(name).toBe('');
+    expect(category).toBe('');
+    expect(address).toBe('');
+    expect(restaurants).toHaveLength(0);
+  });
+
+  context('without action type', () => {
+    it("doesn't change state", () => {
+      const state = reducer({
+        restaurant,
+      }, undefined);
+
+      expect(state.restaurant).toBe(restaurant);
+    });
+  });
+
   context('with action type', () => {
     describe('updateRestaurant', () => {
       it('changes the name of the restaurant', () => {
@@ -41,20 +67,33 @@ describe('reducer', () => {
     });
 
     describe('addRestaurant', () => {
-      it('appends a new restaurant into the restaurant list', () => {
-        const state = reducer({
-          restaurant: {
-            name: '봉참치',
-            category: '일식',
-            address: '파주시',
-          },
-          restaurants: [],
-        }, addRestaurant(restaurant));
+      context('without restaurant', () => {
+        it("doesn't work", () => {
+          const state = reducer({
+            restaurant: {
+              name: '',
+              category: '',
+              address: '',
+            },
+            restaurants: [],
+          }, addRestaurant());
 
-        expect(state.restaurants).toHaveLength(1);
-        expect(state.restaurants[0].name).not.toBeNull();
-        expect(state.restaurants[0].category).not.toBeNull();
-        expect(state.restaurants[0].address).not.toBeNull();
+          expect(state.restaurants).toHaveLength(0);
+        });
+      });
+
+      context('with restauant', () => {
+        it('appends a new restaurant into the restaurant list', () => {
+          const state = reducer({
+            restaurant,
+            restaurants: [],
+          }, addRestaurant(restaurant));
+
+          expect(state.restaurants).toHaveLength(1);
+          expect(state.restaurants[0].name).not.toBeNull();
+          expect(state.restaurants[0].category).not.toBeNull();
+          expect(state.restaurants[0].address).not.toBeNull();
+        });
       });
     });
   });
