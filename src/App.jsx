@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReastaurantForm from './RestaurantForm';
+import ReastaurantFormContainer from './RestaurantFormContainer';
 import RestaurantList from './RestaurantList';
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantList />
-      <ReastaurantForm />
+      <ReastaurantFormContainer />
     </div>
   );
 }

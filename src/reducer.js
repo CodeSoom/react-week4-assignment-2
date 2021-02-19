@@ -3,7 +3,7 @@ const initialState = {
   restaurant: {
     name: '',
     category: '',
-    restaurants: [],
+    address: '',
   },
 };
 
