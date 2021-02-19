@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantFormContainer from './RestaurantFormContainer';
 
 import {
+  addRestaurant,
   updateRestaurant,
 } from './actions';
 
@@ -37,5 +38,13 @@ describe('RestaurantFormContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith(updateRestaurant({ name: '송화루' }));
+  });
+
+  it('appends new restaurant upon clicking 등록 button', () => {
+    const { getByText } = renderRestaurantFormContainer();
+
+    fireEvent.click(getByText(/등록/));
+
+    expect(dispatch).toBeCalledWith(addRestaurant());
   });
 });
