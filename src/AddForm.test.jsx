@@ -111,6 +111,7 @@ describe('AddForm', () => {
     };
 
     const { getByPlaceholderText, getByText } = renderAddForm(restaurantInformation);
+
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
         value: '한식',
