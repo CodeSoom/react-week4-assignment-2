@@ -24,8 +24,12 @@ describe('FormContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  function renderFormConatainer() {
+    return render(<FormContainer />);
+  }
+
   it('renders inputs', () => {
-    const { queryByPlaceholderText } = render(<FormContainer />);
+    const { queryByPlaceholderText } = renderFormConatainer();
 
     expect(queryByPlaceholderText('이름')).not.toBeNull();
     expect(queryByPlaceholderText('분류')).not.toBeNull();
@@ -33,7 +37,7 @@ describe('FormContainer', () => {
   });
 
   it('listens name input change event', () => {
-    const { getByPlaceholderText } = render(<FormContainer />);
+    const { getByPlaceholderText } = renderFormConatainer();
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
@@ -52,7 +56,7 @@ describe('FormContainer', () => {
   });
 
   it('listens category input change event', () => {
-    const { getByPlaceholderText } = render(<FormContainer />);
+    const { getByPlaceholderText } = renderFormConatainer();
 
     fireEvent.change(getByPlaceholderText('분류'), {
       target: {
@@ -71,7 +75,7 @@ describe('FormContainer', () => {
   });
 
   it('listens address input change event', () => {
-    const { getByPlaceholderText } = render(<FormContainer />);
+    const { getByPlaceholderText } = renderFormConatainer();
 
     fireEvent.change(getByPlaceholderText('분류'), {
       target: {
@@ -90,13 +94,13 @@ describe('FormContainer', () => {
   });
 
   it('renders "등록" button', () => {
-    const { queryByText } = render(<FormContainer />);
+    const { queryByText } = renderFormConatainer();
 
     expect(queryByText('등록')).not.toBeNull();
   });
 
   it('listens submit event', () => {
-    const { queryByText, getByPlaceholderText } = render(<FormContainer />);
+    const { queryByText, getByPlaceholderText } = renderFormConatainer();
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
