@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { updateInput, addRestaurants } from './actions';
+
 import InputForm from './InputForm';
 
 export default function InputFormContainer() {
@@ -18,8 +20,8 @@ export default function InputFormContainer() {
       nameValue={name}
       categoryValue={category}
       addressValue={address}
-      onChange={dispatch}
-      onClick={dispatch}
+      onChange={(e) => dispatch(updateInput(e))}
+      onClick={() => dispatch(addRestaurants())}
     />
   );
 }
