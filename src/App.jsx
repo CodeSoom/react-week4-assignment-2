@@ -47,6 +47,7 @@ export default function App() {
           value={address}
           onChange={handleChangeInput}
         />
+        <button type="submit">등록</button>
       </form>
     </div>
   );
