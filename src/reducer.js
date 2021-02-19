@@ -13,5 +13,12 @@ export default function reducer(state, action) {
     };
   }
 
+  if (action.type === 'updateRestaurantAddress') {
+    return {
+      ...state,
+      address: action.payload.address,
+    };
+  }
+
   return state;
 }
