@@ -1,6 +1,9 @@
 import { createStore } from 'redux';
 
 const initialState = {
+  restaurant: '',
+  type: '',
+  address: '',
   registers: [],
 };
 
