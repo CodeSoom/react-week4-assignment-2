@@ -13,6 +13,8 @@ const actionTypeFunctions = {
   }),
 };
 
+const defaultFunction = (state) => (state);
+
 export default function reducer(state, action) {
-  return actionTypeFunctions[action.type](state, action);
+  return (actionTypeFunctions[action.type] || defaultFunction)(state, action);
 }
