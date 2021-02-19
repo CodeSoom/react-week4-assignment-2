@@ -27,7 +27,7 @@ function FormContainer() {
         type="text"
         placeholder="이름"
         value={title}
-        name="name"
+        name="title"
         onChange={handleChageInput}
       />
       <input
@@ -35,12 +35,14 @@ function FormContainer() {
         placeholder="분류"
         value={category}
         name="category"
+        onChange={handleChageInput}
       />
       <input
         type="text"
         placeholder="주소"
         value={address}
         name="address"
+        onChange={handleChageInput}
       />
       <button type="submit">등록</button>
     </form>
