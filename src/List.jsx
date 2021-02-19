@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function List({ tasks = [] }) {
+export default function List({ restaurants = [] }) {
   return (
     <ul>
-      {tasks.map((task) => (
+      {restaurants.map((task) => (
         <li key={task.id}>
           {task.title}
         </li>

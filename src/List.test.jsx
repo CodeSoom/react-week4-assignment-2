@@ -6,7 +6,7 @@ import List from './List';
 
 describe('List', () => {
   it(' 예약 목록을 보여준다.', () => {
-    const tasks = [
+    const restaurants = [
       {
         title: '마녀주방 | 한식 | 서울시 강남구',
         id: 1,
@@ -18,10 +18,10 @@ describe('List', () => {
     ];
 
     const { container } = render((
-      <List tasks={tasks} />
+      <List restaurants={restaurants} />
     ));
 
-    tasks.forEach((task) => {
+    restaurants.forEach((task) => {
       expect(container).toHaveTextContent(task.title);
     });
   });
