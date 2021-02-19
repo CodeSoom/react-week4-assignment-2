@@ -13,6 +13,8 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.resetAllMocks();
+
     useSelector.mockImplementation((selector) => selector(initialState));
 
     useDispatch.mockImplementation(() => dispatch);
