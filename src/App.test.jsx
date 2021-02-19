@@ -4,21 +4,21 @@ import { fireEvent, render } from '@testing-library/react';
 
 import App from './App';
 
-/**
- * input이 렌더링 되는지?
- */
-
 describe('App', () => {
-  it('renders input placeholder', () => {
-    const { getByPlaceholderText } = render(<App />);
+  function renderApp() {
+    return render(<App />);
+  }
 
-    expect(getByPlaceholderText('이름')).not.toBeNull();
-    expect(getByPlaceholderText('분류')).not.toBeNull();
-    expect(getByPlaceholderText('주소')).not.toBeNull();
+  it('renders input placeholder', () => {
+    const { queryByPlaceholderText } = renderApp();
+
+    expect(queryByPlaceholderText('이름')).not.toBeNull();
+    expect(queryByPlaceholderText('분류')).not.toBeNull();
+    expect(queryByPlaceholderText('주소')).not.toBeNull();
   });
 
   it('listens change events', () => {
-    const { getByDisplayValue, getByPlaceholderText } = render(<App />);
+    const { queryByDisplayValue, getByPlaceholderText } = renderApp();
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
@@ -38,19 +38,19 @@ describe('App', () => {
       },
     });
 
-    expect(getByDisplayValue('마녀주방')).not.toBeNull();
-    expect(getByDisplayValue('한식')).not.toBeNull();
-    expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
+    expect(queryByDisplayValue('마녀주방')).not.toBeNull();
+    expect(queryByDisplayValue('한식')).not.toBeNull();
+    expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
   });
 
   it('renders button', () => {
-    const { getByText } = render(<App />);
+    const { queryByText } = renderApp();
 
-    expect(getByText('등록')).not.toBeNull();
+    expect(queryByText('등록')).not.toBeNull();
   });
 
   it('listens "등록" button submit events', () => {
-    const { getByText, getByPlaceholderText } = render(<App />);
+    const { queryByText, getByPlaceholderText } = renderApp();
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
@@ -70,10 +70,10 @@ describe('App', () => {
       },
     });
 
-    fireEvent.submit(getByText('등록'));
+    fireEvent.submit(queryByText('등록'));
 
-    expect(getByText('마녀주방')).not.toBeNull();
-    expect(getByText('한식')).not.toBeNull();
-    expect(getByText('서울시 강남구')).not.toBeNull();
+    expect(queryByText('마녀주방')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('서울시 강남구')).not.toBeNull();
   });
 });
