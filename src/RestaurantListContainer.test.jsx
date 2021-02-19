@@ -3,20 +3,16 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
-import ListContainer from './ListContainer';
+import RestaurantListContainer from './RestaurantListContainer';
 
-/**
- * redux store에서 state르 받아와 화면에 렌더하는지?
- */
+jest.mock('react-redux');
 
-jest.mock();
-
-describe('ListContainer', () => {
+describe('RestaurantListContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
-      list: [{
+      restaurants: [{
         id: 1,
-        name: '마녀주방',
+        title: '마녀주방',
         category: '한식',
         address: '서울시 강남구',
       }],
@@ -24,7 +20,7 @@ describe('ListContainer', () => {
   });
 
   it('renders List', () => {
-    const { getByText } = render(<ListContainer />);
+    const { getByText } = render(<RestaurantListContainer />);
 
     expect(getByText('마녀주방')).not.toBeNull();
     expect(getByText('한식')).not.toBeNull();
