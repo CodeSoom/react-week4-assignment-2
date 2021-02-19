@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   id: 100,
   name: '',
   category: '',
@@ -6,7 +6,7 @@ const initialState = {
   restaurantsList: [],
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action = { type: '' }) {
   const { type, payload } = action;
 
   if (type === 'updateInput') {
