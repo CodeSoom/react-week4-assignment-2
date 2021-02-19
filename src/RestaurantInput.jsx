@@ -6,17 +6,20 @@ function RestaurantInput({ onChange }) {
       <input
         type="text"
         placeholder="이름"
-        onChange={() => { onChange({ type: 'UPDATE_RESTAURANTINFO', payload: { name: '선정릉역 깐부치킨' } }); }}
+        name="name"
+        onChange={onChange}
       />
       <input
         type="text"
         placeholder="분류"
-        onChange={() => { onChange({ type: 'UPDATE_RESTAURANTINFO', payload: { category: '한식' } }); }}
+        name="category"
+        onChange={onChange}
       />
       <input
         type="text"
         placeholder="주소"
-        onChange={() => { onChange({ type: 'UPDATE_RESTAURANTINFO', payload: { address: '서울 강남구 삼성동 37 깐부치킨 선정릉역점' } }); }}
+        name="address"
+        onChange={onChange}
       />
       <button type="button">등록</button>
     </div>
