@@ -33,6 +33,7 @@ export default function reducer(state = initialState, action = { type: '' }) {
 
     return {
       ...state,
+      inputs: initialState.inputs,
       nextId: state.nextId + 1,
       restaurants: [
         ...state.restaurants,
