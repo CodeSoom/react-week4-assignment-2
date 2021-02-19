@@ -1,6 +1,6 @@
 import { addRestaurants } from './actions';
 
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
 describe('reducer', () => {
   it('이름을 입력하면 state.name이 입력된 이름으로 업데이트된다.', () => {
@@ -84,5 +84,11 @@ describe('reducer', () => {
 
       expect(state.restaurantsList).toHaveLength(0);
     });
+  });
+
+  it('인자가 없으면 기본값으로 state를 만든다.', () => {
+    const state = reducer();
+
+    expect(state).toBe(initialState);
   });
 });
