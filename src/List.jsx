@@ -7,9 +7,9 @@ export default function List({ registers }) {
   return (
     <div>
       <ul>
-        <li>
-          {registers[0].information}
-        </li>
+        {registers.map((register) => (
+          <li key={register.id}>{register.information}</li>
+        ))}
       </ul>
     </div>
   );
