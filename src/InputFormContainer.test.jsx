@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import InputFormContainer from './InputFormContainer';
 
+jest.mock('react-redux');
+
 describe('InputFormContainer', () => {
   const dispatch = jest.fn();
 
