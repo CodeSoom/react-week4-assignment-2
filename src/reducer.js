@@ -1,4 +1,12 @@
-function reducer(state, action) {
+const initialState = {
+  id: 100,
+  name: '',
+  category: '',
+  address: '',
+  restaurantsList: [],
+};
+
+function reducer(state = initialState, action) {
   const { type, payload } = action;
 
   if (type === 'updateInput') {
