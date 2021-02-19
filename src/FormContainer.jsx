@@ -21,8 +21,16 @@ function FormContainer() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch({
+      type: 'addRestaurant',
+    });
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="이름"
