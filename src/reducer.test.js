@@ -38,5 +38,24 @@ describe('reducer', () => {
         expect(state.restaurant.address).toBe('서울');
       });
     });
+
+    describe('addRestaurant', () => {
+      it('appends a new restaurant into the restaurant list', () => {
+        const state = reducer({
+          newId: 100,
+          restaurant: {
+            name: '',
+            category: '',
+            address: '',
+          },
+          restaurants: [],
+        }, addRestaurant(restaurant));
+
+        expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants[0].name).not.toBeNull();
+        expect(state.restaurants[0].category).not.toBeNull();
+        expect(state.restaurants[0].address).not.toBeNull();
+      });
+    });
   });
 });
