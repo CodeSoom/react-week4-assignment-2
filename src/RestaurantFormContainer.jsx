@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateRestaurant } from './actions';
+import { addRestaurant, updateRestaurant } from './actions';
 
 import RestaurantForm from './RestaurantForm';
 
@@ -25,10 +25,15 @@ export default function RestaurantFormContainer() {
     dispatch(updateRestaurant(ids[id](value)));
   }
 
+  function handleClick() {
+    dispatch(addRestaurant());
+  }
+
   return (
     <RestaurantForm
       restaurant={restaurant}
       handleChange={handleChange}
+      handleClick={handleClick}
     />
   );
 }
