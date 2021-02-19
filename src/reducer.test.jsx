@@ -53,6 +53,12 @@ describe('reducer', () => {
 
           expect(state.address).toBe('서울시 강남구');
         });
+
+        it('adds restaurant information', () => {
+          const state = reducer(previousState, addRestaurantInformation());
+
+          expect(state.restaurants).toHaveLength(1);
+        });
       });
     });
   });
