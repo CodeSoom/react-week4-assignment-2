@@ -19,6 +19,7 @@ describe('App', () => {
       name: '',
       category: '',
       address: '',
+      restaurantsList: [],
     }));
   });
 
