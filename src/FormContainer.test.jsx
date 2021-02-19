@@ -94,4 +94,35 @@ describe('FormContainer', () => {
 
     expect(queryByText('등록')).not.toBeNull();
   });
+
+  it('listens submit event', () => {
+    const { queryByText, getByPlaceholderText } = render(<FormContainer />);
+
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        name: 'title',
+        value: '마녀주방',
+      },
+    });
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        name: 'category',
+        value: '한식',
+      },
+    });
+
+    fireEvent.change(getByPlaceholderText('주소'), {
+      target: {
+        name: 'address',
+        value: '서울시 강남구',
+      },
+    });
+
+    fireEvent.submit(queryByText('등록'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'addRestaurant',
+    });
+  });
 });
