@@ -7,9 +7,13 @@ export default function App() {
       category: '',
       address: '',
     },
+    restaurants: [],
+    nextId: 1,
   });
 
-  const { name, category, address } = state.inputs;
+  const { inputs, restaurants, nextId } = state;
+
+  const { name, category, address } = inputs;
 
   const handleChangeInput = (event) => {
     const { value, name: eventName } = event.target;
@@ -23,9 +27,34 @@ export default function App() {
     });
   };
 
+  const handleSubmitAddButton = () => {
+    setState({
+      ...state,
+      nextId: nextId + 1,
+      restaurants: [
+        ...state.restaurants,
+        {
+          id: nextId,
+          title: { name, category, address },
+        },
+      ],
+    });
+  };
+
   return (
     <div>
-      <form>
+      <ul>
+        {
+          restaurants.map(({ id, title }) => (
+            <li key={id}>
+              <span>{title.name}</span>
+              <span>{title.category}</span>
+              <span>{title.address}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <form onSubmit={handleSubmitAddButton}>
         <input
           type="text"
           name="name"
