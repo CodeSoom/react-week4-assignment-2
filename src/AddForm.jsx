@@ -1,13 +1,13 @@
 import React from 'react';
 
 function AddForm({
-  inputTitles: {
-    name, category, address,
-  },
+  inputTitles,
   onChangeName,
   onChangeCategory,
   onChangeAddress,
 }) {
+  const { name, category, address } = inputTitles;
+
   return (
     <form>
       <input
