@@ -1,7 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-function FormContainer() {
+import AddForm from './AddForm';
+
+export default function FormContainer() {
   const {
     inputs,
   } = useSelector((state) => ({
@@ -9,8 +11,6 @@ function FormContainer() {
   }));
 
   const dispatch = useDispatch();
-
-  const { title, category, address } = inputs;
 
   const handleChageInput = (event) => {
     const { value, name } = event.target;
@@ -21,7 +21,7 @@ function FormContainer() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleClickAddButton = (event) => {
     event.preventDefault();
 
     dispatch({
@@ -30,31 +30,10 @@ function FormContainer() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="이름"
-        value={title}
-        name="title"
-        onChange={handleChageInput}
-      />
-      <input
-        type="text"
-        placeholder="분류"
-        value={category}
-        name="category"
-        onChange={handleChageInput}
-      />
-      <input
-        type="text"
-        placeholder="주소"
-        value={address}
-        name="address"
-        onChange={handleChageInput}
-      />
-      <button type="submit">등록</button>
-    </form>
+    <AddForm
+      inputs={inputs}
+      onChangeInput={handleChageInput}
+      onClickAddButton={handleClickAddButton}
+    />
   );
 }
-
-export default FormContainer;

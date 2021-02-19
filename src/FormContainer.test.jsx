@@ -99,7 +99,7 @@ describe('FormContainer', () => {
     expect(queryByText('등록')).not.toBeNull();
   });
 
-  it('listens submit event', () => {
+  it('listens click event', () => {
     const { queryByText, getByPlaceholderText } = renderFormConatainer();
 
     fireEvent.change(getByPlaceholderText('이름'), {
@@ -123,7 +123,7 @@ describe('FormContainer', () => {
       },
     });
 
-    fireEvent.submit(queryByText('등록'));
+    fireEvent.click(queryByText('등록'));
 
     expect(dispatch).toBeCalledWith({
       type: 'addRestaurant',
