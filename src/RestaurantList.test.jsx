@@ -2,20 +2,20 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import RestaurantList from './RestaurantList';
 
-describe('List', () => {
-  it('renders list', () => {
-    const list = [
+describe('RestaurantList', () => {
+  it('renders RestaurantList', () => {
+    const restaurants = [
       {
         id: 1,
-        name: '마녀주방',
+        title: '마녀주방',
         category: '한식',
         address: '서울시 강남구',
       },
     ];
 
-    const { getByText } = render(<List list={list} />);
+    const { getByText } = render(<RestaurantList restaurants={restaurants} />);
 
     expect(getByText('마녀주방')).not.toBeNull();
     expect(getByText('한식')).not.toBeNull();
