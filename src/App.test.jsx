@@ -1,10 +1,22 @@
 import React from 'react';
 
-import { fireEvent, render } from '@testing-library/react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { render } from '@testing-library/react';
 
 import App from './App';
+import { initialState } from './reducer';
+
+jest.mock('react-redux');
 
 describe('App', () => {
+  const dispatch = jest.fn();
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector(initialState));
+
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   function renderApp() {
     return render(<App />);
   }
@@ -17,63 +29,9 @@ describe('App', () => {
     expect(queryByPlaceholderText('주소')).not.toBeNull();
   });
 
-  it('listens change events', () => {
-    const { queryByDisplayValue, getByPlaceholderText } = renderApp();
-
-    fireEvent.change(getByPlaceholderText('이름'), {
-      target: {
-        value: '마녀주방',
-      },
-    });
-
-    fireEvent.change(getByPlaceholderText('분류'), {
-      target: {
-        value: '한식',
-      },
-    });
-
-    fireEvent.change(getByPlaceholderText('주소'), {
-      target: {
-        value: '서울시 강남구',
-      },
-    });
-
-    expect(queryByDisplayValue('마녀주방')).not.toBeNull();
-    expect(queryByDisplayValue('한식')).not.toBeNull();
-    expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
-  });
-
   it('renders button', () => {
     const { queryByText } = renderApp();
 
     expect(queryByText('등록')).not.toBeNull();
-  });
-
-  it('listens "등록" button submit events', () => {
-    const { queryByText, getByPlaceholderText } = renderApp();
-
-    fireEvent.change(getByPlaceholderText('이름'), {
-      target: {
-        value: '마녀주방',
-      },
-    });
-
-    fireEvent.change(getByPlaceholderText('분류'), {
-      target: {
-        value: '한식',
-      },
-    });
-
-    fireEvent.change(getByPlaceholderText('주소'), {
-      target: {
-        value: '서울시 강남구',
-      },
-    });
-
-    fireEvent.submit(queryByText('등록'));
-
-    expect(queryByText('마녀주방')).not.toBeNull();
-    expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('서울시 강남구')).not.toBeNull();
   });
 });
