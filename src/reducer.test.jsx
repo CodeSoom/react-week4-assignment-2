@@ -30,5 +30,16 @@ describe('reducer', () => {
 
       expect(state.category).toBe('한식');
     });
+
+    it('updates restaurant address', () => {
+      const state = reducer(previousState, {
+        type: 'updateRestaurantAddress',
+        payload: {
+          address: '서울시 강남구',
+        },
+      });
+
+      expect(state.address).toBe('서울시 강남구');
+    });
   });
 });
