@@ -7,11 +7,10 @@ import RestaurantsList from './RestaurantsList';
 describe('List', () => {
   context('식당목록이 없을 때', () => {
     const restaurants = [];
-    const empty = '<ul></ul>';
 
     it('아무것도 보여주지 않는다.', () => {
       const { container } = render(<RestaurantsList restaurants={restaurants} />);
-      expect(container.innerHTML).toBe(empty);
+      expect(container.innerText).toBeUndefined();
     });
   });
 
