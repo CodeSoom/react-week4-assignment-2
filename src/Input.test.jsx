@@ -13,4 +13,9 @@ describe('Input', () => {
     expect(getByPlaceholderText(/주소/)).not.toBeNull();
 
   })
+  it('renders add button', () => {
+    const { getByText } = render(<Input />);
+
+    expect(getByText(/등록/)).not.toBeNull();
+  })
 })
