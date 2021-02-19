@@ -16,6 +16,7 @@ export default function App() {
           {registers[0].information}
         </li>
       </ul>
+
       <button type="button" onClick={handleButtonClick}>
         등록
       </button>
