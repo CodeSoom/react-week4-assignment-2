@@ -1,6 +1,6 @@
 export const initialState = {
   inputs: {
-    name: '',
+    title: '',
     category: '',
     address: '',
   },
@@ -9,5 +9,17 @@ export const initialState = {
 };
 
 export default function reducer(state = initialState, action = { type: '' }) {
+  if (action.type === 'changeInput') {
+    const { name, value } = action.payload;
+
+    return {
+      ...state,
+      inputs: {
+        ...state.inputs,
+        [name]: value,
+      },
+    };
+  }
+
   return state;
 }
