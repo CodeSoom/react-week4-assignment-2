@@ -1,6 +1,7 @@
 import React from 'react';
 
 import List from './List';
+import AddForm from './AddForm';
 
 export default function App() {
   const restaurants = [
@@ -22,12 +23,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <List restaurants={restaurants} />
-      <form>
-        <input type="text" placeholder="이름" />
-        <input type="text" placeholder="분류" />
-        <input type="text" placeholder="주소" />
-        <button type="submit">등록</button>
-      </form>
+      <AddForm />
     </div>
   );
 }
