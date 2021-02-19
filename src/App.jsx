@@ -1,6 +1,6 @@
 import React from 'react';
 
-function handleButtonClick() {}
+import Input from './Input';
 
 export default function App() {
   const registers = [{
@@ -16,12 +16,7 @@ export default function App() {
           {registers[0].information}
         </li>
       </ul>
-      <input type="text" placeholder="이름" />
-      <input type="text" placeholder="분류" />
-      <input type="text" placeholder="주소" />
-      <button type="button" onClick={handleButtonClick}>
-        등록
-      </button>
+      <Input />
     </div>
   );
 }
