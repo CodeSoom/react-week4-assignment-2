@@ -73,11 +73,24 @@ describe('reducer', () => {
         type: 'addRestaurant',
       });
 
-      console.log('state.restaurants[0] ? ', state.restaurants[0]);
-
       expect(state.restaurants).toHaveLength(1);
       expect(state.restaurants[0].title).toBe('마녀주방');
-      expect(state.nextId).toBe(2);
+    });
+
+    it('clears inputs', () => {
+      const state = reducer({
+        inputs: {
+          title: '마녀주방',
+          category: '한식',
+          address: '서울시 강남구',
+        },
+        restaurants: [],
+        nextId: 1,
+      }, {
+        type: 'addRestaurant',
+      });
+
+      expect(state.inputs).toBe(initialState.inputs);
     });
   });
 });
