@@ -5,6 +5,8 @@ import { fireEvent, render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 import FormContainer from './FormContainer';
 
+import { changeInput, addRestaurant } from './actions';
+
 jest.mock('react-redux');
 
 describe('FormContainer', () => {
@@ -46,13 +48,10 @@ describe('FormContainer', () => {
       },
     });
 
-    expect(dispatch).toBeCalledWith({
-      type: 'changeInput',
-      payload: {
-        name: 'title',
-        value: '마녀주방',
-      },
-    });
+    expect(dispatch).toBeCalledWith(changeInput({
+      name: 'title',
+      value: '마녀주방',
+    }));
   });
 
   it('listens category input change event', () => {
@@ -65,13 +64,10 @@ describe('FormContainer', () => {
       },
     });
 
-    expect(dispatch).toBeCalledWith({
-      type: 'changeInput',
-      payload: {
-        name: 'category',
-        value: '한식',
-      },
-    });
+    expect(dispatch).toBeCalledWith(changeInput({
+      name: 'category',
+      value: '한식',
+    }));
   });
 
   it('listens address input change event', () => {
@@ -84,13 +80,10 @@ describe('FormContainer', () => {
       },
     });
 
-    expect(dispatch).toBeCalledWith({
-      type: 'changeInput',
-      payload: {
-        name: 'address',
-        value: '서울시 강남구',
-      },
-    });
+    expect(dispatch).toBeCalledWith(changeInput({
+      name: 'address',
+      value: '서울시 강남구',
+    }));
   });
 
   it('renders "등록" button', () => {
@@ -125,8 +118,6 @@ describe('FormContainer', () => {
 
     fireEvent.click(queryByText('등록'));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'addRestaurant',
-    });
+    expect(dispatch).toBeCalledWith(addRestaurant());
   });
 });

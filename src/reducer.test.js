@@ -1,3 +1,4 @@
+import { addRestaurant, changeInput } from './actions';
 import reducer, { initialState } from './reducer';
 
 describe('reducer', () => {
@@ -15,13 +16,10 @@ describe('reducer', () => {
         restaurantInformation: {
           name: '',
         },
-      }, {
-        type: 'changeInput',
-        payload: {
-          name: 'name',
-          value: '마녀주방',
-        },
-      });
+      }, changeInput({
+        name: 'name',
+        value: '마녀주방',
+      }));
 
       expect(state.restaurantInformation.name).toBe('마녀주방');
     });
@@ -31,13 +29,10 @@ describe('reducer', () => {
         restaurantInformation: {
           category: '',
         },
-      }, {
-        type: 'changeInput',
-        payload: {
-          name: 'category',
-          value: '한식',
-        },
-      });
+      }, changeInput({
+        name: 'category',
+        value: '한식',
+      }));
 
       expect(state.restaurantInformation.category).toBe('한식');
     });
@@ -47,13 +42,10 @@ describe('reducer', () => {
         restaurantInformation: {
           address: '',
         },
-      }, {
-        type: 'changeInput',
-        payload: {
-          name: 'address',
-          value: '서울시 강남구',
-        },
-      });
+      }, changeInput({
+        name: 'address',
+        value: '서울시 강남구',
+      }));
 
       expect(state.restaurantInformation.address).toBe('서울시 강남구');
     });
@@ -69,9 +61,7 @@ describe('reducer', () => {
         },
         restaurants: [],
         nextId: 1,
-      }, {
-        type: 'addRestaurant',
-      });
+      }, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
       expect(state.restaurants[0].name).toBe('마녀주방');
@@ -86,9 +76,7 @@ describe('reducer', () => {
         },
         restaurants: [],
         nextId: 1,
-      }, {
-        type: 'addRestaurant',
-      });
+      }, addRestaurant());
 
       expect(state.restaurantInformation).toBe(initialState.restaurantInformation);
     });

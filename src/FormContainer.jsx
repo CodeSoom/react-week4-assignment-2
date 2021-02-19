@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { changeInput, addRestaurant } from './actions';
 
 import AddForm from './AddForm';
 
@@ -15,18 +16,13 @@ export default function FormContainer() {
   const handleChageInput = (event) => {
     const { value, name } = event.target;
 
-    dispatch({
-      type: 'changeInput',
-      payload: { value, name },
-    });
+    dispatch(changeInput({ value, name }));
   };
 
   const handleClickAddButton = (event) => {
     event.preventDefault();
 
-    dispatch({
-      type: 'addRestaurant',
-    });
+    dispatch(addRestaurant());
   };
 
   return (
