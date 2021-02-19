@@ -37,7 +37,7 @@ describe('InputFormContainer', () => {
   it('분류입력창에 입력이 생기면 state를 수정하는 함수가 실행된다.', () => {
     const { getByPlaceholderText } = render(<InputFormContainer />);
 
-    fireEvent.change(getByPlaceholderText('이름'), {
+    fireEvent.change(getByPlaceholderText('분류'), {
       target: {
         value: '한식',
       },
@@ -49,7 +49,7 @@ describe('InputFormContainer', () => {
   it('주소입력창에 입력이 생기면 state를 수정하는 함수가 실행된다.', () => {
     const { getByPlaceholderText } = render(<InputFormContainer />);
 
-    fireEvent.change(getByPlaceholderText('이름'), {
+    fireEvent.change(getByPlaceholderText('주소'), {
       target: {
         value: '서울시 강남구',
       },
