@@ -3,7 +3,8 @@ import React from 'react';
 import Restaurant from './Restaurant';
 
 export default function List({ restaurants }) {
-  if (restaurants.length === 0) {
+  const isEmpty = (arr) => arr.length === 0;
+  if (isEmpty(restaurants)) {
     return (
       <div>
         입력된 레스토랑 정보가 없습니다.
