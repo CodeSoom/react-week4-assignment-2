@@ -16,7 +16,7 @@ describe('Input', () => {
 
     const { getByPlaceholderText } = renderInput({ placeholder });
 
-    expect(getByPlaceholderText(/placeholder/)).not.toBeNull();
+    expect(getByPlaceholderText(placeholder)).not.toBeNull();
 
   });
 });
