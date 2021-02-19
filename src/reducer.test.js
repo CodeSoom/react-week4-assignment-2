@@ -10,20 +10,20 @@ describe('reducer', () => {
   });
 
   describe('changeInput', () => {
-    it('changes title', () => {
+    it('changes name', () => {
       const state = reducer({
         inputs: {
-          title: '',
+          name: '',
         },
       }, {
         type: 'changeInput',
         payload: {
-          name: 'title',
+          name: 'name',
           value: '마녀주방',
         },
       });
 
-      expect(state.inputs.title).toBe('마녀주방');
+      expect(state.inputs.name).toBe('마녀주방');
     });
 
     it('changes category', () => {
@@ -63,7 +63,7 @@ describe('reducer', () => {
     it('appends restaurant into restaurant List', () => {
       const state = reducer({
         inputs: {
-          title: '마녀주방',
+          name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',
         },
@@ -74,13 +74,13 @@ describe('reducer', () => {
       });
 
       expect(state.restaurants).toHaveLength(1);
-      expect(state.restaurants[0].title).toBe('마녀주방');
+      expect(state.restaurants[0].name).toBe('마녀주방');
     });
 
     it('clears inputs', () => {
       const state = reducer({
         inputs: {
-          title: '마녀주방',
+          name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',
         },
