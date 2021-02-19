@@ -27,16 +27,14 @@ describe('List', () => {
   });
 
   context('without information', () => {
-    const restaurants = [];
-
     it('renders nothing', () => {
-      const { container } = render((
+      const { getByText } = render((
         <List
-          restaurants={restaurants}
+          restaurants={[]}
         />
       ));
 
-      expect(container).not.toHaveTextContent(/\|/);
+      expect(getByText(/입력된 레스토랑 정보가 없습니다/)).not.toBeNull();
     });
   });
 });
