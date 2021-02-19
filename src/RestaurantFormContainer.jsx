@@ -14,9 +14,9 @@ export default function RestaurantFormContainer() {
   const dispatch = useDispatch();
 
   function handleChange(event) {
-    const { id, value } = event.target;
+    const { name, value } = event.target;
 
-    dispatch(updateRestaurant({ [id]: value }));
+    dispatch(updateRestaurant({ [name]: value }));
   }
 
   function handleClick() {

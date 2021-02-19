@@ -6,24 +6,24 @@ export default function RestaurantForm({ restaurant, handleChange, handleClick }
   return (
     <div>
       <input
-        id="name"
         type="text"
         placeholder="이름"
         value={name}
+        name="name"
         onChange={handleChange}
       />
       <input
-        id="category"
         type="text"
         placeholder="분류"
         value={category}
+        name="category"
         onChange={handleChange}
       />
       <input
-        id="address"
         type="text"
         placeholder="주소"
         value={address}
+        name="address"
         onChange={handleChange}
       />
       <button type="button" onClick={handleClick}>등록</button>
