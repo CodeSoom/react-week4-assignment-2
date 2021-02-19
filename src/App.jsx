@@ -2,16 +2,16 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import Input from './Input';
+import InputContainer from './InputContainer';
 import List from './List';
 
 export default function App() {
   const registers = useSelector((state) => state.registers);
   return (
     <div>
-      <h1>Restaurant</h1>
+      <h1>Restaurants</h1>
       <List registers={registers} />
-      <Input />
+      <InputContainer />
     </div>
   );
 }

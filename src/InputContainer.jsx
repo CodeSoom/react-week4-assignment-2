@@ -7,9 +7,9 @@ import Input from './Input';
 import { updateInputText, addRegister } from './actions';
 
 export default function InputContainer() {
-  const { restaurant, type, address } = useSelector((state) => ({
-    restaurant: state.restaurant,
-    type: state.type,
+  const { name, category, address } = useSelector((state) => ({
+    name: state.name,
+    category: state.category,
     address: state.address,
   }));
 
@@ -24,8 +24,8 @@ export default function InputContainer() {
   }
   return (
     <Input
-      restaurant={restaurant}
-      type={type}
+      name={name}
+      category={category}
       address={address}
       onChange={handleTextChange}
       onClick={handleRegisterClick}

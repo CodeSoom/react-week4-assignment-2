@@ -16,20 +16,20 @@ describe('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   given("state's inputText", () => ({
-    restaurant: given.restaurant,
-    type: given.type,
+    name: given.restaurantName,
+    category: given.category,
     address: given.address,
   }));
 
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
-      restaurant: given.restaurant, type: given.type, address: given.address,
+      name: given.restaurantName, category: given.category, address: given.address,
     }));
   });
 
   it('handleClick works when clicked', () => {
-    given('restaurant', () => '소년식당');
-    given('type', () => '소식');
+    given('restaurantName', () => '소년식당');
+    given('category', () => '소식');
     given('address', () => '내마음속');
 
     const { queryByText, queryByDisplayValue } = render((<InputContainer />));
@@ -45,8 +45,8 @@ describe('InputContainer', () => {
   });
 
   it('handleTextChange works when input filled', () => {
-    given('restaurant', () => '');
-    given('type', () => '');
+    given('restaurantName', () => '');
+    given('category', () => '');
     given('address', () => '');
 
     const { queryByPlaceholderText } = render((<InputContainer />));
@@ -60,7 +60,7 @@ describe('InputContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'updateInputText',
       payload: {
-        restaurant: '변했어요',
+        name: '변했어요',
       },
     });
   });
