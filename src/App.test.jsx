@@ -48,4 +48,32 @@ describe('App', () => {
 
     expect(getByText('등록')).not.toBeNull();
   });
+
+  it('listens "등록" button submit events', () => {
+    const { getByText, getByPlaceholderText } = render(<App />);
+
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        value: '마녀주방',
+      },
+    });
+
+    fireEvent.change(getByPlaceholderText('분류'), {
+      target: {
+        value: '한식',
+      },
+    });
+
+    fireEvent.change(getByPlaceholderText('주소'), {
+      target: {
+        value: '서울시 강남구',
+      },
+    });
+
+    fireEvent.submit(getByText('등록'));
+
+    expect(getByText('마녀주방')).not.toBeNull();
+    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('서울시 강남구')).not.toBeNull();
+  });
 });
