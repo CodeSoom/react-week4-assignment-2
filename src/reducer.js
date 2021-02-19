@@ -6,5 +6,12 @@ export default function reducer(state, action) {
     };
   }
 
+  if (action.type === 'updateRestaurantCategory') {
+    return {
+      ...state,
+      category: action.payload.category,
+    };
+  }
+
   return state;
 }
