@@ -7,6 +7,7 @@ import {
 
 describe('reducer', () => {
   const restaurant = {
+    id: 101,
     name: '베이징',
     category: '중식',
     address: '파주시',
@@ -42,11 +43,10 @@ describe('reducer', () => {
     describe('addRestaurant', () => {
       it('appends a new restaurant into the restaurant list', () => {
         const state = reducer({
-          newId: 100,
           restaurant: {
-            name: '',
-            category: '',
-            address: '',
+            name: '봉참치',
+            category: '일식',
+            address: '파주시',
           },
           restaurants: [],
         }, addRestaurant(restaurant));

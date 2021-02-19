@@ -1,6 +1,6 @@
 const initialState = {
-  newId: 100,
   restaurant: {
+    id: 100,
     name: '',
     category: '',
     address: '',
@@ -14,12 +14,20 @@ const reducers = {
     restaurant: { ...state.restaurant, ...restaurant },
   }),
   addRestaurant: (state) => {
-    const { newId, restaurant, restaurants } = state;
+    const { restaurant, restaurants } = state;
+
+    const restaurantData = Object.values(restaurant);
+
+    if (restaurantData.includes('')) { return state; }
 
     return {
-      newId: newId + 1,
-      restaurant: {},
-      restaurants: [...restaurants, { id: newId, restaurant }],
+      restaurant: {
+        id: restaurant.id + 1,
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [...restaurants, { id: restaurant.id, ...restaurant }],
     };
   },
 };
