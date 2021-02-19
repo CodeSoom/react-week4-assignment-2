@@ -5,10 +5,14 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  it('초기상태. title, input, button을 보여준다.', () => {
-    const { queryByText, getByPlaceholderText } = render((
+  function renderApp() {
+    return render((
       <App />
     ));
+  }
+
+  it('초기상태. title, input, button을 보여준다.', () => {
+    const { queryByText, getByPlaceholderText } = renderApp();
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
@@ -33,9 +37,7 @@ describe('App', () => {
       },
     ];
 
-    const { container } = render((
-      <App />
-    ));
+    const { container } = renderApp();
 
     expect(container).toHaveTextContent(/Restaurants/);
 
