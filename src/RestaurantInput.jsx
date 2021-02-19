@@ -21,7 +21,7 @@ function RestaurantInput({ onChange, onClick }) {
         name="address"
         onChange={onChange}
       />
-      <button type="button" onClick={() => { onClick({ type: 'ADD_RESTAURANT' }); }}>등록</button>
+      <button type="button" onClick={onClick}>등록</button>
     </div>
   );
 }
