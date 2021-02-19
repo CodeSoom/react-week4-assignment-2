@@ -6,16 +6,11 @@ export default function RestaurantList({
   return (
     <ul>
       {
-        restaurants.map(({
-          id,
-          name,
-          category,
-          address,
-        }) => (
-          <li key={id}>
-            <span>{name}</span>
-            <span>{category}</span>
-            <span>{address}</span>
+        restaurants.map((restuaruant) => (
+          <li key={restuaruant.id}>
+            <span>{restuaruant.name}</span>
+            <span>{restuaruant.category}</span>
+            <span>{restuaruant.address}</span>
           </li>
         ))
       }
