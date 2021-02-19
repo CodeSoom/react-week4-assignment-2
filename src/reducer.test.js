@@ -12,7 +12,7 @@ describe('reducer', () => {
   describe('changeInput', () => {
     it('changes name', () => {
       const state = reducer({
-        inputs: {
+        restaurantInformation: {
           name: '',
         },
       }, {
@@ -23,12 +23,12 @@ describe('reducer', () => {
         },
       });
 
-      expect(state.inputs.name).toBe('마녀주방');
+      expect(state.restaurantInformation.name).toBe('마녀주방');
     });
 
     it('changes category', () => {
       const state = reducer({
-        inputs: {
+        restaurantInformation: {
           category: '',
         },
       }, {
@@ -39,12 +39,12 @@ describe('reducer', () => {
         },
       });
 
-      expect(state.inputs.category).toBe('한식');
+      expect(state.restaurantInformation.category).toBe('한식');
     });
 
     it('changes address', () => {
       const state = reducer({
-        inputs: {
+        restaurantInformation: {
           address: '',
         },
       }, {
@@ -55,14 +55,14 @@ describe('reducer', () => {
         },
       });
 
-      expect(state.inputs.address).toBe('서울시 강남구');
+      expect(state.restaurantInformation.address).toBe('서울시 강남구');
     });
   });
 
   describe('addRestaurant', () => {
     it('appends restaurant into restaurant List', () => {
       const state = reducer({
-        inputs: {
+        restaurantInformation: {
           name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',
@@ -77,9 +77,9 @@ describe('reducer', () => {
       expect(state.restaurants[0].name).toBe('마녀주방');
     });
 
-    it('clears inputs', () => {
+    it('clears restaurantInformation', () => {
       const state = reducer({
-        inputs: {
+        restaurantInformation: {
           name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',
@@ -90,7 +90,7 @@ describe('reducer', () => {
         type: 'addRestaurant',
       });
 
-      expect(state.inputs).toBe(initialState.inputs);
+      expect(state.restaurantInformation).toBe(initialState.restaurantInformation);
     });
   });
 });

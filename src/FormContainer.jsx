@@ -5,9 +5,9 @@ import AddForm from './AddForm';
 
 export default function FormContainer() {
   const {
-    inputs,
+    restaurantInformation,
   } = useSelector((state) => ({
-    inputs: state.inputs,
+    restaurantInformation: state.restaurantInformation,
   }));
 
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export default function FormContainer() {
 
   return (
     <AddForm
-      inputs={inputs}
+      restaurantInformation={restaurantInformation}
       onChangeInput={handleChageInput}
       onClickAddButton={handleClickAddButton}
     />

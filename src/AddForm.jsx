@@ -1,11 +1,11 @@
 import React from 'react';
 
 export default function AddForm({
-  inputs,
+  restaurantInformation,
   onChangeInput,
   onClickAddButton,
 }) {
-  const { name, category, address } = inputs;
+  const { name, category, address } = restaurantInformation;
 
   return (
     <div>

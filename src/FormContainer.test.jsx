@@ -14,7 +14,7 @@ describe('FormContainer', () => {
     jest.resetAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
-      inputs: {
+      restaurantInformation: {
         title: '',
         category: '',
         address: '',

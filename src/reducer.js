@@ -1,5 +1,5 @@
 export const initialState = {
-  inputs: {
+  restaurantInformation: {
     name: '',
     category: '',
     address: '',
@@ -14,15 +14,15 @@ export default function reducer(state = initialState, action = { type: '' }) {
 
     return {
       ...state,
-      inputs: {
-        ...state.inputs,
+      restaurantInformation: {
+        ...state.restaurantInformation,
         [name]: value,
       },
     };
   }
 
   if (action.type === 'addRestaurant') {
-    const { name, category, address } = state.inputs;
+    const { name, category, address } = state.restaurantInformation;
 
     const newRestaurant = {
       id: state.nextId,
@@ -33,7 +33,7 @@ export default function reducer(state = initialState, action = { type: '' }) {
 
     return {
       ...state,
-      inputs: initialState.inputs,
+      restaurantInformation: initialState.restaurantInformation,
       nextId: state.nextId + 1,
       restaurants: [
         ...state.restaurants,

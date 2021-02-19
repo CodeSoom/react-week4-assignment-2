@@ -20,25 +20,25 @@ describe('AddForm', () => {
     jest.clearAllMocks();
   });
 
-  function renderAddForm(inputs) {
+  function renderAddForm(restaurantInformation) {
     return render((
       <AddForm
-        inputs={inputs}
+        restaurantInformation={restaurantInformation}
         onChangeInput={handleChageInput}
         onClickAddButton={handleClickAddButton}
       />
     ));
   }
 
-  context('without inputs', () => {
+  context('without restaurantInformation', () => {
     it('renders input placeholder', () => {
-      const inputs = {
+      const restaurantInformation = {
         name: '',
         category: '',
         address: '',
       };
 
-      const { getByPlaceholderText } = renderAddForm(inputs);
+      const { getByPlaceholderText } = renderAddForm(restaurantInformation);
 
       expect(getByPlaceholderText('이름')).not.toBeNull();
       expect(getByPlaceholderText('분류')).not.toBeNull();
@@ -46,15 +46,15 @@ describe('AddForm', () => {
     });
   });
 
-  context('with inputs', () => {
+  context('with restaurantInformation', () => {
     it('renders input value', () => {
-      const inputs = {
+      const restaurantInformation = {
         name: '마녀주방',
         category: '한식',
         address: '서울시 강남구',
       };
 
-      const { getByDisplayValue } = renderAddForm(inputs);
+      const { getByDisplayValue } = renderAddForm(restaurantInformation);
 
       expect(getByDisplayValue('마녀주방')).not.toBeNull();
       expect(getByDisplayValue('한식')).not.toBeNull();
@@ -63,25 +63,25 @@ describe('AddForm', () => {
   });
 
   it("renders '등록' button", () => {
-    const inputs = {
+    const restaurantInformation = {
       name: '',
       category: '',
       address: '',
     };
 
-    const { getByText } = renderAddForm(inputs);
+    const { getByText } = renderAddForm(restaurantInformation);
 
     expect(getByText('등록')).not.toBeNull();
   });
 
   it('listens change events', () => {
-    const inputs = {
+    const restaurantInformation = {
       name: '',
       category: '',
       address: '',
     };
 
-    const { getByPlaceholderText } = renderAddForm(inputs);
+    const { getByPlaceholderText } = renderAddForm(restaurantInformation);
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
         value: '한식',
@@ -104,13 +104,13 @@ describe('AddForm', () => {
   });
 
   it('listens click event', () => {
-    const inputs = {
+    const restaurantInformation = {
       name: '',
       category: '',
       address: '',
     };
 
-    const { getByPlaceholderText, getByText } = renderAddForm(inputs);
+    const { getByPlaceholderText, getByText } = renderAddForm(restaurantInformation);
     fireEvent.change(getByPlaceholderText('이름'), {
       target: {
         value: '한식',
