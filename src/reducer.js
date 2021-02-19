@@ -21,5 +21,25 @@ export default function reducer(state = initialState, action = { type: '' }) {
     };
   }
 
+  if (action.type === 'addRestaurant') {
+    const { title, category, address } = state.inputs;
+
+    const newRestaurant = {
+      id: state.nextId,
+      title,
+      category,
+      address,
+    };
+
+    return {
+      ...state,
+      nextId: state.nextId + 1,
+      restaurants: [
+        ...state.restaurants,
+        newRestaurant,
+      ],
+    };
+  }
+
   return state;
 }
