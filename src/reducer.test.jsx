@@ -38,7 +38,7 @@ describe('reducer', () => {
 
       context('with previous state', () => {
         it('updates restaurant name', () => {
-          const state = reducer(previousState, updateRestaurantName('마녀주방'));
+          const state = reducer(previousState, updateRestaurantInformation('name', '마녀주방'));
 
           expect(state.name).toBe('마녀주방');
         });
