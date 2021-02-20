@@ -6,6 +6,7 @@ import Input from './Input';
 
 describe('Input', () => {
   const handleChange = jest.fn();
+  const handleClick = jest.fn();
 
   beforeEach(() => jest.clearAllMocks());
 
@@ -58,5 +59,16 @@ describe('Input', () => {
       target: { value: '서울시 강남구' },
     });
     expect(handleChange).toBeCalled();
+  });
+
+  it('등록버튼시 식당의 이름, 분류, 주소를 추가합니다.', () => {
+    const { getByText } = render((
+      <Input
+        onClick={handleClick}
+      />));
+
+    expect(handleClick).not.toBeCalled();
+    fireEvent.click(getByText(/등록/));
+    expect(handleClick).toBeCalled();
   });
 });
