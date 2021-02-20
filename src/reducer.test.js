@@ -10,7 +10,7 @@ describe('reducer', () => {
   };
   describe('dafault state', () => {
     it('shold have default state', () => {
-      const defaultState = reducer(undefined, '');
+      const defaultState = reducer(undefined, '@@INIT');
 
       expect(defaultState.restaurantList).toHaveLength(0);
       expect(defaultState.restaurantInfo.name).toBe('');
