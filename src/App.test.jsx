@@ -1,8 +1,27 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
+
+jest.mock('react-redux');
+
+beforeEach(() => {
+  jest.clearAllMocks();
+
+  useSelector.mockImplementation((selector) => selector({
+    id: 0,
+    name: '',
+    category: '',
+    address: '',
+    restaurants: [],
+  }));
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+});
 
 describe('App', () => {
   it('renders title', () => {
@@ -19,57 +38,7 @@ describe('App', () => {
     ));
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
-
-    fireEvent.change(getByPlaceholderText(/이름/), {
-      target: { value: '마녀주방' },
-    });
-
-    expect(getByPlaceholderText(/이름/).value).toBe('마녀주방');
-  });
-
-  it('adds restaurant information', () => {
-    const { container, getByPlaceholderText, getByText } = render((
-      <App />
-    ));
-
-    fireEvent.change(getByPlaceholderText(/이름/), {
-      target: { value: '마녀주방' },
-    });
-
-    fireEvent.change(getByPlaceholderText(/분류/), {
-      target: { value: '한식' },
-    });
-
-    fireEvent.change(getByPlaceholderText(/주소/), {
-      target: { value: '서울시 강남구' },
-    });
-
-    fireEvent.click(getByText(/등록/));
-
-    expect(container).toHaveTextContent(/마녀주방/);
-  });
-
-  it('empties input after clicking "등록" button', () => {
-    const { getByPlaceholderText, getByText } = render((
-      <App />
-    ));
-
-    fireEvent.change(getByPlaceholderText(/이름/), {
-      target: { value: '마녀주방' },
-    });
-
-    fireEvent.change(getByPlaceholderText(/분류/), {
-      target: { value: '한식' },
-    });
-
-    fireEvent.change(getByPlaceholderText(/주소/), {
-      target: { value: '서울시 강남구' },
-    });
-
-    fireEvent.click(getByText(/등록/));
-
-    expect(getByPlaceholderText(/이름/).value).toBe('');
-    expect(getByPlaceholderText(/분류/).value).toBe('');
-    expect(getByPlaceholderText(/주소/).value).toBe('');
+    expect(getByPlaceholderText(/분류/)).not.toBeNull();
+    expect(getByPlaceholderText(/주소/)).not.toBeNull();
   });
 });

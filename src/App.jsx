@@ -1,48 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import List from './List';
 import Input from './Input';
 
+import {
+  updateRestaurantInformation,
+  addRestaurantInformation,
+} from './actions';
+
 export default function App() {
-  const [state, setState] = useState({
-    id: 0,
-    name: '',
-    category: '',
-    address: '',
-    restaurants: [],
-  });
+  const dispatch = useDispatch();
 
   const {
     name,
     category,
     address,
     restaurants,
-  } = state;
+  } = useSelector((state) => ({
+    name: state.name,
+    category: state.category,
+    address: state.address,
+    restaurants: state.restaurants,
+  }));
 
   function handleChange(event) {
     const { name: targetName, value } = event.target;
-    setState({
-      ...state,
-      [targetName]: value,
-    });
+
+    dispatch(updateRestaurantInformation(targetName, value));
   }
 
   function handleClick() {
-    setState({
-      id: state.id + 1,
-      name: '',
-      category: '',
-      address: '',
-      restaurants: [
-        ...state.restaurants,
-        {
-          id: state.id,
-          name: state.name,
-          category: state.category,
-          address: state.address,
-        },
-      ],
-    });
+    dispatch(addRestaurantInformation());
   }
 
   return (
