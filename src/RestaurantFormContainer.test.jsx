@@ -22,6 +22,12 @@ describe('RestaurantFormContainer', () => {
     address: '파주시',
   };
 
+  const emptyRestaurant = {
+    name: '',
+    category: '',
+    address: '',
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -40,11 +46,27 @@ describe('RestaurantFormContainer', () => {
     expect(dispatch).toBeCalledWith(updateRestaurant({ name: '송화루' }));
   });
 
-  it('appends new restaurant upon clicking 등록 button', () => {
-    const { getByText } = renderRestaurantFormContainer();
+  context('without restaurant', () => {
+    it("doesn't append new restaurant upon clicking 등록 button", () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: emptyRestaurant,
+      }));
 
-    fireEvent.click(getByText(/등록/));
+      const { getByText } = renderRestaurantFormContainer();
 
-    expect(dispatch).toBeCalledWith(addRestaurant());
+      fireEvent.click(getByText(/등록/));
+
+      expect(dispatch).not.toBeCalled();
+    });
+  });
+
+  context('with restaurant', () => {
+    it('appends new restaurant upon clicking 등록 button', () => {
+      const { getByText } = renderRestaurantFormContainer();
+
+      fireEvent.click(getByText(/등록/));
+
+      expect(dispatch).toBeCalledWith(addRestaurant());
+    });
   });
 });

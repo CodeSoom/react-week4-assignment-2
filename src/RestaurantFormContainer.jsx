@@ -11,6 +11,8 @@ export default function RestaurantFormContainer() {
     restaurant: state.restaurant,
   }));
 
+  const restaurantData = Object.values(restaurant);
+
   const dispatch = useDispatch();
 
   function handleChange(event) {
@@ -20,7 +22,9 @@ export default function RestaurantFormContainer() {
   }
 
   function handleClick() {
-    dispatch(addRestaurant());
+    if (!restaurantData.includes('')) {
+      dispatch(addRestaurant());
+    }
   }
 
   return (
