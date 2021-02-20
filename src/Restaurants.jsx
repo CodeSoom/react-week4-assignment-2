@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function List({ restaurants = [] }) {
+export default function Restaurants({ restaurants = [] }) {
   return (
     <ul>
       {restaurants.map(({

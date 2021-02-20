@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   it(' 예약 목록을 보여준다.', () => {
     const restaurants = [
       {
@@ -22,7 +22,7 @@ describe('List', () => {
     ];
 
     const { container } = render((
-      <List restaurants={restaurants} />
+      <Restaurants restaurants={restaurants} />
     ));
 
     restaurants.forEach((restaurant) => {
