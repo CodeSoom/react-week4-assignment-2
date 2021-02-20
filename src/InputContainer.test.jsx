@@ -28,7 +28,12 @@ describe('InputContainer', () => {
   it('restaurantInfo should be able to be entered.', () => {
     const { getByPlaceholderText } = render(<InputContainer />);
 
-    fireEvent.change(getByPlaceholderText('이름'), { target: { name: 'name', value: '선정릉역 깐부치킨' } });
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        name: 'name',
+        value: '선정릉역 깐부치킨',
+      },
+    });
     expect(dispatch).toHaveBeenCalledWith({ type: 'UPDATE_RESTAURANTINFO', payload: { name: '선정릉역 깐부치킨' } });
 
     fireEvent.change(getByPlaceholderText('분류'), { target: { name: 'category', value: '한식' } });
