@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-export default function List({ registers }) {
+export default function List() {
+  const registers = useSelector((state) => state.registers);
+
   return (
     <div>
       <ul>
