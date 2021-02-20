@@ -13,17 +13,18 @@ jest.mock('react-redux');
 describe('InputContainer', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
-
-  given("state's inputText", () => ({
+  given('inputText', () => ({
     name: given.restaurantName,
     category: given.category,
     address: given.address,
   }));
 
   beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      name: given.restaurantName, category: given.category, address: given.address,
+      name: given.restaurantName,
+      category: given.category,
+      address: given.address,
     }));
   });
 
