@@ -5,70 +5,71 @@ import { fireEvent, render } from '@testing-library/react';
 import Reserve from './Reserve';
 
 describe('Input', () => {
-  const handleChange = jest.fn();
-  const handleClick = jest.fn();
+  const onChange = jest.fn();
+  const onClick = jest.fn();
 
   beforeEach(() => jest.clearAllMocks());
 
   it('이름 항목의 elemnet들을 확인합니다.', () => {
     const { getByPlaceholderText, getByDisplayValue } = render((
-      <Input
+      <Reserve
         value="기존 식당이름"
-        onChange={handleChange}
+        onChange={onChange}
       />));
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
 
     expect(getByDisplayValue(/기존 식당이름/)).not.toBeNull();
-    expect(handleChange).not.toBeCalled();
+
+    expect(onChange).not.toBeCalled();
     fireEvent.change(getByPlaceholderText(/이름/), {
       target: { value: '마녀식당' },
     });
-    expect(handleChange).toBeCalled();
+    expect(onChange).toBeCalled();
   });
 
   it('분류 항목의 elemnet들을 확인합니다.', () => {
     const { getByPlaceholderText, getByDisplayValue } = render((
-      <Input
+      <Reserve
         value="기존 식당분류"
-        onChange={handleChange}
+        onChange={onChange}
       />));
 
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
 
     expect(getByDisplayValue(/기존 식당분류/)).not.toBeNull();
-    expect(handleChange).not.toBeCalled();
+    expect(onChange).not.toBeCalled();
     fireEvent.change(getByPlaceholderText(/분류/), {
       target: { value: '한식' },
     });
-    expect(handleChange).toBeCalled();
+    expect(onChange).toBeCalled();
   });
 
   it('주소 항목의 elemnet들을 확인합니다.', () => {
     const { getByPlaceholderText, getByDisplayValue } = render((
-      <Input
+      <Reserve
         value="기존 식당주소"
-        onChange={handleChange}
+        onChange={onChange}
       />));
 
     expect(getByPlaceholderText(/주소/)).not.toBeNull();
 
     expect(getByDisplayValue(/기존 식당주소/)).not.toBeNull();
-    expect(handleChange).not.toBeCalled();
+    expect(onChange).not.toBeCalled();
     fireEvent.change(getByPlaceholderText(/주소/), {
       target: { value: '서울시 강남구' },
     });
-    expect(handleChange).toBeCalled();
+    expect(onChange).toBeCalled();
   });
 
   it('등록버튼시 식당의 이름, 분류, 주소를 추가합니다.', () => {
     const { getByText } = render((
-      <Input
-        onClick={handleClick}
+      <Reserve
+        onClick={onClick}
       />));
 
-    expect(handleClick).not.toBeCalled();
+    expect(onClick).not.toBeCalled();
     fireEvent.click(getByText(/등록/));
-    expect(handleClick).toBeCalled();
+    expect(onClick).toBeCalled();
   });
 });

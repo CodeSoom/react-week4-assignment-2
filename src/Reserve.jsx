@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Input({
-  value, category, address,
+export default function Reserve({
+  name, category, address,
   onChange, onClick,
 }) {
   return (
@@ -9,7 +9,7 @@ export default function Input({
       <input
         type="text"
         placeholder="이름"
-        value={value}
+        value={name}
         onChange={onChange}
       />
       <input
