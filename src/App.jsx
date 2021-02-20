@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import List from './List';
+import ListContainer from './ListContainer';
 import Input from './Input';
 
 import {
@@ -17,7 +17,6 @@ export default function App() {
     name,
     category,
     address,
-    restaurants,
   } = useSelector((state) => ({
     name: state.name,
     category: state.category,
@@ -37,10 +36,7 @@ export default function App() {
 
   return (
     <div>
-      <h1>Restaurants</h1>
-      <List
-        restaurants={restaurants}
-      />
+      <ListContainer />
       <Input
         name={name}
         category={category}
