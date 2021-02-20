@@ -52,7 +52,7 @@ describe('reducer', () => {
   });
 
   describe('updateInputText', () => {
-    it('returns new state with new task title', () => {
+    it('returns new state with new input text', () => {
       const state = reducer({ name: '' }, updateInputText({ name: 'name', value: '밥집' }));
       expect(state.name).toBe('밥집');
     });
@@ -69,21 +69,19 @@ describe('reducer', () => {
       }, addRegister());
     }
 
-    context('with task title', () => {
-      it('appends a new task into tasks', () => {
-        const state = reduceAddRegister('소년식당', '소식', '내마음속');
+    it('appends a new register into registers', () => {
+      const state = reduceAddRegister('소년식당', '소식', '내마음속');
 
-        expect(state.registers).toHaveLength(1);
-        expect(state.registers[0]).not.toBeUndefined();
-      });
+      expect(state.registers).toHaveLength(1);
+      expect(state.registers[0]).not.toBeUndefined();
+    });
 
-      it('clears task title', () => {
-        const state = reduceAddRegister('소년식당', '소식', '내마음속');
+    it('clears all input', () => {
+      const state = reduceAddRegister('소년식당', '소식', '내마음속');
 
-        expect(state.name).toBe('');
-        expect(state.category).toBe('');
-        expect(state.address).toBe('');
-      });
+      expect(state.name).toBe('');
+      expect(state.category).toBe('');
+      expect(state.address).toBe('');
     });
   });
 });

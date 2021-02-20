@@ -1,7 +1,7 @@
-export function updateInputText(target) {
+export function updateInputText({ name, value }) {
   return {
     type: 'updateInputText',
-    payload: { [target.name]: target.value },
+    payload: { [name]: value },
   };
 }
 
