@@ -35,7 +35,12 @@ export default function App() {
       address: '',
       restaurants: [
         ...state.restaurants,
-        state,
+        {
+          id: state.id,
+          name: state.name,
+          category: state.category,
+          address: state.address,
+        },
       ],
     });
   }

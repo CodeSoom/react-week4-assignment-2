@@ -6,6 +6,10 @@ const initialState = {
   restaurants: [],
 };
 
+function emptyInformation({ name, category, address }) {
+  return !(name !== '' && category !== '' && address !== '');
+}
+
 const actionTypeFunctions = {
   updateRestaurantName: (state, action) => ({
     ...state,
@@ -19,10 +23,26 @@ const actionTypeFunctions = {
     ...state,
     address: action.payload.address,
   }),
-  addRestaurantInformation: (state) => ({
-    ...state,
-    restaurants: [...state.restaurants, state],
-  }),
+  addRestaurantInformation: (state) => {
+    const { name, category, address } = state;
+
+    if (emptyInformation({ name, category, address })) {
+      return state;
+    }
+
+    return {
+      ...state,
+      restaurants: [
+        ...state.restaurants,
+        {
+          id: state.id,
+          name: state.name,
+          category: state.category,
+          address: state.address,
+        },
+      ],
+    };
+  },
 };
 
 const defaultFunction = (state) => (state);
