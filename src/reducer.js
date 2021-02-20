@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, UPDATE_RESTAURANTINFO } from './actions';
+import { ADD_RESTAURANT, INIT_REDUX, UPDATE_RESTAURANTINFO } from './actions';
 
 const initialState = {
   restaurantList: [],
@@ -19,7 +19,7 @@ const actionHandler = {
       restaurantList: [...restaurantList, { ...restaurantInfo, id: restaurantList.length + 1 }],
     };
   },
-  '@@INIT': function (state) { return state; },
+  [INIT_REDUX](state) { return state; },
 };
 
 export default function reducer(state = initialState, action) {
