@@ -9,19 +9,24 @@ import InputForm from './InputForm';
 export default function InputFormContainer() {
   const dispatch = useDispatch();
 
-  const { name, category, address } = useSelector((state) => ({
-    name: state.name,
-    category: state.category,
-    address: state.address,
+  function handleChange(e) {
+    const { name, value } = e.target;
+    return dispatch(updateInput(name, value));
+  }
+
+  function handleClick() {
+    return dispatch(addRestaurants());
+  }
+
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
   }));
 
   return (
     <InputForm
-      nameValue={name}
-      categoryValue={category}
-      addressValue={address}
-      onChange={(e) => dispatch(updateInput(e))}
-      onClick={() => dispatch(addRestaurants())}
+      restaurant={restaurant}
+      onChange={handleChange}
+      onClick={handleClick}
     />
   );
 }

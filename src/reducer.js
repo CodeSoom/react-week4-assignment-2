@@ -1,8 +1,10 @@
 export const initialState = {
   id: 100,
-  name: '',
-  category: '',
-  address: '',
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
   restaurantsList: [],
 };
 
@@ -12,21 +14,26 @@ function reducer(state = initialState, action = { type: '' }) {
   if (type === 'updateInput') {
     return {
       ...state,
-      [payload.placeholder]: payload.input,
+      restaurant: {
+        ...state.restaurant,
+        [payload.placeholder]: payload.input,
+      },
     };
   }
 
-  if (type === 'addRestaurants' && !Object.values(state).includes('')) {
+  if (type === 'addRestaurants' && !Object.values(state.restaurant).includes('')) {
     const {
-      id, name, category, address, restaurantsList,
+      id, restaurant: { name, category, address }, restaurantsList,
     } = state;
 
     return {
       ...state,
       id: id + 1,
-      name: '',
-      category: '',
-      address: '',
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
       restaurantsList: [...restaurantsList, {
         id, name, category, address,
       }],

@@ -1,10 +1,10 @@
-export function updateInput(e) {
+export function updateInput(name, value) {
   return (
     {
       type: 'updateInput',
       payload: {
-        placeholder: e.target.name,
-        input: e.target.value,
+        placeholder: name,
+        input: value,
       },
     }
   );
