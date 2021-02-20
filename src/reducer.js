@@ -22,10 +22,7 @@ const reducers = {
 
     return {
       restaurant: {
-        id: restaurant.id + 1,
-        name: '',
-        category: '',
-        address: '',
+        ...initialState.restaurant, id: restaurant.id + 1,
       },
       restaurants: [...restaurants, { id: restaurant.id, ...restaurant }],
     };
