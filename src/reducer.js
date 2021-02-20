@@ -7,16 +7,24 @@ const initialState = {
   },
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === UPDATE_RESTAURANTINFO) {
+const actionHandler = {
+
+  [UPDATE_RESTAURANTINFO](state, action) {
     return { ...state, restaurantInfo: { ...state.restaurantInfo, ...action.payload } };
-  }
-  if (action.type === ADD_RESTAURANT) {
+  },
+  [ADD_RESTAURANT](state) {
     const { restaurantList, restaurantInfo } = state;
     return {
       ...state,
       restaurantList: [...restaurantList, { ...restaurantInfo, id: restaurantList.length + 1 }],
     };
+  },
+  '@@INIT': function (state) { return state; },
+};
+
+export default function reducer(state = initialState, action) {
+  if (!action.type) {
+    return state;
   }
-  return state;
+  return actionHandler[action.type](state, action);
 }
