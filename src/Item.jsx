@@ -7,9 +7,9 @@ function Item({ restaurantInfo }) {
   return (
     <li>
       <span>{name}</span>
-      <hr />
+      <span>|</span>
       <span>{category}</span>
-      <hr />
+      <span>|</span>
       <span>{address}</span>
     </li>
   );
