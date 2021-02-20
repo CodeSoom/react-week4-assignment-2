@@ -11,13 +11,13 @@ describe('List', () => {
     ));
   }
 
-  context('with registers', () => {
+  context('when register list is filled', () => {
     const registers = [
       { id: 1, information: '마녀식당 | 한식 | 서울시 강남구' },
       { id: 2, information: '소녀식당 | 소식 | 소울시 강남구' },
     ];
 
-    it('shows registers', () => {
+    it('shows register list', () => {
       const { queryByText } = renderList(registers);
 
       expect(queryByText('마녀식당 | 한식 | 서울시 강남구')).not.toBeNull();
@@ -25,7 +25,7 @@ describe('List', () => {
     });
   });
 
-  context('without registers', () => {
+  context('when register list is empty', () => {
     const registers = [];
 
     it('shows nothing', () => {
