@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateRestaurantInfo } from './actions';
+import { updateRestaurantInfo, addRestaurant } from './actions';
 import RestaurantInput from './RestaurantInput';
 
 function InputContainer() {
@@ -9,8 +9,11 @@ function InputContainer() {
   function handleChange(event) {
     dispatch(updateRestaurantInfo({ [event.target.name]: event.target.value }));
   }
+  function handleClick() {
+    dispatch({ type: 'ADD_RESTAURANT' });
+  }
   return (
-    <RestaurantInput onChange={handleChange} />
+    <RestaurantInput onChange={handleChange} onClick={handleClick} />
   );
 }
 
