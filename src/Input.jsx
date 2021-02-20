@@ -5,6 +5,8 @@ export default function Input({ value, onChange }) {
     <input
       type="text"
       placeholder="이름"
+      value={value}
+      onChange={onChange}
 
     />
   );
