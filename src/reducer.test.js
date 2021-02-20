@@ -8,16 +8,31 @@ describe('reducer', () => {
     catagory: '한식',
     address: '서울 강남구 삼성동 37 깐부치킨 선정릉역점',
   };
-  describe('dafault state', () => {
-    it('shold have default state', () => {
-      const defaultState = reducer(undefined, '');
 
-      expect(defaultState.restaurantList).toHaveLength(0);
-      expect(defaultState.restaurantInfo.name).toBe('');
-      expect(defaultState.restaurantInfo.category).toBe('');
-      expect(defaultState.restaurantInfo.address).toBe('');
+  describe('default state', () => {
+    context('if there is no action', () => {
+      it('shold have default state', () => {
+        const defaultState = reducer(undefined, null);
+
+        expect(defaultState.restaurantList).toHaveLength(0);
+        expect(defaultState.restaurantInfo.name).toBe('');
+        expect(defaultState.restaurantInfo.category).toBe('');
+        expect(defaultState.restaurantInfo.address).toBe('');
+      });
+    });
+
+    context('if there is wrong action', () => {
+      it('shold have default state', () => {
+        const defaultState = reducer(undefined, { type: '@@INIT' });
+
+        expect(defaultState.restaurantList).toHaveLength(0);
+        expect(defaultState.restaurantInfo.name).toBe('');
+        expect(defaultState.restaurantInfo.category).toBe('');
+        expect(defaultState.restaurantInfo.address).toBe('');
+      });
     });
   });
+
   describe('UPDATE_RESTAURANTINFO', () => {
     it('should change restaurantInfo', () => {
       const changedState = reducer(undefined, updateRestaurantInfo(restaurantInfo));
