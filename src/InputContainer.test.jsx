@@ -31,7 +31,7 @@ describe('InputContainer', () => {
   }
 
   it('changes restaurant inputs', () => {
-    const { getByPlaceholderText, getByText } = renderInput();
+    const { getByPlaceholderText } = renderInput();
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
 
