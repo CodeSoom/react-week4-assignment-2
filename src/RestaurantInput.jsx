@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RestaurantInput({ onChange }) {
+function RestaurantInput({ onChange, onClick }) {
   return (
     <div className="input-container">
       <input
@@ -21,7 +21,7 @@ function RestaurantInput({ onChange }) {
         name="address"
         onChange={onChange}
       />
-      <button type="button">등록</button>
+      <button type="button" onClick={onClick}>등록</button>
     </div>
   );
 }
