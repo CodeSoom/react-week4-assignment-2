@@ -23,5 +23,9 @@ const actionHandler = {
 };
 
 export default function reducer(state = initialState, action) {
+  if (!action) return state;
+
+  if (action.type === '@@INIT') return state;
+
   return actionHandler[action.type](state, action);
 }
