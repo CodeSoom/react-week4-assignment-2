@@ -7,22 +7,23 @@ import AddForm from './AddForm';
 describe('AddForm', () => {
   const onChange = jest.fn();
 
-  function renderAddForm({ restaurant }) {
+  const initRestaurant = {
+    name: '',
+    category: '',
+    address: '',
+  };
+
+  function renderAddForm({ restaurant = initRestaurant }) {
     return render((
       <AddForm
         restaurant={restaurant}
+        onChange={onChange}
       />
     ));
   }
 
   it('input, button을 보여준다.', () => {
-    const restaurant = {
-      name: '',
-      category: '',
-      address: '',
-    };
-
-    const { queryByText, getByPlaceholderText } = renderAddForm({ restaurant });
+    const { queryByText, getByPlaceholderText } = renderAddForm({});
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
@@ -32,13 +33,7 @@ describe('AddForm', () => {
   });
 
   it('값을 변경하면, 상태값이 변경된다.', () => {
-    const restaurant = {
-      name: '',
-      category: '',
-      address: '',
-    };
-
-    const { queryByText, getByPlaceholderText } = renderAddForm({ restaurant });
+    const { getByPlaceholderText } = renderAddForm({});
 
     const input = getByPlaceholderText('이름');
 
@@ -51,7 +46,5 @@ describe('AddForm', () => {
     expect(onChange).toBeCalled();
 
     expect(input.value).toBe('인풋 작성');
-
-    expect(queryByText(/등록/)).not.toBeNull();
   });
 });
