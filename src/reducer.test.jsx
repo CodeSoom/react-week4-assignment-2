@@ -75,6 +75,19 @@ describe('reducer', () => {
 
           expect(state.restaurants).toHaveLength(1);
         });
+
+        it('clears input text', () => {
+          const state = reducer({
+            ...previousState,
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+          }, addRestaurantInformation());
+
+          expect(state.name).toBe('');
+          expect(state.category).toBe('');
+          expect(state.address).toBe('');
+        });
       });
     });
   });
