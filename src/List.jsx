@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Input({ reservations = [] }) {
+export default function List({ reservations }) {
   if (reservations.length === 0) {
     return (
-      <div />
+      <p>예약한 식당이 없습니다!</p>
     );
   }
 
