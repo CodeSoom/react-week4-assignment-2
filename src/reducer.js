@@ -1,4 +1,4 @@
-import { ADD_RESTAURANT, INIT_REDUX, UPDATE_RESTAURANTINFO } from './actions';
+import { ADD_RESTAURANT, UPDATE_RESTAURANTINFO } from './actions';
 
 const initialState = {
   restaurantList: [],
@@ -6,6 +6,16 @@ const initialState = {
     id: 0, name: '', category: '', address: '',
   },
 };
+
+const actionTypes = [UPDATE_RESTAURANTINFO, ADD_RESTAURANT];
+
+function checkAction(action) {
+  if (!action) return false;
+
+  if (!actionTypes.includes(action.type)) return false;
+
+  return true;
+}
 
 const actionHandler = {
 
@@ -19,12 +29,13 @@ const actionHandler = {
       restaurantList: [...restaurantList, { ...restaurantInfo, id: restaurantList.length + 1 }],
     };
   },
-  [INIT_REDUX](state) { return state; },
+
 };
 
 export default function reducer(state = initialState, action) {
-  if (!action.type) {
+  if (checkAction(action) === false) {
     return state;
   }
+
   return actionHandler[action.type](state, action);
 }

@@ -1,4 +1,3 @@
-export const INIT_REDUX = '@@INIT';
 export const UPDATE_RESTAURANTINFO = 'UPDATE_RESTAURANTINFO';
 export const ADD_RESTAURANT = 'ADD_RESTAURANT';
 
