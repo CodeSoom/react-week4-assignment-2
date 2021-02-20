@@ -26,7 +26,7 @@ describe('RestaurantForm', () => {
 
   beforeEach(() => jest.clearAllMocks());
 
-  it('renders input elemetns', () => {
+  it('renders input elements', () => {
     const { getByPlaceholderText } = renderRestaurantForm();
 
     const inputNameNode = getByPlaceholderText('이름');
