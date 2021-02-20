@@ -54,9 +54,26 @@ describe('reducer', () => {
 
           expect(state.address).toBe('서울시 강남구');
         });
+      });
+    });
 
-        it('adds restaurant information', () => {
+    describe('addRestaurantInformation', () => {
+      context('without restaurant information', () => {
+        it('does not add restaurant information', () => {
           const state = reducer(previousState, addRestaurantInformation());
+
+          expect(state.restaurants).toHaveLength(0);
+        });
+      });
+
+      context('with restaurant information', () => {
+        it('adds restaurant information', () => {
+          const state = reducer({
+            ...previousState,
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+          }, addRestaurantInformation());
 
           expect(state.restaurants).toHaveLength(1);
         });
