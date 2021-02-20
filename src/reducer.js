@@ -23,6 +23,10 @@ const actionTypeFunctions = {
     ...state,
     address: action.payload.address,
   }),
+  updateRestaurantInformation: (state, action) => ({
+    ...state,
+    [action.payload.key]: action.payload.value,
+  }),
   addRestaurantInformation: (state) => {
     const { name, category, address } = state;
 

@@ -4,6 +4,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  updateRestaurantInformation,
   addRestaurantInformation,
 } from './actions';
 
