@@ -8,6 +8,14 @@ import { ADD_RESTAURANT } from './actions';
 jest.mock('react-redux');
 
 describe('InputContainer', () => {
+  const dispatch = jest.fn();
+  beforeEach(() => {
+    useDispatch.mockImplementationOnce(() => dispatch);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   it('should render three inputs and one button', () => {
     const { getByPlaceholderText, getByText } = render(<InputContainer />);
 
@@ -18,8 +26,6 @@ describe('InputContainer', () => {
   });
 
   it('restaurantInfo should be able to be entered.', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementationOnce(() => dispatch);
     const { getByPlaceholderText } = render(<InputContainer />);
 
     fireEvent.change(getByPlaceholderText('이름'), { target: { name: 'name', value: '선정릉역 깐부치킨' } });
@@ -33,8 +39,6 @@ describe('InputContainer', () => {
   });
 
   it('should be able to add a restaurant list', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementationOnce(() => dispatch);
     const { getByText } = render(<InputContainer />);
 
     fireEvent.click(getByText('등록'));
