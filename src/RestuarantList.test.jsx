@@ -7,7 +7,7 @@ import RestaurantList from './RestaurantList';
 describe('RestaurantList', () => {
   const restaurants = [
     {
-      id: 1, title: '자매수산', category: '일식', address: '서울시 논현동',
+      id: 1, name: '자매수산', category: '일식', address: '서울시 논현동',
     },
   ];
 

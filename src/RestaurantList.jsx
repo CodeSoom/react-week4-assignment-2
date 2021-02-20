@@ -6,7 +6,7 @@ export default function RestaurantList({ restaurants }) {
       <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant}>
-            {restaurant.title}
+            {restaurant.name}
             {' '}
             |
             {' '}
