@@ -2,8 +2,9 @@ import React from 'react';
 
 import Restaurant from './Restaurant';
 
+const isEmpty = (arr) => arr.length === 0;
+
 export default function List({ restaurants }) {
-  const isEmpty = (arr) => arr.length === 0;
   if (isEmpty(restaurants)) {
     return (
       <div>
