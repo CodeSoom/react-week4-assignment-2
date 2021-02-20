@@ -10,7 +10,7 @@ function InputContainer() {
     dispatch(updateRestaurantInfo({ [event.target.name]: event.target.value }));
   }
   function handleClick() {
-    dispatch({ type: 'ADD_RESTAURANT' });
+    dispatch(addRestaurant());
   }
   return (
     <RestaurantInput onChange={handleChange} onClick={handleClick} />
