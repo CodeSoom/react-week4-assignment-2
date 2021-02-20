@@ -1,9 +1,6 @@
 import reducer from './reducer';
 
 import {
-  updateRestaurantName,
-  updateRestaurantCategory,
-  updateRestaurantAddress,
   updateRestaurantInformation,
   addRestaurantInformation,
 } from './actions';
@@ -31,7 +28,7 @@ describe('reducer', () => {
     describe('updateRestaurantInformation', () => {
       context('without previous state', () => {
         it('updates restaurant name using initial state', () => {
-          const state = reducer(undefined, updateRestaurantName('마녀주방'));
+          const state = reducer(undefined, updateRestaurantInformation('name', '마녀주방'));
 
           expect(state.name).toBe('마녀주방');
         });
@@ -45,13 +42,13 @@ describe('reducer', () => {
         });
 
         it('updates restaurant category', () => {
-          const state = reducer(previousState, updateRestaurantCategory('한식'));
+          const state = reducer(previousState, updateRestaurantInformation('category', '한식'));
 
           expect(state.category).toBe('한식');
         });
 
         it('updates restaurant address', () => {
-          const state = reducer(previousState, updateRestaurantAddress('서울시 강남구'));
+          const state = reducer(previousState, updateRestaurantInformation('address', '서울시 강남구'));
 
           expect(state.address).toBe('서울시 강남구');
         });

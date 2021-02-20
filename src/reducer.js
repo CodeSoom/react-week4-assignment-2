@@ -11,18 +11,6 @@ function emptyInformation({ name, category, address }) {
 }
 
 const actionTypeFunctions = {
-  updateRestaurantName: (state, action) => ({
-    ...state,
-    name: action.payload.name,
-  }),
-  updateRestaurantCategory: (state, action) => ({
-    ...state,
-    category: action.payload.category,
-  }),
-  updateRestaurantAddress: (state, action) => ({
-    ...state,
-    address: action.payload.address,
-  }),
   updateRestaurantInformation: (state, action) => ({
     ...state,
     [action.payload.key]: action.payload.value,
