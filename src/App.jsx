@@ -1,7 +1,7 @@
 import React from 'react';
 
-import RestaurantForm from './RestaurantForm';
 import RestaurantList from './RestaurantList';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 const restaurants = [
   {
@@ -10,29 +10,11 @@ const restaurants = [
 ];
 
 export default function App() {
-  const restaurant = {
-    name: '',
-    category: '',
-    address: '',
-  };
-
-  const handleChange = () => {
-    // TODO: 작성하기
-  };
-
-  const handleClick = () => {
-    // TODO: 작성하기
-  };
-
   return (
     <div>
       <h1>Restaurants</h1>
       <RestaurantList restaurants={restaurants} />
-      <RestaurantForm
-        restaurant={restaurant}
-        onChange={handleChange}
-        onClick={handleClick}
-      />
+      <RestaurantFormContainer />
     </div>
   );
 }
