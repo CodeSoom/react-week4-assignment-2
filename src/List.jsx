@@ -14,9 +14,12 @@ export default function List({ reservations }) {
           key={reservation.id}
         >
           {reservation.name}
+          {' '}
           |
           {reservation.category}
+          {' '}
           |
+          {' '}
           {reservation.address}
         </li>
       ))}
