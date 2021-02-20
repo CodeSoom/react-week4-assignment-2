@@ -24,6 +24,9 @@ const actionTypeFunctions = {
 
     return {
       ...state,
+      name: '',
+      category: '',
+      address: '',
       restaurants: [
         ...state.restaurants,
         {
