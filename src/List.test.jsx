@@ -15,17 +15,17 @@ describe('List', () => {
       },
     ];
 
-    const { getByText } = render((
+    const { queryByText } = render((
       <List
         reservations={reservations}
       />));
 
-    expect(getByText(/마녀식당/)).not.toBeNull();
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/서울시 강남구/)).not.toBeNull();
+    expect(queryByText(/마녀식당/)).not.toBeNull();
+    expect(queryByText(/한식/)).not.toBeNull();
+    expect(queryByText(/서울시 강남구/)).not.toBeNull();
 
-    expect(getByText(/시카고피자/)).not.toBeNull();
-    expect(getByText(/양식/)).not.toBeNull();
-    expect(getByText(/이태원동/)).not.toBeNull();
+    expect(queryByText(/시카고피자/)).not.toBeNull();
+    expect(queryByText(/양식/)).not.toBeNull();
+    expect(queryByText(/이태원동/)).not.toBeNull();
   });
 });
