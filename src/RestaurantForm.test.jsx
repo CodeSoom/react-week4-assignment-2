@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import AddForm from './AddForm';
+import RestaurantForm from './RestaurantForm';
 
-describe('AddForm', () => {
+describe('RestaurantForm', () => {
   const onChange = jest.fn();
 
   const initRestaurant = {
@@ -13,9 +13,9 @@ describe('AddForm', () => {
     address: '',
   };
 
-  function renderAddForm({ restaurant = initRestaurant }) {
+  function renderRestaurantForm({ restaurant = initRestaurant }) {
     return render((
-      <AddForm
+      <RestaurantForm
         restaurant={restaurant}
         onChange={onChange}
       />
@@ -23,7 +23,7 @@ describe('AddForm', () => {
   }
 
   it('input, button을 보여준다.', () => {
-    const { queryByText, getByPlaceholderText } = renderAddForm({});
+    const { queryByText, getByPlaceholderText } = renderRestaurantForm({});
 
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
@@ -33,7 +33,7 @@ describe('AddForm', () => {
   });
 
   it('값을 변경하면, 상태값이 변경된다.', () => {
-    const { getByPlaceholderText } = renderAddForm({});
+    const { getByPlaceholderText } = renderRestaurantForm({});
 
     const input = getByPlaceholderText('이름');
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import List from './List';
-import AddForm from './AddForm';
+import RestaurantForm from './RestaurantForm';
 
 export default function App() {
   const restaurants = [
@@ -19,11 +19,17 @@ export default function App() {
     },
   ];
 
+  const restaurant = {
+    name: '',
+    category: '',
+    address: '',
+  };
+
   return (
     <div>
       <h1>Restaurants</h1>
       <List restaurants={restaurants} />
-      <AddForm />
+      <RestaurantForm restaurant={restaurant} />
     </div>
   );
 }

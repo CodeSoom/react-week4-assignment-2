@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AddForm({ onChange }) {
+export default function RestaurantForm({ onChange }) {
   return (
     <form>
       <input
