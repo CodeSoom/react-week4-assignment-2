@@ -67,33 +67,16 @@ describe('reducer', () => {
     });
 
     describe('addRestaurant', () => {
-      context('without restaurant', () => {
-        it("doesn't work", () => {
-          const state = reducer({
-            restaurant: {
-              name: '',
-              category: '',
-              address: '',
-            },
-            restaurants: [],
-          }, addRestaurant());
+      it('appends a new restaurant into the restaurant list', () => {
+        const state = reducer({
+          restaurant,
+          restaurants: [],
+        }, addRestaurant(restaurant));
 
-          expect(state.restaurants).toHaveLength(0);
-        });
-      });
-
-      context('with restauant', () => {
-        it('appends a new restaurant into the restaurant list', () => {
-          const state = reducer({
-            restaurant,
-            restaurants: [],
-          }, addRestaurant(restaurant));
-
-          expect(state.restaurants).toHaveLength(1);
-          expect(state.restaurants[0].name).not.toBeNull();
-          expect(state.restaurants[0].category).not.toBeNull();
-          expect(state.restaurants[0].address).not.toBeNull();
-        });
+        expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants[0].name).not.toBeNull();
+        expect(state.restaurants[0].category).not.toBeNull();
+        expect(state.restaurants[0].address).not.toBeNull();
       });
     });
   });

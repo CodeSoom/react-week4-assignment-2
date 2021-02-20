@@ -16,10 +16,6 @@ const reducers = {
   addRestaurant: (state) => {
     const { restaurant, restaurants } = state;
 
-    const restaurantData = Object.values(restaurant);
-
-    if (restaurantData.includes('')) { return state; }
-
     return {
       restaurant: {
         ...initialState.restaurant, id: restaurant.id + 1,
