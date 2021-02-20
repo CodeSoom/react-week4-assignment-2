@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function Input({ value, category, onChange }) {
+export default function Input({
+  value, category, address, onChange,
+}) {
   return (
     <div>
       <input
@@ -13,6 +15,12 @@ export default function Input({ value, category, onChange }) {
         type="text"
         placeholder="분류"
         value={category}
+        onChange={onChange}
+      />
+      <input
+        type="text"
+        placeholder="주소"
+        value={address}
         onChange={onChange}
       />
     </div>
