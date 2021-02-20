@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { useDispatch } from 'react-redux';
+
 import { updateRestaurantInfo, addRestaurant } from './actions';
+
 import RestaurantInput from './RestaurantInput';
 
 function InputContainer() {
