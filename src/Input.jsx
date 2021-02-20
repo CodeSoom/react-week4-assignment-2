@@ -1,7 +1,8 @@
 import React from 'react';
 
 export default function Input({
-  value, category, address, onChange,
+  value, category, address,
+  onChange, onClick,
 }) {
   return (
     <div>
@@ -23,6 +24,12 @@ export default function Input({
         value={address}
         onChange={onChange}
       />
+      <button
+        type="button"
+        onClick={onClick}
+      >
+        등록
+      </button>
     </div>
   );
 }
