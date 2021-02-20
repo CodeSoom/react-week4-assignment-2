@@ -7,16 +7,6 @@ const initialState = {
   },
 };
 
-const actionTypes = [UPDATE_RESTAURANTINFO, ADD_RESTAURANT];
-
-function checkAction(action) {
-  if (!action) return false;
-
-  if (!actionTypes.includes(action.type)) return false;
-
-  return true;
-}
-
 const actionHandler = {
 
   [UPDATE_RESTAURANTINFO](state, action) {
@@ -33,9 +23,5 @@ const actionHandler = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (checkAction(action) === false) {
-    return state;
-  }
-
   return actionHandler[action.type](state, action);
 }
