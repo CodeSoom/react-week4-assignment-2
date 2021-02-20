@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch } from 'react-redux';
 import InputContainer from './InputContainer';
+import { ADD_RESTAURANT } from './actions';
 
 jest.mock('react-redux');
 
@@ -29,5 +30,14 @@ describe('InputContainer', () => {
 
     fireEvent.change(getByPlaceholderText('주소'), { target: { name: 'address', value: '서울 강남구 삼성동 37 깐부치킨 선정릉역점' } });
     expect(dispatch).toHaveBeenCalledWith({ type: 'UPDATE_RESTAURANTINFO', payload: { address: '서울 강남구 삼성동 37 깐부치킨 선정릉역점' } });
+  });
+
+  it('should be able to add a restaurant list', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementationOnce(() => dispatch);
+    const { getByText } = render(<InputContainer />);
+
+    fireEvent.click(getByText('등록'));
+    expect(dispatch).toHaveBeenCalledWith({ type: ADD_RESTAURANT });
   });
 });
