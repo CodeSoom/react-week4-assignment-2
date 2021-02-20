@@ -7,7 +7,10 @@ function ListContainer() {
   const restaurantList = useSelector((state) => state.restaurantList);
 
   return (
-    <RestaurantList restaurantList={restaurantList} />
+    <div className="list-container">
+      <RestaurantList restaurantList={restaurantList} />
+    </div>
+
   );
 }
 
