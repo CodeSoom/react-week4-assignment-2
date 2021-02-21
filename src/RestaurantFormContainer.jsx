@@ -28,7 +28,15 @@ export default function RestaurantFormContainer() {
     dispatch(updateRestaurantInformation(targetName, value));
   }
 
+  function emptyInformation({ name: nameField, category: categoryField, addressField }) {
+    return (nameField === '' || categoryField === '' || addressField === '');
+  }
+
   function handleClick() {
+    if (emptyInformation({ name, category, address })) {
+      return;
+    }
+
     dispatch(addRestaurantInformation());
   }
 
