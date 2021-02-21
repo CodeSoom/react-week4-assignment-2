@@ -4,7 +4,7 @@ import Restaurant from './Restaurant';
 
 const isEmpty = (arr) => arr.length === 0;
 
-export default function List({ restaurants }) {
+export default function Restaurants({ restaurants }) {
   if (isEmpty(restaurants)) {
     return (
       <div>

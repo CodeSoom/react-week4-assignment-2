@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
@@ -12,7 +12,7 @@ beforeEach(() => {
   jest.clearAllMocks();
 });
 
-describe('ListContainer', () => {
+describe('RestaurantsContainer', () => {
   context('with information', () => {
     it('renders restaurant information', () => {
       useSelector.mockImplementation((selector) => selector({
@@ -26,7 +26,7 @@ describe('ListContainer', () => {
         ],
       }));
 
-      const { getByText } = render(<ListContainer />);
+      const { getByText } = render(<RestaurantsContainer />);
 
       expect(getByText(/마녀주방/)).not.toBeNull();
       expect(getByText(/한식/)).not.toBeNull();
@@ -40,7 +40,7 @@ describe('ListContainer', () => {
         restaurants: [],
       }));
 
-      const { getByText } = render(<ListContainer />);
+      const { getByText } = render(<RestaurantsContainer />);
 
       expect(getByText(/입력된 레스토랑 정보가 없습니다/)).not.toBeNull();
     });

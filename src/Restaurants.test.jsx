@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   context('with information', () => {
     const restaurants = [
       {
@@ -17,7 +17,7 @@ describe('List', () => {
 
     it('renders restaurant information', () => {
       const { getByText } = render((
-        <List
+        <Restaurants
           restaurants={restaurants}
         />
       ));
@@ -29,7 +29,7 @@ describe('List', () => {
   context('without information', () => {
     it('renders nothing', () => {
       const { getByText } = render((
-        <List
+        <Restaurants
           restaurants={[]}
         />
       ));
