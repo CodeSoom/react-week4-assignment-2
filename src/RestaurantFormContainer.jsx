@@ -2,14 +2,14 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Input from './Input';
+import RestaurantForm from './RestaurantForm';
 
 import {
   updateRestaurantInformation,
   addRestaurantInformation,
 } from './actions';
 
-export default function InputContainer() {
+export default function RestaurantFormContainer() {
   const dispatch = useDispatch();
 
   const {
@@ -34,7 +34,7 @@ export default function InputContainer() {
   }
 
   return (
-    <Input
+    <RestaurantForm
       name={name}
       category={category}
       address={address}

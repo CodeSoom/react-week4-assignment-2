@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 jest.mock('react-redux');
 
@@ -23,10 +23,10 @@ beforeEach(() => {
   useDispatch.mockImplementation(() => dispatch);
 });
 
-describe('InputContainer', () => {
+describe('RestaurantFormContainer', () => {
   function renderInput() {
     return render((
-      <InputContainer />
+      <RestaurantFormContainer />
     ));
   }
 

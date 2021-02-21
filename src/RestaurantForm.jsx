@@ -4,7 +4,7 @@ import NameInput from './NameInput';
 import CategoryInput from './CategoryInput';
 import AddressInput from './AddressInput';
 
-export default function Input({
+export default function RestaurantForm({
   name,
   category,
   address,

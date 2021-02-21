@@ -1,13 +1,13 @@
 import React from 'react';
 
 import ListContainer from './ListContainer';
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 export default function App() {
   return (
     <div>
       <ListContainer />
-      <InputContainer />
+      <RestaurantFormContainer />
     </div>
   );
 }
