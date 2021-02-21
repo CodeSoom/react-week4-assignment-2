@@ -1,7 +1,9 @@
-import { createSotre } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-import reducer from './restaurantSlice';
+import rootReducer from './rootReducer';
 
-const store = createSotre(reducer);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 export default store;
