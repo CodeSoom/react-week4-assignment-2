@@ -1,16 +1,38 @@
 import reducer from './reducer';
 
 import {
+  setRestaurants,
   changeRestaurantField,
   addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
+  const restaurants = [{
+    id: 1,
+    name: '라이브볼',
+    category: '샐러드',
+    address: '서울시 신논현동',
+  }];
+
   const restaurant = {
     name: '',
     category: '',
     address: '',
   };
+
+  describe('setRestaurants', () => {
+    it('changes restaurant list', () => {
+      const initailState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initailState, setRestaurants(restaurants));
+
+      console.log(state);
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
 
   describe('changeRestaurantField', () => {
     it('changes restaurant feild', () => {

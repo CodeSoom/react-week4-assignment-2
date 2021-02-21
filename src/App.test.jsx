@@ -8,6 +8,13 @@ import App from './App';
 
 jest.mock('react-redux');
 
+const restaurants = [{
+  id: 1,
+  name: '라이브볼',
+  category: '샐러드',
+  address: '서울시 신논현동',
+}];
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -17,11 +24,8 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      restaurant: {
-        name: '',
-        category: '',
-        address: '',
-      },
+      restaurants: [],
+      restaurant: {},
     }));
   });
 
@@ -32,8 +36,13 @@ describe('App', () => {
   });
 
   it('renders restaurant name', () => {
-    const { container } = render(<App />);
+    const { queryByText } = render(<App />);
 
-    expect(container).toHaveTextContent('자매수산');
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      payload: { restaurants: [] },
+    });
+
+    expect(queryByText('라이브볼')).toBeNull();
   });
 });

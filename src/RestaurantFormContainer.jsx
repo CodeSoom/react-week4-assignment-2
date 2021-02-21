@@ -6,7 +6,7 @@ import RestaurantForm from './RestaurantForm';
 
 import {
   changeRestaurantField,
-  // addRestaurant,
+  addRestaurant,
 } from './actions';
 
 export default function RestaurantFormContainer() {
@@ -21,7 +21,7 @@ export default function RestaurantFormContainer() {
   };
 
   const handleClick = () => {
-    // TODO: 작성하기
+    dispatch(addRestaurant());
   };
 
   return (
