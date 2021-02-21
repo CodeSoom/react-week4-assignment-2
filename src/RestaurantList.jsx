@@ -3,21 +3,23 @@ import React from 'react';
 export default function RestaurantList({ restaurants }) {
   return (
     <div>
-      <ul>
-        {restaurants.map((restaurant) => (
-          <li key={restaurant}>
-            {restaurant.name}
-            {' '}
-            |
-            {' '}
-            {restaurant.category}
-            {' '}
-            |
-            {' '}
-            {restaurant.address}
-          </li>
-        ))}
-      </ul>
+      {restaurants ? (
+        <ul>
+          {restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {restaurant.name}
+              {' '}
+              |
+              {' '}
+              {restaurant.category}
+              {' '}
+              |
+              {' '}
+              {restaurant.address}
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 }
