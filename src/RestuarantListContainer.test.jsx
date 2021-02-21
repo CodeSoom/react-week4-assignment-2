@@ -23,10 +23,10 @@ describe('RestaurantListContainer', () => {
   });
 
   it('renders restaurant list', () => {
-    const { getByText } = render((
+    const { container } = render((
       <RestaurantListContainer />
     ));
 
-    expect(getByText('라이브볼')).not.toBeNull();
+    expect(container).toHaveTextContent('라이브볼');
   });
 });

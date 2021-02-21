@@ -8,14 +8,16 @@ import App from './App';
 
 jest.mock('react-redux');
 
-const restaurants = [{
-  id: 1,
-  name: '라이브볼',
-  category: '샐러드',
-  address: '서울시 신논현동',
-}];
-
 describe('App', () => {
+  const restaurants = [
+    {
+      id: 1,
+      name: '라이브볼',
+      category: '샐러드',
+      address: '서울시 신논현동',
+    },
+  ];
+
   const dispatch = jest.fn();
 
   beforeEach(() => {

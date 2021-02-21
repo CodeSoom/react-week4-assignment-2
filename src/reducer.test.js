@@ -7,13 +7,6 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  const restaurants = [{
-    id: 1,
-    name: '라이브볼',
-    category: '샐러드',
-    address: '서울시 신논현동',
-  }];
-
   const restaurant = {
     name: '',
     category: '',
@@ -22,13 +15,18 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('changes restaurant list', () => {
-      const initailState = {
+      const state = reducer({
         restaurants: [],
-      };
-
-      const state = reducer(initailState, setRestaurants(restaurants));
-
-      console.log(state);
+      }, setRestaurants({
+        restaurants: [
+          {
+            id: 1,
+            name: '라이브볼',
+            category: '샐러드',
+            address: '서울시 신논현동',
+          },
+        ],
+      }));
 
       expect(state.restaurants).not.toHaveLength(0);
     });
