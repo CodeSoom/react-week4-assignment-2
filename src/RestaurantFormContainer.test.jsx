@@ -39,13 +39,13 @@ describe('RestaurantFormContainer', () => {
       target: { value: '마녀주방' },
     });
 
-    expect(dispatch).toBeCalledWith(({
+    expect(dispatch).toBeCalledWith({
       type: 'updateRestaurantInformation',
       payload: {
         key: 'name',
         value: '마녀주방',
       },
-    }));
+    });
 
     fireEvent.change(getByPlaceholderText(/분류/), {
       target: { value: '한식' },
