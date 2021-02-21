@@ -30,55 +30,76 @@ describe('RestaurantFormContainer', () => {
     ));
   }
 
-  it('changes restaurant inputs', () => {
-    const { getByPlaceholderText } = renderInput();
+  context('without restaurant information', () => {
+    it('does not add restaurant information', async () => {
+      const { getByText } = renderInput();
 
-    expect(getByPlaceholderText(/이름/)).not.toBeNull();
+      fireEvent.click(getByText(/등록/));
 
-    fireEvent.change(getByPlaceholderText(/이름/), {
-      target: { value: '마녀주방' },
+      expect(dispatch).not.toBeCalledWith({
+        type: 'addRestaurantInformation',
+      });
     });
-
-    expect(dispatch).toBeCalledWith({
-      type: 'updateRestaurantInformation',
-      payload: {
-        key: 'name',
-        value: '마녀주방',
-      },
-    });
-
-    fireEvent.change(getByPlaceholderText(/분류/), {
-      target: { value: '한식' },
-    });
-
-    expect(dispatch).toBeCalledWith(({
-      type: 'updateRestaurantInformation',
-      payload: {
-        key: 'category',
-        value: '한식',
-      },
-    }));
-
-    fireEvent.change(getByPlaceholderText(/주소/), {
-      target: { value: '서울시 강남구' },
-    });
-
-    expect(dispatch).toBeCalledWith(({
-      type: 'updateRestaurantInformation',
-      payload: {
-        key: 'address',
-        value: '서울시 강남구',
-      },
-    }));
   });
 
-  it('adds restaurant infromation', () => {
-    const { getByText } = renderInput();
+  context('with restaurant information', () => {
+    it('changes restaurant inputs', () => {
+      const { getByPlaceholderText } = renderInput();
 
-    fireEvent.click(getByText(/등록/));
+      expect(getByPlaceholderText(/이름/)).not.toBeNull();
 
-    expect(dispatch).toBeCalledWith(({
-      type: 'addRestaurantInformation',
-    }));
+      fireEvent.change(getByPlaceholderText(/이름/), {
+        target: { value: '마녀주방' },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantInformation',
+        payload: {
+          key: 'name',
+          value: '마녀주방',
+        },
+      });
+
+      fireEvent.change(getByPlaceholderText(/분류/), {
+        target: { value: '한식' },
+      });
+
+      expect(dispatch).toBeCalledWith(({
+        type: 'updateRestaurantInformation',
+        payload: {
+          key: 'category',
+          value: '한식',
+        },
+      }));
+
+      fireEvent.change(getByPlaceholderText(/주소/), {
+        target: { value: '서울시 강남구' },
+      });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateRestaurantInformation',
+        payload: {
+          key: 'address',
+          value: '서울시 강남구',
+        },
+      });
+    });
+
+    it('adds restaurant infromation', () => {
+      useSelector.mockImplementation((selector) => selector({
+        id: 0,
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+      }));
+
+      const { getByText } = renderInput();
+
+      fireEvent.click(getByText(/등록/));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'addRestaurantInformation',
+      });
+    });
   });
 });
