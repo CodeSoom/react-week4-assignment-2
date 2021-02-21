@@ -20,7 +20,6 @@ export default function RestaurantFormContainer() {
     name: state.name,
     category: state.category,
     address: state.address,
-    restaurants: state.restaurants,
   }));
 
   function handleChange(event) {
