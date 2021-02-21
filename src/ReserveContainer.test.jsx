@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import ReserveContainer from './ReserveContainer';
-import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 describe('ReserveContainer', () => {
   const dispatch = jest.fn();
