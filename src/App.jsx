@@ -18,11 +18,15 @@ function updateReservations(state, key, value) {
   };
 }
 
+function addReservations() {
+
+}
+
 export default function App() {
   const [state, setState] = useState(initialState);
 
   const {
-    id, name, category,
+    name, category,
     address, reservations,
   } = state;
 
@@ -31,19 +35,7 @@ export default function App() {
   }
 
   function handleClick() {
-    setState({
-      ...state,
-      id: id + 1,
-      name: '',
-      category: '',
-      address: '',
-      reservations: [
-        ...reservations,
-        {
-          id, name, category, address,
-        },
-      ],
-    });
+    setState(addReservations(state));
   }
 
   return (
