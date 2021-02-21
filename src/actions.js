@@ -2,7 +2,7 @@ export function updateReservations(key, value) {
   return {
     type: 'updateReservations',
     payload: {
-      [key]: value,
+      key, value,
     },
   };
 }
