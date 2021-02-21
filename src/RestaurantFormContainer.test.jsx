@@ -18,11 +18,9 @@ describe('RestaurantFormContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
-        restaurant: {
-          name: '',
-          category: '',
-          address: '',
-        },
+        name: '',
+        category: '',
+        address: '',
       },
     }));
   });

@@ -4,19 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantForm from './RestaurantForm';
 
-import { changeRestaurant } from './restaurantSlice';
-
-export function get(key) {
-  return (state) => state[key];
-}
+import {
+  changeRestaurantField,
+  // addRestaurant,
+} from './actions';
 
 export default function RestaurantFormContainer() {
   const dispatch = useDispatch();
 
-  const { restaurant } = useSelector(get('restaurant'));
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
+  }));
 
   const handleChange = ({ name, value }) => {
-    dispatch(changeRestaurant({ name, value }));
+    dispatch(changeRestaurantField({ name, value }));
   };
 
   const handleClick = () => {
