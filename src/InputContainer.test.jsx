@@ -10,9 +10,9 @@ import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
-  const dispatch = jest.fn();
+const dispatch = jest.fn();
 
+describe('InputContainer', () => {
   given('inputText', () => ({
     name: given.restaurantName,
     category: given.category,
@@ -28,41 +28,45 @@ describe('InputContainer', () => {
     }));
   });
 
-  it('handleClick works when clicked', () => {
-    given('restaurantName', () => '소년식당');
-    given('category', () => '소식');
-    given('address', () => '내마음속');
+  describe('handleRegisterClick', () => {
+    it('works when clicked', () => {
+      given('restaurantName', () => '소년식당');
+      given('category', () => '소식');
+      given('address', () => '내마음속');
 
-    const { queryByText, queryByDisplayValue } = render((<InputContainer />));
+      const { queryByText, queryByDisplayValue } = render((<InputContainer />));
 
-    expect(queryByText(/등록/)).not.toBeNull();
-    expect(queryByDisplayValue(/소년식당/)).not.toBeNull();
-    expect(queryByDisplayValue(/소식/)).not.toBeNull();
-    expect(queryByDisplayValue(/내마음속/)).not.toBeNull();
+      expect(queryByText(/등록/)).not.toBeNull();
+      expect(queryByDisplayValue(/소년식당/)).not.toBeNull();
+      expect(queryByDisplayValue(/소식/)).not.toBeNull();
+      expect(queryByDisplayValue(/내마음속/)).not.toBeNull();
 
-    fireEvent.click(queryByText(/등록/));
+      fireEvent.click(queryByText(/등록/));
 
-    expect(dispatch).toBeCalledWith({ type: 'addRegister' });
+      expect(dispatch).toBeCalledWith({ type: 'addRegister' });
+    });
   });
 
-  it('handleTextChange works when input filled', () => {
-    given('restaurantName', () => '');
-    given('category', () => '');
-    given('address', () => '');
+  describe('handleTextChange', () => {
+    it('works when input filled', () => {
+      given('restaurantName', () => '');
+      given('category', () => '');
+      given('address', () => '');
 
-    const { queryByPlaceholderText } = render((<InputContainer />));
+      const { queryByPlaceholderText } = render((<InputContainer />));
 
-    expect(queryByPlaceholderText(/이름/).value).toEqual('');
+      expect(queryByPlaceholderText(/이름/).value).toEqual('');
 
-    fireEvent.change(queryByPlaceholderText(/이름/), {
-      target: { value: '변했어요' },
-    });
+      fireEvent.change(queryByPlaceholderText(/이름/), {
+        target: { value: '변했어요' },
+      });
 
-    expect(dispatch).toBeCalledWith({
-      type: 'updateInputText',
-      payload: {
-        name: '변했어요',
-      },
+      expect(dispatch).toBeCalledWith({
+        type: 'updateInputText',
+        payload: {
+          name: '변했어요',
+        },
+      });
     });
   });
 });
