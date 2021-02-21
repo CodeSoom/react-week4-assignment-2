@@ -7,7 +7,7 @@ const initialState = {
 };
 
 function emptyInformation({ name, category, address }) {
-  return !(name !== '' && category !== '' && address !== '');
+  return (name === '' || category === '' || address === '');
 }
 
 const actionTypeFunctions = {
