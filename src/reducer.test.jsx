@@ -56,38 +56,28 @@ describe('reducer', () => {
     });
 
     describe('addRestaurantInformation', () => {
-      context('without restaurant information', () => {
-        it('does not add restaurant information', () => {
-          const state = reducer(previousState, addRestaurantInformation());
+      it('adds restaurant information', () => {
+        const state = reducer({
+          ...previousState,
+          name: '마녀주방',
+          category: '한식',
+          address: '서울시 강남구',
+        }, addRestaurantInformation());
 
-          expect(state.restaurants).toHaveLength(0);
-        });
+        expect(state.restaurants).toHaveLength(1);
       });
 
-      context('with restaurant information', () => {
-        it('adds restaurant information', () => {
-          const state = reducer({
-            ...previousState,
-            name: '마녀주방',
-            category: '한식',
-            address: '서울시 강남구',
-          }, addRestaurantInformation());
+      it('clears input text', () => {
+        const state = reducer({
+          ...previousState,
+          name: '마녀주방',
+          category: '한식',
+          address: '서울시 강남구',
+        }, addRestaurantInformation());
 
-          expect(state.restaurants).toHaveLength(1);
-        });
-
-        it('clears input text', () => {
-          const state = reducer({
-            ...previousState,
-            name: '마녀주방',
-            category: '한식',
-            address: '서울시 강남구',
-          }, addRestaurantInformation());
-
-          expect(state.name).toBe('');
-          expect(state.category).toBe('');
-          expect(state.address).toBe('');
-        });
+        expect(state.name).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('');
       });
     });
   });
