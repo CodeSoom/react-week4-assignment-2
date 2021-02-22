@@ -28,45 +28,41 @@ describe('InputContainer', () => {
     }));
   });
 
-  describe('handleRegisterClick', () => {
-    it('works when clicked', () => {
-      given('restaurantName', () => '소년식당');
-      given('category', () => '소식');
-      given('address', () => '내마음속');
+  it('dispatches addRegister when "등록" button clicked', () => {
+    given('restaurantName', () => '소년식당');
+    given('category', () => '소식');
+    given('address', () => '내마음속');
 
-      const { queryByText, queryByDisplayValue } = render((<InputContainer />));
+    const { queryByText, queryByDisplayValue } = render((<InputContainer />));
 
-      expect(queryByText(/등록/)).not.toBeNull();
-      expect(queryByDisplayValue(/소년식당/)).not.toBeNull();
-      expect(queryByDisplayValue(/소식/)).not.toBeNull();
-      expect(queryByDisplayValue(/내마음속/)).not.toBeNull();
+    expect(queryByText(/등록/)).not.toBeNull();
+    expect(queryByDisplayValue(/소년식당/)).not.toBeNull();
+    expect(queryByDisplayValue(/소식/)).not.toBeNull();
+    expect(queryByDisplayValue(/내마음속/)).not.toBeNull();
 
-      fireEvent.click(queryByText(/등록/));
+    fireEvent.click(queryByText(/등록/));
 
-      expect(dispatch).toBeCalledWith({ type: 'addRegister' });
-    });
+    expect(dispatch).toBeCalledWith({ type: 'addRegister' });
   });
 
-  describe('handleTextChange', () => {
-    it('works when input filled', () => {
-      given('restaurantName', () => '');
-      given('category', () => '');
-      given('address', () => '');
+  it('dispatches updateInputText when input text is changed', () => {
+    given('restaurantName', () => '');
+    given('category', () => '');
+    given('address', () => '');
 
-      const { queryByPlaceholderText } = render((<InputContainer />));
+    const { queryByPlaceholderText, getByPlaceholderText } = render((<InputContainer />));
 
-      expect(queryByPlaceholderText(/이름/).value).toEqual('');
+    expect(queryByPlaceholderText(/이름/).value).toEqual('');
 
-      fireEvent.change(queryByPlaceholderText(/이름/), {
-        target: { value: '변했어요' },
-      });
+    fireEvent.change(getByPlaceholderText(/이름/), {
+      target: { value: '변했어요' },
+    });
 
-      expect(dispatch).toBeCalledWith({
-        type: 'updateInputText',
-        payload: {
-          name: '변했어요',
-        },
-      });
+    expect(dispatch).toBeCalledWith({
+      type: 'updateInputText',
+      payload: {
+        name: '변했어요',
+      },
     });
   });
 });

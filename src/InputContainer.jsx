@@ -16,7 +16,10 @@ export default function InputContainer() {
   const dispatch = useDispatch();
 
   function handleTextChange(event) {
-    dispatch(updateInputText(event.target));
+    dispatch(updateInputText({
+      name: event.target.name,
+      value: event.target.value,
+    }));
   }
 
   function handleRegisterClick() {
