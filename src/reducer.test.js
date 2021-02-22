@@ -23,13 +23,13 @@ describe('reducer', () => {
   it('식당 분류 업데이트합니다.', () => {
     const state = reducer(prevState, updateReservations('category', '한식'));
 
-    expect(state.name).toBe('한식');
+    expect(state.category).toBe('한식');
   });
 
   it('식당 주소 업데이트합니다.', () => {
-    const state = reducer(prevState, updateReservations('category', '서울시 강남구'));
+    const state = reducer(prevState, updateReservations('address', '서울시 강남구'));
 
-    expect(state.name).toBe('서울시 강남구');
+    expect(state.address).toBe('서울시 강남구');
   });
 
   it('식당 예약 정보들을 추가합니다.', () => {
