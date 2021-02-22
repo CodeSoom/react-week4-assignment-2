@@ -13,8 +13,8 @@ export default function ReserveContainer() {
   }));
 
   function handleChange(event) {
-    dispatch(updateReservations(event.target.name,
-      event.target.value));
+    const { name, value } = event.target;
+    dispatch(updateReservations(name, value));
   }
 
   function handleClick() {

@@ -8,9 +8,10 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'updateReservations') {
+    const { key, value } = action.payload;
     return {
       ...state,
-      [action.payload.key]: action.payload.value,
+      [key]: value,
     };
   }
 
