@@ -6,9 +6,13 @@ export default function Restaurants({ restaurants }) {
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
           {restaurant.name}
+          {' '}
           |
+          {' '}
           {restaurant.category}
+          {' '}
           |
+          {' '}
           {restaurant.address}
         </li>
       ))}
