@@ -6,8 +6,6 @@ import { render } from '@testing-library/react';
 
 import App from '../src/App';
 
-import restaurants from '../fixtures/restaurants';
-
 jest.mock('react-redux');
 
 test('App', () => {
