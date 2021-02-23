@@ -16,18 +16,18 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants,
+    restaurants: [],
     restaurant: {},
   }));
 
-  const { getByText } = render((
+  const { queryByText } = render((
     <App />
   ));
 
   expect(dispatch).toBeCalledWith({
     type: 'setRestaurants',
-    payload: { restaurants },
+    payload: { restaurants: [] },
   });
 
-  expect(getByText(/김밥천국/)).not.toBeNull();
+  expect(queryByText(/김밥천국/)).toBeNull();
 });
