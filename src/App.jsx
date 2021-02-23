@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantCreateContainer from './RestaurantCreateContainer';
 
 import {
   setRestaurants,
@@ -19,6 +20,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantsContainer />
+      <RestaurantCreateContainer />
     </div>
   );
 }
