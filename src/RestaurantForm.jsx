@@ -1,25 +1,29 @@
 import React from 'react';
 
-export default function RestaurantForm({ restaurant, onClick }) {
+export default function RestaurantForm({ restaurant, onChange, onClick }) {
+  function handleChange(event) {
+    const { target: { name, value } } = event;
+    onChange({ name, value });
+  }
   return (
     <div>
       <input
         type="text"
         name="name"
         value={restaurant.name}
-        onChange={() => {}}
+        onChange={handleChange}
       />
       <input
         type="text"
         name="category"
         value={restaurant.category}
-        onChange={() => {}}
+        onChange={handleChange}
       />
       <input
         type="text"
         name="address"
         value={restaurant.address}
-        onChange={() => {}}
+        onChange={handleChange}
       />
       <button
         type="button"
