@@ -7,13 +7,11 @@ import {
   setRestaurants,
 } from './actions';
 
-import restaurants from '../fixtures/restaurants';
-
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch(setRestaurants([]));
   }, []);
 
   return (
