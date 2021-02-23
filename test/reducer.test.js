@@ -3,7 +3,7 @@ import reducer from '../src/reducer';
 import {
   setRestaurants,
   changeRestaurantField,
-  addRestaurants,
+  addRestaurant,
 } from '../src/actions';
 import restaurants from '../fixtures/restaurants';
 
@@ -36,6 +36,24 @@ describe('reducer', () => {
       }));
 
       expect(state.restaurant.address).toBe('서울시 강남구 역삼동');
+    });
+  });
+
+  describe('addRestaurants', () => {
+    it('append restaurant into restaurants and clear restaurant form', () => {
+      const initalState = {
+        restaurants: [],
+        restaurant: {
+          name: '마법사주방',
+          category: '이탈리안',
+          address: '서울시 강남구 역삼동',
+        },
+      };
+
+      const state = reducer(initalState, addRestaurant());
+
+      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurant.name).toBe('');
     });
   });
 });
