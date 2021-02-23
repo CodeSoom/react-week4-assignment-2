@@ -13,6 +13,20 @@ describe('reducer', () => {
     address: '',
   };
 
+  context('when default state', () => {
+    it('returns initialState', () => {
+      const state = reducer();
+
+      const {
+        newId, restaurants,
+      } = state;
+
+      expect(newId).toBe(100);
+      expect(restaurant.name).toBe('');
+      expect(restaurants).toHaveLength(0);
+    });
+  });
+
   describe('setRestaurants', () => {
     it('changes restaurant list', () => {
       const state = reducer({

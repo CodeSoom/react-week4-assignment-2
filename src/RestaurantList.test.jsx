@@ -6,19 +6,14 @@ import RestaurantList from './RestaurantList';
 
 describe('RestaurantList', () => {
   context('when there is no restaurants', () => {
-    const restaurants = [{
-      id: '',
-      name: '',
-      category: '',
-      address: '',
-    }];
+    const restaurants = [];
 
     it('renders nothing', () => {
-      const { queryByRole } = render((
+      const { container } = render((
         <RestaurantList restaurants={restaurants} />
       ));
 
-      expect(queryByRole('ul')).not.toBeInTheDocument();
+      expect(container).toHaveTextContent('목록이 없습니다');
     });
   });
 
