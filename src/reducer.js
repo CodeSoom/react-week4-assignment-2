@@ -1,6 +1,12 @@
+const initialRestaurant = {
+  name: '',
+  category: '',
+  address: '',
+};
+
 const initalState = {
   restaurants: [],
-  restaurant: {},
+  restaurant: initialRestaurant,
 };
 
 export default function reducer(state = initalState, action) {
@@ -29,11 +35,7 @@ export default function reducer(state = initalState, action) {
     return {
       ...state,
       restaurants: [...restaurants, restaurant],
-      restaurant: {
-        name: '',
-        category: '',
-        address: '',
-      },
+      restaurant: initialRestaurant,
     };
   }
   return state;
