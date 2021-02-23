@@ -64,4 +64,34 @@ describe('reducer', () => {
       expect(state.newId).toBe(102);
     });
   });
+
+  describe('undefined action type', () => {
+    it('returns initial state', () => {
+      const initalState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initalState);
+
+      expect(state).toEqual({
+        restaurants: [],
+      });
+    });
+  });
+
+  describe('no parameter', () => {
+    it('returns initial state without parameter', () => {
+      const state = reducer();
+
+      expect(state).toEqual({
+        newId: 100,
+        restaurants: [],
+        restaurant: {
+          address: '',
+          category: '',
+          name: '',
+        },
+      });
+    });
+  });
 });

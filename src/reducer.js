@@ -10,7 +10,7 @@ const initalState = {
   restaurant: initialRestaurant,
 };
 
-export default function reducer(state = initalState, action) {
+export default function reducer(state = initalState, action = { type: '' }) {
   if (action.type === 'setRestaurants') {
     const { restaurants } = action.payload;
     return {
