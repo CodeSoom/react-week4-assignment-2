@@ -7,7 +7,8 @@ export function setRestaurants(restaurants) {
   };
 }
 
-// 나중에 삭제하기
-export function xxx() {
-
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
 }
