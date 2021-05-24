@@ -8,9 +8,7 @@ export default function List({ restaurants }) {
 
         return (
           <li key={id}>
-            {name}
-            {category}
-            {address}
+            {`${name} | ${category} | ${address}`}
           </li>
         );
       })}

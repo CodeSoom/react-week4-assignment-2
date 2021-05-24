@@ -15,7 +15,5 @@ const data = [
 
 it('renders restaurants', () => {
   const { container } = render(<List restaurants={data} />);
-  expect(container).toHaveTextContent('마녀주방');
-  expect(container).toHaveTextContent('한식');
-  expect(container).toHaveTextContent('서울시 강남구');
+  expect(container).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
 });
