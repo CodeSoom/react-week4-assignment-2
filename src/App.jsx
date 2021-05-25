@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default function App() {
+  const handleClickAddRestaurants = () => {
+    console.log('click!!!');
+  };
+
   return (
     <div>
       <h1>Restaurants</h1>
@@ -11,7 +15,12 @@ export default function App() {
       <input placeholder="이름" />
       <input placeholder="분류" />
       <input placeholder="주소" />
-      <button type="button">등록</button>
+      <button
+        type="button"
+        onClick={handleClickAddRestaurants}
+      >
+        등록
+      </button>
     </div>
   );
 }
