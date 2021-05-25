@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -25,5 +25,12 @@ describe('App', () => {
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
     expect(getByPlaceholderText(/주소/)).not.toBeNull();
     expect(getByText(/등록/)).not.toBeNull();
+  });
+
+  it('clicks 등록버튼', () => {
+    const { getByText } = render(<App />);
+
+    expect(getByText(/등록/)).not.toBeNull();
+    fireEvent.click(getByText(/등록/));
   });
 });
