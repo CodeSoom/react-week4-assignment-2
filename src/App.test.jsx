@@ -1,8 +1,8 @@
 import React from 'react';
 
-import App from "./App";
-
 import { render } from '@testing-library/react';
+
+import App from './App';
 
 describe('App', () => {
   it('renders title', () => {
@@ -14,17 +14,7 @@ describe('App', () => {
   });
 
   it('renders 레스토랑 정보', () => {
-    const { getByText } = render(
-      (
-        <div>
-          <h1>Restaurants</h1>
-          <ol>
-            <li>마녀주방 | 한식 | 서울시 강남구</li>
-            <li>시카고피자 | 양식 | 이태원동</li>
-          </ol>
-        </div>
-      ),
-    );
+    const { getByText } = render(<App />);
 
     expect(getByText('마녀주방 | 한식 | 서울시 강남구')).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
     expect(getByText('시카고피자 | 양식 | 이태원동')).toHaveTextContent('시카고피자 | 양식 | 이태원동');
