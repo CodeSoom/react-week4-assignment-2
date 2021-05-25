@@ -33,4 +33,20 @@ describe('App', () => {
     expect(getByText(/등록/)).not.toBeNull();
     fireEvent.click(getByText(/등록/));
   });
+
+  it('changs 입력창', () => {
+    const { getByPlaceholderText } = render(<App />);
+
+    expect(getByPlaceholderText(/이름/)).not.toBeNull();
+    fireEvent.change(getByPlaceholderText(/이름/), { target: { value: '이태리부대찌개' } });
+    expect(getByPlaceholderText(/이름/).value).toBe('이태리부대찌개');
+
+    expect(getByPlaceholderText(/분류/)).not.toBeNull();
+    fireEvent.change(getByPlaceholderText(/분류/), { target: { value: '중식' } });
+    expect(getByPlaceholderText(/분류/).value).toBe('중식');
+
+    expect(getByPlaceholderText(/주소/)).not.toBeNull();
+    fireEvent.change(getByPlaceholderText(/주소/), { target: { value: '경기도 양평군' } });
+    expect(getByPlaceholderText(/주소/).value).toBe('경기도 양평군');
+  });
 });
