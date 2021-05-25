@@ -12,6 +12,8 @@ describe('App', () => {
       ),
     );
 
-    expect(getByText(/Restaurants/)).not.toBeNull();
+    const title = (getByText(/Restaurants/));
+
+    expect(title).not.toBeNull();
   });
 });
