@@ -11,8 +11,8 @@ jest.mock('react-redux');
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
-      { name: '마녀주방', type: '한식', address: '서울시 강남구' },
-      { name: '시카고피자', type: '양식', address: '이태원역' },
+      { id: 1, name: '마녀주방', type: '한식', address: '서울시 강남구' },
+      { id: 2, name: '시카고피자', type: '양식', address: '이태원역' },
     ],
   }));
 
@@ -26,7 +26,7 @@ describe('App', () => {
     const { getByText } = render(<App />);
 
     expect(getByText('마녀주방 | 한식 | 서울시 강남구')).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
-    expect(getByText('시카고피자 | 양식 | 이태원동')).toHaveTextContent('시카고피자 | 양식 | 이태원동');
+    expect(getByText('시카고피자 | 양식 | 이태원역')).toHaveTextContent('시카고피자 | 양식 | 이태원역');
   });
 
   it('renders 입력창과 등록 버튼', () => {

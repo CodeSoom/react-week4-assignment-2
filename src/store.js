@@ -1,7 +1,11 @@
 import { createStore } from 'redux';
 
-const reducer = () => null;
+const initState = {
+  restaurants: [],
+};
 
-const store = createStore(reducer);
+const reducer = (state, action) => state;
+
+const store = createStore(reducer, initState);
 
 export default store;
