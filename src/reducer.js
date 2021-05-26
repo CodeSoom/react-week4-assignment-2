@@ -21,7 +21,7 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'changeName') {
     return {
       ...state,
-      name: '뽀식이',
+      name: action.payload.value,
     };
   }
 
