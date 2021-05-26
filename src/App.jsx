@@ -1,36 +1,13 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import {
-  addRestaurants,
-  changeName,
-  changeType,
-  changeAddress,
-} from './actions';
+import RestaurantInputContainer from "./RestaurantInputContainer";
 
 export default function App() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
-
-  const dispatch = useDispatch();
-
-  const handleClickAddRestaurants = () => {
-    dispatch(addRestaurants());
-  };
-
-  const handleChangeName = (value) => {
-    dispatch(changeName(value));
-  };
-
-  const handleChangeType = (value) => {
-    dispatch(changeType(value));
-  };
-
-  const handleChangeAddress = (value) => {
-    dispatch(changeAddress(value));
-  };
 
   return (
     <div>
@@ -40,24 +17,7 @@ export default function App() {
           id, name, type, address,
         }) => <li key={id}>{`${name} | ${type} | ${address}`}</li>)}
       </ul>
-      <input
-        placeholder="이름"
-        onChange={(event) => handleChangeName(event.target.value)}
-      />
-      <input
-        placeholder="분류"
-        onChange={(event) => handleChangeType(event.target.value)}
-      />
-      <input
-        placeholder="주소"
-        onChange={(event) => handleChangeAddress(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={handleClickAddRestaurants}
-      >
-        등록
-      </button>
+      <RestaurantInputContainer />
     </div>
   );
 }
