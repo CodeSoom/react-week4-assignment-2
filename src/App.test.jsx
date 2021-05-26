@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import App from './App';
 

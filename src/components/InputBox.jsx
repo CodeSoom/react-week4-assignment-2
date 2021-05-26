@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+
 import { updateField } from '../redux/actions';
 
 export default function InputBox({ name }) {

@@ -11,5 +11,3 @@ export function updateField(data) {
     payload: data,
   };
 }
-
-export default {};
