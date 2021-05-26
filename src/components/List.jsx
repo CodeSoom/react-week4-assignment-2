@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
+import useRestaurants from '../hooks/useRestaurants';
 
 export default function List() {
-  const restaurants = useSelector((state) => state.restaurants);
+  const { restaurants } = useRestaurants();
+
   return (
     <ul>
       {restaurants.map(({
