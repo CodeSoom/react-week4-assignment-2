@@ -15,7 +15,23 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurants') {
-    return state;
+    const { newId, name, type, address, restaurants } = state;
+    if(!name || !type || !address) {
+      return state;
+    }
+
+    return {
+      ...state,
+      restaurants: [...restaurants, {
+        id: newId + 1,
+        name: '뽀식이네',
+        type: '한식',
+        address: '경기도 양평군',
+      }],
+      name: '',
+      type: '',
+      address: '',
+    };
   }
 
   if (action.type === 'changeName') {

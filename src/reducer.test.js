@@ -41,19 +41,29 @@ describe('reducer', () => {
   });
 
   describe('addRestaurants', () => {
-    context('with name, type, address', () => {
-      const state = reducer(undefined, addRestaurants());
+    function reduceAddRestaurants(name, type, address) {
+      return reducer({
+        newId: 100,
+        name,
+        type,
+        address,
+        restaurants: [],
+      }, addRestaurants());
+    }
 
-      expect(state.restaurants).toHaveLength(2);
+    context('with name, type, address', () => {
+      const state = reduceAddRestaurants('뽀식이네', '한식', '경기도 양평군');
+
+      expect(state.restaurants).toHaveLength(1);
       expect(state.name).toBe('');
       expect(state.type).toBe('');
       expect(state.address).toBe('');
     });
 
     context('without name, type, address', () => {
-      const state = reducer(undefined, addRestaurants());
+      const state = reduceAddRestaurants();
 
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(0);
     });
   });
 });
