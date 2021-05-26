@@ -9,10 +9,10 @@ it('updates title of task', () => {
   const newState = reducer(undefined, addRestaurant(newRestaurant));
 
   expect(newState).toEqual({
-    restaurants: [
-      {
-        id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
-      },
-    ],
+    id: 2,
+    name: '',
+    category: '',
+    address: '',
+    restaurants: [newRestaurant],
   });
 });
