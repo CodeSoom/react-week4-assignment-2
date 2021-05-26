@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'changeAddress') {
     return {
       ...state,
-      address: '경기도 양평군',
+      address: action.payload.value,
     };
   }
 
