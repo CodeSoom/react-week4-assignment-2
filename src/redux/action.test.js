@@ -7,7 +7,7 @@ describe('actions', () => {
     };
 
     expect(addRestaurant(newRestaurant)).toEqual({
-      type: 'AddRestaurant',
+      type: 'restaurant/addItem',
       payload: {
         id: 2,
         name: '시카고피자',

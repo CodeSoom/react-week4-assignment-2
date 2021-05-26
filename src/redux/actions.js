@@ -3,7 +3,7 @@ export function addRestaurant(restaurant) {
     id, name, category, address,
   } = restaurant;
   return {
-    type: 'AddRestaurant',
+    type: 'restaurant/addItem',
     payload: {
       id,
       name,
