@@ -1,10 +1,22 @@
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 import { addRestaurant, updateField } from './actions';
 
 describe('reducer', () => {
+  let oldState;
+
+  beforeEach(() => {
+    oldState = {
+      id: 1,
+      name: '',
+      category: '',
+      address: '',
+      restaurants: [],
+    };
+  });
+
   context('with invaild action', () => {
     it('returns same state', () => {
-      const newState = reducer(undefined, { type: 'invaild' });
+      const newState = reducer(oldState, { type: 'invaild' });
 
       expect(newState).toEqual({
         id: 1,
@@ -22,7 +34,7 @@ describe('reducer', () => {
         id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
       };
 
-      const newState = reducer(undefined, addRestaurant(newRestaurant));
+      const newState = reducer(oldState, addRestaurant(newRestaurant));
 
       expect(newState).toEqual({
         id: 2,
@@ -34,7 +46,7 @@ describe('reducer', () => {
     });
 
     it('updates field with input value', () => {
-      const newState = reducer(undefined, updateField(
+      const newState = reducer(oldState, updateField(
         { field: 'name', value: '마녀 주방' },
       ));
 
@@ -46,5 +58,11 @@ describe('reducer', () => {
         restaurants: [],
       });
     });
+  });
+
+  it('uses initialState when nothing is given', () => {
+    const newState = reducer(undefined, { type: 'invaild' });
+
+    expect(newState).toEqual(initialState);
   });
 });
