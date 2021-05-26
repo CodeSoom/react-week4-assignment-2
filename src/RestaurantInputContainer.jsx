@@ -9,7 +9,9 @@ import {
   changeAddress,
 } from './actions';
 
-export default function App() {
+import RestaurantInput from './RestaurantInput';
+
+export default function RestaurantInputContainer() {
   const dispatch = useDispatch();
 
   const handleClickAddRestaurants = () => {
@@ -29,25 +31,11 @@ export default function App() {
   };
 
   return (
-    <div>
-      <input
-        placeholder="이름"
-        onChange={(event) => handleChangeName(event.target.value)}
-      />
-      <input
-        placeholder="분류"
-        onChange={(event) => handleChangeType(event.target.value)}
-      />
-      <input
-        placeholder="주소"
-        onChange={(event) => handleChangeAddress(event.target.value)}
-      />
-      <button
-        type="button"
-        onClick={handleClickAddRestaurants}
-      >
-        등록
-      </button>
-    </div>
+    <RestaurantInput
+      onChangeName={handleChangeName}
+      onChangeType={handleChangeType}
+      onChangeAddress={handleChangeAddress}
+      onClickAddRestaurant={handleClickAddRestaurants}
+    />
   );
 }
