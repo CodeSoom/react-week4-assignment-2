@@ -11,9 +11,9 @@ export default function DataInput() {
 
   return (
     <>
-      <InputBox name="이름" />
-      <InputBox name="분류" />
-      <InputBox name="주소" />
+      <InputBox name="name" />
+      <InputBox name="category" />
+      <InputBox name="address" />
 
       <button
         type="button"

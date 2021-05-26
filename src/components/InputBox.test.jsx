@@ -11,10 +11,10 @@ it('renders input control with given name', () => {
 });
 
 it.each([
-  ['이름', '마녀주방'],
-  ['분류', '한식'],
-  ['주소', '서울시 강남구'],
-])('updates data field onblur', (field, value) => {
+  ['name', '마녀주방'],
+  ['category', '한식'],
+  ['address', '서울시 강남구'],
+])('updates %s field onblur', (field, value) => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
