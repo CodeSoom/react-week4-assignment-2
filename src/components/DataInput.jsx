@@ -14,6 +14,7 @@ export default function DataInput() {
       <InputBox name="이름" />
       <InputBox name="분류" />
       <InputBox name="주소" />
+
       <button
         type="button"
         onClick={() => dispatch(

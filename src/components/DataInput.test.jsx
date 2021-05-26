@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
+
 import DataInput from './DataInput';
 import { addRestaurant } from '../redux/actions';
 
