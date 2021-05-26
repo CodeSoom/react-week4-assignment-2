@@ -1,17 +1,21 @@
 import { useDispatch } from 'react-redux';
+import { updateField } from '../redux/actions';
 
 export default function InputBox({ name }) {
   const dispatch = useDispatch();
   return (
     <>
-      <label htmlFor={`input-${name}`}>
-        {name}
-      </label>
       <input
-        id={`input-${name}`}
         type="text"
         placeholder={name}
-        onBlur={(e) => dispatch(e.target.value)}
+        onBlur={(e) => dispatch(
+          updateField(
+            {
+              field: name,
+              value: e.target.value,
+            },
+          ),
+        )}
       />
     </>
   );

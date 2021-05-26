@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
+
 import InputBox from './InputBox';
+import { updateField } from '../redux/actions';
 
 jest.mock('react-redux');
 it('renders input control with given name', () => {
@@ -16,13 +18,13 @@ it.each([
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  const { getByRole } = render(<InputBox name={field} />);
+  const { getByPlaceholderText } = render(<InputBox name={field} />);
 
-  const box = getByRole('textbox', { name: field });
+  const box = getByPlaceholderText(field);
 
   box.focus();
   fireEvent.change(box, { target: { value } });
   box.blur();
 
-  expect(dispatch).toBeCalledWith(value);
+  expect(dispatch).toBeCalledWith(updateField({ field, value }));
 });
