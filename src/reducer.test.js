@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import {changeAddress, changeName, changeType} from './actions';
+import {addRestaurants, changeAddress, changeName, changeType} from './actions';
 
 describe('reducer', () => {
   describe('initialState', () => {
@@ -37,6 +37,23 @@ describe('reducer', () => {
       const state = reducer(undefined, changeAddress('경기도 양평군'));
 
       expect(state.address).toBe('경기도 양평군');
+    });
+  });
+
+  describe('addRestaurants', () => {
+    context('with name, type, address', () => {
+      const state = reducer(undefined, addRestaurants());
+
+      expect(state.restaurants).toHaveLength(2);
+      expect(state.name).toBe('');
+      expect(state.type).toBe('');
+      expect(state.address).toBe('');
+    });
+
+    context('without name, type, address', () => {
+      const state = reducer(undefined, addRestaurants());
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
