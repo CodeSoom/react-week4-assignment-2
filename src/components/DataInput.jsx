@@ -5,9 +5,7 @@ import { addRestaurant } from '../redux/actions';
 
 export default function DataInput() {
   const dispatch = useDispatch();
-  const {
-    id, name, category, address,
-  } = useSelector((state) => state);
+  const { restaurants, ...infos } = useSelector((state) => state);
 
   return (
     <>
@@ -17,11 +15,7 @@ export default function DataInput() {
 
       <button
         type="button"
-        onClick={() => dispatch(
-          addRestaurant({
-            id, name, category, address,
-          }),
-        )}
+        onClick={() => dispatch(addRestaurant(infos))}
       >
         등록
       </button>
