@@ -2,9 +2,20 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants: [
+      { name: '마녀주방', type: '한식', address: '서울시 강남구' },
+      { name: '시카고피자', type: '양식', address: '이태원역' },
+    ],
+  }));
+
   it('renders title', () => {
     const { getByText } = render(<App />);
 
