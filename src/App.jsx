@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import List from './List';
-import InputBox from './InputBox';
+import List from './components/List';
+import InputBox from './components/InputBox';
 
 export default function App() {
   const { restaurants } = useSelector((state) => state);
