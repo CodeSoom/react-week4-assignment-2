@@ -2,13 +2,17 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
 jest.mock('react-redux');
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
       {
@@ -53,6 +57,7 @@ describe('App', () => {
 
     expect(getByText(/등록/)).not.toBeNull();
     fireEvent.click(getByText(/등록/));
+    expect(dispatch).toBeCalled();
   });
 
   it('changes 입력창', () => {
@@ -64,6 +69,7 @@ describe('App', () => {
       expect(inputElementForItem).not.toBeNull();
       fireEvent.change(inputElementForItem, { target: { value } });
       expect(inputElementForItem.value).toBe(value);
+      expect(dispatch).toBeCalled();
     };
 
     testChangedInputValue('이름', '이태리부대찌개');
