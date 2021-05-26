@@ -1,5 +1,5 @@
 import List from './components/List';
-import DataInput from './components/InputBox';
+import DataInput from './components/DataInput';
 
 export default function App() {
   return (
