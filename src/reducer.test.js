@@ -36,7 +36,7 @@ describe('reducer', () => {
     it('changes address', () => {
       const state = reducer(undefined, changeAddress('경기도 양평군'));
 
-      expect(state.type).toBe('경기도 양평군');
+      expect(state.address).toBe('경기도 양평군');
     });
   });
 });
