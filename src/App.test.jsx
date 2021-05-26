@@ -9,7 +9,9 @@ useSelector.mockImplementation((selector) => selector({
   restaurants: [],
 }));
 
-it('renders header', () => {
-  const { container } = render(<App />);
-  expect(container).toHaveTextContent('Restaurants');
+describe('App', () => {
+  it('renders header', () => {
+    const { container } = render(<App />);
+    expect(container).toHaveTextContent('Restaurants');
+  });
 });

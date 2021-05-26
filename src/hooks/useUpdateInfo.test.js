@@ -6,18 +6,20 @@ import { updateField } from '../redux/actions';
 
 jest.mock('react-redux');
 
-it('returns updateInfo funtion', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
+describe('useUpdateInfo', () => {
+  it('returns updateInfo funtion', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { result } = renderHook(() => useUpdateInfo());
+    const { result } = renderHook(() => useUpdateInfo());
 
-  act(() => {
-    result.current.updateInfo('name', '마녀주방');
+    act(() => {
+      result.current.updateInfo('name', '마녀주방');
+    });
+
+    expect(dispatch).toBeCalledWith(updateField({
+      field: 'name',
+      value: '마녀주방',
+    }));
   });
-
-  expect(dispatch).toBeCalledWith(updateField({
-    field: 'name',
-    value: '마녀주방',
-  }));
 });

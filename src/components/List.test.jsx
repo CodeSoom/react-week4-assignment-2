@@ -17,12 +17,13 @@ const data = {
     },
   ],
 };
+describe('List', () => {
+  it('renders restaurants', () => {
+    useSelector.mockImplementation((selector) => selector(data));
+    const { container } = render(<List />);
 
-it('renders restaurants', () => {
-  useSelector.mockImplementation((selector) => selector(data));
-  const { container } = render(<List />);
-
-  expect(container).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
-  expect(container).toHaveTextContent('시카고피자 | 양식 | 이태원동');
-  expect(container).toHaveTextContent('키와미 | 일식 | 분당구 정자동');
+    expect(container).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
+    expect(container).toHaveTextContent('시카고피자 | 양식 | 이태원동');
+    expect(container).toHaveTextContent('키와미 | 일식 | 분당구 정자동');
+  });
 });
