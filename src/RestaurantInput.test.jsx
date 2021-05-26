@@ -4,8 +4,6 @@ import { render } from '@testing-library/react';
 
 import RestaurantInput from './RestaurantInput';
 
-jest.mock('react-redux');
-
 describe('RestaurantInput', () => {
   it('renders 입력창과 등록 버튼', () => {
     const { getByText, getByPlaceholderText } = render(<RestaurantInput />);

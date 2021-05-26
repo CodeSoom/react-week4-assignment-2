@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function RestaurantInput({ onChangeName, onChangeType, onChangeAddress, onClickAddRestaurant}) {
+export default function RestaurantInput({
+  onChangeName, onChangeType, onChangeAddress, onClickAddRestaurant,
+}) {
   return (
     <div>
       <input
