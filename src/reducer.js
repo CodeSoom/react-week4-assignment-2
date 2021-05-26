@@ -24,9 +24,9 @@ export default function reducer(state = initialState, action) {
       ...state,
       restaurants: [...restaurants, {
         id: newId + 1,
-        name: '뽀식이네',
-        type: '한식',
-        address: '경기도 양평군',
+        name,
+        type,
+        address,
       }],
       name: '',
       type: '',
