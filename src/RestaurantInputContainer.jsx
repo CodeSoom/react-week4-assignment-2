@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   addRestaurants,
@@ -12,7 +12,7 @@ import {
 import RestaurantInput from './RestaurantInput';
 
 export default function RestaurantInputContainer() {
-  const {name, type, address} = useSelector((state) => ({
+  const { name, type, address } = useSelector((state) => ({
     name: state.name,
     type: state.type,
     address: state.address,
