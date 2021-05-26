@@ -19,14 +19,3 @@ it('renders three inputbox', () => {
   const { getAllByRole } = render(<App />);
   expect(getAllByRole('textbox')).toHaveLength(3);
 });
-
-it('renders 등록 button', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-
-  const { getByRole } = render(<App />);
-  expect(getByRole('button')).toBeInTheDocument();
-
-  userEvent.click(getByRole('button'));
-  expect(dispatch).toBeCalled();
-});
