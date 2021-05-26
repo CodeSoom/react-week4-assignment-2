@@ -13,16 +13,13 @@ describe('InputBox', () => {
     expect(getByRole('textbox', { lable: '이름' })).toBeInTheDocument();
   });
 
-  it.each([
-    ['name', '마녀주방'],
-    ['category', '한식'],
-    ['address', '서울시 강남구'],
-  ])('updates %s field onblur', (field, value) => {
+  it('updates field onblur', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    const { getByRole } = render(<InputBox name={field} />);
+    const [field, value] = ['name', '마녀주방'];
 
+    const { getByRole } = render(<InputBox name={field} />);
     const box = getByRole('textbox', { label: field });
 
     box.focus();
