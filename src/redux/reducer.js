@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  const getOpeator = {
+  const operatorOnState = {
     'restaurant/addItem': (oldState) => {
       const { id, restaurants } = oldState;
 
@@ -30,5 +30,6 @@ export default function reducer(state = initialState, action) {
     },
   };
 
-  return getOpeator[action.type](state);
+  const getNewState = operatorOnState[action.type];
+  return getNewState ? getNewState(state) : state;
 }
