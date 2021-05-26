@@ -1,22 +1,14 @@
-import { useDispatch } from 'react-redux';
-
-import { updateField } from '../redux/actions';
+import useUpdateInfo from '../hooks/useUpdateInfo';
 
 export default function InputBox({ name }) {
-  const dispatch = useDispatch();
+  const { updateInfo } = useUpdateInfo();
+
   return (
     <input
       type="text"
       name={name}
       placeholder={name}
-      onBlur={(e) => dispatch(
-        updateField(
-          {
-            field: name,
-            value: e.target.value,
-          },
-        ),
-      )}
+      onBlur={(e) => updateInfo(name, e.target.value)}
     />
   );
 }
