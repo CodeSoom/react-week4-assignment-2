@@ -1,25 +1,14 @@
 export function addRestaurant(restaurant) {
-  const {
-    id, name, category, address,
-  } = restaurant;
   return {
     type: 'restaurant/addItem',
-    payload: {
-      id,
-      name,
-      category,
-      address,
-    },
+    payload: restaurant,
   };
 }
 
-export function updateField({ field, value }) {
+export function updateField(data) {
   return {
     type: 'restaurant/updateField',
-    payload: {
-      field,
-      value,
-    },
+    payload: data,
   };
 }
 
