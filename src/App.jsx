@@ -2,38 +2,12 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-function addRestaurants() {
-  return {
-    type: 'addRestaurants',
-  };
-}
-
-function changeName(value) {
-  return {
-    type: 'changeName',
-    payload: {
-      value,
-    },
-  };
-}
-
-function changeType(value) {
-  return {
-    type: 'changeType',
-    payload: {
-      value,
-    },
-  };
-}
-
-function changeAddress(value) {
-  return {
-    type: 'changeAddress',
-    payload: {
-      value,
-    },
-  };
-}
+import {
+  addRestaurants,
+  changeName,
+  changeType,
+  changeAddress,
+} from './actions';
 
 export default function App() {
   const { restaurants } = useSelector((state) => ({
