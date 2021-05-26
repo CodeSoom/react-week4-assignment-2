@@ -15,8 +15,11 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurants') {
-    const { newId, name, type, address, restaurants } = state;
-    if(!name || !type || !address) {
+    const {
+      newId, name, type, address, restaurants,
+    } = state;
+
+    if (!name || !type || !address) {
       return state;
     }
 
@@ -45,7 +48,7 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       type: action.payload.value,
-    }
+    };
   }
 
   if (action.type === 'changeAddress') {
