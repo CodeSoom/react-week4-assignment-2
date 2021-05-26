@@ -13,4 +13,14 @@ export function addRestaurant(restaurant) {
   };
 }
 
+export function updateField({ field, value }) {
+  return {
+    type: 'restaurant/updateField',
+    payload: {
+      field,
+      value,
+    },
+  };
+}
+
 export default {};
