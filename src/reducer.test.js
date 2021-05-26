@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import {changeName, changeType} from './actions';
+import {changeAddress, changeName, changeType} from './actions';
 
 describe('reducer', () => {
   describe('initialState', () => {
@@ -29,6 +29,14 @@ describe('reducer', () => {
       const state = reducer(undefined, changeType('한식'));
 
       expect(state.type).toBe('한식');
+    });
+  });
+
+  describe('changeAddress', () => {
+    it('changes address', () => {
+      const state = reducer(undefined, changeAddress('경기도 양평군'));
+
+      expect(state.type).toBe('경기도 양평군');
     });
   });
 });
