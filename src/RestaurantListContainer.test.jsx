@@ -9,10 +9,6 @@ import RestaurantListContainer from './RestaurantListContainer';
 jest.mock('react-redux');
 
 describe('RestaurantListContainer', () => {
-  const dispatch = jest.fn();
-
-  useDispatch.mockImplementation(() => dispatch);
-
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
       {

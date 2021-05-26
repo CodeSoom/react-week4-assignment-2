@@ -35,11 +35,4 @@ describe('App', () => {
 
     expect(getByText(/Restaurants/)).not.toBeNull();
   });
-
-  it('renders 레스토랑 정보', () => {
-    const { getByText } = render(<App />);
-
-    expect(getByText('마녀주방 | 한식 | 서울시 강남구')).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
-    expect(getByText('시카고피자 | 양식 | 이태원역')).toHaveTextContent('시카고피자 | 양식 | 이태원역');
-  });
 });
