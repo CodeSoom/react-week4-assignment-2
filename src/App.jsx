@@ -19,9 +19,9 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <ul>
-        {restaurants.map(({id, name, type, address}) => {
-          return <li key={id}>{`${name} | ${type} | ${address}`}</li>
-        })}
+        {restaurants.map(({
+          id, name, type, address,
+        }) => <li key={id}>{`${name} | ${type} | ${address}`}</li>)}
       </ul>
       <input placeholder="이름" onChange={handleChangeInputElement} />
       <input placeholder="분류" onChange={handleChangeInputElement} />
