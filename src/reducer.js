@@ -26,7 +26,10 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'changeType') {
-    return state;
+    return {
+      ...state,
+      type: '한식',
+    }
   }
 
   if (action.type === 'changeAddress') {
