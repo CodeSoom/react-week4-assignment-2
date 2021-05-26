@@ -3,11 +3,36 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function addRestaurants() {
-  // TODO:
+  return {
+    type: 'addRestaurants',
+  };
 }
 
-function changeInputValue(value) {
-  // TODO:
+function changeName(value) {
+  return {
+    type: 'changeName',
+    payload: {
+      value,
+    },
+  };
+}
+
+function changeType(value) {
+  return {
+    type: 'changeType',
+    payload: {
+      value,
+    },
+  };
+}
+
+function changeAddress(value) {
+  return {
+    type: 'changeAddress',
+    payload: {
+      value,
+    },
+  };
 }
 
 export default function App() {
@@ -21,8 +46,16 @@ export default function App() {
     dispatch(addRestaurants());
   };
 
-  const handleChangeInputElement = (value) => {
-    dispatch(changeInputValue(value));
+  const handleChangeName = (value) => {
+    dispatch(changeName(value));
+  };
+
+  const handleChangeType = (value) => {
+    dispatch(changeType(value));
+  };
+
+  const handleChangeAddress = (value) => {
+    dispatch(changeAddress(value));
   };
 
   return (
@@ -33,9 +66,18 @@ export default function App() {
           id, name, type, address,
         }) => <li key={id}>{`${name} | ${type} | ${address}`}</li>)}
       </ul>
-      <input placeholder="이름" onChange={handleChangeInputElement} />
-      <input placeholder="분류" onChange={handleChangeInputElement} />
-      <input placeholder="주소" onChange={handleChangeInputElement} />
+      <input
+        placeholder="이름"
+        onChange={(event) => handleChangeName(event.target.value)}
+      />
+      <input
+        placeholder="분류"
+        onChange={(event) => handleChangeType(event.target.value)}
+      />
+      <input
+        placeholder="주소"
+        onChange={(event) => handleChangeAddress(event.target.value)}
+      />
       <button
         type="button"
         onClick={handleClickAddRestaurants}

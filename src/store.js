@@ -12,10 +12,26 @@ const initialState = {
   ],
 };
 
-function reducer(state = initialState) {
+function reducer(state = initialState, action) {
+  if (action.type === 'addRestaurants') {
+    return state;
+  }
+
+  if (action.type === 'changeName') {
+    return state;
+  }
+
+  if (action.type === 'changeType') {
+    return state;
+  }
+
+  if (action.type === 'changeAddress') {
+    return state;
+  }
+
   return state;
 }
 
-const store = createStore(reducer, initState);
+const store = createStore(reducer, initialState);
 
 export default store;
