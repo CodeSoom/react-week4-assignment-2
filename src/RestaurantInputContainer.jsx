@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {
   addRestaurants,
@@ -12,6 +12,12 @@ import {
 import RestaurantInput from './RestaurantInput';
 
 export default function RestaurantInputContainer() {
+  const {name, type, address} = useSelector((state) => ({
+    name: state.name,
+    type: state.type,
+    address: state.address,
+  }));
+
   const dispatch = useDispatch();
 
   const handleClickAddRestaurants = () => {
@@ -32,6 +38,9 @@ export default function RestaurantInputContainer() {
 
   return (
     <RestaurantInput
+      name={name}
+      type={type}
+      address={address}
       onChangeName={handleChangeName}
       onChangeType={handleChangeType}
       onChangeAddress={handleChangeAddress}
