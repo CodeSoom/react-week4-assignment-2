@@ -3,6 +3,8 @@ import { fireEvent, render } from '@testing-library/react';
 import DataInput from './DataInput';
 import { addRestaurant } from '../redux/actions';
 
+jest.mock('react-redux');
+
 it('renders 등록 button', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -12,4 +14,9 @@ it('renders 등록 button', () => {
 
   fireEvent.click(getByRole('button', { name: '등록' }));
   expect(dispatch).toBeCalled();
+});
+
+it('renders three inputbox', () => {
+  const { getAllByRole } = render(<DataInput />);
+  expect(getAllByRole('textbox')).toHaveLength(3);
 });
