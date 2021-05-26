@@ -1,18 +1,28 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+function addRestaurants() {
+  // TODO:
+}
+
+function changeInputValue(value) {
+  // TODO:
+}
 
 export default function App() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
 
+  const dispatch = useDispatch();
+
   const handleClickAddRestaurants = () => {
-    console.log('click!!!');
+    dispatch(addRestaurants());
   };
 
-  const handleChangeInputElement = () => {
-    console.log('change!!!');
+  const handleChangeInputElement = (value) => {
+    dispatch(changeInputValue(value));
   };
 
   return (
