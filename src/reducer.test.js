@@ -1,5 +1,7 @@
 import reducer from './reducer';
 
+import { updateName } from './actions';
+
 describe('reduecer', () => {
   describe('updateName', () => {
     it('새로운 restaurant(상태)가 만들어지고 새로운 name으로 변경된다', () => {
@@ -8,15 +10,8 @@ describe('reduecer', () => {
         name: '',
         restaurants: [],
       };
-
-      const action = {
-        type: 'updateName',
-        payload: {
-          name: '마녀주방',
-        },
-      };
       // when
-      const restaurant = reducer(previouRestaurant, action);
+      const restaurant = reducer(previouRestaurant, updateName('마녀주방'));
       // then
       expect(restaurant.name).toBe('마녀주방');
     });
