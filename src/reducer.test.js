@@ -30,5 +30,13 @@ describe('reduecer', () => {
       // then
       expect(restaurant.name).toBe('');
     });
+
+    it('상태값이 없으면 초기값으로 반환된다', () => {
+      // given
+      // when
+      const restaurant = reducer();
+      // then
+      expect(restaurant.name).toBe('');
+    });
   });
 });
