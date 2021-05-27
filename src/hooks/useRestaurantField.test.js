@@ -1,8 +1,8 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useDispatch } from 'react-redux';
 
-import useUpdateInfo from './useUpdateInfo';
-import { updateField } from '../redux/actions';
+import useRestaurantField from './useRestaurantField';
+import { updateRestaurantField } from '../redux/actions';
 
 jest.mock('react-redux');
 
@@ -11,13 +11,13 @@ describe('useUpdateInfo', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    const { result } = renderHook(() => useUpdateInfo());
+    const { result } = renderHook(() => useRestaurantField());
 
     act(() => {
-      result.current.updateInfo('name', '마녀주방');
+      result.current.setRestaurantField('name', '마녀주방');
     });
 
-    expect(dispatch).toBeCalledWith(updateField({
+    expect(dispatch).toBeCalledWith(updateRestaurantField({
       field: 'name',
       value: '마녀주방',
     }));

@@ -1,14 +1,14 @@
-import useUpdateInfo from '../hooks/useUpdateInfo';
+import useRestaurantField from '../hooks/useRestaurantField';
 
 export default function InputBox({ name }) {
-  const { updateInfo } = useUpdateInfo();
+  const { setRestaurantField } = useRestaurantField();
 
   return (
     <input
       type="text"
       name={name}
       placeholder={name}
-      onBlur={(e) => updateInfo(name, e.target.value)}
+      onBlur={(e) => setRestaurantField(name, e.target.value)}
     />
   );
 }

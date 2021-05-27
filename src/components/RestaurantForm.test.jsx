@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 
 import RestaurantForm from './RestaurantForm';
-import { addRestaurant } from '../redux/actions';
+import { addNewRestaurant } from '../redux/actions';
 
 jest.mock('react-redux');
 
@@ -25,7 +25,7 @@ describe('RestaurantForm', () => {
     expect(getByRole('button')).toBeInTheDocument();
 
     fireEvent.click(getByRole('button', { name: '등록' }));
-    expect(dispatch).toBeCalledWith(addRestaurant(restaurantData));
+    expect(dispatch).toBeCalledWith(addNewRestaurant(restaurantData));
   });
 
   it('renders three inputbox', () => {

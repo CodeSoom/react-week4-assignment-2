@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addRestaurant } from '../redux/actions';
+import { addNewRestaurant } from '../redux/actions';
+import useRestaurantField from './useRestaurantField';
 
 export default function useRestaurants() {
   const dispatch = useDispatch();
-  const { restaurants, newRestaurant } = useSelector((state) => state);
-  const addNewToRestaurants = () => dispatch(addRestaurant(newRestaurant));
+  const { newRestaurant } = useRestaurantField();
+
+  const restaurants = useSelector((state) => state.restaurants);
+  const addNewToRestaurants = () => dispatch(addNewRestaurant(newRestaurant));
 
   return { restaurants, addNewToRestaurants };
 }

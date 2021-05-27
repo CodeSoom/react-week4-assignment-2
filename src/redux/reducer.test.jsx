@@ -1,5 +1,5 @@
 import reducer, { initialState } from './reducer';
-import { addRestaurant, updateField } from './actions';
+import { addNewRestaurant, updateRestaurantField } from './actions';
 
 describe('reducer', () => {
   context('with invaild action', () => {
@@ -33,7 +33,7 @@ describe('reducer', () => {
         id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
       };
 
-      const newState = reducer(oldState, addRestaurant(newRestaurant));
+      const newState = reducer(oldState, addNewRestaurant(newRestaurant));
 
       const { newRestaurant: { id }, restaurants } = newState;
 
@@ -48,7 +48,7 @@ describe('reducer', () => {
         },
       };
 
-      const newState = reducer(oldState, updateField(
+      const newState = reducer(oldState, updateRestaurantField(
         { field: 'name', value: '마녀 주방' },
       ));
 

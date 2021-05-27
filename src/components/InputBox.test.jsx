@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch } from 'react-redux';
 
 import InputBox from './InputBox';
-import { updateField } from '../redux/actions';
+import { updateRestaurantField } from '../redux/actions';
 
 jest.mock('react-redux');
 
@@ -26,6 +26,6 @@ describe('InputBox', () => {
     fireEvent.change(box, { target: { value } });
     box.blur();
 
-    expect(dispatch).toBeCalledWith(updateField({ field, value }));
+    expect(dispatch).toBeCalledWith(updateRestaurantField({ field, value }));
   });
 });

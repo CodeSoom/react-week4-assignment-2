@@ -2,7 +2,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useRestaurants from './useRestaurants';
-import { addRestaurant } from '../redux/actions';
+import { addNewRestaurant } from '../redux/actions';
 
 jest.mock('react-redux');
 
@@ -39,7 +39,7 @@ describe('useRestaurants', () => {
       result.current.addNewToRestaurants();
     });
 
-    expect(dispatch).toBeCalledWith(addRestaurant({
+    expect(dispatch).toBeCalledWith(addNewRestaurant({
       id: 1,
       name: '마녀주방',
       category: '한식',
