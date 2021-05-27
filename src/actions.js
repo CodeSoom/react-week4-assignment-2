@@ -15,3 +15,12 @@ export function updateCategory(category) {
     },
   };
 }
+
+export function updateAddress(address) {
+  return {
+    type: 'updateAddress',
+    payload: {
+      address,
+    },
+  };
+}
