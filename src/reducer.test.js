@@ -16,4 +16,19 @@ describe('reduecer', () => {
       expect(restaurant.name).toBe('마녀주방');
     });
   });
+
+  describe('no action type', () => {
+    it('상태값이 그대로 반환된다', () => {
+      // given
+      const previouRestaurant = {
+        name: '',
+        restaurants: [],
+      };
+      const action = {};
+      // when
+      const restaurant = reducer(previouRestaurant, action);
+      // then
+      expect(restaurant.name).toBe('');
+    });
+  });
 });
