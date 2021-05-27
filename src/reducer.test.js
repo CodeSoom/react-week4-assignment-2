@@ -31,6 +31,26 @@ describe('reduecer', () => {
     });
   });
 
+  describe('updateAdderss', () => {
+    it('새로운 restaurant(상태)가 만들어지고 새로운 address로 변경된다', () => {
+      // given
+      const previouRestaurant = {
+        address: '',
+        restaurants: [],
+      };
+      const action = {
+        type: 'updateAdderss',
+        payload: {
+          address: '서울시 강남구',
+        },
+      };
+      // when
+      const restaurant = reducer(previouRestaurant, action);
+      // then
+      expect(restaurant.address).toBe('서울시 강남구');
+    });
+  });
+
   describe('no action type', () => {
     it('상태값이 그대로 반환된다', () => {
       // given
