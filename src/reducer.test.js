@@ -47,6 +47,27 @@ describe('reduecer', () => {
     });
   });
 
+  describe('addRestaurant', () => {
+    it('restaurants에 새로운 restaurant(상태)을 추가되어야 한다', () => {
+      // given
+      const previouRestaurant = {
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+        restaurants: [],
+      };
+      const action = {
+        type: 'addRestaurant',
+      };
+      // when
+      const restaurant = reducer(previouRestaurant, action);
+      // then
+      expect(restaurant.restaurants[0].name).toBe('마녀주방');
+      expect(restaurant.restaurants[0].category).toBe('한식');
+      expect(restaurant.restaurants[0].address).toBe('서울시 강남구');
+    });
+  });
+
   describe('no action type', () => {
     it('상태값이 그대로 반환된다', () => {
       // given
