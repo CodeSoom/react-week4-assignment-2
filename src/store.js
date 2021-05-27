@@ -1,7 +1,7 @@
-import { createSore } from 'redux';
+import { createStore } from 'redux';
 
 import reducer from './reducer';
 
-const store = createSore(reducer);
+const store = createStore(reducer);
 
 export default store;
