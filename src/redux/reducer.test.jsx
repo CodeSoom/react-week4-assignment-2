@@ -22,9 +22,6 @@ describe('reducer', () => {
     it('adds new restaurant and updates id', () => {
       const oldState = {
         id: 1,
-        name: '',
-        category: '',
-        address: '',
         restaurants: [],
       };
 
@@ -34,35 +31,22 @@ describe('reducer', () => {
 
       const newState = reducer(oldState, addRestaurant(newRestaurant));
 
-      expect(newState).toEqual({
-        id: 2,
-        name: '',
-        category: '',
-        address: '',
-        restaurants: [newRestaurant],
-      });
+      const { id, restaurants } = newState;
+
+      expect(id).toBe(2);
+      expect(restaurants).toEqual([newRestaurant]);
     });
 
     it('updates field with input value', () => {
       const oldState = {
-        id: 1,
         name: '',
-        category: '',
-        address: '',
-        restaurants: [],
       };
 
       const newState = reducer(oldState, updateField(
         { field: 'name', value: '마녀 주방' },
       ));
 
-      expect(newState).toEqual({
-        id: 1,
-        name: '마녀 주방',
-        category: '',
-        address: '',
-        restaurants: [],
-      });
+      expect(newState.name).toBe('마녀 주방');
     });
   });
 
