@@ -17,6 +17,27 @@ describe('reduecer', () => {
     });
   });
 
+  describe('updateCategory', () => {
+    it('새로운 restaurant(상태)가 만들어지고 새로운 category로 변경된다', () => {
+      // given
+      const previouRestaurant = {
+        cartegory: '',
+        restaurants: [],
+      };
+
+      const action = {
+        type: 'updateCategory',
+        payload: {
+          category: '한식',
+        },
+      };
+      // when
+      const restaurant = reducer(previouRestaurant, action);
+      // then
+      expect(restaurant.name).toBe('한식');
+    });
+  });
+
   describe('no action type', () => {
     it('상태값이 그대로 반환된다', () => {
       // given
