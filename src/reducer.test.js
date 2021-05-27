@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  updateName, updateCategory, updateAddress,
+  updateName, updateCategory, updateAddress, addRestaurant,
 } from './actions';
 
 describe('reduecer', () => {
@@ -56,11 +56,8 @@ describe('reduecer', () => {
         address: '서울시 강남구',
         restaurants: [],
       };
-      const action = {
-        type: 'addRestaurant',
-      };
       // when
-      const restaurant = reducer(previouRestaurant, action);
+      const restaurant = reducer(previouRestaurant, addRestaurant());
       // then
       expect(restaurant.restaurants[0].name).toBe('마녀주방');
       expect(restaurant.restaurants[0].category).toBe('한식');
