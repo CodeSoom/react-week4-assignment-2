@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 
-import DataInput from './DataInput';
+import RestaurantForm from './RestaurantForm';
 import { addRestaurant } from '../redux/actions';
 
 jest.mock('react-redux');
 
-describe('DataInput', () => {
+describe('RestaurantForm', () => {
   it('renders 등록 button', () => {
     const restaurantData = {
       id: 1,
@@ -21,7 +21,7 @@ describe('DataInput', () => {
       { newRestaurant: restaurantData },
     ));
 
-    const { getByRole } = render(<DataInput />);
+    const { getByRole } = render(<RestaurantForm />);
     expect(getByRole('button')).toBeInTheDocument();
 
     fireEvent.click(getByRole('button', { name: '등록' }));
@@ -29,7 +29,7 @@ describe('DataInput', () => {
   });
 
   it('renders three inputbox', () => {
-    const { getAllByRole } = render(<DataInput />);
+    const { getAllByRole } = render(<RestaurantForm />);
     expect(getAllByRole('textbox')).toHaveLength(3);
   });
 });

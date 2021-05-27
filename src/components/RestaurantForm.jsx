@@ -2,7 +2,7 @@ import InputBox from './InputBox';
 
 import useRestaurants from '../hooks/useRestaurants';
 
-export default function DataInput() {
+export default function RestaurantForm() {
   const { addNewToRestaurants } = useRestaurants();
 
   return (

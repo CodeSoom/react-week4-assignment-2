@@ -1,5 +1,5 @@
 import List from './components/List';
-import DataInput from './components/DataInput';
+import RestaurantForm from './components/RestaurantForm';
 
 export default function App() {
   return (
@@ -8,7 +8,7 @@ export default function App() {
         Restaurants
       </h1>
       <List />
-      <DataInput />
+      <RestaurantForm />
     </>
   );
 }
