@@ -5,6 +5,10 @@ const initialRestaurant = {
 };
 
 export default function reducer(restaurant = initialRestaurant, action) {
+  if (action === undefined) {
+    return restaurant;
+  }
+
   if (action.type === 'updateName') {
     return {
       ...restaurant,
