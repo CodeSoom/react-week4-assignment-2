@@ -17,7 +17,9 @@ describe('DataInput', () => {
 
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector(restaurantData));
+    useSelector.mockImplementation((selector) => selector(
+      { newRestaurant: restaurantData },
+    ));
 
     const { getByRole } = render(<DataInput />);
     expect(getByRole('button')).toBeInTheDocument();

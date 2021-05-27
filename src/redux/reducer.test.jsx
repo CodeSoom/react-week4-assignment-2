@@ -5,10 +5,12 @@ describe('reducer', () => {
   context('with invaild action', () => {
     it('returns same state', () => {
       const oldState = {
-        id: 1,
-        name: '',
-        category: '',
-        address: '',
+        newRestaurant: {
+          id: 1,
+          name: '',
+          category: '',
+          address: '',
+        },
         restaurants: [],
       };
 
@@ -21,7 +23,9 @@ describe('reducer', () => {
   context('with vaild action', () => {
     it('adds new restaurant and updates id', () => {
       const oldState = {
-        id: 1,
+        newRestaurant: {
+          id: 1,
+        },
         restaurants: [],
       };
 
@@ -31,7 +35,7 @@ describe('reducer', () => {
 
       const newState = reducer(oldState, addRestaurant(newRestaurant));
 
-      const { id, restaurants } = newState;
+      const { newRestaurant: { id }, restaurants } = newState;
 
       expect(id).toBe(2);
       expect(restaurants).toEqual([newRestaurant]);
@@ -39,14 +43,16 @@ describe('reducer', () => {
 
     it('updates field with input value', () => {
       const oldState = {
-        name: '',
+        newRestaurant: {
+          name: '',
+        },
       };
 
       const newState = reducer(oldState, updateField(
         { field: 'name', value: '마녀 주방' },
       ));
 
-      expect(newState.name).toBe('마녀 주방');
+      expect(newState.newRestaurant.name).toBe('마녀 주방');
     });
   });
 

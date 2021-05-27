@@ -1,31 +1,39 @@
 export const initialState = {
-  id: 1,
-  name: '',
-  category: '',
-  address: '',
+  newRestaurant: {
+    id: 1,
+    name: '',
+    category: '',
+    address: '',
+  },
   restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
   const operatorOnState = {
     'restaurant/addItem': (oldState) => {
-      const { id, restaurants } = oldState;
+      const { newRestaurant: { id }, restaurants } = oldState;
 
       return {
-        id: id + 1,
-        name: '',
-        category: '',
-        address: '',
+        newRestaurant: {
+          id: id + 1,
+          name: '',
+          category: '',
+          address: '',
+        },
         restaurants: [...restaurants, action.payload],
       };
     },
 
     'restaurant/updateField': (oldState) => {
       const { field, value } = action.payload;
+      const { newRestaurant } = oldState;
 
       return {
         ...oldState,
-        [field]: value,
+        newRestaurant: {
+          ...newRestaurant,
+          [field]: value,
+        },
       };
     },
   };
