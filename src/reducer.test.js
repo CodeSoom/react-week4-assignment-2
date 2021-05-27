@@ -34,7 +34,7 @@ describe('reduecer', () => {
       // when
       const restaurant = reducer(previouRestaurant, action);
       // then
-      expect(restaurant.name).toBe('한식');
+      expect(restaurant.category).toBe('한식');
     });
   });
 

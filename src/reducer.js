@@ -1,6 +1,7 @@
 const initialRestaurant = {
   newId: 100,
   name: '',
+  category: '',
   restaurants: [],
 };
 
@@ -15,5 +16,13 @@ export default function reducer(restaurant = initialRestaurant, action) {
       name: action.payload.name,
     };
   }
+
+  if (action.type === 'updateCategory') {
+    return {
+      ...restaurant,
+      category: action.payload.category,
+    };
+  }
+
   return restaurant;
 }
