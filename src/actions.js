@@ -1,9 +1,17 @@
-// eslint-disable-next-line import/prefer-default-export
 export function updateName(name) {
   return {
     type: 'updateName',
     payload: {
       name,
+    },
+  };
+}
+
+export function updateCategory(category) {
+  return {
+    type: 'updateCategory',
+    payload: {
+      category,
     },
   };
 }

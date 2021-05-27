@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { updateName } from './actions';
+import { updateName, updateCategory } from './actions';
 
 describe('reduecer', () => {
   describe('updateName', () => {
@@ -24,15 +24,8 @@ describe('reduecer', () => {
         cartegory: '',
         restaurants: [],
       };
-
-      const action = {
-        type: 'updateCategory',
-        payload: {
-          category: '한식',
-        },
-      };
       // when
-      const restaurant = reducer(previouRestaurant, action);
+      const restaurant = reducer(previouRestaurant, updateCategory('한식'));
       // then
       expect(restaurant.category).toBe('한식');
     });
