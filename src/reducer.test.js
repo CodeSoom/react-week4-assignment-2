@@ -31,7 +31,7 @@ describe('reduecer', () => {
     });
   });
 
-  describe('updateAdderss', () => {
+  describe('updateAddress', () => {
     it('새로운 restaurant(상태)가 만들어지고 새로운 address로 변경된다', () => {
       // given
       const previouRestaurant = {
@@ -39,7 +39,7 @@ describe('reduecer', () => {
         restaurants: [],
       };
       const action = {
-        type: 'updateAdderss',
+        type: 'updateAddress',
         payload: {
           address: '서울시 강남구',
         },

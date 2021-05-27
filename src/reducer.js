@@ -2,6 +2,7 @@ const initialRestaurant = {
   newId: 100,
   name: '',
   category: '',
+  address: '',
   restaurants: [],
 };
 
@@ -21,6 +22,13 @@ export default function reducer(restaurant = initialRestaurant, action) {
     return {
       ...restaurant,
       category: action.payload.category,
+    };
+  }
+
+  if (action.type === 'updateAddress') {
+    return {
+      ...restaurant,
+      address: action.payload.address,
     };
   }
 
