@@ -52,6 +52,9 @@ export default function reducers(state = initialState, action) {
 
     return {
       ...state,
+      name: '',
+      category: '',
+      address: '',
       restaurants: [
         ...restaurants,
         {
