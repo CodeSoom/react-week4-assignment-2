@@ -10,28 +10,27 @@ describe('App', () => {
   });
 
   describe('List', () => {
+    const restaurants = [
+      {
+        id: 1, name: '마녀주방', category: '한식', location: '서울시 강남구',
+      },
+      {
+        id: 2, name: '시카고피자', category: '양식', location: '이태원동',
+      },
+    ];
+
     it('has a list', () => {
       const { getAllByRole } = render(<App />);
 
-      expect(getAllByRole('listitem')).toHaveLength(2);
+      expect(getAllByRole('listitem')).toHaveLength(restaurants.length);
     });
 
     it('has a restaurant information', () => {
-      const restaurants = [
-        { name: '마녀주방', category: '한식', location: '서울시 강남구' },
-        { name: '시카고피자', category: '양식', location: '이태원동' },
-      ];
+      const { getByText } = render(<App />);
 
-      const { getAllByRole } = render(<App />);
-
-      const listitem = getAllByRole('listitem');
-
-      expect(listitem[0]).toHaveTextContent(
+      expect(getByText(
         `${restaurants[0].name} | ${restaurants[0].category} | ${restaurants[0].location}`,
-      );
-      expect(listitem[1]).toHaveTextContent(
-        `${restaurants[1].name} | ${restaurants[1].category} | ${restaurants[1].location}`,
-      );
+      )).not.toBeNull();
     });
   });
 });

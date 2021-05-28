@@ -1,3 +1,5 @@
+import List from './List';
+
 export default function App() {
   const restaurants = [
     {
@@ -11,21 +13,7 @@ export default function App() {
   return (
     <div>
       <h2>Restaurants</h2>
-      <ul>
-        {restaurants.map((item) => (
-          <li key={item.id}>
-            {item.name}
-            {' '}
-            |
-            {' '}
-            {item.category}
-            {' '}
-            |
-            {' '}
-            {item.location}
-          </li>
-        ))}
-      </ul>
+      <List restaurants={restaurants} />
     </div>
   );
 }
