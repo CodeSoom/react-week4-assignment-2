@@ -51,10 +51,10 @@ describe('reducer', () => {
 
     describe('updateRestaurantName', () => {
       it('changes restaurants name', () => {
-        const state = reducer({
-          ...previousState,
-
-        }, updateRestaurantName('국밥'));
+        const state = reducer(
+          previousState,
+          updateRestaurantName('국밥'),
+        );
 
         expect(state.name).toBe('국밥');
       });
@@ -62,9 +62,10 @@ describe('reducer', () => {
 
     describe('updateRestaurantCategory', () => {
       it('changes restaurants category', () => {
-        const state = reducer({
-          ...previousState,
-        }, updateRestaurantCategory('국'));
+        const state = reducer(
+          previousState,
+          updateRestaurantCategory('국'),
+        );
 
         expect(state.category).toBe('국');
       });
@@ -72,9 +73,10 @@ describe('reducer', () => {
 
     describe('updateRestaurantAddress', () => {
       it('changes restaurants address', () => {
-        const state = reducer({
-          ...previousState,
-        }, updateRestaurantAddress('부산 연제구'));
+        const state = reducer(
+          previousState,
+          updateRestaurantAddress('부산 연제구'),
+        );
 
         expect(state.address).toBe('부산 연제구');
       });
@@ -82,9 +84,10 @@ describe('reducer', () => {
 
     describe('addRestaurant', () => {
       it('appends restaurant', () => {
-        const state = reducer({
-          ...previousState,
-        }, addRestaurant());
+        const state = reducer(
+          previousState,
+          addRestaurant(),
+        );
 
         expect(state.restaurants).toHaveLength(3);
       });
