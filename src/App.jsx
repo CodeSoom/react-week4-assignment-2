@@ -11,7 +11,7 @@ import {
   addRestaurant,
 } from './actions';
 
-function slector(restaurant) {
+function selector(restaurant) {
   return {
     name: restaurant.name,
     category: restaurant.category,
@@ -21,11 +21,12 @@ function slector(restaurant) {
 }
 
 export default function App() {
-  const restaurant = useSelector(slector);
-
   const {
-    name, category, address, restaurants,
-  } = restaurant;
+    name,
+    category,
+    address,
+    restaurants,
+  } = useSelector(selector);
 
   const dispatch = useDispatch();
 

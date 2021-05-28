@@ -34,7 +34,11 @@ export default function reducer(restaurant = initialRestaurant, action) {
 
   if (action.type === 'addRestaurant') {
     const {
-      newId, name, category, address, restaurants,
+      newId,
+      name,
+      category,
+      address,
+      restaurants,
     } = restaurant;
 
     return {
