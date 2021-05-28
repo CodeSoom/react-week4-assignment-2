@@ -14,6 +14,11 @@ export default function App() {
     <div>
       <h2>Restaurants</h2>
       <List restaurants={restaurants} />
+
+      <input type="text" id="name" />
+      <input type="text" id="category" />
+      <input type="text" id="location" />
+      <button type="button">등록</button>
     </div>
   );
 }
