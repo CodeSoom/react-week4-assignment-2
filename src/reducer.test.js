@@ -78,9 +78,7 @@ describe('reduecer 관련 테스트', () => {
 
         const restaurant = reducer(previouRestaurant, addRestaurant());
 
-        expect(restaurant.restaurants[0].name).toBe('');
-        expect(restaurant.restaurants[0].category).toBe('');
-        expect(restaurant.restaurants[0].address).toBe('');
+        expect(restaurant.restaurants).toHaveLength(0);
       });
     });
   });

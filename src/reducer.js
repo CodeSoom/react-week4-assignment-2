@@ -41,6 +41,10 @@ export default function reducer(restaurant = initialRestaurant, action) {
       restaurants,
     } = restaurant;
 
+    if (!name || !category || !address) {
+      return restaurant;
+    }
+
     return {
       ...restaurant,
       newId: newId + 1,
