@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import App from './App';
 
@@ -34,10 +34,23 @@ describe('App', () => {
     });
   });
 
-  it('has three input and button', () => {
-    const { getAllByRole, getByRole } = render(<App />);
+  describe('Input', () => {
+    it('has three input and button', () => {
+      const { getAllByRole, getByRole } = render(<App />);
 
-    expect(getAllByRole('textbox')).toHaveLength(3);
-    expect(getByRole('button', { name: '등록' })).not.toBeNull();
+      expect(getAllByRole('textbox')).toHaveLength(3);
+
+      expect(getByRole('button', { name: '등록' })).not.toBeNull();
+    });
+
+    it('button click event called', () => {
+      const handleClick = jest.fn();
+
+      const { getByRole } = render(<App />);
+
+      fireEvent.click(getByRole('button', { name: '등록' }));
+
+      expect(handleClick).toBeCalled();
+    });
   });
 });
