@@ -91,6 +91,21 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(3);
       });
+
+      it('clears name, category, address', () => {
+        const {
+          name,
+          category,
+          address,
+        } = reducer(
+          previousState,
+          addRestaurant(),
+        );
+
+        expect(name).toBe('');
+        expect(category).toBe('');
+        expect(address).toBe('');
+      });
     });
   });
 });
