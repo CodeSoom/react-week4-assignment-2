@@ -18,7 +18,7 @@ describe('List', () => {
     expect(getAllByRole('listitem')).toHaveLength(2);
   });
 
-  it('has a restaurant information', () => {
+  it('has a restaurants information', () => {
     const { getAllByRole } = render(<List restaurants={restaurants} />);
 
     const listitem = getAllByRole('listitem');
