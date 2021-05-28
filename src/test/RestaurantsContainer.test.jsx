@@ -24,18 +24,9 @@ test('<RestaurantsContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({ restaurants }));
 
-  const {
-    getByText,
-    getByRole,
-    getByPlaceholderText,
-  } = render(<RestaurantsContainer />);
+  const { getByText } = render(<RestaurantsContainer />);
 
   restaurants.forEach((restaurant) => {
     expect(getByText(`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`)).toBeInTheDocument();
   });
-
-  expect(getByPlaceholderText('이름')).toBeInTheDocument();
-  expect(getByPlaceholderText('분류')).toBeInTheDocument();
-  expect(getByPlaceholderText('주소')).toBeInTheDocument();
-  expect(getByRole('button', { name: /등록/ })).toBeInTheDocument();
 });
