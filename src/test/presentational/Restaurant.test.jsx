@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import Restaurant from '../../presentational/Restaurant';
 
-test('<Restaurant />', () => {
+test('Restaurant', () => {
   const restaurant = {
     id: 2,
     name: '시카고피자',

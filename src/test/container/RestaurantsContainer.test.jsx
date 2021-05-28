@@ -6,7 +6,7 @@ import RestaurantsContainer from '../../container/RestaurantsContainer';
 
 jest.mock('react-redux');
 
-test('<RestaurantsContainer />', () => {
+test('RestaurantsContainer', () => {
   const restaurants = [
     {
       id: 1,

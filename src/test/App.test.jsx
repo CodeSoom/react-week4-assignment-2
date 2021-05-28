@@ -6,7 +6,7 @@ import App from '../App';
 
 jest.mock('react-redux');
 
-test('<App />', () => {
+test('App', () => {
   const restaurants = [
     {
       id: 1,

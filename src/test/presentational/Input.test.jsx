@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Input from '../../presentational/Input';
 
-describe('<Input />', () => {
+describe('Input', () => {
   const handleChange = jest.fn();
   const handleClickAddRestaurant = jest.fn();
 
