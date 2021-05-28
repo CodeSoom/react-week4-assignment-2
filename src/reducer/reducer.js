@@ -44,5 +44,24 @@ export default function reducers(state = initialState, action) {
     };
   }
 
+  if (type === 'restaurants/addRestaurant') {
+    const {
+      name, category, address,
+      restaurants,
+    } = state;
+
+    return {
+      ...state,
+      restaurants: [
+        ...restaurants,
+        {
+          name,
+          category,
+          address,
+        },
+      ],
+    };
+  }
+
   return state;
 }
