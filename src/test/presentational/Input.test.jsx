@@ -29,7 +29,7 @@ describe('Input', () => {
     expect(getByRole('button', { name: '등록' })).toBeInTheDocument();
   });
 
-  it('calls handleChange when change input value', () => {
+  it('listens change event when change input value', () => {
     const { getAllByRole } = renderInput();
 
     expect(handleChange).not.toBeCalled();
@@ -41,7 +41,7 @@ describe('Input', () => {
     });
   });
 
-  it('calls handleClickAddRestaurant when click "등록" button', () => {
+  it('listens click event when click "등록" button', () => {
     const { getByRole } = renderInput();
 
     expect(handleClickAddRestaurant).not.toBeCalled();

@@ -50,7 +50,7 @@ describe('reducer', () => {
     });
 
     describe('updateRestaurantName', () => {
-      it('changes restaurants name', () => {
+      it('changes restaurant name', () => {
         const state = reducer(
           previousState,
           updateRestaurantName('국밥'),
@@ -61,7 +61,7 @@ describe('reducer', () => {
     });
 
     describe('updateRestaurantCategory', () => {
-      it('changes restaurants category', () => {
+      it('changes restaurant category', () => {
         const state = reducer(
           previousState,
           updateRestaurantCategory('국'),
@@ -72,7 +72,7 @@ describe('reducer', () => {
     });
 
     describe('updateRestaurantAddress', () => {
-      it('changes restaurants address', () => {
+      it('changes restaurant address', () => {
         const state = reducer(
           previousState,
           updateRestaurantAddress('부산 연제구'),

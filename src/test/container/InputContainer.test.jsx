@@ -40,7 +40,7 @@ describe('InputContainer', () => {
     expect(getByRole('button', { name: /등록/ })).toBeInTheDocument();
   });
 
-  it('calls handleChange when change input value', () => {
+  it('listens change event when change input value', () => {
     const { getByPlaceholderText } = renderInput();
 
     expect(dispatch).not.toBeCalled();
@@ -64,7 +64,7 @@ describe('InputContainer', () => {
     expect(dispatch).toBeCalledWith(updateRestaurantAddress('부산 연제구'));
   });
 
-  it('calls handleClickAddRestaurant when click "등록" button', () => {
+  it('listens click event when click "등록" button', () => {
     dispatch.mockClear();
 
     const { getByRole } = renderInput();
