@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import App from './App';
 
@@ -32,5 +32,12 @@ describe('App', () => {
         `${restaurants[0].name} | ${restaurants[0].category} | ${restaurants[0].location}`,
       )).not.toBeNull();
     });
+  });
+
+  it('has three input and button', () => {
+    const { getAllByRole, getByRole } = render(<App />);
+
+    expect(getAllByRole('textbox')).toHaveLength(3);
+    expect(getByRole('button', { name: '등록' })).not.toBeNull();
   });
 });
