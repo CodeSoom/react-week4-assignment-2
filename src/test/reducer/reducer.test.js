@@ -1,5 +1,9 @@
 import {
-  setRestaurants, updateRestaurantAddress, updateRestaurantCategory, updateRestaurantName,
+  addRestaurant,
+  setRestaurants,
+  updateRestaurantAddress,
+  updateRestaurantCategory,
+  updateRestaurantName,
 } from '../../actions/actions';
 
 import reducer, { initialState } from '../../reducer/reducer';
@@ -73,6 +77,16 @@ describe('reducer', () => {
         }, updateRestaurantAddress('부산 연제구'));
 
         expect(state.address).toBe('부산 연제구');
+      });
+    });
+
+    describe('addRestaurant', () => {
+      it('appends restaurant', () => {
+        const state = reducer({
+          ...previousState,
+        }, addRestaurant());
+
+        expect(state.restaurants).toHaveLength(3);
       });
     });
   });
