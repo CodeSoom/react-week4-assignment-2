@@ -20,12 +20,12 @@ describe('Input', () => {
   it('renders inputs, "등록" button', () => {
     const {
       getByRole,
-      getByPlaceholderText,
+      getByDisplayValue,
     } = renderInput();
 
-    expect(getByPlaceholderText(/이름/)).toBeInTheDocument();
-    expect(getByPlaceholderText(/분류/)).toBeInTheDocument();
-    expect(getByPlaceholderText(/주소/)).toBeInTheDocument();
+    expect(getByDisplayValue(/아웃백/)).toBeInTheDocument();
+    expect(getByDisplayValue(/패밀리레스토랑/)).toBeInTheDocument();
+    expect(getByDisplayValue(/부산 해운대구/)).toBeInTheDocument();
     expect(getByRole('button', { name: '등록' })).toBeInTheDocument();
   });
 
