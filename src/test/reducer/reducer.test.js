@@ -89,6 +89,7 @@ describe('reducer', () => {
           addRestaurant(),
         );
 
+        expect(state.newId).toBe(previousState.newId + 1);
         expect(state.restaurants).toHaveLength(3);
       });
 
