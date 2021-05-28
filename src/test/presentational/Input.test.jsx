@@ -13,7 +13,7 @@ describe('<Input />', () => {
         category="패밀리레스토랑"
         address="부산 해운대구"
         onChange={handleChange}
-        onClick={handleClickAddRestaurant}
+        onClickAddRestaurant={handleClickAddRestaurant}
       />,
     );
   }
@@ -37,7 +37,7 @@ describe('<Input />', () => {
     getAllByRole('textbox').forEach((textbox) => {
       fireEvent.change(textbox, { target: { value: '123' } });
 
-      expect(handleChange).toBeCalledWith(123);
+      expect(handleChange).toBeCalled();
     });
   });
 
