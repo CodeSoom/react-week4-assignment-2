@@ -15,21 +15,21 @@ export function addRestaurant() {
 
 export function updateRestaurantName(name) {
   return {
-    type: 'restaurant/updateRestaurantName',
+    type: 'restaurants/updateRestaurantName',
     payload: { name },
   };
 }
 
 export function updateRestaurantCategory(category) {
   return {
-    type: 'restaurant/updateRestaurantCategory',
+    type: 'restaurants/updateRestaurantCategory',
     payload: { category },
   };
 }
 
 export function updateRestaurantAddress(address) {
   return {
-    type: 'restaurant/updateRestaurantAddress',
+    type: 'restaurants/updateRestaurantAddress',
     payload: { address },
   };
 }

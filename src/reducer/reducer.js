@@ -17,7 +17,7 @@ export default function reducers(state = initialState, action) {
     };
   }
 
-  if (type === 'restaurant/updateRestaurantName') {
+  if (type === 'restaurants/updateRestaurantName') {
     const { name } = action.payload;
 
     return {
@@ -26,7 +26,7 @@ export default function reducers(state = initialState, action) {
     };
   }
 
-  if (type === 'restaurant/updateRestaurantCategory') {
+  if (type === 'restaurants/updateRestaurantCategory') {
     const { category } = action.payload;
 
     return {
@@ -35,7 +35,7 @@ export default function reducers(state = initialState, action) {
     };
   }
 
-  if (type === 'restaurant/updateRestaurantAddress') {
+  if (type === 'restaurants/updateRestaurantAddress') {
     const { address } = action.payload;
 
     return {
