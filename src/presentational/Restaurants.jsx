@@ -1,20 +1,15 @@
 import React from 'react';
 
+import Restaurant from './Restaurant';
+
 export default function Restaurants({ restaurants }) {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          {restaurant.name}
-          {' '}
-          |
-          {' '}
-          {restaurant.category}
-          {' '}
-          |
-          {' '}
-          {restaurant.address}
-        </li>
+        <Restaurant
+          key={restaurant.id}
+          restaurant={restaurant}
+        />
       ))}
     </ul>
   );
