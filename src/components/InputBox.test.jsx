@@ -20,11 +20,11 @@ describe('InputBox', () => {
     const [field, value] = ['name', '마녀주방'];
 
     const { getByRole } = render(<InputBox name={field} />);
-    const box = getByRole('textbox', { label: field });
+    const inputControl = getByRole('textbox', { label: field });
 
-    box.focus();
-    fireEvent.change(box, { target: { value } });
-    box.blur();
+    inputControl.focus();
+    fireEvent.change(inputControl, { target: { value } });
+    inputControl.blur();
 
     expect(dispatch).toBeCalledWith(updateRestaurantField({ field, value }));
   });
