@@ -14,6 +14,10 @@ jest.mock('react-redux');
 describe('InputContainer', () => {
   const dispatch = jest.fn();
 
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   useDispatch.mockImplementation(() => dispatch);
 
   function renderInput() {
@@ -65,8 +69,6 @@ describe('InputContainer', () => {
   });
 
   it('listens click event when click "등록" button', () => {
-    dispatch.mockClear();
-
     const { getByRole } = renderInput();
 
     expect(dispatch).not.toBeCalled();
