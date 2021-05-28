@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setRestaurants } from './actions/actions';
 
-import Input from './presentational/Input';
 import RestaurantsContainer from './container/RestaurantsContainer';
+import InputContainer from './container/InputContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantsContainer />
-      <Input />
+      <InputContainer />
     </div>
   );
 }
