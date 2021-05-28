@@ -15,18 +15,21 @@ export default function Input({
       <input
         type="text"
         placeholder="이름"
+        name="name"
         onChange={(event) => onChange(updateRestaurantName(event.target.value))}
         value={name}
       />
       <input
         type="text"
         placeholder="분류"
+        name="category"
         onChange={(event) => onChange(updateRestaurantCategory(event.target.value))}
         value={category}
       />
       <input
         type="text"
         placeholder="주소"
+        name="address"
         onChange={(event) => onChange(updateRestaurantAddress(event.target.value))}
         value={address}
       />
