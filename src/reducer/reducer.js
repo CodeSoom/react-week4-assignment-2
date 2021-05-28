@@ -1,4 +1,9 @@
-export const initialState = {};
+export const initialState = {
+  name: '',
+  category: '',
+  address: '',
+  restaurants: [],
+};
 
 export default function reducers(state = initialState, action) {
   const { type } = action;

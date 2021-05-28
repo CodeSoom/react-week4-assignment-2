@@ -1,8 +1,8 @@
 import {
   setRestaurants, updateRestaurantAddress, updateRestaurantCategory, updateRestaurantName,
-} from '../actions/actions';
+} from '../../actions/actions';
 
-import reducer, { initialState } from './reducer';
+import reducer, { initialState } from '../../reducer/reducer';
 
 describe('reducer', () => {
   context('with invalid action', () => {

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import Restaurant from '../presentational/Restaurant';
+import Restaurant from '../../presentational/Restaurant';
 
 test('<Restaurant />', () => {
   const restaurant = {

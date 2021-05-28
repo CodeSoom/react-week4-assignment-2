@@ -5,9 +5,9 @@ import {
   updateRestaurantAddress,
   updateRestaurantCategory,
   updateRestaurantName,
-} from '../actions/actions';
+} from '../../actions/actions';
 
-import InputContainer from '../container/InputContainer';
+import InputContainer from '../../container/InputContainer';
 
 jest.mock('react-redux');
 

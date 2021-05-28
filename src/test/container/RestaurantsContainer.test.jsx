@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from '../../__mocks__/react-redux';
+import { useSelector } from 'react-redux';
 
-import Restaurants from '../presentational/Restaurants';
+import RestaurantsContainer from '../../container/RestaurantsContainer';
 
 jest.mock('react-redux');
 
-test('<Restaurants />', () => {
+test('<RestaurantsContainer />', () => {
   const restaurants = [
     {
       id: 1,
@@ -24,9 +24,7 @@ test('<Restaurants />', () => {
 
   useSelector.mockImplementation((selector) => selector({ restaurants }));
 
-  const { getByText } = render(
-    <Restaurants restaurants={restaurants} />,
-  );
+  const { getByText } = render(<RestaurantsContainer />);
 
   restaurants.forEach((restaurant) => {
     expect(getByText(`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`)).toBeInTheDocument();
