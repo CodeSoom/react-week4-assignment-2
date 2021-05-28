@@ -24,7 +24,9 @@ test('<Restaurants />', () => {
 
   useSelector.mockImplementation((selector) => selector({ restaurants }));
 
-  const { getByText } = render(<Restaurants />);
+  const { getByText } = render(
+    <Restaurants restaurants={restaurants} />,
+  );
 
   restaurants.forEach((restaurant) => {
     expect(getByText(`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`)).toBeInTheDocument();
