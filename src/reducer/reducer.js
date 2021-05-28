@@ -1,4 +1,5 @@
 export const initialState = {
+  newId: 100,
   name: '',
   category: '',
   address: '',
@@ -48,16 +49,19 @@ export default function reducers(state = initialState, action) {
     const {
       name, category, address,
       restaurants,
+      newId,
     } = state;
 
     return {
       ...state,
+      newId: newId + 1,
       name: '',
       category: '',
       address: '',
       restaurants: [
         ...restaurants,
         {
+          newId,
           name,
           category,
           address,
