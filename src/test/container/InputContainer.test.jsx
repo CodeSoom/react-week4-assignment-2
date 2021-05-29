@@ -36,7 +36,7 @@ describe('InputContainer', () => {
     expect(getByRole('button', { name: /등록/ })).toBeInTheDocument();
   });
 
-  it('listens change event when change input value', () => {
+  it('listens change event', () => {
     const { getByPlaceholderText } = render(
       <InputContainer />,
     );
