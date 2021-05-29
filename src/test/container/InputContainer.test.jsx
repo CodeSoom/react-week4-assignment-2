@@ -12,27 +12,23 @@ describe('InputContainer', () => {
 
   beforeEach(() => {
     dispatch.mockClear();
-  });
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
 
-  function renderInput() {
     useSelector.mockImplementation((selector) => selector({
       name: '',
       category: '',
       address: '',
     }));
-
-    return render(
-      <InputContainer />,
-    );
-  }
+  });
 
   it('renders inputs, "등록" button', () => {
     const {
       getByRole,
       getByPlaceholderText,
-    } = renderInput();
+    } = render(
+      <InputContainer />,
+    );
 
     expect(getByPlaceholderText(/이름/)).toBeInTheDocument();
     expect(getByPlaceholderText(/분류/)).toBeInTheDocument();
@@ -41,7 +37,9 @@ describe('InputContainer', () => {
   });
 
   it('listens change event when change input value', () => {
-    const { getByPlaceholderText } = renderInput();
+    const { getByPlaceholderText } = render(
+      <InputContainer />,
+    );
 
     expect(dispatch).not.toBeCalled();
 
@@ -76,7 +74,9 @@ describe('InputContainer', () => {
   });
 
   it('listens click event when click "등록" button', () => {
-    const { getByRole } = renderInput();
+    const { getByRole } = render(
+      <InputContainer />,
+    );
 
     expect(dispatch).not.toBeCalled();
 
