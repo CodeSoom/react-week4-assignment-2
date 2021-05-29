@@ -18,30 +18,12 @@ export default function reducers(state = initialState, action) {
     };
   }
 
-  if (type === 'restaurants/updateRestaurantName') {
-    const { name } = action.payload;
+  if (type === 'restaurants/changeRestaurant') {
+    const { name, value } = action.payload;
 
     return {
       ...state,
-      name,
-    };
-  }
-
-  if (type === 'restaurants/updateRestaurantCategory') {
-    const { category } = action.payload;
-
-    return {
-      ...state,
-      category,
-    };
-  }
-
-  if (type === 'restaurants/updateRestaurantAddress') {
-    const { address } = action.payload;
-
-    return {
-      ...state,
-      address,
+      [name]: value,
     };
   }
 
