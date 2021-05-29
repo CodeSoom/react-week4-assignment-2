@@ -9,5 +9,5 @@ test('App', () => {
     <App/>
   ));
 
-  expect(getByText(//)).not.toBeNull();
+  expect(getByText(/김밥제국/)).not.toBeNull();
 })
