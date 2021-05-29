@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import ListContainer from './ListContainer';
+
+import InputContainer from './InputContainer';
 
 import {
   updateName,
@@ -34,7 +36,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <ListContainer />
-      <input type="text" placeholder="이름" onChange={handleChangeName} />
+      <InputContainer />
       <input type="text" placeholder="분류" onChange={handleChangeCategory} />
       <input type="text" placeholder="주소" onChange={handleChangeAddress} />
       <button type="button" onClick={handleClickAddButton}>등록</button>
