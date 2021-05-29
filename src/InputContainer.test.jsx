@@ -30,7 +30,7 @@ describe('InputContainer 관련 테스트', () => {
       { target: { value: '시카고피자' } },
     );
 
-    expect(dispatch).toBeCalledWith(updateName());
+    expect(dispatch).toBeCalledWith(updateName('시카고피자'));
   });
 
   it('handleChangeCategory이 호출되는지 확인하는 테스트입니다', () => {
@@ -49,7 +49,7 @@ describe('InputContainer 관련 테스트', () => {
       { target: { value: '양식' } },
     );
 
-    expect(dispatch).toBeCalledWith(updateCategory());
+    expect(dispatch).toBeCalledWith(updateCategory('양식'));
   });
 
   it('handleChangeAddress이 호출되는지 확인하는 테스트입니다', () => {
@@ -68,7 +68,7 @@ describe('InputContainer 관련 테스트', () => {
       { target: { value: '강남구' } },
     );
 
-    expect(dispatch).toBeCalledWith(updateAddress());
+    expect(dispatch).toBeCalledWith(updateAddress('강남구'));
   });
 
   it('handleClickAddButton이 호출되는지 확인하는 테스트입니다', () => {
@@ -87,6 +87,6 @@ describe('InputContainer 관련 테스트', () => {
 
     fireEvent.click(getByText(/등록/));
 
-    expect(dispatch).toBeCalledWith(addRestaurantInformation());
+    expect(dispatch).toBeCalledWith(addRestaurantInformation(1));
   });
 });

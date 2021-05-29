@@ -26,14 +26,4 @@ describe('List', () => {
       expect(getByText(/서울시 강남구/)).not.toBeNull();
     });
   });
-
-  context('without restaurants', () => {
-    it('no change', () => {
-      const restaurants = [];
-
-      const restaurant = renderList(restaurants);
-
-      expect(restaurant.restaurants).toHaveLength(0);
-    });
-  });
 });
