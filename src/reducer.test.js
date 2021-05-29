@@ -4,7 +4,7 @@ import {
   updateName,
   updateCategory,
   updateAddress,
-  addRestaurant,
+  addRestaurantInformation,
 } from './actions';
 
 describe('reduecer 관련 테스트', () => {
@@ -59,7 +59,7 @@ describe('reduecer 관련 테스트', () => {
           restaurants: [],
         };
 
-        const restaurant = reducer(previouRestaurant, addRestaurant());
+        const restaurant = reducer(previouRestaurant, addRestaurantInformation());
 
         expect(restaurant.restaurants[0].name).toBe('마녀주방');
         expect(restaurant.restaurants[0].category).toBe('한식');
@@ -76,7 +76,7 @@ describe('reduecer 관련 테스트', () => {
           restaurants: [],
         };
 
-        const restaurant = reducer(previouRestaurant, addRestaurant());
+        const restaurant = reducer(previouRestaurant, addRestaurantInformation());
 
         expect(restaurant.restaurants).toHaveLength(0);
       });

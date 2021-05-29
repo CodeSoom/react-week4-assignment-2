@@ -25,8 +25,8 @@ export function updateAddress(address) {
   };
 }
 
-export function addRestaurant() {
+export function addRestaurantInformation() {
   return {
-    type: 'addRestaurant',
+    type: 'addRestaurantInformation',
   };
 }

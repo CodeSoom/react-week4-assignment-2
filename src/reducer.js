@@ -32,7 +32,7 @@ export default function reducer(restaurant = initialRestaurant, action) {
     };
   }
 
-  if (action.type === 'addRestaurant') {
+  if (action.type === 'addRestaurantInformation') {
     const {
       newId,
       name,

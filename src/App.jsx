@@ -8,7 +8,7 @@ import {
   updateName,
   updateCategory,
   updateAddress,
-  addRestaurant,
+  addRestaurantInformation,
 } from './actions';
 
 function selector(restaurant) {
@@ -42,13 +42,22 @@ export default function App() {
     dispatch(updateAddress(event.target.value));
   }
 
-  function handleClickRestaurant() {
-    dispatch(addRestaurant());
+  function handleClickAddButton() {
+    dispatch(addRestaurantInformation());
   }
 
   return (
     <div>
       <h1>Restaurants</h1>
+      <ul>
+        {
+          restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`}
+            </li>
+          ))
+        }
+      </ul>
       <Page
         name={name}
         category={category}
@@ -57,7 +66,7 @@ export default function App() {
         onChangeName={handleChangeName}
         onChangeCategory={handleChangeCategory}
         onChangeAddress={handleChangeAddress}
-        onClickRestaurant={handleClickRestaurant}
+        onClickAddButton={handleClickAddButton}
       />
     </div>
   );
