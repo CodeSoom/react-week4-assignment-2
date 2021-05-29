@@ -2,9 +2,7 @@ import reducer from './reducer';
 
 import {
   addRestaurants,
-  changeAddress,
-  changeName,
-  changeType,
+  changeInputAttribute,
 } from './actions';
 
 describe('reducer', () => {
@@ -23,7 +21,7 @@ describe('reducer', () => {
 
   describe('changeName', () => {
     it('changes name', () => {
-      const state = reducer(undefined, changeName('뽀식이'));
+      const state = reducer(undefined, changeInputAttribute('changeName', '뽀식이'));
 
       expect(state.name).toBe('뽀식이');
     });
@@ -31,7 +29,7 @@ describe('reducer', () => {
 
   describe('changeType', () => {
     it('changes type', () => {
-      const state = reducer(undefined, changeType('한식'));
+      const state = reducer(undefined, changeInputAttribute('changeType', '한식'));
 
       expect(state.type).toBe('한식');
     });
@@ -39,7 +37,7 @@ describe('reducer', () => {
 
   describe('changeAddress', () => {
     it('changes address', () => {
-      const state = reducer(undefined, changeAddress('경기도 양평군'));
+      const state = reducer(undefined, changeInputAttribute('changeAddress', '경기도 양평군'));
 
       expect(state.address).toBe('경기도 양평군');
     });

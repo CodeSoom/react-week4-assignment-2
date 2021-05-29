@@ -4,29 +4,38 @@ export function addRestaurants() {
   };
 }
 
-export function changeName(value) {
+export function changeInputAttribute(type, value) {
   return {
-    type: 'changeName',
+    type,
     payload: {
       value,
     },
   };
 }
 
-export function changeType(value) {
-  return {
-    type: 'changeType',
-    payload: {
-      value,
-    },
-  };
-}
-
-export function changeAddress(value) {
-  return {
-    type: 'changeAddress',
-    payload: {
-      value,
-    },
-  };
-}
+// export function changeName(value) {
+//   return {
+//     type: 'changeName',
+//     payload: {
+//       value,
+//     },
+//   };
+// }
+//
+// export function changeType(value) {
+//   return {
+//     type: 'changeType',
+//     payload: {
+//       value,
+//     },
+//   };
+// }
+//
+// export function changeAddress(value) {
+//   return {
+//     type: 'changeAddress',
+//     payload: {
+//       value,
+//     },
+//   };
+// }
