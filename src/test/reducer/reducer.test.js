@@ -1,9 +1,7 @@
 import {
   addRestaurant,
   setRestaurants,
-  updateRestaurantAddress,
-  updateRestaurantCategory,
-  updateRestaurantName,
+  changeRestaurant,
 } from '../../actions/actions';
 
 import reducer, { initialState } from '../../reducer/reducer';
@@ -49,36 +47,17 @@ describe('reducer', () => {
       });
     });
 
-    describe('updateRestaurantName', () => {
+    describe('changeRestaurant', () => {
       it('changes restaurant name', () => {
         const state = reducer(
           previousState,
-          updateRestaurantName('국밥'),
+          changeRestaurant({
+            name: 'address',
+            value: '서울시',
+          }),
         );
 
-        expect(state.name).toBe('국밥');
-      });
-    });
-
-    describe('updateRestaurantCategory', () => {
-      it('changes restaurant category', () => {
-        const state = reducer(
-          previousState,
-          updateRestaurantCategory('국'),
-        );
-
-        expect(state.category).toBe('국');
-      });
-    });
-
-    describe('updateRestaurantAddress', () => {
-      it('changes restaurant address', () => {
-        const state = reducer(
-          previousState,
-          updateRestaurantAddress('부산 연제구'),
-        );
-
-        expect(state.address).toBe('부산 연제구');
+        expect(state.address).toBe('서울시');
       });
     });
 
