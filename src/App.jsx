@@ -2,8 +2,6 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Page from './Page';
-
 import {
   updateName,
   updateCategory,
@@ -21,12 +19,7 @@ function selector(restaurant) {
 }
 
 export default function App() {
-  const {
-    name,
-    category,
-    address,
-    restaurants,
-  } = useSelector(selector);
+  const { restaurants } = useSelector(selector);
 
   const dispatch = useDispatch();
 
@@ -58,16 +51,10 @@ export default function App() {
           ))
         }
       </ul>
-      <Page
-        name={name}
-        category={category}
-        address={address}
-        restaurants={restaurants}
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
-        onClickAddButton={handleClickAddButton}
-      />
+      <input type="text" placeholder="이름" onChange={handleChangeName} />
+      <input type="text" placeholder="분류" onChange={handleChangeCategory} />
+      <input type="text" placeholder="주소" onChange={handleChangeAddress} />
+      <button type="button" onClick={handleClickAddButton}>등록</button>
     </div>
   );
 }
