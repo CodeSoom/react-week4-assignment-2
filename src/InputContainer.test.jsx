@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import InputContainer from './InputContainer';
 
 import {
-  addRestaurantInformation,
   updateAddress,
   updateCategory,
   updateName,
@@ -31,5 +30,43 @@ describe('InputContainer 관련 테스트', () => {
     );
 
     expect(dispatch).toBeCalledWith(updateName());
+  });
+
+  it('handleChangeCategory이 호출되는지 확인하는 테스트입니다', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      category: '양식',
+    }));
+
+    const { getByPlaceholderText } = render(<InputContainer />);
+
+    fireEvent.change(
+      getByPlaceholderText(/분류/),
+      { target: { value: '양식' } },
+    );
+
+    expect(dispatch).toBeCalledWith(updateCategory());
+  });
+
+  it('handleChangeAddress이 호출되는지 확인하는 테스트입니다', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      address: '강남구',
+    }));
+
+    const { getByPlaceholderText } = render(<InputContainer />);
+
+    fireEvent.change(
+      getByPlaceholderText(/주소/),
+      { target: { value: '강남구' } },
+    );
+
+    expect(dispatch).toBeCalledWith(updateAddress());
   });
 });
