@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import ListContainer from './ListContainer';
+
 import {
   updateName,
   updateCategory,
@@ -9,18 +11,7 @@ import {
   addRestaurantInformation,
 } from './actions';
 
-function selector(restaurant) {
-  return {
-    name: restaurant.name,
-    category: restaurant.category,
-    address: restaurant.address,
-    restaurants: restaurant.restaurants,
-  };
-}
-
 export default function App() {
-  const { restaurants } = useSelector(selector);
-
   const dispatch = useDispatch();
 
   function handleChangeName(event) {
@@ -42,15 +33,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {
-          restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`}
-            </li>
-          ))
-        }
-      </ul>
+      <ListContainer />
       <input type="text" placeholder="이름" onChange={handleChangeName} />
       <input type="text" placeholder="분류" onChange={handleChangeCategory} />
       <input type="text" placeholder="주소" onChange={handleChangeAddress} />
