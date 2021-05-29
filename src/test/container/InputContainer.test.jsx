@@ -1,11 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  updateRestaurantAddress,
-  updateRestaurantCategory,
-  updateRestaurantName,
-} from '../../actions/actions';
+import { changeRestaurant } from '../../actions/actions';
 
 import InputContainer from '../../container/InputContainer';
 
@@ -53,19 +49,30 @@ describe('InputContainer', () => {
       getByPlaceholderText(/이름/),
       { target: { value: '국밥' } },
     );
+    expect(dispatch).toBeCalledWith(changeRestaurant({
+      name: 'name',
+      value: '국밥',
+    }));
+
     fireEvent.change(
       getByPlaceholderText(/분류/),
       { target: { value: '국' } },
     );
+    expect(dispatch).toBeCalledWith(changeRestaurant({
+      name: 'category',
+      value: '국',
+    }));
+
     fireEvent.change(
       getByPlaceholderText(/주소/),
       { target: { value: '부산 연제구' } },
     );
+    expect(dispatch).toBeCalledWith(changeRestaurant({
+      name: 'address',
+      value: '부산 연제구',
+    }));
 
     expect(dispatch).toBeCalledTimes(3);
-    expect(dispatch).toBeCalledWith(updateRestaurantName('국밥'));
-    expect(dispatch).toBeCalledWith(updateRestaurantCategory('국'));
-    expect(dispatch).toBeCalledWith(updateRestaurantAddress('부산 연제구'));
   });
 
   it('listens click event when click "등록" button', () => {

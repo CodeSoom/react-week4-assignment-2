@@ -11,23 +11,12 @@ export function addRestaurant() {
   };
 }
 
-export function updateRestaurantName(name) {
+export function changeRestaurant({ name, value }) {
   return {
-    type: 'restaurants/updateRestaurantName',
-    payload: { name },
-  };
-}
-
-export function updateRestaurantCategory(category) {
-  return {
-    type: 'restaurants/updateRestaurantCategory',
-    payload: { category },
-  };
-}
-
-export function updateRestaurantAddress(address) {
-  return {
-    type: 'restaurants/updateRestaurantAddress',
-    payload: { address },
+    type: 'restaurants/changeRestaurant',
+    payload: {
+      name,
+      value,
+    },
   };
 }
