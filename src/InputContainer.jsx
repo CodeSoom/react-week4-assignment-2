@@ -6,6 +6,7 @@ import {
   updateName,
   updateCategory,
   updateAddress,
+  addRestaurantInformation,
 } from './actions';
 
 export default function InputContainer() {
@@ -22,11 +23,16 @@ export default function InputContainer() {
     dispatch(updateAddress(event.target.value));
   }
 
+  function handleClickAddButton() {
+    dispatch(addRestaurantInformation());
+  }
+
   return (
     <div>
       <input type="text" placeholder="이름" onChange={handleChangeName} />
       <input type="text" placeholder="분류" onChange={handleChangeCategory} />
       <input type="text" placeholder="주소" onChange={handleChangeAddress} />
+      <button type="button" onClick={handleClickAddButton}>등록</button>
     </div>
   );
 }
