@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+
+import { useSelector } from 'react-redux';
 
 import App from './App';
 
+import restaurants from '../fixtures/restaurants';
+
 describe('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
+
   it('has a title', () => {
     const { getByText } = render(<App />);
 
@@ -10,15 +18,6 @@ describe('App', () => {
   });
 
   describe('List', () => {
-    const restaurants = [
-      {
-        id: 1, name: '마녀주방', category: '한식', location: '서울시 강남구',
-      },
-      {
-        id: 2, name: '시카고피자', category: '양식', location: '이태원동',
-      },
-    ];
-
     it('has a list', () => {
       const { getAllByRole } = render(<App />);
 
