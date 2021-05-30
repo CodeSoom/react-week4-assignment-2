@@ -1,24 +1,30 @@
-export default function RestaurantsForm({ restaurant, onClick }) {
-  const { name, category, location } = restaurant;
+export default function RestaurantsForm({ restaurant, onChange, onClick }) {
+  function handleChange(event) {
+    const { name, value } = event.target;
+    onChange({
+      [name]: value,
+    });
+  }
+
   return (
     <div>
       <input
         type="text"
         name="name"
-        value={name}
-        onChange={() => {}}
+        value={restaurant.name}
+        onChange={handleChange}
       />
       <input
         type="text"
         name="category"
-        value={category}
-        onChange={() => {}}
+        value={restaurant.category}
+        onChange={handleChange}
       />
       <input
         type="text"
         name="location"
-        value={location}
-        onChange={() => {}}
+        value={restaurant.location}
+        onChange={handleChange}
       />
       <button type="button" onClick={onClick}>등록</button>
     </div>
