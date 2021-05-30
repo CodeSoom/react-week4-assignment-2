@@ -11,6 +11,10 @@ export default function RestaurantsCreateContainer() {
     restaurant: state.restaurant,
   }));
 
+  function handleChange({ name, value }) {
+    dispatch(changeRestaurantField(name, value));
+  }
+
   function handleClick() {
     dispatch(addRestaurant());
   }
@@ -18,6 +22,7 @@ export default function RestaurantsCreateContainer() {
   return (
     <RestaurantsForm
       restaurant={restaurant}
+      onChange={handleChange}
       onClick={handleClick}
     />
   );
