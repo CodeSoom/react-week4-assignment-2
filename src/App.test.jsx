@@ -1,12 +1,15 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
 import restaurants from '../fixtures/restaurants';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
