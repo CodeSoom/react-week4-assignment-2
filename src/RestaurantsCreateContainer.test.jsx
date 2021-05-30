@@ -29,6 +29,18 @@ test('RestaurantsCreateContainer', () => {
   expect(getByDisplayValue('서울시')).not.toBeNull();
   expect(container).toHaveTextContent('등록');
 
+  fireEvent.change(getByDisplayValue('마녀'), {
+    target: { value: '마녀주방' },
+  });
+
+  expect(dispatch).toBeCalledWith({
+    type: 'changeRestaurantField',
+    payload: {
+      name: 'name',
+      value: '마녀주방',
+    },
+  });
+
   fireEvent.click(getByText('등록'));
 
   expect(dispatch).toBeCalledWith({
