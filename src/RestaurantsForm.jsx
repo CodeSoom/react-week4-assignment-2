@@ -1,5 +1,26 @@
-export default function RestaurantsForm({ onClick }) {
+export default function RestaurantsForm({ restaurant, onClick }) {
+  const { name, category, location } = restaurant;
   return (
-    <button type="button" onClick={onClick}>등록</button>
+    <div>
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={() => {}}
+      />
+      <input
+        type="text"
+        name="category"
+        value={category}
+        onChange={() => {}}
+      />
+      <input
+        type="text"
+        name="location"
+        value={location}
+        onChange={() => {}}
+      />
+      <button type="button" onClick={onClick}>등록</button>
+    </div>
   );
 }
