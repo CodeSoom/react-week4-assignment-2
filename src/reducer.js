@@ -5,13 +5,14 @@ const initailState = {
 };
 
 export default function reducer(state = initailState, action) {
-  if (action === 'setRestaurants') {
-    const { restaurants } = state;
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
 
     return {
       ...state,
       restaurants,
     };
   }
+
   return state;
 }
