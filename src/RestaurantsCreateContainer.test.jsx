@@ -13,10 +13,20 @@ test('RestaurantsCreateContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: [],
+    restaurant: {
+      name: '마녀',
+      category: '한식',
+      location: '서울시',
+    },
   }));
 
-  const { container, getByText } = render(<RestaurantsCreateContainer />);
+  const { container, getByText, getByDisplayValue } = render(
+    <RestaurantsCreateContainer />,
+  );
 
+  expect(getByDisplayValue('마녀')).not.toBeNull();
+  expect(getByDisplayValue('한식')).not.toBeNull();
+  expect(getByDisplayValue('서울시')).not.toBeNull();
   expect(container).toHaveTextContent('등록');
 
   fireEvent.click(getByText('등록'));
