@@ -15,7 +15,7 @@ export default function RestaurantsCreateContainer() {
   }));
 
   function handleChange({ name, value }) {
-    dispatch(changeRestaurantField(name, value));
+    dispatch(changeRestaurantField({ name, value }));
   }
 
   function handleClick() {
