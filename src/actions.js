@@ -1,41 +1,12 @@
-export function addRestaurants() {
+export function setRestaurants(restaurants) {
   return {
-    type: 'addRestaurants',
-  };
-}
-
-export function changeInputAttribute(type, value) {
-  return {
-    type,
+    type: 'setRestaurants',
     payload: {
-      value,
-    },
-  };
+      restaurants,
+    }
+  }
 }
 
-// export function changeName(value) {
-//   return {
-//     type: 'changeName',
-//     payload: {
-//       value,
-//     },
-//   };
-// }
-//
-// export function changeType(value) {
-//   return {
-//     type: 'changeType',
-//     payload: {
-//       value,
-//     },
-//   };
-// }
-//
-// export function changeAddress(value) {
-//   return {
-//     type: 'changeAddress',
-//     payload: {
-//       value,
-//     },
-//   };
-// }
+export function xxx() {
+  //
+}
