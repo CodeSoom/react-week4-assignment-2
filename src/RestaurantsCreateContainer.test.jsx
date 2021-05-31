@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantsCreateContainer from './RestaurantsCreateContainer';
 
-
+jest.mock('react-redux');
 
 test('RestaurantsCreateContainer', () => {
   const dispatch = jest.fn();
@@ -15,8 +15,8 @@ test('RestaurantsCreateContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
-    name: '마법사주방', category: '이탈리안', address: '서울시 강남구 역삼동',
-    }
+      name: '마법사주방', category: '이탈리안', address: '서울시 강남구 역삼동',
+    },
   }));
 
   const { getByText, getByDisplayValue } = render((
@@ -33,7 +33,7 @@ test('RestaurantsCreateContainer', () => {
 
   fireEvent.click(getByText(/등록/));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'addRestaurants', 
-    })
+  expect(dispatch).toBeCalledWith({
+    type: 'addRestaurants',
+  });
 });

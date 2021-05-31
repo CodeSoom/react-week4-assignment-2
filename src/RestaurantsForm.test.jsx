@@ -4,21 +4,20 @@ import { fireEvent, render } from '@testing-library/react';
 
 import RestaurantsForm from './RestaurantsForm';
 
-
 jest.mock('react-redux');
 
 test('RestaurantsForm', () => {
-  const  restaurant = {
+  const restaurant = {
     name: '마법사주방',
     category: '이탈리안',
     address: '서울시 강남구 역삼동',
-    }
-  
+  };
+
   const handleClick = jest.fn();
-  const { getByText, getByDisplayValue} = render((
-    <RestaurantsForm 
-    restaurant={restaurant}
-    onClick={handleClick}
+  const { getByText, getByDisplayValue } = render((
+    <RestaurantsForm
+      restaurant={restaurant}
+      onClick={handleClick}
     />
   ));
   expect(getByDisplayValue('이탈리안')).not.toBeNull();

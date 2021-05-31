@@ -23,7 +23,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantsContainer />
-      <RestaurantsCreateContainer /> 
+      <RestaurantsCreateContainer />
     </div>
   );
 }
