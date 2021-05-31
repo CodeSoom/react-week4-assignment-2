@@ -29,5 +29,15 @@ export default function reducer(state = initailState, action) {
     };
   }
 
+  if (action.type === 'changeRestaurantField') {
+    const { name, value } = action.payload;
+    return {
+      ...state,
+      restaurant: {
+        [name]: value,
+      },
+    };
+  }
+
   return state;
 }
