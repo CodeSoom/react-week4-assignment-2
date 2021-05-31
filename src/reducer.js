@@ -34,6 +34,7 @@ export default function reducer(state = initailState, action) {
     return {
       ...state,
       restaurant: {
+        ...state.restaurant,
         [name]: value,
       },
     };
