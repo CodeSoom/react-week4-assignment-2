@@ -26,9 +26,12 @@ test('RestaurantsForm', () => {
     target: { value: '마녀주방' },
   });
 
-  expect(handleChange).toBeCalled();
+  expect(handleChange).toBeCalledWith({
+    name: 'name',
+    value: '마녀주방',
+  });
 
-  expect(getByDisplayValue('마녀주방')).not.toBeNull();
+  // expect(getByDisplayValue('마녀주방')).not.toBeNull();
 
   fireEvent.click(getByText('등록'));
 
