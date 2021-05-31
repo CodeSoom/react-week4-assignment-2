@@ -9,6 +9,6 @@ export function setRestaurants(restaurants) {
 }
 export function addRestaurants() {
   return {
-    type: 'addTask',
+    type: 'addRestaurants',
   };
 }
