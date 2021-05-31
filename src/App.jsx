@@ -6,6 +6,8 @@ import { setRestaurants } from './actions';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import RestaurantsCreateContainer from './RestaurantsCreateContainer';
+
 import restaurants from '../fixtures/restaurants';
 
 export default function App() {
@@ -19,11 +21,7 @@ export default function App() {
     <div>
       <h2>Restaurants</h2>
       <RestaurantsContainer />
-
-      <input type="text" id="name" />
-      <input type="text" id="category" />
-      <input type="text" id="location" />
-      <button type="button">등록</button>
+      <RestaurantsCreateContainer />
     </div>
   );
 }
