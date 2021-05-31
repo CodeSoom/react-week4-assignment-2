@@ -23,11 +23,17 @@ test('RestaurantsCreateContainer', () => {
     <RestaurantsCreateContainer />
   ));
 
-  expect(getByDisplayValue('이탈')).not.toBeNull();
+  fireEvent.change(getByDisplayValue('서울시 강남구 역삼동'), {
+    target: { value: '서울시 강남구 약' },
+  });
 
-  expect(getByDisplayValue('마법')).not.toBeNull();
-
-  expect(getByDisplayValue('서울시')).not.toBeNull();
+  expect(dispatch).toBeCalledWith({
+    type: 'changeRestaurantField',
+    payload: {
+      name: 'address',
+      value: '서울시 강남구 약',
+    },
+  });
 
   expect(getByText('등록')).not.toBeNull();
 
