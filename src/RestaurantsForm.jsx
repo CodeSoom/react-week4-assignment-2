@@ -2,7 +2,8 @@ export default function RestaurantsForm({ restaurant, onChange, onClick }) {
   function handleChange(event) {
     const { name, value } = event.target;
     onChange({
-      [name]: value,
+      name,
+      value,
     });
   }
 
