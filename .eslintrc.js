@@ -25,6 +25,7 @@ module.exports = {
     Feature: 'readonly',
     Scenario: 'readonly',
     context: 'readonly',
+    given: 'readonly',
   },
   rules: {
     indent: ['error', 2],
@@ -52,5 +53,7 @@ module.exports = {
 
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+
+    'testing-library/prefer-screen-queries': 'off',
   },
 };
