@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addRestaurant } from './actions';
+import {
+  addRestaurant,
+  changeRestaurantField,
+} from './actions';
 
 import RestaurantsForm from './RestaurantsForm';
 
