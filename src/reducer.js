@@ -1,13 +1,15 @@
-const initailState = {
-  restaurants: [],
-  restaurant: {
-    name: '',
-    category: '',
-    location: '',
-  },
+const initialRestaurant = {
+  name: '',
+  category: '',
+  location: '',
 };
 
-export default function reducer(state = initailState, action) {
+const initialState = {
+  restaurants: [],
+  restaurant: initialRestaurant,
+};
+
+export default function reducer(state = initialState, action) {
   if (action.type === 'setRestaurants') {
     const { restaurants } = action.payload;
 
@@ -21,11 +23,7 @@ export default function reducer(state = initailState, action) {
     return {
       ...state,
       restaurants: [...state.restaurants, state.restaurant],
-      restaurant: {
-        name: '',
-        category: '',
-        location: '',
-      },
+      restaurant: initialRestaurant,
     };
   }
 
