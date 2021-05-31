@@ -4,14 +4,12 @@ import { useSelector } from 'react-redux';
 
 import Restaurants from './Restaurants';
 
-import restaurants from "../fixtures/restaurants";
-
 export default function RestaurantsContainer() {
-  // const restaurants = useSelector((state) => ({
-  //   restaurants: state.restaurants,
-  // }));
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
 
   return (
-    <Restaurants restaurants={restaurants}/>
+    <Restaurants restaurants={restaurants} />
   );
 }
