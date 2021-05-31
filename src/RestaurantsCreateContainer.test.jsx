@@ -33,7 +33,13 @@ test('RestaurantsCreateContainer', () => {
     target: { value: '마녀주방' },
   });
 
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith({
+    type: 'changeRestaurantField',
+    payload: {
+      name: 'name',
+      value: '마녀주방',
+    },
+  });
 
   fireEvent.click(getByText('등록'));
 
