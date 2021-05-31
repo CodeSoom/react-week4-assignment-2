@@ -38,6 +38,7 @@ describe('reducer', () => {
       }));
 
       expect(state.restaurant.category).toBe('한식');
+      expect(state.restaurant.name).toBe('이름');
     });
   });
 });
