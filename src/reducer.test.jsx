@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRestaurants,
+  addRestaurant,
   changeRestaurantField,
 } from './actions';
 
@@ -16,6 +17,19 @@ describe('reducer', () => {
       };
 
       const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
+
+  describe('addRestaurant', () => {
+    it('add restaurants array', () => {
+      const initialState = {
+        restaurants: [],
+        restaurant: restaurants[0],
+      };
+
+      const state = reducer(initialState, addRestaurant(restaurants));
 
       expect(state.restaurants).not.toHaveLength(0);
     });
