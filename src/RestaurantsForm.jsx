@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function RestaurantsForm({ restaurant, onChange, onClick }) {
   function handleChange(event) {
+    console.log("EVENT 값들");
+    console.log(event.target);
     const { target: { name, value } } = event;
     onChange({ name, value });
   }

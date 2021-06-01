@@ -12,6 +12,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'setRestaurants') {
+    console.log(action);
     const { restaurants } = action.payload;
     return {
       ...state,
@@ -20,6 +21,7 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'changeRestaurantField') {
+    console.log(action);
     const { name, value } = action.payload;
     return {
       ...state,
@@ -31,6 +33,7 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'addRestaurants') {
+    console.log(action);
     const { newId, restaurants, restaurant } = state;
 
     return {
