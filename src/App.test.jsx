@@ -4,19 +4,14 @@ import { useSelector } from 'react-redux';
 
 import App from './App';
 
+import restaurants from '../fixtures/restaurants';
+
 jest.mock('react-redux');
 
 describe('App', () => {
   it('레스토랑 정보를 입력하는 폼을 그린다', () => {
     useSelector.mockImplementation((selector) => selector({
-      restaurants: [
-        {
-          id: 1,
-          name: '마녀주방',
-          category: '한식',
-          address: '서울시 강남구',
-        },
-      ],
+      restaurants,
     }));
 
     const { getByText, getByPlaceholderText } = render(<App />);
