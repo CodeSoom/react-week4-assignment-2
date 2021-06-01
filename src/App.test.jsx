@@ -6,8 +6,8 @@ import App from './App';
 
 jest.mock('react-redux');
 
-describe('App컴포넌트 관련 테스트', () => {
-  it('render로 App 화면을 그려지는 모습 확인 ', () => {
+describe('App', () => {
+  it('레스토랑 정보를 입력하는 폼을 그린다', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
         {
