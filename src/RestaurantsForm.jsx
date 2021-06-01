@@ -8,9 +8,27 @@ export default function RestaurantsForm({ restaurant, onChange, onClick }) {
 
   return (
     <div>
-      <input type="text" name="name" value={restaurant.name} onChange={handleChange} />
-      <input type="text" name="category" value={restaurant.category} onChange={handleChange} />
-      <input type="text" name="address" value={restaurant.address} onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="이름"
+        name="name"
+        value={restaurant.name}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="분류"
+        name="category"
+        value={restaurant.category}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="주소"
+        name="address"
+        value={restaurant.address}
+        onChange={handleChange}
+      />
       <button
         type="button"
         onClick={onClick}
