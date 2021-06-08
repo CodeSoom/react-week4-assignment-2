@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ListContainer from './ListContainer';
+import RestaurantsListContainer from './RestaurantsListContainer';
 
 import InputContainer from './InputContainer';
 
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ListContainer />
+      <RestaurantsListContainer />
       <InputContainer />
     </div>
   );
