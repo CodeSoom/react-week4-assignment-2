@@ -13,16 +13,21 @@ import {
 
 jest.mock('react-redux');
 
-describe('InputContainer 관련 테스트', () => {
-  it('handleChangeName이 호출되는지 확인하는 테스트입니다', () => {
-    const dispatch = jest.fn();
+describe('InputContainer', () => {
+  const dispatch = jest.fn();
 
+  beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
       name: '시카고피자',
+      category: '양식',
+      address: '강남구',
+      restaurants: [],
     }));
+  });
 
+  it('renders handleChangeName', () => {
     const { getByPlaceholderText } = render(<InputContainer />);
 
     fireEvent.change(
@@ -33,15 +38,7 @@ describe('InputContainer 관련 테스트', () => {
     expect(dispatch).toBeCalledWith(updateName('시카고피자'));
   });
 
-  it('handleChangeCategory이 호출되는지 확인하는 테스트입니다', () => {
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      category: '양식',
-    }));
-
+  it('renders handleChangeCategory', () => {
     const { getByPlaceholderText } = render(<InputContainer />);
 
     fireEvent.change(
@@ -52,15 +49,7 @@ describe('InputContainer 관련 테스트', () => {
     expect(dispatch).toBeCalledWith(updateCategory('양식'));
   });
 
-  it('handleChangeAddress이 호출되는지 확인하는 테스트입니다', () => {
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      address: '강남구',
-    }));
-
+  it('renders handleChangeAddress', () => {
     const { getByPlaceholderText } = render(<InputContainer />);
 
     fireEvent.change(
@@ -71,18 +60,7 @@ describe('InputContainer 관련 테스트', () => {
     expect(dispatch).toBeCalledWith(updateAddress('강남구'));
   });
 
-  it('handleClickAddButton이 호출되는지 확인하는 테스트입니다', () => {
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      name: '시카고피자',
-      category: '양식',
-      address: '강남구',
-      restaurants: [],
-    }));
-
+  it('renders handleClickAddButton', () => {
     const { getByText } = render(<InputContainer />);
 
     fireEvent.click(getByText(/등록/));

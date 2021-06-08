@@ -6,8 +6,8 @@ import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 
-describe('ListContainer 관련 테스트', () => {
-  it('레스토랑 목록', () => {
+describe('ListContainer', () => {
+  it('restaurants list', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
         {

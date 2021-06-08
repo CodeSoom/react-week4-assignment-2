@@ -1,4 +1,4 @@
-const initialRestaurant = {
+const initialState = {
   newId: 100,
   name: '',
   category: '',
@@ -6,56 +6,64 @@ const initialRestaurant = {
   restaurants: [],
 };
 
-export default function reducer(restaurant = initialRestaurant, action) {
-  if (action === undefined) {
-    return restaurant;
-  }
-
-  if (action.type === 'updateName') {
+const reducers = {
+  updateName(state, action) {
     return {
-      ...restaurant,
+      ...state,
       name: action.payload.name,
     };
-  }
+  },
 
-  if (action.type === 'updateCategory') {
+  updateCategory(state, action) {
     return {
-      ...restaurant,
+      ...state,
       category: action.payload.category,
     };
-  }
+  },
 
-  if (action.type === 'updateAddress') {
+  updateAddress(state, action) {
     return {
-      ...restaurant,
+      ...state,
       address: action.payload.address,
     };
-  }
+  },
 
-  if (action.type === 'addRestaurantInformation') {
+  addRestaurantInformation(state) {
     const {
       newId,
       name,
       category,
       address,
       restaurants,
-    } = restaurant;
+    } = state;
 
     if (!name || !category || !address) {
-      return restaurant;
+      return state;
     }
 
     return {
-      ...restaurant,
+      ...state,
       newId: newId + 1,
-      restaurants: [...restaurants, {
-        id: newId, name, category, address,
-      }],
+      restaurants: [
+        ...restaurants,
+        {
+          id: newId,
+          name,
+          category,
+          address,
+        },
+      ],
       name: '',
       category: '',
       address: '',
     };
-  }
+  },
+};
 
-  return restaurant;
+function defaultReducer(state) {
+  return state;
+}
+
+export default function reducer(state = initialState, action = { type: '' }) {
+  return (reducers[action.type] || defaultReducer)(state, action);
 }
