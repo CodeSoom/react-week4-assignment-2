@@ -1,7 +1,6 @@
 import React from 'react';
 
 import RestaurantsListContainer from './RestaurantsListContainer';
-
 import InputContainer from './InputContainer';
 
 export default function App() {
