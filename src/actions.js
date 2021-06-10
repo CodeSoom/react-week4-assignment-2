@@ -4,7 +4,7 @@ export function addRestaurant() {
   };
 }
 
-export function updateRestaurantName(name) {
+function updateRestaurantName(name) {
   return {
     type: 'updateRestaurantName',
     payload: {
@@ -13,7 +13,7 @@ export function updateRestaurantName(name) {
   };
 }
 
-export function updateRestaurantCategory(category) {
+function updateRestaurantCategory(category) {
   return {
     type: 'updateRestaurantCategory',
     payload: {
@@ -22,11 +22,27 @@ export function updateRestaurantCategory(category) {
   };
 }
 
-export function updateRestaurantAddress(Address) {
+function updateRestaurantAddress(address) {
   return {
     type: 'updateRestaurantAddress',
     payload: {
-      Address,
+      address,
     },
+  };
+}
+
+export function updateRestaurantInput(name, value) {
+  if (name === 'name') {
+    return updateRestaurantName(value);
+  }
+  if (name === 'category') {
+    return updateRestaurantCategory(value);
+  }
+  if (name === 'address') {
+    return updateRestaurantAddress(value);
+  }
+
+  return {
+    type: 'undefined',
   };
 }

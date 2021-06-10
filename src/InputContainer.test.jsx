@@ -1,6 +1,6 @@
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addRestaurant, updateRestaurantName } from './actions';
+import { addRestaurant, updateRestaurantInput } from './actions';
 import { initialState } from './reducer';
 
 import InputContainer from './InputContainer';
@@ -14,7 +14,7 @@ describe('InputContainer', () => {
   it('renders inputs & button', () => {
     useSelector.mockImplementation((selector) => selector(initialState));
     const { container, queryByPlaceholderText, getByText } = render(<InputContainer />);
-    // screen.debug();
+
     expect(queryByPlaceholderText('이름'));
     expect(queryByPlaceholderText('분류'));
     expect(queryByPlaceholderText('주소'));
@@ -30,11 +30,16 @@ describe('InputContainer', () => {
     const { queryByPlaceholderText } = render(<InputContainer />);
 
     expect(queryByPlaceholderText('이름')).toHaveDisplayValue('');
+    expect(queryByPlaceholderText('분류')).toHaveDisplayValue('');
+    expect(queryByPlaceholderText('주소')).toHaveDisplayValue('');
 
-    fireEvent.change(queryByPlaceholderText('이름'), {
-      target: { value: '이름' },
-    });
+    fireEvent.change(queryByPlaceholderText('이름'), { target: { value: '이름' } });
+    expect(dispatch).toBeCalledWith(updateRestaurantInput('name', '이름'));
 
-    expect(dispatch).toBeCalledWith(updateRestaurantName('이름'));
+    fireEvent.change(queryByPlaceholderText('분류'), { target: { value: '분류' } });
+    expect(dispatch).toBeCalledWith(updateRestaurantInput('category', '분류'));
+
+    fireEvent.change(queryByPlaceholderText('주소'), { target: { value: '주소' } });
+    expect(dispatch).toBeCalledWith(updateRestaurantInput('address', '주소'));
   });
 });
