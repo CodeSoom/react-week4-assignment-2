@@ -1,9 +1,7 @@
-import { useSelector } from 'react-redux';
-
-export default function ListContainer() {
-  const { restaurants } = useSelector((state) => ({
-    restaurants: state.restaurants,
-  }));
+export default function ListContainer({ restaurants }) {
+//   const { restaurants } = useSelector((state) => ({
+//     restaurants: state.restaurants,
+//   }));
 
   return (
     <ul>
@@ -11,15 +9,10 @@ export default function ListContainer() {
         <li key={restaurant.name}>
           <p>
             {restaurant.name}
-            {' '}
             |
-            {' '}
             {restaurant.category}
-            {' '}
             |
-            {' '}
             {restaurant.address}
-            {' '}
           </p>
         </li>
       ))}

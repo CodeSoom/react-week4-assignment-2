@@ -46,3 +46,12 @@ export function updateRestaurantInput(name, value) {
     type: 'undefined',
   };
 }
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}

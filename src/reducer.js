@@ -2,9 +2,7 @@ export const initialState = {
   restaurantName: '',
   restaurantCategory: '',
   restaurantAddress: '',
-  restaurants: [
-    { name: '마녀주방', category: '한식', address: '서울시 강남구' },
-  ],
+  restaurants: [],
 };
 export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
@@ -30,16 +28,26 @@ export default function reducer(state = initialState, action) {
       restaurantName: action.payload.name,
     };
   }
+
   if (action.type === 'updateRestaurantCategory') {
     return {
       ...state,
       restaurantCategory: action.payload.category,
     };
   }
+
   if (action.type === 'updateRestaurantAddress') {
     return {
       ...state,
       restaurantAddress: action.payload.address,
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+    return {
+      ...state,
+      restaurants,
     };
   }
   return state;

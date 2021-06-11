@@ -1,24 +1,19 @@
 import { render } from '@testing-library/react';
-import { useSelector, useDispatch } from 'react-redux';
-import { initialState } from './reducer';
-import { setRestaurants } from './actions';
+import { useSelector } from 'react-redux';
 import restaurants from '../fixtures/restaurants';
-
-import App from './App';
+import { initialState } from './reducer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-describe('App', () => {
+describe('RestaurantsContainer', () => {
   it('renders restaurants page', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({ ...initialState, restaurants }));
-    const { container, getByText } = render(<App />);
+    const { container, getByText } = render(<RestaurantsContainer />);
 
     expect(container).toHaveTextContent('Restaurants');
     expect(container).toHaveTextContent('등록');
 
-    expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
     expect(getByText(/마녀주방/)).not.toBeNull();
     // expect(container).toHaveTextContent('마녀주방|한식|서울시 강남구');
   });

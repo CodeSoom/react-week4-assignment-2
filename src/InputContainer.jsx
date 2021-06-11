@@ -21,6 +21,7 @@ export default function InputContainer() {
   return (
     <div>
       <input
+        name="name"
         placeholder="이름"
         value={restaurantName}
         onChange={(e) => {
@@ -28,6 +29,7 @@ export default function InputContainer() {
         }}
       />
       <input
+        name="category"
         placeholder="분류"
         value={restaurantCategory}
         onChange={(e) => {
@@ -35,6 +37,7 @@ export default function InputContainer() {
         }}
       />
       <input
+        name="address"
         placeholder="주소"
         value={restaurantAddress}
         onChange={(e) => {
