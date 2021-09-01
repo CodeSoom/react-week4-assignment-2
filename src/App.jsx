@@ -1,7 +1,12 @@
+import React from 'react';
+
+import PageContainer from './container/PageContainer';
+
 export default function App() {
   return (
     <div>
-      Hello
+      <h1>Restaurants</h1>
+      <PageContainer />
     </div>
   );
 }
