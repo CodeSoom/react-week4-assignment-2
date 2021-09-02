@@ -7,16 +7,22 @@ import Input from './Input';
 test('Input', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
-  const { getByText, getByLabelText } = render((
+  const { container, getByText, getByLabelText } = render((
     <Input
-      value="기존 할 일"
+      value="레스토랑"
       onChange={handleChange}
       onClick={handleClick}
     />
   ));
 
-  expect(getByText(/기존 할 일/)).not.toBeNull();
-  fireEvent.change(getByLabelText('할 일'), {
+  expect(container).toHaveTextContent(/이름분류주소/);
+  fireEvent.change(getByLabelText('이름'), {
+    target: { value: '무언가 하기' },
+  });
+  fireEvent.change(getByLabelText('분류'), {
+    target: { value: '무언가 하기' },
+  });
+  fireEvent.change(getByLabelText('주소'), {
     target: { value: '무언가 하기' },
   });
 
