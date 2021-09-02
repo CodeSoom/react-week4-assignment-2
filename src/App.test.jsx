@@ -23,7 +23,5 @@ test('App', () => {
   ));
 
   expect(getByText(/Restaurant/)).not.toBeNull();
-  expect(getByText(/성원각/)).not.toBeNull();
-  expect(getByText(/중식/)).not.toBeNull();
-  expect(getByText(/서울시 동작구/)).not.toBeNull();
+  expect(getByText('성원각 | 중식 | 서울시 동작구')).not.toBeNull();
 });

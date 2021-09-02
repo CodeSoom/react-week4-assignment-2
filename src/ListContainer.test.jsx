@@ -28,10 +28,6 @@ test('ListContainer', () => {
     <ListContainer />
   ));
 
-  expect(getByText(/성원각/)).not.toBeNull();
-  expect(getByText(/중식/)).not.toBeNull();
-  expect(getByText(/서울시 동작구/)).not.toBeNull();
-  expect(getByText(/시골순두부/)).not.toBeNull();
-  expect(getByText(/한식/)).not.toBeNull();
-  expect(getByText(/인천시 계양구/)).not.toBeNull();
+  expect(getByText('성원각 | 중식 | 서울시 동작구')).not.toBeNull();
+  expect(getByText('시골순두부 | 한식 | 인천시 계양구')).not.toBeNull();
 });
