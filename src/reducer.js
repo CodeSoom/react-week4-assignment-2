@@ -51,7 +51,9 @@ export default function reducer(state = initialState, aciton) {
     const { newId, restaurantTitles, restaurants } = state;
     const [name, category, address] = restaurantTitles;
 
-    if (!restaurantTitles) return state;
+    if (!restaurantTitles) {
+      return state;
+    }
 
     return {
       ...state,

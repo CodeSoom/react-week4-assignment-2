@@ -14,7 +14,6 @@ export default function Page({ restaurantTitles, onChange, onClick }) {
           onChange={onChange}
         />
       ))}
-
       <button type="button" onClick={onClick}>
         등록
       </button>
