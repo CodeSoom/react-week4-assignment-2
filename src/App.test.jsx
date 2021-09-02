@@ -7,5 +7,5 @@ test('App', () => {
     <App />
   ));
 
-  expect(getByText(/Restaurant/)).toBeNull();
+  expect(getByText(/Restaurant/)).not.toBeNull();
 });
