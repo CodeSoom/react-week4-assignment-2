@@ -1,6 +1,6 @@
 const initialState = {
   newId: 100,
-  informations: [
+  restaurantTitles: [
     {
       name: 'name',
       placeholder: '이름',
@@ -43,20 +43,20 @@ export default function reducer(state = initialState, aciton) {
   if (aciton.type === 'updateText') {
     return {
       ...state,
-      informations: aciton.payload.text,
+      restaurantTitles: aciton.payload.text,
     };
   }
 
   if (aciton.type === 'addRestaurant') {
-    const { newId, informations, restaurants } = state;
-    const [name, category, address] = informations;
+    const { newId, restaurantTitles, restaurants } = state;
+    const [name, category, address] = restaurantTitles;
 
-    if (!informations) return state;
+    if (!restaurantTitles) return state;
 
     return {
       ...state,
       newId: newId + 1,
-      informations: '',
+      restaurantTitles: '',
       restaurants: [...restaurants, {
         id: newId,
         name: name.value,
