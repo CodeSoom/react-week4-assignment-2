@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   addRestaurant,
   updateAddressText,
   updateCategoryText,
   updateNameText,
 } from './actions';
+
+import Input from './Input';
 
 export default function InputContainer() {
   const { nameText, categoryText, addressText } = useSelector((state) => ({
@@ -32,11 +35,14 @@ export default function InputContainer() {
   }
 
   return ((
-    <div>
-      <input name="name" placeholder="이름" value={nameText} onChange={handleChangeName} />
-      <input name="category" placeholder="분류" value={categoryText} onChange={handleChangeCategory} />
-      <input name="address" placeholder="주소" value={addressText} onChange={handleChangeAddress} />
-      <button type="submit" onClick={handleAddRestaurant}>등록</button>
-    </div>
+    <Input
+      nameText={nameText}
+      categoryText={categoryText}
+      addressText={addressText}
+      onChangeName={handleChangeName}
+      onChangeCategory={handleChangeCategory}
+      onChangeAddress={handleChangeAddress}
+      onClick={handleAddRestaurant}
+    />
   ));
 }

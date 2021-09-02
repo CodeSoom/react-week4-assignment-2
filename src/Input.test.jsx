@@ -1,27 +1,32 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import Input from './Input';
 
-import InputContainer from './InputContainer';
+test('Input', () => {
+  const handleChangeName = jest.fn();
+  const handleChangeCategory = jest.fn();
+  const handleChangeAddress = jest.fn();
+  const handleAddRestaurant = jest.fn();
 
-jest.mock('react-redux');
-
-test('InputContainer', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
+  const { nameText, categoryText, addressText } = {
     nameText: '성원각',
     categoryText: '중식',
     addressText: '서울시 동작구',
-  }));
+  };
 
   const { getByText, getByPlaceholderText } = render((
-    <InputContainer />
+    <Input
+      nameText={nameText}
+      categoryText={categoryText}
+      addressText={addressText}
+      onChangeName={handleChangeName}
+      onChangeCategory={handleChangeCategory}
+      onChangeAddress={handleChangeAddress}
+      onClick={handleAddRestaurant}
+    />
   ));
 
   expect(getByText(/등록/)).not.toBeNull();
-
   expect(getByPlaceholderText(/이름/)).toHaveDisplayValue(/성원각/);
   expect(getByPlaceholderText(/분류/)).toHaveDisplayValue(/중식/);
   expect(getByPlaceholderText(/주소/)).toHaveDisplayValue(/서울시 동작구/);
@@ -30,38 +35,21 @@ test('InputContainer', () => {
     target: { value: '시골순두부' },
   });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'updateNameText',
-    payload: {
-      nameText: '시골순두부',
-    },
-  });
+  expect(handleChangeName).toBeCalled();
 
   fireEvent.change(getByPlaceholderText(/분류/), {
     target: { value: '한식' },
   });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'updateCategoryText',
-    payload: {
-      categoryText: '한식',
-    },
-  });
+  expect(handleChangeCategory).toBeCalled();
 
   fireEvent.change(getByPlaceholderText(/주소/), {
     target: { value: '인천시 계양구' },
   });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'updateAddressText',
-    payload: {
-      addressText: '인천시 계양구',
-    },
-  });
+  expect(handleChangeAddress).toBeCalled();
 
   fireEvent.click(getByText(/등록/));
 
-  expect(dispatch).toBeCalledWith({
-    type: 'addRestaurant',
-  });
+  expect(handleAddRestaurant).toBeCalled();
 });
