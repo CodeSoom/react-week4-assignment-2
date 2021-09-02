@@ -1,6 +1,14 @@
 import { createStore } from 'redux';
 
-const reducer = () => {};
+const initialState = {
+  newId: 100,
+  nameText: '',
+  categoryText: '',
+  addressText: '',
+  restaurants: [],
+};
+
+const reducer = (state = initialState) => state;
 
 const store = createStore(reducer);
 
