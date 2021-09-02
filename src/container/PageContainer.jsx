@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Page from '../components/Page';
 
 import {
-  updateText,
+  updateRestaurantTitle,
   addRestaurant,
 } from '../actions';
 
@@ -17,7 +17,7 @@ export default function PageContainer() {
   }));
 
   function handleChangeText(name, event) {
-    dispatch(updateText(name, event.target.value));
+    dispatch(updateRestaurantTitle(name, event.target.value));
   }
 
   function handleClickAddRestaurant() {
