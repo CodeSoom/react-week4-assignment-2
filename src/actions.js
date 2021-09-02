@@ -30,3 +30,9 @@ export function addRestaurant() {
     type: 'addRestaurant',
   };
 }
+
+export function setRestaurants() {
+  return {
+    type: 'setRestaurants',
+  };
+}

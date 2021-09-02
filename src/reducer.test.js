@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   addRestaurant,
+  setRestaurants,
   updateAddressText,
   updateCategoryText,
   updateNameText,
@@ -94,6 +95,18 @@ describe('reducer', () => {
           expect(state.categoryText).toBe('');
           expect(state.addressText).toBe('');
         });
+      });
+    });
+
+    describe('setRestaurants', () => {
+      it('returns initial state', () => {
+        const state = reducer({}, setRestaurants());
+
+        expect(state.newId).toBe(100);
+        expect(state.nameText).toBe('');
+        expect(state.categoryText).toBe('');
+        expect(state.addressText).toBe('');
+        expect(state.restaurants).toHaveLength(0);
       });
     });
   });

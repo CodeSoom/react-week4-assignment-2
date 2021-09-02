@@ -56,5 +56,9 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setRestaurants') {
+    return initialState;
+  }
+
   return state;
 }
