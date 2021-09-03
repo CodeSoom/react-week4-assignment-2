@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Form from './Form';
 import {
   updateName, updateCategory, updateAddress, addRestaurant,
 } from '../store/actions';
+
+import Form from './Form';
 
 export default function ListContainer() {
   const dispatch = useDispatch();
