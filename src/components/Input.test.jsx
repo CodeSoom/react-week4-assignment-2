@@ -5,7 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  it('renders Input', () => {
+  it('renders Input and listens chage event', () => {
     const restaurantTitles = {
       name: 'name',
       placeholder: '이름',

@@ -28,7 +28,6 @@ describe('App', () => {
         value: '',
       },
     ],
-
     restaurants: [
       {
         id: 101,
@@ -51,21 +50,19 @@ describe('App', () => {
     ],
   }));
 
-  context('renders PageContainer', () => {
-    it('show empty restaurants', () => {
-      const { getByText, getByPlaceholderText } = render((
-        <App />
-      ));
+  it('show empty restaurants', () => {
+    const { getByText, getByPlaceholderText } = render((
+      <App />
+    ));
 
-      expect(getByText('Restaurants')).toBeInTheDocument();
+    expect(getByText('Restaurants')).toBeInTheDocument();
 
-      expect(getByPlaceholderText('이름')).toBeInTheDocument();
+    expect(getByPlaceholderText('이름')).toBeInTheDocument();
 
-      expect(getByPlaceholderText('분류')).toBeInTheDocument();
+    expect(getByPlaceholderText('분류')).toBeInTheDocument();
 
-      expect(getByPlaceholderText('주소')).toBeInTheDocument();
+    expect(getByPlaceholderText('주소')).toBeInTheDocument();
 
-      expect(getByText('등록')).not.toBeNull();
-    });
+    expect(getByText('등록')).not.toBeNull();
   });
 });

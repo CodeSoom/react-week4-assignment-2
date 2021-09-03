@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 import Item from './Item';
 
 describe('Item', () => {
-  it('show restaurants', () => {
+  it('shows restaurants', () => {
     const newRestaurant = {
       id: '100',
       name: '감성타코',
