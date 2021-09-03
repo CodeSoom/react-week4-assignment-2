@@ -4,6 +4,7 @@ import {
   updateRestaurantAddress,
   updateRestaurantCategory,
   updateRestaurantName,
+  addRestaurant,
 } from '../store/actions';
 
 import Input from '../presentational/Input';
@@ -23,6 +24,10 @@ export default function InputContainer() {
 
   const handleChangeAddress = (event) => {
     dispatch(updateRestaurantAddress(event.target.value));
+  };
+
+  const handleClick = () => {
+    dispatch(addRestaurant());
   };
 
   return (
@@ -45,7 +50,10 @@ export default function InputContainer() {
         handleChange={handleChangeAddress}
         placeholder="주소"
       />
-      <button type="button">
+      <button
+        type="button"
+        onClick={handleClick}
+      >
         등록
       </button>
     </>
