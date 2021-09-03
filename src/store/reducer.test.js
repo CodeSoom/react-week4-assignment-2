@@ -73,7 +73,10 @@ describe('reducer', () => {
         restaurantName: '',
         restaurantCategory: '',
         restaurantAddress: '',
-        restaurants: ['맥도날드 | 양식 | 서울시 종로구'],
+        restaurants: [{
+          id: 0,
+          title: '맥도날드 | 양식 | 서울시 종로구',
+        }],
       });
     });
   });
