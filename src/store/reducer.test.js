@@ -7,6 +7,28 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  describe('none exited state', () => {
+    it('returns initialState', () => {
+      const initialState = {
+        restaurantName: '',
+        restaurantCategory: '',
+        restaurantAddress: '',
+      };
+      const nextState = reducer(undefined, { type: undefined });
+
+      expect(nextState).toEqual(initialState);
+    });
+  });
+
+  describe('none exited action', () => {
+    it('returns previous state', () => {
+      const previousState = { restaurantName: '' };
+      const nextState = reducer(previousState, { type: undefined });
+
+      expect(nextState).toBe(previousState);
+    });
+  });
+
   describe('updateRestaurantName', () => {
     it('changes restaurant name', () => {
       const previousState = { restaurantName: '' };
