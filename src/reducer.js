@@ -62,7 +62,9 @@ export default function reducer(state = initialState, action) {
       value: '',
     }));
 
-    if (!restaurantTitles) {
+    const emptyRestaurantTitle = restaurantTitles.filter((restaurantTitle) => restaurantTitle.value === '').length;
+
+    if (emptyRestaurantTitle) {
       return state;
     }
 
