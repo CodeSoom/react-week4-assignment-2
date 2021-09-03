@@ -1,6 +1,6 @@
-export function updateRestaurantTitle(name, value) {
+export function updateRestaurant(name, value) {
   return {
-    type: 'updateRestaurantTitle',
+    type: 'updateRestaurant',
     payload: {
       name,
       value,

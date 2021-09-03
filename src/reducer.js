@@ -1,5 +1,5 @@
 const initialState = {
-  newId: 100,
+  newId: 103,
   restaurantTitles: [
     {
       name: 'name',
@@ -39,17 +39,28 @@ const initialState = {
   ],
 };
 
-export default function reducer(state = initialState, aciton) {
-  if (aciton.type === 'updateText') {
+export default function reducer(state = initialState, action) {
+  if (action.type === 'updateRestaurant') {
+    const changeRestaurant = state.restaurantTitles.map((restaurantTitle) => ({
+      ...restaurantTitle,
+      value: restaurantTitle.name === action.payload.name
+        ? action.payload.value : restaurantTitle.value,
+    }));
+
     return {
       ...state,
-      restaurantTitles: aciton.payload.text,
+      restaurantTitles: changeRestaurant,
     };
   }
 
-  if (aciton.type === 'addRestaurant') {
+  if (action.type === 'addRestaurant') {
     const { newId, restaurantTitles, restaurants } = state;
     const [name, category, address] = restaurantTitles;
+
+    const newRestaurantTitle = restaurantTitles.map((restaurantTitle) => ({
+      ...restaurantTitle,
+      value: '',
+    }));
 
     if (!restaurantTitles) {
       return state;
@@ -58,7 +69,7 @@ export default function reducer(state = initialState, aciton) {
     return {
       ...state,
       newId: newId + 1,
-      restaurantTitles: '',
+      restaurantTitles: newRestaurantTitle,
       restaurants: [...restaurants, {
         id: newId,
         name: name.value,

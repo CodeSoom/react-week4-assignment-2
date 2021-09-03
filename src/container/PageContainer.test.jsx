@@ -47,7 +47,7 @@ describe('PageContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      type: 'updateRestaurantTitle',
+      type: 'updateRestaurant',
       payload: {
         name: 'name',
         value: '내 최애 맛집',
