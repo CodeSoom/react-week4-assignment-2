@@ -36,18 +36,21 @@ export default function InputContainer() {
         ariaLabel="restaurantName"
         value={restaurantName}
         handleChange={handleChangeName}
+        inputName="name"
         placeholder="이름"
       />
       <Input
         ariaLabel="restaurantCategory"
         value={restaurantCategory}
         handleChange={handleChangeCategory}
+        inputName="category"
         placeholder="분류"
       />
       <Input
         ariaLabel="restaurantAddress"
         value={restaurantAddress}
         handleChange={handleChangeAddress}
+        inputName="address"
         placeholder="주소"
       />
       <button
