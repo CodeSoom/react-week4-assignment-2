@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Input from './Input';
+import Input from './presentational/Input';
 
 export default function App() {
   const [name, setName] = useState('');
