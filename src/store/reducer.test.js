@@ -17,12 +17,12 @@ describe('reducer', () => {
     expect(state).toStrictEqual(previousState);
   });
 
-  it('state를 넘겨주지 않으면 initalState를 반환한다.', () => {
+  it('state를 넘겨주지 않으면 initalState를 사용한다.', () => {
     const initialState = {
       nextId: 100,
-      name: '마녀식당',
-      category: '한식',
-      address: '서울시 강남구',
+      name: '',
+      category: '',
+      address: '',
       restaurants: [],
     };
     const state = reducer(undefined, { type: 'sampleSction' });
@@ -31,68 +31,32 @@ describe('reducer', () => {
   });
 
   describe('updateName', () => {
-    context('name이 비어있다면', () => {
-      it('name을 업데이트하지 않는다.', () => {
-        const state = reducer({
-          name: 'New Name',
-        }, updateName(''));
+    it('name을 업데이트한다.', () => {
+      const state = reducer({
+        name: '',
+      }, updateName('New Name'));
 
-        expect(state.name).toBe('New Name');
-      });
-    });
-
-    context('name이 비어있지 않다면', () => {
-      it('name을 업데이트한다.', () => {
-        const state = reducer({
-          name: '',
-        }, updateName('New Name'));
-
-        expect(state.name).toBe('New Name');
-      });
+      expect(state.name).toBe('New Name');
     });
   });
 
   describe('updateCategory', () => {
-    context('category가 비어있다면', () => {
-      it('category를 업데이트하지 않는다.', () => {
-        const state = reducer({
-          category: 'New Category',
-        }, updateCategory(''));
+    it('category를 업데이트한다.', () => {
+      const state = reducer({
+        category: '',
+      }, updateCategory('New Category'));
 
-        expect(state.category).toBe('New Category');
-      });
-    });
-
-    context('category가 비어있지 않다면', () => {
-      it('category를 업데이트한다.', () => {
-        const state = reducer({
-          category: '',
-        }, updateCategory('New Category'));
-
-        expect(state.category).toBe('New Category');
-      });
+      expect(state.category).toBe('New Category');
     });
   });
 
   describe('updateAddress', () => {
-    context('address가 비어있다면', () => {
-      it('address를 업데이트하지 않는다.', () => {
-        const state = reducer({
-          address: 'New Address',
-        }, updateAddress(''));
+    it('address를 업데이트한다.', () => {
+      const state = reducer({
+        address: '',
+      }, updateAddress('New Address'));
 
-        expect(state.addresss).toBe('New Address');
-      });
-    });
-
-    context('address가 비어있지 않다면', () => {
-      it('address를 업데이트한다.', () => {
-        const state = reducer({
-          address: '',
-        }, updateAddress('New Address'));
-
-        expect(state.address).toBe('New Address');
-      });
+      expect(state.address).toBe('New Address');
     });
   });
 
