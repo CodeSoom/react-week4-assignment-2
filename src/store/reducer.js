@@ -25,7 +25,10 @@ const reducers = {
     restaurantAddress: '',
     restaurants: [
       ...state.restaurants,
-      `${state.restaurantName} | ${state.restaurantCategory} | ${state.restaurantAddress}`,
+      {
+        id: state.restaurants.length,
+        title: `${state.restaurantName} | ${state.restaurantCategory} | ${state.restaurantAddress}`,
+      },
     ],
   }),
 };
