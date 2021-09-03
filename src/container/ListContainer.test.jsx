@@ -17,15 +17,15 @@ describe('ListContainer', () => {
     },
     {
       id: 101,
-      name: '홍초밥',
-      category: '일식',
-      address: '서울시 망원동',
+      name: '시카고피자',
+      category: '양식',
+      address: '이태원동',
     },
     {
       id: 102,
-      name: '감성타코',
-      category: '양식',
-      address: '신사동 가로수길',
+      name: '키와미',
+      category: '일식',
+      address: '분당구 정자동',
     },
   ];
 
@@ -39,15 +39,15 @@ describe('ListContainer', () => {
     ));
 
     expect(container).toHaveTextContent('마녀주방');
-    expect(container).toHaveTextContent('홍초밥');
-    expect(container).toHaveTextContent('감성타코');
+    expect(container).toHaveTextContent('시카고피자');
+    expect(container).toHaveTextContent('키와미');
 
     expect(container).toHaveTextContent('서울시 강남구');
-    expect(container).toHaveTextContent('서울시 망원동');
-    expect(container).toHaveTextContent('신사동 가로수길');
+    expect(container).toHaveTextContent('이태원동');
+    expect(container).toHaveTextContent('분당구 정자동');
 
     expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('일식');
     expect(container).toHaveTextContent('양식');
+    expect(container).toHaveTextContent('일식');
   });
 });

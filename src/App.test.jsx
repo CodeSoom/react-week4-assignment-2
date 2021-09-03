@@ -50,19 +50,33 @@ describe('App', () => {
     ],
   }));
 
-  it('show empty restaurants', () => {
-    const { getByText, getByPlaceholderText } = render((
-      <App />
-    ));
+  context('when restaurants empty', () => {
+    it('shows input page', () => {
+      const { getByText, getByPlaceholderText } = render((
+        <App />
+      ));
 
-    expect(getByText('Restaurants')).toBeInTheDocument();
+      expect(getByText('Restaurants')).toBeInTheDocument();
 
-    expect(getByPlaceholderText('이름')).toBeInTheDocument();
+      expect(getByPlaceholderText('이름')).toBeInTheDocument();
 
-    expect(getByPlaceholderText('분류')).toBeInTheDocument();
+      expect(getByPlaceholderText('분류')).toBeInTheDocument();
 
-    expect(getByPlaceholderText('주소')).toBeInTheDocument();
+      expect(getByPlaceholderText('주소')).toBeInTheDocument();
 
-    expect(getByText('등록')).not.toBeNull();
+      expect(getByText('등록')).not.toBeNull();
+    });
+  });
+
+  context('when restauransts exist', () => {
+    it('shows restaurants list', () => {
+      const { container } = render((
+        <App />
+      ));
+
+      expect(container).toHaveTextContent('마녀주방');
+      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent('서울시 강남구');
+    });
   });
 });
