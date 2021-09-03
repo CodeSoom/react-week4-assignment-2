@@ -1,23 +1,43 @@
+import { useState } from 'react';
+
+import Input from './Input';
+
 export default function App() {
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [address, setAddress] = useState('');
+
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleChangeCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleChangeAddress = (event) => {
+    setAddress(event.target.value);
+  };
+
   return (
     <>
       <h1>
         Restaurants
       </h1>
-      <input
-        type="text"
-        placeholder="이름"
-        aria-label="restaurantName"
+      <Input
+        ariaLabel="restaurantName"
+        value={name}
+        handleChange={handleChangeName}
       />
-      <input
-        type="text"
-        placeholder="분류"
-        aria-label="restaurantCategory"
+      <Input
+        ariaLabel="restaurantCategory"
+        value={category}
+        handleChange={handleChangeCategory}
       />
-      <input
-        type="text"
-        placeholder="주소"
-        aria-label="restaurantAddress"
+      <Input
+        ariaLabel="restaurantAddress"
+        value={address}
+        handleChange={handleChangeAddress}
       />
       <button type="button">
         등록
