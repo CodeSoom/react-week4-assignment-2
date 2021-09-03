@@ -33,13 +33,21 @@ describe('reducer', () => {
   describe('updateName', () => {
     context('name이 비어있다면', () => {
       it('name을 업데이트하지 않는다.', () => {
+        const state = reducer({
+          name: 'New Name',
+        }, updateName(''));
 
+        expect(state.name).toBe('New Name');
       });
     });
 
     context('name이 비어있지 않다면', () => {
       it('name을 업데이트한다.', () => {
+        const state = reducer({
+          name: '',
+        }, updateName('New Name'));
 
+        expect(state.name).toBe('New Name');
       });
     });
   });
@@ -47,13 +55,21 @@ describe('reducer', () => {
   describe('updateCategory', () => {
     context('category가 비어있다면', () => {
       it('category를 업데이트하지 않는다.', () => {
+        const state = reducer({
+          category: 'New Category',
+        }, updateCategory(''));
 
+        expect(state.category).toBe('New Category');
       });
     });
 
     context('category가 비어있지 않다면', () => {
       it('category를 업데이트한다.', () => {
+        const state = reducer({
+          category: '',
+        }, updateCategory('New Category'));
 
+        expect(state.category).toBe('New Category');
       });
     });
   });
@@ -61,27 +77,64 @@ describe('reducer', () => {
   describe('updateAddress', () => {
     context('address가 비어있다면', () => {
       it('address를 업데이트하지 않는다.', () => {
+        const state = reducer({
+          address: 'New Address',
+        }, updateAddress(''));
 
+        expect(state.addresss).toBe('New Address');
       });
     });
 
     context('address가 비어있지 않다면', () => {
       it('address를 업데이트한다.', () => {
+        const state = reducer({
+          address: '',
+        }, updateAddress('New Address'));
 
+        expect(state.address).toBe('New Address');
       });
     });
   });
 
   describe('addRestaurant', () => {
+    const reducerAddRestaurant = (state) => reducer(state, addRestaurant());
+
     context('name, category, address중 하나라도 비어 있다면', () => {
       it('레스토랑을 추가하지 않는다.', () => {
+        const state = reducerAddRestaurant({
+          name: '',
+          category: '한식',
+          address: '서울시 강남구',
+          restaurants: [],
+        });
 
+        expect(state.restaurants).toHaveLength(0);
       });
     });
 
     context('name, category, address가 모두 존재하면', () => {
       it('레스토랑을 추가한다.', () => {
+        const state = reducerAddRestaurant({
+          name: '마녀식당',
+          category: '한식',
+          address: '서울시 강남구',
+          restaurants: [],
+        });
 
+        expect(state.restaurants).toHaveLength(1);
+      });
+
+      it('name, category, address가 비워진다.', () => {
+        const state = reducerAddRestaurant({
+          name: '마녀식당',
+          category: '한식',
+          address: '서울시 강남구',
+          restaurants: [],
+        });
+
+        expect(state.name).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('');
       });
     });
   });
