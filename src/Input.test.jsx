@@ -10,7 +10,11 @@ describe('Input', () => {
   given('value', () => '');
   given('ariaLabel', () => '');
 
-  const renderInput = render((
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderInput = () => render((
     <Input
       handleChange={handleChange}
       value={given.value}
