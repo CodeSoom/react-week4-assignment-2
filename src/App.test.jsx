@@ -12,7 +12,7 @@ describe('App', () => {
     expect(getByPlaceholderText(/이름/)).not.toBeNull();
     expect(getByPlaceholderText(/분류/)).not.toBeNull();
     expect(getByPlaceholderText(/주소/)).not.toBeNull();
-    expect(getByText(/추가/)).not.toBeNull();
+    expect(getByText(/등록/)).not.toBeNull();
   });
 
   it('changes input values and adds them to the restaurant list', () => {
@@ -40,7 +40,7 @@ describe('App', () => {
     expect(inputCategory).toHaveAttribute('value', category);
     expect(inputAddress).toHaveAttribute('value', address);
 
-    fireEvent.click(getByText(/추가/));
+    fireEvent.click(getByText(/등록/));
 
     expect(container).toHaveTextContent(name);
     expect(container).toHaveTextContent(category);
