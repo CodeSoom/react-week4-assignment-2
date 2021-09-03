@@ -9,6 +9,7 @@ describe('Input', () => {
 
   given('value', () => '');
   given('ariaLabel', () => '');
+  given('placeholder', () => '');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -19,6 +20,7 @@ describe('Input', () => {
       handleChange={handleChange}
       value={given.value}
       ariaLabel={given.ariaLabel}
+      placeholder={given.placeholder}
     />
   ));
 
@@ -35,6 +37,7 @@ describe('Input', () => {
   it('renders input value', () => {
     given('ariaLabel', () => 'restaurantName');
     given('value', () => '시카고피자');
+    given('placeholder', () => '이름');
 
     const { getByLabelText } = renderInput();
 
