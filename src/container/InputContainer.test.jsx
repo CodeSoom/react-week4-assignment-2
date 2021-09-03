@@ -15,7 +15,7 @@ describe('InputContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('dispatches updateRestuarantName', () => {
+  it('dispatches updateRestaurantName', () => {
     const { getByLabelText } = render(<InputContainer />);
 
     fireEvent.change(getByLabelText('restaurantName'), {
@@ -24,33 +24,33 @@ describe('InputContainer', () => {
 
     expect(dispatch).toBeCalledWith({
       payload: { restaurantName: '시카고핏짜' },
-      type: 'updateRestuarantName',
+      type: 'updateRestaurantName',
     });
   });
 
-  it('dispatches updateRestuarantCategory', () => {
+  it('dispatches updateRestaurantCategory', () => {
     const { getByLabelText } = render(<InputContainer />);
 
-    fireEvent.change(getByLabelText('restuarantCategory'), {
+    fireEvent.change(getByLabelText('restaurantCategory'), {
       target: { value: '양식' },
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { restuarantCategory: '양식' },
-      type: 'updateRestuarantCategory',
+      payload: { restaurantCategory: '양식' },
+      type: 'updateRestaurantCategory',
     });
   });
 
-  it('dispatches updateRestuarantAddress', () => {
+  it('dispatches updateRestaurantAddress', () => {
     const { getByLabelText } = render(<InputContainer />);
 
-    fireEvent.change(getByLabelText('restuarantAddress'), {
+    fireEvent.change(getByLabelText('restaurantAddress'), {
       target: { value: '서울시 강남구' },
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { restuarantAddress: '서울시 강남구' },
-      type: 'updateRestuarantAddress',
+      payload: { restaurantAddress: '서울시 강남구' },
+      type: 'updateRestaurantAddress',
     });
   });
 });
