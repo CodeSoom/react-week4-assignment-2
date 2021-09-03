@@ -45,6 +45,9 @@ export default function InputContainer() {
         handleChange={handleChangeAddress}
         placeholder="주소"
       />
+      <button type="button">
+        등록
+      </button>
     </>
   );
 }

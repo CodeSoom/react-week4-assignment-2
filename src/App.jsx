@@ -7,9 +7,6 @@ export default function App() {
         Restaurants
       </h1>
       <InputContainer />
-      <button type="button">
-        등록
-      </button>
     </>
   );
 }
