@@ -1,36 +1,36 @@
 import reducer from './reducer';
 
 import {
-  updateRestuarantName,
-  updateRestuarantCategory,
-  updateRestuarantAddress,
+  updateRestaurantName,
+  updateRestaurantCategory,
+  updateRestaurantAddress,
 } from './actions';
 
 describe('reducer', () => {
-  describe('updateRestuarantName', () => {
-    it('changes restuarant name', () => {
-      const previousState = { restuarantName: '' };
-      const nextState = reducer(previousState, updateRestuarantName('시카고피자'));
+  describe('updateRestaurantName', () => {
+    it('changes restaurant name', () => {
+      const previousState = { restaurantName: '' };
+      const nextState = reducer(previousState, updateRestaurantName('시카고피자'));
 
-      expect(nextState.restuarantName).toBe('시카고피자');
+      expect(nextState.restaurantName).toBe('시카고피자');
     });
   });
 
-  describe('updateRestuarantCategory', () => {
-    it('changes restuarant category', () => {
-      const previousState = { restuarantCategory: '' };
-      const nextState = reducer(previousState, updateRestuarantCategory('양식'));
+  describe('updateRestaurantCategory', () => {
+    it('changes restaurant category', () => {
+      const previousState = { restaurantCategory: '' };
+      const nextState = reducer(previousState, updateRestaurantCategory('양식'));
 
-      expect(nextState.restuarantCategory).toBe('양식');
+      expect(nextState.restaurantCategory).toBe('양식');
     });
   });
 
-  describe('updateRestuarantAddress', () => {
-    it('changes restuarant address', () => {
-      const previousState = { restuarantAddress: '' };
-      const nextState = reducer(previousState, updateRestuarantAddress('서울시 강남구'));
+  describe('updateRestaurantAddress', () => {
+    it('changes restaurant address', () => {
+      const previousState = { restaurantAddress: '' };
+      const nextState = reducer(previousState, updateRestaurantAddress('서울시 강남구'));
 
-      expect(nextState.restuarantAddress).toBe('서울시 강남구');
+      expect(nextState.restaurantAddress).toBe('서울시 강남구');
     });
   });
 });
