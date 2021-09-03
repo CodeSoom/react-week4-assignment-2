@@ -18,7 +18,10 @@ describe('ListContainer', () => {
   });
 
   it('renders restaurant lists', () => {
-    given2('restaurants', () => ['맥도날드 | 양식 | 서울시 양천구']);
+    given2('restaurants', () => [{
+      id: 0,
+      title: '맥도날드 | 양식 | 서울시 양천구',
+    }]);
 
     const { container } = render(<ListContainer />);
 
