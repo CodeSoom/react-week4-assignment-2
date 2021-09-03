@@ -1,8 +1,19 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants: [{
+      id: 0,
+      title: ['롯데리아 | 양식 | 서울시 영등포구'],
+    }],
+  }));
+
   it('renders title', () => {
     const { container } = render(<App />);
 
@@ -37,5 +48,11 @@ describe('App', () => {
     const { container } = render(<App />);
 
     expect(container).toHaveTextContent('등록');
+  });
+
+  it('renders restaurant lists when restaurant added', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('롯데리아 | 양식 | 서울시 영등포구');
   });
 });
