@@ -18,3 +18,7 @@ export function updateRestaurantAddress(restaurantAddress) {
     payload: { restaurantAddress },
   };
 }
+
+export function addRestaurant() {
+
+}

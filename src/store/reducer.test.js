@@ -4,6 +4,7 @@ import {
   updateRestaurantName,
   updateRestaurantCategory,
   updateRestaurantAddress,
+  addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -13,6 +14,7 @@ describe('reducer', () => {
         restaurantName: '',
         restaurantCategory: '',
         restaurantAddress: '',
+        restaurants: [],
       };
       const nextState = reducer(undefined, { type: undefined });
 
@@ -53,6 +55,26 @@ describe('reducer', () => {
       const nextState = reducer(previousState, updateRestaurantAddress('서울시 강남구'));
 
       expect(nextState.restaurantAddress).toBe('서울시 강남구');
+    });
+  });
+
+  describe('addRestaurant', () => {
+    it('adds a new restaurant', () => {
+      const previousState = {
+        restaurantName: '맥도날드',
+        restaurantCategory: '양식',
+        restaurantAddress: '서울시 종로구',
+        restaurants: [],
+      };
+
+      const nextState = reducer(previousState, addRestaurant());
+
+      expect(nextState).toEqual({
+        restaurantName: '',
+        restaurantCategory: '',
+        restaurantAddress: '',
+        restaurants: ['맥도날드 | 양식 | 서울시 종로구'],
+      });
     });
   });
 });
