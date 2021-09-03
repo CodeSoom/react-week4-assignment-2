@@ -76,4 +76,12 @@ describe('InputContainer', () => {
 
     expect(getByDisplayValue(/서울시 서초구/)).not.toBeNull();
   });
+
+  it('adds a restaurant', () => {
+    const { getByText } = render(<InputContainer />);
+
+    fireEvent.click(getByText('등록'));
+
+    expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });
+  });
 });
