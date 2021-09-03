@@ -7,10 +7,10 @@ export default function ListContainer() {
 
   return (
     <>
-      {restaurants.map((restaurant, index) => (
+      {restaurants.map(({ id, title }) => (
         <List
-          key={index}
-          value={restaurant}
+          key={id}
+          value={title}
         />
       ))}
     </>
