@@ -10,6 +10,7 @@ describe('Input', () => {
   given('value', () => '');
   given('ariaLabel', () => '');
   given('placeholder', () => '');
+  given('inputName', () => '');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -21,6 +22,7 @@ describe('Input', () => {
       value={given.value}
       ariaLabel={given.ariaLabel}
       placeholder={given.placeholder}
+      inputName={given.inputName}
     />
   ));
 
@@ -38,12 +40,14 @@ describe('Input', () => {
     given('ariaLabel', () => 'restaurantName');
     given('value', () => '시카고피자');
     given('placeholder', () => '이름');
+    given('inputName', () => 'name');
 
     const { getByLabelText } = renderInput();
 
     const restaurantName = getByLabelText('restaurantName');
 
     expect(restaurantName.value).toBe('시카고피자');
+    expect(restaurantName.name).toBe('name');
   });
 
   it('listens change event', () => {
