@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
@@ -10,6 +10,11 @@ describe('InputContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    restaurantName: '카레맛집',
+    restaurantCategory: '일식',
+    restaurantAddress: '서울시 서초구',
+  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -52,5 +57,23 @@ describe('InputContainer', () => {
       payload: { restaurantAddress: '서울시 강남구' },
       type: 'updateRestaurantAddress',
     });
+  });
+
+  it('selects restaurantName', () => {
+    const { getByDisplayValue } = render(<InputContainer />);
+
+    expect(getByDisplayValue(/카레맛집/)).not.toBeNull();
+  });
+
+  it('selects restaurantCategory', () => {
+    const { getByDisplayValue } = render(<InputContainer />);
+
+    expect(getByDisplayValue(/일식/)).not.toBeNull();
+  });
+
+  it('selects restaurantAddress', () => {
+    const { getByDisplayValue } = render(<InputContainer />);
+
+    expect(getByDisplayValue(/서울시 서초구/)).not.toBeNull();
   });
 });
