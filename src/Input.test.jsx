@@ -5,14 +5,14 @@ import given from 'given2';
 import Input from './Input';
 
 describe('Input', () => {
-  const handleOnChange = jest.fn();
+  const handleChange = jest.fn();
 
   given('value', () => '');
   given('ariaLabel', () => '');
 
   const renderInput = render((
     <Input
-      handleOnChange={handleOnChange}
+      handleChange={handleChange}
       value={given.value}
       ariaLabel={given.ariaLabel}
     />
@@ -39,17 +39,17 @@ describe('Input', () => {
     expect(restaurantName.value).toBe('시카고피자');
   });
 
-  it('listens onChange event', () => {
+  it('listens change event', () => {
     given('ariaLabel', () => 'restaurantName');
 
     const { getByLabelText } = renderInput();
 
-    expect(handleOnChange).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
     fireEvent.change(getByLabelText('restaurantName'), {
       target: { value: '시카고피자' },
     });
 
-    expect(handleOnChange).toBeCalled();
+    expect(handleChange).toBeCalled();
   });
 });
