@@ -2,6 +2,7 @@ const initialState = {
   restaurantName: '',
   restaurantCategory: '',
   restaurantAddress: '',
+  restaurants: [],
 };
 
 const reducers = {
@@ -16,6 +17,16 @@ const reducers = {
   updateRestaurantAddress: (state, { payload }) => ({
     ...state,
     restaurantAddress: payload.restaurantAddress,
+  }),
+  addRestaurant: (state) => ({
+    ...state,
+    restaurantName: '',
+    restaurantCategory: '',
+    restaurantAddress: '',
+    restaurants: [
+      ...state.restaurants,
+      `${state.restaurantName} | ${state.restaurantCategory} | ${state.restaurantAddress}`,
+    ],
   }),
 };
 

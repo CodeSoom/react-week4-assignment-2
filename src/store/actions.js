@@ -20,5 +20,5 @@ export function updateRestaurantAddress(restaurantAddress) {
 }
 
 export function addRestaurant() {
-
+  return { type: 'addRestaurant' };
 }
