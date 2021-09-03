@@ -1,4 +1,5 @@
 import InputContainer from './container/InputContainer';
+import ListContainer from './container/ListContainer';
 
 export default function App() {
   return (
@@ -6,6 +7,7 @@ export default function App() {
       <h1>
         Restaurants
       </h1>
+      <ListContainer />
       <InputContainer />
     </>
   );
