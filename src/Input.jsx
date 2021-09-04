@@ -1,12 +1,12 @@
 export default function Input({
-  name, placeholder, valueText, onChange,
+  inputName, placeholder, valueText, onChange,
 }) {
   function handleChange(event) {
-    const { value } = event.target;
-    onChange(value);
+    const { name, value } = event.target;
+    onChange(name, value);
   }
 
   return (
-    <input name={name} placeholder={placeholder} value={valueText} onChange={handleChange} />
+    <input name={inputName} placeholder={placeholder} value={valueText} onChange={handleChange} />
   );
 }

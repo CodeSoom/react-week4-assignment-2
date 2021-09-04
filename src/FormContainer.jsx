@@ -18,16 +18,18 @@ export default function FormContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChangeName(value) {
-    dispatch(updateNameText(value));
-  }
-
-  function handleChangeCategory(value) {
-    dispatch(updateCategoryText(value));
-  }
-
-  function handleChangeAddress(value) {
-    dispatch(updateAddressText(value));
+  function handleChangeInput(name, value) {
+    if (name === 'name') {
+      dispatch(updateNameText(value));
+      return;
+    }
+    if (name === 'category') {
+      dispatch(updateCategoryText(value));
+      return;
+    }
+    if (name === 'address') {
+      dispatch(updateAddressText(value));
+    }
   }
 
   function handleAddRestaurant() {
@@ -39,9 +41,7 @@ export default function FormContainer() {
       nameText={nameText}
       categoryText={categoryText}
       addressText={addressText}
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
+      onChangeInput={handleChangeInput}
       onClick={handleAddRestaurant}
     />
   ));

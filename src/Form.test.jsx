@@ -2,9 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Form from './Form';
 
-const handleChangeName = jest.fn();
-const handleChangeCategory = jest.fn();
-const handleChangeAddress = jest.fn();
+const handleChangeInput = jest.fn();
 const handleAddRestaurant = jest.fn();
 
 describe('Form', () => {
@@ -14,9 +12,7 @@ describe('Form', () => {
         nameText=""
         categoryText=""
         addressText=""
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
+        onChangeInput={handleChangeInput}
         onClick={handleAddRestaurant}
       />
     ));
@@ -38,19 +34,19 @@ describe('Form', () => {
       target: { value: '시골순두부' },
     });
 
-    expect(handleChangeName).toBeCalled();
+    expect(handleChangeInput).toBeCalled();
 
     fireEvent.change(getByPlaceholderText(/분류/), {
       target: { value: '한식' },
     });
 
-    expect(handleChangeCategory).toBeCalled();
+    expect(handleChangeInput).toBeCalled();
 
     fireEvent.change(getByPlaceholderText(/주소/), {
       target: { value: '인천시 계양구' },
     });
 
-    expect(handleChangeAddress).toBeCalled();
+    expect(handleChangeInput).toBeCalled();
   });
 
   it('등록을 클릭하면 Click 이벤트가 발생한다', () => {
