@@ -28,7 +28,7 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { restaurantName: '시카고핏짜' },
+      payload: { name: '시카고핏짜' },
       type: 'updateRestaurantName',
     });
   });
@@ -41,7 +41,7 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { restaurantCategory: '양식' },
+      payload: { category: '양식' },
       type: 'updateRestaurantCategory',
     });
   });
@@ -54,7 +54,7 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { restaurantAddress: '서울시 강남구' },
+      payload: { address: '서울시 강남구' },
       type: 'updateRestaurantAddress',
     });
   });
