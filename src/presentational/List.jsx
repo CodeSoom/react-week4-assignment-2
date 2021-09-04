@@ -1,3 +1,11 @@
-export default function List({ value }) {
-  return <li>{value}</li>;
+export default function List({ restaurants }) {
+  return (
+    <ul>
+      {restaurants.map(({ id, title }) => (
+        <li key={id}>
+          {title}
+        </li>
+      ))}
+    </ul>
+  );
 }
