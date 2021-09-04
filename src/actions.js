@@ -1,26 +1,24 @@
-export function updateNameText(nameText) {
-  return {
-    type: 'updateNameText',
-    payload: {
-      nameText,
-    },
-  };
-}
-
-export function updateCategoryText(categoryText) {
-  return {
-    type: 'updateCategoryText',
-    payload: {
-      categoryText,
-    },
-  };
-}
-
-export function updateAddressText(addressText) {
+export function updateInput(name, value) {
+  if (name === 'name') {
+    return {
+      type: 'updateNameText',
+      payload: {
+        nameText: value,
+      },
+    };
+  }
+  if (name === 'category') {
+    return {
+      type: 'updateCategoryText',
+      payload: {
+        categoryText: value,
+      },
+    };
+  }
   return {
     type: 'updateAddressText',
     payload: {
-      addressText,
+      addressText: value,
     },
   };
 }

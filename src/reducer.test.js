@@ -3,9 +3,7 @@ import reducer from './reducer';
 import {
   addRestaurant,
   setRestaurants,
-  updateAddressText,
-  updateCategoryText,
-  updateNameText,
+  updateInput,
 } from './actions';
 
 describe('reducer', () => {
@@ -32,7 +30,7 @@ describe('reducer', () => {
       it('changes a displayed name', () => {
         const state = reducer({
           nameText: '',
-        }, updateNameText('성원각'));
+        }, updateInput('name', '성원각'));
 
         expect(state.nameText).toBe('성원각');
       });
@@ -42,7 +40,7 @@ describe('reducer', () => {
       it('changes a displayed category', () => {
         const state = reducer({
           categoryText: '',
-        }, updateCategoryText('중식'));
+        }, updateInput('category', '중식'));
 
         expect(state.categoryText).toBe('중식');
       });
@@ -52,7 +50,7 @@ describe('reducer', () => {
       it('changes a displayed address', () => {
         const state = reducer({
           addressText: '',
-        }, updateAddressText('서울시 동작구'));
+        }, updateInput('address', '서울시 동작구'));
 
         expect(state.addressText).toBe('서울시 동작구');
       });
