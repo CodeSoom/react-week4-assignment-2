@@ -11,9 +11,9 @@ export default function Form({
 }) {
   return ((
     <div>
-      <Input name="name" placeholder="이름" value={nameText} onChange={onChangeName} />
-      <Input name="category" placeholder="분류" value={categoryText} onChange={onChangeCategory} />
-      <Input name="address" placeholder="주소" value={addressText} onChange={onChangeAddress} />
+      <Input name="name" placeholder="이름" valueText={nameText} onChange={onChangeName} />
+      <Input name="category" placeholder="분류" valueText={categoryText} onChange={onChangeCategory} />
+      <Input name="address" placeholder="주소" valueText={addressText} onChange={onChangeAddress} />
       <button type="submit" onClick={onClick}>등록</button>
     </div>
   ));

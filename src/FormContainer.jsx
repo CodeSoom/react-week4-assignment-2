@@ -18,16 +18,16 @@ export default function FormContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChangeName(event) {
-    dispatch(updateNameText(event.target.value));
+  function handleChangeName(value) {
+    dispatch(updateNameText(value));
   }
 
-  function handleChangeCategory(event) {
-    dispatch(updateCategoryText(event.target.value));
+  function handleChangeCategory(value) {
+    dispatch(updateCategoryText(value));
   }
 
-  function handleChangeAddress(event) {
-    dispatch(updateAddressText(event.target.value));
+  function handleChangeAddress(value) {
+    dispatch(updateAddressText(value));
   }
 
   function handleAddRestaurant() {
