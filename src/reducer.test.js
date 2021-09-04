@@ -7,6 +7,10 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   context('without an existed action', () => {
     const notExistedAction = jest.fn();
 

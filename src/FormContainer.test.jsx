@@ -7,16 +7,20 @@ import FormContainer from './FormContainer';
 jest.mock('react-redux');
 
 describe('FormContainer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  it('input을 보여준다', () => {
-    useSelector.mockImplementation((selector) => selector({
-      nameText: '성원각',
-      categoryText: '중식',
-      addressText: '서울시 동작구',
-    }));
+  useSelector.mockImplementation((selector) => selector({
+    nameText: '성원각',
+    categoryText: '중식',
+    addressText: '서울시 동작구',
+  }));
 
+  it('input을 보여준다', () => {
     const { getByText, getByPlaceholderText } = render((
       <FormContainer />
     ));
