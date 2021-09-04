@@ -1,10 +1,14 @@
 export default function Input({
-  ariaLabel, value, handleChange, placeholder, inputName,
+  ariaLabel, value, onChange, placeholder, name,
 }) {
+  const handleChange = (event) => {
+    onChange(event.target.value);
+  };
+
   return (
     <input
       type="text"
-      name={inputName}
+      name={name}
       placeholder={placeholder}
       aria-label={ariaLabel}
       value={value}

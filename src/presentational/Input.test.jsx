@@ -5,12 +5,11 @@ import given from 'given2';
 import Input from './Input';
 
 describe('Input', () => {
-  const handleChange = jest.fn();
+  const onChange = jest.fn();
 
   given('value', () => '');
   given('ariaLabel', () => '');
   given('placeholder', () => '');
-  given('inputName', () => '');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -18,11 +17,11 @@ describe('Input', () => {
 
   const renderInput = () => render((
     <Input
-      handleChange={handleChange}
+      onChange={onChange}
       value={given.value}
       ariaLabel={given.ariaLabel}
       placeholder={given.placeholder}
-      inputName={given.inputName}
+      name="name"
     />
   ));
 
@@ -40,7 +39,6 @@ describe('Input', () => {
     given('ariaLabel', () => 'restaurantName');
     given('value', () => '시카고피자');
     given('placeholder', () => '이름');
-    given('inputName', () => 'name');
 
     const { getByLabelText } = renderInput();
 
@@ -55,12 +53,12 @@ describe('Input', () => {
 
     const { getByLabelText } = renderInput();
 
-    expect(handleChange).not.toBeCalled();
+    expect(onChange).not.toBeCalled();
 
     fireEvent.change(getByLabelText('restaurantName'), {
       target: { value: '시카고피자' },
     });
 
-    expect(handleChange).toBeCalled();
+    expect(onChange).toBeCalled();
   });
 });

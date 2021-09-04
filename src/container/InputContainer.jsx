@@ -14,17 +14,25 @@ export default function InputContainer() {
 
   const dispatch = useDispatch();
 
-  const handleChangeName = (event) => {
-    dispatch(updateRestaurantName(event.target.value));
-  };
-
-  const handleChangeCategory = (event) => {
-    dispatch(updateRestaurantCategory(event.target.value));
-  };
-
-  const handleChangeAddress = (event) => {
-    dispatch(updateRestaurantAddress(event.target.value));
-  };
+  const Inputs = [{
+    ariaLabel: 'restaurantName',
+    value: restaurantName,
+    name: 'name',
+    placeholder: '이름',
+    onChange: (value) => dispatch(updateRestaurantName(value)),
+  }, {
+    ariaLabel: 'restaurantCategory',
+    value: restaurantCategory,
+    name: 'category',
+    placeholder: '분류',
+    onChange: (value) => dispatch(updateRestaurantCategory(value)),
+  }, {
+    ariaLabel: 'restaurantAddress',
+    value: restaurantAddress,
+    name: 'address',
+    placeholder: '주소',
+    onChange: (value) => dispatch(updateRestaurantAddress(value)),
+  }];
 
   const handleClick = () => {
     dispatch(addRestaurant());
@@ -32,27 +40,18 @@ export default function InputContainer() {
 
   return (
     <>
-      <Input
-        ariaLabel="restaurantName"
-        value={restaurantName}
-        handleChange={handleChangeName}
-        inputName="name"
-        placeholder="이름"
-      />
-      <Input
-        ariaLabel="restaurantCategory"
-        value={restaurantCategory}
-        handleChange={handleChangeCategory}
-        inputName="category"
-        placeholder="분류"
-      />
-      <Input
-        ariaLabel="restaurantAddress"
-        value={restaurantAddress}
-        handleChange={handleChangeAddress}
-        inputName="address"
-        placeholder="주소"
-      />
+      {Inputs.map(({
+        ariaLabel, value, onChange, name, placeholder,
+      }) => (
+        <Input
+          key={ariaLabel}
+          ariaLabel={ariaLabel}
+          value={value}
+          onChange={onChange}
+          name={name}
+          placeholder={placeholder}
+        />
+      ))}
       <button
         type="button"
         onClick={handleClick}
