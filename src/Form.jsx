@@ -1,3 +1,5 @@
+import Input from './Input';
+
 export default function Form({
   nameText,
   categoryText,
@@ -9,9 +11,9 @@ export default function Form({
 }) {
   return ((
     <div>
-      <input name="name" placeholder="이름" value={nameText} onChange={onChangeName} />
-      <input name="category" placeholder="분류" value={categoryText} onChange={onChangeCategory} />
-      <input name="address" placeholder="주소" value={addressText} onChange={onChangeAddress} />
+      <Input name="name" placeholder="이름" value={nameText} onChange={onChangeName} />
+      <Input name="category" placeholder="분류" value={categoryText} onChange={onChangeCategory} />
+      <Input name="address" placeholder="주소" value={addressText} onChange={onChangeAddress} />
       <button type="submit" onClick={onClick}>등록</button>
     </div>
   ));
