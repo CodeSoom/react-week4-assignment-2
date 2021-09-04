@@ -11,9 +11,11 @@ describe('reducer', () => {
   context('without exited state', () => {
     it('returns initialState', () => {
       const initialState = {
-        restaurantName: '',
-        restaurantCategory: '',
-        restaurantAddress: '',
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
         restaurants: [],
       };
       const nextState = reducer(undefined, { type: undefined });
@@ -24,7 +26,7 @@ describe('reducer', () => {
 
   context('without exited action', () => {
     it('returns previous state', () => {
-      const previousState = { restaurantName: '' };
+      const previousState = { restaurant: { name: '' } };
       const nextState = reducer(previousState, { type: undefined });
 
       expect(nextState).toBe(previousState);
@@ -33,46 +35,50 @@ describe('reducer', () => {
 
   describe('updateRestaurantName', () => {
     it('changes restaurant name', () => {
-      const previousState = { restaurantName: '' };
+      const previousState = { restaurant: { name: '' } };
       const nextState = reducer(previousState, updateRestaurantName('시카고피자'));
 
-      expect(nextState.restaurantName).toBe('시카고피자');
+      expect(nextState.restaurant.name).toBe('시카고피자');
     });
   });
 
   describe('updateRestaurantCategory', () => {
     it('changes restaurant category', () => {
-      const previousState = { restaurantCategory: '' };
+      const previousState = { restaurant: { category: '' } };
       const nextState = reducer(previousState, updateRestaurantCategory('양식'));
 
-      expect(nextState.restaurantCategory).toBe('양식');
+      expect(nextState.restaurant.category).toBe('양식');
     });
   });
 
   describe('updateRestaurantAddress', () => {
     it('changes restaurant address', () => {
-      const previousState = { restaurantAddress: '' };
+      const previousState = { restaurant: { address: '' } };
       const nextState = reducer(previousState, updateRestaurantAddress('서울시 강남구'));
 
-      expect(nextState.restaurantAddress).toBe('서울시 강남구');
+      expect(nextState.restaurant.address).toBe('서울시 강남구');
     });
   });
 
   describe('addRestaurant', () => {
     it('adds a new restaurant', () => {
       const previousState = {
-        restaurantName: '맥도날드',
-        restaurantCategory: '양식',
-        restaurantAddress: '서울시 종로구',
+        restaurant: {
+          name: '맥도날드',
+          category: '양식',
+          address: '서울시 종로구',
+        },
         restaurants: [],
       };
 
       const nextState = reducer(previousState, addRestaurant());
 
       expect(nextState).toEqual({
-        restaurantName: '',
-        restaurantCategory: '',
-        restaurantAddress: '',
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
         restaurants: [{
           id: 0,
           title: '맥도날드 | 양식 | 서울시 종로구',
