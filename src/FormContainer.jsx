@@ -27,9 +27,7 @@ export default function FormContainer() {
       dispatch(updateCategoryText(value));
       return;
     }
-    if (name === 'address') {
-      dispatch(updateAddressText(value));
-    }
+    dispatch(updateAddressText(value));
   }
 
   function handleAddRestaurant() {
