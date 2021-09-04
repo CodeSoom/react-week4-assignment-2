@@ -11,7 +11,7 @@ jest.mock('react-redux');
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     newId: 100,
-    restaurantTitles: [
+    inputTitles: [
       {
         name: 'name',
         placeholder: '이름',
@@ -51,7 +51,7 @@ describe('App', () => {
   }));
 
   context('when restaurants empty', () => {
-    it('shows input page', () => {
+    it('shows empty restaurant list', () => {
       const { getByText, getByPlaceholderText } = render((
         <App />
       ));

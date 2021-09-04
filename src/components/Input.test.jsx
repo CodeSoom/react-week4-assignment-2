@@ -6,7 +6,7 @@ import Input from './Input';
 
 describe('Input', () => {
   it('renders Input and listens chage event', () => {
-    const restaurantTitles = {
+    const inputTitles = {
       name: 'name',
       placeholder: '이름',
       value: '',
@@ -16,9 +16,9 @@ describe('Input', () => {
 
     const { getByPlaceholderText } = render((
       <Input
-        name={restaurantTitles.name}
-        placeholder={restaurantTitles.placeholder}
-        value={restaurantTitles.value}
+        name={inputTitles.name}
+        placeholder={inputTitles.placeholder}
+        value={inputTitles.value}
         onChange={handleChange}
       />
     ));

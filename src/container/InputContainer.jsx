@@ -12,8 +12,8 @@ import {
 export default function PageContainer() {
   const dispatch = useDispatch();
 
-  const { restaurantTitles } = useSelector((state) => ({
-    restaurantTitles: state.restaurantTitles,
+  const { inputTitles } = useSelector((state) => ({
+    inputTitles: state.inputTitles,
   }));
 
   function handleChangeRestaurant(name, event) {
@@ -26,7 +26,7 @@ export default function PageContainer() {
 
   return (
     <Page
-      restaurantTitles={restaurantTitles}
+      inputTitles={inputTitles}
       onChange={handleChangeRestaurant}
       onClick={handleClickAddRestaurant}
     />

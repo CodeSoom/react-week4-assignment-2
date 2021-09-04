@@ -8,7 +8,7 @@ import {
 describe('reducer', () => {
   describe('updateRestaurant', () => {
     const state = reducer({
-      restaurantTitles: [
+      inputTitles: [
         {
           name: 'name',
           placeholder: '이름',
@@ -27,14 +27,14 @@ describe('reducer', () => {
       ],
     }, updateRestaurant('name', 'New Restaurant'));
 
-    expect(state.restaurantTitles[0].value).toBe('New Restaurant');
+    expect(state.inputTitles[0].value).toBe('New Restaurant');
   });
 
   describe('addRestaurant', () => {
     function reduceAddRestaurant(newName, newCategory, newAddress) {
       return reducer({
         newId: 103,
-        restaurantTitles: [
+        inputTitles: [
           {
             name: 'name',
             placeholder: '이름',
@@ -85,12 +85,12 @@ describe('reducer', () => {
         expect(state.restaurants[3].address).toBe('서울시');
       });
 
-      it('clears restaurantTitles', () => {
+      it('clears inputTitles', () => {
         const state = reduceAddRestaurant('New Restaurant', '중식', '서울시');
 
-        expect(state.restaurantTitles[0].value).toBe('');
-        expect(state.restaurantTitles[1].value).toBe('');
-        expect(state.restaurantTitles[2].value).toBe('');
+        expect(state.inputTitles[0].value).toBe('');
+        expect(state.inputTitles[1].value).toBe('');
+        expect(state.inputTitles[2].value).toBe('');
       });
     });
 
@@ -108,7 +108,7 @@ describe('reducer', () => {
       undefined, { type: '', payload: {} },
     );
 
-    it('returns empty state', () => {
+    it('shows empty restaurant list', () => {
       expect(state).toBe(state);
     });
   });

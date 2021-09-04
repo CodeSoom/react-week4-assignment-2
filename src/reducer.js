@@ -1,6 +1,6 @@
 const initialState = {
   newId: 103,
-  restaurantTitles: [
+  inputTitles: [
     {
       name: 'name',
       placeholder: '이름',
@@ -41,7 +41,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'updateRestaurant') {
-    const changeRestaurant = state.restaurantTitles.map((restaurantTitle) => ({
+    const changeRestaurant = state.inputTitles.map((restaurantTitle) => ({
       ...restaurantTitle,
       value: restaurantTitle.name === action.payload.name
         ? action.payload.value : restaurantTitle.value,
@@ -49,20 +49,20 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
-      restaurantTitles: changeRestaurant,
+      inputTitles: changeRestaurant,
     };
   }
 
   if (action.type === 'addRestaurant') {
-    const { newId, restaurantTitles, restaurants } = state;
-    const [name, category, address] = restaurantTitles;
+    const { newId, inputTitles, restaurants } = state;
+    const [name, category, address] = inputTitles;
 
-    const newRestaurantTitle = restaurantTitles.map((restaurantTitle) => ({
+    const newRestaurantTitle = inputTitles.map((restaurantTitle) => ({
       ...restaurantTitle,
       value: '',
     }));
 
-    const emptyRestaurantTitle = restaurantTitles.filter((restaurantTitle) => restaurantTitle.value === '').length;
+    const emptyRestaurantTitle = inputTitles.filter((restaurantTitle) => restaurantTitle.value === '').length;
 
     if (emptyRestaurantTitle) {
       return state;
@@ -71,7 +71,7 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       newId: newId + 1,
-      restaurantTitles: newRestaurantTitle,
+      inputTitles: newRestaurantTitle,
       restaurants: [...restaurants, {
         id: newId,
         name: name.value,

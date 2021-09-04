@@ -8,7 +8,7 @@ test('Page', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
-  const restaurantTitles = [
+  const inputTitles = [
     {
       name: 'name',
       placeholder: '이름',
@@ -28,7 +28,7 @@ test('Page', () => {
 
   const { getByPlaceholderText } = render((
     <Page
-      restaurantTitles={restaurantTitles}
+      inputTitles={inputTitles}
       onChange={handleChange}
       onClick={handleClick}
     />

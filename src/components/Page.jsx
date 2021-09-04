@@ -2,15 +2,15 @@ import React from 'react';
 
 import Input from './Input';
 
-export default function Page({ restaurantTitles, onChange, onClick }) {
+export default function Page({ inputTitles, onChange, onClick }) {
   return (
     <div>
-      {restaurantTitles.map((restaurantTitle) => (
+      {inputTitles.map((inputTitle) => (
         <Input
-          key={restaurantTitle.name}
-          name={restaurantTitle.name}
-          placeholder={restaurantTitle.placeholder}
-          value={restaurantTitle.value}
+          key={inputTitle.name}
+          name={inputTitle.name}
+          placeholder={inputTitle.placeholder}
+          value={inputTitle.value}
           onChange={onChange}
         />
       ))}

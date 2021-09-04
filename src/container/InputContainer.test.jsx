@@ -4,12 +4,14 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import PageContainer from './PageContainer';
+import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 
 describe('PageContainer', () => {
-  const restaurantTitles = [
+  const dispatch = jest.fn();
+
+  const inputTitles = [
     {
       name: 'name',
       placeholder: '이름',
@@ -27,17 +29,15 @@ describe('PageContainer', () => {
     },
   ];
 
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    inputTitles,
+  }));
+
   it('inputs restaurant information', () => {
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      restaurantTitles,
-    }));
-
     const { getByText, getByPlaceholderText } = render((
-      <PageContainer />
+      <InputContainer />
     ));
 
     expect(getByPlaceholderText('이름')).toBeInTheDocument();
