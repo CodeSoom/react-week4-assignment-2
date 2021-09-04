@@ -8,7 +8,7 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  describe('none exited state', () => {
+  context('without exited state', () => {
     it('returns initialState', () => {
       const initialState = {
         restaurantName: '',
@@ -22,7 +22,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('none exited action', () => {
+  context('without exited action', () => {
     it('returns previous state', () => {
       const previousState = { restaurantName: '' };
       const nextState = reducer(previousState, { type: undefined });
