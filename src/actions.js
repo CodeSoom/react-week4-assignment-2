@@ -1,15 +1,12 @@
-export function updateRestaurant(name, value) {
+export function setRestaurants(restaurants) {
   return {
-    type: 'updateRestaurant',
+    type: 'setRestaurants',
     payload: {
-      name,
-      value,
+      restaurants,
     },
   };
 }
 
-export function addRestaurant() {
-  return {
-    type: 'addRestaurant',
-  };
+export function xxx() {
+  return null;
 }
