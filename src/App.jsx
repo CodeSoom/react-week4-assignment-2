@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 export default function App() {
   const [state, setState] = useState({
-    name: '',
-    classification: '',
-    address: '',
     restaurants: [],
+    name: '',
+    category: '',
+    address: '',
   });
   const {
-    name, classification, address, restaurants,
+    name, category, address, restaurants,
   } = state;
 
   const handleChange = (inputType) => (event) => {
@@ -19,35 +19,42 @@ export default function App() {
   };
 
   const handleClick = () => {
+    const newRestaurant = { name, category, address };
+
     setState({
       ...state,
+      restaurants: [...state.restaurants, newRestaurant],
       name: '',
-      classification: '',
+      category: '',
       address: '',
-      restaurants: [...state.restaurants, { name, classification, restaurants }],
     });
   };
 
   return (
     <div>
       <h1>Restaurants</h1>
+      <ul>
+        {restaurants.map(
+          ({ name, category, address }) => (<li key={name}>{`${name}|${category}|${address}`}</li>),
+        )}
+      </ul>
       <div>
         <input
-          id="input-name"
+          name="name"
           type="text"
           placeholder="이름"
           value={name}
           onChange={handleChange('name')}
         />
         <input
-          id="input-classification"
+          name="category"
           type="text"
           placeholder="분류"
-          value={classification}
-          onChange={handleChange('classification')}
+          value={category}
+          onChange={handleChange('category')}
         />
         <input
-          id="input-address"
+          name="address"
           type="text"
           placeholder="주소"
           value={address}

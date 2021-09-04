@@ -16,7 +16,7 @@ describe('App', () => {
   });
 
   describe('restaurant registration', () => {
-    it('has 3 inputs for name, classification, and address', () => {
+    it('has 3 inputs for name, category, and address', () => {
       const { getByPlaceholderText } = render(
         <App />,
       );
@@ -52,7 +52,7 @@ describe('App', () => {
     });
 
     context('when button is clicked', () => {
-      it('resets 3 inputs', () => {
+      it('resets 3 inputs, regists a restaurant', () => {
         const { getByText, getByPlaceholderText } = render(
           <App />,
         );
@@ -66,6 +66,10 @@ describe('App', () => {
         expect(getByPlaceholderText('이름')).toHaveValue('');
         expect(getByPlaceholderText('분류')).toHaveValue('');
         expect(getByPlaceholderText('주소')).toHaveValue('');
+
+        expect(getByText(/마녀주방/)).not.toBeNull();
+        expect(getByText(/분식/)).not.toBeNull();
+        expect(getByText(/서울시 강남구/)).not.toBeNull();
       });
     });
   });
