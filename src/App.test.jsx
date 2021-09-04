@@ -26,8 +26,16 @@ describe('App', () => {
       expect(getByPlaceholderText('주소')).not.toBeNull();
     });
 
+    it('has add button', () => {
+      const { getByText } = render(
+        <App />,
+      );
+
+      expect(getByText('등록')).not.toBeNull();
+    });
+
     context('when inputs are typed', () => {
-      it('change its value', () => {
+      it('changes its value', () => {
         const { getByPlaceholderText } = render(
           <App />,
         );
@@ -40,6 +48,24 @@ describe('App', () => {
 
         fireEvent.change(getByPlaceholderText('주소'), { target: { value: '서울시 강남구' } });
         expect(getByPlaceholderText('주소')).toHaveValue('서울시 강남구');
+      });
+    });
+
+    context('when button is clicked', () => {
+      it('resets 3 inputs', () => {
+        const { getByText, getByPlaceholderText } = render(
+          <App />,
+        );
+
+        fireEvent.change(getByPlaceholderText('이름'), { target: { value: '마녀주방' } });
+        fireEvent.change(getByPlaceholderText('분류'), { target: { value: '분식' } });
+        fireEvent.change(getByPlaceholderText('주소'), { target: { value: '서울시 강남구' } });
+
+        fireEvent.click(getByText('등록'));
+
+        expect(getByPlaceholderText('이름')).toHaveValue('');
+        expect(getByPlaceholderText('분류')).toHaveValue('');
+        expect(getByPlaceholderText('주소')).toHaveValue('');
       });
     });
   });

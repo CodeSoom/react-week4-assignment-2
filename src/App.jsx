@@ -5,13 +5,26 @@ export default function App() {
     name: '',
     classification: '',
     address: '',
+    restaurants: [],
   });
-  const { name, classification, address } = state;
+  const {
+    name, classification, address, restaurants,
+  } = state;
 
   const handleChange = (inputType) => (event) => {
     setState({
       ...state,
       [inputType]: event.target.value,
+    });
+  };
+
+  const handleClick = () => {
+    setState({
+      ...state,
+      name: '',
+      classification: '',
+      address: '',
+      restaurants: [...state.restaurants, { name, classification, restaurants }],
     });
   };
 
@@ -40,6 +53,9 @@ export default function App() {
           value={address}
           onChange={handleChange('address')}
         />
+        <button type="button" onClick={handleClick}>
+          등록
+        </button>
       </div>
     </div>
   );
