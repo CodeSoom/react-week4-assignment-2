@@ -9,7 +9,7 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  context('with an action not existed', () => {
+  context('without an existed action', () => {
     const notExistedAction = jest.fn();
 
     notExistedAction.mockImplementation(() => ({
@@ -27,7 +27,7 @@ describe('reducer', () => {
     });
   });
 
-  context('with an action existed', () => {
+  context('with an existed action', () => {
     describe('updateNameText', () => {
       it('changes a displayed name', () => {
         const state = reducer({

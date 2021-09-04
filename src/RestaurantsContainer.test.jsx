@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-describe('ListContainer', () => {
+describe('RestaurantsContainer', () => {
   it('식당 리스트를 보여준다', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
@@ -26,7 +26,7 @@ describe('ListContainer', () => {
     }));
 
     const { getByText } = render((
-      <ListContainer />
+      <RestaurantsContainer />
     ));
 
     expect(getByText('성원각 | 중식 | 서울시 동작구')).not.toBeNull();

@@ -7,9 +7,9 @@ import {
   updateNameText,
 } from './actions';
 
-import Input from './Input';
+import Form from './Form';
 
-export default function InputContainer() {
+export default function FormContainer() {
   const { nameText, categoryText, addressText } = useSelector((state) => ({
     nameText: state.nameText,
     categoryText: state.categoryText,
@@ -35,7 +35,7 @@ export default function InputContainer() {
   }
 
   return ((
-    <Input
+    <Form
       nameText={nameText}
       categoryText={categoryText}
       addressText={addressText}

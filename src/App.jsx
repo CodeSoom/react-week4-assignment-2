@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import InputContainer from './InputContainer';
-import ListContainer from './ListContainer';
+import FormContainer from './FormContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   setRestaurants,
@@ -19,8 +19,8 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ListContainer />
-      <InputContainer />
+      <RestaurantsContainer />
+      <FormContainer />
     </div>
   );
 }

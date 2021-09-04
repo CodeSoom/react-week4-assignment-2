@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-describe('List', () => {
+describe('Restaurants', () => {
   it('식당 리스트를 보여준다.', () => {
     const restaurants = [
       {
@@ -20,7 +20,7 @@ describe('List', () => {
     ];
 
     const { getByText } = render((
-      <List restaurants={restaurants} />
+      <Restaurants restaurants={restaurants} />
     ));
 
     expect(getByText('성원각 | 중식 | 서울시 동작구')).not.toBeNull();

@@ -2,15 +2,15 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('FormContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  it('입력된 값을 포함하는 input을 보여준다.', () => {
+  it('input을 보여준다', () => {
     useSelector.mockImplementation((selector) => selector({
       nameText: '성원각',
       categoryText: '중식',
@@ -18,7 +18,7 @@ describe('InputContainer', () => {
     }));
 
     const { getByText, getByPlaceholderText } = render((
-      <InputContainer />
+      <FormContainer />
     ));
 
     expect(getByText(/등록/)).not.toBeNull();
@@ -28,9 +28,9 @@ describe('InputContainer', () => {
     expect(getByPlaceholderText(/주소/)).toHaveDisplayValue(/서울시 동작구/);
   });
 
-  it('이벤트가 발생하면 각각의 state를 변경한다.', () => {
+  it('이벤트가 발생하면 각각의 state를 변경한다', () => {
     const { getByText, getByPlaceholderText } = render((
-      <InputContainer />
+      <FormContainer />
     ));
 
     fireEvent.change(getByPlaceholderText(/이름/), {

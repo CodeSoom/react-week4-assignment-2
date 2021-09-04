@@ -1,4 +1,4 @@
-export default function Input({
+export default function Form({
   nameText,
   categoryText,
   addressText,

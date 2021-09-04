@@ -1,15 +1,13 @@
 import { useSelector } from 'react-redux';
 
-import List from './List';
+import Restaurants from './Restaurants';
 
-export default function ListContainer() {
+export default function RestaurantsContainer() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
 
   return ((
-    <List
-      restaurants={restaurants}
-    />
+    <Restaurants restaurants={restaurants} />
   ));
 }
