@@ -1,33 +1,46 @@
 const initialState = {
-  restaurantName: '',
-  restaurantCategory: '',
-  restaurantAddress: '',
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
   restaurants: [],
 };
 
 const reducers = {
   updateRestaurantName: (state, { payload }) => ({
     ...state,
-    restaurantName: payload.restaurantName,
+    restaurant: {
+      ...state.restaurant,
+      name: payload.name,
+    },
   }),
   updateRestaurantCategory: (state, { payload }) => ({
     ...state,
-    restaurantCategory: payload.restaurantCategory,
+    restaurant: {
+      ...state.restaurant,
+      category: payload.category,
+    },
   }),
   updateRestaurantAddress: (state, { payload }) => ({
     ...state,
-    restaurantAddress: payload.restaurantAddress,
+    restaurant: {
+      ...state.restaurant,
+      address: payload.address,
+    },
   }),
   addRestaurant: (state) => ({
     ...state,
-    restaurantName: '',
-    restaurantCategory: '',
-    restaurantAddress: '',
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
     restaurants: [
       ...state.restaurants,
       {
         id: state.restaurants.length,
-        title: `${state.restaurantName} | ${state.restaurantCategory} | ${state.restaurantAddress}`,
+        title: `${state.restaurant.name} | ${state.restaurant.category} | ${state.restaurant.address}`,
       },
     ],
   }),
