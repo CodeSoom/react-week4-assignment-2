@@ -1,10 +1,13 @@
+import Item from './Item';
+
 export default function List({ restaurants }) {
   return (
     <ul>
       {restaurants.map(({ id, title }) => (
-        <li key={id}>
-          {title}
-        </li>
+        <Item
+          key={id}
+          title={title}
+        />
       ))}
     </ul>
   );
