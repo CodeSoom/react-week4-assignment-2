@@ -1,6 +1,18 @@
-export default function App() {
-  const handleChange = () => {
+import { useState } from 'react';
 
+export default function App() {
+  const [state, setState] = useState({
+    name: '',
+    classification: '',
+    address: '',
+  });
+  const { name, classification, address } = state;
+
+  const handleChange = (inputType) => (event) => {
+    setState({
+      ...state,
+      [inputType]: event.target.value,
+    });
   };
 
   return (
@@ -11,22 +23,22 @@ export default function App() {
           id="input-name"
           type="text"
           placeholder="이름"
-          value=""
-          onChange={handleChange}
+          value={name}
+          onChange={handleChange('name')}
         />
         <input
           id="input-classification"
           type="text"
           placeholder="분류"
-          value=""
-          onChange={handleChange}
+          value={classification}
+          onChange={handleChange('classification')}
         />
         <input
           id="input-address"
           type="text"
           placeholder="주소"
-          value=""
-          onChange={handleChange}
+          value={address}
+          onChange={handleChange('address')}
         />
       </div>
     </div>
