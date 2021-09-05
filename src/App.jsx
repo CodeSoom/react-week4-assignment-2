@@ -33,11 +33,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {restaurants.map(
-          ({ name, category, address }) => (<li key={name}>{`${name}|${category}|${address}`}</li>),
-        )}
-      </ul>
+
       <div>
         <input
           name="name"
