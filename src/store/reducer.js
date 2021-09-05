@@ -8,25 +8,11 @@ const initialState = {
 };
 
 const reducers = {
-  updateRestaurantName: (state, { payload }) => ({
+  updateRestaurantField: (state, { payload: { name, value } }) => ({
     ...state,
     restaurant: {
       ...state.restaurant,
-      name: payload.name,
-    },
-  }),
-  updateRestaurantCategory: (state, { payload }) => ({
-    ...state,
-    restaurant: {
-      ...state.restaurant,
-      category: payload.category,
-    },
-  }),
-  updateRestaurantAddress: (state, { payload }) => ({
-    ...state,
-    restaurant: {
-      ...state.restaurant,
-      address: payload.address,
+      [name]: value,
     },
   }),
   addRestaurant: (state) => ({
