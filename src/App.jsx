@@ -9,8 +9,6 @@ import {
   setRestaurants,
 } from './actions';
 
-import restaurants from '../fixtures/restaurants';
-
 export default function App() {
   const dispatch = useDispatch();
 
@@ -22,7 +20,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantsContainer />
-      <RestaurantCreateContainer /> 
+      <RestaurantCreateContainer />
     </div>
   );
 }

@@ -8,17 +8,17 @@ export function setRestaurants(restaurants) {
 }
 
 export function addRestaurant() {
-  return{
+  return {
     type: 'addRestaurant',
-  }
+  };
 }
 
 export function changeRestaurantField({ name, value }) {
-  return{
+  return {
     type: 'changeRestaurantField',
     payload: {
       name,
       value,
-    }
-  }
+    },
+  };
 }

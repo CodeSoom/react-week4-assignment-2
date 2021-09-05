@@ -33,7 +33,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, changeRestaurantField({
         name: 'name',
-        value: '마법사주방'
+        value: '마법사주방',
       }));
 
       expect(state.restaurant.name).toBe('마법사주방');
@@ -55,13 +55,13 @@ describe('reducer', () => {
       const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
-       
+
       expect(state.restaurants[0].id).toBe(101);
 
       expect(state.restaurant.name).toBe('');
 
       expect(state.newId).toBe(102);
-    })
+    });
   });
 
   describe('empty restaurants', () => {

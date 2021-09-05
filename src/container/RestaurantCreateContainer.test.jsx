@@ -13,13 +13,13 @@ test('RestaurantCreateContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: {
-        name: '마법',
-        category: '이탈',
-        address: '서울시',
-      }
-    }));
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: {
+      name: '마법',
+      category: '이탈',
+      address: '서울시',
+    },
+  }));
 
   const { getByText, getByDisplayValue } = render((
     <RestaurantCreateContainer />
@@ -39,8 +39,8 @@ test('RestaurantCreateContainer', () => {
     payload: {
       name: 'address',
       value: '서울시 강남구 역삼동',
-    }
-  })
+    },
+  });
 
   fireEvent.click(getByText('등록'));
 

@@ -1,5 +1,3 @@
-import restaurants from "../fixtures/restaurants";
-
 const initialRestaurant = {
   name: '',
   category: '',

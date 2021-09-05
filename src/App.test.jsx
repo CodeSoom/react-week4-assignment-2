@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import restaurants from '../fixtures/restaurants';
-
 jest.mock('react-redux');
 
 test('App', () => {
@@ -21,7 +19,7 @@ test('App', () => {
   }));
 
   const { queryByText } = render((
-    <App /> 
+    <App />
   ));
 
   expect(dispatch).toBeCalledWith({

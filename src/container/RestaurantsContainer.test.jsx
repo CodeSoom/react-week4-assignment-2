@@ -15,7 +15,7 @@ test('RestaurantsContainer', () => {
     restaurants,
   }));
 
-  const { getByText } = render((
+  render((
     <RestaurantsContainer />
   ));
 });
