@@ -79,4 +79,20 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('undefined action', () => {
+    it('returns state as given', () => {
+      const action = {
+        type: 'notDefined',
+      };
+
+      const state = reducer({
+        restaurants: [{
+          name: '마녀주방', category: '분식', address: '서울시 강남구',
+        }],
+      }, action);
+
+      expect(state.restaurants).toHaveLength(1);
+    });
+  });
 });
