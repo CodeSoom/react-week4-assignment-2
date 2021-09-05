@@ -1,13 +1,12 @@
-export default function Form(props) {
-  const {
-    name,
-    category,
-    address,
-    handleChangeName,
-    handleChangeCategory,
-    handleChangeAddress,
-    handleClickAddRestaurant,
-  } = props;
+export default function Form({
+  restaurant,
+  onChange,
+  onClick,
+}) {
+  function handleChange(event) {
+    const { name, value } = event.target;
+    onChange({ name, value });
+  }
 
   return (
     <div>
@@ -16,29 +15,27 @@ export default function Form(props) {
         id="input-restaurant-name"
         name="name"
         placeholder="이름"
-        value={name}
-        onChange={handleChangeName}
+        value={restaurant.name}
+        onChange={handleChange}
       />
-
       <label htmlFor="input-restaurant-category">분류</label>
       <input
         id="input-restaurant-category"
         name="category"
         placeholder="분류"
-        value={category}
-        onChange={handleChangeCategory}
+        value={restaurant.category}
+        onChange={handleChange}
       />
-
       <label htmlFor="input-restaurant-address">주소</label>
       <input
         id="input-restaurant-address"
         name="address"
         placeholder="주소"
-        value={address}
-        onChange={handleChangeAddress}
+        value={restaurant.address}
+        onChange={handleChange}
       />
 
-      <button type="button" onClick={handleClickAddRestaurant}>등록</button>
+      <button type="button" onClick={onClick}>등록</button>
     </div>
   );
 }

@@ -6,10 +6,8 @@ import App from './App';
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
-    nextId: 100,
-    name: '',
-    category: '',
-    address: '',
+    newId: 100,
+    restaurant: {},
     restaurants: [],
   }));
 

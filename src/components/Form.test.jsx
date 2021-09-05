@@ -1,33 +1,30 @@
 import { fireEvent, render } from '@testing-library/react';
 
+import restaurants from '../../__mocks__/restaurants';
+
 import Form from './Form';
 
 test('Form', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
-  const handleClickAddRestaurant = jest.fn();
+  const handleChange = jest.fn();
+  const handleClick = jest.fn();
 
-  const { getByLabelText, getByText } = render((
+  const { getByLabelText, getByText, getByDisplayValue } = render((
     <Form
-      name=""
-      category=""
-      address=""
-      handleChangeName={handleChangeName}
-      handleChangeCategory={handleChangeCategory}
-      handleChangeAddress={handleChangeAddress}
-      handleClickAddRestaurant={handleClickAddRestaurant}
+      restaurant={restaurants[0]}
+      onChange={handleChange}
+      onClick={handleClick}
     />));
 
-  fireEvent.change(getByLabelText('이름'), { target: { value: '마녀주방' } });
-  expect(handleChangeName).toBeCalled();
+  expect(getByDisplayValue('마녀주방')).not.toBeNull();
+  expect(getByDisplayValue('한식')).not.toBeNull();
+  expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
 
-  fireEvent.change(getByLabelText('분류'), { target: { value: '한식' } });
-  expect(handleChangeCategory).toBeCalled();
-
-  fireEvent.change(getByLabelText('주소'), { target: { value: '서울시 강남구' } });
-  expect(handleChangeAddress).toBeCalled();
+  fireEvent.change(getByLabelText('분류'), { target: { value: '양식' } });
+  expect(handleChange).toBeCalledWith({
+    name: 'category',
+    value: '양식',
+  });
 
   fireEvent.click(getByText('등록'));
-  expect(handleClickAddRestaurant).toBeCalled();
+  expect(handleClick).toBeCalled();
 });

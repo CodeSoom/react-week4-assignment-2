@@ -1,36 +1,32 @@
-const initialState = {
-  nextId: 100,
+const initialRestaurant = {
   name: '',
   category: '',
   address: '',
+};
+
+const initialState = {
+  newId: 100,
+  restaurant: initialRestaurant,
   restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'updateName') {
+  if (action.type === 'updateRestaurant') {
+    const { name, value } = action.payload;
     return {
       ...state,
-      name: action.payload.name,
-    };
-  }
-
-  if (action.type === 'updateCategory') {
-    return {
-      ...state,
-      category: action.payload.category,
-    };
-  }
-
-  if (action.type === 'updateAddress') {
-    return {
-      ...state,
-      address: action.payload.address,
+      restaurant: {
+        ...state.restaurant,
+        [name]: value,
+      },
     };
   }
 
   if (action.type === 'addRestaurant') {
     const {
-      name, category, address, nextId, restaurants,
+      restaurant: { name, category, address },
+      newId,
+      restaurants,
     } = state;
 
     if (name === '' || category === '' || address === '') {
@@ -39,12 +35,10 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
-      nextId: nextId + 1,
-      name: '',
-      category: '',
-      address: '',
+      newId: newId + 1,
+      restaurant: initialRestaurant,
       restaurants: restaurants.concat({
-        id: nextId,
+        id: newId,
         name,
         category,
         address,
