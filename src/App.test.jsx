@@ -1,13 +1,17 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import App from './App';
 
+import restaurants from '../fixtures/restaurants';
+
+jest.mock('react-redux');
+
 test('App', () => {
-  const restaurants = [
-    {
-      id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
-    },
-  ];
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
 
   const { getByText } = render((<App restaurants={restaurants} />
   ));
