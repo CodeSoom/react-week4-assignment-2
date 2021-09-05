@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 
-import { usseDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
 import { setRestaurants } from './actions';
 
-export default function App() {
-  const dispatch = usseDispatch();
+import restaurants from '../fixtures/restaurants';
 
-  // TODO: 초기 실행
-  // restaurants에 데이터 넣기 => dispatch
+export default function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(setRestaurants);
+    dispatch(setRestaurants(restaurants));
   }, []);
 
   return (
