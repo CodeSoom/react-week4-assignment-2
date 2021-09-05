@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import List from './Container/List/List';
+import ListContainer from './Container/List/ListContainer';
 import Register from './Container/Register/Register';
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
     address: '',
   });
   const {
-    name, category, address, restaurants,
+    name, category, address,
   } = state;
 
   const handleChange = (inputType) => (event) => {
@@ -36,7 +36,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <List restaurants={restaurants} />
+      <ListContainer />
       <Register
         name={name}
         category={category}
