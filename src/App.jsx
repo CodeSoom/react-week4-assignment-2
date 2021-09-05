@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import List from './Container/List/List';
+
 export default function App() {
   const [state, setState] = useState({
     restaurants: [],
@@ -33,7 +35,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-
+      <List restaurants={restaurants} />
       <div>
         <input
           name="name"
