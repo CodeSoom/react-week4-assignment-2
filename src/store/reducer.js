@@ -9,6 +9,20 @@ const initialState = {
   error: '',
 };
 
+function validateValues(values) {
+  const keys = Object.getOwnPropertyNames(values);
+  const invalidValues = keys.filter((key) => !values[key]);
+
+  return {
+    isValid: !invalidValues.length,
+    invalidValues,
+  };
+}
+
+function createInvalidValuesErrorMessage(invalidValues) {
+  return `Can not add restaurant, ${invalidValues.join(',')} ${invalidValues.length > 1 ? 'are' : 'is'} empty.`;
+}
+
 export default function reducer(state = initialState, action) {
   if (action.type === 'updateRestaurantInfo') {
     const { infoType, value } = action.payload;
@@ -22,6 +36,14 @@ export default function reducer(state = initialState, action) {
     const {
       name, category, address, restaurants,
     } = state;
+
+    const { isValid, invalidValues } = validateValues({ name, category, address });
+    if (!isValid) {
+      return {
+        ...state,
+        error: createInvalidValuesErrorMessage(invalidValues),
+      };
+    }
 
     return {
       ...state,
