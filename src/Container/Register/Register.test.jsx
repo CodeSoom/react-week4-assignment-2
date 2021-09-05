@@ -40,5 +40,23 @@ describe('register', () => {
       fireEvent.change(getAllByPlaceholderText('이름'), { target: { value: '마녀주방' } });
       expect(handleChange).toHaveBeenCalled();
     });
+
+    it('calls handleClick', () => {
+      const handleChange = jest.fn();
+      const handleClick = jest.fn();
+
+      const { getByText } = render((
+        <Register
+          name="마녀주방"
+          category="분식"
+          address="서울시 강남구"
+          handleChange={handleChange}
+          handleClick={handleClick}
+        />
+      ));
+
+      fireEvent.click(getByText('등록'));
+      expect(handleClick).toHaveBeenCalled();
+    });
   });
 });
