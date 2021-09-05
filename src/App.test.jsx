@@ -8,6 +8,11 @@ jest.mock('react-redux');
 
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
+    restaurant: {
+      name: '',
+      category: '',
+      address: '',
+    },
     restaurants: [{
       id: 0,
       title: ['롯데리아 | 양식 | 서울시 영등포구'],
