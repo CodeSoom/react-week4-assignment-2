@@ -4,13 +4,11 @@ import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import restaurants from '../fixtures/restaurants';
+
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      {
-        id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
-      },
-    ],
+    restaurants,
   }));
 
   const { getByText } = render((<RestaurantsContainer />
