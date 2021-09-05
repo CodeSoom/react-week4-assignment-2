@@ -54,7 +54,7 @@ describe('reducer', () => {
     });
 
     context('with some unfilled info', () => {
-      it("doesn't work, and update error message", () => {
+      it("doesn't work, and update error message(1 info)", () => {
         const state = reducer({
           name: '마녀주방', category: '', address: '서울시 강남구', restaurants: [], error: '',
         }, addRestaurant());
@@ -63,7 +63,19 @@ describe('reducer', () => {
         expect(state.name).toBe('마녀주방');
         expect(state.category).toBe('');
         expect(state.address).toBe('서울시 강남구');
-        expect(state.error).toBe('Can not add restaurant, category is empty.');
+        expect(state.error).toBe('Can not add restaurant. category is empty.');
+      });
+
+      it("doesn't work, and update error message(2 info)", () => {
+        const state = reducer({
+          name: '', category: '', address: '서울시 강남구', restaurants: [], error: '',
+        }, addRestaurant());
+
+        expect(state.restaurants).toHaveLength(0);
+        expect(state.name).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('서울시 강남구');
+        expect(state.error).toBe('Can not add restaurant. name, category are empty.');
       });
     });
   });

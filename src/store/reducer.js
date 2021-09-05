@@ -20,7 +20,7 @@ function validateValues(values) {
 }
 
 function createInvalidValuesErrorMessage(invalidValues) {
-  return `Can not add restaurant, ${invalidValues.join(',')} ${invalidValues.length > 1 ? 'are' : 'is'} empty.`;
+  return `Can not add restaurant. ${invalidValues.join(', ')} ${invalidValues.length > 1 ? 'are' : 'is'} empty.`;
 }
 
 export default function reducer(state = initialState, action) {
@@ -53,5 +53,6 @@ export default function reducer(state = initialState, action) {
       restaurants: [...restaurants, { name, category, address }],
     };
   }
+
   return state;
 }
