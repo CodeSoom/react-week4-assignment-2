@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,4 +20,9 @@ test('App', () => {
   render((
     <App />
   ));
+
+  expect(dispatch).toBeCalledWith({
+    type: 'setRestaurants',
+    payload: { restaurants: [] },
+  });
 });
