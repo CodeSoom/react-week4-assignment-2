@@ -1,10 +1,8 @@
 import reducer from './reducer';
 
 import {
-  updateRestaurantName,
-  updateRestaurantCategory,
-  updateRestaurantAddress,
   addRestaurant,
+  updateRestaurantField,
 } from './actions';
 
 describe('reducer', () => {
@@ -33,30 +31,18 @@ describe('reducer', () => {
     });
   });
 
-  describe('updateRestaurantName', () => {
-    it('changes restaurant name', () => {
+  describe('updateRestaurantField', () => {
+    it('changes restaurant field', () => {
       const previousState = { restaurant: { name: '' } };
-      const nextState = reducer(previousState, updateRestaurantName('시카고피자'));
+      const nextState = reducer(
+        previousState,
+        updateRestaurantField({
+          name: 'name',
+          value: '시카고피자',
+        }),
+      );
 
       expect(nextState.restaurant.name).toBe('시카고피자');
-    });
-  });
-
-  describe('updateRestaurantCategory', () => {
-    it('changes restaurant category', () => {
-      const previousState = { restaurant: { category: '' } };
-      const nextState = reducer(previousState, updateRestaurantCategory('양식'));
-
-      expect(nextState.restaurant.category).toBe('양식');
-    });
-  });
-
-  describe('updateRestaurantAddress', () => {
-    it('changes restaurant address', () => {
-      const previousState = { restaurant: { address: '' } };
-      const nextState = reducer(previousState, updateRestaurantAddress('서울시 강남구'));
-
-      expect(nextState.restaurant.address).toBe('서울시 강남구');
     });
   });
 
