@@ -1,10 +1,10 @@
-import Restaurants from './Restaurants';
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
   return (
     <>
       <h1>Restaurants</h1>
-      <Restaurants />
+      <RestaurantsContainer />
       {/* <form>
         <input
           id="input-restaurant-name"
