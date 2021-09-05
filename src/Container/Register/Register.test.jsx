@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Register from './Register';
 
@@ -8,7 +8,7 @@ describe('register', () => {
       const handleChange = jest.fn();
       const handleClick = jest.fn();
 
-      const { getAllByPlaceholderText } = render((
+      const { getByDisplayValue } = render((
         <Register
           name="마녀주방"
           category="분식"
@@ -18,9 +18,27 @@ describe('register', () => {
         />
       ));
 
-      expect(getAllByPlaceholderText(/마녀주방/)).not.toBeNull();
-      expect(getAllByPlaceholderText(/분식/)).not.toBeNull();
-      expect(getAllByPlaceholderText(/서울시 강남구/)).not.toBeNull();
+      expect(getByDisplayValue(/마녀주방/)).not.toBeNull();
+      expect(getByDisplayValue(/분식/)).not.toBeNull();
+      expect(getByDisplayValue(/서울시 강남구/)).not.toBeNull();
+    });
+
+    it('calls handleChange', () => {
+      const handleChange = jest.fn();
+      const handleClick = jest.fn();
+
+      const { getAllByPlaceholderText } = render((
+        <Register
+          name=""
+          category=""
+          address=""
+          handleChange={handleChange}
+          handleClick={handleClick}
+        />
+      ));
+
+      fireEvent.change(getAllByPlaceholderText('이름'), { target: { value: '마녀주방' } });
+      expect(handleChange).toHaveBeenCalled();
     });
   });
 });
