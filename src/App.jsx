@@ -36,32 +36,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <List restaurants={restaurants} />
-      <div>
-        <input
-          name="name"
-          type="text"
-          placeholder="이름"
-          value={name}
-          onChange={handleChange('name')}
-        />
-        <input
-          name="category"
-          type="text"
-          placeholder="분류"
-          value={category}
-          onChange={handleChange('category')}
-        />
-        <input
-          name="address"
-          type="text"
-          placeholder="주소"
-          value={address}
-          onChange={handleChange('address')}
-        />
-        <button type="button" onClick={handleClick}>
-          등록
-        </button>
-      </div>
+      
     </div>
   );
 }
