@@ -11,9 +11,11 @@ describe('InputContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    restaurantName: '카레맛집',
-    restaurantCategory: '일식',
-    restaurantAddress: '서울시 서초구',
+    restaurant: {
+      name: '카레맛집',
+      category: '일식',
+      address: '서울시 서초구',
+    },
   }));
 
   beforeEach(() => {
@@ -28,8 +30,8 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { name: '시카고핏짜' },
-      type: 'updateRestaurantName',
+      payload: { name: 'name', value: '시카고핏짜' },
+      type: 'updateRestaurantField',
     });
   });
 
@@ -41,8 +43,8 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { category: '양식' },
-      type: 'updateRestaurantCategory',
+      payload: { name: 'category', value: '양식' },
+      type: 'updateRestaurantField',
     });
   });
 
@@ -54,8 +56,8 @@ describe('InputContainer', () => {
     });
 
     expect(dispatch).toBeCalledWith({
-      payload: { address: '서울시 강남구' },
-      type: 'updateRestaurantAddress',
+      payload: { name: 'address', value: '서울시 강남구' },
+      type: 'updateRestaurantField',
     });
   });
 
