@@ -27,7 +27,7 @@ describe('register', () => {
       const handleChange = jest.fn();
       const handleClick = jest.fn();
 
-      const { getAllByPlaceholderText } = render((
+      const { getByPlaceholderText } = render((
         <Register
           name=""
           category=""
@@ -37,7 +37,7 @@ describe('register', () => {
         />
       ));
 
-      fireEvent.change(getAllByPlaceholderText('이름'), { target: { value: '마녀주방' } });
+      fireEvent.change(getByPlaceholderText('이름'), { target: { value: '마녀주방' } });
       expect(handleChange).toHaveBeenCalled();
     });
 

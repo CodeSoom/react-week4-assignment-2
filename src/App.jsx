@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import List from './Container/List/List';
+import Register from './Container/Register/Register';
 
 export default function App() {
   const [state, setState] = useState({
@@ -36,7 +37,13 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <List restaurants={restaurants} />
-      
+      <Register
+        name={name}
+        category={category}
+        address={address}
+        handleChange={handleChange}
+        handleClick={handleClick}
+      />
     </div>
   );
 }
