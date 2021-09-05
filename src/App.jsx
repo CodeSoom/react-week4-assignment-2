@@ -1,66 +1,11 @@
-import { useState } from 'react';
+import Restaurants from './Restaurants';
 
 export default function App() {
-  const [state, setState] = useState({
-    newId: 100,
-    newName: '',
-    newCategory: '',
-    newAddress: '',
-    restaurants: [
-    ],
-  });
-
-  const {
-    newId, newName, newCategory, newAddress, restaurants,
-  } = state;
-
-  function renderRestaurantList(restaurant) {
-    const {
-      id, name, category, address,
-    } = restaurant;
-
-    return (
-      <li key={id}>
-        {`${name} | ${category} | ${address}`}
-      </li>
-    );
-  }
-
-  function handleChangeInput(type, value) {
-    setState({
-      ...state,
-      [type]: value,
-    });
-  }
-
-  function handleClickAddRestaurant() {
-    setState({
-      ...state,
-      newId: newId + 1,
-      newName: '',
-      newCategory: '',
-      newAddress: '',
-      restaurants: [
-        ...restaurants,
-        {
-          id: newId,
-          name: newName,
-          category: newCategory,
-          address: newAddress,
-        },
-      ],
-    });
-  }
-
   return (
     <>
       <h1>Restaurants</h1>
-      <ul>
-        {
-          restaurants.map((restaurant) => renderRestaurantList(restaurant))
-        }
-      </ul>
-      <form>
+      <Restaurants />
+      {/* <form>
         <input
           id="input-restaurant-name"
           name="name"
@@ -91,7 +36,7 @@ export default function App() {
         >
           등록
         </button>
-      </form>
+      </form> */}
     </>
   );
 }
