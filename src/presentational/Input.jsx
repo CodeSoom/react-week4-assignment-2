@@ -2,7 +2,7 @@ export default function Input({
   ariaLabel, value, onChange, placeholder, name,
 }) {
   const handleChange = (event) => {
-    onChange(event.target.value);
+    onChange({ name, value: event.target.value });
   };
 
   return (

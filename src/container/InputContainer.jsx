@@ -1,47 +1,42 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updateRestaurantAddress,
-  updateRestaurantCategory,
-  updateRestaurantName,
+  updateRestaurantField,
   addRestaurant,
 } from '../store/actions';
 
 import Input from '../presentational/Input';
 
 export default function InputContainer() {
-  const { restaurantName, restaurantCategory, restaurantAddress } = useSelector((state) => state);
+  const { name: placeName, category, address } = useSelector((state) => state.restaurant);
 
   const dispatch = useDispatch();
 
   const Inputs = [{
     ariaLabel: 'restaurantName',
-    value: restaurantName,
+    value: placeName,
     name: 'name',
     placeholder: '이름',
-    onChange: (value) => dispatch(updateRestaurantName(value)),
   }, {
     ariaLabel: 'restaurantCategory',
-    value: restaurantCategory,
+    value: category,
     name: 'category',
     placeholder: '분류',
-    onChange: (value) => dispatch(updateRestaurantCategory(value)),
   }, {
     ariaLabel: 'restaurantAddress',
-    value: restaurantAddress,
+    value: address,
     name: 'address',
     placeholder: '주소',
-    onChange: (value) => dispatch(updateRestaurantAddress(value)),
   }];
 
-  const handleClick = () => {
-    dispatch(addRestaurant());
-  };
+  const onChange = ({ name, value }) => dispatch(updateRestaurantField({ name, value }));
+
+  const onClick = () => dispatch(addRestaurant());
 
   return (
     <>
       {Inputs.map(({
-        ariaLabel, value, onChange, name, placeholder,
+        ariaLabel, value, name, placeholder,
       }) => (
         <Input
           key={ariaLabel}
@@ -54,7 +49,7 @@ export default function InputContainer() {
       ))}
       <button
         type="button"
-        onClick={handleClick}
+        onClick={onClick}
       >
         등록
       </button>
