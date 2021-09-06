@@ -4,8 +4,6 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
-import restaurants from '../fixtures/restaurants';
-
 jest.mock('react-redux');
 
 test('RestaurantCreateContainer', () => {
