@@ -1,61 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-import Input from './Input';
+import { useDispatch } from 'react-redux';
 
-import List from './List';
+import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantsCreateContainer from './RestaurantsCreateContainer';
+
+import restaurants from '../fixtures/restaurants';
+
+import {
+  setRestaurants,
+} from './actions';
 
 export default function App() {
-  const [state, setState] = useState({
-    newId: 100,
-    taskTitle: '',
-    taskClassification: '',
-    taskAddress: '',
-    tasks: [
-      {
-        id: 1, title: '이름', classification: '분류', address: '주소',
-      },
-      {
-        id: 2, title: '이름', classification: '분류', address: '주소',
-      },
-    ],
-  });
+  const dispatch = useDispatch();
 
-  const {
-    newId, taskTitle, taskClassification, taskAddress, tasks,
-  } = state;
-
-  function handleChangeTitle(event) {
-    setState({
-      ...state,
-      taskTitle: event.target.value1,
-      taskClassification: event.target.value2,
-      taskAddress: event.target.value3,
-    });
-  }
-
-  function handleClickAddTask() {
-    setState({
-      ...state,
-      newId: newId + 1,
-      taskTitle: '',
-      taskClassification: '',
-      taskAddress: '',
-      tasks: [...tasks, {
-        id: newId, title: taskTitle, classification: taskTitle, address: taskTitle,
-      }],
-    });
-  }
+  useEffect(() => {
+    dispatch(setRestaurants(restaurants));
+  }, []);
   return (
     <div>
       <h1>Restaurants</h1>
-      <List tasks={tasks} />
-      <Input
-        value1={taskTitle}
-        value2={taskClassification}
-        value3={taskAddress}
-        onChange={handleChangeTitle}
-        onClick={handleClickAddTask}
-      />
+      <RestaurantsContainer />
+      <RestaurantsCreateContainer />
     </div>
   );
 }
