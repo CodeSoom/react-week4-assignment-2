@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
-import RestaurantsCreateContainer from './RestaurantsCreateContainer';
+import RestaurantsCreateContainer from './RestaurantCreateContainer';
 
 import { setRestaurants } from './actions';
 
