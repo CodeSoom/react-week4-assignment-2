@@ -14,11 +14,19 @@ test('RestaurantCreateContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants,
+    restaurants: {
+      name: '시카고피자',
+      category: '양식',
+      address: '이태원동',
+    },
   }));
 
-  const { getByText } = render((<RestaurantCreateContainer />
+  const { getByText, getByDisplayValue } = render((<RestaurantCreateContainer />
   ));
+
+  expect(getByDisplayValue(/시카고피자/)).not.toBeNull();
+  expect(getByDisplayValue(/양식/)).not.toBeNull();
+  expect(getByDisplayValue(/이태원동/)).not.toBeNull();
 
   expect(getByText(/등록/)).not.toBeNull();
 
