@@ -1,5 +1,5 @@
 export const updateRestaurantInfo = (key, value) => ({
-  type: "updateRestautrantInfo",
+  type: 'updateRestautrantInfo',
   payload: {
     key,
     value,
