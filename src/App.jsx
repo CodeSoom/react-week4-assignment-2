@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+
 export default function App() {
-  const { name, category, address } = useSelector((state) => ({
+
+
+  const { name, category, address, data } = useSelector((state) => ({
     name: state.name,
     category: state.category,
     address: state.address,
+    data: state.data
   }));
-
   const dispatch = useDispatch();
 
   console.log(name, category, address);
@@ -36,10 +39,19 @@ export default function App() {
       },
     });
   }
+  function handleClickSaveData() {
+    dispatch({
+      type: 'saveData',
+      payload: {
+        data: { name, category, address }
+      }
+    })
+  }
 
   return (
     <div>
-      <form action="">
+      <h1>Restaurant</h1>
+      <div>
         <input
           type="text"
           name="name"
@@ -70,10 +82,16 @@ export default function App() {
         <input
           type="button"
           value="등록"
+          onClick={handleClickSaveData}
         />
-
-      </form>
-
-    </div>
+      </div>
+      <ul>
+        {
+          data.map(datum => {
+            return < li > {datum.name} | {datum.category} | {datum.address} </li>
+          })
+        }
+      </ul>
+    </div >
   );
 }
