@@ -37,7 +37,7 @@ describe('reducer', () => {
   });
 
   describe('addRestaurants', () => {
-    function handleRestaurantInfo(restaurantInfo) {
+    function handleAddRestaurant(restaurantInfo) {
       const initialState = {
         newId: 50,
         restaurants: [],
@@ -60,7 +60,7 @@ describe('reducer', () => {
     }
     context('하나의 input이라도 비어있으면', () => {
       it(' 아무 일도 일어나지 않는다', () => {
-        const { restaurants } = handleRestaurantInfo({
+        const { restaurants } = handleAddRestaurant({
           title: '',
         });
         expect(restaurants.length).toBe(0);
@@ -69,7 +69,7 @@ describe('reducer', () => {
 
     context('모든 input이 입력됐으면', () => {
       it('레스토랑 목록이 추가된다', () => {
-        const { restaurants } = handleRestaurantInfo({
+        const { restaurants } = handleAddRestaurant({
           title: '알단테',
           category: '양식',
           address: '광교',
@@ -82,14 +82,14 @@ describe('reducer', () => {
       });
 
       it('추가된 후 모든 input이 초기화된다', () => {
-        const { restaurants } = handleRestaurantInfo({
+        const { restaurantInfo: { title, address, category } } = handleAddRestaurant({
           title: '알단테',
           category: '양식',
           address: '광교',
         });
-        expect(restaurants[0].title).toBe('');
-        expect(restaurants[0].address).toBe('');
-        expect(restaurants[0].category).toBe('');
+        expect(title).toBe('');
+        expect(address).toBe('');
+        expect(category).toBe('');
       });
     });
   });
