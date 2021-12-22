@@ -15,8 +15,12 @@ export default function InputContainer() {
     dispatch(updateRestaurantInfo({ name, value }));
   };
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <input
         onChange={handleInput}
         value={title}
