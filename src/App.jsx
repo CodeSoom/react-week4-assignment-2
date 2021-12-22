@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-
 export default function App() {
-
-
-  const { name, category, address, data } = useSelector((state) => ({
+  const {
+    name, category, address, data,
+  } = useSelector((state) => ({
     name: state.name,
     category: state.category,
     address: state.address,
-    data: state.data
+    data: state.data,
   }));
   const dispatch = useDispatch();
 
@@ -43,9 +42,9 @@ export default function App() {
     dispatch({
       type: 'saveData',
       payload: {
-        data: { name, category, address }
-      }
-    })
+        data: { name, category, address },
+      },
+    });
   }
 
   return (
@@ -87,11 +86,23 @@ export default function App() {
       </div>
       <ul>
         {
-          data.map(datum => {
-            return < li > {datum.name} | {datum.category} | {datum.address} </li>
-          })
+          data.map((datum) => (
+            <li>
+              {' '}
+              {datum.name}
+              {' '}
+              |
+              {' '}
+              {datum.category}
+              {' '}
+              |
+              {' '}
+              {datum.address}
+              {' '}
+            </li>
+          ))
         }
       </ul>
-    </div >
+    </div>
   );
 }
