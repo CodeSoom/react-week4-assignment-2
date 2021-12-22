@@ -2,7 +2,7 @@ const initialState = {
   newId: 50,
   restaurants: [],
   restaurantInfo: {
-    title: '',
+    name: '',
     address: '',
     category: '',
   },
@@ -24,7 +24,7 @@ function addRestaurants(state) {
       { id: state.newId, ...state.restaurantInfo },
     ],
     restaurantInfo: {
-      title: '',
+      name: '',
       address: '',
       category: '',
     },

@@ -11,7 +11,7 @@ describe('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurantInfo: {
-      title: '',
+      name: '',
       address: '',
       category: '',
     },
@@ -30,7 +30,7 @@ describe('InputContainer', () => {
     expect(dispatch).toHaveBeenCalledWith({
       type: 'updateRestaurantInfo',
       payload: {
-        name: 'title',
+        name: 'name',
         value: '맥도날드',
       },
     });

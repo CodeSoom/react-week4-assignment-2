@@ -4,7 +4,7 @@ import { addRestaurants, updateRestaurantInfo } from './actions';
 
 export default function InputContainer() {
   const {
-    restaurantInfo: { title, address, category },
+    restaurantInfo: { name, address, category },
   } = useSelector((state) => ({
     restaurantInfo: state.restaurantInfo,
   }));
@@ -24,10 +24,10 @@ export default function InputContainer() {
     <form onSubmit={handleFormSubmit}>
       <input
         onChange={handleInput}
-        value={title}
+        value={name}
         type="text"
         placeholder="이름"
-        name="title"
+        name="name"
       />
       <input
         onChange={handleInput}

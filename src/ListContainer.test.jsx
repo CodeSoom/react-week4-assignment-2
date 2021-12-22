@@ -8,7 +8,7 @@ jest.mock('react-redux');
 describe('ListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [{
-      id: 1, title: '알단테', address: '광교', category: '양식',
+      id: 1, name: '알단테', address: '광교', category: '양식',
     }],
   }));
 
