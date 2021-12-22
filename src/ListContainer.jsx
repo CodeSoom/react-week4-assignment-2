@@ -7,7 +7,9 @@ export default function ListContainer() {
 
   return (
     <ul>
-      {restaurants.map(({ id, title, address, category }) => (
+      {restaurants.map(({
+        id, title, address, category,
+      }) => (
         <li key={id}>{`${title} | ${address} | ${category}`}</li>
       ))}
     </ul>
