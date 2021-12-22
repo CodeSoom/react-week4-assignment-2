@@ -16,7 +16,14 @@ export default function reducer(state = initialState, action) {
       return state;
     }
 
-    return state;
+    return {
+      ...state,
+      newId: state.newId + 1,
+      restaurants: [
+        ...state.restaurants,
+        { id: state.newId, ...state.restaurantInfo },
+      ],
+    };
   }
   if (action.type === 'updateRestaurantInfo') {
     return {
