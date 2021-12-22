@@ -1,3 +1,17 @@
+import { useSelector } from 'react-redux';
+
 export default function ListContainer() {
-  return <li>hi</li>;
+  const {
+    restaurants,
+  } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
+
+  return (
+    restaurants.map(({
+      id, title, address, category,
+    }) => (
+      <li key={id}>{`${title} | ${address} | ${category}`}</li>
+    ))
+  );
 }
