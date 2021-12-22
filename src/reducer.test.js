@@ -52,6 +52,7 @@ describe('reducer', () => {
         {
           ...initialState,
           restaurantInfo: {
+            ...initialState.restaurantInfo,
             ...restaurantInfo,
           },
         },
@@ -62,6 +63,8 @@ describe('reducer', () => {
       it(' 아무 일도 일어나지 않는다', () => {
         const { restaurants } = handleAddRestaurant({
           title: '',
+          address: '광교',
+          category: '양식',
         });
         expect(restaurants.length).toBe(0);
       });
