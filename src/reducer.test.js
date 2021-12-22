@@ -97,4 +97,29 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('action이 없을 경우', () => {
+    const initialState = {
+      newId: 50,
+      restaurants: [],
+      restaurantInfo: {
+        name: '',
+        address: '',
+        category: '',
+      },
+    };
+    context('state가 존재함', () => {
+      it('state를 반환한다', () => {
+        const state = reducer({ newId: 1 }, { type: 'hi' });
+        expect(state.newId).toBe(1);
+      });
+    });
+
+    context('state가 없음', () => {
+      it('초기 state를 반환한다', () => {
+        const state = reducer(undefined, { type: 'hi' });
+        expect(state).toEqual(initialState);
+      });
+    });
+  });
 });
