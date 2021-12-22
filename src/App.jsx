@@ -1,4 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  updateAddressValue, updateCategoryValue, updateData, updateNameValue,
+} from './actions';
 
 export default function App() {
   const {
@@ -15,36 +18,16 @@ export default function App() {
 
   function handleChangeNameValue(event) {
     // console.log(event.target.value)
-    dispatch({
-      type: 'handleChangeNameValue',
-      payload: {
-        name: event.target.value,
-      },
-    });
+    dispatch(updateNameValue(event.target.value));
   }
   function handleChangeCategroryValue(event) {
-    dispatch({
-      type: 'handleChangeCategroryValue',
-      payload: {
-        category: event.target.value,
-      },
-    });
+    dispatch(updateCategoryValue(event.target.value));
   }
   function handleChangeAddressValue(event) {
-    dispatch({
-      type: 'handleChangeAddressValue',
-      payload: {
-        address: event.target.value,
-      },
-    });
+    dispatch(updateAddressValue(event.target.value));
   }
   function handleClickSaveData() {
-    dispatch({
-      type: 'saveData',
-      payload: {
-        data: { name, category, address },
-      },
-    });
+    dispatch(updateData(name, category, address));
   }
 
   return (
