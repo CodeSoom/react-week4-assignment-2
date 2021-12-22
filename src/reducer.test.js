@@ -66,6 +66,7 @@ describe('reducer', () => {
           address: '광교',
           category: '양식',
         });
+
         expect(restaurants.length).toBe(0);
       });
     });
