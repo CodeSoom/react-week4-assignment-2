@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updateAddressValue, updateCategoryValue, updateData, updateNameValue,
 } from './actions';
+import Input from './Input';
 
 export default function InputContainer() {
   const {
@@ -29,40 +30,16 @@ export default function InputContainer() {
   return (
     <>
       <h1>Restaurants</h1>
-      <div>
-        <input
-          type="text"
-          name="name"
-          placeholder="이름"
-          id=""
-          onChange={handleChangeNameValue}
-          value={name}
-        />
+      <Input
+        onNameChange={handleChangeNameValue}
+        onCategoryChange={handleChangeCategroryValue}
+        onAddressChange={handleChangeAddressValue}
+        onClick={handleClickSaveData}
+        name={name}
+        category={category}
+        address={address}
+      />
 
-        <input
-          type="text"
-          name="category"
-          placeholder="분류"
-          id=""
-          onChange={handleChangeCategroryValue}
-          value={category}
-        />
-
-        <input
-          type="text"
-          name="address"
-          placeholder="주소"
-          id=""
-          onChange={handleChangeAddressValue}
-          value={address}
-        />
-
-        <input
-          type="button"
-          value="등록"
-          onClick={handleClickSaveData}
-        />
-      </div>
     </>
   );
 }
