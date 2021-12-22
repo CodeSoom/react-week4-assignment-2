@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateRestaurantInfo } from './actions';
+import { addRestaurants, updateRestaurantInfo } from './actions';
 
 export default function InputContainer() {
   const {
@@ -17,6 +17,7 @@ export default function InputContainer() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    dispatch(addRestaurants());
   };
 
   return (
