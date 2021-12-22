@@ -8,47 +8,43 @@ const initialState = {
   },
 };
 
-function addRestaurants(state) {
-  const values = Object.values(state.restaurantInfo);
-  const isOneOfValueEmpty = values.some((value) => value === '');
+const defaultReducer = (state) => state;
 
-  if (isOneOfValueEmpty) {
-    return state;
-  }
+const reducers = {
+  addRestaurants(state) {
+    const values = Object.values(state.restaurantInfo);
+    const isOneOfValueEmpty = values.some((value) => value === '');
 
-  return {
-    ...state,
-    newId: state.newId + 1,
-    restaurants: [
-      ...state.restaurants,
-      { id: state.newId, ...state.restaurantInfo },
-    ],
-    restaurantInfo: {
-      name: '',
-      address: '',
-      category: '',
-    },
-  };
-}
+    if (isOneOfValueEmpty) {
+      return state;
+    }
 
-function updateRestaurantInfo(state, action) {
-  return {
-    ...state,
-    restaurantInfo: {
-      ...state.restaurantInfo,
-      [action.payload.name]: action.payload.value,
-    },
-  };
-}
+    return {
+      ...state,
+      newId: state.newId + 1,
+      restaurants: [
+        ...state.restaurants,
+        { id: state.newId, ...state.restaurantInfo },
+      ],
+      restaurantInfo: {
+        name: '',
+        address: '',
+        category: '',
+      },
+    };
+  },
+
+  updateRestaurantInfo(state, action) {
+    return {
+      ...state,
+      restaurantInfo: {
+        ...state.restaurantInfo,
+        [action.payload.name]: action.payload.value,
+      },
+    };
+  },
+};
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'addRestaurants') {
-    return addRestaurants(state);
-  }
-
-  if (action.type === 'updateRestaurantInfo') {
-    return updateRestaurantInfo(state, action);
-  }
-
-  return state;
+  return (reducers[action.type] || defaultReducer)(state, action);
 }
