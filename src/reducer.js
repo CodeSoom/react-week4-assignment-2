@@ -49,5 +49,6 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'updateRestaurantInfo') {
     return updateRestaurantInfo(state, action);
   }
+
   return state;
 }
