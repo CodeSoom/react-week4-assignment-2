@@ -10,9 +10,9 @@ const initialState = {
 
 function addRestaurants(state) {
   const values = Object.values(state.restaurantInfo);
-  const isAllValuesEmpty = values.some((value) => value === '');
+  const isOneOfValueEmpty = values.some((value) => value === '');
 
-  if (isAllValuesEmpty) {
+  if (isOneOfValueEmpty) {
     return state;
   }
 
