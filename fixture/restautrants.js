@@ -1,5 +1,5 @@
 export const restautrant = {
-  name: "마녀 식당",
+  name: "마녀주방",
   type: "한식",
   address: "서울시 강남구",
 };
