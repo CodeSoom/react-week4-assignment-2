@@ -35,4 +35,14 @@ describe('InputContainer', () => {
       },
     });
   });
+
+  it('addRestaurants가 호출된다', () => {
+    const { getByRole } = render(<InputContainer />);
+
+    fireEvent.click(getByRole('button'));
+
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'addRestaurants',
+    });
+  });
 });
