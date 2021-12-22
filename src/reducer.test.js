@@ -26,4 +26,31 @@ describe('reducer', () => {
       expect(restaurantInfo.address).toBe('광교');
     });
   });
+
+  describe('addRestaurants', () => {
+    function handleRestaurantInfo(restaurantInfo) {
+      const initialState = {
+        newId: 50,
+        restaurants: [],
+        restaurantInfo: {
+          title: '',
+          address: '',
+          category: '',
+        },
+      };
+
+      return reducer({
+        ...initialState,
+        restaurantInfo: {
+          ...restaurantInfo,
+        },
+      }, addRestaurants());
+    }
+    it('하나의 input이라도 비어있을 경우 아무 일도 일어나지 않는다', () => {
+      const { restaurants } = handleRestaurantInfo({
+        title: '',
+      });
+      expect(restaurants.length).toBe(0);
+    });
+  });
 });
