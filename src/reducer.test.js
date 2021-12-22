@@ -12,17 +12,26 @@ describe('reducer', () => {
       },
     };
     it('레스토랑 이름을 저장한다', () => {
-      const { restaurantInfo } = reducer(previousState, updateRestaurantInfo({ name: 'title', value: '알단테' }));
+      const { restaurantInfo } = reducer(
+        previousState,
+        updateRestaurantInfo({ name: 'title', value: '알단테' })
+      );
       expect(restaurantInfo.title).toBe('알단테');
     });
 
     it('레스토랑 카테고리를 저장한다', () => {
-      const { restaurantInfo } = reducer(previousState, updateRestaurantInfo({ name: 'category', value: '양식' }));
+      const { restaurantInfo } = reducer(
+        previousState,
+        updateRestaurantInfo({ name: 'category', value: '양식' })
+      );
       expect(restaurantInfo.category).toBe('양식');
     });
 
     it('레스토랑 주소를 저장한다', () => {
-      const { restaurantInfo } = reducer(previousState, updateRestaurantInfo({ name: 'address', value: '광교' }));
+      const { restaurantInfo } = reducer(
+        previousState,
+        updateRestaurantInfo({ name: 'address', value: '광교' })
+      );
       expect(restaurantInfo.address).toBe('광교');
     });
   });
@@ -39,12 +48,15 @@ describe('reducer', () => {
         },
       };
 
-      return reducer({
-        ...initialState,
-        restaurantInfo: {
-          ...restaurantInfo,
+      return reducer(
+        {
+          ...initialState,
+          restaurantInfo: {
+            ...restaurantInfo,
+          },
         },
-      }, addRestaurants());
+        addRestaurants()
+      );
     }
     context('하나의 input이라도 비어있으면', () => {
       it(' 아무 일도 일어나지 않는다', () => {
