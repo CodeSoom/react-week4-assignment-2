@@ -1,3 +1,7 @@
-const RestaurantList = () => {};
+const RestaurantList = () => {
+  return (
+    <ul></ul>
+  );
+};
 
 export default RestaurantList;
