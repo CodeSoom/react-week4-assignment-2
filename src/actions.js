@@ -5,3 +5,7 @@ export const updateRestaurantInfo = (key, value) => ({
     value,
   },
 });
+
+export const addRestaurant = () => ({
+  type: 'addRestaurant',
+});

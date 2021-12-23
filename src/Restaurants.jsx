@@ -1,4 +1,4 @@
-export default function Restaurants({ restaurants }) {
+export default function Restaurants({ restaurants = [] }) {
   if (!restaurants.length) {
     return null;
   }

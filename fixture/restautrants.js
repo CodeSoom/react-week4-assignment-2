@@ -4,7 +4,7 @@ export const restautrant = {
   address: '서울시 강남구',
 };
 
-export const restautrants = [
+export const restaurants = [
   {
     name: '마녀주방',
     type: '한식',

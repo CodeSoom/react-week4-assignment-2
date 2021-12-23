@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
 
-import { restautrants } from '../fixture/restautrants';
+import { restaurants } from '../fixture/restautrants';
 
 describe('Restaurants', () => {
   const renderComponent = (values) => render(
@@ -11,9 +11,9 @@ describe('Restaurants', () => {
 
   context('with restaurants', () => {
     it('render restautrant info', () => {
-      const { container } = renderComponent(restautrants);
+      const { container } = renderComponent(restaurants);
 
-      restautrants.forEach((restautrant) => {
+      restaurants.forEach((restautrant) => {
         expect(container).toHaveTextContent(restautrant.name);
         expect(container).toHaveTextContent(restautrant.type);
         expect(container).toHaveTextContent(restautrant.address);
