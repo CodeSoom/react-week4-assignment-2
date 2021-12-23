@@ -1,12 +1,13 @@
 /* eslint-disable no-alert */
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addRestaurant } from '../actions/restaurant';
 import RestaurantInput from '../components/RestaurantInput';
 import RestaurantList from '../components/RestaurantList';
 
 const RestaurantPage = () => {
   const dispatch = useDispatch();
+  const { restaurants } = useSelector((state) => state.restaurant);
 
   const [name, setName] = useState('');
   const handleChangeName = ({ target: { value } }) => {
@@ -47,7 +48,7 @@ const RestaurantPage = () => {
         onChangeAddress={handleChangeAddressName}
         onClick={handleClick}
       />
-      <RestaurantList />
+      <RestaurantList restaurants={restaurants} />
     </div>
   );
 };

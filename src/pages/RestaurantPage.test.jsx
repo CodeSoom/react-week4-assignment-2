@@ -1,11 +1,13 @@
 import { render, fireEvent } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TYPE_ADD_RESTAURANT } from '../actions/restaurant';
 import RestaurantPage from './RestaurantPage';
 
 jest.mock('react-redux');
 
 describe('RestaurantPage', () => {
+  useSelector.mockImplementation(() => ({}));
+
   it('레스토랑의 이름, 분류, 주소 모두 있다면 등록 버튼 클릭시 alert를 호출하지 않습니다.', () => {
     useDispatch.mockImplementation(() => () => {});
     const spy = jest.spyOn(window, 'alert');
