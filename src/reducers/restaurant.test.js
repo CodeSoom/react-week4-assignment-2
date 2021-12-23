@@ -1,3 +1,4 @@
+import { addRestaurant } from '../actions/restaurant';
 import restaurantReducer, { initialState } from './restaurant';
 
 describe('restaurantReducer', () => {
@@ -10,5 +11,15 @@ describe('restaurantReducer', () => {
     const nextState = restaurantReducer(prevState);
 
     expect(nextState).toEqual(prevState);
+  });
+
+  describe('addRestaurant', () => {
+    it('addRestaurant action을 레스토랑 이름, 분류, 주소와 함께 restaurantReducer에 전달하면 restaurants에 restaurant가 추가됩니다.', () => {
+      const restaurantPayload = { name: 'foo', category: 'bar', address: 'baz' };
+      const state = restaurantReducer(initialState, addRestaurant(restaurantPayload));
+
+      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants[0]).toEqual(restaurantPayload);
+    });
   });
 });
