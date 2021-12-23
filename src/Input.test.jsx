@@ -6,11 +6,17 @@ import { restautrant } from '../fixture/restautrants';
 
 describe('Input', () => {
   const handleChangeRestautrantInfo = jest.fn();
+  const handleClick = jest.fn();
 
-  const renderComponent = (restautrant) => render(
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const renderComponent = (restautrantInfo) => render(
     <Input
-      restautrant={restautrant}
+      restautrant={restautrantInfo}
       onChange={handleChangeRestautrantInfo}
+      onClick={handleClick}
     />,
   );
 
@@ -24,10 +30,6 @@ describe('Input', () => {
   });
 
   context('각각의 입련 란은', () => {
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
-
     it('전달 받은 값을 렌더링한다.', () => {
       const { getByPlaceholderText } = renderComponent(restautrant);
 
@@ -46,7 +48,7 @@ describe('Input', () => {
     });
 
     it('이름 입력창에 입력 시, handleChangeRestautrantInfo 를 name 과 입력 값을 함께 호출한다', () => {
-      const { getByPlaceholderText } = renderComponent(restautrant);
+      const { getByPlaceholderText } = renderComponent({});
 
       fireEvent.change(getByPlaceholderText(/이름/), {
         target: { value: restautrant.name },
@@ -57,31 +59,31 @@ describe('Input', () => {
         restautrant.name,
       );
     });
+  });
 
-    it('종류 입력창에 입력 시, handleChangeRestautrantInfo 를 type 과 입력 값을 함께 호출한다', () => {
-      const { getByPlaceholderText } = renderComponent(restautrant);
+  it('종류 입력창에 입력 시, handleChangeRestautrantInfo 를 type 과 입력 값을 함께 호출한다', () => {
+    const { getByPlaceholderText } = renderComponent({});
 
-      fireEvent.change(getByPlaceholderText(/종류/), {
-        target: { value: restautrant.type },
-      });
-
-      expect(handleChangeRestautrantInfo).toBeCalledWith(
-        'type',
-        restautrant.type,
-      );
+    fireEvent.change(getByPlaceholderText(/분류/), {
+      target: { value: restautrant.type },
     });
 
-    it('주소 입력창에 입력 시, handleChangeRestautrantInfo 를 address 와 입력 값을 함께 호출한다', () => {
-      const { getByPlaceholderText } = renderComponent(restautrant);
+    expect(handleChangeRestautrantInfo).toBeCalledWith(
+      'type',
+      restautrant.type,
+    );
+  });
 
-      fireEvent.change(getByPlaceholderText(/주소/), {
-        target: { value: restautrant.address },
-      });
+  it('주소 입력창에 입력 시, handleChangeRestautrantInfo 를 address 와 입력 값을 함께 호출한다', () => {
+    const { getByPlaceholderText } = renderComponent({});
 
-      expect(handleChangeRestautrantInfo).toBeCalledWith(
-        'address',
-        restautrant.address,
-      );
+    fireEvent.change(getByPlaceholderText(/주소/), {
+      target: { value: restautrant.address },
     });
+
+    expect(handleChangeRestautrantInfo).toBeCalledWith(
+      'address',
+      restautrant.address,
+    );
   });
 });
