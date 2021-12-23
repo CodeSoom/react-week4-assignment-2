@@ -1,9 +1,27 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { ACTION_TYPES } from '../store/actions';
+
 export default function RestaurantForm() {
+  const { name } = useSelector((store) => store);
+  const dispatch = useDispatch();
+
   return (
     <form>
       <section>
         <label htmlFor="name">이름</label>
-        <input type="text" id="name" name="name" placeholder="이름" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="이름"
+          value={name}
+          onChange={({ target: { value } }) => {
+            dispatch({
+              type: ACTION_TYPES.CHANGE_NAME,
+              payload: value,
+            });
+          }}
+        />
       </section>
 
       <section>

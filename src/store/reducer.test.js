@@ -8,19 +8,19 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  it('should return the initial', () => {
+  it('returns the initial', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
   describe('changeName', () => {
-    it('should handle CHANGE_NAME', () => {
+    it('handles CHANGE_NAME', () => {
       const newName = 'new name';
       expect(reducer(initialState, changeName(newName)).name).toBe(newName);
     });
   });
 
   describe('changeCategory', () => {
-    it('should handle CHANGE_CATEGORY', () => {
+    it('handles CHANGE_CATEGORY', () => {
       const newCategory = 'new category';
       expect(reducer(initialState, changeCategory(newCategory)).category).toBe(
         newCategory,
