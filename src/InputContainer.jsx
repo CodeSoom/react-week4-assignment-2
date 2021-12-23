@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
-  updateAddressValue, updateCategoryValue, updateData, updateNameValue,
+  updateAddressValue,
+  updateCategoryValue,
+  updateData,
+  updateNameValue,
 } from './actions';
 import Input from './Input';
 
