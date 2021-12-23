@@ -29,6 +29,10 @@ const RestaurantPage = () => {
     }
 
     dispatch(addRestaurant({ name, category, address }));
+
+    setName('');
+    setCategory('');
+    setAddress('');
   };
 
   return (
