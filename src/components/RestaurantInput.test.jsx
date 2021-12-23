@@ -29,4 +29,23 @@ describe('RestaurantInput', () => {
     expect(sut.handleChangeAddress).toBeCalled();
     expect(sut.handleClick).toBeCalled();
   });
+
+  it('RestaurantInput에 전달한 value가 각 요소에 반영됩니다.', () => {
+    const value = {
+      name: 'foo',
+      category: 'bar',
+      address: 'baz',
+    };
+    const sut = render(
+      <RestaurantInput
+        valueName={value.name}
+        valueCategory={value.category}
+        valueAddress={value.address}
+      />,
+    );
+
+    expect(sut.getByLabelText('이름')).toHaveValue(value.name);
+    expect(sut.getByLabelText('분류')).toHaveValue(value.category);
+    expect(sut.getByLabelText('주소')).toHaveValue(value.address);
+  });
 });
