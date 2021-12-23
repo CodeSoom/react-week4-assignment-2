@@ -41,6 +41,9 @@ describe('RestaurantInput', () => {
         valueName={value.name}
         valueCategory={value.category}
         valueAddress={value.address}
+        onChangeName={() => {}}
+        onChangeCategory={() => {}}
+        onChangeAddress={() => {}}
       />,
     );
 
