@@ -45,4 +45,18 @@ test('InputContainer', () => {
       },
     },
   );
+  fireEvent.click(getByText('등록'));
+
+  expect(dispatch).toBeCalledWith(
+    {
+      type: 'saveData',
+      payload: {
+        data: {
+          name: '사가식탁',
+          category: '중식당',
+          address: '성복역 근처',
+        },
+      },
+    },
+  );
 });

@@ -43,7 +43,6 @@ export default function InputContainer() {
         category={category}
         address={address}
       />
-
     </>
   );
 }
