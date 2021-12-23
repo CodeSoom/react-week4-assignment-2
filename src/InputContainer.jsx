@@ -6,7 +6,7 @@ import {
   updateData,
   updateNameValue,
 } from './actions';
-import Input from './Input';
+import RestaurantInfoInput from './Input';
 
 export default function InputContainer() {
   const {
@@ -34,7 +34,7 @@ export default function InputContainer() {
   return (
     <>
       <h1>Restaurants</h1>
-      <Input
+      <RestaurantInfoInput
         onNameChange={handleChangeNameValue}
         onCategoryChange={handleChangeCategroryValue}
         onAddressChange={handleChangeAddressValue}

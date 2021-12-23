@@ -1,4 +1,4 @@
-export default function Input({
+export default function RestaurantInfoInput({
   onNameChange, onCategoryChange, onAddressChange, onClick,
   name, category, address,
 }) {
