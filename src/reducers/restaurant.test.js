@@ -19,7 +19,8 @@ describe('restaurantReducer', () => {
       const state = restaurantReducer(initialState, addRestaurant(restaurantPayload));
 
       expect(state.restaurants).toHaveLength(1);
-      expect(state.restaurants[0]).toEqual(restaurantPayload);
+      expect(state.restaurants[0]).toEqual(expect.objectContaining(restaurantPayload));
+      expect(state.restaurants[0].id).not.toBeUndefined();
     });
   });
 });
