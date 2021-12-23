@@ -12,7 +12,6 @@ export default function RestaurantInfoInput({
         onChange={onNameChange}
         value={name}
       />
-
       <input
         type="text"
         name="category"
@@ -21,7 +20,6 @@ export default function RestaurantInfoInput({
         onChange={onCategoryChange}
         value={category}
       />
-
       <input
         type="text"
         name="address"
@@ -30,7 +28,6 @@ export default function RestaurantInfoInput({
         onChange={onAddressChange}
         value={address}
       />
-
       <input
         type="button"
         value="등록"
