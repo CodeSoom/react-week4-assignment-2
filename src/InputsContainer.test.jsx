@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputsContainer from './InputsContainer';
 
@@ -13,6 +13,14 @@ jest.mock('react-redux');
 describe('InputsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    restautrants: [],
+    restautrant: {
+      name: '',
+      type: '',
+      address: '',
+    },
+  }));
 
   const renderComponent = () => render(
     <InputsContainer />,
@@ -53,6 +61,6 @@ describe('InputsContainer', () => {
 
     fireEvent.click(getByRole('button', { name: '추가' }));
 
-    expect(dispatch).toBeCalled(addRestaurant());
+    expect(dispatch).toBeCalledWith(addRestaurant());
   });
 });
