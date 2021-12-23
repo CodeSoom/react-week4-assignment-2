@@ -59,31 +59,39 @@ describe('Input', () => {
         restautrant.name,
       );
     });
-  });
 
-  it('종류 입력창에 입력 시, handleChangeRestautrantInfo 를 type 과 입력 값을 함께 호출한다', () => {
-    const { getByPlaceholderText } = renderComponent({});
+    it('종류 입력창에 입력 시, handleChangeRestautrantInfo 를 type 과 입력 값을 함께 호출한다', () => {
+      const { getByPlaceholderText } = renderComponent({});
 
-    fireEvent.change(getByPlaceholderText(/분류/), {
-      target: { value: restautrant.type },
+      fireEvent.change(getByPlaceholderText(/분류/), {
+        target: { value: restautrant.type },
+      });
+
+      expect(handleChangeRestautrantInfo).toBeCalledWith(
+        'type',
+        restautrant.type,
+      );
     });
 
-    expect(handleChangeRestautrantInfo).toBeCalledWith(
-      'type',
-      restautrant.type,
-    );
+    it('주소 입력창에 입력 시, handleChangeRestautrantInfo 를 address 와 입력 값을 함께 호출한다', () => {
+      const { getByPlaceholderText } = renderComponent({});
+
+      fireEvent.change(getByPlaceholderText(/주소/), {
+        target: { value: restautrant.address },
+      });
+
+      expect(handleChangeRestautrantInfo).toBeCalledWith(
+        'address',
+        restautrant.address,
+      );
+    });
   });
 
-  it('주소 입력창에 입력 시, handleChangeRestautrantInfo 를 address 와 입력 값을 함께 호출한다', () => {
-    const { getByPlaceholderText } = renderComponent({});
+  it('"추가" 버튼을 클릭 하면 onClick 을 호출한다.', () => {
+    const { getByRole } = renderComponent({});
 
-    fireEvent.change(getByPlaceholderText(/주소/), {
-      target: { value: restautrant.address },
-    });
+    fireEvent.click(getByRole('button', { name: /추가/ }));
 
-    expect(handleChangeRestautrantInfo).toBeCalledWith(
-      'address',
-      restautrant.address,
-    );
+    expect(handleClick).toBeCalled();
   });
 });
