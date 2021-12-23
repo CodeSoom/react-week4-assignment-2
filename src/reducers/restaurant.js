@@ -4,7 +4,7 @@ export const initialState = {
 };
 
 const restaurantReducer = () => {
-  return {};
+  return initialState;
 };
 
 export default restaurantReducer;
