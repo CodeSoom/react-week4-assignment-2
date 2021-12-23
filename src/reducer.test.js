@@ -9,7 +9,7 @@ describe('reducer', () => {
       const state = reducer(
         {
           id: 100,
-          restautrants: [],
+          restaurants: [],
           restautrant: { name: '', type: '', address: '' },
         },
         updateRestaurantInfo('name', '마녀 식당'),
@@ -22,7 +22,7 @@ describe('reducer', () => {
       const state = reducer(
         {
           id: 100,
-          restautrants: [],
+          restaurants: [],
           restautrant: { name: '', type: '', address: '' },
         },
         updateRestaurantInfo('type', '한식'),
@@ -35,7 +35,7 @@ describe('reducer', () => {
       const state = reducer(
         {
           id: 100,
-          restautrants: [],
+          restaurants: [],
           restautrant: { name: '', type: '', address: '' },
         },
         updateRestaurantInfo('address', '서울시 강남구'),
@@ -51,20 +51,20 @@ describe('reducer', () => {
         const state = reducer(
           {
             id: 100,
-            restautrants: [],
+            restaurants: [],
             restautrant,
           },
           addRestaurant(),
         );
 
-        expect(state.restautrants).toHaveLength(1);
+        expect(state.restaurants).toHaveLength(1);
       });
 
       it('clears restaurant', () => {
         const state = reducer(
           {
             id: 100,
-            restautrants: [],
+            restaurants: [],
             restautrant,
           },
           addRestaurant(),
@@ -75,17 +75,17 @@ describe('reducer', () => {
     });
 
     context('without one of restaurantInfo', () => {
-      it('deosn\'t change restautrants state', () => {
+      it('deosn\'t change restaurants state', () => {
         const state = reducer(
           {
             id: 100,
-            restautrants: [],
+            restaurants: [],
             restautrant: { name: '', type: '', address: '' },
           },
           addRestaurant(),
         );
 
-        expect(state.restautrants).toEqual(initialState.restautrants);
+        expect(state.restaurants).toEqual(initialState.restaurants);
       });
     });
   });

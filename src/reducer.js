@@ -1,6 +1,6 @@
 export const initialState = {
   id: 100,
-  restautrants: [],
+  restaurants: [],
   restautrant: {
     name: '',
     type: '',
@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action = {}) {
   }
 
   if (action.type === 'addRestaurant') {
-    const { restautrants, restautrant } = state;
+    const { restautrant } = state;
     const { name, type, address } = restautrant;
 
     if (!(name && type && address)) {
@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action = {}) {
 
     return {
       ...state,
-      restautrants: restautrants.concat(restautrant),
+      restaurants: state.restaurants.concat(restautrant),
       restautrant: initialState.restautrant,
     };
   }
