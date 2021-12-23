@@ -8,10 +8,11 @@ export const initialState = {
 const restaurantReducer = (state = initialState, action = {}) => {
   if (action.type === TYPE_ADD_RESTAURANT) {
     const newId = state.lastId + 1;
+    const newRestaurant = { id: newId, ...action.payload };
     return {
       ...state,
       lastId: newId,
-      restaurants: [...state.restaurants, action.payload],
+      restaurants: [...state.restaurants, newRestaurant],
     };
   }
 
