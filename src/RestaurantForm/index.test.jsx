@@ -12,9 +12,7 @@ describe('RestaurantForm', () => {
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      name: '',
-    }));
+    useSelector.mockImplementation((selector) => selector({}));
   });
 
   it('renders inputs and submit button', () => {
@@ -26,7 +24,7 @@ describe('RestaurantForm', () => {
     expect(getByText('등록')).toBeInTheDocument();
   });
 
-  it('render name', () => {
+  it('renders name', () => {
     const testName = '김밥천국';
     useSelector.mockImplementation((selector) => selector({ name: testName }));
     const { getByLabelText } = render(<RestaurantForm />);
@@ -42,6 +40,44 @@ describe('RestaurantForm', () => {
     expect(dispatch).toHaveBeenCalledWith({
       type: ACTION_TYPES.CHANGE_NAME,
       payload: '김밥천국',
+    });
+  });
+
+  it('renders category', () => {
+    const testCategory = '분식';
+    useSelector.mockImplementation((selector) => selector({ category: testCategory }));
+    const { getByLabelText } = render(<RestaurantForm />);
+
+    expect(getByLabelText('분류')).toHaveValue(testCategory);
+  });
+
+  it('changes category', () => {
+    const { getByPlaceholderText } = render(<RestaurantForm />);
+    useSelector.mockImplementation((selector) => selector({ category: '' }));
+    fireEvent.change(getByPlaceholderText('분류'), { target: { value: '분식' } });
+
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.CHANGE_CATEGORY,
+      payload: '분식',
+    });
+  });
+
+  it('renders address', () => {
+    const testAddress = '김밥천국';
+    useSelector.mockImplementation((selector) => selector({ address: testAddress }));
+    const { getByLabelText } = render(<RestaurantForm />);
+
+    expect(getByLabelText('주소')).toHaveValue(testAddress);
+  });
+
+  it('changes address', () => {
+    const { getByPlaceholderText } = render(<RestaurantForm />);
+    useSelector.mockImplementation((selector) => selector({ name: '' }));
+    fireEvent.change(getByPlaceholderText('주소'), { target: { value: '서울시 서초구 서초대로' } });
+
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.CHANGE_ADDRESS,
+      payload: '서울시 서초구 서초대로',
     });
   });
 });
