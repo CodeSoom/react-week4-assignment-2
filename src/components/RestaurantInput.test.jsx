@@ -7,4 +7,17 @@ describe('RestaurantList', () => {
 
     expect(sut.queryByRole('listitem')).toBeNull();
   });
+
+  it('restaurants를 전달하면 레스토랑 리스트를 보여줍니다.', () => {
+    const stub = [
+      { name: 'foo', category: 'bar', address: 'baz' },
+    ];
+    const sut = render(<RestaurantList restaurant={stub} />);
+
+    const list = sut.queryAllByRole('listitem');
+    expect(list).toHaveLength(stub.length);
+    expect(list[0].textContent.match(stub[0].name)).not.toBeNull();
+    expect(list[0].textContent.match(stub[0].category)).not.toBeNull();
+    expect(list[0].textContent.match(stub[0].address)).not.toBeNull();
+  });
 });
