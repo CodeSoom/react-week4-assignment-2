@@ -11,6 +11,17 @@ describe('reducer', () => {
     address: '',
     data: [],
   };
+  it('noState', () => {
+    expect(reducer(undefined, {
+      type: 'worng Actions',
+    })).toStrictEqual(state);
+  });
+
+  it('wrong actions', () => {
+    expect(reducer(state, {
+      type: 'worng Actions',
+    })).toBe(state);
+  });
 
   describe('updateNameValue', () => {
     it('changes state with new NameValue', () => {
