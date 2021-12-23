@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import List from './List';
 
 export default function ListContainer() {
-  const { data } = useSelector((state) => ({
-    data: state.data,
+  const { reastaurantInfoList } = useSelector((state) => ({
+    reastaurantInfoList: state.data,
   }));
 
   return (
     <ul>
       {
-        data.map((datum) => (
+        reastaurantInfoList.map((datum) => (
           <List key={datum.id} datum={datum} />
         ))
       }
