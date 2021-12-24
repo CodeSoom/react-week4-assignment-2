@@ -27,7 +27,7 @@ describe("Input", () => {
       target: { value: "마녀피자" },
     });
 
-    expect(handleChange).toBeCalled("마녀피자");
+    expect(handleChange).toBeCalledWith("마녀피자");
 
     fireEvent.click(getByText("등록"));
 
