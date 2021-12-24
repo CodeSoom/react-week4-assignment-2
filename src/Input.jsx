@@ -30,7 +30,7 @@ export default function Input({ onClick, onChange }) {
         />
       </span>
       <button type="button" onClick={onClick}>
-        등록
+        확인
       </button>
     </p>
   );

@@ -5,20 +5,7 @@ const initialState = {
     type: "",
     address: "",
   },
-  registered: [
-    {
-      id: 1,
-      name: "마녀피자",
-      type: "양식",
-      address: "서울시 강남구",
-    },
-    {
-      id: 2,
-      name: "모던한식",
-      type: "한식",
-      address: "부산시 해운대구",
-    },
-  ],
+  registered: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,19 +16,23 @@ export default function reducer(state = initialState, action) {
         newId: state.newId + 1,
         changed: {
           ...state.changed,
-          [action.payload.indexName]: action.payload.value,
+          [action.payload.indexname]: action.payload.value,
         },
       };
     case "REGISTER_INPUT":
+      const { name, type, address } = state.changed;
+      if (!name || !type || !address) {
+        return state;
+      }
       return {
         ...state,
         registered: [
           ...state.registered,
           {
             id: state.newId,
-            name: state.changed.name,
-            type: state.changed.type,
-            address: state.changed.address,
+            name: name,
+            type: type,
+            address: address,
           },
         ],
       };

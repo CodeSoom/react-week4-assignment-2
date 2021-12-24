@@ -19,7 +19,7 @@ describe("InputContainer", () => {
   it("render input Component", () => {
     const { getByText } = render(<InputContainer />);
 
-    expect(getByText("등록")).not.toBeNull();
+    expect(getByText("확인")).not.toBeNull();
   });
 
   context("when input changes", () => {
@@ -45,7 +45,7 @@ describe("InputContainer", () => {
       useDispatch.mockImplementation(() => dispatch);
       const { getByText } = render(<InputContainer />);
 
-      fireEvent.click(getByText("등록"));
+      fireEvent.click(getByText("확인"));
 
       expect(dispatch).toBeCalledWith(registerInput());
     });

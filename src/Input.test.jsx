@@ -10,7 +10,7 @@ describe("Input", () => {
   it("show inputs, button element", () => {
     const { container, getByText } = render(<Input />);
 
-    expect(getByText("등록")).not.toBeNull();
+    expect(getByText("확인")).not.toBeNull();
     expect(
       container.getElementsByClassName("restaurant-inputs")
     ).not.toBeNull();
@@ -29,7 +29,7 @@ describe("Input", () => {
 
     expect(handleChange).toBeCalledWith("마녀피자", "name");
 
-    fireEvent.click(getByText("등록"));
+    fireEvent.click(getByText("확인"));
 
     expect(handleClick).toBeCalled();
   });

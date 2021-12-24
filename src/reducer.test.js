@@ -27,21 +27,42 @@ describe("reducer", () => {
   });
 
   describe("REGISTER_INPUT", () => {
-    it("append new Restaurant in 'registered' state", () => {
-      const state = reducer(
-        {
-          changed: {
-            id: 1,
-            name: "마녀피자",
-            type: "양식",
-            address: "서울시 강남구",
+    context("when 3 Inputs information completes", () => {
+      it("append new Restaurant in 'registered' state", () => {
+        const state = reducer(
+          {
+            changed: {
+              id: 1,
+              name: "마녀피자",
+              type: "양식",
+              address: "서울시 강남구",
+            },
+            registered: [],
           },
-          registered: [],
-        },
-        registerInput()
-      );
+          registerInput()
+        );
 
-      expect(state.registered).toHaveLength(1);
+        expect(state.registered).toHaveLength(1);
+      });
+    });
+
+    context("when Inputs not complete ", () => {
+      it("return state", () => {
+        const state = reducer(
+          {
+            changed: {
+              id: 1,
+              name: "마녀피자",
+              type: "",
+              address: "서울시 강남구",
+            },
+            registered: [],
+          },
+          registerInput()
+        );
+
+        expect(state.registered).toHaveLength(0);
+      });
     });
   });
 
@@ -50,7 +71,12 @@ describe("reducer", () => {
       const state = reducer(
         {
           registered: [
-            { id: 1, name: "마녀피자", type: "양식", address: "서울시 강남구" },
+            {
+              id: 1,
+              name: "마녀피자",
+              type: "양식",
+              address: "서울시 강남구",
+            },
             {
               id: 2,
               name: "모던한식",
