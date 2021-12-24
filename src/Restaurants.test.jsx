@@ -28,4 +28,10 @@ describe('Restaurants', () => {
       expect(container.firstChild).toBeNull();
     });
   });
+
+  it('doesn\'t given restaurants props, given empty array', () => {
+    const { container } = renderComponent(undefined);
+
+    expect(container.firstChild).toBeNull();
+  });
 });
