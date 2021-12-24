@@ -1,5 +1,19 @@
-export default function List() {
+export default function List({ restaurants }) {
+  if (restaurants.length === 0) {
+    return null;
+  }
+
   return (
-    <div>List</div>
+    <ul>
+      {restaurants.map((restaurant) => (
+        <li key={restaurants.name}>
+          {restaurant.name}
+          |
+          {restaurant.category}
+          |
+          {restaurant.address}
+        </li>
+      ))}
+    </ul>
   );
 }
