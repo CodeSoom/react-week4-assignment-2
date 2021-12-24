@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Input from './Input';
 
 export default function App() {
+  const [restaurants, setRestaurants] = useState([]);
   const [restaurant, setRestaurant] = useState({
     name: '',
     category: '',
@@ -13,11 +14,20 @@ export default function App() {
       ...restaurant,
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
   const handleClickAddButton = () => {
+    setRestaurants([
+      ...restaurants,
+      restaurant,
+    ]);
 
-  }
+    setRestaurant({
+      name: '',
+      category: '',
+      address: '',
+    });
+  };
 
   return (
     <div>
