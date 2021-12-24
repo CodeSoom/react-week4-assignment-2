@@ -9,66 +9,73 @@ describe('Input', () => {
   };
 
   const handleChange = jest.fn();
+  const handleClick = jest.fn();
 
   const renderInput = (restaurant) => render(
     <Input
       restaurant={restaurant}
       onChange={handleChange}
+      onClick={handleClick}
     />,
   );
 
-  it('has a input element with "이름" placeholder', () => {
+  it('placeholder가 "이름"인 input이 존재한다.', () => {
     const { getByPlaceholderText } = renderInput(initialValue);
 
     expect(getByPlaceholderText('이름')).not.toBeNull();
   });
 
-  it('has a input element with "분류" placeholder', () => {
+  it('placeholder가 "분류"인 input이 존재한다.', () => {
     const { getByPlaceholderText } = renderInput(initialValue);
 
     expect(getByPlaceholderText('분류')).not.toBeNull();
   });
 
-  it('has a input element with "주소" placeholder', () => {
+  it('placeholder가 "주소"인 input이 존재한다.', () => {
     const { getByPlaceholderText } = renderInput(initialValue);
 
     expect(getByPlaceholderText('주소')).not.toBeNull();
   });
 
-  it('has a button with "등록" text', () => {
+  it('"등록" 텍스트를 가진 버튼이 존재한다.', () => {
     const { getByText } = renderInput(initialValue);
 
     expect(getByText('등록')).not.toBeNull();
   });
 
-  it("changes 'name' input's value", () => {
-    const restaurantName = '마녀주방';
-    const { getByPlaceholderText, getByDisplayValue } = renderInput(initialValue);
+  it('"name" input에 값을 입력하면 onChange 이벤트가 실행된다.', () => {
+    const { getByPlaceholderText } = renderInput(initialValue);
 
-    fireEvent.change(getByPlaceholderText(/이름/), { target: { value: restaurantName } });
+    const inputElement = getByPlaceholderText(/이름/);
+    fireEvent.change(inputElement, { target: { value: '냠냠냠' } });
 
-    expect(getByDisplayValue(restaurantName)).not.toBeNull();
+    expect(handleChange).toBeCalled();
   });
 
-  // it("changes 'category' input's value", () => {
-  //   const { getByPlaceholderText } = renderInput(initialValue);
+  it('"category" input에 값을 입력하면 onChange 이벤트가 실행된다.', () => {
+    const { getByPlaceholderText } = renderInput(initialValue);
 
-  //   expect();
-  // });
+    const inputElement = getByPlaceholderText(/분류/);
+    fireEvent.change(inputElement, { target: { value: '냠냠냠' } });
 
-  // it("changes 'address' input's value", () => {
-  //   const { getByPlaceholderText } = renderInput(initialValue);
+    expect(handleChange).toBeCalled();
+  });
 
-  //   expect();
-  // });
+  it('"address" input에 값을 입력하면 onChange 이벤트가 실행된다.', () => {
+    const { getByPlaceholderText } = renderInput(initialValue);
 
-  it("after '등록' button clicked, all input's text should be empty", () => {
-    const { getByText, getByPlaceholderText } = renderInput(initialValue);
+    const inputElement = getByPlaceholderText(/주소/);
+    fireEvent.change(inputElement, { target: { value: '냠냠냠' } });
 
-    fireEvent.click(getByText('등록'));
+    expect(handleChange).toBeCalled();
+  });
 
-    expect(getByPlaceholderText('이름')).not.toBeNull();
-    expect(getByPlaceholderText('분류')).not.toBeNull();
-    expect(getByPlaceholderText('주소')).not.toBeNull();
+  it('"등록" 버튼을 누르면, onClick 이벤트가 실행된다.', () => {
+    const { getByText } = renderInput(initialValue);
+
+    const buttonElement = getByText('등록');
+    fireEvent.click(buttonElement);
+
+    expect(handleClick).toBeCalled();
   });
 });
