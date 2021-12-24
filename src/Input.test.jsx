@@ -1,10 +1,7 @@
-// input있다.
-// 버튼 있다.
-
 import { fireEvent, render } from '@testing-library/react';
+
 import Input from './Input';
 
-// 수정하면 함수 호출된다.
 test('Input', () => {
   const handleChangeNameValue = jest.fn();
   const handleChangeCategroryValue = jest.fn();
@@ -16,13 +13,9 @@ test('Input', () => {
 
   const { getByText, getByDisplayValue } = render(
     <Input
-      onNameChange={handleChangeNameValue}
-      onCategoryChange={handleChangeCategroryValue}
-      onAddressChange={handleChangeAddressValue}
+      onChanges={{ handleChangeNameValue, handleChangeCategroryValue, handleChangeAddressValue }}
       onClick={handleClickSaveData}
-      name={name}
-      category={category}
-      address={address}
+      info={{ name, category, address }}
     />,
   );
 
@@ -33,8 +26,10 @@ test('Input', () => {
 
   fireEvent.change(getByDisplayValue(name), { target: { value: '' } });
   expect(handleChangeNameValue).toBeCalled();
+
   fireEvent.change(getByDisplayValue(category), { target: { value: '' } });
   expect(handleChangeNameValue).toBeCalled();
+
   fireEvent.change(getByDisplayValue(address), { target: { value: '' } });
   expect(handleChangeNameValue).toBeCalled();
 });
