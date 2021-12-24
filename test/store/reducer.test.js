@@ -31,5 +31,20 @@ describe('reducer', () => {
       const state = reducer(prevState, action);
       expect(state.input.name).toBe('hello');
     });
+
+    it('유료하지 않은 key 라면 기존 상태를 반환한다.', () => {
+      const prevState = {
+        input: {
+          name: '',
+          category: '',
+          address: '',
+        },
+      };
+
+      const action = changeInput('banana', 'hello');
+
+      const state = reducer(prevState, action);
+      expect(state).toEqual(prevState);
+    });
   });
 });
