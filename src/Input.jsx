@@ -1,18 +1,17 @@
-export default function Input() {
+export default function Input({ onClick, onChange }) {
   return (
     <p>
       <span>
-        <label htmlFor="restaurant-name">
-          <input id="restaurant-name" type="text" placeholder="이름" />
-        </label>
-        <label htmlFor="restaurant-type">
-          <input id="restaurant-type" type="text" placeholder="분류" />
-        </label>
-        <label htmlFor="restaurant-address">
-          <input id="restaurant-address" type="text" placeholder="주소" />
-        </label>
+        <input
+          id="restaurant-name"
+          type="text"
+          placeholder="이름"
+          onChange={onChange}
+        />
+        <input id="restaurant-type" type="text" placeholder="분류" />
+        <input id="restaurant-address" type="text" placeholder="주소" />
       </span>
-      <button>등록</button>
+      <button onClick={onClick}>등록</button>
     </p>
   );
 }
