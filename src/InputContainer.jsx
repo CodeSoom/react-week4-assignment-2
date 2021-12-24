@@ -4,10 +4,6 @@ import { changeInput, registerInput } from "./actions";
 
 import { useDispatch } from "react-redux";
 
-export function handleChange(e) {
-  console.log(e.target.value);
-}
-
 export default function InputContainer() {
   const dispatch = useDispatch();
   function handleChange(text) {
