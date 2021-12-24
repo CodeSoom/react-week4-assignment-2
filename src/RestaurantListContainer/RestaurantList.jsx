@@ -1,7 +1,7 @@
-export default function RestaurantList({ list }) {
+export default function RestaurantList({ restaurants }) {
   return (
     <ul>
-      {list.map((restaurant) => (
+      {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
           <span>{restaurant.name}</span>
           <span>{restaurant.category}</span>

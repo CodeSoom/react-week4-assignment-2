@@ -26,6 +26,9 @@ export default function RestaurantFormContainer() {
 
   const handleSubmit = (newRestaurant) => {
     dispatch(addRestaurant(newRestaurant));
+    dispatch(changeName(''));
+    dispatch(changeCategory(''));
+    dispatch(changeAddress(''));
   };
 
   return (
