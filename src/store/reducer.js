@@ -1,4 +1,5 @@
-import { CHANGE_NAME } from './actions';
+import { CHANGE_INPUT } from './actions';
+import { identity } from '../lib';
 
 const initialState = {
   newId: 100,
@@ -8,14 +9,27 @@ const initialState = {
     address: '',
   },
   restaurants: [],
-
 };
 
-const reducers = {
-  [CHANGE_NAME]: () => {},
+const inputKeys = ['name', 'category', 'address'];
 
+const reducers = {
+  [CHANGE_INPUT]: (state, action) => {
+    const { name, value } = action.payload;
+
+    if (inputKeys.includes(name)) {
+      return ({
+        ...state,
+        input: {
+          ...state.input,
+          [name]: value,
+        },
+      });
+    }
+    return state;
+  },
 };
 
 export default function reducer(state = initialState, action = {}) {
-  return state;
+  return (reducers[action.type] || identity)(state, action);
 }

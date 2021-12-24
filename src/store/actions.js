@@ -1,3 +1,3 @@
-export const CHANGE_NAME = 'changeName';
+export const CHANGE_INPUT = 'changeInput';
 
-export const changeInput = (name, value) => ({ type: 'changeInput', payload: { name, value } });
+export const changeInput = (name, value) => ({ type: CHANGE_INPUT, payload: { name, value } });
