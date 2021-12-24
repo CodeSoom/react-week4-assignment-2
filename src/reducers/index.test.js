@@ -17,25 +17,50 @@ describe('reducer', () => {
 
   context('updateRestaurant', () => {
     it('식당 이름을 입력하면, name에 값이 적용된다.', () => {
-      const state = reducer(initialState, updateRestaurant);
+      const name = '마녀주방';
+      const state = reducer(initialState, updateRestaurant(name));
+
+      expect(state.restaurant.name).toBe(name);
     });
 
     it('식당 분류를 입력하면, category에 값이 적용된다.', () => {
-      const state = reducer(initialState, updateRestaurant);
+      const category = '한식';
+      const state = reducer(initialState, updateRestaurant(category));
+
+      expect(state.restaurant.category).toBe(category);
     });
 
     it('식당 주소를 입력하면, address에 값이 적용된다.', () => {
-      const state = reducer(initialState, updateRestaurant);
+      const address = '서울시 강남구';
+      const state = reducer(initialState, updateRestaurant(address));
+
+      expect(state.restaurant.address).toBe(address);
     });
   });
 
   context('addRestaurant', () => {
     it('식당 정보를 입력하면, restaurants에 해당 정보가 추가된다.', () => {
-      const state = reducer(initialState, addRestaurant);
+      const restaurant = {
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+      };
+      const { restaurants } = reducer(initialState, addRestaurant(restaurant));
+
+      expect(restaurants[0].name).toBe(restaurant.name);
+      expect(restaurants[0].category).toBe(restaurant.category);
+      expect(restaurants[0].address).toBe(restaurant.address);
     });
 
     it('식당 정보를 입력하면, restaurants 배열 길이가 1만큼 증가한다.', () => {
-      const state = reducer(initialState, addRestaurant);
+      const restaurant = {
+        name: '마녀주방',
+        category: '한식',
+        address: '서울시 강남구',
+      };
+      const { restaurants } = reducer(initialState, addRestaurant(restaurant));
+
+      expect(restaurants).toHaveLength(1);
     });
   });
 });
