@@ -1,10 +1,10 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
-import List from "./List";
+import List from './List';
 
-describe("List", () => {
-  context("without list", () => {
-    it("show a blank sheet", () => {
+describe('List', () => {
+  context('without list', () => {
+    it('show a blank sheet', () => {
       const state = [];
       const { getByText } = render(<List lists={state} />);
 
@@ -12,13 +12,13 @@ describe("List", () => {
     });
   });
 
-  context("with list", () => {
-    it("show state lists", () => {
+  context('with list', () => {
+    it('show state lists', () => {
       const state = [
         {
-          name: "칠암아나고",
-          type: "수산업",
-          address: "부산시 기장군",
+          name: '칠암아나고',
+          type: '수산업',
+          address: '부산시 기장군',
         },
       ];
 

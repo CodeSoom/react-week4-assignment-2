@@ -1,11 +1,11 @@
-import InputContainer from "./InputContainer";
-import ListContainer from "./ListContainer";
+import ListContainer from './ListContainer';
+import InputContainer from './InputContainer';
 
 export default function App() {
   return (
-    <div>
+    <>
       <ListContainer />
       <InputContainer />
-    </div>
+    </>
   );
 }

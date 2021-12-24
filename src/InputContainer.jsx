@@ -1,8 +1,7 @@
-import Input from "./Input";
+import { useDispatch } from 'react-redux';
+import Input from './Input';
 
-import { changeInput, registerInput } from "./actions";
-
-import { useDispatch } from "react-redux";
+import { changeInput, registerInput } from './actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();

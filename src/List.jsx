@@ -13,7 +13,13 @@ export default function List({ lists }) {
       <ul>
         {lists.map((restaurant) => (
           <li key={restaurant} className="restaurant-list">
-            {restaurant.name} | {restaurant.type} | {restaurant.address}
+            {restaurant.name}
+            {' '}
+            |
+            {restaurant.type}
+            {' '}
+            |
+            {restaurant.address}
           </li>
         ))}
       </ul>

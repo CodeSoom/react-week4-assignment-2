@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import List from "./List";
+import { useSelector } from 'react-redux';
+import List from './List';
 
 export default function ListContainer() {
   const { lists } = useSelector((state) => ({
