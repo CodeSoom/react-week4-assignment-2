@@ -1,22 +1,24 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
-import InputContainer from '../src/InputContainer';
+import FormContainer from '../src/FormContainer';
 import { changeInput } from '../src/store/actions';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('FormContainer', () => {
   const dispatch = jest.fn();
-  const renderComponent = () => render(<InputContainer />);
+  const renderComponent = () => render(<FormContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
-      nextId: 1,
-      name: '',
-      category: '',
-      address: '',
+      newId: 100,
+      input: {
+        name: '',
+        category: '',
+        address: '',
+      },
     }));
     useDispatch.mockImplementation(() => dispatch);
   });
@@ -26,7 +28,7 @@ describe('InputContainer', () => {
     useDispatch.mockClear();
   });
 
-  it('InputContainer 가 렌더링 된다.', () => {
+  it('FormContainer 가 렌더링 된다.', () => {
     const { container, getByPlaceholderText } = renderComponent();
 
     expect(container).not.toBeNull();
