@@ -1,11 +1,11 @@
-import { changeInput, registerInput } from "./actions";
+import { changeInput, registerInput, deleteList } from "./actions";
 import reducer from "./reducer";
 
 describe("reducer", () => {
   it("renders initial state", () => {
     const state = reducer();
 
-    expect(state.changed).not.toBeUndefined();
+    expect(state.changed).not.toBeNull();
   });
 
   describe("CHANGE_INPUT", () => {
@@ -13,12 +13,13 @@ describe("reducer", () => {
       const state = reducer(
         {
           changed: {
+            id: "",
             name: "",
             type: "",
             address: "",
           },
         },
-        changeInput("한식", 2)
+        changeInput("한식", "type")
       );
 
       expect(state.changed.type).toBe("한식");
@@ -29,13 +30,13 @@ describe("reducer", () => {
     it("append new Restaurant in 'registered' state", () => {
       const state = reducer(
         {
-          registered: [
-            {
-              name: "마녀피자",
-              type: "양식",
-              address: "부산시 남포동",
-            },
-          ],
+          changed: {
+            id: 1,
+            name: "마녀피자",
+            type: "양식",
+            address: "서울시 강남구",
+          },
+          registered: [],
         },
         registerInput()
       );
@@ -48,7 +49,7 @@ describe("reducer", () => {
     it("delete restaurant in 'registered' state list", () => {
       const state = reducer(
         {
-          registed: [
+          registered: [
             { id: 1, name: "마녀피자", type: "양식", address: "서울시 강남구" },
             {
               id: 2,
@@ -58,10 +59,10 @@ describe("reducer", () => {
             },
           ],
         },
-        deleteInput(2)
+        deleteList(2)
       );
 
-      expect(state.registed).toHaveLength(1);
+      expect(state.registered).toHaveLength(1);
     });
   });
 });
