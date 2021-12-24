@@ -18,21 +18,21 @@ describe('reducer', () => {
   context('updateRestaurant', () => {
     it('식당 이름을 입력하면, name에 값이 적용된다.', () => {
       const name = '마녀주방';
-      const state = reducer(initialState, updateRestaurant(name));
+      const state = reducer(initialState, updateRestaurant('name', name));
 
       expect(state.restaurant.name).toBe(name);
     });
 
     it('식당 분류를 입력하면, category에 값이 적용된다.', () => {
       const category = '한식';
-      const state = reducer(initialState, updateRestaurant(category));
+      const state = reducer(initialState, updateRestaurant('category', category));
 
       expect(state.restaurant.category).toBe(category);
     });
 
     it('식당 주소를 입력하면, address에 값이 적용된다.', () => {
       const address = '서울시 강남구';
-      const state = reducer(initialState, updateRestaurant(address));
+      const state = reducer(initialState, updateRestaurant('address', address));
 
       expect(state.restaurant.address).toBe(address);
     });
