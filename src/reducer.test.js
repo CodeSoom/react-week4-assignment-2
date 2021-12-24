@@ -1,7 +1,7 @@
 import reducer, { initialState } from './reducer';
 import { updateRestaurantInfo, addRestaurant } from './actions';
 
-import { restautrant } from '../fixture/restautrants';
+import { restautrant, restaurants } from '../fixture/restautrants';
 
 describe('reducer', () => {
   describe('updateRestaurantInfo', () => {
@@ -87,6 +87,32 @@ describe('reducer', () => {
 
         expect(state.restaurants).toEqual(initialState.restaurants);
       });
+    });
+  });
+
+  describe('request Not defined action type', () => {
+    it('return previous state', () => {
+      const state = reducer(
+        {
+          restaurants,
+          restautrant: { name: '', type: '', address: '' },
+        },
+        { type: 'invalid type' },
+      );
+
+      expect(state.restaurants).toEqual(restaurants);
+      expect(state.restautrant).toEqual({ name: '', type: '', address: '' });
+    });
+  });
+
+  describe('reducer function', () => {
+    it('doesn\'t given state, set initialState', () => {
+      const state = reducer(
+        undefined,
+        undefined,
+      );
+
+      expect(state).toEqual(initialState);
     });
   });
 });
