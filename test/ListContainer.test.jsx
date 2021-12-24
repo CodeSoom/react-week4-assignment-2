@@ -5,14 +5,20 @@ import ListContainer from '../src/ListContainer';
 jest.mock('react-redux');
 
 describe('ListContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [{
-      id: 1,
-      name: '마녀주방',
-      category: '한식',
-      address: '경기도',
-    }],
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [{
+        id: 1,
+        name: '마녀주방',
+        category: '한식',
+        address: '경기도',
+      }],
+    }));
+  });
+
+  afterEach(() => {
+    useSelector.mockClear();
+  });
 
   const renderComponent = () => render(<ListContainer />);
   it('ListContainer 가 렌더링 된다.', () => {
