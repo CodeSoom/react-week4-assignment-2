@@ -39,8 +39,9 @@ describe('FormContainer', () => {
 
   it('인풋의 입력 값이 변할때 changeInput 이 dispatch 된다', () => {
     const { getByPlaceholderText } = renderComponent();
+    const inputName = getByPlaceholderText(/이름/);
+    fireEvent.change(inputName, { target: { value: '마녀주방' } });
 
-    fireEvent.change(getByPlaceholderText(/이름/), { target: { value: '마녀주방' } });
-    expect(dispatch).toBeCalledWith(changeInput('name', '마녀주방'));
+    expect(dispatch).toBeCalledWith(changeInput(inputName.name, '마녀주방'));
   });
 });
