@@ -1,16 +1,20 @@
 import Input from "./Input";
 
+import { changeInput, registerInput } from "./actions";
+
+import { useDispatch } from "react-redux";
+
 export function handleChange(e) {
   console.log(e.target.value);
 }
 
 export default function InputContainer() {
-  function handleClick() {
-    console.log("눌러졌어요");
+  const dispatch = useDispatch();
+  function handleChange(text) {
+    dispatch(changeInput(text));
   }
-
-  function handleChange(e) {
-    console.log(e.target.value);
+  function handleClick() {
+    dispatch(registerInput());
   }
   return (
     <div>

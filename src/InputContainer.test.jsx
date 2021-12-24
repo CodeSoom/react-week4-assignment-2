@@ -6,6 +6,14 @@ import { fireEvent, render } from "@testing-library/react";
 
 import InputContainer from "./InputContainer";
 
+import { useDispatch } from "react-redux";
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
 describe("InputContainer", () => {
   it("render input Component", () => {
     const { getByText } = render(<InputContainer />);
@@ -15,25 +23,30 @@ describe("InputContainer", () => {
 
   context("input changes", () => {
     it("calls 'handleChange' Function", () => {
-      const log = jest.spyOn(globalThis.console, "log");
-      const { getByPlaceholderText } = render(<InputContainer />);
+      useDispatch.mockImplementation(() => dispatch);
+      const dispatch = useDispatch;
+      const { getByPlaceholderText, getByDisplayValue } = render(
+        <InputContainer />
+      );
 
       fireEvent.change(getByPlaceholderText("이름"), {
         target: { value: "마녀피자" },
       });
 
-      expect(log).toBeCalled();
+      expect(dispatch).toBeCalled();
+      expect(getByDisplayValue("마녀피자"));
     });
   });
 
   context("input submit", () => {
     it("calls 'handleClick' Function", () => {
-      const log = jest.spyOn(globalThis.console, "log");
+      useDispatch.mockImplementation(() => dispatch);
+      const dispatch = useDispatch;
       const { getByText } = render(<InputContainer />);
 
       fireEvent.click(getByText("등록"));
 
-      expect(log).toBeCalled();
+      expect(dispatch).toBeCalled();
     });
   });
 });
