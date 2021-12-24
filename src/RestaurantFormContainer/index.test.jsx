@@ -39,7 +39,7 @@ describe('RestaurantForm', () => {
 
     expect(dispatch).toHaveBeenCalledWith({
       type: ACTION_TYPES.CHANGE_NAME,
-      payload: '김밥천국',
+      payload: { name: '김밥천국' },
     });
   });
 
@@ -58,7 +58,7 @@ describe('RestaurantForm', () => {
 
     expect(dispatch).toHaveBeenCalledWith({
       type: ACTION_TYPES.CHANGE_CATEGORY,
-      payload: '분식',
+      payload: { category: '분식' },
     });
   });
 
@@ -77,7 +77,7 @@ describe('RestaurantForm', () => {
 
     expect(dispatch).toHaveBeenCalledWith({
       type: ACTION_TYPES.CHANGE_ADDRESS,
-      payload: '서울시 서초구 서초대로',
+      payload: { address: '서울시 서초구 서초대로' },
     });
   });
 });

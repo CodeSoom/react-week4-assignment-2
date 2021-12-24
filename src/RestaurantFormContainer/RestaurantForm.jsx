@@ -1,12 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ACTION_TYPES } from '../store/actions';
-
-export default function RestaurantForm() {
-  const { name, category, address } = useSelector((store) => store);
-  const dispatch = useDispatch();
-
+export default function RestaurantForm({
+  name,
+  category,
+  address,
+  onChangeName,
+  onChangeCategory,
+  onChangeAddress,
+  onSubmit,
+}) {
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        onSubmit({ name, category, address });
+      }}
+    >
       <section>
         <label htmlFor="name">이름</label>
         <input
@@ -15,12 +22,7 @@ export default function RestaurantForm() {
           name="name"
           placeholder="이름"
           value={name}
-          onChange={({ target: { value } }) => {
-            dispatch({
-              type: ACTION_TYPES.CHANGE_NAME,
-              payload: value,
-            });
-          }}
+          onChange={({ target: { value } }) => onChangeName(value)}
         />
       </section>
 
@@ -32,12 +34,7 @@ export default function RestaurantForm() {
           name="category"
           placeholder="분류"
           value={category}
-          onChange={({ target: { value } }) => {
-            dispatch({
-              type: ACTION_TYPES.CHANGE_CATEGORY,
-              payload: value,
-            });
-          }}
+          onChange={({ target: { value } }) => onChangeCategory(value)}
         />
       </section>
 
@@ -49,12 +46,7 @@ export default function RestaurantForm() {
           name="address"
           placeholder="주소"
           value={address}
-          onChange={({ target: { value } }) => {
-            dispatch({
-              type: ACTION_TYPES.CHANGE_ADDRESS,
-              payload: value,
-            });
-          }}
+          onChange={({ target: { value } }) => onChangeAddress(value)}
         />
       </section>
 

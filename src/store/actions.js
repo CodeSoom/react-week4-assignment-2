@@ -2,7 +2,7 @@ export const ACTION_TYPES = {
   CHANGE_NAME: 'CHANGE_NAME',
   CHANGE_CATEGORY: 'CHANGE_CATEGORY',
   CHANGE_ADDRESS: 'CHANGE_ADDRESS',
-  ADD_RESTAURANTS: 'ADD_RESTAURANTS',
+  ADD_RESTAURANT: 'ADD_RESTAURANT',
 };
 
 export const changeName = (name) => ({
@@ -20,7 +20,7 @@ export const changeAddress = (address) => ({
   payload: { address },
 });
 
-export const addRestaurants = (restaurant) => ({
-  type: ACTION_TYPES.ADD_RESTAURANTS,
+export const addRestaurant = (restaurant) => ({
+  type: ACTION_TYPES.ADD_RESTAURANT,
   payload: { restaurant },
 });

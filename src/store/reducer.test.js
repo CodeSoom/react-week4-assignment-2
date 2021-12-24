@@ -4,7 +4,7 @@ import {
   changeName,
   changeCategory,
   changeAddress,
-  addRestaurants,
+  addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -38,14 +38,14 @@ describe('reducer', () => {
   });
 
   describe('addRestaurants', () => {
-    it('should handle ADD_RESTAURANTS', () => {
+    it('should handle ADD_RESTAURANT', () => {
       const newRestaurant = {
         name: 'new restaurant',
         category: 'new category',
         address: 'new address',
       };
       expect(
-        reducer(initialState, addRestaurants(newRestaurant)).restaurants[0],
+        reducer(initialState, addRestaurant(newRestaurant)).restaurants[0],
       ).toMatchObject(newRestaurant);
     });
   });

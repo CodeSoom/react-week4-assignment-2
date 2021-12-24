@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import RestaurantList from '.';
+import RestaurantList from './RestaurantList';
 
 describe('RestaurantList', () => {
   it('renders restaurants list', () => {

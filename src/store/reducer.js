@@ -27,7 +27,7 @@ export default function reducer(state = initialState, action) {
       address: action.payload.address,
     };
   }
-  if (action.type === ACTION_TYPES.ADD_RESTAURANTS) {
+  if (action.type === ACTION_TYPES.ADD_RESTAURANT) {
     return {
       ...state,
       restaurants: [...state.restaurants, { ...action.payload.restaurant, id: generateId() }],
