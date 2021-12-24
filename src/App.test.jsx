@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+// 목적: App컴포넌트를 렌더한다.
 test('App', () => {
   const { getByText } = render((
     <App />
