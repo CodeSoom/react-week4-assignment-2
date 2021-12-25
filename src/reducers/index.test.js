@@ -63,4 +63,18 @@ describe('reducer', () => {
       expect(restaurants).toHaveLength(1);
     });
   });
+
+  context('예외상황이 발생할 때', () => {
+    it('존재하지않는 액션이 디스패치되면, 초기 상태 객체를 리턴한다.', () => {
+      const state = reducer(initialState, { type: 'undefinedAction' });
+
+      expect(state).toEqual(initialState);
+    });
+
+    it('리듀서에 상태 객체가 전달되지 않으면, 초기 상태 객체를 리턴한다.', () => {
+      const state = reducer(undefined, { type: 'undefinedAction' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
 });
