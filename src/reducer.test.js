@@ -7,13 +7,13 @@ import {
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
-  describe('setRestaurants', () => {
+  it('setRestaurants', () => {
     const initialState = {
       restaurnats: [],
     };
 
     const state = reducer(initialState, setRestaurants(restaurants));
 
-    expect(state).not.toHaveLength(0);
+    expect(state.restaurants).not.toHaveLength(0);
   });
 });
