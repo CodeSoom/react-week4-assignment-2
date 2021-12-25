@@ -1,8 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormContainer from './FormContainer';
 import { addRestaurant } from '../actions';
+import { restaurant } from '../fixtures/restaurant';
 
 jest.mock('react-redux');
 
@@ -10,6 +11,9 @@ describe('FormContainer', () => {
   test('레스토랑을 추가한다.', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
     const { getByText } = render(<FormContainer />);
 
     fireEvent.click(getByText('등록'));
