@@ -64,4 +64,20 @@ describe('reducer', () => {
       expect(state.newId).toBe(102);
     });
   });
+
+  describe('no action', () => {
+    it('returns state', () => {
+      const state = reducer();
+
+      expect(state).toStrictEqual({
+        newId: 100,
+        restaurants: [],
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
+      });
+    });
+  });
 });
