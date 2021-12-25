@@ -1,5 +1,6 @@
 const initialState = {
   restaurants: [],
+  restaurant: [],
 };
 
 export default function reducer(state = initialState, action) {

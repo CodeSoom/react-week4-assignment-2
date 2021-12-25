@@ -19,13 +19,13 @@ test('RestaurantCreateContainer', () => {
     },
   }));
 
-  const { getByText } = render((
+  const { getByText, getByDisplayValue } = render((
     <RestaurantCreateContainer />
   ));
 
-  expect(getByText('마법')).not.toBeNull();
-  expect(getByText('이탈')).not.toBeNull();
-  expect(getByText('서울시')).not.toBeNull();
+  expect(getByDisplayValue('마법')).not.toBeNull();
+  expect(getByDisplayValue('이탈')).not.toBeNull();
+  expect(getByDisplayValue('서울시')).not.toBeNull();
   expect(getByText('등록')).not.toBeNull();
 
   fireEvent.click(getByText('등록'));
