@@ -1,36 +1,37 @@
-export default function Input({ onClick, onChange }) {
+export default function Input({ onClick, onChange, restaurant }) {
+  const { name, category, address } = restaurant;
   // container와 의존성 분리
   function handleChange(e) {
-    onChange(e.target.value, e.target.dataset.indexname);
+    onChange(e.target.value, e.target.name);
   }
 
   return (
     <p>
       <span>
         <input
-          className="restaurant-inputs"
           type="text"
           placeholder="이름"
-          data-indexname="name"
+          name="name"
           onChange={handleChange}
+          value={name}
         />
         <input
-          className="restaurant-inputs"
           type="text"
           placeholder="분류"
-          data-indexname="type"
+          name="category"
           onChange={handleChange}
+          value={category}
         />
         <input
-          className="restaurant-inputs"
           type="text"
           placeholder="주소"
-          data-indexname="address"
+          name="address"
           onChange={handleChange}
+          value={address}
         />
       </span>
       <button type="button" onClick={onClick}>
-        확인
+        등록
       </button>
     </p>
   );

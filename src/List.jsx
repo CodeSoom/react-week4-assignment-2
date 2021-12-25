@@ -15,7 +15,7 @@ export default function List({ lists }) {
           <li key={restaurant.name} className="restaurant-list">
             <span>{restaurant.name}</span>
             <span> | </span>
-            <span>{restaurant.type}</span>
+            <span>{restaurant.category}</span>
             <span> | </span>
             <span>{restaurant.address}</span>
           </li>

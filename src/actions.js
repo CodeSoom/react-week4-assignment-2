@@ -1,6 +1,6 @@
-export const changeInput = (value, indexname) => ({
+export const changeInput = (value, name) => ({
   type: 'CHANGE_INPUT',
-  payload: { value, indexname },
+  payload: { value, name },
 });
 
 export const registerInput = () => ({ type: 'REGISTER_INPUT' });
