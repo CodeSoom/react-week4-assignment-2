@@ -1,11 +1,11 @@
 import FormContainer from './Restaurant/FormContainer';
-import Restaurants from './Restaurant/Restaurants';
+import RestaurantsContainer from './Restaurant/RestaurantsContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <Restaurants />
+      <RestaurantsContainer />
       <FormContainer />
     </div>
   );
