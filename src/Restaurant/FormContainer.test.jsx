@@ -9,6 +9,7 @@ jest.mock('react-redux');
 
 describe('FormContainer', () => {
   const dispatch = jest.fn();
+
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
