@@ -39,4 +39,22 @@ describe('reducer', () => {
       expect(state.restaurant.name).toBe('마법사주방');
     });
   });
+
+  describe('addRestaurant', () => {
+    it('appends restaurant into restaurants and clear restaurant form', () => {
+      const initialState = {
+        restaurants: [],
+        restaurnat: {
+          name: '마법사주방',
+          category: '이탈리안',
+          address: '서울시 강남구 역삼동',
+        },
+      };
+
+      const state = reducer(initialState, addRestaurant());
+
+      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurant.name).toBe('');
+    });
+  });
 });
