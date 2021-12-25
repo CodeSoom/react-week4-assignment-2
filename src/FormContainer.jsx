@@ -11,7 +11,8 @@ export default function FormContainer() {
     dispatch(changeInput(key, value));
   }
 
-  function handleSubmit() {
+  function handleSubmit(event) {
+    event.preventDefault();
     dispatch(addNewRestaurant());
   }
 
