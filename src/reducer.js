@@ -1,6 +1,12 @@
+const initialRestaurant = {
+  name: '',
+  category: '',
+  address: '',
+};
+
 const initialState = {
   restaurants: [],
-  restaurant: {},
+  restaurant: initialRestaurant,
 };
 
 export default function reducer(state = initialState, action) {
@@ -20,6 +26,16 @@ export default function reducer(state = initialState, action) {
         ...state.restaurant,
         [name]: value,
       },
+    };
+  }
+
+  if (action.type === 'addRestaurant') {
+    const { restaurants, restaurant } = state;
+
+    return {
+      ...state,
+      restaurants: [...restaurants, restaurant],
+      restaurant: initialRestaurant,
     };
   }
 
