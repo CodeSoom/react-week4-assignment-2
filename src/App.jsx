@@ -1,33 +1,27 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Input from './Input';
 import List from './List';
+import { updateRestaurant, addRestaurant } from './actions';
 
 export default function App() {
-  const [restaurants, setRestaurants] = useState([]);
-  const [restaurant, setRestaurant] = useState({
-    name: '',
-    category: '',
-    address: '',
-  });
+  const dispatch = useDispatch();
+
+  const { restaurants, restaurant } = useSelector((state) => ({
+    restaurants: state.restaurants,
+    restaurant: state.restaurant,
+  }));
 
   const handleChangeRestaurant = (e) => {
-    setRestaurant({
-      ...restaurant,
-      [e.target.name]: e.target.value,
-    });
+    dispatch(
+      updateRestaurant(e.target.name, e.target.value),
+    );
   };
 
   const handleClickAddButton = () => {
-    setRestaurants([
-      ...restaurants,
-      restaurant,
-    ]);
-
-    setRestaurant({
-      name: '',
-      category: '',
-      address: '',
-    });
+    dispatch(
+      addRestaurant(restaurant),
+    );
   };
 
   return (
