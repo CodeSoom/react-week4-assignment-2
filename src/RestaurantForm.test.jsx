@@ -29,7 +29,10 @@ test('RestaurantForm', () => {
     target: { value: '서울시 서초구' },
   });
 
-  expect(handleChange).toBeCalled();
+  expect(handleChange).toBeCalledWith({
+    name: 'address',
+    value: '서울시 서초구',
+  });
 
   fireEvent.click(getByText(/등록/));
 
