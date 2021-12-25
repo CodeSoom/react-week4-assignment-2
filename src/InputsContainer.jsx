@@ -5,9 +5,7 @@ import { updateRestaurantInfo, addRestaurant } from './actions';
 import Input from './Input';
 
 export default function InputsContainer() {
-  const { restautrant } = useSelector((state) => ({
-    restautrant: state.restautrant,
-  }));
+  const { restautrant } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleChange = (key, value) => {

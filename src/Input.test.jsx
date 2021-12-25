@@ -12,9 +12,9 @@ describe('Input', () => {
     jest.clearAllMocks();
   });
 
-  const renderComponent = (restautrantInfo) => render(
+  const renderComponent = (value) => render(
     <Input
-      restautrant={restautrantInfo}
+      restautrant={value}
       onChange={handleChangeRestautrantInfo}
       onClick={handleClick}
     />,
@@ -29,7 +29,7 @@ describe('Input', () => {
     expect(getByRole('button', { name: /추가/ })).toBeInTheDocument();
   });
 
-  context('각각의 입련 란은', () => {
+  describe('각각의 입련 란은', () => {
     it('전달 받은 값을 렌더링한다.', () => {
       const { getByPlaceholderText } = renderComponent(restautrant);
 
@@ -87,7 +87,7 @@ describe('Input', () => {
     });
   });
 
-  it('"추가" 버튼을 클릭 하면 onClick 을 호출한다.', () => {
+  it('"추가" 버튼을 클릭 하면 onClick 핸들러를 호출한다.', () => {
     const { getByRole } = renderComponent({});
 
     fireEvent.click(getByRole('button', { name: /추가/ }));
