@@ -45,7 +45,7 @@ describe('reducer', () => {
       const initialState = {
         newId: 101,
         restaurants: [],
-        restaurnat: {
+        restaurant: {
           name: '마법사주방',
           category: '이탈리안',
           address: '서울시 강남구 역삼동',
