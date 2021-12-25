@@ -6,7 +6,7 @@ import restaurants from '../fixtures/restaurants';
 
 test('Restaurnats', () => {
   const { getByText } = render((
-    <Restaurnats sestaurnats={restaurants} />
+    <Restaurnats restaurants={restaurants} />
   ));
 
   expect(getByText(/김밥제국/)).not.toBeNull();

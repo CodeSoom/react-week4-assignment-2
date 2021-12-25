@@ -1,3 +1,5 @@
+import Restaurants from "./Restaurants";
+
 export default function App() {
   const restaurants = [
     {
@@ -8,15 +10,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {
-          restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {restaurant.name}
-            </li>
-          ))
-        }
-      </ul>
+      <Restaurants restaurants={restaurants} />
     </div>
   );
 }
