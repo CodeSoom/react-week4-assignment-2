@@ -35,13 +35,9 @@ export default function InputContainer() {
     <>
       <h1>Restaurants</h1>
       <RestaurantInfoInput
-        onNameChange={handleChangeNameValue}
-        onCategoryChange={handleChangeCategroryValue}
-        onAddressChange={handleChangeAddressValue}
+        onChanges={{ handleChangeNameValue, handleChangeCategroryValue, handleChangeAddressValue }}
         onClick={handleClickSaveData}
-        name={name}
-        category={category}
-        address={address}
+        info={{ name, category, address }}
       />
     </>
   );

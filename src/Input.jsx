@@ -1,6 +1,6 @@
 export default function RestaurantInfoInput({
-  onNameChange, onCategoryChange, onAddressChange, onClick,
-  name, category, address,
+  onChanges, onClick,
+  info,
 }) {
   return (
     <div>
@@ -8,22 +8,22 @@ export default function RestaurantInfoInput({
         type="text"
         name="name"
         placeholder="이름"
-        onChange={onNameChange}
-        value={name}
+        onChange={onChanges.handleChangeNameValue}
+        value={info.name}
       />
       <input
         type="text"
         name="category"
         placeholder="분류"
-        onChange={onCategoryChange}
-        value={category}
+        onChange={onChanges.handleChangeCategroryValue}
+        value={info.category}
       />
       <input
         type="text"
         name="address"
         placeholder="주소"
-        onChange={onAddressChange}
-        value={address}
+        onChange={onChanges.handleChangeAddressValue}
+        value={info.address}
       />
       <button type="button" onClick={onClick}>
         등록
