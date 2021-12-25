@@ -30,4 +30,10 @@ describe('reducer', () => {
 
     expect(state.restaurant.title).toBe('뉴욕반점');
   });
+
+  test('default', () => {
+    const state = reducer({}, { type: '' });
+
+    expect(state).toEqual({});
+  });
 });

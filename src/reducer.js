@@ -8,8 +8,8 @@ const initialState = {
   },
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'addRestaurant') {
+const reducers = {
+  addRestaurant: (state) => {
     const newId = state.newId + 1;
 
     return {
@@ -21,16 +21,19 @@ export default function reducer(state = initialState, action) {
       ],
       restaurant: { ...initialState.restaurant },
     };
-  }
+  },
+  changeForm: (state, payload) => ({
+    ...state,
+    restaurant: {
+      ...state.restaurant,
+      ...payload.field,
+    },
+  }),
+};
 
-  if (action.type === 'changeForm') {
-    return {
-      ...state,
-      restaurant: {
-        ...state.restaurant,
-        ...action.payload.field,
-      },
-    };
+export default function reducer(state = initialState, action) {
+  if (reducers[action.type]) {
+    return reducers[action.type](state, action.payload);
   }
 
   return state;
