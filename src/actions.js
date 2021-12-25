@@ -7,7 +7,8 @@ export function setRestaurants(restaurants) {
   };
 }
 
-// lint 에러 제거용
-export function fnc() {
-  return '';
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
 }

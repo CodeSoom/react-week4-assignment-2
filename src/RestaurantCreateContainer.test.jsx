@@ -22,7 +22,7 @@ test('RestaurantCreateContainer', () => {
 
   fireEvent.click(getByText(/등록/));
 
-  expect(dispatch).toBeCalled({
+  expect(dispatch).toBeCalledWith({
     type: 'addRestaurant',
   });
 });
