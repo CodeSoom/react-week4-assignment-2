@@ -1,4 +1,4 @@
-import { CHANGE_INPUT } from './actions';
+import { ADD_NEW_RESTAURANT, CHANGE_INPUT } from './actions';
 import { identity } from '../lib';
 
 const initialState = {
@@ -27,6 +27,24 @@ const reducers = {
       });
     }
     return state;
+  },
+  [ADD_NEW_RESTAURANT]: (state) => {
+    const { input } = state;
+
+    return ({
+      ...state,
+      newId: state.newId + 1,
+      input: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [...state.restaurants, {
+        ...input,
+        newId: state.newId,
+      }],
+
+    });
   },
 };
 

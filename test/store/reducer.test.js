@@ -51,6 +51,7 @@ describe('reducer', () => {
   describe('addNewRestaurant', () => {
     it('새로운 restaurant 가 추가된 state 를 반환한다.', () => {
       const prevState = {
+        newId: 100,
         input: {
           name: '마녀식당',
           category: '한식',
@@ -62,12 +63,14 @@ describe('reducer', () => {
 
       const state = reducer(prevState, action);
       expect(state).toEqual({
-        name: '',
+        newId: 101,
         input: {
+          name: '',
           category: '',
           address: '',
         },
         restaurants: [{
+          newId: 100,
           name: '마녀식당',
           category: '한식',
           address: '경기도',
