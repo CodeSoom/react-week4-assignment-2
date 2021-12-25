@@ -1,5 +1,5 @@
 import reducer from '../../src/store/reducer';
-import { changeInput } from '../../src/store/actions';
+import { addNewRestaurant, changeInput } from '../../src/store/actions';
 
 describe('reducer', () => {
   it('초기에는 초기 상태를 반환한다.', () => {
@@ -32,7 +32,7 @@ describe('reducer', () => {
       expect(state.input.name).toBe('hello');
     });
 
-    it('유료하지 않은 key 라면 기존 상태를 반환한다.', () => {
+    it('유효하지 않은 key 라면 기존 상태를 반환한다.', () => {
       const prevState = {
         input: {
           name: '',
@@ -45,6 +45,36 @@ describe('reducer', () => {
 
       const state = reducer(prevState, action);
       expect(state).toEqual(prevState);
+    });
+  });
+
+  describe('addNewRestaurant', () => {
+    it('새로운 restaurant 가 추가된 state 를 반환한다.', () => {
+      const prevState = {
+        input: {
+          name: '마녀식당',
+          category: '한식',
+          address: '경기도',
+        },
+        restaurants: [],
+      };
+      const action = addNewRestaurant();
+
+      const state = reducer(prevState, action);
+      expect(state).toEqual({
+        name: '',
+        input: {
+          category: '',
+          address: '',
+        },
+        restaurants: [{
+          name: '마녀식당',
+          category: '한식',
+          address: '경기도',
+        }],
+      });
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
