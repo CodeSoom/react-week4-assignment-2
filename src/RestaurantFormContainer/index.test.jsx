@@ -16,11 +16,11 @@ describe('RestaurantForm', () => {
   });
 
   it('renders inputs and submit button', () => {
-    const { getByPlaceholderText, getByText } = render(<RestaurantForm />);
+    const { getByLabelText, getByText } = render(<RestaurantForm />);
 
-    expect(getByPlaceholderText('이름')).toBeInTheDocument();
-    expect(getByPlaceholderText('분류')).toBeInTheDocument();
-    expect(getByPlaceholderText('주소')).toBeInTheDocument();
+    expect(getByLabelText('이름')).toBeInTheDocument();
+    expect(getByLabelText('분류')).toBeInTheDocument();
+    expect(getByLabelText('주소')).toBeInTheDocument();
     expect(getByText('등록')).toBeInTheDocument();
   });
 
