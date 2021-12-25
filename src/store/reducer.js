@@ -31,7 +31,7 @@ const reducers = {
   [ADD_NEW_RESTAURANT]: (state) => {
     const { input } = state;
 
-    if (Object.keys(input).some((value) => !value)) {
+    if (Object.values(input).some((value) => !value)) {
       return state;
     }
 

@@ -79,5 +79,22 @@ describe('reducer', () => {
 
       expect(state.restaurants).toHaveLength(1);
     });
+    it('input 상태중 빈값이 존재하면, 기존 state 를 반환한다.', () => {
+      const prevState = {
+        newId: 100,
+        input: {
+          name: '',
+          category: '한식',
+          address: '경기도',
+        },
+        restaurants: [],
+      };
+
+      const action = addNewRestaurant();
+
+      const state = reducer(prevState, action);
+
+      expect(state).toEqual(prevState);
+    });
   });
 });
