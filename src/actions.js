@@ -12,3 +12,13 @@ export function addRestaurant() {
     type: 'addRestaurant',
   };
 }
+
+export function changeRestaurantField({ name, value }) {
+  return {
+    type: 'changeRestaurantField',
+    payload: {
+      name,
+      value,
+    },
+  };
+}
