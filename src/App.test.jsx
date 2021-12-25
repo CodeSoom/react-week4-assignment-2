@@ -16,9 +16,17 @@ test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
+
   const { getByText } = render((
     <App />
   ));
+
+  expect(dispatch).toBeCalledWith({
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  });
 
   expect(getByText(/김밥제국/)).not.toBeNull();
 });

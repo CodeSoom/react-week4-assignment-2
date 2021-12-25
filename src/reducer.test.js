@@ -7,13 +7,15 @@ import {
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
-  it('setRestaurants', () => {
-    const initialState = {
-      restaurnats: [],
-    };
+  describe('setRestaurants', () => {
+    it('changes restaurants array', () => {
+      const initialState = {
+        restaurnats: [],
+      };
 
-    const state = reducer(initialState, setRestaurants(restaurants));
+      const state = reducer(initialState, setRestaurants(restaurants));
 
-    expect(state.restaurants).not.toHaveLength(0);
+      expect(state.restaurants).not.toHaveLength(0);
+    });
   });
 });
