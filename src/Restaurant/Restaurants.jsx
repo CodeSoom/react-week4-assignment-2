@@ -1,12 +1,12 @@
 const Restaurants = ({ restaurants }) => (
   <ul>
     {restaurants.map(({
-      title, menu, address, id,
+      name, category, address, id,
     }) => (
       <li key={id}>
-        {title}
+        {name}
         |
-        {menu}
+        {category}
         |
         {address}
       </li>

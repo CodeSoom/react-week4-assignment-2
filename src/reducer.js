@@ -2,9 +2,9 @@ const initialState = {
   newId: 1,
   restaurants: [],
   restaurant: {
-    title: '',
+    name: '',
+    category: '',
     address: '',
-    menu: '',
   },
 };
 
