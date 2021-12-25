@@ -71,13 +71,48 @@ describe('RestaurantForm', () => {
   });
 
   it('changes address', () => {
-    const { getByPlaceholderText } = render(<RestaurantForm />);
     useSelector.mockImplementation((selector) => selector({ name: '' }));
+    const { getByPlaceholderText } = render(<RestaurantForm />);
+
     fireEvent.change(getByPlaceholderText('주소'), { target: { value: '서울시 서초구 서초대로' } });
 
     expect(dispatch).toHaveBeenCalledWith({
       type: ACTION_TYPES.CHANGE_ADDRESS,
       payload: { address: '서울시 서초구 서초대로' },
+    });
+  });
+
+  it('adds restaurant and clears form', () => {
+    useSelector.mockImplementation((selector) => selector({
+      name: '김밥천국',
+      category: '분식',
+      address: '서울시 서초구 서초대로',
+    }));
+    const { getByText } = render(<RestaurantForm />);
+
+    fireEvent.click(getByText('등록'));
+
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.ADD_RESTAURANT,
+      payload: {
+        restaurant: {
+          name: '김밥천국',
+          category: '분식',
+          address: '서울시 서초구 서초대로',
+        },
+      },
+    });
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.CHANGE_NAME,
+      payload: { name: '' },
+    });
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.CHANGE_CATEGORY,
+      payload: { category: '' },
+    });
+    expect(dispatch).toHaveBeenCalledWith({
+      type: ACTION_TYPES.CHANGE_ADDRESS,
+      payload: { address: '' },
     });
   });
 });
