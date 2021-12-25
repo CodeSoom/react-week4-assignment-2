@@ -1,9 +1,11 @@
-const Form = () => (
+const Form = ({
+  title, menu, address, onClick, onChange,
+}) => (
   <div>
-    <input id="title" type="text" />
-    <input id="menu" type="text" />
-    <input id="address" type="text" />
-    <button type="button">등록</button>
+    <input value={title} onChange={onChange} name="title" type="text" />
+    <input value={menu} onChange={onChange} name="menu" type="text" />
+    <input value={address} onChange={onChange} name="address" type="text" />
+    <button onClick={onClick} type="button">등록</button>
   </div>
 );
 

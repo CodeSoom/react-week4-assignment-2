@@ -5,7 +5,13 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <ul />
-      <Form />
+      <Form
+        title="title"
+        menu="menu"
+        address="address"
+        onClick={() => ()}
+        onChange={() => ()}
+         />
     </div>
   );
 }
