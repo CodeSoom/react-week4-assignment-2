@@ -19,6 +19,10 @@ describe('Input', () => {
     />,
   );
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('placeholder가 "이름"인 input이 존재한다.', () => {
     const { getByPlaceholderText } = renderInput(initialValue);
 

@@ -1,7 +1,27 @@
 import { render, fireEvent } from '@testing-library/react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [],
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+    }));
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   const renderApp = () => render(<App />);
 
   context('제목 렌더링 테스트', () => {
