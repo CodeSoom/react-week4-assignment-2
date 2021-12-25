@@ -1,6 +1,6 @@
 const initialState = {
   restaurants: [],
-  restaurant: [],
+  restaurant: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -8,6 +8,18 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       restaurants: action.payload.restaurants,
+    };
+  }
+
+  if (action.type === 'changeRestaurantField') {
+    const { name, value } = action.payload;
+
+    return {
+      ...state,
+      restaurant: {
+        ...state.restaurant,
+        [name]: value,
+      },
     };
   }
 
