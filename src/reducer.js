@@ -1,4 +1,5 @@
 const initialState = {
+  restaurants: [],
   restaurant: {
     title: '',
     address: '',
@@ -10,7 +11,8 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
     return {
       ...state,
-      restaurant: action.payload.restaurant,
+      restaurants: [...state.restaurants, state.restaurant],
+      restaurant: { ...initialState.restaurant },
     };
   }
 
