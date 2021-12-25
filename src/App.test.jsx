@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 // App test
+// 목적: App 구성요소 렌더링
 
 describe('App', () => {
   const renderApp = () => render(<App />);
