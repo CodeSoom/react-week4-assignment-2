@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import Form from './Form';
-import { addRestaurant } from '../actions';
+import { addRestaurant, changeForm } from '../actions';
 
 const FormContainer = () => {
   const restaurant = useSelector((store) => store.restaurant);
@@ -12,8 +12,8 @@ const FormContainer = () => {
   const handleAddRestaurant = () => {
     dispatch(addRestaurant(restaurant));
   };
-  const handleFormChange = () => {
-    dispatch();
+  const handleFormChange = ({ target: { value, name } }) => {
+    dispatch(changeForm({ [name]: value }));
   };
   return (
     <Form

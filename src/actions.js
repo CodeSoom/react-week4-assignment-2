@@ -1,6 +1,13 @@
 export const addRestaurant = (restaurant) => ({
   type: 'addRestaurant',
   payload: {
-    addRestaurant,
+    restaurant,
+  },
+});
+
+export const changeForm = (field) => ({
+  type: 'changeForm',
+  payload: {
+    field,
   },
 });

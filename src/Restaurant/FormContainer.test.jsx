@@ -21,18 +21,13 @@ describe('FormContainer', () => {
   });
 
   test('레스토랑을 작성폼을 수정한다.', () => {
-    // const onChange = jest.fn();
-    // const { getByDisplayValue } = render(
-    //   <Form
-    //     onChange={onChange}
-    //     title="홍반장"
-    //     menu="중국집"
-    //     address="판교"
-    //   />,
-    // );
+    const { getByDisplayValue } = render(<FormContainer />);
 
-    // expect(getByDisplayValue('홍반장')).not.toBeNull();
-    // expect(getByDisplayValue('중국집')).not.toBeNull();
-    // expect(getByDisplayValue('판교')).not.toBeNull();
+    fireEvent.change(getByDisplayValue('가게명'), { target: { value: '홍콩반점' } });
+    expect(dispatch).toBeCalledWith(changeForm({ title: '홍콩반점' }));
+    fireEvent.change(getByDisplayValue('주소'), { target: { value: '강남구' } });
+    expect(dispatch).toBeCalledWith(changeForm({ address: '강남구' }));
+    fireEvent.change(getByDisplayValue('음식종류'), { target: { value: '중식' } });
+    expect(dispatch).toBeCalledWith(changeForm({ menu: '중식' }));
   });
 });

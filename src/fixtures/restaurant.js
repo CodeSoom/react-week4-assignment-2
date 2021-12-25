@@ -1,5 +1,5 @@
 export const restaurant = {
-  title: '',
-  address: '',
-  menu: '',
+  title: '가게명',
+  address: '주소',
+  menu: '음식종류',
 };
