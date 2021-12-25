@@ -17,7 +17,9 @@ const reducers = {
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload;
 
-    if (inputKeys.includes(name)) {
+    const isValidName = inputKeys.includes(name);
+
+    if (isValidName) {
       return ({
         ...state,
         input: {
@@ -31,7 +33,9 @@ const reducers = {
   [ADD_NEW_RESTAURANT]: (state) => {
     const { input } = state;
 
-    if (Object.values(input).some((value) => !value)) {
+    const isEmpty = Object.values(input).some((value) => !value);
+
+    if (isEmpty) {
       return state;
     }
 

@@ -1,15 +1,12 @@
 import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import App from '../src/App';
+import store from '../src/store';
 
-jest.mock('react-redux');
+jest.unmock('react-redux');
 
 describe('App', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [],
-  }));
-
-  const renderApp = () => render((<App />));
+  const renderApp = () => render((<Provider store={store}><App /></Provider>));
 
   it('App 이 렌더링 된다.', () => {
     const { container } = renderApp();
