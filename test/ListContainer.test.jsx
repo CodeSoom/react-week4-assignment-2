@@ -6,6 +6,8 @@ jest.mock('react-redux');
 
 describe('ListContainer', () => {
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
       restaurants: [{
         id: 1,
@@ -14,10 +16,6 @@ describe('ListContainer', () => {
         address: '경기도',
       }],
     }));
-  });
-
-  afterEach(() => {
-    useSelector.mockClear();
   });
 
   const renderComponent = () => render(<ListContainer />);

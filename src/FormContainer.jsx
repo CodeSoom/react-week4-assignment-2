@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Form from './Form';
-import { changeInput } from './store/actions';
+import { addNewRestaurant, changeInput } from './store/actions';
 
 export default function FormContainer() {
   const dispatch = useDispatch();
@@ -11,9 +11,19 @@ export default function FormContainer() {
     dispatch(changeInput(key, value));
   }
 
+  function handleSubmit() {
+    dispatch(addNewRestaurant());
+  }
+
   return (
     <>
-      <Form name={name} category={category} address={address} onChangeByName={handleChangeByName} />
+      <Form
+        name={name}
+        category={category}
+        address={address}
+        onChangeByName={handleChangeByName}
+        onSubmit={handleSubmit}
+      />
     </>
   );
 }

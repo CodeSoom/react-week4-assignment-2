@@ -23,11 +23,6 @@ describe('FormContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  afterEach(() => {
-    useSelector.mockClear();
-    useDispatch.mockClear();
-  });
-
   it('FormContainer 가 렌더링 된다.', () => {
     const { container, getByPlaceholderText } = renderComponent();
 

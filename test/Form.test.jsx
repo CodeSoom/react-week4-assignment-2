@@ -3,12 +3,16 @@ import Form from '../src/Form';
 
 describe('Form', () => {
   const handleChangeByName = jest.fn();
+  const handleSubmit = jest.fn((event) => {
+    event.preventDefault();
+  });
 
   const renderComponent = (name = '', category = '', address = '') => render(<Form
     name={name}
     category={category}
     address={address}
     onChangeByName={handleChangeByName}
+    onSubmit={handleSubmit}
   />);
 
   beforeEach(() => {
@@ -37,5 +41,13 @@ describe('Form', () => {
     fireEvent.change(inputName, { target: { value: '마녀주방' } });
 
     expect(handleChangeByName).toBeCalled();
+  });
+
+  it('등록 버튼을 누르면 onSubmit 이 호출된다.', () => {
+    const { getByRole } = renderComponent();
+
+    fireEvent.click(getByRole('button', { name: /등록/ }));
+
+    expect(handleSubmit).toBeCalled();
   });
 });
