@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import {updateAddress, updateCategory, updateName} from './action/actions';
+import {addRestaurant, updateAddress, updateCategory, updateName} from './action/actions';
 
 describe('reducer', () => {
   context('입력된 state가 없으면', () => {
@@ -49,6 +49,26 @@ describe('reducer', () => {
       const state = reducer({}, updateAddress(expectAddress));
 
       expect(state.address).toBe(expectAddress);
+    });
+  });
+
+  describe('add', () => {
+    it('새 레스토랑이 등록된다', () => {
+      const expectName = 'New Name';
+      const expectCategory = 'New Category';
+      const expectAddress = 'New Address';
+
+      const { restaurants } = reducer({
+        name: expectName,
+        category: expectCategory,
+        address: expectAddress,
+        restaurants: [],
+      }, addRestaurant());
+
+      expect(restaurants).toHaveLength(1);
+      expect(restaurants[0].name).toBe(expectName);
+      expect(restaurants[0].category).toBe(expectCategory);
+      expect(restaurants[0].address).toBe(expectAddress);
     });
   });
 });
