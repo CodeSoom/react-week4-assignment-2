@@ -10,4 +10,14 @@ describe('reducer', () => {
       expect(state.address).toBe('');
     });
   });
+
+  context('지정되지 않은 type이 넘어가면', () => {
+    it('state 그대로 반환된다', () => {
+      const expectState = { name: 'test' };
+
+      const state = reducer(expectState, {});
+
+      expect(state.name).toBe(expectState.name);
+    });
+  });
 });
