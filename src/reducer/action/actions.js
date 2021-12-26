@@ -20,5 +20,5 @@ export function updateAddress(address) {
 }
 
 export function addRestaurant() {
-  return {};
+  return toActionObject(ActionType.ADD_RESTAURANT);
 }

@@ -13,6 +13,12 @@ const initState = {
 };
 
 export default function reducer(state = initState, action) {
+  const {
+    name,
+    category,
+    address,
+    restaurants,
+  } = state;
   const { type, payload } = action;
 
   if (type === ActionType.UPDATE_NAME) {
@@ -33,6 +39,19 @@ export default function reducer(state = initState, action) {
     return {
       ...state,
       address: payload.address,
+    };
+  }
+
+  if (type === ActionType.ADD_RESTAURANT) {
+    return {
+      name: '',
+      category: '',
+      address: '',
+      restaurants: [...restaurants, {
+        name,
+        category,
+        address,
+      }],
     };
   }
 
