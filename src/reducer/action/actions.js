@@ -6,3 +6,9 @@ export function updateName(name) {
     name,
   });
 }
+
+export function updateCategory(category) {
+  return toActionObject(ActionType.UPDATE_CATEGORY, {
+    category,
+  });
+}

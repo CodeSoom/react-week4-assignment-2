@@ -22,5 +22,12 @@ export default function reducer(state = initState, action) {
     };
   }
 
+  if (type === ActionType.UPDATE_CATEGORY) {
+    return {
+      ...state,
+      category: payload.category,
+    };
+  }
+
   return state;
 }
