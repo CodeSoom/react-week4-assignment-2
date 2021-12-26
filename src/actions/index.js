@@ -8,11 +8,8 @@ export function updateRestaurant(target, value) {
   };
 }
 
-export function addRestaurant(restaurant) {
+export function addRestaurant() {
   return {
     type: 'addRestaurant',
-    payload: {
-      restaurant,
-    },
   };
 }

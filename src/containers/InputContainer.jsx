@@ -18,7 +18,7 @@ export default function InputContainer() {
 
   const handleClickAddButton = () => {
     dispatch(
-      addRestaurant(restaurant),
+      addRestaurant(),
     );
   };
 

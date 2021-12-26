@@ -19,11 +19,13 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'addRestaurant') {
+    const { restaurants, restaurant } = state;
+
     return {
       ...state,
       restaurants: [
-        ...state.restaurants,
-        action.payload.restaurant,
+        ...restaurants,
+        restaurant,
       ],
       restaurant: {
         name: '',

@@ -39,26 +39,28 @@ describe('reducer', () => {
   });
 
   context('addRestaurant', () => {
-    it('식당 정보를 입력하면, restaurants에 해당 정보가 추가된다.', () => {
-      const restaurant = {
-        name: '마녀주방',
-        category: '한식',
-        address: '서울시 강남구',
-      };
-      const { restaurants } = reducer(initialState, addRestaurant(restaurant));
+    const restaurant = {
+      name: '마녀주방',
+      category: '한식',
+      address: '서울시 강남구',
+    };
+
+    it('식당 정보가 있으면, restaurants에 해당 정보가 추가된다.', () => {
+      const { restaurants } = reducer({
+        restaurants: [],
+        restaurant,
+      }, addRestaurant());
 
       expect(restaurants[0].name).toBe(restaurant.name);
       expect(restaurants[0].category).toBe(restaurant.category);
       expect(restaurants[0].address).toBe(restaurant.address);
     });
 
-    it('식당 정보를 입력하면, restaurants 배열 길이가 1만큼 증가한다.', () => {
-      const restaurant = {
-        name: '마녀주방',
-        category: '한식',
-        address: '서울시 강남구',
-      };
-      const { restaurants } = reducer(initialState, addRestaurant(restaurant));
+    it('식당 정보가 있으면, restaurants 배열 길이가 1만큼 증가한다.', () => {
+      const { restaurants } = reducer({
+        restaurants: [],
+        restaurant,
+      }, addRestaurant());
 
       expect(restaurants).toHaveLength(1);
     });
