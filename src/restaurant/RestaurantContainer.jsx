@@ -16,11 +16,16 @@ export default function RestaurantContainer() {
     dispatch(() => event.target.value);
   }
 
+  function handleClickAdd() {
+    dispatch(() => {});
+  }
+
   return (
     <RestaurantView
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}
       onChangeAddress={handleChangeAddress}
+      onClickAdd={handleClickAdd}
     />
   );
 }
