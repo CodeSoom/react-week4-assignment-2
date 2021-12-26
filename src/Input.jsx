@@ -6,7 +6,7 @@ export default function Input({ restautrant, onChange, onClick }) {
   };
 
   return (
-    <p>
+    <form onSubmit={onClick}>
       <input
         id="input-task-title"
         name="name"
@@ -29,7 +29,9 @@ export default function Input({ restautrant, onChange, onClick }) {
         value={address}
         onChange={handleChange}
       />
-      <button type="button" onClick={onClick}>추가</button>
-    </p>
+      <button type="submit">
+        추가
+      </button>
+    </form>
   );
 }

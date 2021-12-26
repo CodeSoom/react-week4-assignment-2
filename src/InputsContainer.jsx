@@ -12,7 +12,9 @@ export default function InputsContainer() {
     dispatch(updateRestaurantInfo(key, value));
   };
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault();
+
     dispatch(addRestaurant());
   };
 
