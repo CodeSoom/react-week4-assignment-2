@@ -12,3 +12,9 @@ export function updateCategory(category) {
     category,
   });
 }
+
+export function updateAddress(address) {
+  return toActionObject(ActionType.UPDATE_ADDRESS, {
+    address,
+  });
+}
