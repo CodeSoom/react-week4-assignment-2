@@ -4,21 +4,11 @@
  * @returns {undefined}
  */
 import ActionType from './action/ActionType';
+import RestaurantState from '../domain/RestaurantState';
 
-const initState = {
-  name: '',
-  category: '',
-  address: '',
-  restaurants: [],
-};
+const initState = RestaurantState.initJson();
 
 export default function reducer(state = initState, action) {
-  const {
-    name,
-    category,
-    address,
-    restaurants,
-  } = state;
   const { type, payload } = action;
 
   if (type === ActionType.UPDATE_NAME) {
@@ -43,16 +33,7 @@ export default function reducer(state = initState, action) {
   }
 
   if (type === ActionType.ADD_RESTAURANT) {
-    return {
-      name: '',
-      category: '',
-      address: '',
-      restaurants: [...restaurants, {
-        name,
-        category,
-        address,
-      }],
-    };
+    return RestaurantState.toJsonWith(state);
   }
 
   return state;
