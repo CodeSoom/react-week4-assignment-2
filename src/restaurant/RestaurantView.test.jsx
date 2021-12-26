@@ -1,4 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
+import RestaurantView from './RestaurantView';
 
 describe('RestaurantView', () => {
   let onChangeName;
@@ -18,7 +19,7 @@ describe('RestaurantView', () => {
   });
 
   function renderTestComponent(name = '', category = '', address = '') {
-    render((
+    return render((
       <RestaurantView
         name={name}
         category={category}
