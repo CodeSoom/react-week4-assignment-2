@@ -3,6 +3,12 @@
  * @param action {object}
  * @returns {undefined}
  */
-export default function reducer(state, action) {
-  return undefined;
+const initState = {
+  name: '',
+  category: '',
+  address: '',
+};
+
+export default function reducer(state = initState, action) {
+  return state;
 }
