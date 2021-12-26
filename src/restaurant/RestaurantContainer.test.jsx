@@ -45,4 +45,12 @@ describe('RestaurantContainer', () => {
 
     expect(dispatch).toBeCalledTimes(1);
   });
+
+  it('등록 버튼을 클릭하면 dispatch가 1회 호출된다', () => {
+    const { getByText } = render(<RestaurantContainer />);
+
+    fireEvent.click(getByText('등록'));
+
+    expect(dispatch).toBeCalledTimes(1);
+  });
 });
