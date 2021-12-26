@@ -6,7 +6,7 @@ import { restautrant } from '../fixture/restautrants';
 
 describe('Input', () => {
   const handleChangeRestautrantInfo = jest.fn();
-  const handleClick = jest.fn();
+  const handleClick = jest.fn((event) => event.preventDefault());
 
   beforeEach(() => {
     jest.clearAllMocks();
