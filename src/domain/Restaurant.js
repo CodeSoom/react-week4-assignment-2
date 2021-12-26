@@ -6,6 +6,10 @@ export default class Restaurant {
   }
 
   toJSON() {
-    return undefined;
+    return Object.getOwnPropertyNames(this).reduce((a, b) => {
+      // eslint-disable-next-line no-param-reassign
+      a[b] = this[b];
+      return a;
+    }, {});
   }
 }
