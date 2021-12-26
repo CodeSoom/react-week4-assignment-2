@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action = {}) {
     const { restautrant } = state;
     const { name, type, address } = restautrant;
 
-    if (!(name && type && address)) {
+    if (!name || !type || !address) {
       return state;
     }
 

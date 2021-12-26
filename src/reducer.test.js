@@ -7,11 +7,7 @@ describe('reducer', () => {
   describe('updateRestaurantInfo', () => {
     it('changes restautrant name', () => {
       const state = reducer(
-        {
-          id: 100,
-          restaurants: [],
-          restautrant: { name: '', type: '', address: '' },
-        },
+        initialState,
         updateRestaurantInfo('name', '마녀 식당'),
       );
 
@@ -20,11 +16,7 @@ describe('reducer', () => {
 
     it('changes restautrant type', () => {
       const state = reducer(
-        {
-          id: 100,
-          restaurants: [],
-          restautrant: { name: '', type: '', address: '' },
-        },
+        initialState,
         updateRestaurantInfo('type', '한식'),
       );
 
@@ -33,11 +25,7 @@ describe('reducer', () => {
 
     it('changes restautrant address', () => {
       const state = reducer(
-        {
-          id: 100,
-          restaurants: [],
-          restautrant: { name: '', type: '', address: '' },
-        },
+        initialState,
         updateRestaurantInfo('address', '서울시 강남구'),
       );
 
@@ -77,11 +65,7 @@ describe('reducer', () => {
     context('without one of restaurantInfo', () => {
       it('deosn\'t change restaurants state', () => {
         const state = reducer(
-          {
-            id: 100,
-            restaurants: [],
-            restautrant: { name: '', type: '', address: '' },
-          },
+          initialState,
           addRestaurant(),
         );
 
