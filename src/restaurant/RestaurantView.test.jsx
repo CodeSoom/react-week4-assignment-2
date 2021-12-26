@@ -41,4 +41,14 @@ describe('RestaurantView', () => {
 
     expect(onChangeName).toBeCalledTimes(1);
   });
+
+  it('종류가 변경되면 onChangeCategory 이 1회 호출된다', () => {
+    const { getByRole } = renderTestComponent();
+
+    fireEvent.change(getByRole('textbox', { name: /category/i }), {
+      target: { value: 'test' },
+    });
+
+    expect(onChangeCategory).toBeCalledTimes(1);
+  });
 });
