@@ -12,10 +12,15 @@ export default function RestaurantContainer() {
     dispatch(() => event.target.value);
   }
 
+  function handleChangeAddress(event) {
+    dispatch(() => event.target.value);
+  }
+
   return (
     <RestaurantView
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}
+      onChangeAddress={handleChangeAddress}
     />
   );
 }
