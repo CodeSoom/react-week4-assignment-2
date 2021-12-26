@@ -29,5 +29,12 @@ export default function reducer(state = initState, action) {
     };
   }
 
+  if (type === ActionType.UPDATE_ADDRESS) {
+    return {
+      ...state,
+      address: payload.address,
+    };
+  }
+
   return state;
 }
