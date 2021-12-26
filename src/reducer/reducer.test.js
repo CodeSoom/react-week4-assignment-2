@@ -1,4 +1,5 @@
 import reducer from './reducer';
+import { updateName } from './action/actions';
 
 describe('reducer', () => {
   context('입력된 state가 없으면', () => {
@@ -18,6 +19,16 @@ describe('reducer', () => {
       const state = reducer(expectState, {});
 
       expect(state.name).toBe(expectState.name);
+    });
+  });
+
+  describe('updateName', () => {
+    it('새로운 이름으로 변경된다', () => {
+      const expectName = 'New Name';
+
+      const state = reducer({}, updateName(expectName));
+
+      expect(state.name).toBe(expectName);
     });
   });
 });
