@@ -51,4 +51,22 @@ describe('RestaurantView', () => {
 
     expect(onChangeCategory).toBeCalledTimes(1);
   });
+
+  it('주소가 변경되면 onChangeAddress 이 1회 호출된다', () => {
+    const { getByRole } = renderTestComponent();
+
+    fireEvent.change(getByRole('textbox', { name: /address/i }), {
+      target: { value: 'test' },
+    });
+
+    expect(onChangeAddress).toBeCalledTimes(1);
+  });
+
+  it('등록 버튼을 클릭하면 onClickAdd가 1회 호출된다', () => {
+    const { getByRole } = renderTestComponent();
+
+    fireEvent.click(getByRole('button'));
+
+    expect(onClickAdd).toBeCalledTimes(1);
+  });
 });
