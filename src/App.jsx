@@ -1,16 +1,10 @@
-import Restaurants from './Restaurants';
+import RestaurantContainer from './RestaurantsContainer';
 
 export default function App() {
-  const restaurants = [
-    {
-      id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
-    },
-  ];
-
   return (
     <div>
       <h1>Restautants</h1>
-      <Restaurants restaurants={restaurants} />
+      <RestaurantContainer />
     </div>
   );
 }
