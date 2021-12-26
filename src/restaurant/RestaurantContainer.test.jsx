@@ -35,4 +35,14 @@ describe('RestaurantContainer', () => {
 
     expect(dispatch).toBeCalledTimes(1);
   });
+
+  it('주소가 변경되면 dispatch 가 1회 호출된다', () => {
+    const { getByRole } = render(<RestaurantContainer />);
+
+    fireEvent.change(getByRole('textbox', { name: /address/i }), {
+      target: { value: 'test' },
+    });
+
+    expect(dispatch).toBeCalledTimes(1);
+  });
 });
