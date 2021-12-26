@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
-import RestaurantContainer from './RestaurantContainer';
+import RestaurantContainer from '../RestaurantContainer';
 
 jest.mock('react-redux');
 

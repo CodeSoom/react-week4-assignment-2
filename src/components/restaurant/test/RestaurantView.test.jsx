@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import RestaurantView from './RestaurantView';
+import RestaurantView from '../RestaurantView';
 
 describe('RestaurantView', () => {
   let onChangeName;
