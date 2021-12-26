@@ -74,7 +74,7 @@ describe('reducer', () => {
     });
 
     it('리듀서에 상태 객체가 전달되지 않으면, 초기 상태 객체를 리턴한다.', () => {
-      const state = reducer(undefined, { type: 'undefinedAction' });
+      const state = reducer(undefined, {});
 
       expect(state).toEqual(initialState);
     });

@@ -7,18 +7,15 @@ const initialState = {
   },
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'updateRestaurant') {
-    return {
-      ...state,
-      restaurant: {
-        ...state.restaurant,
-        [action.payload.target]: action.payload.value,
-      },
-    };
-  }
-
-  if (action.type === 'addRestaurant') {
+const handleReducer = {
+  updateRestaurant: (state, action) => ({
+    ...state,
+    restaurant: {
+      ...state.restaurant,
+      [action.payload.target]: action.payload.value,
+    },
+  }),
+  addRestaurant: (state) => {
     const { restaurants, restaurant } = state;
 
     return {
@@ -33,6 +30,12 @@ export default function reducer(state = initialState, action) {
         address: '',
       },
     };
+  },
+};
+
+export default function reducer(state = initialState, action) {
+  if (handleReducer[action.type]) {
+    return handleReducer[action.type](state, action);
   }
 
   return state;
