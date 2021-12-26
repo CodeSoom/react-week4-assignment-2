@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import {updateCategory, updateName} from './action/actions';
+import {updateAddress, updateCategory, updateName} from './action/actions';
 
 describe('reducer', () => {
   context('입력된 state가 없으면', () => {
@@ -39,6 +39,16 @@ describe('reducer', () => {
       const state = reducer({}, updateCategory(expectCategory));
 
       expect(state.category).toBe(expectCategory);
+    });
+  });
+
+  describe('updateAddress', () => {
+    it('새로운 주소로 변경된다', () => {
+      const expectAddress = 'New Address';
+
+      const state = reducer({}, updateAddress(expectAddress));
+
+      expect(state.address).toBe(expectAddress);
     });
   });
 });
