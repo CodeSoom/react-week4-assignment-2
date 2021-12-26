@@ -9,7 +9,6 @@ export default function RestaurantsContainer() {
 
   return (
     <div>
-      <h1>Restautants</h1>
       <Restaurants restaurants={restaurants} />
     </div>
   );
