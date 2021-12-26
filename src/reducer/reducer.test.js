@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { updateName } from './action/actions';
+import {updateCategory, updateName} from './action/actions';
 
 describe('reducer', () => {
   context('입력된 state가 없으면', () => {
@@ -29,6 +29,16 @@ describe('reducer', () => {
       const state = reducer({}, updateName(expectName));
 
       expect(state.name).toBe(expectName);
+    });
+  });
+
+  describe('updateCategory', () => {
+    it('새로운 분류로 변경된다', () => {
+      const expectCategory = 'New Category';
+
+      const state = reducer({}, updateCategory(expectCategory));
+
+      expect(state.category).toBe(expectCategory);
     });
   });
 });
