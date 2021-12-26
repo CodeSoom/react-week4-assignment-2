@@ -8,7 +8,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import restaurants from '../fixtures/restaurants';
 
-test('App', () => {
+test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   const { getByText } = render((

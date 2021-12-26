@@ -3,12 +3,9 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RestaurantContainer from './RestaurantsContainer';
+import RestaurantCreateContainer from './RestaurantCreateContainer';
 
-import {
-  setRestaurants,
-} from './actions';
-
-import restaurants from '../fixtures/restaurants';
+import { setRestaurants } from './actions';
 
 export default function App() {
   // TODO:
@@ -17,13 +14,14 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch(setRestaurants([]));
   }, []);
 
   return (
     <div>
       <h1>Restautants</h1>
       <RestaurantContainer />
+      <RestaurantCreateContainer />
     </div>
   );
 }
