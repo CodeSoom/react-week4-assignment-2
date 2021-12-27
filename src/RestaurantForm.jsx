@@ -3,8 +3,8 @@ export default function RestaurantForm({
   onSubmitForm,
   onChangeInput,
 }) {
-  const handleInputChange = ({ target: { name, value } }) => {
-    onChangeInput(name, value);
+  const handleInputChange = ({ target }) => {
+    onChangeInput(target.name, target.value);
   };
 
   const handleFormSubmit = (event) => {
