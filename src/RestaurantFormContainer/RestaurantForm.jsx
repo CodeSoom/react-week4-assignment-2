@@ -1,10 +1,8 @@
+import Input from '../Input';
+
 export default function RestaurantForm({
-  name,
-  category,
-  address,
-  onChangeName,
-  onChangeCategory,
-  onChangeAddress,
+  value,
+  onChange,
   onSubmit,
 }) {
   return (
@@ -12,45 +10,42 @@ export default function RestaurantForm({
       style={{ display: 'flex' }}
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit({ name, category, address });
+        onSubmit({ ...value });
       }}
     >
-      <section>
-        <label style={{ display: 'none' }} htmlFor="name">이름</label>
-        <input
-          required
-          type="text"
-          id="name"
-          name="name"
-          placeholder="이름"
-          value={name}
-          onChange={({ target: { value } }) => onChangeName(value)}
-        />
-      </section>
-      <section>
-        <label style={{ display: 'none' }} htmlFor="category">분류</label>
-        <input
-          required
-          type="text"
-          id="category"
-          name="category"
-          placeholder="분류"
-          value={category}
-          onChange={({ target: { value } }) => onChangeCategory(value)}
-        />
-      </section>
-      <section>
-        <label style={{ display: 'none' }} htmlFor="address">주소</label>
-        <input
-          required
-          type="text"
-          id="address"
-          name="address"
-          placeholder="주소"
-          value={address}
-          onChange={({ target: { value } }) => onChangeAddress(value)}
-        />
-      </section>
+      <Input
+        required
+        label="이름"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="이름"
+        labelStyle={{ display: 'none' }}
+        value={value.name}
+        onChange={({ target: { value: name } }) => onChange({ ...value, name })}
+      />
+      <Input
+        required
+        label="분류"
+        type="text"
+        id="category"
+        name="category"
+        placeholder="분류"
+        labelStyle={{ display: 'none' }}
+        value={value.category}
+        onChange={({ target: { value: category } }) => onChange({ ...value, category })}
+      />
+      <Input
+        required
+        label="주소"
+        type="text"
+        id="address"
+        name="address"
+        placeholder="주소"
+        labelStyle={{ display: 'none' }}
+        value={value.address}
+        onChange={({ target: { value: address } }) => onChange({ ...value, address })}
+      />
       <section>
         <button type="submit">등록</button>
       </section>

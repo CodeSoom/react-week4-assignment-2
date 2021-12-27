@@ -15,6 +15,10 @@ describe('RestaurantForm', () => {
     useSelector.mockImplementation((selector) => selector({}));
   });
 
+  it('', () => {
+
+  });
+
   it('renders inputs and submit button', () => {
     const { getByLabelText, getByText } = render(<RestaurantForm />);
 

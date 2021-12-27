@@ -12,15 +12,9 @@ export default function RestaurantFormContainer() {
   const { name, category, address } = useSelector((store) => store);
   const dispatch = useDispatch();
 
-  const handleChangeName = (newName) => {
+  const handleChange = ({ name: newName, category: newCategory, address: newAddress }) => {
     dispatch(changeName(newName));
-  };
-
-  const handleChangeCategory = (newCategory) => {
     dispatch(changeCategory(newCategory));
-  };
-
-  const handleChangeAddress = (newAddress) => {
     dispatch(changeAddress(newAddress));
   };
 
@@ -33,12 +27,8 @@ export default function RestaurantFormContainer() {
 
   return (
     <RestaurantForm
-      name={name}
-      category={category}
-      address={address}
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
+      value={{ name, category, address }}
+      onChange={handleChange}
       onSubmit={handleSubmit}
     />
   );

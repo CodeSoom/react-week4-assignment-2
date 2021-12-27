@@ -57,7 +57,7 @@ describe('Input', () => {
     expect(getByRole('textbox')).toHaveValue('test');
   });
 
-  it('changes value', () => {
+  it('calls onChange when value is changed', () => {
     const { getByRole } = render(<Input value="" onChange={handleChange} />);
     fireEvent.change(getByRole('textbox'), { target: { value: 'test' } });
 

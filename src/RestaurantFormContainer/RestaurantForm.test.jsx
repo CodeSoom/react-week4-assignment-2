@@ -3,25 +3,17 @@ import { fireEvent, render } from '@testing-library/react';
 import RestaurantForm from './RestaurantForm';
 
 describe('RestaurantForm', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+  const handleChange = jest.fn();
   const handleSubmit = jest.fn();
   let renderComponent;
 
   beforeEach(() => {
-    handleChangeName.mockClear();
-    handleChangeCategory.mockClear();
-    handleChangeAddress.mockClear();
+    handleChange.mockClear();
     handleSubmit.mockClear();
-    renderComponent = ({ name = '', category = '', address = '' }) => render(
+    renderComponent = ({ value }) => render(
       <RestaurantForm
-        name={name}
-        category={category}
-        address={address}
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
+        value={value}
+        onChange={handleChange}
         onSubmit={handleSubmit}
       />,
     );
@@ -29,59 +21,59 @@ describe('RestaurantForm', () => {
 
   it('renders name', () => {
     const testName = 'testName';
-    const { getByLabelText } = renderComponent({ name: testName });
+    const { getByLabelText } = renderComponent({ value: { name: testName } });
 
     expect(getByLabelText('이름')).toHaveValue(testName);
   });
 
   it('renders category', () => {
     const testCategory = 'testCategory';
-    const { getByLabelText } = renderComponent({ category: testCategory });
+    const { getByLabelText } = renderComponent({ value: { category: testCategory } });
 
     expect(getByLabelText('분류')).toHaveValue(testCategory);
   });
 
   it('renders address', () => {
     const testAddress = 'testAddress';
-    const { getByLabelText } = renderComponent({ address: testAddress });
+    const { getByLabelText } = renderComponent({ value: { address: testAddress } });
 
     expect(getByLabelText('주소')).toHaveValue(testAddress);
   });
 
   context('when input name is changed', () => {
-    it('calls onChangeName', () => {
+    it('calls onChange', () => {
       const testName = 'testName';
-      const { getByLabelText } = renderComponent({});
+      const { getByLabelText } = renderComponent({ value: {} });
 
       fireEvent.change(getByLabelText('이름'), { target: { value: testName } });
 
-      expect(handleChangeName).toHaveBeenCalledWith(testName);
+      expect(handleChange).toHaveBeenCalledWith({ name: testName });
     });
   });
 
   context('when input category is changed', () => {
     it('calls onChangeCategory', () => {
       const testCategory = 'testCategory';
-      const { getByLabelText } = renderComponent({});
+      const { getByLabelText } = renderComponent({ value: {} });
 
       fireEvent.change(getByLabelText('분류'), {
         target: { value: testCategory },
       });
 
-      expect(handleChangeCategory).toHaveBeenCalledWith(testCategory);
+      expect(handleChange).toHaveBeenCalledWith({ category: testCategory });
     });
   });
 
   context('when input address is changed', () => {
     it('calls onChangeAddress', () => {
       const testAddress = 'testAddress';
-      const { getByLabelText } = renderComponent({});
+      const { getByLabelText } = renderComponent({ value: {} });
 
       fireEvent.change(getByLabelText('주소'), {
         target: { value: testAddress },
       });
 
-      expect(handleChangeAddress).toHaveBeenCalledWith(testAddress);
+      expect(handleChange).toHaveBeenCalledWith({ address: testAddress });
     });
   });
 
@@ -91,9 +83,11 @@ describe('RestaurantForm', () => {
       const testCategory = 'testCategory';
       const testAddress = 'testAddress';
       const { getByText } = renderComponent({
-        name: testName,
-        category: testCategory,
-        address: testAddress,
+        value: {
+          name: testName,
+          category: testCategory,
+          address: testAddress,
+        },
       });
 
       fireEvent.click(getByText('등록'));
