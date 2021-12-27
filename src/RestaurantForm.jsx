@@ -3,24 +3,33 @@ export default function RestaurantForm({
   onSubmitForm,
   onChangeInput,
 }) {
+  const handleInputChange = ({ target: { name, value } }) => {
+    onChangeInput(name, value);
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSubmitForm();
+  };
+
   return (
-    <form onSubmit={onSubmitForm}>
+    <form onSubmit={handleFormSubmit}>
       <input
-        onChange={onChangeInput}
+        onChange={handleInputChange}
         value={name}
         type="text"
         placeholder="이름"
         name="name"
       />
       <input
-        onChange={onChangeInput}
+        onChange={handleInputChange}
         value={category}
         type="text"
         placeholder="분류"
         name="category"
       />
       <input
-        onChange={onChangeInput}
+        onChange={handleInputChange}
         value={address}
         type="text"
         placeholder="주소"

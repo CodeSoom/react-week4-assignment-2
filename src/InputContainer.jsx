@@ -11,12 +11,11 @@ export default function InputContainer() {
     restaurantInfo: state.restaurantInfo,
   }));
 
-  const handleInputChange = ({ target: { name, value } }) => {
+  const handleInputChange = (name, value) => {
     dispatch(updateRestaurantInfo({ name, value }));
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const handleFormSubmit = () => {
     dispatch(addRestaurants());
   };
 
