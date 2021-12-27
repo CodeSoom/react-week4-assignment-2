@@ -1,5 +1,8 @@
+import generateId from './generateId';
+
 export default class Restaurant {
   constructor(name, category, address) {
+    this.id = generateId();
     this.name = name;
     this.category = category;
     this.address = address;

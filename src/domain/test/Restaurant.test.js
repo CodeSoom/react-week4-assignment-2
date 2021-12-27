@@ -9,10 +9,8 @@ describe('Restaurant', () => {
 
     const result = sut.toJSON();
 
-    expect(result).toStrictEqual({
-      name: expectName,
-      category: expectCategory,
-      address: expectAddress,
-    });
+    expect(result.name).toBe(expectName);
+    expect(result.category).toBe(expectCategory);
+    expect(result.address).toBe(expectAddress);
   });
 });
