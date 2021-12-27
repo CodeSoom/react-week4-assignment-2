@@ -1,36 +1,44 @@
+const initialRestaurant = {
+  name: '',
+  cateory: '',
+  address: '',
+};
 const initialState = {
   newId: 100,
-  taskTitle: '',
-  tasks: [],
+  restaurants: [],
+  restaurant: initialRestaurant,
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'updateTaskTitle') {
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
     return {
       ...state,
-      taskTitle: action.payload.taskTitle,
+      restaurants,
     };
   }
 
-  if (action.type === 'addTask') {
-    const { newId, taskTitle, tasks } = state;
-    if (!taskTitle) {
-      return state;
-    }
+  if (action.type === 'addRestaurant') {
+    const { newId, restaurants, restaurant } = state;
+
     return {
       ...state,
       newId: newId + 1,
-      taskTitle: '',
-      tasks: [...tasks, { id: newId, title: taskTitle }],
+      restaurants: [...restaurants, { ...restaurant, id: newId }],
+      restaurant: initialRestaurant,
     };
   }
 
-  if (action.type === 'deleteTask') {
-    const { tasks } = state;
+  if (action.type === 'changeRestaurantField') {
+    const { name, value } = action.payload;
     return {
       ...state,
-      tasks: tasks.filter((task) => task.id !== action.payload.id),
+      restaurant: {
+        ...state.restaurant,
+        [name]: value,
+      },
     };
   }
+
   return state;
 }
