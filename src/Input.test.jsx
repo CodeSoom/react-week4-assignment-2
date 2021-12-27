@@ -3,9 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import Input from './Input';
 
 test('Input', () => {
-  const handleChangeNameValue = jest.fn();
-  const handleChangeCategroryValue = jest.fn();
-  const handleChangeAddressValue = jest.fn();
+  const onChanges = jest.fn();
   const handleClickSaveData = jest.fn();
   const name = '사가식탁';
   const category = '중식당';
@@ -13,7 +11,7 @@ test('Input', () => {
 
   const { getByText, getByDisplayValue } = render(
     <Input
-      onChanges={{ handleChangeNameValue, handleChangeCategroryValue, handleChangeAddressValue }}
+      onChanges={onChanges}
       onClick={handleClickSaveData}
       info={{ name, category, address }}
     />,
@@ -25,11 +23,11 @@ test('Input', () => {
   expect(getByText('등록'));
 
   fireEvent.change(getByDisplayValue(name), { target: { value: '' } });
-  expect(handleChangeNameValue).toBeCalled();
+  expect(onChanges).toBeCalled();
 
   fireEvent.change(getByDisplayValue(category), { target: { value: '' } });
-  expect(handleChangeNameValue).toBeCalled();
+  expect(onChanges).toBeCalled();
 
   fireEvent.change(getByDisplayValue(address), { target: { value: '' } });
-  expect(handleChangeNameValue).toBeCalled();
+  expect(onChanges).toBeCalled();
 });

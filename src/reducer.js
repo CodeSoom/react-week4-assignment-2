@@ -7,31 +7,17 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'handleChangeNameValue') {
+  if (action.type === 'handleChangeValue') {
     return {
       ...state,
-      name: action.payload.name,
-    };
-  }
-
-  if (action.type === 'handleChangeCategroryValue') {
-    return {
-      ...state,
-      category: action.payload.category,
-    };
-  }
-
-  if (action.type === 'handleChangeAddressValue') {
-    return {
-      ...state,
-      address: action.payload.address,
+      ...action.payload,
     };
   }
 
   if (action.type === 'saveData') {
-    if (action.payload.data.name === ''
-      || action.payload.data.category === ''
-      || action.payload.data.address === '') {
+    if (state.name === ''
+      || state.category === ''
+      || state.address === '') {
       return state;
     }
 
@@ -44,7 +30,9 @@ export default function reducer(state = initialState, action) {
       data: [
         {
           id: state.newId,
-          ...action.payload.data,
+          name: state.name,
+          category: state.category,
+          address: state.address,
         },
         ...state.data,
 
