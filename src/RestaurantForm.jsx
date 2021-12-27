@@ -1,12 +1,8 @@
-import { useSelector } from 'react-redux';
-
-export default function RestaurantForm({ onSubmitForm, onChangeInput }) {
-  const {
-    restaurantInfo: { name, address, category },
-  } = useSelector((state) => ({
-    restaurantInfo: state.restaurantInfo,
-  }));
-
+export default function RestaurantForm({
+  restaurantInfo: { name, address, category },
+  onSubmitForm,
+  onChangeInput,
+}) {
   return (
     <form onSubmit={onSubmitForm}>
       <input
