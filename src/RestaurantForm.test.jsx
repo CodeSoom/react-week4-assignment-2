@@ -18,7 +18,7 @@ describe('RestaurantForm', () => {
         restaurantInfo={restaurantInfo}
         onSubmitForm={handleFormSubmit}
         onChangeInput={handleInputChange}
-      />
+      />,
     );
 
     fireEvent.click(screen.getByRole('button', { name: '등록' }));
