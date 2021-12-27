@@ -2,17 +2,10 @@ import { render, fireEvent } from '@testing-library/react';
 import RestaurantView from '../RestaurantView';
 
 describe('RestaurantView', () => {
-  let onChangeName;
-  let onChangeCategory;
-  let onChangeAddress;
-  let onClickAdd;
-
-  beforeEach(() => {
-    onChangeName = jest.fn();
-    onChangeCategory = jest.fn();
-    onChangeAddress = jest.fn();
-    onClickAdd = jest.fn();
-  });
+  const onChangeName = jest.fn();
+  const onChangeCategory = jest.fn();
+  const onChangeAddress = jest.fn();
+  const onClickAdd = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks();
