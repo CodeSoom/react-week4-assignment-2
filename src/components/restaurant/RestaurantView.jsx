@@ -1,5 +1,15 @@
-export default function RestaurantView(restaurant) {
+export default function RestaurantView({ restaurant: { name, category, address } }) {
   return (
-    <li />
+    <li>
+      {name}
+      {' '}
+      |
+      {' '}
+      {category}
+      {' '}
+      |
+      {' '}
+      {address}
+    </li>
   );
 }
