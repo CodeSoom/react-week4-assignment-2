@@ -7,13 +7,7 @@ import {
 import RestaurantInfoInput from './Input';
 
 export default function InputContainer() {
-  const {
-    name, category, address,
-  } = useSelector((state) => ({
-    name: state.name,
-    category: state.category,
-    address: state.address,
-  }));
+  const info = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleChanges(name, value) {
@@ -30,7 +24,7 @@ export default function InputContainer() {
       <RestaurantInfoInput
         onChanges={handleChanges}
         onClick={handleClickSaveData}
-        info={{ name, category, address }}
+        info={info}
       />
     </>
   );

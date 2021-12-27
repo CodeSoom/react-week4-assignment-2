@@ -4,10 +4,9 @@ export default function RestaurantInfoInput({
 }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
-    onChanges(name, value)
-
-  }
-
+    onChanges(name, value);
+  };
+  const { name, category, address } = info;
   return (
     <div>
       <input
@@ -15,21 +14,21 @@ export default function RestaurantInfoInput({
         name="name"
         placeholder="이름"
         onChange={handleChange}
-        value={info.name}
+        value={name}
       />
       <input
         type="text"
         name="category"
         placeholder="분류"
         onChange={handleChange}
-        value={info.category}
+        value={category}
       />
       <input
         type="text"
         name="address"
         placeholder="주소"
         onChange={handleChange}
-        value={info.address}
+        value={address}
       />
       <button type="button" onClick={onClick}>
         등록
