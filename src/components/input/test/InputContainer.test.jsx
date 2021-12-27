@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
-import RestaurantContainer from '../RestaurantContainer';
+import InputContainer from '../InputContainer';
 
 jest.mock('react-redux');
 
-describe('RestaurantContainer', () => {
+describe('InputContainer', () => {
   let dispatch;
 
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('RestaurantContainer', () => {
   });
 
   it('이름이 변경되면 dispatch 가 1회 호출된다', () => {
-    const { getByRole } = render(<RestaurantContainer />);
+    const { getByRole } = render(<InputContainer />);
 
     fireEvent.change(getByRole('textbox', { name: /name/i }), {
       target: { value: 'test' },
@@ -27,7 +27,7 @@ describe('RestaurantContainer', () => {
   });
 
   it('카테고리가 변경되면 dispatch 가 1회 호출된다', () => {
-    const { getByRole } = render(<RestaurantContainer />);
+    const { getByRole } = render(<InputContainer />);
 
     fireEvent.change(getByRole('textbox', { name: /category/i }), {
       target: { value: 'test' },
@@ -37,7 +37,7 @@ describe('RestaurantContainer', () => {
   });
 
   it('주소가 변경되면 dispatch 가 1회 호출된다', () => {
-    const { getByRole } = render(<RestaurantContainer />);
+    const { getByRole } = render(<InputContainer />);
 
     fireEvent.change(getByRole('textbox', { name: /address/i }), {
       target: { value: 'test' },
@@ -47,7 +47,7 @@ describe('RestaurantContainer', () => {
   });
 
   it('등록 버튼을 클릭하면 dispatch가 1회 호출된다', () => {
-    const { getByText } = render(<RestaurantContainer />);
+    const { getByText } = render(<InputContainer />);
 
     fireEvent.click(getByText('등록'));
 

@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
-import RestaurantView from '../RestaurantView';
+import InputView from '../InputView';
 
-describe('RestaurantView', () => {
+describe('InputView', () => {
   const onChangeName = jest.fn();
   const onChangeCategory = jest.fn();
   const onChangeAddress = jest.fn();
@@ -13,7 +13,7 @@ describe('RestaurantView', () => {
 
   function renderTestComponent() {
     return render((
-      <RestaurantView
+      <InputView
         name=""
         category=""
         address=""

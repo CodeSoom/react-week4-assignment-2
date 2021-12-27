@@ -1,4 +1,4 @@
-export default function RestaurantView({
+export default function InputView({
   name,
   category,
   address,

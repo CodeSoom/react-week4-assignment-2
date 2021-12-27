@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import RestaurantView from './RestaurantView';
+import InputView from './InputView';
 
-export default function RestaurantContainer() {
+export default function InputContainer() {
   const dispatch = useDispatch();
 
   function handleChangeName(event) {
@@ -21,7 +21,7 @@ export default function RestaurantContainer() {
   }
 
   return (
-    <RestaurantView
+    <InputView
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}
       onChangeAddress={handleChangeAddress}
