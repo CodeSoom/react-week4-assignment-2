@@ -5,9 +5,9 @@ import Restaurant from './domain/Restaurant';
 
 jest.mock('react-redux');
 
-function stubSelector(restaurants) {
+function mockSelector(restaurants) {
   useSelector.mockImplementation((selector) => selector({
-    tasks: restaurants,
+    restaurants,
   }));
 }
 
@@ -17,7 +17,7 @@ describe('App', () => {
   });
 
   it('restaurants가 없을 경우엔 초기화면이 노출된다', () => {
-    stubSelector([]);
+    mockSelector([]);
 
     const { getByText } = render((
       <App />
@@ -32,7 +32,7 @@ describe('App', () => {
     const expectCategory = 'New Category';
     const expectAddress = 'New Address';
 
-    stubSelector([Restaurant.newJson(expectName, expectCategory, expectAddress)]);
+    mockSelector([Restaurant.newJson(expectName, expectCategory, expectAddress)]);
 
     const { getAllByRole } = render((
       <App />
