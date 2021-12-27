@@ -10,11 +10,9 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'handleChangeValue') {
     return {
       ...state,
-      ...action.payload
+      ...action.payload,
     };
   }
-
-
 
   if (action.type === 'saveData') {
     if (state.name === ''
@@ -34,7 +32,7 @@ export default function reducer(state = initialState, action) {
           id: state.newId,
           name: state.name,
           category: state.category,
-          address: state.address
+          address: state.address,
         },
         ...state.data,
 

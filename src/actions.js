@@ -1,10 +1,10 @@
 export function updateInput(name, value) {
   return {
-    type: `handleChangeValue`,
+    type: 'handleChangeValue',
     payload: {
-      [name]: value
-    }
-  }
+      [name]: value,
+    },
+  };
 }
 
 export function updateData() {
