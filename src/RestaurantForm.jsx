@@ -35,7 +35,9 @@ export default function RestaurantForm({
         placeholder="주소"
         name="address"
       />
-      <button type="submit">등록</button>
+      <button type="submit" name="등록">
+        등록
+      </button>
     </form>
   );
 }
