@@ -20,6 +20,18 @@ describe('reducer', () => {
     });
   });
 
+  describe('setRestaurants', () => {
+    it('changes restaurants array', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
+
   describe('changeRestaurantField', () => {
     it('changes restaurant form', () => {
       const initialState = {
@@ -65,6 +77,25 @@ describe('reducer', () => {
       expect(state.restaurant.name).toBe('');
 
       expect(state.newId).toBe(102);
+    });
+  });
+
+  describe('changes nothing', () => {
+    it('returns initial state', () => {
+      const initialState = {
+        newId: 100,
+        restaurants: [],
+        restaurant: {
+          name: '',
+          category: '',
+          address: '',
+        },
+      };
+      const state = reducer(undefined, {
+        type: undefined,
+      });
+
+      expect(state).toEqual(initialState);
     });
   });
 });

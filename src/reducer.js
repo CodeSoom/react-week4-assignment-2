@@ -1,6 +1,6 @@
 const initialRestaurant = {
   name: '',
-  cateory: '',
+  category: '',
   address: '',
 };
 const initialState = {
