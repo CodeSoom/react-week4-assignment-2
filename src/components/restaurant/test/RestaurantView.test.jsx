@@ -11,12 +11,12 @@ describe('RestaurantView', () => {
     jest.clearAllMocks();
   });
 
-  function renderTestComponent(name = '', category = '', address = '') {
+  function renderTestComponent() {
     return render((
       <RestaurantView
-        name={name}
-        category={category}
-        address={address}
+        name=""
+        category=""
+        address=""
         onChangeName={onChangeName}
         onChangeCategory={onChangeCategory}
         onChangeAddress={onChangeAddress}
