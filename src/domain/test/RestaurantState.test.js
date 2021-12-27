@@ -7,7 +7,7 @@ describe('RestaurantState', () => {
     const expectAddress = 'address';
     const state = new RestaurantState(expectName, expectCategory, expectAddress, []).toJSON();
 
-    const { restaurants } = RestaurantState.toJsonWith(state);
+    const { restaurants } = RestaurantState.newJsonWith(state);
 
     expect(restaurants).toHaveLength(1);
     expect(restaurants[0].name).toBe(expectName);

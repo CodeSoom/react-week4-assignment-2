@@ -12,12 +12,12 @@ export default class RestaurantState {
     return new RestaurantState('', '', '', []).toJSON();
   }
 
-  static toJsonWith(state) {
+  static newJsonWith(state) {
     return new RestaurantState(
       '',
       '',
       '',
-      [...state.restaurants, Restaurant.toJsonWith(state)],
+      [...state.restaurants, Restaurant.newJsonWith(state)],
     ).toJSON();
   }
 

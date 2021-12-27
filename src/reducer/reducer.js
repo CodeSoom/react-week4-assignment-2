@@ -33,7 +33,7 @@ export default function reducer(state = initState, action) {
   }
 
   if (type === ActionType.ADD_RESTAURANT) {
-    return RestaurantState.toJsonWith(state);
+    return RestaurantState.newJsonWith(state);
   }
 
   return state;

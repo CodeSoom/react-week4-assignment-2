@@ -5,7 +5,7 @@ export default class Restaurant {
     this.address = address;
   }
 
-  static toJsonWith(state) {
+  static newJsonWith(state) {
     return new Restaurant(state.name, state.category, state.address).toJSON();
   }
 
