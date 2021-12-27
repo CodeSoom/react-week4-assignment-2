@@ -1,35 +1,14 @@
-export function updateNameValue(name) {
+export function updateInput(name, value) {
   return {
-    type: 'handleChangeNameValue',
+    type: `handleChangeValue`,
     payload: {
-      name,
-    },
-  };
+      [name]: value
+    }
+  }
 }
 
-export function updateCategoryValue(category) {
-  return {
-    type: 'handleChangeCategroryValue',
-    payload: {
-      category,
-    },
-  };
-}
-
-export function updateAddressValue(address) {
-  return {
-    type: 'handleChangeAddressValue',
-    payload: {
-      address,
-    },
-  };
-}
-
-export function updateData(name, category, address) {
+export function updateData() {
   return {
     type: 'saveData',
-    payload: {
-      data: { name, category, address },
-    },
   };
 }
