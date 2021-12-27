@@ -59,7 +59,7 @@ describe('reducer', () => {
         addRestaurants(),
       );
     }
-    context('하나의 input이라도 비어있으면', () => {
+    context('입력값이 하나라도 없으면', () => {
       it(' 아무 일도 일어나지 않는다', () => {
         const { restaurants } = handleAddRestaurant({
           name: '',
@@ -71,7 +71,7 @@ describe('reducer', () => {
       });
     });
 
-    context('모든 input이 입력됐으면', () => {
+    context('모든 입력값이 있으면', () => {
       it('레스토랑 목록이 추가된다', () => {
         const { restaurants } = handleAddRestaurant({
           name: '알단테',
@@ -86,7 +86,9 @@ describe('reducer', () => {
       });
 
       it('추가된 후 모든 input이 초기화된다', () => {
-        const { restaurantInfo: { name, address, category } } = handleAddRestaurant({
+        const {
+          restaurantInfo: { name, address, category },
+        } = handleAddRestaurant({
           name: '알단테',
           category: '양식',
           address: '광교',
