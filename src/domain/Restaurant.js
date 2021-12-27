@@ -5,6 +5,16 @@ export default class Restaurant {
     this.address = address;
   }
 
+  /**
+   * @param name {string}
+   * @param category {string}
+   * @param address {string}
+   * @returns {{}}
+   */
+  static newJson(name, category, address) {
+    return new Restaurant(name, category, address).toJSON();
+  }
+
   static newJsonWith(state) {
     return new Restaurant(state.name, state.category, state.address).toJSON();
   }
