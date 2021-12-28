@@ -17,7 +17,7 @@ test('RestaurantForm', () => {
       restaurant={restaurant}
       onChange={handleChange}
       onClick={handleClick}
-    />
+    />,
   );
 
   expect(getByDisplayValue('마법사주방')).not.toBeNull();

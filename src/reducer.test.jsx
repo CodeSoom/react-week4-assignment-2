@@ -47,7 +47,7 @@ describe('reducer', () => {
         changeRestaurantField({
           name: 'name',
           value: '마법사주방',
-        })
+        }),
       );
 
       expect(state.restaurant.name).toBe('마법사주방');
