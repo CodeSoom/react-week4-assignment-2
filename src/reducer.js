@@ -29,9 +29,11 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'addRestaurant') {
-    const { newId, name, category, address, restaurants } = state;
+    const {
+      newId, name, category, address, restaurants,
+    } = state;
 
-    if (!name | !category | !address) {
+    if (!name || !category || !address) {
       return state;
     }
 
@@ -41,7 +43,11 @@ export default function reducer(state = initialState, action) {
       name: '',
       category: '',
       address: '',
-      restaurants: [...restaurants, { id: newId, name, category, address }],
+      restaurants: [
+        ...restaurants, {
+          id: newId, name, category, address,
+        },
+      ],
     };
   }
 

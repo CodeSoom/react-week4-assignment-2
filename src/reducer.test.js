@@ -42,9 +42,10 @@ describe('reducer', () => {
     function reduceAddRestaurant({
       name,
       category,
-      address
+      address,
     }) {
       return reducer({
+        newId: 100,
         name,
         category,
         address,

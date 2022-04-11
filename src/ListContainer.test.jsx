@@ -1,15 +1,19 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import App from './App';
+import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 
-test('App', () => {
+test('ListContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
 
   const restaurants = [
     {
@@ -21,18 +25,13 @@ test('App', () => {
   ];
 
   useSelector.mockImplementation((selector) => selector({
-    restaurantName: '',
-    restaurantCategory: '',
-    restuarantAddress: '',
     restaurants,
   }));
 
   const { queryByText } = render((
-    <App />
+    <ListContainer />
   ));
 
-  expect(queryByText(/Restaurants/)).not.toBeNull();
-  expect(queryByText(/등록/)).not.toBeNull();
   expect(queryByText('도미노피자 | 양식 | 강남구')).not.toBeNull();
   expect(queryByText('홍콩반점 | 중식 | 강북구')).not.toBeNull();
 });
