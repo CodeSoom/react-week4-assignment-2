@@ -12,6 +12,14 @@ describe('Input', () => {
     expect(queryAllByRole('textbox')).toHaveLength(3);
   });
 
+  it('renders placeholder', () => {
+    const { queryByPlaceholderText } = renderInput();
+
+    expect(queryByPlaceholderText('이름')).not.toBeNull();
+    expect(queryByPlaceholderText('분류')).not.toBeNull();
+    expect(queryByPlaceholderText('주소')).not.toBeNull();
+  });
+
   it('renders button', () => {
     const { queryByRole } = renderInput();
 
