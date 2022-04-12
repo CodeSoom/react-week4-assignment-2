@@ -17,6 +17,7 @@ export default function App() {
         type="text"
         placeholder="주소"
       />
+      <button type="button">등록</button>
     </div>
   );
 }
