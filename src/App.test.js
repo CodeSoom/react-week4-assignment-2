@@ -24,8 +24,7 @@ describe('App', () => {
   });
 
   it('has restaurants list', () => {
-    const { container } = render(<App />);
-    const li = container.querySelector('li');
-    expect(li).not.toBeNull();
+    const { queryByTestId } = render(<App />);
+    expect(queryByTestId('restaurants-list')).not.toBeNull();
   });
 });
