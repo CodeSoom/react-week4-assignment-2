@@ -16,4 +16,10 @@ describe('App', () => {
     expect(queryByPlaceholderText(/분류/)).not.toBeNull();
     expect(queryByPlaceholderText(/주소/)).not.toBeNull();
   });
+
+  it('has "등록" button', () => {
+    const { queryByText } = render(<App />);
+
+    expect(queryByText('등록')).not.toBeNull();
+  });
 });
