@@ -22,4 +22,10 @@ describe('App', () => {
 
     expect(queryByText('등록')).not.toBeNull();
   });
+
+  it('has restaurants list', () => {
+    const { container } = render(<App />);
+    const li = container.querySelector('li');
+    expect(li).not.toBeNull();
+  });
 });
