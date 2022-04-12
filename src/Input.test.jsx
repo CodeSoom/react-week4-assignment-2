@@ -11,4 +11,10 @@ describe('Input', () => {
 
     expect(queryAllByRole('textbox')).toHaveLength(3);
   });
+
+  it('renders button', () => {
+    const { queryByRole } = renderInput();
+
+    expect(queryByRole('button')).not.toBeNull();
+  });
 });
