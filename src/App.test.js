@@ -9,7 +9,7 @@ describe('App', () => {
     expect(queryByText(/Restaurants/)).not.toBeNull();
   });
 
-  it('shows three inputs', () => {
+  it('has three inputs', () => {
     const { queryByPlaceholderText } = render(<App />);
 
     expect(queryByPlaceholderText(/이름/)).not.toBeNull();
