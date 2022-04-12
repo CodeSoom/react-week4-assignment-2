@@ -2,6 +2,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
+      <li data-testid="restaurants-list" />
       <input
         id="input-restaurant-name"
         type="text"
