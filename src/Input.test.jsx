@@ -4,7 +4,7 @@ import Input from './Input';
 const onClick = jest.fn();
 
 const renderInput = () => render((
-  <Input />
+  <Input onClick={onClick} />
 ));
 
 describe('Input', () => {
