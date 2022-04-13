@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
 
-import List from './List';
+import RestaurantList from './RestaurantList';
 
-describe('List', () => {
-  function renderList(restaurants) {
+describe('RestaurantList', () => {
+  function renderRestaurantList(restaurants) {
     return render((
-      <List restaurants={restaurants} />
+      <RestaurantList restaurants={restaurants} />
     ));
   }
 
@@ -20,7 +20,7 @@ describe('List', () => {
         },
       ];
 
-      const { queryByText } = renderList(restaurants);
+      const { queryByText } = renderRestaurantList(restaurants);
 
       expect(queryByText('도미노피자 | 양식 | 강남구')).not.toBeNull();
       expect(queryByText('홍콩반점 | 중식 | 강북구')).not.toBeNull();
@@ -31,7 +31,7 @@ describe('List', () => {
     it('renders nothing', () => {
       const restaurants = [];
 
-      const { container } = renderList(restaurants);
+      const { container } = renderRestaurantList(restaurants);
 
       expect(container).toHaveTextContent('레스토랑을 등록해 주세요.');
     });

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Input from './Input';
+import Form from './Form';
 
 import {
   updateName,
@@ -17,7 +17,7 @@ function selector(state) {
   };
 }
 
-export default function InputContainer() {
+export default function FormContainer() {
   const { name, category, address } = useSelector(selector);
 
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export default function InputContainer() {
   }
 
   return (
-    <Input
+    <Form
       value={{ name, category, address }}
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}

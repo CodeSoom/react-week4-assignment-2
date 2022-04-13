@@ -1,8 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from './Input';
+import Form from './Form';
 
-test('Input', () => {
+test('Form', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -13,7 +13,7 @@ test('Input', () => {
   const handleClick = jest.fn();
 
   const { queryByDisplayValue, getByText, getByPlaceholderText } = render((
-    <Input
+    <Form
       value={{ name: '기존 레스토랑', category: '기존 분류', address: '기존 주소' }}
       onChangeName={handleChangeName}
       onChangeCategory={handleChangeCategory}

@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import ListContainer from './ListContainer';
+import RestaurantListContainer from './RestaurantListContainer';
 
 jest.mock('react-redux');
 
-test('ListContainer', () => {
+test('RestaurantListContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -29,7 +29,7 @@ test('ListContainer', () => {
   }));
 
   const { queryByText } = render((
-    <ListContainer />
+    <RestaurantListContainer />
   ));
 
   expect(queryByText('도미노피자 | 양식 | 강남구')).not.toBeNull();

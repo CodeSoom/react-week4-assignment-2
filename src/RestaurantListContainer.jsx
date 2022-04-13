@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import List from './List';
+import RestaurantList from './RestaurantList';
 
 function selector(state) {
   return {
@@ -8,11 +8,11 @@ function selector(state) {
   };
 }
 
-export default function ListContainer() {
+export default function RestaurantListContainer() {
   const { restaurants } = useSelector(selector);
 
   return (
-    <List
+    <RestaurantList
       restaurants={restaurants}
     />
   );

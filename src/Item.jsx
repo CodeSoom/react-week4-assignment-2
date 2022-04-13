@@ -1,4 +1,6 @@
-export default function Item({ restaurant: { name, category, address } }) {
+export default function Item({ restaurant }) {
+  const { name, category, address } = restaurant;
+
   return (
     <li>
       {name}

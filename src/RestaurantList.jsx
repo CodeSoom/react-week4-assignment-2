@@ -1,6 +1,6 @@
 import Item from './Item';
 
-export default function List({ restaurants }) {
+export default function RestaurantList({ restaurants }) {
   if (restaurants.length === 0) {
     return ((
       <p>레스토랑을 등록해 주세요.</p>
