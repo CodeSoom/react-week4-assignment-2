@@ -31,6 +31,17 @@ describe('reducer', () => {
       expect(state.category).toBe('한식');
     });
 
+    describe('updateAddress', () => {
+      const state = reducer({
+        state: {
+          address: '',
+        },
+        action: updateAddress({ category: '서울시 강남구' }),
+      });
+
+      expect(state.address).toBe('서울시 강남구');
+    });
+
     describe('addRestaurant', () => {
       function reduceAddRestaurant({ name, category, address }) {
         return reducer({
