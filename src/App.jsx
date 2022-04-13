@@ -1,10 +1,6 @@
-export default function App() {
-  const restaurantList = [
-    {
-      id: 1, name: '시카고피자', category: '양식', address: '서울시 강남구',
-    },
-  ];
-
+export default function App({
+  restaurantList,
+}) {
   return (
     <div>
       Hello
