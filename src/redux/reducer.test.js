@@ -14,6 +14,17 @@ describe('reducer', () => {
       expect(state.name).toBe('마녀주방');
     });
 
+    describe('updateCategory', () => {
+      const state = reducer({
+        state: {
+          category: '',
+        },
+        action: updateCategory({ category: '한식' }),
+      });
+
+      expect(state.category).toBe('한식');
+    });
+
     describe('addRestaurant', () => {
       function reduceAddRestaurant({ name, category, address }) {
         return reducer({
