@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import App from './App';
+import RestaurantNameInput from './RestaurantNameInput';
 
 describe('App', () => {
   it('shows "Restaurants"', () => {
@@ -25,5 +26,11 @@ describe('App', () => {
   it('has restaurants list', () => {
     const { queryByTestId } = render(<App />);
     expect(queryByTestId('restaurants-list')).not.toBeNull();
+  });
+
+  it('RestaurantNameInput 컴포넌트가 있다.', () => {
+    const { queryByPlaceholderText } = render(<App />);
+
+    expect(queryByPlaceholderText(/이름/)).not.toBeNull();
   });
 });
