@@ -41,5 +41,12 @@ export default function reducer({
     };
   }
 
+  if (action.type === 'updateName') {
+    return {
+      ...state,
+      name: '마녀주방',
+    };
+  }
+
   return state;
 }

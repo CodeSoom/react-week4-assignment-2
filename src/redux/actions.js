@@ -13,3 +13,10 @@ export const deleteRestaurant = ({ id }) => ({
     id,
   },
 });
+
+export const updateName = ({ name }) => ({
+  type: 'updateName',
+  payload: {
+    name,
+  },
+});

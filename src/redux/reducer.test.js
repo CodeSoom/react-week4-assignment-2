@@ -1,4 +1,4 @@
-import { addRestaurant, deleteRestaurant } from './actions';
+import { addRestaurant, deleteRestaurant, updateName } from './actions';
 import reducer from './reducer';
 
 describe('reducer', () => {
@@ -7,8 +7,8 @@ describe('reducer', () => {
       const state = reducer({
         state: {
           name: '',
-          action: updateName({ name: '마녀주방' }),
         },
+        action: updateName({ name: '마녀주방' }),
       });
 
       expect(state.name).toBe('마녀주방');
