@@ -7,28 +7,48 @@ import {
 
 describe('reducer', () => {
   describe('updateInformation', () => {
-    it('changes the restaurant name', () => {
-      const state = reducer({
-        name: '',
-      }, updateInformation({ name: 'New restaurant' }));
+    context('with name', () => {
+      it('changes the restaurant name', () => {
+        const state = reducer({
+          name: '',
+        }, updateInformation({ name: 'New restaurant' }));
 
-      expect(state.name).toBe('New restaurant');
+        expect(state.name).toBe('New restaurant');
+      });
     });
 
-    it('changes the restaurant category', () => {
-      const state = reducer({
-        category: '',
-      }, updateInformation({ category: 'New category' }));
+    context('with category', () => {
+      it('changes the restaurant category', () => {
+        const state = reducer({
+          category: '',
+        }, updateInformation({ category: 'New category' }));
 
-      expect(state.category).toBe('New category');
+        expect(state.category).toBe('New category');
+      });
     });
 
-    it('changes the restaurant address', () => {
-      const state = reducer({
-        address: '',
-      }, updateInformation({ address: 'New address' }));
+    context('with address', () => {
+      it('changes the restaurant address', () => {
+        const state = reducer({
+          address: '',
+        }, updateInformation({ address: 'New address' }));
 
-      expect(state.address).toBe('New address');
+        expect(state.address).toBe('New address');
+      });
+    });
+
+    context('without name, category, and address', () => {
+      it('does nothing', () => {
+        const state = reducer({
+          name: '브루클린 버거',
+          category: '양식',
+          address: '서래마을',
+        }, updateInformation({ rating: '1' }));
+
+        expect(state.name).toBe('브루클린 버거');
+        expect(state.category).toBe('양식');
+        expect(state.address).toBe('서래마을');
+      });
     });
   });
 

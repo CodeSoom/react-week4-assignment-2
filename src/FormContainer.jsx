@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Form from './Form';
 
 import {
-  updateName,
-  updateCategory,
-  updateAddress,
+  updateInformation,
   addRestaurant,
 } from './actions';
 
@@ -22,16 +20,12 @@ export default function FormContainer() {
 
   const dispatch = useDispatch();
 
-  function handleChangeName(restaurantName) {
-    dispatch(updateName({ name: restaurantName }));
-  }
-
-  function handleChangeCategory(restaurantCategory) {
-    dispatch(updateCategory({ category: restaurantCategory }));
-  }
-
-  function handleChangeAddress(restaurantAddress) {
-    dispatch(updateAddress({ address: restaurantAddress }));
+  function handleChange({ restaurantName, restaurantCategory, restaurantAddress }) {
+    dispatch(updateInformation({
+      name: restaurantName,
+      category: restaurantCategory,
+      address: restaurantAddress,
+    }));
   }
 
   function handleClickAddRestaurant() {
@@ -41,9 +35,7 @@ export default function FormContainer() {
   return (
     <Form
       value={{ name, category, address }}
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
+      onChange={handleChange}
       onClick={handleClickAddRestaurant}
     />
   );

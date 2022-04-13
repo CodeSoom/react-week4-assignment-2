@@ -7,25 +7,29 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'updateName') {
-    return {
-      ...state,
-      name: action.payload.name,
-    };
-  }
+  if (action.type === 'updateInformation') {
+    const { name, category, address } = action.payload;
 
-  if (action.type === 'updateCategory') {
-    return {
-      ...state,
-      category: action.payload.category,
-    };
-  }
+    if (name) {
+      return {
+        ...state,
+        name,
+      };
+    }
 
-  if (action.type === 'updateAddress') {
-    return {
-      ...state,
-      address: action.payload.address,
-    };
+    if (category) {
+      return {
+        ...state,
+        category,
+      };
+    }
+
+    if (address) {
+      return {
+        ...state,
+        address,
+      };
+    }
   }
 
   if (action.type === 'addRestaurant') {

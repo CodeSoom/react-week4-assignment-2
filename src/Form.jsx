@@ -1,20 +1,22 @@
 export default function Form({
   value,
-  onChangeName,
-  onChangeCategory,
-  onChangeAddress,
+  onChange,
   onClick,
 }) {
-  function handleChangeName(event) {
-    onChangeName(event.target.value);
-  }
+  function handleChange(event) {
+    const { name, value: changedValue } = event.target;
 
-  function handleChangeCategory(event) {
-    onChangeCategory(event.target.value);
-  }
+    if (name === 'name') {
+      onChange({ restaurantName: changedValue });
+    }
 
-  function handleChangeAddress(event) {
-    onChangeAddress(event.target.value);
+    if (name === 'category') {
+      onChange({ restaurantCategory: changedValue });
+    }
+
+    if (name === 'address') {
+      onChange({ restaurantAddress: changedValue });
+    }
   }
 
   const { name, category, address } = value;
@@ -27,7 +29,7 @@ export default function Form({
         type="text"
         placeholder="이름"
         value={name}
-        onChange={handleChangeName}
+        onChange={handleChange}
       />
       <input
         id="input-restaurant-category"
@@ -35,7 +37,7 @@ export default function Form({
         type="text"
         placeholder="분류"
         value={category}
-        onChange={handleChangeCategory}
+        onChange={handleChange}
       />
       <input
         id="input-restaurant-address"
@@ -43,7 +45,7 @@ export default function Form({
         type="text"
         placeholder="주소"
         value={address}
-        onChange={handleChangeAddress}
+        onChange={handleChange}
       />
       <button type="button" onClick={onClick}>
         등록
