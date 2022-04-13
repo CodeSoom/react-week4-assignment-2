@@ -12,7 +12,11 @@ describe('RestaurantNameInput 컴포넌트', () => {
   it('새로운 이름을 입력했을 때 값을 변경하는 이벤트가 동작한다.', () => {
     const handleNameChange = jest.fn();
 
-    const { queryByPlaceholderText } = render((<RestaurantNameInput />));
+    const { queryByPlaceholderText } = render((
+      <RestaurantNameInput
+        onChange={handleNameChange}
+      />
+    ));
 
     fireEvent.change(queryByPlaceholderText('이름'), {
       target: { value: '연안식당' },
