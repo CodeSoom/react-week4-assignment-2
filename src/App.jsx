@@ -8,11 +8,7 @@ export default function App() {
       <li data-testid="restaurants-list" />
       <RestaurantNameInput />
       <RestaurantCategoryInput />
-      <input
-        id="input-restaurant-address"
-        type="text"
-        placeholder="주소"
-      />
+
       <button type="button">등록</button>
     </div>
   );
