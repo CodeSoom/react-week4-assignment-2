@@ -11,7 +11,9 @@ export default function reducer({
   action,
 }) {
   if (action.type === 'addRestaurant') {
-    if (!action.payload.name || !action.payload.category) {
+    if (!action.payload.name
+      || !action.payload.category
+      || !action.payload.address) {
       return state;
     }
 
