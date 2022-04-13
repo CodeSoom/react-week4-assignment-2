@@ -13,10 +13,20 @@ describe('RestaurantList', () => {
     it('renders restaurants', () => {
       const restaurants = [
         {
-          id: 1, name: '도미노피자', category: '양식', address: '강남구',
+          id: 1,
+          information: {
+            name: '도미노피자',
+            category: '양식',
+            address: '강남구',
+          },
         },
         {
-          id: 2, name: '홍콩반점', category: '중식', address: '강북구',
+          id: 2,
+          information: {
+            name: '홍콩반점',
+            category: '중식',
+            address: '강북구',
+          },
         },
       ];
 

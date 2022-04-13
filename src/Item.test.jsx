@@ -4,7 +4,12 @@ import Item from './Item';
 
 test('Item', () => {
   const restaurant = {
-    id: 1, name: '도미노피자', category: '양식', address: '강남구',
+    id: 1,
+    information: {
+      name: '도미노피자',
+      category: '양식',
+      address: '강남구',
+    },
   };
 
   const { container } = render((
