@@ -86,6 +86,18 @@ describe('reducer', () => {
           expect(state.restaurants).toHaveLength(0);
         });
       });
+
+      context('without address', () => {
+        it('새 restaurant 추가', () => {
+          const state = reduceAddRestaurant({
+            name: '마녀주방',
+            category: '한식',
+            address: '',
+          });
+
+          expect(state.restaurants).toHaveLength(0);
+        });
+      });
     });
   });
 });
