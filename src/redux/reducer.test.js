@@ -3,6 +3,17 @@ import reducer from './reducer';
 
 describe('reducer', () => {
   context('with action.type', () => {
+    describe('updateName', () => {
+      const state = reducer({
+        state: {
+          name: '',
+          action: updateName({ name: '마녀주방' }),
+        },
+      });
+
+      expect(state.name).toBe('마녀주방');
+    });
+
     describe('addRestaurant', () => {
       function reduceAddRestaurant({ name, category, address }) {
         return reducer({
