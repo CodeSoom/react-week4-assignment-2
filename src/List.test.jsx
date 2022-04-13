@@ -5,9 +5,7 @@ import List from './List';
 describe('List', () => {
   function renderList(restaurants) {
     return render((
-      <List
-        restaurants={restaurants}
-      />
+      <List restaurants={restaurants} />
     ));
   }
 
