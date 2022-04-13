@@ -126,7 +126,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('without actions', () => {
+  context('without actions', () => {
     const someFunction = jest.fn(({ name, category, address }) => ({
       type: 'someFunction',
       payload: {
