@@ -1,10 +1,8 @@
-export function updateInformation({ name, category, address }) {
+export function updateInformation({ information }) {
   return {
     type: 'updateInformation',
     payload: {
-      name,
-      category,
-      address,
+      information,
     },
   };
 }
