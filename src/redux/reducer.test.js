@@ -106,7 +106,15 @@ describe('reducer', () => {
           state: {
             newId: 100,
             restaurants: [{
-              id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
+              id: 1,
+              name: '마녀주방',
+              category: '한식',
+              address: '서울시 강남구',
+            }, {
+              id: 2,
+              name: '마녀주방',
+              category: '한식',
+              address: '서울시 강남구',
             }],
           },
           action: deleteRestaurant({ id }),
@@ -116,7 +124,7 @@ describe('reducer', () => {
       it('제대로된 ID로 restaurant 삭제', () => {
         const state = reduceDeleteRestaurant({ id: 1 });
 
-        expect(state.restaurants).toHaveLength(0);
+        expect(state.restaurants).toHaveLength(1);
       });
     });
   });

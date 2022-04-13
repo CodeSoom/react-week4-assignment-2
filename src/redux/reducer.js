@@ -37,7 +37,7 @@ export default function reducer({
   if (action.type === 'deleteRestaurant') {
     return {
       ...state,
-      restaurants: [],
+      restaurants: state.restaurants.filter((item) => item.id !== action.payload.id),
     };
   }
 
