@@ -1,38 +1,32 @@
 import reducer from './reducer';
 
 import {
-  updateName,
-  updateCategory,
-  updateAddress,
+  updateInformation,
   addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
-  describe('updateName', () => {
+  describe('updateInformation', () => {
     it('changes the restaurant name', () => {
       const state = reducer({
         name: '',
-      }, updateName({ name: 'New restaurant' }));
+      }, updateInformation({ name: 'New restaurant' }));
 
       expect(state.name).toBe('New restaurant');
     });
-  });
 
-  describe('updateCategory', () => {
     it('changes the restaurant category', () => {
       const state = reducer({
         category: '',
-      }, updateCategory({ category: 'New category' }));
+      }, updateInformation({ category: 'New category' }));
 
       expect(state.category).toBe('New category');
     });
-  });
 
-  describe('updateAddress', () => {
     it('changes the restaurant address', () => {
       const state = reducer({
         address: '',
-      }, updateAddress({ address: 'New address' }));
+      }, updateInformation({ address: 'New address' }));
 
       expect(state.address).toBe('New address');
     });
