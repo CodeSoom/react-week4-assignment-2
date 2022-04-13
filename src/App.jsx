@@ -40,6 +40,7 @@ export default function App() {
 
   return (
     <Page
+      restaurants={restaurantList}
       handleNameChange={handleNameChange}
       name={name}
       handleCategoryChange={handleCategoryChange}
