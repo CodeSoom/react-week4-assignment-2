@@ -17,7 +17,7 @@ describe('reducer', () => {
         });
       }
 
-      context('with name', () => {
+      context('with name || with category || with address', () => {
         it('새 restaurant 추가', () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
@@ -48,6 +48,18 @@ describe('reducer', () => {
           const state = reduceAddRestaurant({
             name: '',
             category: '한식',
+            address: '서울시 강남구',
+          });
+
+          expect(state.restaurants).toHaveLength(0);
+        });
+      });
+
+      context('without category', () => {
+        it('새 restaurant 추가', () => {
+          const state = reduceAddRestaurant({
+            name: '마녀주방',
+            category: '',
             address: '서울시 강남구',
           });
 
