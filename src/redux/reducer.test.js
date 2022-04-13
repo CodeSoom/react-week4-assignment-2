@@ -41,6 +41,15 @@ describe('reducer', () => {
 
           expect(state.name).toBe('');
         });
+        it("category is '' after addRestaurant", () => {
+          const state = reduceAddRestaurant({
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+          });
+
+          expect(state.category).toBe('');
+        });
       });
 
       context('without name', () => {
