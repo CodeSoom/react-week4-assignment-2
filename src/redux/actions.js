@@ -7,11 +7,9 @@ export const addRestaurant = ({ name, category, address }) => ({
   },
 });
 
-export const deleteRestaurant = ({ name, category, address }) => ({
+export const deleteRestaurant = ({ id }) => ({
   type: 'deleteRestaurant',
   payload: {
-    name,
-    category,
-    address,
+    id,
   },
 });
