@@ -11,6 +11,7 @@ describe('reducer', () => {
             name,
             category,
             address,
+            restaurants: [],
           },
           action: addRestaurant({ name, category, address }),
         });
