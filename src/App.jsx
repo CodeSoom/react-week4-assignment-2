@@ -1,4 +1,5 @@
 import RestaurantNameInput from './RestaurantNameInput';
+import RestaurantCategoryInput from './RestaurantCategoryInput';
 
 export default function App() {
   return (
@@ -6,7 +7,7 @@ export default function App() {
       <h1>Restaurants</h1>
       <li data-testid="restaurants-list" />
       <RestaurantNameInput />
-
+      <RestaurantCategoryInput />
       <input
         id="input-restaurant-address"
         type="text"
