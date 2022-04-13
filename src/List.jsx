@@ -4,6 +4,7 @@ export default function List({ restaurantList }) {
       <p>레스토랑 목록이 없습니다.</p>
     );
   }
+
   return (
     <ul>
       {restaurantList.map((restaurant) => {
