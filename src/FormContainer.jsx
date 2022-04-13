@@ -9,23 +9,17 @@ import {
 
 function selector(state) {
   return {
-    name: state.name,
-    category: state.category,
-    address: state.address,
+    information: state.information,
   };
 }
 
 export default function FormContainer() {
-  const { name, category, address } = useSelector(selector);
+  const { information } = useSelector(selector);
 
   const dispatch = useDispatch();
 
-  function handleChange({ restaurantName, restaurantCategory, restaurantAddress }) {
-    dispatch(updateInformation({
-      name: restaurantName,
-      category: restaurantCategory,
-      address: restaurantAddress,
-    }));
+  function handleChange({ restaurantInformation }) {
+    dispatch(updateInformation({ information: restaurantInformation }));
   }
 
   function handleClickAddRestaurant() {
@@ -34,7 +28,7 @@ export default function FormContainer() {
 
   return (
     <Form
-      value={{ name, category, address }}
+      value={information}
       onChange={handleChange}
       onClick={handleClickAddRestaurant}
     />
