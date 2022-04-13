@@ -1,5 +1,6 @@
 import RestaurantNameInput from './RestaurantNameInput';
 import RestaurantCategoryInput from './RestaurantCategoryInput';
+import RestaurantAddressInput from './RestaurantAddressInput';
 
 export default function App() {
   return (
@@ -8,7 +9,7 @@ export default function App() {
       <li data-testid="restaurants-list" />
       <RestaurantNameInput />
       <RestaurantCategoryInput />
-
+      <RestaurantAddressInput />
       <button type="button">등록</button>
     </div>
   );
