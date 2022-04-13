@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 
 import App from './App';
-import RestaurantNameInput from './RestaurantNameInput';
 
 describe('App', () => {
   it('shows "Restaurants"', () => {
