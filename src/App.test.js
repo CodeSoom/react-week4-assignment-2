@@ -3,13 +3,13 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  it('shows "Restaurants"', () => {
+  it('"Restaurants" 타이틀이 보여야한다.', () => {
     const { queryByText } = render(<App />);
 
     expect(queryByText(/Restaurants/)).not.toBeNull();
   });
 
-  it('has "등록" button', () => {
+  it('"등록" 버튼을 가지고 있다.', () => {
     const { queryByText } = render(<App />);
 
     expect(queryByText('등록')).not.toBeNull();
