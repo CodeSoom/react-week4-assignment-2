@@ -11,7 +11,12 @@ export default function App() {
 
   const { name, category, address } = inputs;
 
-  const [restaurantList, setRestaurantList] = useState([]);
+  const [restaurantList, setRestaurantList] = useState({
+    newId: 1,
+    restaurants: [],
+  });
+
+  const { newId, restaurants } = restaurantList;
 
   function handleNameChange(value) {
     setInputs({
@@ -35,12 +40,18 @@ export default function App() {
   }
 
   function handleRegisterRestaurant() {
-    setRestaurantList([...restaurantList, inputs]);
+    setRestaurantList({
+      ...restaurantList,
+      newId: newId + 1,
+      restaurants: [...restaurants, { id: newId, ...inputs }],
+    });
+
+    // TODO : 레스토랑이 등록되면 input을 빈 값으로 초기화해야 한다.
   }
 
   return (
     <Page
-      restaurants={restaurantList}
+      restaurants={restaurants}
       handleNameChange={handleNameChange}
       name={name}
       handleCategoryChange={handleCategoryChange}
