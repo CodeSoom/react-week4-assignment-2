@@ -46,9 +46,11 @@ describe('FormContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'updateInformation',
       payload: {
-        name: '더조은 참치',
-        category: undefined,
-        address: undefined,
+        information: {
+          name: '더조은 참치',
+          category: '양식',
+          address: '서래마을',
+        },
       },
     });
   });
@@ -63,9 +65,11 @@ describe('FormContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'updateInformation',
       payload: {
-        name: undefined,
-        category: '일식',
-        address: undefined,
+        information: {
+          name: '부르클린 버거',
+          category: '일식',
+          address: '서래마을',
+        },
       },
     });
   });
@@ -80,8 +84,8 @@ describe('FormContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'updateInformation',
       payload: {
-        name: undefined,
-        category: undefined,
+        name: '부르클린 버거',
+        category: '양식',
         address: '압구정',
       },
     });
