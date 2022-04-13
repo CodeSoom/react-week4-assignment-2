@@ -1,4 +1,4 @@
-import { addRestaurant } from './actions';
+import { addRestaurant, deleteRestaurant } from './actions';
 import reducer from './reducer';
 
 describe('reducer', () => {
@@ -97,6 +97,26 @@ describe('reducer', () => {
 
           expect(state.restaurants).toHaveLength(0);
         });
+      });
+    });
+
+    describe('deleteRestaurant', () => {
+      function reduceDeleteRestaurant({ id }) {
+        return reducer({
+          state: {
+            newId: 100,
+            restaurants: [{
+              id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
+            }],
+          },
+          action: deleteRestaurant({ id }),
+        });
+      }
+
+      it('제대로된 ID로 restaurant 삭제', () => {
+        const state = reduceDeleteRestaurant({ id: 1 });
+
+        expect(state.restaurants).toHaveLength(0);
       });
     });
   });
