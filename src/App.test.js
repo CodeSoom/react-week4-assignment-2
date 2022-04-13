@@ -31,4 +31,10 @@ describe('App', () => {
 
     expect(queryByPlaceholderText(/분류/)).not.toBeNull();
   });
+
+  it('RestaurantAddressInput 컴포넌트가 있다.', () => {
+    const { queryByPlaceholderText } = render(<App />);
+
+    expect(queryByPlaceholderText(/주소/)).not.toBeNull();
+  });
 });
