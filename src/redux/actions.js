@@ -27,3 +27,10 @@ export const updateCategory = ({ category }) => ({
     category,
   },
 });
+
+export const updateAddress = ({ address }) => ({
+  type: 'updateAddress',
+  payload: {
+    address,
+  },
+});

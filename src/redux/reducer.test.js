@@ -1,8 +1,7 @@
 /* eslint-disable comma-dangle */
 import {
   addRestaurant,
-  deleteRestaurant,
-  updateCategory,
+  deleteRestaurant, updateAddress, updateCategory,
   updateName
 } from './actions';
 import reducer from './reducer';
@@ -36,7 +35,7 @@ describe('reducer', () => {
         state: {
           address: '',
         },
-        action: updateAddress({ category: '서울시 강남구' }),
+        action: updateAddress({ address: '서울시 강남구' }),
       });
 
       expect(state.address).toBe('서울시 강남구');

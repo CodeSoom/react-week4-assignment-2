@@ -55,5 +55,12 @@ export default function reducer({
     };
   }
 
+  if (action.type === 'updateAddress') {
+    return {
+      ...state,
+      address: action.payload.address,
+    };
+  }
+
   return state;
 }
