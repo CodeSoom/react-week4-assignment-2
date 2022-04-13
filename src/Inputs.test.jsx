@@ -10,12 +10,14 @@ describe('Inputs', () => {
   const onChangeName = jest.fn();
   const onChangeCategory = jest.fn();
   const onChangeAddress = jest.fn();
+  const addRestaurant = jest.fn();
 
   const renderInputs = () => render((
     <Inputs
       onChangeName={onChangeName}
       onChangeCategory={onChangeCategory}
       onChangeAddress={onChangeAddress}
+      addRestaurant={addRestaurant}
     />
   ));
 
@@ -64,5 +66,13 @@ describe('Inputs', () => {
     const { queryByText } = renderInputs();
 
     expect(queryByText('등록')).not.toBeNull();
+  });
+
+  it('listens for click event on 등록', () => {
+    const { getByText } = renderInputs();
+
+    fireEvent.click(getByText('등록'));
+
+    expect(addRestaurant).toBeCalled();
   });
 });
