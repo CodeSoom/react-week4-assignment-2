@@ -15,6 +15,8 @@ export default function App() {
 
   const { name, category, address } = inputs;
 
+  const [restaurantList, setRestaurantList] = useState([]);
+
   function handleNameChange(value) {
     setInputs({
       ...inputs,
@@ -37,9 +39,7 @@ export default function App() {
   }
 
   function handleRegisterRestaurant() {
-    // todo : 레스토랑을 등록하는 동작을 작성
-    console.log('등록!');
-    return null;
+    setRestaurantList([...restaurantList, inputs]);
   }
 
   return (
