@@ -18,9 +18,6 @@ export default function reducer({
     return {
       ...state,
       newId: state.newId + 1,
-      name: '',
-      category: '',
-      address: '',
       restaurants: [
         ...state.restaurants,
         {
