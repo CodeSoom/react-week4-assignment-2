@@ -11,6 +11,7 @@ describe('reducer', () => {
             name,
             category,
             address,
+            restaurants: [],
           },
           action: addRestaurant({ name, category, address }),
         });
@@ -24,6 +25,10 @@ describe('reducer', () => {
         });
 
         expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants[0].id).not.toBeNull();
+        expect(state.restaurants[0].name).toBe('');
+        expect(state.restaurants[0].category).toBe('');
+        expect(state.restaurants[0].address).toBe('');
       });
     });
   });
