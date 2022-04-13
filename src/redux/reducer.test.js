@@ -100,4 +100,24 @@ describe('reducer', () => {
       });
     });
   });
+
+  context('without action.type', () => {
+    function otherFunction({ id }) {
+      return {
+        type: 'otherFunction',
+        payload: {
+          id,
+        },
+      };
+    }
+
+    it('존재하지 않는 reducer실행', () => {
+      const state = reducer({
+        state: undefined,
+        action: otherFunction({ id: 1 }),
+      });
+
+      expect(state.restaurants).toHaveLength(0);
+    });
+  });
 });
