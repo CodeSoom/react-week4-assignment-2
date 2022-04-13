@@ -4,11 +4,11 @@ export default function Inputs({ onChangeName, onChangeCategory, onChangeAddress
   }
 
   function handleChangeRestaurantCategory(event) {
-
+    onChangeCategory(event.target.value);
   }
 
   function handleChangeRestaurantAddress(event) {
-
+    onChangeAddress(event.target.value);
   }
 
   return (
