@@ -126,6 +126,12 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(1);
       });
+
+      it('잘못된 ID로 restaurant 삭제', () => {
+        const state = reduceDeleteRestaurant({ id: 4 });
+
+        expect(state.restaurants).toHaveLength(2);
+      });
     });
   });
 
