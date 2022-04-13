@@ -9,9 +9,10 @@ export default function App() {
   const [inputs, setInputs] = useState({
     name: '',
     category: '',
+    address: '',
   });
 
-  const { name, category } = inputs;
+  const { name, category, address } = inputs;
 
   function handleNameChange(value) {
     setInputs({
@@ -27,6 +28,13 @@ export default function App() {
     });
   }
 
+  function handleAddressChange(value) {
+    setInputs({
+      ...inputs,
+      address: value,
+    });
+  }
+
   return (
     <div>
       <h1>Restaurants</h1>
@@ -39,7 +47,10 @@ export default function App() {
         onChange={handleCategoryChange}
         value={category}
       />
-      <RestaurantAddressInput />
+      <RestaurantAddressInput
+        onChange={handleAddressChange}
+        value={address}
+      />
       <button type="button">등록</button>
     </div>
   );
