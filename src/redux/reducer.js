@@ -17,6 +17,7 @@ export default function reducer({
 
     return {
       ...state,
+      name: '',
       newId: state.newId + 1,
       restaurants: [
         ...state.restaurants,

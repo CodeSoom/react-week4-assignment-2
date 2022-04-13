@@ -39,7 +39,7 @@ describe('reducer', () => {
             address: '서울시 강남구',
           });
 
-          expect(state.address).toBe('');
+          expect(state.name).toBe('');
         });
       });
 
