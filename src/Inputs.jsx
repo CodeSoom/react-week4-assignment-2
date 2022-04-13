@@ -31,6 +31,9 @@ export default function Inputs({ onChangeName, onChangeCategory, onChangeAddress
         placeholder="주소"
         onChange={handleChangeRestaurantAddress}
       />
+      <button type="button">
+        등록
+      </button>
     </div>
   );
 }
