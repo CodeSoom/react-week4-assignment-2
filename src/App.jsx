@@ -8,14 +8,22 @@ import RestaurantAddressInput from './RestaurantAddressInput';
 export default function App() {
   const [inputs, setInputs] = useState({
     name: '',
+    category: '',
   });
 
-  const { name } = inputs;
+  const { name, category } = inputs;
 
   function handleNameChange(value) {
     setInputs({
       ...inputs,
       name: value,
+    });
+  }
+
+  function handleCategoryChange(value) {
+    setInputs({
+      ...inputs,
+      category: value,
     });
   }
 
@@ -27,7 +35,10 @@ export default function App() {
         onChange={handleNameChange}
         value={name}
       />
-      <RestaurantCategoryInput />
+      <RestaurantCategoryInput
+        onChange={handleCategoryChange}
+        value={category}
+      />
       <RestaurantAddressInput />
       <button type="button">등록</button>
     </div>
