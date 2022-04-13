@@ -1,4 +1,6 @@
-export default function Inputs({ onChangeName, onChangeCategory, onChangeAddress }) {
+export default function Inputs({
+  onChangeName, onChangeCategory, onChangeAddress, addRestaurant,
+}) {
   function handleChangeRestaurantName(event) {
     onChangeName(event.target.value);
   }
@@ -31,7 +33,10 @@ export default function Inputs({ onChangeName, onChangeCategory, onChangeAddress
         placeholder="주소"
         onChange={handleChangeRestaurantAddress}
       />
-      <button type="button">
+      <button
+        type="button"
+        onClick={addRestaurant}
+      >
         등록
       </button>
     </div>
