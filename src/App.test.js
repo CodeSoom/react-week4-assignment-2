@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -13,6 +13,17 @@ describe('App', () => {
     const { queryByText } = render(<App />);
 
     expect(queryByText('등록')).not.toBeNull();
+  });
+
+  it('등록 버튼을 클릭하면 레스토랑이 등록되는 이벤트가 발생한다.', () => {
+    const handleAddRestaurant = jest.fn();
+
+    const { queryByText } = render(<App />);
+
+    const button = queryByText('등록');
+    fireEvent.click(button);
+
+    expect(handleAddRestaurant).toBeCalled();
   });
 
   it('RestaurantList 컴포넌트가 있다.', () => {
