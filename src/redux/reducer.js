@@ -21,9 +21,9 @@ export default function reducer({
         ...state.restaurants,
         {
           id: state.newId,
-          name: '',
-          category: '',
-          address: '',
+          name: action.payload.name,
+          category: action.payload.category,
+          address: action.payload.address,
         }],
     };
   }

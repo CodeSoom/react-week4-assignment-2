@@ -26,9 +26,9 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).not.toBeNull();
-        expect(state.restaurants[0].name).toBe('');
-        expect(state.restaurants[0].category).toBe('');
-        expect(state.restaurants[0].address).toBe('');
+        expect(state.restaurants[0].name).toBe('마녀주방');
+        expect(state.restaurants[0].category).toBe('한식');
+        expect(state.restaurants[0].address).toBe('서울시 강남구');
       });
     });
   });
