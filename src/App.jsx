@@ -6,11 +6,7 @@ export default function App() {
       <h1>Restaurants</h1>
       <li data-testid="restaurants-list" />
       <RestaurantNameInput />
-      <input
-        id="input-restaurant-category"
-        type="text"
-        placeholder="분류"
-      />
+
       <input
         id="input-restaurant-address"
         type="text"

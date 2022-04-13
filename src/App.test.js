@@ -12,7 +12,6 @@ describe('App', () => {
   it('has "이름","분류","주소" inputs', () => {
     const { queryByPlaceholderText } = render(<App />);
 
-    expect(queryByPlaceholderText(/분류/)).not.toBeNull();
     expect(queryByPlaceholderText(/주소/)).not.toBeNull();
   });
 
@@ -31,5 +30,11 @@ describe('App', () => {
     const { queryByPlaceholderText } = render(<App />);
 
     expect(queryByPlaceholderText(/이름/)).not.toBeNull();
+  });
+
+  it('RestaurantCategoryInput 컴포넌트가 있다.', () => {
+    const { queryByPlaceholderText } = render(<App />);
+
+    expect(queryByPlaceholderText(/분류/)).not.toBeNull();
   });
 });
