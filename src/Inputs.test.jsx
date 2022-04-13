@@ -3,10 +3,24 @@ import { fireEvent, render } from '@testing-library/react';
 import Inputs from './Inputs';
 
 describe('Inputs', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const onChangeName = jest.fn();
+  const onChangeCategory = jest.fn();
+  const onChangeAddress = jest.fn();
+
+  const renderInputs = () => render((
+    <Inputs
+      onChangeName={onChangeName}
+      onChangeCategory={onChangeCategory}
+      onChangeAddress={onChangeAddress}
+    />
+  ));
+
   it('renders restaurant inputs', () => {
-    const { queryByPlaceholderText } = render((
-      <Inputs />
-    ));
+    const { queryByPlaceholderText } = renderInputs();
 
     expect(queryByPlaceholderText('이름')).not.toBeNull();
     expect(queryByPlaceholderText('분류')).not.toBeNull();
@@ -14,13 +28,7 @@ describe('Inputs', () => {
   });
 
   it('listens for change event on update restaurant name', () => {
-    const onChangeName = jest.fn();
-
-    const { getByPlaceholderText } = render((
-      <Inputs
-        onChangeName={onChangeName}
-      />
-    ));
+    const { getByPlaceholderText } = renderInputs();
 
     fireEvent.change(
       getByPlaceholderText('이름'),
@@ -31,13 +39,7 @@ describe('Inputs', () => {
   });
 
   it('listens for change event on update restaurant name', () => {
-    const onChangeCategory = jest.fn();
-
-    const { getByPlaceholderText } = render((
-      <Inputs
-        onChangeCategory={onChangeCategory}
-      />
-    ));
+    const { getByPlaceholderText } = renderInputs();
 
     fireEvent.change(
       getByPlaceholderText('분류'),
@@ -48,13 +50,7 @@ describe('Inputs', () => {
   });
 
   it('listens for change event on update restaurant name', () => {
-    const onChangeAddress = jest.fn();
-
-    const { getByPlaceholderText } = render((
-      <Inputs
-        onChangeAddress={onChangeAddress}
-      />
-    ));
+    const { getByPlaceholderText } = renderInputs();
 
     fireEvent.change(
       getByPlaceholderText('주소'),
