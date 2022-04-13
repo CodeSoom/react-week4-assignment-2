@@ -18,9 +18,11 @@ describe('FormContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    name: '브루클린 버거',
-    category: '양식',
-    address: '서래마을',
+    information: {
+      name: '브루클린 버거',
+      category: '양식',
+      address: '서래마을',
+    },
   }));
 
   beforeEach(() => {
@@ -84,9 +86,11 @@ describe('FormContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'updateInformation',
       payload: {
-        name: '부르클린 버거',
-        category: '양식',
-        address: '압구정',
+        information: {
+          name: '부르클린 버거',
+          category: '양식',
+          address: '압구정',
+        },
       },
     });
   });
