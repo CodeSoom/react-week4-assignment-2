@@ -35,6 +35,12 @@ export default function App() {
     });
   }
 
+  function handleAddRestaurant() {
+    // todo : 레스토랑을 등록하는 동작을 작성
+    console.log('등록!');
+    return null;
+  }
+
   return (
     <div>
       <h1>Restaurants</h1>
@@ -51,7 +57,7 @@ export default function App() {
         onChange={handleAddressChange}
         value={address}
       />
-      <button type="button">등록</button>
+      <button type="button" onClick={handleAddRestaurant}>등록</button>
     </div>
   );
 }
