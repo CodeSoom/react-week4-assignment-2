@@ -59,4 +59,10 @@ describe('Inputs', () => {
 
     expect(onChangeAddress).toBeCalledWith('경기도 수원시');
   });
+
+  it('renders 등록 button', () => {
+    const { queryByText } = renderInputs();
+
+    expect(queryByText('등록')).not.toBeNull();
+  });
 });
