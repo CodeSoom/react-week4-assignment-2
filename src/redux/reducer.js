@@ -34,5 +34,12 @@ export default function reducer({
     };
   }
 
+  if (action.type === 'deleteRestaurant') {
+    return {
+      ...state,
+      restaurants: [],
+    };
+  }
+
   return state;
 }
