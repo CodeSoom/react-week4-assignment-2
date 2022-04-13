@@ -4,6 +4,7 @@ import RestaurantList from './RestaurantList';
 import RestaurantNameInput from './RestaurantNameInput';
 import RestaurantCategoryInput from './RestaurantCategoryInput';
 import RestaurantAddressInput from './RestaurantAddressInput';
+import RestaurantRegisterButton from './RestaurantRegisterButton';
 
 export default function App() {
   const [inputs, setInputs] = useState({
@@ -35,7 +36,7 @@ export default function App() {
     });
   }
 
-  function handleAddRestaurant() {
+  function handleRegisterRestaurant() {
     // todo : 레스토랑을 등록하는 동작을 작성
     console.log('등록!');
     return null;
@@ -57,7 +58,9 @@ export default function App() {
         onChange={handleAddressChange}
         value={address}
       />
-      <button type="button" onClick={handleAddRestaurant}>등록</button>
+      <RestaurantRegisterButton
+        onClick={handleRegisterRestaurant}
+      />
     </div>
   );
 }
