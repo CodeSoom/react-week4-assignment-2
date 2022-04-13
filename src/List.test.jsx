@@ -33,7 +33,7 @@ describe('List', () => {
 
       const { container } = renderList(restaurants);
 
-      expect(container.innerHTML).toBe('');
+      expect(container).toHaveTextContent('레스토랑을 등록해 주세요.');
     });
   });
 });
