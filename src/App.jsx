@@ -1,9 +1,11 @@
+import RestaurantNameInput from './RestaurantNameInput';
+
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
       <li data-testid="restaurants-list" />
-
+      <RestaurantNameInput />
       <input
         id="input-restaurant-category"
         type="text"
