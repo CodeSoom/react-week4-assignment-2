@@ -11,6 +11,10 @@ export default function reducer({
   action,
 }) {
   if (action.type === 'addRestaurant') {
+    if (!action.payload.name) {
+      return state;
+    }
+
     return {
       ...state,
       newId: state.newId + 1,
