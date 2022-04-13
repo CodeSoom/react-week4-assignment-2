@@ -1,4 +1,10 @@
-import { addRestaurant, deleteRestaurant, updateName } from './actions';
+/* eslint-disable comma-dangle */
+import {
+  addRestaurant,
+  deleteRestaurant,
+  updateCategory,
+  updateName
+} from './actions';
 import reducer from './reducer';
 
 describe('reducer', () => {

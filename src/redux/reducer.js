@@ -48,5 +48,12 @@ export default function reducer({
     };
   }
 
+  if (action.type === 'updateCategory') {
+    return {
+      ...state,
+      category: action.payload.category,
+    };
+  }
+
   return state;
 }

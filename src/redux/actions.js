@@ -20,3 +20,10 @@ export const updateName = ({ name }) => ({
     name,
   },
 });
+
+export const updateCategory = ({ category }) => ({
+  type: 'updateCategory',
+  payload: {
+    category,
+  },
+});
