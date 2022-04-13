@@ -27,6 +27,6 @@ describe('Inputs', () => {
       { target: { value: '한우마을' } },
     );
 
-    expect(onChangeName).toBeCalled();
+    expect(onChangeName).toBeCalledWith('한우마을');
   });
 });
