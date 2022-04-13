@@ -15,7 +15,7 @@ describe('App', () => {
     expect(queryByText('등록')).not.toBeNull();
   });
 
-  it('has restaurants list', () => {
+  it('RestaurantList 컴포넌트가 있다.', () => {
     const { queryByTestId } = render(<App />);
     expect(queryByTestId('restaurants-list')).not.toBeNull();
   });
