@@ -3,11 +3,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <li data-testid="restaurants-list" />
-      <input
-        id="input-restaurant-name"
-        type="text"
-        placeholder="이름"
-      />
+
       <input
         id="input-restaurant-category"
         type="text"
