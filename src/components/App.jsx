@@ -4,7 +4,7 @@ import RestaurantContainer from '../containers/RestaurantContainer';
 export default function App() {
   return (
     <>
-      <h2>Restautants</h2>
+      <h1>Restaurants</h1>
       <RestaurantContainer />
       <InputContainer />
     </>
