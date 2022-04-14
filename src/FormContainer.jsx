@@ -16,6 +16,8 @@ function selector(state) {
 export default function FormContainer() {
   const { information } = useSelector(selector);
 
+  const { name, category, address } = information;
+
   const dispatch = useDispatch();
 
   function handleChange({ restaurantInformation }) {
@@ -28,7 +30,9 @@ export default function FormContainer() {
 
   return (
     <Form
-      value={information}
+      name={name}
+      category={category}
+      address={address}
       onChange={handleChange}
       onClick={handleClickAddRestaurant}
     />
