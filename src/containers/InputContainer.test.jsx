@@ -1,7 +1,9 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateAddress, updateCategory, updateName } from '../redux/actions';
+import {
+  addRestaurant, updateAddress, updateCategory, updateName,
+} from '../redux/actions';
 
 import InputContainer from './InputContainer';
 
@@ -12,9 +14,9 @@ describe('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    name: '',
-    category: '',
-    address: '',
+    name: '피카츄',
+    category: '포켓몬',
+    address: '태초마을',
   }));
 
   beforeEach(() => {
@@ -59,5 +61,17 @@ describe('InputContainer', () => {
       { target: { value: '성남시 분당구' } });
 
     expect(dispatch).toBeCalledWith(updateAddress({ address: '성남시 분당구' }));
+  });
+
+  it('adds a new restaurant', () => {
+    const { queryByText } = renderInputContainer();
+
+    fireEvent.click(queryByText('등록'));
+
+    expect(dispatch).toBeCalledWith(addRestaurant({
+      name: '피카츄',
+      category: '포켓몬',
+      address: '태초마을',
+    }));
   });
 });
