@@ -18,24 +18,10 @@ export default function App() {
 
   const { newId, restaurants } = restaurantList;
 
-  function handleNameChange(value) {
+  function handleInputChange(inputName, inputValue) {
     setInputs({
       ...inputs,
-      name: value,
-    });
-  }
-
-  function handleCategoryChange(value) {
-    setInputs({
-      ...inputs,
-      category: value,
-    });
-  }
-
-  function handleAddressChange(value) {
-    setInputs({
-      ...inputs,
-      address: value,
+      [inputName]: inputValue,
     });
   }
 
@@ -52,13 +38,11 @@ export default function App() {
   return (
     <Page
       restaurants={restaurants}
-      handleNameChange={handleNameChange}
       name={name}
-      handleCategoryChange={handleCategoryChange}
       category={category}
-      handleAddressChange={handleAddressChange}
       address={address}
-      handleRegisterRestaurant={handleRegisterRestaurant}
+      onChange={handleInputChange}
+      onClick={handleRegisterRestaurant}
     />
   );
 }
