@@ -1,7 +1,10 @@
+import InputContainer from '../containers/InputContainer';
+
 export default function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <>
+      <h2>Restautants</h2>
+      <InputContainer />
+    </>
   );
 }
