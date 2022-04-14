@@ -68,7 +68,7 @@ describe('FormContainer', () => {
       type: 'updateInformation',
       payload: {
         information: {
-          name: '부르클린 버거',
+          name: '브루클린 버거',
           category: '일식',
           address: '서래마을',
         },
@@ -87,7 +87,7 @@ describe('FormContainer', () => {
       type: 'updateInformation',
       payload: {
         information: {
-          name: '부르클린 버거',
+          name: '브루클린 버거',
           category: '양식',
           address: '압구정',
         },

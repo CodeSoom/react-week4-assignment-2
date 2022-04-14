@@ -9,7 +9,7 @@ describe('Form', () => {
   function renderForm() {
     return render((
       <Form
-        value={{ information: { name: '기존 레스토랑', category: '기존 분류', address: '기존 주소' } }}
+        value={{ name: '기존 레스토랑', category: '기존 분류', address: '기존 주소' }}
         onChange={handleChange}
         onClick={handleClick}
       />

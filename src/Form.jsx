@@ -1,5 +1,3 @@
-import RestaurantInput from './RestaurantInput';
-
 export default function Form({
   value,
   onChange,
@@ -7,28 +5,36 @@ export default function Form({
 }) {
   const { name, category, address } = value;
 
+  function handleChange(event) {
+    const { name: inputName, value: inputValue } = event.target;
+
+    onChange({ restaurantInformation: { ...value, [inputName]: inputValue } });
+  }
   return (
     <p>
-      <RestaurantInput
+      <input
         id="input-restaurant-name"
+        type="text"
         name="name"
         placeholder="이름"
         value={name}
-        onChange={onChange}
+        onChange={handleChange}
       />
-      <RestaurantInput
+      <input
         id="input-restaurant-category"
+        type="text"
         name="category"
         placeholder="분류"
         value={category}
-        onChange={onChange}
+        onChange={handleChange}
       />
-      <RestaurantInput
+      <input
         id="input-restaurant-address"
+        type="text"
         name="address"
         placeholder="주소"
         value={address}
-        onChange={onChange}
+        onChange={handleChange}
       />
       <button type="button" onClick={onClick}>
         등록
