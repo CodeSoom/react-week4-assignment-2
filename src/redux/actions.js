@@ -14,6 +14,13 @@ export const deleteRestaurant = ({ id }) => ({
   },
 });
 
+export const setRestaurants = ({ restaurants }) => ({
+  type: 'setRestaurants',
+  payload: {
+    restaurants,
+  },
+});
+
 export const updateName = ({ name }) => ({
   type: 'updateName',
   payload: {

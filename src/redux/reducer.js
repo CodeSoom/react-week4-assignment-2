@@ -41,6 +41,13 @@ export default function reducer({
     };
   }
 
+  if (action.type === 'setRestaurants') {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
+    };
+  }
+
   if (action.type === 'updateName') {
     return {
       ...state,

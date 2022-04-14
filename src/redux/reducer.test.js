@@ -2,7 +2,7 @@
 import {
   addRestaurant,
   deleteRestaurant, updateAddress, updateCategory,
-  updateName
+  updateName, setRestaurants
 } from './actions';
 import reducer from './reducer';
 
@@ -203,6 +203,14 @@ describe('reducer', () => {
         });
 
         expect(state.restaurants).toHaveLength(1);
+      });
+
+      it('sets restaurants with empty array', () => {
+        const state = reduceSetRestaurants({
+          restaurants: []
+        });
+
+        expect(state.restaurants).toHaveLength(0);
       });
     });
   });
