@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateName, updateCategory, updateAddress } from '../redux/actions';
+import {
+  updateName, updateCategory, updateAddress, addRestaurant,
+} from '../redux/actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
@@ -22,6 +24,10 @@ export default function InputContainer() {
     dispatch(updateAddress({ address: value }));
   };
 
+  const handleAddRestaurant = () => {
+    dispatch(addRestaurant({ name, category, address }));
+  };
+
   return (
     <div>
       <label htmlFor="input-name">이름</label>
@@ -30,7 +36,9 @@ export default function InputContainer() {
         type="text"
         placeholder="이름"
         value={name}
-        onChange={(event) => handleUpdateName({ value: event.target.value })}
+        onChange={(event) => handleUpdateName({
+          value: event.target.value,
+        })}
       />
       <label htmlFor="input-category">분류</label>
       <input
@@ -38,7 +46,9 @@ export default function InputContainer() {
         type="text"
         placeholder="분류"
         value={category}
-        onChange={(event) => handleUpdateCategory({ value: event.target.value })}
+        onChange={(event) => handleUpdateCategory({
+          value: event.target.value,
+        })}
       />
       <label htmlFor="input-address">주소</label>
       <input
@@ -46,9 +56,16 @@ export default function InputContainer() {
         type="text"
         placeholder="주소"
         value={address}
-        onChange={(event) => handleUpdateAddress({ value: event.target.value })}
+        onChange={(event) => handleUpdateAddress({
+          value: event.target.value,
+        })}
       />
-      <button type="button">등록</button>
+      <button
+        type="button"
+        onClick={handleAddRestaurant}
+      >
+        등록
+      </button>
     </div>
   );
 }
