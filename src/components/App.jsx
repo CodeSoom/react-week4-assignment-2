@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import InputContainer from '../containers/InputContainer';
 import RestaurantContainer from '../containers/RestaurantContainer';
+
 import { setRestaurants } from '../redux/actions';
 
 export default function App() {
