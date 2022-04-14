@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 
+import RestaurantRegisterForm from './RestaurantRegisterForm';
+
 // TODO : 이름,분류,주소 input과 등록 버튼을 하나의 form 처럼 사용할 컨테이너
 describe('<RestaurantRegisterForm/>', () => {
   const handleChange = jest.fn();
