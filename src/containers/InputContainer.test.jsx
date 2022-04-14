@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateName } from '../redux/actions';
+import { updateCategory, updateName } from '../redux/actions';
 
 import InputContainer from './InputContainer';
 
@@ -41,5 +41,14 @@ describe('InputContainer', () => {
       { target: { value: '반가워요' } });
 
     expect(dispatch).toBeCalledWith(updateName({ name: '반가워요' }));
+  });
+
+  it('changes the category', () => {
+    const { queryByLabelText } = renderInputContainer();
+
+    fireEvent.change(queryByLabelText('분류'),
+      { target: { value: '한식' } });
+
+    expect(dispatch).toBeCalledWith(updateCategory({ name: '한식' }));
   });
 });
