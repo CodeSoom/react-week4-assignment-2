@@ -1,15 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateName } from '../redux/actions';
+import { updateName, updateCategory } from '../redux/actions';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
-  const { name } = useSelector((state) => ({
+  const { name, category } = useSelector((state) => ({
     name: state.name,
+    category: state.category,
   }));
 
   const handleUpdateName = ({ value }) => {
     dispatch(updateName({ name: value }));
+  };
+
+  const handleUpdateCategory = ({ value }) => {
+    dispatch(updateCategory({ category: value }));
   };
 
   return (
@@ -27,6 +32,8 @@ export default function InputContainer() {
         id="input-category"
         type="text"
         placeholder="분류"
+        value={category}
+        onChange={(event) => handleUpdateCategory({ value: event.target.value })}
       />
       <label htmlFor="input-address">주소</label>
       <input

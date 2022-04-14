@@ -49,6 +49,6 @@ describe('InputContainer', () => {
     fireEvent.change(queryByLabelText('분류'),
       { target: { value: '한식' } });
 
-    expect(dispatch).toBeCalledWith(updateCategory({ name: '한식' }));
+    expect(dispatch).toBeCalledWith(updateCategory({ category: '한식' }));
   });
 });
