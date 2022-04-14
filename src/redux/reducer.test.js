@@ -171,6 +171,40 @@ describe('reducer', () => {
         expect(state.restaurants).toHaveLength(2);
       });
     });
+
+    describe('setRestaurants', () => {
+      function reduceSetRestaurants({ restaurants }) {
+        return reducer({
+          state: {
+            restaurants: [{
+              id: 1,
+              name: '마녀주방',
+              category: '한식',
+              address: '서울시 강남구',
+            }, {
+              id: 2,
+              name: '마녀주방',
+              category: '한식',
+              address: '서울시 강남구',
+            }],
+          },
+          action: setRestaurants({ restaurants }),
+        });
+      }
+
+      it('sets restaurants with new restaurants', () => {
+        const state = reduceSetRestaurants({
+          restaurants: [{
+            id: 5,
+            name: '피카츄',
+            category: '포켓몬',
+            address: '태초마을'
+          }]
+        });
+
+        expect(state.restaurants).toHaveLength(1);
+      });
+    });
   });
 
   context('without action.type', () => {
