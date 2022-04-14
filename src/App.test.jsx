@@ -11,5 +11,5 @@ test('App', () => {
     <App />
   ));
 
-  expect(queryByText(/Hello/)).not.toBeNull();
+  expect(queryByText(/Restaurants/)).not.toBeNull();
 });
