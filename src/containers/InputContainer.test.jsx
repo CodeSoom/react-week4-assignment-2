@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { updateName } from '../redux/actions';
+
 import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
@@ -10,7 +12,9 @@ describe('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    taskTitle: 'New Title',
+    name: '',
+    category: '',
+    address: '',
   }));
 
   beforeEach(() => {
@@ -24,5 +28,9 @@ describe('InputContainer', () => {
     expect(queryByLabelText('분류').getAttribute('placeholder')).toBe('분류');
     expect(queryByLabelText('주소').getAttribute('placeholder')).toBe('주소');
     expect(queryByText('등록')).not.toBeNull();
+  });
+
+  it('can update name', () => {
+    expect(dispatch).toBeCalledWith(updateName({ name: '반가워요' }));
   });
 });
