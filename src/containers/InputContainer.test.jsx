@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateCategory, updateName } from '../redux/actions';
+import { updateAddress, updateCategory, updateName } from '../redux/actions';
 
 import InputContainer from './InputContainer';
 
@@ -50,5 +50,14 @@ describe('InputContainer', () => {
       { target: { value: '한식' } });
 
     expect(dispatch).toBeCalledWith(updateCategory({ category: '한식' }));
+  });
+
+  it('changes the address', () => {
+    const { queryByLabelText } = renderInputContainer();
+
+    fireEvent.change(queryByLabelText('주소'),
+      { target: { value: '성남시 분당구' } });
+
+    expect(dispatch).toBeCalledWith(updateAddress({ address: '성남시 분당구' }));
   });
 });
