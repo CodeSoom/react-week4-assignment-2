@@ -3,13 +3,6 @@ import { render } from '@testing-library/react';
 import Page from './Page';
 
 describe('RestaurantList 컴포넌트', () => {
-  // TODO : 테스트 수정 필요
-  // it('testId가 restaurants-list 인 요소를 가지고 있다.', () => {
-  //   const { queryByTestId } = render((<RestaurantList />));
-
-  //   expect(queryByTestId('restaurants-list')).not.toBeNull();
-  // });
-
   it('레스토랑 정보가 보여야 한다.', () => {
     const handleNameChange = jest.fn();
     const handleCategoryChange = jest.fn();
