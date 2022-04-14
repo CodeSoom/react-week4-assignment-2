@@ -34,6 +34,7 @@ export default function InputContainer() {
       <input
         id="input-name"
         type="text"
+        name="name"
         placeholder="이름"
         value={name}
         onChange={(event) => handleUpdateName({
@@ -44,6 +45,7 @@ export default function InputContainer() {
       <input
         id="input-category"
         type="text"
+        name="category"
         placeholder="분류"
         value={category}
         onChange={(event) => handleUpdateCategory({
@@ -54,6 +56,7 @@ export default function InputContainer() {
       <input
         id="input-address"
         type="text"
+        name="address"
         placeholder="주소"
         value={address}
         onChange={(event) => handleUpdateAddress({
