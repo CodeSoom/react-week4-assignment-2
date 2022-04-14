@@ -1,15 +1,10 @@
 import RestaurantList from './RestaurantList';
-import RestaurantNameInput from './RestaurantNameInput';
-import RestaurantCategoryInput from './RestaurantCategoryInput';
-import RestaurantAddressInput from './RestaurantAddressInput';
-import RestaurantRegisterButton from './RestaurantRegisterButton';
+import RestaurantRegisterForm from './RestaurantRegisterForm';
 
 export default function Page({
   restaurants,
-  handleNameChange, name,
-  handleCategoryChange, category,
-  handleAddressChange, address,
-  handleRegisterRestaurant,
+  name, category, address,
+  onChange, onClick,
 }) {
   return (
     <div>
@@ -17,20 +12,12 @@ export default function Page({
       <RestaurantList
         restaurants={restaurants}
       />
-      <RestaurantNameInput
-        onChange={handleNameChange}
-        value={name}
-      />
-      <RestaurantCategoryInput
-        onChange={handleCategoryChange}
-        value={category}
-      />
-      <RestaurantAddressInput
-        onChange={handleAddressChange}
-        value={address}
-      />
-      <RestaurantRegisterButton
-        onClick={handleRegisterRestaurant}
+      <RestaurantRegisterForm
+        name={name}
+        category={category}
+        address={address}
+        onChange={onChange}
+        onClick={onClick}
       />
     </div>
   );
