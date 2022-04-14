@@ -1,4 +1,17 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { updateName } from '../redux/actions';
+
 export default function InputContainer() {
+  const dispatch = useDispatch();
+  const { name } = useSelector((state) => ({
+    name: state.name,
+  }));
+
+  const handleUpdateName = ({ value }) => {
+    dispatch(updateName({ name: value }));
+  };
+
   return (
     <div>
       <label htmlFor="input-name">이름</label>
@@ -6,6 +19,8 @@ export default function InputContainer() {
         id="input-name"
         type="text"
         placeholder="이름"
+        value={name}
+        onChange={(event) => handleUpdateName({ value: event.target.value })}
       />
       <label htmlFor="input-category">분류</label>
       <input
