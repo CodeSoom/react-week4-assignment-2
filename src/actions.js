@@ -1,8 +1,8 @@
-export function addRestaurant({ restaurantName, category, address }) {
+export function addRestaurant({ restaurantsName, category, address }) {
   return {
     type: 'addRestaurant',
     payload: {
-      restaurantName,
+      restaurantsName,
       category,
       address,
     },
