@@ -18,7 +18,7 @@ describe('RestaurantContainer', () => {
     name: '',
     category: '',
     address: '',
-    restaurents: [{
+    restaurants: [{
       id: 1,
       name: '두향',
       category: '한식',
@@ -38,7 +38,7 @@ describe('RestaurantContainer', () => {
     it('renders restaurants', () => {
       const { queryByText } = renderRestaurantContainer();
 
-      expect(queryByText('두향 | 한식 | 성남시 분당구')).not.toBeNull();
+      expect(queryByText(/두향 | 한식 | 성남시 분당구/)).not.toBeNull();
     });
   });
 });
