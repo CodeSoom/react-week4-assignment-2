@@ -42,11 +42,11 @@ describe('RestaurantContainer', () => {
   });
 
   context('without restaurants', () => {
-    it('renders nothing', () => {
+    it('renders "식당이 없어요!"', () => {
       returnUseSelector([]);
 
       const { container } = renderRestaurantContainer();
-      expect(container.querySelector('ul').childElementCount).toBe(0);
+      expect(container).toHaveTextContent(/식당이 없어요!/);
     });
   });
 });

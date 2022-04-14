@@ -7,6 +7,10 @@ export default function RestaurantContainer() {
     restaurants: state.restaurants,
   }));
 
+  if (!restaurants || restaurants.length === 0) {
+    return <>식당이 없어요!</>;
+  }
+
   return (
     <ul>
       {restaurants?.map((restaurant) => (
