@@ -1,9 +1,6 @@
 import { render } from '@testing-library/react';
-import { useDispatch, useSelector } from 'react-redux';
 
-// import {
-//   addRestaurant, updateAddress, updateCategory, updateName,
-// } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
@@ -14,18 +11,6 @@ describe('RestaurantContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    name: '',
-    category: '',
-    address: '',
-    restaurants: [{
-      id: 1,
-      name: '두향',
-      category: '한식',
-      address: '성남시 분당구',
-    }],
-  }));
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -34,11 +19,35 @@ describe('RestaurantContainer', () => {
     return render(<RestaurantContainer />);
   }
 
+  function returnUseSelector({ restaurants }) {
+    return useSelector.mockImplementation((selector) => selector({
+      restaurants,
+    }));
+  }
+
+  returnUseSelector({
+    restaurants: [{
+      id: 1,
+      name: '두향',
+      category: '한식',
+      address: '성남시 분당구',
+    }],
+  });
+
   context('with restaurants', () => {
     it('renders restaurants', () => {
       const { queryByText } = renderRestaurantContainer();
 
       expect(queryByText(/두향 | 한식 | 성남시 분당구/)).not.toBeNull();
+    });
+  });
+
+  context('without restaurants', () => {
+    it('renders nothing', () => {
+      returnUseSelector([]);
+
+      const { container } = renderRestaurantContainer();
+      expect(container.querySelector('ul').childElementCount).toBe(0);
     });
   });
 });
