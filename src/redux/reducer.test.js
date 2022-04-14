@@ -183,7 +183,7 @@ describe('reducer', () => {
       };
     }
 
-    it('works nothing', () => {
+    it("doesn't work", () => {
       const state = reducer({
         state: undefined,
         action: otherFunction({ id: 1 }),
