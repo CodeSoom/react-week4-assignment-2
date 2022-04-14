@@ -8,7 +8,7 @@ import reducer from './reducer';
 
 describe('reducer', () => {
   context('with action.type', () => {
-    it('name 입력', () => {
+    it('updates name', () => {
       const state = reducer({
         state: {
           name: '',
@@ -19,7 +19,7 @@ describe('reducer', () => {
       expect(state.name).toBe('마녀주방');
     });
 
-    it('category 입력', () => {
+    it('updates category', () => {
       const state = reducer({
         state: {
           category: '',
@@ -30,7 +30,7 @@ describe('reducer', () => {
       expect(state.category).toBe('한식');
     });
 
-    it('address 입력', () => {
+    it('updates address', () => {
       const state = reducer({
         state: {
           address: '',
@@ -56,7 +56,7 @@ describe('reducer', () => {
       }
 
       context('with name || with category || with address', () => {
-        it('새 restaurant 추가', () => {
+        it('can add a new Restaurant', () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '한식',
@@ -70,7 +70,7 @@ describe('reducer', () => {
           expect(state.restaurants[0].address).toBe('서울시 강남구');
         });
 
-        it("name is '' after addRestaurant", () => {
+        it("clears 'name' after addRestaurant", () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '한식',
@@ -80,7 +80,7 @@ describe('reducer', () => {
           expect(state.name).toBe('');
         });
 
-        it("category is '' after addRestaurant", () => {
+        it("clears 'category' after addRestaurant", () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '한식',
@@ -90,7 +90,7 @@ describe('reducer', () => {
           expect(state.category).toBe('');
         });
 
-        it("address is '' after addRestaurant", () => {
+        it("clears 'address' after addRestaurant", () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '한식',
@@ -102,7 +102,7 @@ describe('reducer', () => {
       });
 
       context('without name', () => {
-        it('새 restaurant 추가', () => {
+        it("can't add restaurants", () => {
           const state = reduceAddRestaurant({
             name: '',
             category: '한식',
@@ -114,7 +114,7 @@ describe('reducer', () => {
       });
 
       context('without category', () => {
-        it('새 restaurant 추가', () => {
+        it("can't add restaurants", () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '',
@@ -126,7 +126,7 @@ describe('reducer', () => {
       });
 
       context('without address', () => {
-        it('새 restaurant 추가', () => {
+        it("can't add restaurants", () => {
           const state = reduceAddRestaurant({
             name: '마녀주방',
             category: '한식',
@@ -159,13 +159,13 @@ describe('reducer', () => {
         });
       }
 
-      it('제대로된 ID로 restaurant 삭제', () => {
+      it('deletes rataurant with currect id', () => {
         const state = reduceDeleteRestaurant({ id: 1 });
 
         expect(state.restaurants).toHaveLength(1);
       });
 
-      it('잘못된 ID로 restaurant 삭제', () => {
+      it("doesn't deletes rataurant with wrong id", () => {
         const state = reduceDeleteRestaurant({ id: 4 });
 
         expect(state.restaurants).toHaveLength(2);
@@ -183,7 +183,7 @@ describe('reducer', () => {
       };
     }
 
-    it('존재하지 않는 reducer실행', () => {
+    it('works nothing', () => {
       const state = reducer({
         state: undefined,
         action: otherFunction({ id: 1 }),
