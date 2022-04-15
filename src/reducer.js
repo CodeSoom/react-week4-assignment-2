@@ -12,6 +12,10 @@ export default function reducer(state = initialState, action) {
       newId, restaurantsName, category, address, restaurants,
     } = state;
 
+    if (!restaurantsName || !category || !address) {
+      return state;
+    }
+
     return {
       ...state,
       newId: newId + 1,
