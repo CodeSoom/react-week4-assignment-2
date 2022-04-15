@@ -6,12 +6,6 @@ import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-function renderFormContainer() {
-  return render((
-    <FormContainer />
-  ));
-}
-
 describe('FormContainer', () => {
   const dispatch = jest.fn();
 
@@ -24,6 +18,12 @@ describe('FormContainer', () => {
       address: '서래마을',
     },
   }));
+
+  function renderFormContainer() {
+    return render((
+      <FormContainer />
+    ));
+  }
 
   beforeEach(() => {
     jest.clearAllMocks();
