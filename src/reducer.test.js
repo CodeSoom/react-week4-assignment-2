@@ -7,12 +7,25 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    const state = reducer(state, addRestaurant({
-      restaurantsName: '짬홍',
-      category: '중식',
-      address: '구룡포읍',
-    }));
+    function reduceAddRestaurant({ restaurantsName, category, address }) {
+      return reducer({
+        newId: 100,
+        restaurantsName,
+        category,
+        address,
+        restaurants: [],
+      }, addRestaurant());
+    }
+    it('appends a new name,category,address in restaurants', () => {
+      const state = reduceAddRestaurant({
+        restaurantsName: '쿠스쿠스',
+        category: '모로코식',
+        address: '이태원동',
+      });
 
-    expect(state.restaurantsName).toBe('짬홍');
+      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants[0].id).not.toBeUndefined();
+      expect(state.restaurants[0].restaurantsName).toBe('쿠스쿠스');
+    });
   });
 });
