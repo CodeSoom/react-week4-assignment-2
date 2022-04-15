@@ -6,12 +6,12 @@ describe('Form', () => {
   const handleChange = jest.fn();
   const handleClick = jest.fn();
 
+  const restaurantInformation = { name: '기존 레스토랑', category: '기존 분류', address: '기존 주소' };
+
   function renderForm() {
     return render((
       <Form
-        name="기존 레스토랑"
-        category="기존 분류"
-        address="기존 주소"
+        value={restaurantInformation}
         onChange={handleChange}
         onClick={handleClick}
       />
@@ -22,7 +22,7 @@ describe('Form', () => {
     jest.clearAllMocks();
   });
 
-  it('renders without crashing', () => {
+  it('renders displayed values', () => {
     const { queryByDisplayValue } = renderForm();
 
     expect(queryByDisplayValue('기존 레스토랑')).not.toBeNull();

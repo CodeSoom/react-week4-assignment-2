@@ -50,8 +50,6 @@ describe('FormContainer', () => {
       payload: {
         information: {
           name: '더조은 참치',
-          category: '양식',
-          address: '서래마을',
         },
       },
     });
@@ -68,9 +66,7 @@ describe('FormContainer', () => {
       type: 'updateInformation',
       payload: {
         information: {
-          name: '브루클린 버거',
           category: '일식',
-          address: '서래마을',
         },
       },
     });
@@ -87,8 +83,6 @@ describe('FormContainer', () => {
       type: 'updateInformation',
       payload: {
         information: {
-          name: '브루클린 버거',
-          category: '양식',
           address: '압구정',
         },
       },
