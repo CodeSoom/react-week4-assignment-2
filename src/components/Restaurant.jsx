@@ -1,7 +1,8 @@
 export default function Restaurant({ restaurant }) {
+  const { name, category, address } = restaurant;
   return (
     <li>
-      {`${restaurant.name} | ${restaurant.category} | ${restaurant.address}`}
+      {`${name} | ${category} | ${address}`}
     </li>
   );
 }
