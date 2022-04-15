@@ -22,7 +22,7 @@ test('RestaurantInput', () => {
     />
   ));
 
-  expect(getByDisplayValue('이름')).not.toBeNull();
-  expect(getByDisplayValue('분류')).not.toBeNull();
-  expect(getByDisplayValue('주소')).not.toBeNull();
+  expect(getByDisplayValue('마녀주방')).not.toBeNull();
+  expect(getByDisplayValue('한식')).not.toBeNull();
+  expect(getByDisplayValue('서울시 강남구')).not.toBeNull();
 });
