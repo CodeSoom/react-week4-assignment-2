@@ -29,11 +29,13 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'updateRestaurant') {
+    const { restaurantsName, category, address } = action.payload;
+
     return {
       ...state,
-      restaurantsName: '경주횟집',
-      category: '횟집',
-      address: '구룡포읍',
+      restaurantsName,
+      category,
+      address,
     };
   }
 

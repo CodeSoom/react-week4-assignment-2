@@ -60,7 +60,7 @@ describe('reducer', () => {
   });
 
   describe('updateRestaurant', () => {
-    it('', () => {
+    it('changes name, category, address', () => {
       const state = reducer({
         restaurantsName: '',
         category: '',
