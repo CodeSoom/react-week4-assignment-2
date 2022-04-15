@@ -1,15 +1,16 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { updateRestaurant } from './actions';
 
 export default function InputContainer({
-  restaurantsName, category, address, onChange, onClick,
+  onChange, onClick,
 }) {
   // const dispatch = useDispatch();
   //
   // function handleChange(event) {
   //   dispatch(updateRestaurant(event.target.value));
   // }
+  const { restaurantsName, category, address } = useSelector((state) => state);
 
   return (
     <p>

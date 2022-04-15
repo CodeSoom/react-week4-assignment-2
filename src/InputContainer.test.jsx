@@ -43,7 +43,13 @@ describe('InputContainer', () => {
     const { queryByPlaceholderText } = renderInputContainer();
 
     fireEvent.change(queryByPlaceholderText(/이름/), {
-      target: { value: '안녕하세요' },
+      target: { value: '밥집' },
+    });
+    fireEvent.change(queryByPlaceholderText(/분류/), {
+      target: { value: '한식' },
+    });
+    fireEvent.change(queryByPlaceholderText(/주소/), {
+      target: { value: '서울시' },
     });
 
     expect(handleChange).toBeCalled();
