@@ -38,9 +38,20 @@ describe('reducer', () => {
           address: '이태원동',
         });
 
-        expect(state.restaurants.name).toBe('');
-        expect(state.restaurants.category).toBe('');
-        expect(state.restaurants.address).toBe('');
+        expect(state.restaurantsName).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('');
+      });
+    });
+    context(' without name, category, address', () => {
+      it("doesn't work", () => {
+        const state = reduceAddRestaurant({
+          restaurantsName: '',
+          category: '',
+          address: '',
+        });
+
+        expect(state.restaurants).toHaveLength(0);
       });
     });
   });
