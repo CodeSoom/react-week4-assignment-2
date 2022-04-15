@@ -16,9 +16,15 @@ export default function reducer(state = initialState, action) {
       return state;
     }
 
+    const newInformation = {
+      name: 'New restaurant',
+      category: 'New category',
+      address: 'New address',
+    };
+
     return {
       ...state,
-      information,
+      information: newInformation,
     };
   }
 
