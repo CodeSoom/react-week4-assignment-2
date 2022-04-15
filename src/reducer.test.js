@@ -8,6 +8,7 @@ describe('reducer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
   context('with existing action.type', () => {
     describe('addRestaurant', () => {
       function reduceAddRestaurant({ restaurantsName, category, address }) {
@@ -19,6 +20,7 @@ describe('reducer', () => {
           restaurants: [],
         }, addRestaurant({ restaurantsName, category, address }));
       }
+
       context(' with name, category, address', () => {
         it('appends a new name,category,address in restaurants', () => {
           const state = reduceAddRestaurant({
@@ -46,6 +48,7 @@ describe('reducer', () => {
           expect(state.address).toBe('');
         });
       });
+
       context(' without name, category, address', () => {
         it("doesn't work", () => {
           const state = reduceAddRestaurant({
@@ -77,6 +80,7 @@ describe('reducer', () => {
       });
     });
   });
+
   context('with non existing actions.type', () => {
     const someFunction = jest.fn(({
       newId, restaurantsName, category, address,

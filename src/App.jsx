@@ -6,7 +6,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       {/* <RestaurantsListContainer /> */}
-      {/* <InputContainer /> */}
+      <InputContainer />
     </div>
   );
 }
