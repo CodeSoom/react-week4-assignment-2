@@ -10,22 +10,4 @@ describe('App', () => {
 
     expect(getByText(/Restaurants/)).not.toBeNull();
   });
-
-  it('renders three input box', () => {
-    const { queryByPlaceholderText } = render((
-      <App />
-    ));
-
-    expect(queryByPlaceholderText(/이름/)).not.toBeNull();
-    expect(queryByPlaceholderText(/분류/)).not.toBeNull();
-    expect(queryByPlaceholderText(/주소/)).not.toBeNull();
-  });
-
-  it('renders button', () => {
-    const { queryByText } = render((
-      <App />
-    ));
-
-    expect(queryByText(/등록/)).not.toBeNull();
-  });
 });
