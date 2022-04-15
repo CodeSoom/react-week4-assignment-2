@@ -1,5 +1,8 @@
 import reducer from './reducer';
-import { addRestaurant } from './actions';
+import {
+  addRestaurant,
+  updateRestaurant,
+} from './actions';
 
 describe('reducer', () => {
   beforeEach(() => {
@@ -53,6 +56,24 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(0);
       });
+    });
+  });
+
+  describe('updateRestaurant', () => {
+    it('', () => {
+      const state = reducer({
+        restaurantsName: '',
+        category: '',
+        address: '',
+      }, updateRestaurant({
+        restaurantsName: '경주횟집',
+        category: '횟집',
+        address: '구룡포읍',
+      }));
+
+      expect(state.restaurantsName).toBe('경주횟집');
+      expect(state.category).toBe('횟집');
+      expect(state.address).toBe('구룡포읍');
     });
   });
 });
