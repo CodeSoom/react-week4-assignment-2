@@ -27,7 +27,7 @@ describe('InputContainer', () => {
     return render(<InputContainer />);
   }
 
-  it('has 3 inputs and 1 button', () => {
+  it('renders 3 inputs and 1 button', () => {
     const { queryByLabelText, queryByText } = renderInputContainer();
 
     expect(queryByLabelText('이름').getAttribute('placeholder')).toBe('이름');
