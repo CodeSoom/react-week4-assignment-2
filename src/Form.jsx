@@ -1,16 +1,14 @@
 export default function Form({
-  name,
-  category,
-  address,
+  value,
   onChange,
   onClick,
 }) {
+  const { name, category, address } = value;
+
   function handleChange(event) {
     const { name: inputName, value: inputValue } = event.target;
 
-    const information = { name, category, address };
-
-    onChange({ restaurantInformation: { ...information, [inputName]: inputValue } });
+    onChange({ restaurantInformation: { [inputName]: inputValue } });
   }
 
   return (
