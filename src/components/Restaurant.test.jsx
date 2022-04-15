@@ -22,7 +22,7 @@ describe('Restaurant', () => {
     jest.clearAllMocks();
   });
 
-  it('renders restaurant as format "ooo | ooo | ooo" ', () => {
+  it('renders restaurant', () => {
     const { container } = renderRestaurant();
 
     expect(container).toHaveTextContent(/두향 | 한식 | 성남시 분당구/);
