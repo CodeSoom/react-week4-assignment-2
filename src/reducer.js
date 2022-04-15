@@ -27,5 +27,15 @@ export default function reducer(state = initialState, action) {
       }],
     };
   }
+
+  if (action.type === 'updateRestaurant') {
+    return {
+      ...state,
+      restaurantsName: '경주횟집',
+      category: '횟집',
+      address: '구룡포읍',
+    };
+  }
+
   return state;
 }
