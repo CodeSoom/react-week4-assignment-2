@@ -4,16 +4,25 @@ import { useSelector } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
-function renderInputContainer() {
-  return render(
-    <InputContainer />,
-  );
-}
-
 describe('InputContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
+  const handleChange = jest.fn();
+  const handleClick = jest.fn();
+
+  function renderInputContainer() {
+    return render(
+      <InputContainer
+        restaurantsName=""
+        category=""
+        address=""
+        onChange={handleChange}
+        onClick={handleClick}
+      />,
+    );
+  }
 
   useSelector.mockImplementation((selector) => selector({
     restaurantsName: '아비꼬',
@@ -31,8 +40,12 @@ describe('InputContainer', () => {
   });
 
   it('changes name, category, address value', () => {
-    const { getByPlaceholderText } = renderInputContainer();
-    fireEvent.change(getByPlaceholderText('이름'), { target: { value: '김밥헤븐' } });
+    const { queryByPlaceholderText } = renderInputContainer();
+
+    fireEvent.change(queryByPlaceholderText(/이름/), {
+      target: { value: '안녕하세요' },
+    });
+
     expect(handleChange).toBeCalled();
   });
 });
