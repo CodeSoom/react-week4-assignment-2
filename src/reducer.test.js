@@ -7,18 +7,56 @@ import {
 
 describe('reducer', () => {
   describe('updateInformation', () => {
-    context('with information', () => {
-      it('changes the restaurant information', () => {
+    context('with name', () => {
+      it('changes the restaurant name', () => {
         const state = reducer({
           information: {
             name: '',
-            category: '',
-            address: '',
+            category: 'New category',
+            address: 'New address',
           },
         }, updateInformation({
           information: {
             name: 'New restaurant',
+          },
+        }));
+
+        expect(state.information.name).toBe('New restaurant');
+        expect(state.information.category).toBe('New category');
+        expect(state.information.address).toBe('New address');
+      });
+    });
+
+    context('with category', () => {
+      it('changes the restaurant category', () => {
+        const state = reducer({
+          information: {
+            name: 'New restaurant',
+            category: '',
+            address: 'New address',
+          },
+        }, updateInformation({
+          information: {
             category: 'New category',
+          },
+        }));
+
+        expect(state.information.name).toBe('New restaurant');
+        expect(state.information.category).toBe('New category');
+        expect(state.information.address).toBe('New address');
+      });
+    });
+
+    context('with address', () => {
+      it('changes the restaurant address', () => {
+        const state = reducer({
+          information: {
+            name: 'New restaurant',
+            category: 'New category',
+            address: '',
+          },
+        }, updateInformation({
+          information: {
             address: 'New address',
           },
         }));
