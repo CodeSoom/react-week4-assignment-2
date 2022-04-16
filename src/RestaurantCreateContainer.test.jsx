@@ -7,6 +7,10 @@ import RestaurantCreateContainer from './RestaurantCreateContainer';
 import restaurant from '../fixtures/restaurant';
 
 describe('RestaurantCreateContainer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
