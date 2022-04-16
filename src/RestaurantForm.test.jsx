@@ -7,22 +7,20 @@ import restaurants from '../fixtures/restaurants';
 const handleClick = jest.fn();
 
 describe('RestaurantForm', () => {
+  const renderRestaurantForm = () => render((
+    <RestaurantForm
+      onClick={handleClick}
+    />
+  ));
+
   it('renders 등록 button', () => {
-    const { queryByText } = render((
-      <RestaurantForm
-        onClick={handleClick}
-      />
-    ));
+    const { queryByText } = renderRestaurantForm();
 
     expect(queryByText(/등록/)).not.toBeNull();
   });
 
   it('listens for click event on 등록', () => {
-    const { getByText } = render((
-      <RestaurantForm
-        onClick={handleClick}
-      />
-    ));
+    const { getByText } = renderRestaurantForm();
 
     expect(handleClick).not.toBeCalled();
 
