@@ -1,24 +1,29 @@
 import { render } from '@testing-library/react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: {},
+    restaurants: [],
+  }));
+
+  useDispatch.mockImplementation(() => dispatch);
+
   it('renders restaurant', () => {
-    const { container } = render((
+    const { queryByText } = render((
       <App />
     ));
 
-    expect(container).toHaveTextContent('시카고피자 | 양식 | 이태원구');
-    expect(container).toHaveTextContent('마녀식당 | 한식 | 서울시 강남구');
-  });
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      payload: { restaurants: [] },
+    });
 
-  it('renders restaurant inputs', () => {
-    const { queryByPlaceholderText } = render((
-      <App />
-    ));
-
-    expect(queryByPlaceholderText('이름')).not.toBeNull();
-    expect(queryByPlaceholderText('분류')).not.toBeNull();
-    expect(queryByPlaceholderText('주소')).not.toBeNull();
+    expect(queryByText(/김밥제국/)).toBeNull();
   });
 });

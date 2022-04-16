@@ -1,36 +1,26 @@
-import Inputs from './Inputs';
-import List from './List';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantCreateContainer from './RestaurantCreateContainer';
+
+import {
+  setRestaurants,
+} from './actions';
 
 export default function App() {
-  const restaurantList = [
-    {
-      id: 1, name: '시카고피자', category: '양식', address: '이태원구',
-    },
-    {
-      id: 2, name: '마녀식당', category: '한식', address: '서울시 강남구',
-    },
-  ];
+  const dispatch = useDispatch();
 
-  function handleChangeRestaurantName(event) {
-
-  }
-
-  function handleChangeRestaurantCategory(event) {
-
-  }
-
-  function handleChangeRestaurantAddress(event) {
-
-  }
+  // TOOD: 데이터 넣기
+  useEffect(() => {
+    dispatch(setRestaurants([]));
+  }, []);
 
   return (
     <div>
-      <List restaurantList={restaurantList} />
-      <Inputs
-        onChangeName={handleChangeRestaurantName}
-        onChangeCategory={handleChangeRestaurantCategory}
-        onChangeAddress={handleChangeRestaurantAddress}
-      />
+      <h1>Restaurants</h1>
+      <RestaurantsContainer />
+      <RestaurantCreateContainer />
     </div>
   );
 }
