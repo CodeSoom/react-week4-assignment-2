@@ -44,4 +44,23 @@ describe('RestaurantCreateContainer', () => {
     expect(queryByDisplayValue('이탈리안')).not.toBeNull();
     expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
   });
+
+  it('listens for chang evenet on update restaurant', () => {
+    const { getByDisplayValue } = render((
+      <RestaurantCreateContainer />
+    ));
+
+    fireEvent.change(
+      getByDisplayValue('서울시 강남구'),
+      { target: { value: '서울시 종로구' } },
+    );
+
+    expect(dispatch).toBeCalledWith({
+      type: 'changeRestaurantField',
+      payload: {
+        name: 'address',
+        value: '서울시 종로구',
+      },
+    });
+  });
 });
