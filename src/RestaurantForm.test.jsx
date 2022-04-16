@@ -5,12 +5,14 @@ import RestaurantForm from './RestaurantForm';
 import restaurant from '../fixtures/restaurant';
 
 const handleClick = jest.fn();
+const handleChange = jest.fn();
 
 describe('RestaurantForm', () => {
   const renderRestaurantForm = () => render((
     <RestaurantForm
       restaurant={restaurant}
       onClick={handleClick}
+      onChange={handleChange}
     />
   ));
 
@@ -36,5 +38,16 @@ describe('RestaurantForm', () => {
     expect(queryByDisplayValue('마법사식당')).not.toBeNull();
     expect(queryByDisplayValue('이탈리안')).not.toBeNull();
     expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
+  });
+
+  it('listens for change event on change address', () => {
+    const { getByDisplayValue } = renderRestaurantForm();
+
+    fireEvent.change(
+      getByDisplayValue('서울시 강남구'),
+      { target: { value: '서울시 종로구' } },
+    );
+
+    expect(handleChange).toBeCalled();
   });
 });
