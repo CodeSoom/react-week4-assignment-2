@@ -6,3 +6,9 @@ export function setRestaurants(restaurants) {
     },
   };
 }
+
+export function createRestaurant() {
+  return {
+    type: 'createRestaurant',
+  };
+}
