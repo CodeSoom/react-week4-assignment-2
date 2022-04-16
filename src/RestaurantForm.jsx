@@ -4,9 +4,24 @@ export default function RestaurantForm({
 }) {
   return (
     <div>
-      <input value={restaurant.name} />
-      <input value={restaurant.category} />
-      <input value={restaurant.address} />
+      <input
+        type="text"
+        name="name"
+        value={restaurant.name}
+        onChange={() => {}}
+      />
+      <input
+        type="text"
+        name="category"
+        value={restaurant.category}
+        onChange={() => {}}
+      />
+      <input
+        type="text"
+        name="address"
+        value={restaurant.address}
+        onChange={() => {}}
+      />
       <button
         type="button"
         onClick={onClick}
