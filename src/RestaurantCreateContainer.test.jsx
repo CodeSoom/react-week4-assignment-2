@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
-import restaurants from '../fixtures/restaurants';
-
 describe('RestaurantCreateContainer', () => {
   useSelector.mockImplementation((selector) => selector({
 
