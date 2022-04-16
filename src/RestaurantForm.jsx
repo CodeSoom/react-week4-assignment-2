@@ -1,6 +1,7 @@
 export default function RestaurantForm({
   restaurant,
   onClick,
+  onChange,
 }) {
   return (
     <div>
@@ -20,7 +21,7 @@ export default function RestaurantForm({
         type="text"
         name="address"
         value={restaurant.address}
-        onChange={() => {}}
+        onChange={onChange}
       />
       <button
         type="button"
