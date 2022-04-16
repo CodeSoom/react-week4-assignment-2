@@ -14,12 +14,10 @@ describe('Reducer', () => {
       restaurants: [],
     };
 
-    it('returns restaurants property', () => {
-      expect(reducer(initialState, setRestaurants(restaurants))).toHaveProperty('restaurants');
-    });
-
     it('returns restaurants', () => {
-      expect(reducer(initialState, setRestaurants(restaurants)).restaurants).not.toHaveLength(0);
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
     });
   });
 });
