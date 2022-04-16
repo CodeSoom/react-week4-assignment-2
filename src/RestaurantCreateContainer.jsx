@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import RestaurantForm from './RestaurantForm';
 
 import {
-  createRestaurant,
+  addRestaurant,
 } from './actions';
 
 export default function RestaurantCreateContainer() {
@@ -10,7 +10,7 @@ export default function RestaurantCreateContainer() {
 
   return (
     <RestaurantForm
-      onClick={() => dispatch(createRestaurant())}
+      onClick={() => dispatch(addRestaurant())}
     />
   );
 }

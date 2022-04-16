@@ -29,7 +29,7 @@ describe('RestaurantCreateContainer', () => {
     fireEvent.click(getByText(/등록/));
 
     expect(dispatch).toBeCalledWith({
-      type: 'createRestaurant',
+      type: 'addRestaurant',
     });
   });
 });

@@ -7,8 +7,8 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function createRestaurant() {
+export function addRestaurant() {
   return {
-    type: 'createRestaurant',
+    type: 'addRestaurant',
   };
 }
