@@ -40,6 +40,7 @@ describe('Reducer', () => {
 
   describe('addRestaurant', () => {
     const initialState = {
+      newId: 101,
       restaurant,
       restaurants: [],
     };
@@ -48,9 +49,13 @@ describe('Reducer', () => {
       const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants[0].id).toBe(101);
+
       expect(state.restaurant.name).toBe('');
       expect(state.restaurant.category).toBe('');
       expect(state.restaurant.address).toBe('');
+
+      expect(state.newId).toBe(102);
     });
   });
 });
