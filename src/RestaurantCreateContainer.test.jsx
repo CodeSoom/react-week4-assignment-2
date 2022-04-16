@@ -11,6 +11,10 @@ describe('RestaurantCreateContainer', () => {
     jest.clearAllMocks();
   });
 
+  const renderRestaurantCreateContainer = () => render((
+    <RestaurantCreateContainer />
+  ));
+
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
@@ -20,17 +24,13 @@ describe('RestaurantCreateContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   it('renders 등록 button', () => {
-    const { queryByText } = render((
-      <RestaurantCreateContainer />
-    ));
+    const { queryByText } = renderRestaurantCreateContainer();
 
     expect(queryByText(/등록/)).not.toBeNull();
   });
 
   it('listens for click event on 등록', () => {
-    const { getByText } = render((
-      <RestaurantCreateContainer />
-    ));
+    const { getByText } = renderRestaurantCreateContainer();
 
     fireEvent.click(getByText(/등록/));
 
@@ -40,9 +40,7 @@ describe('RestaurantCreateContainer', () => {
   });
 
   it('renders name, category, address input', () => {
-    const { queryByDisplayValue } = render((
-      <RestaurantCreateContainer />
-    ));
+    const { queryByDisplayValue } = renderRestaurantCreateContainer();
 
     expect(queryByDisplayValue('마법사식당')).not.toBeNull();
     expect(queryByDisplayValue('이탈리안')).not.toBeNull();
@@ -50,10 +48,7 @@ describe('RestaurantCreateContainer', () => {
   });
 
   it('listens for chang evenet on update restaurant', () => {
-    const { getByDisplayValue } = render((
-      <RestaurantCreateContainer />
-    ));
-
+    const { getByDisplayValue } = renderRestaurantCreateContainer();
     fireEvent.change(
       getByDisplayValue('서울시 강남구'),
       { target: { value: '서울시 종로구' } },
