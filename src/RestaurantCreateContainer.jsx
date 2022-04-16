@@ -8,9 +8,13 @@ import {
 export default function RestaurantCreateContainer() {
   const dispatch = useDispatch();
 
+  function handleClick() {
+    dispatch(addRestaurant());
+  }
+
   return (
     <RestaurantForm
-      onClick={() => dispatch(addRestaurant())}
+      onClick={handleClick}
     />
   );
 }
