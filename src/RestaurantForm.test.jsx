@@ -48,6 +48,6 @@ describe('RestaurantForm', () => {
       { target: { value: '서울시 종로구' } },
     );
 
-    expect(handleChange).toBeCalled();
+    expect(handleChange).toBeCalledWith({ name: 'address', value: '서울시 종로구' });
   });
 });
