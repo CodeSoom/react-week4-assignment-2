@@ -41,13 +41,13 @@ describe('Reducer', () => {
   describe('addRestaurant', () => {
     const initialState = {
       restaurant,
-      restaurants,
+      restaurants: [],
     };
 
-    it('return restaurants', () => {
+    it('appends restaurant into restaurants and clear restaurant form', () => {
       const state = reducer(initialState, addRestaurant());
 
-      expect(state.restaurants).toHaveLength(2);
+      expect(state.restaurants).toHaveLength(1);
       expect(state.restaurant.name).toBe('');
       expect(state.restaurant.category).toBe('');
       expect(state.restaurant.address).toBe('');
