@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import RestaurantForm from './RestaurantForm';
 
@@ -15,5 +15,19 @@ describe('RestaurantForm', () => {
     ));
 
     expect(queryByText(/등록/)).not.toBeNull();
+  });
+
+  it('listens for click event on 등록', () => {
+    const { getByText } = render((
+      <RestaurantForm
+        onClick={handleClick}
+      />
+    ));
+
+    expect(handleClick).not.toBeCalled();
+
+    fireEvent.click(getByText(/등록/));
+
+    expect(handleClick).toBeCalled();
   });
 });
