@@ -14,6 +14,14 @@ describe('Reducer', () => {
     jest.clearAllMocks();
   });
 
+  it('returns initial state', () => {
+    const state = reducer(undefined, {});
+
+    expect(state.newId).toBe(100);
+    expect(state.restaurant.name).toBe('마법사식당');
+    expect(state.restaurants).toHaveLength(1);
+  });
+
   describe('setRestaurants', () => {
     const initialState = {
       restaurants: [],
