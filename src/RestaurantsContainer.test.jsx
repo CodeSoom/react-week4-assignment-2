@@ -6,8 +6,6 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import restaurants from '../fixtures/restaurants';
 
-jest.mock('react-redux');
-
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants,

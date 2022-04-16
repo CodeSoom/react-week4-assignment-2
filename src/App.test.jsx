@@ -6,8 +6,6 @@ import App from './App';
 
 import restaurants from '../fixtures/restaurants';
 
-jest.mock('react-redux');
-
 describe('App', () => {
   const dispatch = jest.fn();
 
