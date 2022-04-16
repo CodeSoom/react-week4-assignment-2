@@ -1,6 +1,10 @@
 import reducer from './reducer';
 
-import { changeRestaurantField, setRestaurants } from './actions';
+import {
+  changeRestaurantField,
+  setRestaurants,
+  addRestaurant,
+} from './actions';
 
 import restaurants from '../fixtures/restaurants';
 import restaurant from '../fixtures/restaurant';
@@ -26,10 +30,27 @@ describe('Reducer', () => {
     const initialState = {
       restaurant,
     };
+
     it('return change restaurant field value', () => {
       const state = reducer(initialState, changeRestaurantField({ name: 'address', value: '서울시 종로구' }));
 
       expect(state.restaurant.address).toBe('서울시 종로구');
+    });
+  });
+
+  describe('addRestaurant', () => {
+    const initialState = {
+      restaurant,
+      restaurants,
+    };
+
+    it('return restaurants', () => {
+      const state = reducer(initialState, addRestaurant());
+
+      expect(state.restaurants).toHaveLength(2);
+      expect(state.restaurant.name).toBe('');
+      expect(state.restaurant.category).toBe('');
+      expect(state.restaurant.address).toBe('');
     });
   });
 });
