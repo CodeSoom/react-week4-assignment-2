@@ -1,3 +1,7 @@
 export default function RestaurantCreateContainer() {
-  return ()
+  return (
+    <button type="button">
+      등록
+    </button>
+  );
 }
