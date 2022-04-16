@@ -14,7 +14,7 @@ describe('Reducer', () => {
       restaurants: [],
     };
 
-    it('returns restaurants', () => {
+    it('returns restaurants to array', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).not.toHaveLength(0);
