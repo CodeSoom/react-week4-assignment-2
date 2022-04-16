@@ -13,18 +13,21 @@ export default function RestaurantForm({
     <div>
       <input
         type="text"
+        placeholder="이름"
         name="name"
         value={restaurant.name}
         onChange={handleChange}
       />
       <input
         type="text"
+        placeholder="분류"
         name="category"
         value={restaurant.category}
         onChange={handleChange}
       />
       <input
         type="text"
+        placeholder="주소"
         name="address"
         value={restaurant.address}
         onChange={handleChange}
