@@ -8,14 +8,12 @@ import {
   setRestaurants,
 } from './actions';
 
-import restaurants from '../fixtures/restaurants';
-
 export default function App() {
   const dispatch = useDispatch();
 
   // TOOD: 데이터 넣기
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch(setRestaurants([]));
   }, []);
 
   return (

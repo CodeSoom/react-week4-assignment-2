@@ -4,15 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-import restaurants from '../fixtures/restaurants';
-import restaurant from '../fixtures/restaurant';
-
 describe('App', () => {
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
-    restaurant,
-    restaurants,
+    restaurant: {},
+    restaurants: [],
   }));
 
   useDispatch.mockImplementation(() => dispatch);
@@ -24,9 +21,9 @@ describe('App', () => {
 
     expect(dispatch).toBeCalledWith({
       type: 'setRestaurants',
-      payload: { restaurants },
+      payload: { restaurants: [] },
     });
 
-    expect(queryByText(/김밥제국/)).not.toBeNull();
+    expect(queryByText(/김밥제국/)).toBeNull();
   });
 });
