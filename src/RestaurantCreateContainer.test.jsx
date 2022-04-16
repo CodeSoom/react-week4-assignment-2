@@ -14,7 +14,7 @@ describe('RestaurantCreateContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   it('renders 등록 button', () => {
-    const { queryByText } = render((
+    const { queryByText, queryByDisplayValue } = render((
       <RestaurantCreateContainer />
     ));
 
@@ -31,5 +31,15 @@ describe('RestaurantCreateContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'addRestaurant',
     });
+  });
+
+  it('renders name, category, address', () => {
+    const { queryByDisplayValue } = render((
+      <RestaurantCreateContainer />
+    ));
+
+    expect(queryByDisplayValue('마법사주방')).not.toBeNull();
+    expect(queryByDisplayValue('이탈리안')).not.toBeNull();
+    expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
   });
 });
