@@ -1,4 +1,5 @@
 const initialState = {
+  newId: 100,
   restaurant: {
     name: '마법사식당',
     category: '이탈리안',
@@ -35,15 +36,16 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'addRestaurant') {
-    const { restaurant, restaurants } = state;
+    const { restaurant, restaurants, newId } = state;
 
     return {
+      newId: newId + 1,
       restaurant: {
         name: '',
         category: '',
         address: '',
       },
-      restaurants: [...restaurants, restaurant],
+      restaurants: [...restaurants, { ...restaurant, id: newId }],
     };
   }
 
