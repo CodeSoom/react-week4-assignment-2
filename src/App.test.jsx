@@ -22,6 +22,11 @@ describe('App', () => {
       <App />
     ));
 
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      payload: { restaurants },
+    });
+
     expect(queryByText(/김밥제국/)).not.toBeNull();
   });
 });
