@@ -4,17 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantCreateContainer from './RestaurantCreateContainer';
 
+import restaurant from '../fixtures/restaurant';
+
 describe('RestaurantCreateContainer', () => {
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
-
+    restaurant,
   }));
 
   useDispatch.mockImplementation(() => dispatch);
 
   it('renders 등록 button', () => {
-    const { queryByText, queryByDisplayValue } = render((
+    const { queryByText } = render((
       <RestaurantCreateContainer />
     ));
 
@@ -33,12 +35,12 @@ describe('RestaurantCreateContainer', () => {
     });
   });
 
-  it('renders name, category, address', () => {
+  it('renders name, category, address input', () => {
     const { queryByDisplayValue } = render((
       <RestaurantCreateContainer />
     ));
 
-    expect(queryByDisplayValue('마법사주방')).not.toBeNull();
+    expect(queryByDisplayValue('마법사식당')).not.toBeNull();
     expect(queryByDisplayValue('이탈리안')).not.toBeNull();
     expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
   });

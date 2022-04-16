@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import App from './App';
 
 import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
 
 describe('App', () => {
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
+    restaurant,
     restaurants,
   }));
 

@@ -2,13 +2,14 @@ import { fireEvent, render } from '@testing-library/react';
 
 import RestaurantForm from './RestaurantForm';
 
-import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
 
 const handleClick = jest.fn();
 
 describe('RestaurantForm', () => {
   const renderRestaurantForm = () => render((
     <RestaurantForm
+      restaurant={restaurant}
       onClick={handleClick}
     />
   ));
@@ -27,5 +28,13 @@ describe('RestaurantForm', () => {
     fireEvent.click(getByText(/등록/));
 
     expect(handleClick).toBeCalled();
+  });
+
+  it('renders restaurnt value', () => {
+    const { queryByDisplayValue } = renderRestaurantForm();
+
+    expect(queryByDisplayValue('마법사식당')).not.toBeNull();
+    expect(queryByDisplayValue('이탈리안')).not.toBeNull();
+    expect(queryByDisplayValue('서울시 강남구')).not.toBeNull();
   });
 });
