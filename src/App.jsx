@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import TextBox from './TextBox';
+
 export default function App() {
   const state = [{
     id: 1,
@@ -46,10 +48,7 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <input type="text" placeholder="이름" onChange={handleChange} value={restaurantInfo.name} />
-      <input type="text" placeholder="분류" onChange={handleChange} value={restaurantInfo.category} />
-      <input type="text" placeholder="주소" onChange={handleChange} value={restaurantInfo.address} />
-      <button type="button">등록</button>
+      <TextBox restaurantInfo={restaurantInfo} onChange={handleChange} />
     </div>
   );
 }
