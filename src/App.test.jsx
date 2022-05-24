@@ -16,4 +16,25 @@ describe('App', () => {
     expect(element).toHaveTextContent(/시카고피자 | 양식 | 이태원동/i);
     expect(element).toHaveTextContent(/키와미 | 일식 | 분당구 정자동/i);
   });
+
+  it('renders name input box', () => {
+    const { getByPlaceholderText } = render(<App />);
+    const element = getByPlaceholderText('이름');
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveValue('');
+  });
+
+  it('renders category input box', () => {
+    const { getByPlaceholderText } = render(<App />);
+    const element = getByPlaceholderText('분류');
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveValue('');
+  });
+
+  it('renders address input box', () => {
+    const { getByPlaceholderText } = render(<App />);
+    const element = getByPlaceholderText('주소');
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveValue('');
+  });
 });
