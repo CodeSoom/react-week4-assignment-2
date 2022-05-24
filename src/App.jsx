@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import RestaurantList from './RestaurantList';
 
 import TextBox from './TextBox';
 
@@ -34,20 +35,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-            |
-            {' '}
-            {restaurant.address}
-            {' '}
-            |
-            {' '}
-            {restaurant.category}
-          </li>
-        ))}
-      </ul>
+      <RestaurantList restaurants={restaurants} />
       <TextBox restaurantInfo={restaurantInfo} onChange={handleChange} />
     </div>
   );
