@@ -36,6 +36,9 @@ export default function App() {
           </li>
         ))}
       </ul>
+      <input type="text" value="" placeholder="이름" />
+      <input type="text" value="" placeholder="분류" />
+      <input type="text" value="" placeholder="주소" />
     </div>
   );
 }
