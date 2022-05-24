@@ -11,4 +11,7 @@ module.exports = {
       statements: 100,
     },
   },
+  transform: {
+    '^.+\\.(t|j)sx?$': ['@swc/jest'],
+  },
 };
