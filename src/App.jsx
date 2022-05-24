@@ -18,7 +18,17 @@ export default function App() {
     category: '분당구 정자동',
   }];
   const [restaurants, setRestaurants] = useState(state);
-
+  const [restaurantInfo, setRestaurantInfo] = useState({
+    name: '',
+    address: '',
+    category: '',
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setRestaurantInfo({
+      [name]: value,
+    });
+  };
   return (
     <div>
       <h1>Restaurants</h1>
@@ -36,9 +46,9 @@ export default function App() {
           </li>
         ))}
       </ul>
-      <input type="text" value="" placeholder="이름" />
-      <input type="text" value="" placeholder="분류" />
-      <input type="text" value="" placeholder="주소" />
+      <input type="text" placeholder="이름" onChange={handleChange} value={restaurantInfo.name} />
+      <input type="text" placeholder="분류" onChange={handleChange} value={restaurantInfo.category} />
+      <input type="text" placeholder="주소" onChange={handleChange} value={restaurantInfo.address} />
       <button type="button">등록</button>
     </div>
   );
