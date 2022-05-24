@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
@@ -18,24 +18,39 @@ describe('App', () => {
   });
 
   it('renders name input box', () => {
+    const handleChange = jest.fn();
+
     const { getByPlaceholderText } = render(<App />);
     const element = getByPlaceholderText('이름');
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveValue('');
+
+    fireEvent.change(element, { target: { value: '마녀주방' } });
+
+    expect(handleChange).toBeCalled();
+    expect(handleChange).toHaveValue('마녀주방');
   });
 
   it('renders category input box', () => {
+    const handleChange = jest.fn();
+
     const { getByPlaceholderText } = render(<App />);
     const element = getByPlaceholderText('분류');
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveValue('');
+
+    fireEvent.change(element, { target: { value: '한식' } });
+
+    expect(handleChange).toBeCalled();
+    expect(handleChange).toHaveValue('한식');
   });
 
   it('renders address input box', () => {
+    const handleChange = jest.fn();
+
     const { getByPlaceholderText } = render(<App />);
     const element = getByPlaceholderText('주소');
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveValue('');
+
+    fireEvent.change(element, { target: { value: '서울시 강남구' } });
+
+    expect(handleChange).toBeCalled();
+    expect(handleChange).toHaveValue('서울시 강남구');
   });
 
   it('renders a button', () => {
