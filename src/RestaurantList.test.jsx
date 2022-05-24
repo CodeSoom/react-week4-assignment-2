@@ -3,7 +3,23 @@ import RestaurantList from './RestaurantList';
 
 describe('RestaurantList', () => {
   it('renders a list of restaurants', () => {
-    const { getByRole } = render(<RestaurantList />);
+    const state = [{
+      id: 1,
+      name: '마녀주방',
+      address: '한식',
+      category: '서울시 강남구',
+    }, {
+      id: 2,
+      name: '시카고피자',
+      address: '양식',
+      category: '이태원동',
+    }, {
+      id: 3,
+      name: '키와미',
+      address: '일식',
+      category: '분당구 정자동',
+    }];
+    const { getByRole } = render(<RestaurantList restaurants={state} />);
     const element = getByRole('list');
 
     expect(element).toHaveTextContent(/마녀주방 | 한식 | 서울시 강남구/i);
