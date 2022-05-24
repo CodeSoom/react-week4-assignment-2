@@ -37,4 +37,11 @@ describe('App', () => {
     expect(element).toBeInTheDocument();
     expect(element).toHaveValue('');
   });
+
+  it('renders a button', () => {
+    const { getByRole } = render(<App />);
+    const element = getByRole('button');
+    expect(element).toBeInTheDocument();
+    expect(element).toHaveTextContent(/등록/i);
+  });
 });
