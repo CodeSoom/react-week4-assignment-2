@@ -6,59 +6,68 @@ const initialState = {
   restaurantCatalog: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'UPDATE_RESTAURANT_NAME') {
-    return {
-      ...state,
-      restaurantName: action.payload.restaurantName,
-    };
+const updateRestaurantName = (state, action) => ({
+  ...state,
+  restaurantName: action.payload.restaurantName,
+});
+
+const updateRestaurantCategory = (state, action) => ({
+  ...state,
+  restaurantCategory: action.payload.restaurantCategory,
+});
+
+const updateRestaurantAddress = (state, action) => ({
+  ...state,
+  restaurantAddress: action.payload.restaurantAddress,
+});
+
+const addRestaurant = (state) => {
+  const {
+    restaurantId,
+    restaurantName,
+    restaurantCategory,
+    restaurantAddress,
+    restaurantCatalog,
+  } = state;
+
+  if (!(restaurantName && restaurantCategory && restaurantAddress)) {
+    return state;
   }
 
-  if (action.type === 'UPDATE_RESTAURANT_CATEGORY') {
-    return {
-      ...state,
-      restaurantCategory: action.payload.restaurantCategory,
-    };
-  }
+  return {
+    ...state,
+    restaurantId: restaurantId + 1,
+    restaurantName: '',
+    restaurantCategory: '',
+    restaurantAddress: '',
+    restaurantCatalog: [
+      ...restaurantCatalog,
+      {
+        restaurantId,
+        restaurantName,
+        restaurantCategory,
+        restaurantAddress,
+      },
+    ],
+  };
+};
 
-  if (action.type === 'UPDATE_RESTAURANT_ADDRESS') {
-    return {
-      ...state,
-      restaurantAddress: action.payload.restaurantAddress,
-    };
-  }
+const actionMethod = {
+  UPDATE_RESTAURANT_NAME: (state, action) =>
+    updateRestaurantName(state, action),
+  UPDATE_RESTAURANT_CATEGORY: (state, action) =>
+    updateRestaurantCategory(state, action),
+  UPDATE_RESTAURANT_ADDRESS: (state, action) =>
+    updateRestaurantAddress(state, action),
+  ADD_RESTAURANT: (state) => addRestaurant(state),
+};
 
-  if (action.type === 'ADD_RESTAURANT') {
-    const {
-      restaurantId,
-      restaurantName,
-      restaurantCategory,
-      restaurantAddress,
-      restaurantCatalog,
-    } = state;
-
-    // 하나라도 공백이면 상태는 변경되지 않는다.
-    if (!(restaurantName && restaurantCategory && restaurantAddress)) {
-      return state;
-    }
-
-    return {
-      ...state,
-      restaurantId: restaurantId + 1,
-      restaurantName: '',
-      restaurantCategory: '',
-      restaurantAddress: '',
-      restaurantCatalog: [
-        ...restaurantCatalog,
-        {
-          restaurantId,
-          restaurantName,
-          restaurantCategory,
-          restaurantAddress,
-        },
-      ],
-    };
+const reducer = (state = initialState, action) => {
+  if (action.type in actionMethod) {
+    return actionMethod[action.type](state, action);
   }
 
   return state;
-}
+};
+
+export default reducer;
