@@ -17,13 +17,11 @@ describe('InputContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) =>
-    selector({
-      restaurantName: '',
-      restaurantCategory: '',
-      restaurantAddress: '',
-    })
-  );
+  useSelector.mockImplementation((selector) => selector({
+    restaurantName: '',
+    restaurantCategory: '',
+    restaurantAddress: '',
+  }));
 
   const renderInputContainer = () => render(<InputContainer />);
 

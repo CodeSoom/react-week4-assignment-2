@@ -15,18 +15,15 @@ export default function InputContainer() {
       restaurantName: state.restaurantName,
       restaurantCategory: state.restaurantCategory,
       restaurantAddress: state.restaurantAddress,
-    })
+    }),
   );
   const dispatch = useDispatch();
 
-  const handleChangeRestaurantName = (event) =>
-    dispatch(updateRestaurantName(event.target.value));
+  const handleChangeRestaurantName = (event) => dispatch(updateRestaurantName(event.target.value));
 
-  const handleChangeRestaurantCategory = (event) =>
-    dispatch(updateRestaurantCategory(event.target.value));
+  const handleChangeRestaurantCategory = (event) => dispatch(updateRestaurantCategory(event.target.value));
 
-  const handleChangeRestaurantAddress = (event) =>
-    dispatch(updateRestaurantAddress(event.target.value));
+  const handleChangeRestaurantAddress = (event) => dispatch(updateRestaurantAddress(event.target.value));
 
   const handleClickAddRestaurant = () => dispatch(addRestaurant());
 

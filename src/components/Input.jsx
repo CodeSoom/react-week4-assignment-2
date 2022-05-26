@@ -12,24 +12,24 @@ export default function Input({
   return (
     <p>
       <input
-        type='text'
-        placeholder='이름'
+        type="text"
+        placeholder="이름"
         value={nameValue}
         onChange={onChangeRestaurantName}
       />
       <input
-        type='text'
-        placeholder='분류'
+        type="text"
+        placeholder="분류"
         value={categoryValue}
         onChange={onChangeRestaurantCategory}
       />
       <input
-        type='text'
-        placeholder='주소'
+        type="text"
+        placeholder="주소"
         value={addressValue}
         onChange={onChangeRestaurantAddress}
       />
-      <button type='button' onClick={onClickAddRestaurant}>
+      <button type="button" onClick={onClickAddRestaurant}>
         등록
       </button>
     </p>
