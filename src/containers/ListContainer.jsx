@@ -1,5 +1,10 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import List from '../components/List';
 
 export default function ListContainer() {
-  return <div>ListContainer</div>;
+  const { restaurantCategory } = useSelector((state) => ({
+    restaurantCategory: state.restaurantCategory,
+  }));
+
+  return <List restaurantCategory={restaurantCategory} />;
 }
