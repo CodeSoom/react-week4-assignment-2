@@ -27,19 +27,19 @@ test('Input', () => {
   expect(getByDisplayValue(/한식/)).toBeInTheDocument();
   expect(getByDisplayValue(/서울시 강남구/)).toBeInTheDocument();
 
-  expect(getByText(/등록/)).toBeInTheDocument();
-
-  fireEvent.change(getByPlaceholderText(/이름/));
+  fireEvent.change(getByPlaceholderText(/이름/), { target: { value: '시카고 피자' } });
 
   expect(handleNameChange).toBeCalled();
 
-  fireEvent.change(getByPlaceholderText(/분류/));
+  fireEvent.change(getByPlaceholderText(/분류/), { target: { value: '양식' } });
 
   expect(handleCategoryChange).toBeCalled();
 
-  fireEvent.change(getByPlaceholderText(/주소/));
+  fireEvent.change(getByPlaceholderText(/주소/), { target: { value: '이태원' } });
 
   expect(handleAddressChange).toBeCalled();
+
+  expect(getByText(/등록/)).toBeInTheDocument();
 
   fireEvent.click(getByText(/등록/));
 
