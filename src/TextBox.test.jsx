@@ -9,10 +9,12 @@ describe('TextBox', () => {
       category: '양식',
     };
     const handleChange = jest.fn();
+    const handleClick = jest.fn();
 
     const { getByPlaceholderText } = render(
       <TextBox
         onChange={handleChange}
+        onClick={handleClick}
         restaurantInfo={restaurantInfo}
       />,
     );
@@ -28,9 +30,12 @@ describe('TextBox', () => {
       category: '양식',
     };
     const handleChange = jest.fn();
+    const handleClick = jest.fn();
+
     const { getByPlaceholderText } = render(
       <TextBox
         onChange={handleChange}
+        onClick={handleClick}
         restaurantInfo={restaurantInfo}
       />,
     );
@@ -46,9 +51,11 @@ describe('TextBox', () => {
       category: '양식',
     };
     const handleChange = jest.fn();
+    const handleClick = jest.fn();
     const { getByPlaceholderText } = render(
       <TextBox
         onChange={handleChange}
+        onClick={handleClick}
         restaurantInfo={restaurantInfo}
       />,
     );
@@ -64,9 +71,11 @@ describe('TextBox', () => {
       category: '양식',
     };
     const handleChange = jest.fn();
+    const handleClick = jest.fn();
     const { getByRole } = render(
       <TextBox
         onChange={handleChange}
+        onClick={handleClick}
         restaurantInfo={restaurantInfo}
       />,
     );
