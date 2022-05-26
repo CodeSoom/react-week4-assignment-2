@@ -53,12 +53,9 @@ const addRestaurant = (state) => {
 };
 
 const actionMethod = {
-  UPDATE_RESTAURANT_NAME: (state, action) =>
-    updateRestaurantName(state, action),
-  UPDATE_RESTAURANT_CATEGORY: (state, action) =>
-    updateRestaurantCategory(state, action),
-  UPDATE_RESTAURANT_ADDRESS: (state, action) =>
-    updateRestaurantAddress(state, action),
+  UPDATE_RESTAURANT_NAME: (state, action) => updateRestaurantName(state, action),
+  UPDATE_RESTAURANT_CATEGORY: (state, action) => updateRestaurantCategory(state, action),
+  UPDATE_RESTAURANT_ADDRESS: (state, action) => updateRestaurantAddress(state, action),
   ADD_RESTAURANT: (state) => addRestaurant(state),
 };
 
