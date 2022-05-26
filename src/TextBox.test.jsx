@@ -1,15 +1,22 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import TextBox from './TextBox';
 
 describe('TextBox', () => {
-  describe('name input', () => {
-    context('without restaurantInfo.name', () => {
+  describe('input', () => {
+    context('without restaurantInfo', () => {
       it('returns empty value', () => {
-        const { getByPlaceholderText } = render(<TextBox restaurantInfo={{}} />);
+        const { getByPlaceholderText } = render(<TextBox restaurantInfo={{
+          name: '',
+          category: '',
+          address: '',
+        }}
+        />);
         expect(getByPlaceholderText('이름')).toHaveValue('');
+        expect(getByPlaceholderText('분류')).toHaveValue('');
+        expect(getByPlaceholderText('주소')).toHaveValue('');
       });
     });
-    context('with restaurantInfo.name', () => {
+    context('with restaurantInfo', () => {
       it('returns value stored "강식당"', () => {
         const restaurantInfo = {
           name: '강식당',
@@ -26,92 +33,52 @@ describe('TextBox', () => {
             restaurantInfo={restaurantInfo}
           />,
         );
-        const element = getByPlaceholderText('이름');
 
-        expect(element).toHaveValue('강식당');
+        expect(getByPlaceholderText('이름')).toHaveValue('강식당');
+        expect(getByPlaceholderText('분류')).toHaveValue('양식');
+        expect(getByPlaceholderText('주소')).toHaveValue('서울');
       });
     });
   });
-
-  describe('category input', () => {
-    context('without restaurantInfo.category', () => {
+  describe('button', () => {
+    context('without restaurantInfo', () => {
       it('returns empty value', () => {
-        const { getByPlaceholderText } = render(<TextBox restaurantInfo={{}} />);
-        expect(getByPlaceholderText('분류')).toHaveValue('');
+        const handleClick = jest.fn();
+        const handleChange = jest.fn();
+        const { getByRole } = render(<TextBox
+          onClick={handleClick}
+          onChange={handleChange}
+          restaurantInfo={{
+            name: '',
+            category: '',
+            address: '',
+          }}
+        />);
+        fireEvent.click(getByRole('button'));
+        expect(handleClick).toHaveBeenCalled();
       });
     });
-    context('with restaurantInfo.category', () => {
-      it('returns value stored "한식"', () => {
+    context('with restaurantInfo', () => {
+      it('returns value stored "강식당"', () => {
         const restaurantInfo = {
           name: '강식당',
           address: '서울',
-          category: '한식',
+          category: '양식',
         };
         const handleChange = jest.fn();
         const handleClick = jest.fn();
 
-        const { getByPlaceholderText } = render(
+        const { getByRole } = render(
           <TextBox
             onChange={handleChange}
             onClick={handleClick}
             restaurantInfo={restaurantInfo}
           />,
         );
-        const element = getByPlaceholderText('분류');
 
-        expect(element).toHaveValue('한식');
+        fireEvent.click(getByRole('button'));
+        expect(handleClick).toHaveBeenCalled();
       });
-    });
-
-    describe('address input', () => {
-      context('without restaurantInfo.address', () => {
-        it('returns empty value', () => {
-          const { getByPlaceholderText } = render(<TextBox restaurantInfo={{}} />);
-          expect(getByPlaceholderText('주소')).toHaveValue('');
-        });
-      });
-      context('with restaurantInfo.address', () => {
-        it('returns value stored "서울"', () => {
-          const restaurantInfo = {
-            name: '강식당',
-            address: '서울',
-            category: '한식',
-          };
-          const handleChange = jest.fn();
-          const handleClick = jest.fn();
-
-          const { getByPlaceholderText } = render(
-            <TextBox
-              onChange={handleChange}
-              onClick={handleClick}
-              restaurantInfo={restaurantInfo}
-            />,
-          );
-          const element = getByPlaceholderText('주소');
-
-          expect(element).toHaveValue('서울');
-        });
-      });
-    });
-
-    it('renders a button', () => {
-      const restaurantInfo = {
-        name: '강식당',
-        address: '서울',
-        category: '양식',
-      };
-      const handleChange = jest.fn();
-      const handleClick = jest.fn();
-      const { getByRole } = render(
-        <TextBox
-          onChange={handleChange}
-          onClick={handleClick}
-          restaurantInfo={restaurantInfo}
-        />,
-      );
-      const element = getByRole('button');
-      expect(element).toBeInTheDocument();
-      expect(element).toHaveTextContent(/등록/i);
     });
   });
 });
