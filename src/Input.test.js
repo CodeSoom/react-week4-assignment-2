@@ -8,11 +8,24 @@ test('Input', () => {
   const handleCategoryChange = jest.fn();
   const handleAddressChange = jest.fn();
 
-  const { getByPlaceholderText, getByText } = render(<Input />);
+  const { getByPlaceholderText, getByText, getByDisplayValue } = render((
+    <Input
+      name="마녀주방"
+      category="한식"
+      address="서울시 강남구"
+      onNameChange={handleNameChange}
+      onCategoryChange={handleCategoryChange}
+      onAddressChange={handleAddressChange}
+    />
+  ));
 
   expect(getByPlaceholderText(/이름/)).toBeInTheDocument();
   expect(getByPlaceholderText(/분류/)).toBeInTheDocument();
   expect(getByPlaceholderText(/주소/)).toBeInTheDocument();
+
+  expect(getByDisplayValue(/마녀주방/)).toBeInTheDocument();
+  expect(getByDisplayValue(/한식/)).toBeInTheDocument();
+  expect(getByDisplayValue(/서울시 강남구/)).toBeInTheDocument();
 
   expect(getByText(/등록/)).toBeInTheDocument();
 
