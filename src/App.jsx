@@ -32,11 +32,19 @@ export default function App() {
       [name]: value,
     });
   };
+  const handleClick = () => {
+    setRestaurants((previousRestaurants) => [...previousRestaurants, restaurantInfo]);
+    setRestaurantInfo({
+      name: '',
+      address: '',
+      category: '',
+    });
+  };
   return (
     <div>
       <h1>Restaurants</h1>
       <RestaurantList restaurants={restaurants} />
-      <TextBox restaurantInfo={restaurantInfo} onChange={handleChange} />
+      <TextBox restaurantInfo={restaurantInfo} onChange={handleChange} onClick={handleClick} />
     </div>
   );
 }
