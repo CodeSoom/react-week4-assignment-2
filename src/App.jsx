@@ -3,6 +3,30 @@ import RestaurantList from './RestaurantList';
 
 import TextBox from './TextBox';
 
+function updateRestaurantInfo(state, name, value) {
+  return {
+    ...state,
+    restaurantInfo: {
+      [name]: value,
+    },
+  };
+}
+
+function addRestaurant(state) {
+  const { restaurants, restaurantInfo } = state;
+  return {
+    restaurants: [
+      ...restaurants,
+      restaurantInfo,
+    ],
+    restaurantInfo: {
+      name: '',
+      category: '',
+      address: '',
+    },
+  };
+}
+
 export default function App() {
   const initialState = {
     restaurantInfo: {
@@ -32,22 +56,10 @@ export default function App() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setState((previousState) => ({
-      ...previousState,
-      restaurantInfo: {
-        [name]: value,
-      },
-    }));
+    setState((previousState) => (updateRestaurantInfo(previousState, name, value)));
   };
   const handleClick = () => {
-    setState((previousState) => ({
-      restaurants: [...previousState.restaurants, previousState.restaurantInfo],
-      restaurantInfo: {
-        name: '',
-        address: '',
-        category: '',
-      },
-    }));
+    setState((previousState) => (addRestaurant(previousState)));
   };
   return (
     <div>
