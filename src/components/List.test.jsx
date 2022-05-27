@@ -5,14 +5,13 @@ import List from './List';
 import restaurants from '../../fixtures/RestaurantsData';
 
 describe('List', () => {
-  const renderList = (restaurant) =>
-    render(<List restaurantCategory={restaurant} />);
+  const renderList = (restaurant) => render(<List restaurantCatalog={restaurant} />);
 
   context('등록된 식당이 있을 때,', () => {
     it('식당을 출력한다.', () => {
       const { container } = renderList(restaurants);
 
-      expect(container).toHaveTextContent('마녀시당');
+      expect(container).toHaveTextContent('마녀식당');
       expect(container).toHaveTextContent('양식');
       expect(container).toHaveTextContent('분당구 정자동');
     });

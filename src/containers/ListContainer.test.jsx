@@ -11,7 +11,7 @@ describe('ListContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({ restaurants }));
+  useSelector.mockImplementation((selector) => selector({ restaurantCatalog: restaurants }));
 
   const renderListContainer = () => render(<ListContainer />);
 

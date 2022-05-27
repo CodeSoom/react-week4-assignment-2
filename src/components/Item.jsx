@@ -1,6 +1,6 @@
 export default function Item({
   restaurant: {
-    restaurantId,
+    restaurantId, // TODO: 레스토랑 삭제 기능이 나오면 사용할 prop
     restaurantName,
     restaurantCategory,
     restaurantAddress,
