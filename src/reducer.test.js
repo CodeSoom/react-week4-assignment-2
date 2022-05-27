@@ -5,6 +5,7 @@ describe('reducer', () => {
   describe('parameters that are not defined', () => {
     it('should return the initial state', () => {
       expect(reducer()).toEqual({
+        newId: 100,
         restaurantInfo: {
           name: '',
           address: '',
@@ -18,6 +19,7 @@ describe('reducer', () => {
   describe("Action type that doesn't exist", () => {
     it('returns the initial state', () => {
       const initialState = {
+        newId: 100,
         restaurantInfo: {
           name: '',
           address: '',
@@ -33,6 +35,7 @@ describe('reducer', () => {
   describe('updateRestaurantInfo', () => {
     it('changes restaurant value', () => {
       const state = reducer({
+        newId: 100,
         restaurants: [],
         restaurantInfo: {
           name: '',
@@ -52,6 +55,7 @@ describe('reducer', () => {
   describe('addRestaurant', () => {
     function reduceAddRestaurant(restaurant) {
       return reducer({
+        newId: 100,
         restaurantInfo: restaurant,
         restaurants: [],
       }, addRestaurant());
@@ -65,7 +69,7 @@ describe('reducer', () => {
         });
 
         expect(state.restaurants).toHaveLength(1);
-        // expect(state.restaurants[0].id).not.toBeUndefined();
+        expect(state.restaurants[0].id).not.toBeUndefined();
         expect(state.restaurants[0].name).toBe('마녀주방');
         expect(state.restaurants[0].address).toBe('한식');
         expect(state.restaurants[0].category).toBe('서울시 강남구');
