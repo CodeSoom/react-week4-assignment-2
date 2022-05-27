@@ -15,9 +15,9 @@ describe('TextBox', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [],
       restaurantInfo: {
-        name: '마녀주방',
-        category: '한식',
-        address: '서울시 강남구',
+        name: '',
+        category: '',
+        address: '',
       },
     }));
   });
@@ -27,14 +27,13 @@ describe('TextBox', () => {
         const { getByPlaceholderText } = render(
           <TextBox />,
         );
+        fireEvent.change(getByPlaceholderText('이름'), { target: { value: '마녀주방' } });
 
-        expect(getByPlaceholderText('이름')).toHaveValue('마녀주방');
-        expect(getByPlaceholderText('분류')).toHaveValue('한식');
-        expect(getByPlaceholderText('주소')).toHaveValue('서울시 강남구');
+        expect(dispatch).toBeCalled();
       });
     });
   });
-  describe('button', () => {
+  describe('Button', () => {
     context('with "등록" button when clicked', () => {
       it('call dispatch with type name "addRestaurant"', () => {
         const { getByText } = render(<TextBox />);
