@@ -40,7 +40,7 @@ function reducer(state = initialState, action) {
     };
   }
   if (action.type === 'updateRestaurantInfo') {
-    const { name, value } = action;
+    const { name, value } = action.payload;
     return {
       ...state,
       restaurantInfo: {
