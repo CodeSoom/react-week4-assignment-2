@@ -5,6 +5,8 @@ import ListContainer from './ListContainer';
 
 import restaurants from '../../fixtures/RestaurantsData';
 
+jest.mock('react-redux');
+
 describe('ListContainer', () => {
   const dispatch = jest.fn();
 
