@@ -3,13 +3,13 @@ import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  describe('Restaurants 라는 페이지 제목이 있다.', () => {
+  test('Restaurants 라는 페이지 제목이 있다.', () => {
     const { getByRole } = render(<App />);
 
     expect(getByRole('heading')).toHaveTextContent('Restaurants');
   });
 
-  describe('레스토랑 이름, 분류, 주소를 입력할 수있는 인풋과 등록 버튼이 있다.', () => {
+  test('레스토랑 이름, 분류, 주소를 입력할 수있는 인풋과 등록 버튼이 있다.', () => {
     const { getByRole, getAllByRole, getByPlaceholderText } = render(<App />);
 
     expect(getAllByRole('textbox')).toHaveLength(3);
@@ -21,7 +21,7 @@ describe('App', () => {
     expect(getByRole('button', { name: '등록' })).toBeInTheDocument();
   });
 
-  describe('인풋에 값을 입력하고 등록 버튼을 누르면 목록에 값이 추가된다', () => {
+  test('인풋에 값을 입력하고 등록 버튼을 누르면 목록에 값이 추가된다', () => {
     const { getByRole, getByPlaceholderText } = render(<App />);
 
     const nameInput = getByPlaceholderText('이름');
