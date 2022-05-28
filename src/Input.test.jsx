@@ -4,7 +4,7 @@ import Input from './Input';
 
 describe('Input', () => {
   context('without value', () => {
-    it('returns empty value', () => {
+    it('display empty value', () => {
       const handleChange = jest.fn();
       const { getByPlaceholderText } = render(<Input
         onChange={handleChange}
@@ -16,7 +16,7 @@ describe('Input', () => {
   });
 
   context('with value', () => {
-    it('returns value stored "강식당"', () => {
+    it('display value stored "강식당"', () => {
       const handleChange = jest.fn();
       const { getByPlaceholderText } = render(<Input
         onChange={handleChange}

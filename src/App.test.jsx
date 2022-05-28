@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
+
 import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
@@ -22,6 +23,8 @@ test('App', () => {
   }));
 
   const { getByText } = render(<App />);
+
   const element = getByText(/Restaurants/);
+
   expect(element).toBeInTheDocument();
 });
