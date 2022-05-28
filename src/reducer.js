@@ -8,8 +8,8 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action = '') {
-  if (action.type === 'addRestaurant') {
+const reducerOptions = {
+  addRestaurant: (state) => {
     const { restaurants, restaurantInfo } = state;
     return {
       newId: state.newId + 1,
@@ -23,8 +23,8 @@ export default function reducer(state = initialState, action = '') {
         address: '',
       },
     };
-  }
-  if (action.type === 'updateRestaurantInfo') {
+  },
+  updateRestaurantInfo: (state, action) => {
     const { name, value } = action.payload;
     return {
       ...state,
@@ -33,6 +33,9 @@ export default function reducer(state = initialState, action = '') {
         [name]: value,
       },
     };
-  }
-  return state;
+  },
+};
+
+export default function reducer(state = initialState, action = '') {
+  return reducerOptions[action.type] ? reducerOptions[action.type](state, action) : state;
 }
