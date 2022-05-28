@@ -1,7 +1,7 @@
 export default function App() {
   return (
-    <div>
-      Hello
-    </div>
+    <>
+      <h1>Restaurants</h1>
+    </>
   );
 }

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 test('App', () => {
-  const { getByText } = render(<App />);
+  const { container } = render(<App />);
 
-  expect(getByText('/Restaurants/')).toBeInTheDocument();
+  expect(container).toHaveTextContent('Restaurants');
 });
