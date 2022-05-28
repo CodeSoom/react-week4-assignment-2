@@ -3,7 +3,7 @@ import { addRestaurant, updateRestaurantInfo } from './actions';
 
 describe('reducer', () => {
   describe('parameters that are not defined', () => {
-    it('should return the initial state', () => {
+    it('returns the initial state', () => {
       expect(reducer()).toEqual({
         newId: 100,
         restaurantInfo: {
