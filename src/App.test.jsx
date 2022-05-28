@@ -1,8 +1,22 @@
 import { render, fireEvent } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    newId: 1,
+    restaurantName: '',
+    restaurantType: '',
+    restaurantAddress: '',
+    restaurants: [],
+  }));
+
   test('Restaurants 라는 페이지 제목이 있다.', () => {
     const { getByRole } = render(<App />);
 
@@ -32,12 +46,10 @@ describe('App', () => {
     fireEvent.change(typeInput, { target: { value: '한식' } });
     fireEvent.change(addressInput, { target: { value: '서울시 강남구' } });
 
-    expect(nameInput).toHaveValue('마녀주방');
-    expect(typeInput).toHaveValue('한식');
-    expect(addressInput).toHaveValue('서울시 강남구');
+    expect(dispatch).toBeCalledTimes(3);
 
     fireEvent.click(getByRole('button', { name: '등록' }));
 
-    expect(getByRole('list')).toHaveTextContent('마녀주방 | 한식 | 서울시 강남구');
+    expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });
   });
 });
