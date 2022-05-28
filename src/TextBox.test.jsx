@@ -14,7 +14,7 @@ describe('TextBox', () => {
 
     useSelector.mockImplementation((selector) => selector({
       restaurants: [],
-      restaurantInfo: {
+      restaurant: {
         name: '',
         category: '',
         address: '',
@@ -22,8 +22,8 @@ describe('TextBox', () => {
     }));
   });
   describe('Input', () => {
-    context('with restaurantInfo', () => {
-      it('returns value stored "restaurantInfo"', () => {
+    context('with restaurant', () => {
+      it('returns value stored "restaurant"', () => {
         const { getByPlaceholderText } = render(
           <TextBox />,
         );
@@ -47,14 +47,14 @@ describe('TextBox', () => {
         });
       });
     });
-    context('without restaurantInfo', () => {
+    context('without restaurant', () => {
       it('returns empty value', () => {
         const { getByRole } = render(<TextBox />);
         fireEvent.click(getByRole('button'));
         expect(dispatch).toHaveBeenCalled();
       });
     });
-    context('with restaurantInfo', () => {
+    context('with restaurant', () => {
       it('returns value stored "강식당"', () => {
         const { getByRole } = render(
           <TextBox />,

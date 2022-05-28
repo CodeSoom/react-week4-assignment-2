@@ -16,7 +16,7 @@ describe('RestaurantList', () => {
     it("doesn't work", () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: [],
-        restaurantInfo: {
+        restaurant: {
           name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',
@@ -40,7 +40,7 @@ describe('RestaurantList', () => {
             id: 102, name: '키와미', category: '일식', address: '분당구 정자동',
           },
         ],
-        restaurantInfo: {
+        restaurant: {
           name: '마녀주방',
           category: '한식',
           address: '서울시 강남구',

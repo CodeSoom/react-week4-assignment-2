@@ -1,20 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateRestaurantInfo, addRestaurant } from './actions';
+import { updateRestaurant, addRestaurant } from './actions';
 
 import Input from './Input';
 import Button from './Button';
 
 export default function TextBox() {
-  const { restaurantInfo } = useSelector((state) => ({
-    restaurantInfo: state.restaurantInfo,
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
   }));
-  const { name, category, address } = restaurantInfo;
+  const { name, category, address } = restaurant;
 
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    dispatch(updateRestaurantInfo(event.target.name, event.target.value));
+    dispatch(updateRestaurant(event.target.name, event.target.value));
   };
 
   const handleClick = () => {

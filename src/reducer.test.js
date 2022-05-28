@@ -1,12 +1,12 @@
 import reducer from './reducer';
-import { addRestaurant, updateRestaurantInfo } from './actions';
+import { addRestaurant, updateRestaurant } from './actions';
 
 describe('reducer', () => {
   describe('parameters that are not defined', () => {
     it('returns the initial state', () => {
       expect(reducer()).toEqual({
         newId: 100,
-        restaurantInfo: {
+        restaurant: {
           name: '',
           address: '',
           category: '',
@@ -20,7 +20,7 @@ describe('reducer', () => {
     it('returns the initial state', () => {
       const initialState = {
         newId: 100,
-        restaurantInfo: {
+        restaurant: {
           name: '',
           address: '',
           category: '',
@@ -32,19 +32,19 @@ describe('reducer', () => {
     });
   });
 
-  describe('updateRestaurantInfo', () => {
+  describe('updateRestaurant', () => {
     it('changes restaurant value', () => {
       const state = reducer({
         newId: 100,
         restaurants: [],
-        restaurantInfo: {
+        restaurant: {
           name: '',
           address: '',
           category: '',
         },
-      }, updateRestaurantInfo('name', '강식당'));
+      }, updateRestaurant('name', '강식당'));
 
-      expect(state.restaurantInfo).toEqual({
+      expect(state.restaurant).toEqual({
         name: '강식당',
         address: '',
         category: '',
@@ -56,7 +56,7 @@ describe('reducer', () => {
     function reduceAddRestaurant(restaurant) {
       return reducer({
         newId: 100,
-        restaurantInfo: restaurant,
+        restaurant,
         restaurants: [],
       }, addRestaurant());
     }
@@ -83,9 +83,9 @@ describe('reducer', () => {
         });
 
         expect(state.restaurants).toHaveLength(1);
-        expect(state.restaurantInfo.name).toBe('');
-        expect(state.restaurantInfo.address).toBe('');
-        expect(state.restaurantInfo.category).toBe('');
+        expect(state.restaurant.name).toBe('');
+        expect(state.restaurant.address).toBe('');
+        expect(state.restaurant.category).toBe('');
       });
     });
   });

@@ -15,7 +15,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants,
-    restaurantInfo: {
+    restaurant: {
       name: '',
       address: '',
       phone: '',

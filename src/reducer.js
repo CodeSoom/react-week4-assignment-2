@@ -1,6 +1,6 @@
 const initialState = {
   newId: 100,
-  restaurantInfo: {
+  restaurant: {
     name: '',
     address: '',
     category: '',
@@ -10,26 +10,26 @@ const initialState = {
 
 const reducerOptions = {
   addRestaurant: (state) => {
-    const { restaurants, restaurantInfo } = state;
+    const { restaurants, restaurant } = state;
     return {
       newId: state.newId + 1,
       restaurants: [
         ...restaurants,
-        { id: state.newId, ...restaurantInfo },
+        { id: state.newId, ...restaurant },
       ],
-      restaurantInfo: {
+      restaurant: {
         name: '',
         category: '',
         address: '',
       },
     };
   },
-  updateRestaurantInfo: (state, action) => {
+  updateRestaurant: (state, action) => {
     const { name, value } = action.payload;
     return {
       ...state,
-      restaurantInfo: {
-        ...state.restaurantInfo,
+      restaurant: {
+        ...state.restaurant,
         [name]: value,
       },
     };
