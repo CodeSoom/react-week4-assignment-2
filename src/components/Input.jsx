@@ -9,8 +9,14 @@ export default function Input({
   onChangeRestaurantAddress,
   onClickAddRestaurant,
 }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onClickAddRestaurant();
+  };
+
   return (
-    <p>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="name"
@@ -32,9 +38,7 @@ export default function Input({
         value={addressValue}
         onChange={onChangeRestaurantAddress}
       />
-      <button type="button" onClick={onClickAddRestaurant}>
-        등록
-      </button>
-    </p>
+      <button type="submit">등록</button>
+    </form>
   );
 }

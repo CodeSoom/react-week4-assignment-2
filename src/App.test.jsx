@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
@@ -19,7 +20,7 @@ describe('App', () => {
 
   const renderApp = () => render(<App />);
 
-  it("'Restaurants'과 input을 렌더한다", () => {
+  it("App의 제목인 'Restaurant'라는 텍스트와 input 창을 렌더한다", () => {
     const { container, getByPlaceholderText } = renderApp();
 
     expect(container).toHaveTextContent('Restaurants');
