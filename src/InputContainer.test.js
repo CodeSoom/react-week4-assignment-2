@@ -1,7 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addRestaurant, updateAddress, updateCategory, updateName } from './actions';
+import {
+  addRestaurant, updateAddress, updateCategory, updateName,
+} from './actions';
 import InputContainer from './InputContainer';
 
 jest.mock('react-redux');

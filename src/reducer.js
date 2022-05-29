@@ -9,21 +9,27 @@ const initialState = {
 };
 
 const actions = {
-  addRestaurant: (state) => ({
-    ...state,
-    newId: state.newId + 1,
-    restaurant: {
-      name: '',
-      category: '',
-      address: '',
-    },
-    restaurants: [...state.restaurants, {
-      id: state.newId,
-      name: state.restaurant.name,
-      category: state.restaurant.category,
-      address: state.restaurant.address,
-    }],
-  }),
+  addRestaurant: (state) => {
+    if (!state.restaurant.name
+      || !state.restaurant.category
+      || !state.restaurant.address) return state;
+
+    return {
+      ...state,
+      newId: state.newId + 1,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+      restaurants: [...state.restaurants, {
+        id: state.newId,
+        name: state.restaurant.name,
+        category: state.restaurant.category,
+        address: state.restaurant.address,
+      }],
+    };
+  },
   updateName: (state, action) => ({
     ...state,
     restaurant: {
