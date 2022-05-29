@@ -1,6 +1,6 @@
-import addRestaurant from "./actions";
+import addRestaurant from './actions';
 
-import reducer from "./reducer";
+import reducer from './reducer';
 
 describe('reducer', () => {
   describe('addRestaurant', () => {
@@ -9,7 +9,8 @@ describe('reducer', () => {
         name: '마녀 주방',
         category: '한식',
         address: '서울시 강남구',
-      }
+      };
+
       const state = reducer({
         restaurant,
       }, addRestaurant(restaurant));
