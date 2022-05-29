@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updateName, updateType, updateAddress, addRestaurant,
 } from './actions';
+import Restaurants from './Restaurants';
 
 export default function App() {
   const {
@@ -35,18 +36,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      {restaurants && (
-        <ul>
-          {restaurants.map((restaurant) => {
-            const { name, type, address } = restaurant;
-            return (
-              <li key={restaurant.id}>
-                {`${name} | ${type} | ${address}` }
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <Restaurants restaurants={restaurants} />
       <input id="name" type="text" placeholder="이름" value={restaurantName} onChange={handleChangeName} />
       <input type="text" placeholder="분류" value={restaurantType} onChange={handleChangeType} />
       <input type="text" placeholder="주소" value={restaurantAddress} onChange={handleChangeAddress} />
