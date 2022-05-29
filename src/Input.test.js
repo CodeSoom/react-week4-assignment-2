@@ -4,7 +4,9 @@ import Input from './Input';
 
 describe('Input', () => {
   it('renders', () => {
-    const { getByPlaceholderText, getByText } = render(<Input />);
+    const restaurant = {};
+
+    const { getByPlaceholderText, getByText } = render(<Input restaurant={restaurant} />);
 
     expect(getByPlaceholderText('이름')).toBeInTheDocument();
     expect(getByPlaceholderText('분류')).toBeInTheDocument();
@@ -17,15 +19,21 @@ describe('Input', () => {
     const handleNameChange = jest.fn();
     const handleCategoryChange = jest.fn();
     const handleAddressChange = jest.fn();
+    const handleClick = jest.fn();
 
-    const { getByDisplayValue } = render((
+    const restaurant = {
+      name: '마녀 주방',
+      category: '한식',
+      address: '서울시 강남구',
+    };
+
+    const { getByDisplayValue, getByText } = render((
       <Input
-        name="마녀 주방"
-        category="한식"
-        address="서울시 강남구"
+        restaurant={restaurant}
         onNameChange={handleNameChange}
         onCategoryChange={handleCategoryChange}
         onAddressChange={handleAddressChange}
+        onClick={handleClick}
       />
     ));
 
@@ -41,5 +49,8 @@ describe('Input', () => {
 
     fireEvent.change(getByDisplayValue('서울시 강남구'), { target: { value: '이태원' } });
     expect(handleAddressChange).toBeCalled();
+
+    fireEvent.click(getByText('등록'));
+    expect(handleClick).toBeCalled();
   });
 });

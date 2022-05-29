@@ -17,7 +17,7 @@ const actions = {
       category: '',
       address: '',
     },
-    restaurants: [state.restaurants, {
+    restaurants: [...state.restaurants, {
       id: state.newId,
       name: state.restaurant.name,
       category: state.restaurant.category,
@@ -26,21 +26,21 @@ const actions = {
   }),
   updateName: (state, action) => ({
     ...state,
-    retuarant: {
+    restaurant: {
       ...state.restaurant,
       name: action.payload.name,
     },
   }),
   updateCategory: (state, action) => ({
     ...state,
-    retuarant: {
+    restaurant: {
       ...state.restaurant,
       category: action.payload.category,
     },
   }),
   updateAddress: (state, action) => ({
     ...state,
-    retuarant: {
+    restaurant: {
       ...state.restaurant,
       address: action.payload.address,
     },
@@ -50,5 +50,5 @@ const actions = {
 const defaultAction = (state) => state;
 
 export default function reducer(state = initialState, action) {
-  return (actions[action.type] || defaultAction)(state);
+  return (actions[action.type] || defaultAction)(state, action);
 }

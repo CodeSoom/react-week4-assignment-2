@@ -1,6 +1,8 @@
 export default function Input({
-  name, category, address, onNameChange, onCategoryChange, onAddressChange,
+  restaurant, onNameChange, onCategoryChange, onAddressChange, onClick,
 }) {
+  const { name, category, address } = restaurant;
+
   return (
     <form>
       <input
@@ -21,7 +23,7 @@ export default function Input({
         value={address}
         onChange={onAddressChange}
       />
-      <button type="button">
+      <button type="button" onClick={onClick}>
         등록
       </button>
     </form>

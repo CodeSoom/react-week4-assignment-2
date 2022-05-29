@@ -1,15 +1,10 @@
-export function addRestaurant({ name, category, address }) {
+export function addRestaurant() {
   return {
     type: 'addRestaurant',
-    payload: {
-      name,
-      category,
-      address,
-    },
   };
 }
 
-export function updateName({ name }) {
+export function updateName(name) {
   return {
     type: 'updateName',
     payload: {
@@ -18,18 +13,18 @@ export function updateName({ name }) {
   };
 }
 
-export function updateCategory({ category }) {
+export function updateCategory(category) {
   return {
-    type: 'updateName',
+    type: 'updateCategory',
     payload: {
       category,
     },
   };
 }
 
-export function updateAddress({ address }) {
+export function updateAddress(address) {
   return {
-    type: 'updateName',
+    type: 'updateAddress',
     payload: {
       address,
     },

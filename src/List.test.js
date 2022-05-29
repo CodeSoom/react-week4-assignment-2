@@ -30,7 +30,7 @@ describe('List', () => {
 
       const { container } = render(<List restaurants={restaurants} />);
 
-      expect(container).toHaveTextContent('');
+      expect(container).toBeEmptyDOMElement();
     });
   });
 });

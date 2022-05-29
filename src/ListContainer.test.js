@@ -18,13 +18,13 @@ describe('ListContainer', () => {
       ],
     }));
 
-    const { getByText } = render(<ListContainer />);
+    const { container } = render(<ListContainer />);
 
-    expect(getByText('마녀주방')).toBeInTheDocument();
-    expect(getByText('한식')).toBeInTheDocument();
-    expect(getByText('강남')).toBeInTheDocument();
-    expect(getByText('시카고 피자')).toBeInTheDocument();
-    expect(getByText('양식')).toBeInTheDocument();
-    expect(getByText('이태원')).toBeInTheDocument();
+    expect(container).toHaveTextContent('마녀주방');
+    expect(container).toHaveTextContent('한식');
+    expect(container).toHaveTextContent('강남');
+    expect(container).toHaveTextContent('시카고 피자');
+    expect(container).toHaveTextContent('양식');
+    expect(container).toHaveTextContent('이태원');
   });
 });
