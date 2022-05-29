@@ -1,4 +1,6 @@
-import addRestaurant from './actions';
+import {
+  addRestaurant, updateAddress, updateCategory, updateName,
+} from './actions';
 
 import reducer from './reducer';
 

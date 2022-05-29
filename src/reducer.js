@@ -24,6 +24,27 @@ const actions = {
       address: state.restaurant.address,
     }],
   }),
+  updateName: (state, action) => ({
+    ...state,
+    retuarant: {
+      ...state.restaurant,
+      name: action.payload.name,
+    },
+  }),
+  updateCategory: (state, action) => ({
+    ...state,
+    retuarant: {
+      ...state.restaurant,
+      category: action.payload.category,
+    },
+  }),
+  updateAddress: (state, action) => ({
+    ...state,
+    retuarant: {
+      ...state.restaurant,
+      address: action.payload.address,
+    },
+  }),
 };
 
 const defaultAction = (state) => state;
