@@ -2,16 +2,25 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import RestaurantList from './RestaurantList';
 
-describe('RestaurantList', () => {
-  const restaurants = [
-    { id: 1, text: '중국집 | 중식 | 홍대' },
-    { id: 2, text: '한식집 | 한식 | 신촌' },
-  ];
+jest.mock('react-redux');
 
+describe('RestaurantList', () => {
   it('render restaurants', () => {
-    const { getByText } = render((<RestaurantList restaurants={restaurants} />));
+    useSelector.mockImplementation((selector) => selector({
+      name: '',
+      category: '',
+      address: '',
+      restaurants: [
+        { id: 1, text: '중국집 | 중식 | 홍대' },
+        { id: 2, text: '한식집 | 한식 | 신촌' },
+      ],
+    }));
+
+    const { getByText } = render((<RestaurantList />));
 
     expect(getByText('중국집 | 중식 | 홍대')).not.toBeNull();
     expect(getByText('한식집 | 한식 | 신촌')).not.toBeNull();

@@ -5,7 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  it('change input', () => {
+  it('renders Input', () => {
     const division = '이름';
 
     const { getByPlaceholderText } = render(<Input division={division} />);
