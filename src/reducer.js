@@ -30,25 +30,11 @@ const actions = {
       }],
     };
   },
-  updateName: (state, action) => ({
+  updateRestaurant: (state, action) => ({
     ...state,
     restaurant: {
       ...state.restaurant,
-      name: action.payload.name,
-    },
-  }),
-  updateCategory: (state, action) => ({
-    ...state,
-    restaurant: {
-      ...state.restaurant,
-      category: action.payload.category,
-    },
-  }),
-  updateAddress: (state, action) => ({
-    ...state,
-    restaurant: {
-      ...state.restaurant,
-      address: action.payload.address,
+      [action.payload.name]: action.payload.value,
     },
   }),
 };

@@ -1,5 +1,5 @@
 export default function Input({
-  restaurant, onNameChange, onCategoryChange, onAddressChange, onClick,
+  restaurant, onChange, onClick,
 }) {
   const { name, category, address } = restaurant;
 
@@ -10,21 +10,21 @@ export default function Input({
         placeholder="이름"
         name="name"
         value={name}
-        onChange={onNameChange}
+        onChange={onChange}
       />
       <input
         type="text"
         placeholder="분류"
         name="category"
         value={category}
-        onChange={onCategoryChange}
+        onChange={onChange}
       />
       <input
         type="text"
         placeholder="주소"
         name="address"
         value={address}
-        onChange={onAddressChange}
+        onChange={onChange}
       />
       <button type="button" onClick={onClick}>
         등록

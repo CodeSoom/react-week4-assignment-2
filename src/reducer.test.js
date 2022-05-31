@@ -1,6 +1,4 @@
-import {
-  addRestaurant, updateAddress, updateCategory, updateName,
-} from './actions';
+import { addRestaurant, updateRestaurant } from './actions';
 
 import reducer from './reducer';
 
@@ -79,41 +77,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('updateName', () => {
-    it('change the name of restaurant', () => {
-      const name = '시카고 피자';
-
+  describe('updateRestaurant', () => {
+    it('change the property of restaurant', () => {
       const state = reducer({
         restaurant: { name: '' },
-      }, updateName(name));
+      }, updateRestaurant({ name: 'name', value: '시카고 피자' }));
 
-      expect(state.restaurant.name).toBe(name);
-    });
-  });
-
-  describe('updateCategory', () => {
-    it('change the category of restaurant', () => {
-      const category = '양식';
-
-      const state = reducer({
-        restaurant: {
-          category: '',
-        },
-      }, updateCategory(category));
-
-      expect(state.restaurant.category).toBe(category);
-    });
-  });
-
-  describe('updateAddress', () => {
-    it('change the address of restaurant', () => {
-      const address = '이태원';
-
-      const state = reducer({
-        restaurant: { address: '' },
-      }, updateAddress(address));
-
-      expect(state.restaurant.address).toBe(address);
+      expect(state.restaurant.name).toBe('시카고 피자');
     });
   });
 

@@ -18,17 +18,13 @@ describe('Input', () => {
   });
 
   it('sets the value and change event', () => {
-    const handleNameChange = jest.fn();
-    const handleCategoryChange = jest.fn();
-    const handleAddressChange = jest.fn();
+    const handleChange = jest.fn();
     const handleClick = jest.fn();
 
     const { getByDisplayValue, getByText } = render((
       <Input
         restaurant={restaurant}
-        onNameChange={handleNameChange}
-        onCategoryChange={handleCategoryChange}
-        onAddressChange={handleAddressChange}
+        onChange={handleChange}
         onClick={handleClick}
       />
     ));
@@ -38,13 +34,13 @@ describe('Input', () => {
     expect(getByDisplayValue('서울시 강남구')).toBeInTheDocument();
 
     fireEvent.change(getByDisplayValue('마녀 주방'), { target: { value: '시카고 피자' } });
-    expect(handleNameChange).toBeCalled();
+    expect(handleChange).toBeCalled();
 
     fireEvent.change(getByDisplayValue('한식'), { target: { value: '양식' } });
-    expect(handleCategoryChange).toBeCalled();
+    expect(handleChange).toBeCalled();
 
     fireEvent.change(getByDisplayValue('서울시 강남구'), { target: { value: '이태원' } });
-    expect(handleAddressChange).toBeCalled();
+    expect(handleChange).toBeCalled();
 
     fireEvent.click(getByText('등록'));
     expect(handleClick).toBeCalled();

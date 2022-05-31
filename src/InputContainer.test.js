@@ -1,9 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addRestaurant, updateAddress, updateCategory, updateName,
-} from './actions';
+import { addRestaurant, updateRestaurant } from './actions';
 import InputContainer from './InputContainer';
 
 import restaurant from '../fixtures/restaurant';
@@ -54,14 +52,14 @@ describe('InputContainer', () => {
 
     fireEvent.change(getByDisplayValue('마녀 주방'), { target: { value: '시카고 피자' } });
 
-    expect(dispatch).toBeCalledWith(updateName('시카고 피자'));
+    expect(dispatch).toBeCalledWith(updateRestaurant({ name: 'name', value: '시카고 피자' }));
 
     fireEvent.change(getByDisplayValue('한식'), { target: { value: '양식' } });
 
-    expect(dispatch).toBeCalledWith(updateCategory('양식'));
+    expect(dispatch).toBeCalledWith(updateRestaurant({ name: 'category', value: '양식' }));
 
     fireEvent.change(getByDisplayValue('서울시 강남구'), { target: { value: '이태원' } });
 
-    expect(dispatch).toBeCalledWith(updateAddress('이태원'));
+    expect(dispatch).toBeCalledWith(updateRestaurant({ name: 'address', value: '이태원' }));
   });
 });
