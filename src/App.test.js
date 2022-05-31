@@ -1,19 +1,23 @@
 import { render } from '@testing-library/react';
-import { useSelector } from '../__mocks__/react-redux';
+import { useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [],
-    restaurant: {
-      name: '',
-      category: '',
-      address: '',
-    },
-  }));
+jest.mock('react-redux');
 
-  const { container } = render(<App />);
+describe('App', () => {
+  it('renders', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [],
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
+    }));
 
-  expect(container).toHaveTextContent('Restaurants');
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('Restaurants');
+  });
 });

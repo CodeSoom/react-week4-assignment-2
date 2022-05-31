@@ -2,18 +2,11 @@ import { render } from '@testing-library/react';
 
 import List from './List';
 
+import restaurants from '../fixtures/restaurants';
+
 describe('List', () => {
   context('with restaurants', () => {
     it('renders restaurants', () => {
-      const restaurants = [
-        {
-          id: 1, name: '마녀주방', category: '한식', address: '서울시 강남구',
-        },
-        {
-          id: 2, name: '시카고 피자', category: '양식', address: '이태원',
-        },
-      ];
-
       const { container } = render(<List restaurants={restaurants} />);
 
       restaurants.forEach(({ name, category, address }) => {
@@ -26,9 +19,9 @@ describe('List', () => {
 
   context('without restaurants', () => {
     it('renders restaurants', () => {
-      const restaurants = [];
+      const emptyRestaurants = [];
 
-      const { container } = render(<List restaurants={restaurants} />);
+      const { container } = render(<List restaurants={emptyRestaurants} />);
 
       expect(container).toBeEmptyDOMElement();
     });
