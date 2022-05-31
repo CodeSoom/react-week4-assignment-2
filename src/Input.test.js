@@ -2,11 +2,13 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Input from './Input';
 
+import restaurant from '../fixtures/restaurant';
+
 describe('Input', () => {
   it('renders', () => {
-    const restaurant = {};
+    const emptyRestaurant = {};
 
-    const { getByPlaceholderText, getByText } = render(<Input restaurant={restaurant} />);
+    const { getByPlaceholderText, getByText } = render(<Input restaurant={emptyRestaurant} />);
 
     expect(getByPlaceholderText('이름')).toBeInTheDocument();
     expect(getByPlaceholderText('분류')).toBeInTheDocument();
@@ -20,12 +22,6 @@ describe('Input', () => {
     const handleCategoryChange = jest.fn();
     const handleAddressChange = jest.fn();
     const handleClick = jest.fn();
-
-    const restaurant = {
-      name: '마녀 주방',
-      category: '한식',
-      address: '서울시 강남구',
-    };
 
     const { getByDisplayValue, getByText } = render((
       <Input

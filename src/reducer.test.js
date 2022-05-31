@@ -4,16 +4,14 @@ import {
 
 import reducer from './reducer';
 
+import restaurant from '../fixtures/restaurant';
+
 describe('reducer', () => {
   describe('addRestaurant', () => {
     context('with name, category, address', () => {
       it('appends a new restaurant into restaurants', () => {
         const state = reducer({
-          restaurant: {
-            name: '마녀 주방',
-            category: '한식',
-            address: '서울시 강남구',
-          },
+          restaurant,
           restaurants: [],
         }, addRestaurant());
 
