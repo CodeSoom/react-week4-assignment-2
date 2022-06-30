@@ -1,3 +1,3 @@
-export function updateInputValue() {}
+export function updateInputContent() {}
 
 export function addRestaurant() {}
