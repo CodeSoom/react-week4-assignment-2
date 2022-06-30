@@ -18,4 +18,18 @@ describe('reducer', () => {
       expect(state).toEqual(initialState);
     });
   });
+
+  describe('updateNameInput', () => {
+    it('changes the name input', () => {
+      const state = reducer(
+        { nameInput: '' },
+        {
+          type: 'updateNameInput',
+          payload: { name: '마녀주방' },
+        },
+      );
+
+      expect(state.nameInput).toBe('마녀주방');
+    });
+  });
 });
