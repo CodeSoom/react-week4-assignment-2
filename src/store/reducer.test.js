@@ -1,4 +1,4 @@
-import { updateInputContent } from './actions';
+import { addRestaurant, updateInputContent } from './actions';
 
 import reducer, { initialState } from './reducer';
 
@@ -45,6 +45,58 @@ describe('reducer', () => {
         );
 
         expect(state.address).toBe('잠실');
+      });
+    });
+  });
+
+  describe('addRestaurant', () => {
+    context('name과 category와 address가 하나라도 비어있을 시', () => {
+      it('아무일도 일어나지 않습니다.', () => {
+        const state = reducer(
+          {
+            newId: 100,
+            name: '',
+            category: '',
+            address: '',
+            restaurants: [],
+          }, addRestaurant('오류', '오류'),
+        );
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
+    context('name과 category와 address가 있을 때', () => {
+      it('restaurants가 새로운 restaurant이 담겨 반환됩니다', () => {
+        const state = reducer(
+          {
+            newId: 100,
+            name: '',
+            category: '',
+            address: '',
+            restaurants: [],
+          }, addRestaurant('떡볶이', '분식', '잠실'),
+        );
+
+        expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants[0].id).not.toBeUndefined();
+        expect(state.restaurants[0].name).toBe('떡볶이');
+      });
+
+      it('name, category, address를 비워줍니다.', () => {
+        const state = reducer(
+          {
+            newId: 100,
+            name: '테스트',
+            category: '테스트',
+            address: '테스트',
+            restaurants: [],
+          }, addRestaurant('떡볶이', '분식', '잠실'),
+        );
+
+        expect(state.name).toBe('');
+        expect(state.category).toBe('');
+        expect(state.address).toBe('');
       });
     });
   });
