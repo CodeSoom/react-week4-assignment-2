@@ -25,5 +25,27 @@ describe('reducer', () => {
         expect(state.name).toBe('프론트');
       });
     });
+
+    context('type이 category 일 때', () => {
+      it('category가 입력한 값으로 변경하여 반환합니다.', () => {
+        const state = reducer(
+          { category: '' },
+          updateInputContent('category', '양식'),
+        );
+
+        expect(state.category).toBe('양식');
+      });
+    });
+
+    context('type이 address 일 때', () => {
+      it('address가 입력한 값으로 변경하여 반환합니다.', () => {
+        const state = reducer(
+          { address: '' },
+          updateInputContent('address', '잠실'),
+        );
+
+        expect(state.address).toBe('잠실');
+      });
+    });
   });
 });
