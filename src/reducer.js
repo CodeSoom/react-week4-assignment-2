@@ -5,26 +5,24 @@ const initialState = {
   restaurants: [],
 };
 
+const actionHandlers = {
+  updateNameInput: (state, action) => ({
+    ...state,
+    nameInput: action.payload.name,
+  }),
+  updateTypeInput: (state, action) => ({
+    ...state,
+    typeInput: action.payload.type,
+  }),
+  updateAddressInput: (state, action) => ({
+    ...state,
+    addressInput: action.payload.address,
+  }),
+};
+
 const reducer = (state = initialState, action) => {
-  if (action.type === 'updateNameInput') {
-    return {
-      ...state,
-      nameInput: action.payload.name,
-    };
-  }
-
-  if (action.type === 'updateTypeInput') {
-    return {
-      ...state,
-      typeInput: action.payload.type,
-    };
-  }
-
-  if (action.type === 'updateAddressInput') {
-    return {
-      ...state,
-      addressInput: action.payload.address,
-    };
+  if (actionHandlers[action.type]) {
+    return actionHandlers[action.type](state, action);
   }
 
   return state;
