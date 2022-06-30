@@ -26,6 +26,10 @@ const actionHandlers = {
       restaurants,
     } = state;
 
+    if (!nameInput || !typeInput || !addressInput) {
+      return state;
+    }
+
     return {
       ...state,
       nameInput: '',

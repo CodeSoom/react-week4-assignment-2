@@ -132,5 +132,44 @@ describe('reducer', () => {
         expect(state.addressInput).toBe('');
       });
     });
+
+    context('without nameInput', () => {
+      it('does nothing', () => {
+        const state = reduceAddRestaurant({
+          nameInput: '',
+          typeInput: '한식',
+          addressInput: '서울시 강남구',
+          newId: Date.now(),
+        });
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
+    context('without typeInput', () => {
+      it('does nothing', () => {
+        const state = reduceAddRestaurant({
+          nameInput: '마녀주방',
+          typeInput: '',
+          addressInput: '서울시 강남구',
+          newId: Date.now(),
+        });
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
+    context('without addressInput', () => {
+      it('does nothing', () => {
+        const state = reduceAddRestaurant({
+          nameInput: '마녀주방',
+          typeInput: '한식',
+          addressInput: '',
+          newId: Date.now(),
+        });
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
   });
 });
