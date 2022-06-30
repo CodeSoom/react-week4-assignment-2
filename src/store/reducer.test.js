@@ -67,16 +67,18 @@ describe('reducer', () => {
     });
 
     context('name과 category와 address가 있을 때', () => {
+      function reduceAddRestaurant() {
+        return reducer({
+          newId: 100,
+          name: '떡볶이',
+          category: '분식',
+          address: '잠실',
+          restaurants: [],
+        }, addRestaurant());
+      }
+
       it('restaurants가 새로운 restaurant이 담겨 반환됩니다', () => {
-        const state = reducer(
-          {
-            newId: 100,
-            name: '떡볶이',
-            category: '분식',
-            address: '잠실',
-            restaurants: [],
-          }, addRestaurant(),
-        );
+        const state = reduceAddRestaurant();
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).not.toBeUndefined();
@@ -84,15 +86,7 @@ describe('reducer', () => {
       });
 
       it('name, category, address를 비워줍니다.', () => {
-        const state = reducer(
-          {
-            newId: 100,
-            name: '테스트',
-            category: '테스트',
-            address: '테스트',
-            restaurants: [],
-          }, addRestaurant(),
-        );
+        const state = reduceAddRestaurant();
 
         expect(state.name).toBe('');
         expect(state.category).toBe('');
