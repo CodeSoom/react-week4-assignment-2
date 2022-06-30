@@ -46,4 +46,18 @@ describe('reducer', () => {
       expect(state.typeInput).toBe('한식');
     });
   });
+
+  describe('updateAddressInput', () => {
+    it('changes the address input', () => {
+      const state = reducer(
+        { addressInput: '' },
+        {
+          type: 'updateAddressInput',
+          payload: { address: '서울시 강남구' },
+        },
+      );
+
+      expect(state.addressInput).toBe('서울시 강남구');
+    });
+  });
 });

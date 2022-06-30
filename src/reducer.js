@@ -20,6 +20,13 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'updateAddressInput') {
+    return {
+      ...state,
+      addressInput: action.payload.address,
+    };
+  }
+
   return state;
 };
 
