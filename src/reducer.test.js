@@ -79,4 +79,58 @@ describe('reducer', () => {
       expect(state.addressInput).toBe('서울시 강남구');
     });
   });
+
+  describe('addRestaurant', () => {
+    const reduceAddRestaurant = ({
+      nameInput,
+      typeInput,
+      addressInput,
+      newId,
+    }) => reducer(
+      {
+        nameInput,
+        typeInput,
+        addressInput,
+        restaurants: [],
+      },
+      {
+        type: 'addRestaurant',
+        payload: {
+          newId,
+        },
+      },
+    );
+
+    context('with all inputs', () => {
+      it('appends a new restaurant with a new id into restaurants', () => {
+        const newId = Date.now();
+
+        const state = reduceAddRestaurant({
+          nameInput: '마녀주방',
+          typeInput: '한식',
+          addressInput: '서울시 강남구',
+          newId,
+        });
+
+        expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants[0].id).toBe(newId);
+        expect(state.restaurants[0].name).toBe('마녀주방');
+        expect(state.restaurants[0].type).toBe('한식');
+        expect(state.restaurants[0].address).toBe('서울시 강남구');
+      });
+
+      it('makes all inputs blank', () => {
+        const state = reduceAddRestaurant({
+          nameInput: '마녀주방',
+          typeInput: '한식',
+          addressInput: '서울시 강남구',
+          newId: Date.now(),
+        });
+
+        expect(state.nameInput).toBe('');
+        expect(state.typeInput).toBe('');
+        expect(state.addressInput).toBe('');
+      });
+    });
+  });
 });

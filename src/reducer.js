@@ -18,6 +18,30 @@ const actionHandlers = {
     ...state,
     addressInput: action.payload.address,
   }),
+  addRestaurant: (state, action) => {
+    const {
+      nameInput,
+      typeInput,
+      addressInput,
+      restaurants,
+    } = state;
+
+    return {
+      ...state,
+      nameInput: '',
+      typeInput: '',
+      addressInput: '',
+      restaurants: [
+        ...restaurants,
+        {
+          id: action.payload.newId,
+          name: nameInput,
+          type: typeInput,
+          address: addressInput,
+        },
+      ],
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
