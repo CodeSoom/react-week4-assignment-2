@@ -1,3 +1,5 @@
 export const initialState = {};
 
-export default function reducer() {}
+export default function reducer(state = initialState) {
+  return state;
+}
