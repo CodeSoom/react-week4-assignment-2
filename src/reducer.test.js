@@ -137,6 +137,19 @@ describe('reducer', () => {
       });
     });
 
+    context('without new id', () => {
+      it('does nothing', () => {
+        const state = reduceAddRestaurant({
+          nameInput: defaultName,
+          typeInput: defaultType,
+          addressInput: defaultAddress,
+          newId: undefined,
+        });
+
+        expect(state.restaurants).toHaveLength(0);
+      });
+    });
+
     context('without nameInput', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({

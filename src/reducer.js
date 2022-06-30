@@ -26,7 +26,9 @@ const actionHandlers = {
       restaurants,
     } = state;
 
-    if (!nameInput || !typeInput || !addressInput) {
+    const { newId } = action.payload;
+
+    if (!nameInput || !typeInput || !addressInput || !newId) {
       return state;
     }
 
@@ -38,7 +40,7 @@ const actionHandlers = {
       restaurants: [
         ...restaurants,
         {
-          id: action.payload.newId,
+          id: newId,
           name: nameInput,
           type: typeInput,
           address: addressInput,
