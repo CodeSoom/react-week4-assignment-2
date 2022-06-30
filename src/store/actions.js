@@ -1,11 +1,15 @@
-export function updateInputContent(type, content) {
+export function updateInputContent(target, content) {
   return {
     type: 'updateInputContent',
     payload: {
-      type,
+      target,
       content,
     },
   };
 }
 
-export function addRestaurant() {}
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
+}
