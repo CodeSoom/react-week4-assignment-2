@@ -19,6 +19,25 @@ describe('reducer', () => {
     });
   });
 
+  context('with unhandled actions', () => {
+    it('does nothing', () => {
+      const state = reducer(
+        {
+          nameInput: '마녀주방',
+          type: '한식',
+          address: '서울시 강남구',
+        },
+        { type: undefined },
+      );
+
+      expect(state).toEqual({
+        nameInput: '마녀주방',
+        type: '한식',
+        address: '서울시 강남구',
+      });
+    });
+  });
+
   describe('updateNameInput', () => {
     it('changes the name input', () => {
       const state = reducer(
