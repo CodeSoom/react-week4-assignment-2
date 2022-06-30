@@ -1,6 +1,10 @@
 import reducer from './reducer';
 
 describe('reducer', () => {
+  const defaultName = '마녀주방';
+  const defaultType = '한식';
+  const defaultAddress = '서울시 강남구';
+
   context('without state', () => {
     const initialState = {
       nameInput: '',
@@ -23,17 +27,17 @@ describe('reducer', () => {
     it('does nothing', () => {
       const state = reducer(
         {
-          nameInput: '마녀주방',
-          type: '한식',
-          address: '서울시 강남구',
+          nameInput: defaultName,
+          type: defaultType,
+          address: defaultAddress,
         },
         { type: undefined },
       );
 
       expect(state).toEqual({
-        nameInput: '마녀주방',
-        type: '한식',
-        address: '서울시 강남구',
+        nameInput: defaultName,
+        type: defaultType,
+        address: defaultAddress,
       });
     });
   });
@@ -44,11 +48,11 @@ describe('reducer', () => {
         { nameInput: '' },
         {
           type: 'updateNameInput',
-          payload: { name: '마녀주방' },
+          payload: { name: defaultName },
         },
       );
 
-      expect(state.nameInput).toBe('마녀주방');
+      expect(state.nameInput).toBe(defaultName);
     });
   });
 
@@ -58,11 +62,11 @@ describe('reducer', () => {
         { typeInput: '' },
         {
           type: 'updateTypeInput',
-          payload: { type: '한식' },
+          payload: { type: defaultType },
         },
       );
 
-      expect(state.typeInput).toBe('한식');
+      expect(state.typeInput).toBe(defaultType);
     });
   });
 
@@ -72,11 +76,11 @@ describe('reducer', () => {
         { addressInput: '' },
         {
           type: 'updateAddressInput',
-          payload: { address: '서울시 강남구' },
+          payload: { address: defaultAddress },
         },
       );
 
-      expect(state.addressInput).toBe('서울시 강남구');
+      expect(state.addressInput).toBe(defaultAddress);
     });
   });
 
@@ -106,24 +110,24 @@ describe('reducer', () => {
         const newId = Date.now();
 
         const state = reduceAddRestaurant({
-          nameInput: '마녀주방',
-          typeInput: '한식',
-          addressInput: '서울시 강남구',
+          nameInput: defaultName,
+          typeInput: defaultType,
+          addressInput: defaultAddress,
           newId,
         });
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).toBe(newId);
-        expect(state.restaurants[0].name).toBe('마녀주방');
-        expect(state.restaurants[0].type).toBe('한식');
-        expect(state.restaurants[0].address).toBe('서울시 강남구');
+        expect(state.restaurants[0].name).toBe(defaultName);
+        expect(state.restaurants[0].type).toBe(defaultType);
+        expect(state.restaurants[0].address).toBe(defaultAddress);
       });
 
       it('makes all inputs blank', () => {
         const state = reduceAddRestaurant({
-          nameInput: '마녀주방',
-          typeInput: '한식',
-          addressInput: '서울시 강남구',
+          nameInput: defaultName,
+          typeInput: defaultType,
+          addressInput: defaultAddress,
           newId: Date.now(),
         });
 
@@ -137,8 +141,8 @@ describe('reducer', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
           nameInput: '',
-          typeInput: '한식',
-          addressInput: '서울시 강남구',
+          typeInput: defaultType,
+          addressInput: defaultAddress,
           newId: Date.now(),
         });
 
@@ -149,9 +153,9 @@ describe('reducer', () => {
     context('without typeInput', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: '마녀주방',
+          nameInput: defaultName,
           typeInput: '',
-          addressInput: '서울시 강남구',
+          addressInput: defaultAddress,
           newId: Date.now(),
         });
 
@@ -162,8 +166,8 @@ describe('reducer', () => {
     context('without addressInput', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: '마녀주방',
-          typeInput: '한식',
+          nameInput: defaultName,
+          typeInput: defaultType,
           addressInput: '',
           newId: Date.now(),
         });
