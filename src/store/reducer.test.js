@@ -1,4 +1,4 @@
-import { updateInputContent, addRestaurant } from './actions';
+import { updateInputContent } from './actions';
 
 import reducer, { initialState } from './reducer';
 
