@@ -13,6 +13,13 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'updateTypeInput') {
+    return {
+      ...state,
+      typeInput: action.payload.type,
+    };
+  }
+
   return state;
 };
 

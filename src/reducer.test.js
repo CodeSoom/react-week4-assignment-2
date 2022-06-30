@@ -32,4 +32,18 @@ describe('reducer', () => {
       expect(state.nameInput).toBe('마녀주방');
     });
   });
+
+  describe('updateTypeInput', () => {
+    it('changes the type input', () => {
+      const state = reducer(
+        { typeInput: '' },
+        {
+          type: 'updateTypeInput',
+          payload: { type: '한식' },
+        },
+      );
+
+      expect(state.typeInput).toBe('한식');
+    });
+  });
 });
