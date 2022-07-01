@@ -1,9 +1,12 @@
 import React from 'react';
+import Item from './Item';
 
 export default function List({ restaurants }) {
   return (
     <ol>
-      <li />
+      {restaurants.map((restaurant) => (
+        <Item key={restaurant.id} restaurants={restaurant} />
+      ))}
     </ol>
   );
 }
