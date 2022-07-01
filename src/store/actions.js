@@ -1,4 +1,4 @@
-export function updateInputContent(target, content) {
+export function updateInputContent({ target, content }) {
   return {
     type: 'updateInputContent',
     payload: {

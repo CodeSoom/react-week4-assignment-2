@@ -19,7 +19,7 @@ describe('reducer', () => {
       it('name이 입력한 값으로 변경하여 반환합니다.', () => {
         const state = reducer(
           { name: '' },
-          updateInputContent('name', '프론트'),
+          updateInputContent({ target: 'name', content: '프론트' }),
         );
 
         expect(state.name).toBe('프론트');
@@ -30,7 +30,7 @@ describe('reducer', () => {
       it('category가 입력한 값으로 변경하여 반환합니다.', () => {
         const state = reducer(
           { category: '' },
-          updateInputContent('category', '양식'),
+          updateInputContent({ target: 'category', content: '양식' }),
         );
 
         expect(state.category).toBe('양식');
@@ -41,7 +41,7 @@ describe('reducer', () => {
       it('address가 입력한 값으로 변경하여 반환합니다.', () => {
         const state = reducer(
           { address: '' },
-          updateInputContent('address', '잠실'),
+          updateInputContent({ target: 'address', content: '잠실' }),
         );
 
         expect(state.address).toBe('잠실');
@@ -59,7 +59,7 @@ describe('reducer', () => {
             category: '',
             address: '',
             restaurants: [],
-          }, addRestaurant('오류', '오류'),
+          }, addRestaurant({ target: '오류', content: '오류' }),
         );
 
         expect(state.restaurants).toHaveLength(0);
