@@ -1,10 +1,8 @@
 import reducer from './reducer';
 
-describe('reducer', () => {
-  const defaultName = '마녀주방';
-  const defaultType = '한식';
-  const defaultAddress = '서울시 강남구';
+import restaurant from '../fixtures/restaurant';
 
+describe('reducer', () => {
   context('without state', () => {
     const initialState = {
       restaurant: {
@@ -29,21 +27,13 @@ describe('reducer', () => {
     it('does nothing', () => {
       const state = reducer(
         {
-          restaurant: {
-            name: defaultName,
-            type: defaultType,
-            address: defaultAddress,
-          },
+          restaurant,
         },
         { type: undefined },
       );
 
       expect(state).toEqual({
-        restaurant: {
-          name: defaultName,
-          type: defaultType,
-          address: defaultAddress,
-        },
+        restaurant,
       });
     });
   });
@@ -58,11 +48,11 @@ describe('reducer', () => {
         },
         {
           type: 'updateRestaurantName',
-          payload: { restaurantName: defaultName },
+          payload: { restaurantName: restaurant.name },
         },
       );
 
-      expect(state.restaurant.name).toBe(defaultName);
+      expect(state.restaurant.name).toBe(restaurant.name);
     });
   });
 
@@ -76,11 +66,11 @@ describe('reducer', () => {
         },
         {
           type: 'updateRestaurantType',
-          payload: { restaurantType: defaultType },
+          payload: { restaurantType: restaurant.type },
         },
       );
 
-      expect(state.restaurant.type).toBe(defaultType);
+      expect(state.restaurant.type).toBe(restaurant.type);
     });
   });
 
@@ -94,11 +84,11 @@ describe('reducer', () => {
         },
         {
           type: 'updateRestaurantAddress',
-          payload: { restaurantAddress: defaultAddress },
+          payload: { restaurantAddress: restaurant.address },
         },
       );
 
-      expect(state.restaurant.address).toBe(defaultAddress);
+      expect(state.restaurant.address).toBe(restaurant.address);
     });
   });
 
@@ -130,24 +120,24 @@ describe('reducer', () => {
         const newId = Date.now();
 
         const state = reduceAddRestaurant({
-          restaurantName: defaultName,
-          restaurantType: defaultType,
-          restaurantAddress: defaultAddress,
+          restaurantName: restaurant.name,
+          restaurantType: restaurant.type,
+          restaurantAddress: restaurant.address,
           newId,
         });
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).toBe(newId);
-        expect(state.restaurants[0].name).toBe(defaultName);
-        expect(state.restaurants[0].type).toBe(defaultType);
-        expect(state.restaurants[0].address).toBe(defaultAddress);
+        expect(state.restaurants[0].name).toBe(restaurant.name);
+        expect(state.restaurants[0].type).toBe(restaurant.type);
+        expect(state.restaurants[0].address).toBe(restaurant.address);
       });
 
       it('makes all properties of the restaurant blank', () => {
         const state = reduceAddRestaurant({
-          restaurantName: defaultName,
-          restaurantType: defaultType,
-          restaurantAddress: defaultAddress,
+          restaurantName: restaurant.name,
+          restaurantType: restaurant.type,
+          restaurantAddress: restaurant.address,
           newId: Date.now(),
         });
 
@@ -160,9 +150,9 @@ describe('reducer', () => {
     context('without a new id', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          restaurantName: defaultName,
-          restaurantType: defaultType,
-          restaurantAddress: defaultAddress,
+          restaurantName: restaurant.name,
+          restaurantType: restaurant.type,
+          restaurantAddress: restaurant.address,
           newId: undefined,
         });
 
@@ -174,8 +164,8 @@ describe('reducer', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
           restaurantName: '',
-          restaurantType: defaultType,
-          restaurantAddress: defaultAddress,
+          restaurantType: restaurant.type,
+          restaurantAddress: restaurant.address,
           newId: Date.now(),
         });
 
@@ -186,9 +176,9 @@ describe('reducer', () => {
     context('without the restaurant type', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          restaurantName: defaultName,
+          restaurantName: restaurant.name,
           restaurantType: '',
-          restaurantAddress: defaultAddress,
+          restaurantAddress: restaurant.address,
           newId: Date.now(),
         });
 
@@ -199,8 +189,8 @@ describe('reducer', () => {
     context('without the restaurant address', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          restaurantName: defaultName,
-          restaurantType: defaultType,
+          restaurantName: restaurant.name,
+          restaurantType: restaurant.type,
           restaurantAddress: '',
           newId: Date.now(),
         });
