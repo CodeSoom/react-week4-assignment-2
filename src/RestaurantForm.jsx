@@ -19,16 +19,19 @@ const RestaurantForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <input
+        name="name"
         placeholder="이름"
         value={restaurant.name}
         onChange={handleChangeName}
       />
       <input
+        name="category"
         placeholder="분류"
         value={restaurant.type}
         onChange={handleChangeType}
       />
       <input
+        name="address"
         placeholder="주소"
         value={restaurant.address}
         onChange={handleChangeAddress}
