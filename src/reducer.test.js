@@ -1,5 +1,12 @@
 import reducer from './reducer';
 
+import {
+  updateRestaurantName,
+  updateRestaurantType,
+  updateRestaurantAddress,
+  addRestaurant,
+} from './actions';
+
 import restaurant from '../fixtures/restaurant';
 
 describe('reducer', () => {
@@ -46,10 +53,7 @@ describe('reducer', () => {
             name: '',
           },
         },
-        {
-          type: 'updateRestaurantName',
-          payload: { restaurantName: restaurant.name },
-        },
+        updateRestaurantName(restaurant.name),
       );
 
       expect(state.restaurant.name).toBe(restaurant.name);
@@ -64,10 +68,7 @@ describe('reducer', () => {
             type: '',
           },
         },
-        {
-          type: 'updateRestaurantType',
-          payload: { restaurantType: restaurant.type },
-        },
+        updateRestaurantType(restaurant.type),
       );
 
       expect(state.restaurant.type).toBe(restaurant.type);
@@ -82,10 +83,7 @@ describe('reducer', () => {
             address: '',
           },
         },
-        {
-          type: 'updateRestaurantAddress',
-          payload: { restaurantAddress: restaurant.address },
-        },
+        updateRestaurantAddress(restaurant.address),
       );
 
       expect(state.restaurant.address).toBe(restaurant.address);
@@ -107,12 +105,7 @@ describe('reducer', () => {
         },
         restaurants: [],
       },
-      {
-        type: 'addRestaurant',
-        payload: {
-          newId,
-        },
-      },
+      addRestaurant(newId),
     );
 
     context('with a valid restaurant', () => {
