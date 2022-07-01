@@ -20,7 +20,7 @@ const RestaurantFormContainer = () => {
 
   const handleChangeAddress = (address) => dispatch(updateRestaurantAddress(address));
 
-  const handleSubmit = () => dispatch(addRestaurant());
+  const handleSubmit = () => dispatch(addRestaurant(Date.now()));
 
   return (
     <RestaurantForm

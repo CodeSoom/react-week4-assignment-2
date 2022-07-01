@@ -14,6 +14,8 @@ import {
 import RestaurantFormContainer from './RestaurantFormContainer';
 
 describe('RestaurantFormContainer', () => {
+  Date.now = jest.fn(() => 1656683471);
+
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -65,6 +67,6 @@ describe('RestaurantFormContainer', () => {
 
     fireEvent.click(getByRole('button', { name: '등록' }));
 
-    expect(dispatch).toBeCalledWith(addRestaurant());
+    expect(dispatch).toBeCalledWith(addRestaurant(Date.now()));
   });
 });
