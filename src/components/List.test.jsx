@@ -28,10 +28,4 @@ describe('List', () => {
       expect(getByText(/'김가네'/)).not.toBeNull();
     });
   });
-
-  context('restaurants가 없을 때', () => {
-    const { getAllByRole } = renderList([]);
-
-    expect(getAllByRole('listitem')).toHaveLength(0);
-  });
 });
