@@ -1,49 +1,60 @@
 const initialState = {
-  nameInput: '',
-  typeInput: '',
-  addressInput: '',
+  restaurant: {
+    name: '',
+    type: '',
+    address: '',
+  },
   restaurants: [],
 };
 
 const actionHandlers = {
-  updateNameInput: (state, action) => ({
+  updateRestaurantName: (state, action) => ({
     ...state,
-    nameInput: action.payload.name,
+    restaurant: {
+      ...state.restaurant,
+      name: action.payload.restaurantName,
+    },
   }),
-  updateTypeInput: (state, action) => ({
+  updateRestaurantType: (state, action) => ({
     ...state,
-    typeInput: action.payload.type,
+    restaurant: {
+      ...state.restaurant,
+      type: action.payload.restaurantType,
+    },
   }),
-  updateAddressInput: (state, action) => ({
+  updateRestaurantAddress: (state, action) => ({
     ...state,
-    addressInput: action.payload.address,
+    restaurant: {
+      ...state.restaurant,
+      address: action.payload.restaurantAddress,
+    },
   }),
   addRestaurant: (state, action) => {
     const {
-      nameInput,
-      typeInput,
-      addressInput,
+      restaurant,
       restaurants,
     } = state;
 
     const { newId } = action.payload;
 
-    if (!nameInput || !typeInput || !addressInput || !newId) {
+    if (!restaurant.name || !restaurant.type || !restaurant.address || !newId) {
       return state;
     }
 
     return {
       ...state,
-      nameInput: '',
-      typeInput: '',
-      addressInput: '',
+      restaurant: {
+        name: '',
+        type: '',
+        address: '',
+      },
       restaurants: [
         ...restaurants,
         {
           id: newId,
-          name: nameInput,
-          type: typeInput,
-          address: addressInput,
+          name: restaurant.name,
+          type: restaurant.type,
+          address: restaurant.address,
         },
       ],
     };

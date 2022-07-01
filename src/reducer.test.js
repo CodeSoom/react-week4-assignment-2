@@ -7,9 +7,11 @@ describe('reducer', () => {
 
   context('without state', () => {
     const initialState = {
-      nameInput: '',
-      typeInput: '',
-      addressInput: '',
+      restaurant: {
+        name: '',
+        type: '',
+        address: '',
+      },
       restaurants: [],
     };
 
@@ -27,74 +29,92 @@ describe('reducer', () => {
     it('does nothing', () => {
       const state = reducer(
         {
-          nameInput: defaultName,
-          type: defaultType,
-          address: defaultAddress,
+          restaurant: {
+            name: defaultName,
+            type: defaultType,
+            address: defaultAddress,
+          },
         },
         { type: undefined },
       );
 
       expect(state).toEqual({
-        nameInput: defaultName,
-        type: defaultType,
-        address: defaultAddress,
+        restaurant: {
+          name: defaultName,
+          type: defaultType,
+          address: defaultAddress,
+        },
       });
     });
   });
 
-  describe('updateNameInput', () => {
-    it('changes the name input', () => {
+  describe('updateRestaurantName', () => {
+    it('changes the restaurant name', () => {
       const state = reducer(
-        { nameInput: '' },
         {
-          type: 'updateNameInput',
-          payload: { name: defaultName },
+          restaurant: {
+            name: '',
+          },
+        },
+        {
+          type: 'updateRestaurantName',
+          payload: { restaurantName: defaultName },
         },
       );
 
-      expect(state.nameInput).toBe(defaultName);
+      expect(state.restaurant.name).toBe(defaultName);
     });
   });
 
-  describe('updateTypeInput', () => {
-    it('changes the type input', () => {
+  describe('updateRestaurantType', () => {
+    it('changes the restaurant type', () => {
       const state = reducer(
-        { typeInput: '' },
         {
-          type: 'updateTypeInput',
-          payload: { type: defaultType },
+          restaurant: {
+            type: '',
+          },
+        },
+        {
+          type: 'updateRestaurantType',
+          payload: { restaurantType: defaultType },
         },
       );
 
-      expect(state.typeInput).toBe(defaultType);
+      expect(state.restaurant.type).toBe(defaultType);
     });
   });
 
-  describe('updateAddressInput', () => {
-    it('changes the address input', () => {
+  describe('updateRestaurantAddress', () => {
+    it('changes the restaurant address', () => {
       const state = reducer(
-        { addressInput: '' },
         {
-          type: 'updateAddressInput',
-          payload: { address: defaultAddress },
+          restaurant: {
+            address: '',
+          },
+        },
+        {
+          type: 'updateRestaurantAddress',
+          payload: { restaurantAddress: defaultAddress },
         },
       );
 
-      expect(state.addressInput).toBe(defaultAddress);
+      expect(state.restaurant.address).toBe(defaultAddress);
     });
   });
 
   describe('addRestaurant', () => {
     const reduceAddRestaurant = ({
-      nameInput,
-      typeInput,
-      addressInput,
+      restaurantName,
+      restaurantType,
+      restaurantAddress,
       newId,
     }) => reducer(
       {
-        nameInput,
-        typeInput,
-        addressInput,
+        restaurant: {
+          name: restaurantName,
+          type: restaurantType,
+          address: restaurantAddress,
+        },
         restaurants: [],
       },
       {
@@ -105,14 +125,14 @@ describe('reducer', () => {
       },
     );
 
-    context('with all inputs', () => {
-      it('appends a new restaurant with a new id into restaurants', () => {
+    context('with a valid restaurant', () => {
+      it('appends the restaurant with a new id into restaurants', () => {
         const newId = Date.now();
 
         const state = reduceAddRestaurant({
-          nameInput: defaultName,
-          typeInput: defaultType,
-          addressInput: defaultAddress,
+          restaurantName: defaultName,
+          restaurantType: defaultType,
+          restaurantAddress: defaultAddress,
           newId,
         });
 
@@ -123,26 +143,26 @@ describe('reducer', () => {
         expect(state.restaurants[0].address).toBe(defaultAddress);
       });
 
-      it('makes all inputs blank', () => {
+      it('makes all properties of the restaurant blank', () => {
         const state = reduceAddRestaurant({
-          nameInput: defaultName,
-          typeInput: defaultType,
-          addressInput: defaultAddress,
+          restaurantName: defaultName,
+          restaurantType: defaultType,
+          restaurantAddress: defaultAddress,
           newId: Date.now(),
         });
 
-        expect(state.nameInput).toBe('');
-        expect(state.typeInput).toBe('');
-        expect(state.addressInput).toBe('');
+        expect(state.restaurant.name).toBe('');
+        expect(state.restaurant.type).toBe('');
+        expect(state.restaurant.address).toBe('');
       });
     });
 
-    context('without new id', () => {
+    context('without a new id', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: defaultName,
-          typeInput: defaultType,
-          addressInput: defaultAddress,
+          restaurantName: defaultName,
+          restaurantType: defaultType,
+          restaurantAddress: defaultAddress,
           newId: undefined,
         });
 
@@ -150,12 +170,12 @@ describe('reducer', () => {
       });
     });
 
-    context('without nameInput', () => {
+    context('without the restaurant name', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: '',
-          typeInput: defaultType,
-          addressInput: defaultAddress,
+          restaurantName: '',
+          restaurantType: defaultType,
+          restaurantAddress: defaultAddress,
           newId: Date.now(),
         });
 
@@ -163,12 +183,12 @@ describe('reducer', () => {
       });
     });
 
-    context('without typeInput', () => {
+    context('without the restaurant type', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: defaultName,
-          typeInput: '',
-          addressInput: defaultAddress,
+          restaurantName: defaultName,
+          restaurantType: '',
+          restaurantAddress: defaultAddress,
           newId: Date.now(),
         });
 
@@ -176,12 +196,12 @@ describe('reducer', () => {
       });
     });
 
-    context('without addressInput', () => {
+    context('without the restaurant address', () => {
       it('does nothing', () => {
         const state = reduceAddRestaurant({
-          nameInput: defaultName,
-          typeInput: defaultType,
-          addressInput: '',
+          restaurantName: defaultName,
+          restaurantType: defaultType,
+          restaurantAddress: '',
           newId: Date.now(),
         });
 
