@@ -14,16 +14,13 @@ const RestaurantFormContainer = () => {
 
   const restaurant = useSelector((state) => state.restaurant);
 
-  const handleChangeName = (event) => dispatch(updateRestaurantName(event.target.value));
+  const handleChangeName = (name) => dispatch(updateRestaurantName(name));
 
-  const handleChangeType = (event) => dispatch(updateRestaurantType(event.target.value));
+  const handleChangeType = (type) => dispatch(updateRestaurantType(type));
 
-  const handleChangeAddress = (event) => dispatch(updateRestaurantAddress(event.target.value));
+  const handleChangeAddress = (address) => dispatch(updateRestaurantAddress(address));
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(addRestaurant());
-  };
+  const handleSubmit = () => dispatch(addRestaurant());
 
   return (
     <RestaurantForm

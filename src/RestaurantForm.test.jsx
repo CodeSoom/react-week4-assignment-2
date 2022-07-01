@@ -8,7 +8,7 @@ describe('RestaurantForm', () => {
   const handleChangeName = jest.fn();
   const handleChangeType = jest.fn();
   const handleChangeAddress = jest.fn();
-  const handleSubmit = jest.fn((e) => e.preventDefault());
+  const handleSubmit = jest.fn();
 
   const renderRestaurantForm = () => render((
     <RestaurantForm
