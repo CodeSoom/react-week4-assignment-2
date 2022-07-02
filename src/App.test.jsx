@@ -26,7 +26,7 @@ describe('App', () => {
   it('input-button을 렌더링한다', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(/완료/)).not.toBeNull();
+    expect(getByText(/등록/)).not.toBeNull();
   });
 
   it('restaurants-restaurantName을 렌더링한다', () => {
