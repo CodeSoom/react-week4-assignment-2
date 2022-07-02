@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import App from './App';
 
-import { restaurants } from './fixtures/restaurant-dummy';
+import { restaurants } from './fixtures/restaurant';
 
 jest.mock('react-redux');
 
