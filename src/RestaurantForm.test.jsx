@@ -48,21 +48,11 @@ describe('RestaurantForm', () => {
     expect(getByRole('button', { name: '등록' })).toBeInTheDocument();
   });
 
-  it('renders the restaurant name in props', () => {
+  it('renders restaurant', () => {
     const { getByPlaceholderText } = renderRestaurantForm();
 
     expect(getByPlaceholderText('이름')).toHaveValue(restaurant.name);
-  });
-
-  it('renders the restaurant type in props', () => {
-    const { getByPlaceholderText } = renderRestaurantForm();
-
     expect(getByPlaceholderText('분류')).toHaveValue(restaurant.type);
-  });
-
-  it('renders the restaurant address in props', () => {
-    const { getByPlaceholderText } = renderRestaurantForm();
-
     expect(getByPlaceholderText('주소')).toHaveValue(restaurant.address);
   });
 

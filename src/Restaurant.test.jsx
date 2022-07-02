@@ -9,21 +9,11 @@ describe('Restaurant', () => {
     <Restaurant restaurant={restaurant} />
   ));
 
-  it('renders the restaurant name in props', () => {
+  it('renders restaurant', () => {
     const { container } = rednerRestaurant();
 
     expect(container).toHaveTextContent(restaurant.name);
-  });
-
-  it('renders the restaurant type in props', () => {
-    const { container } = rednerRestaurant();
-
     expect(container).toHaveTextContent(restaurant.type);
-  });
-
-  it('renders the restaurant address in props', () => {
-    const { container } = rednerRestaurant();
-
     expect(container).toHaveTextContent(restaurant.address);
   });
 });
