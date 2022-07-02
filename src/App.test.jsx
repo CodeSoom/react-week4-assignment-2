@@ -13,9 +13,29 @@ describe('App', () => {
     restaurants,
   }));
 
+  const renderApp = () => render(<App />);
+
   it('renders a heading', () => {
-    const { container } = render(<App />);
+    const { container } = renderApp();
 
     expect(container).toHaveTextContent('Restaurants');
+  });
+
+  it('renders restaurants', () => {
+    const { container } = renderApp();
+
+    restaurants.forEach(({ name, type, address }) => {
+      expect(container).toHaveTextContent(name);
+      expect(container).toHaveTextContent(type);
+      expect(container).toHaveTextContent(address);
+    });
+  });
+
+  it('renders restaurant', () => {
+    const { getByPlaceholderText } = renderApp();
+
+    expect(getByPlaceholderText('이름')).toHaveValue(restaurant.name);
+    expect(getByPlaceholderText('분류')).toHaveValue(restaurant.type);
+    expect(getByPlaceholderText('주소')).toHaveValue(restaurant.address);
   });
 });
