@@ -10,7 +10,7 @@ jest.mock('react-redux');
 
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
-    Restaurants: restaurants,
+    restaurants,
   }));
 
   const renderApp = () => render((
@@ -23,7 +23,7 @@ describe('App', () => {
     expect(getByText(/Restaurants/)).not.toBeNull();
   });
 
-  it('input-button을 렌더링한다', () => {
+  it('등록 버튼을 렌더링한다', () => {
     const { getByText } = renderApp();
 
     expect(getByText(/등록/)).not.toBeNull();
