@@ -6,6 +6,6 @@ export const restaurantAdress = '주소';
 
 export const restaurants = [
   {
-    id: 1, restaurantName: '한식뷔페', restaurantType: '한식', restaurantAdress: '서울특별시 신림동',
+    id: 1, name: '한식뷔페', type: '한식', adress: '서울특별시 신림동',
   },
 ];
