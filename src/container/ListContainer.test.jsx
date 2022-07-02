@@ -25,9 +25,9 @@ describe('ListContainer', () => {
   }
 
   it('리스트가 렌더링될 때 가게 목록이 보여집니다.', () => {
-    const { getByText } = renderList();
+    const { container } = renderList();
 
-    expect(getByText(/마녀주방/)).not.toBeNull();
-    expect(getByText(/김가네/)).not.toBeNull();
+    expect(container).toHaveTextContent(/마녀주방/);
+    expect(container).toHaveTextContent(/김가네/);
   });
 });
