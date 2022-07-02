@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import Item from './Item';
 
 describe('Item', () => {
-  it('렌더링시 레스토랑 목록이 보여집니다', () => {
+  it('레스토랑 목록이 보여집니다', () => {
     const restaurants = {
       id: 1, name: '마녀주방', category: '한식', address: '잠실',
     };
