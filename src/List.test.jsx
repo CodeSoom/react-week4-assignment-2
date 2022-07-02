@@ -1,10 +1,17 @@
+import { useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import List from './List';
 
-import restaurants from './fixtures/restaurants';
+import restaurants from '../fixtures/restaurants';
+
+jest.mock('react-redux');
 
 describe('<List/>', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
+
   const renderList = (infomation) => render((
     <List restaurants={infomation} />
   ));
