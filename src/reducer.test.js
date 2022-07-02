@@ -1,6 +1,6 @@
-import { UpdateRestaurantName, UpdateRestaurantType } from './actions';
+import { UpdateRestaurantAdress, UpdateRestaurantName, UpdateRestaurantType } from './actions';
 
-import { restaurantName, restaurantType } from './fixtures/restaurant';
+import { restaurantAdress, restaurantName, restaurantType } from './fixtures/restaurant';
 
 import reducer from './reducer';
 
@@ -32,6 +32,14 @@ describe('reducer', () => {
         const state = reducer({ typeInput: '' }, UpdateRestaurantType(restaurantType));
 
         expect(state.typeInput).toBe(restaurantType);
+      });
+    });
+
+    describe('UpdateRestaurantAdress', () => {
+      it('adressInput이 변경이된다', () => {
+        const state = reducer({ adressInput: '' }, UpdateRestaurantAdress(restaurantAdress));
+
+        expect(state.adressInput).toBe(restaurantAdress);
       });
     });
   });

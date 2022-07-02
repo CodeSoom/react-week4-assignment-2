@@ -15,3 +15,12 @@ export function UpdateRestaurantType(typeInput) {
     },
   };
 }
+
+export function UpdateRestaurantAdress(adressInput) {
+  return {
+    type: 'UpdateRestaurantAdress',
+    payload: {
+      adressInput,
+    },
+  };
+}
