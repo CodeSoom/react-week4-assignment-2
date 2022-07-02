@@ -13,8 +13,11 @@ describe('App', () => {
     restaurants,
   }));
 
+  const { name, type, adress } = restaurants[0];
+
   const renderApp = () => render((
     <App />
+
   ));
 
   it('title을 렌더링한다', () => {
@@ -29,21 +32,21 @@ describe('App', () => {
     expect(getByText(/등록/)).not.toBeNull();
   });
 
-  it('restaurants-restaurantName을 렌더링한다', () => {
+  it('restaurantName을 렌더링한다', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(/한식 뷔페/)).not.toBeNull();
+    expect(getByText(name)).not.toBeNull();
   });
 
-  it('restaurants-restaurantType을 렌더링한다', () => {
+  it('restaurantType을 렌더링한다', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(/한식/)).not.toBeNull();
+    expect(getByText(type)).not.toBeNull();
   });
 
-  it('restaurants-restaurantAdress을 렌더링한다', () => {
+  it('restaurantAdress을 렌더링한다', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(/서울특별시 신림동/)).not.toBeNull();
+    expect(getByText(adress)).not.toBeNull();
   });
 });
