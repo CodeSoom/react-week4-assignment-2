@@ -2,7 +2,7 @@ export const restaurantName = '한식뷔페';
 
 export const restaurantType = '한식';
 
-export const restaurantAdress = '주소';
+export const restaurantAdress = '서울특별시 신림동';
 
 export const restaurants = [
   {
