@@ -20,6 +20,22 @@ const reducerAction = {
     ...state,
     adressInput: action.payload.adressInput,
   }),
+
+  addRestaurant: (state, action) => {
+    const {
+      nameInput, typeInput, adressInput, restaurants,
+    } = state;
+
+    return {
+      ...state,
+      nameInput: '',
+      typeInput: '',
+      adressInput: '',
+      restaurants: [...restaurants, {
+        id: action.payload.id, name: nameInput, type: typeInput, adress: adressInput,
+      }],
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {
