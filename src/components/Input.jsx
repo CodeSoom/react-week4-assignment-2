@@ -1,48 +1,48 @@
 export default function Input(
   {
-    restaurant,
-    onChangeName,
-    onChangeCategory,
-    onChangeAddress,
-    onSubmit,
+    name,
+    category,
+    address,
+    handleInputChange,
+    handleSubmit,
   },
 ) {
   function handleChangeName(e) {
-    onChangeName(e.target.value);
+    handleInputChange({ targetType: 'name', content: e.target.value });
   }
 
   function handleChangeCategory(e) {
-    onChangeCategory(e.target.value);
+    handleInputChange({ targetType: 'category', content: e.target.value });
   }
 
   function handleChangeAddress(e) {
-    onChangeAddress(e.target.value);
+    handleInputChange({ targetType: 'address', content: e.target.value });
   }
 
-  function handleSubmit() {
-    onSubmit();
+  function onSubmit() {
+    handleSubmit();
   }
   return (
     <div>
       <input
         name="name"
         placeholder="이름"
-        value={restaurant.name}
+        value={name}
         onChange={handleChangeName}
       />
       <input
         name="category"
         placeholder="분류"
-        value={restaurant.category}
+        value={category}
         onChange={handleChangeCategory}
       />
       <input
         name="address"
         placeholder="주소"
-        value={restaurant.address}
+        value={address}
         onChange={handleChangeAddress}
       />
-      <button onClick={handleSubmit} type="button">등록</button>
+      <button onClick={onSubmit} type="button">등록</button>
     </div>
   );
 }

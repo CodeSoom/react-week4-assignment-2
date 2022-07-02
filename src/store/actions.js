@@ -1,8 +1,8 @@
-export function updateInputContent({ target, content }) {
+export function updateInputContent({ targetType, content }) {
   return {
     type: 'updateInputContent',
     payload: {
-      target,
+      targetType,
       content,
     },
   };

@@ -1,7 +1,7 @@
 const reducers = {
   updateInputContent: (state, action) => ({
     ...state,
-    [action.payload.target]: action.payload.content,
+    [action.payload.targetType]: action.payload.content,
   }),
 
   addRestaurant: (state) => {

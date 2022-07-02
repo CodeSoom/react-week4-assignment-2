@@ -3,9 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import Input from './Input';
 
 describe('Input', () => {
-  const handleChangeName = jest.fn();
-  const handleChangeCategory = jest.fn();
-  const handleChangeAddress = jest.fn();
+  const handleInputChange = jest.fn();
   const handleSubmit = jest.fn();
 
   const restaurant = {
@@ -17,11 +15,11 @@ describe('Input', () => {
   function renderInput() {
     return render((
       <Input
-        restaurant={restaurant}
-        onChangeName={handleChangeName}
-        onChangeCategory={handleChangeCategory}
-        onChangeAddress={handleChangeAddress}
-        onSubmit={handleSubmit}
+        name={restaurant.name}
+        category={restaurant.category}
+        address={restaurant.address}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
     ));
   }
@@ -77,7 +75,7 @@ describe('Input', () => {
 
     fireEvent.change(getByPlaceholderText('이름'), { target: { value: '김가네' } });
 
-    expect(handleChangeName).toBeCalled();
+    expect(handleInputChange).toBeCalled();
   });
 
   it('category를 변경하면 handleChangeCategory가 호출됩니다.', () => {
@@ -85,7 +83,7 @@ describe('Input', () => {
 
     fireEvent.change(getByPlaceholderText('분류'), { target: { value: '분식' } });
 
-    expect(handleChangeCategory).toBeCalled();
+    expect(handleInputChange).toBeCalled();
   });
 
   it('address를 변경하면 handleChangeAddress가 호출됩니다.', () => {
@@ -93,7 +91,7 @@ describe('Input', () => {
 
     fireEvent.change(getByPlaceholderText('주소'), { target: { value: '창신' } });
 
-    expect(handleChangeAddress).toBeCalled();
+    expect(handleInputChange).toBeCalled();
   });
 
   it('버튼을 클릭하면 onSubmit이벤트가 호출됩니다.', () => {
