@@ -14,15 +14,17 @@ describe('Input', () => {
     address: '잠실',
   };
 
-  const renderInput = render((
-    <Input
-      restaurant={restaurant}
-      onChangeName={handleChangeName}
-      onChangeCategory={handleChangeCategory}
-      onChangeAddress={handleChangeAddress}
-      onSubmit={handleSubmit}
-    />
-  ));
+  function renderInput() {
+    return render((
+      <Input
+        restaurant={restaurant}
+        onChangeName={handleChangeName}
+        onChangeCategory={handleChangeCategory}
+        onChangeAddress={handleChangeAddress}
+        onSubmit={handleSubmit}
+      />
+    ));
+  }
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -47,9 +49,9 @@ describe('Input', () => {
   });
 
   it('button이 보여집니다.', () => {
-    const { getByText } = renderInput();
+    const { getByRole } = renderInput();
 
-    expect(getByText('등록')).toHaveTextContent();
+    expect(getByRole('button', { name: '등록' })).toBeInTheDocument();
   });
 
   it('name이 restaurant의 name과 같습니다', () => {
@@ -83,21 +85,21 @@ describe('Input', () => {
 
     fireEvent.change(getByPlaceholderText('분류'), { target: { value: '분식' } });
 
-    expect(handleChangeName).toBeCalled();
+    expect(handleChangeCategory).toBeCalled();
   });
 
   it('address를 변경하면 handleChangeAddress가 호출됩니다.', () => {
     const { getByPlaceholderText } = renderInput();
 
-    fireEvent.change(getByPlaceholderText('주소'), { target: { value: '잠실' } });
+    fireEvent.change(getByPlaceholderText('주소'), { target: { value: '창신' } });
 
-    expect(handleChangeName).toBeCalled();
+    expect(handleChangeAddress).toBeCalled();
   });
 
   it('버튼을 클릭하면 onSubmit이벤트가 호출됩니다.', () => {
-    const { getByText } = renderInput();
+    const { getByRole } = renderInput();
 
-    fireEvent.click(getByText('등록'));
+    fireEvent.click(getByRole('button', { name: '등록' }));
 
     expect(handleSubmit).toBeCalled();
   });
