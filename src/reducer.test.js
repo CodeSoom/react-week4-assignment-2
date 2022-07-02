@@ -12,9 +12,9 @@ describe('reducer', () => {
       const state = reducer(undefined, { });
 
       expect(state).toEqual({
-        nameInput: '',
-        typeInput: '',
-        adressInput: '',
+        restaurantName: '',
+        restaurantType: '',
+        restaurantAdress: '',
         restaurants: [],
       });
     });
@@ -23,34 +23,34 @@ describe('reducer', () => {
   context('state가 있는경우', () => {
     describe('UpdateRestaurantName', () => {
       it('nameInput이 변경이된다', () => {
-        const state = reducer({ nameInput: '' }, updateRestaurantName(restaurantName));
+        const state = reducer({ restaurantName: '' }, updateRestaurantName(restaurantName));
 
-        expect(state.nameInput).toBe(restaurantName);
+        expect(state.restaurantName).toBe(restaurantName);
       });
     });
 
     describe('UpdateRestaurantType', () => {
       it('typeInput이 변경이된다', () => {
-        const state = reducer({ typeInput: '' }, updateRestaurantType(restaurantType));
+        const state = reducer({ restaurantType: '' }, updateRestaurantType(restaurantType));
 
-        expect(state.typeInput).toBe(restaurantType);
+        expect(state.restaurantType).toBe(restaurantType);
       });
     });
 
     describe('UpdateRestaurantAdress', () => {
       it('adressInput이 변경이된다', () => {
-        const state = reducer({ adressInput: '' }, updateRestaurantAdress(restaurantAdress));
+        const state = reducer({ restaurantAdress: '' }, updateRestaurantAdress(restaurantAdress));
 
-        expect(state.adressInput).toBe(restaurantAdress);
+        expect(state.restaurantAdress).toBe(restaurantAdress);
       });
     });
 
     describe('addRestaurant', () => {
       it('restaurant 정보가 추가된다', () => {
         const state = reducer({
-          nameInput: restaurantName,
-          typeInput: restaurantType,
-          adressInput: restaurantAdress,
+          restaurantName,
+          restaurantType,
+          restaurantAdress,
           restaurants: [],
         }, addRestaurant(1));
 
