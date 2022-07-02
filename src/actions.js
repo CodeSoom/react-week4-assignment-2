@@ -24,3 +24,12 @@ export function UpdateRestaurantAdress(adressInput) {
     },
   };
 }
+
+export function addRestaurant(id) {
+  return {
+    type: 'addRestaurant',
+    payload: {
+      id,
+    },
+  };
+}

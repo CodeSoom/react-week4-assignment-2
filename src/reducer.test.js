@@ -1,4 +1,6 @@
-import { UpdateRestaurantAdress, UpdateRestaurantName, UpdateRestaurantType } from './actions';
+import {
+  addRestaurant, UpdateRestaurantAdress, UpdateRestaurantName, UpdateRestaurantType,
+} from './actions';
 
 import { restaurantAdress, restaurantName, restaurantType } from './fixtures/restaurant';
 
@@ -40,6 +42,31 @@ describe('reducer', () => {
         const state = reducer({ adressInput: '' }, UpdateRestaurantAdress(restaurantAdress));
 
         expect(state.adressInput).toBe(restaurantAdress);
+      });
+    });
+
+    describe('addRestaurant', () => {
+      it('restaurant 정보가 추가된다', () => {
+        const state = reducer({
+          nameInput: restaurantName,
+          typeInput: restaurantType,
+          adressInput: restaurantAdress,
+          restaurants: [],
+        }, addRestaurant(1));
+
+        const firstRestaurants = state.restaurants[0];
+
+        expect(state.restaurants).toHaveLength(1);
+
+        expect(firstRestaurants.id).not.toBeUndefined();
+
+        expect(firstRestaurants.id).toBe(1);
+
+        expect(firstRestaurants.name).toBe(restaurantName);
+
+        expect(firstRestaurants.type).toBe(restaurantType);
+
+        expect(firstRestaurants.adress).toBe(restaurantAdress);
       });
     });
   });
