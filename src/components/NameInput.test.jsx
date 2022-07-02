@@ -45,7 +45,7 @@ describe('<NameInput />', () => {
         },
       });
 
-      expect(handleChange).toBeCalled();
+      expect(handleChange).toBeCalledWith('마녀주방');
     });
   });
 });
