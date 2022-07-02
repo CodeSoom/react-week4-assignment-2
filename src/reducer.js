@@ -15,6 +15,11 @@ const reducerAction = {
     ...state,
     typeInput: action.payload.typeInput,
   }),
+
+  UpdateRestaurantAdress: (state, action) => ({
+    ...state,
+    adressInput: action.payload.adressInput,
+  }),
 };
 
 export default function reducer(state = initialState, action) {
