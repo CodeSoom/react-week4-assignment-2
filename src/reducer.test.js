@@ -23,7 +23,7 @@ describe('reducer', () => {
       it('nameInput이 변경이된다', () => {
         const state = reducer({ nameInput: '' }, UpdateRestaurantName(restaurantName));
 
-        expect(state.taskTitle).toBe(restaurantName);
+        expect(state.nameInput).toBe(restaurantName);
       });
     });
   });
