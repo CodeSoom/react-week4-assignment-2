@@ -1,5 +1,7 @@
+import NameInput from '../components/NameInput';
+
 export default function InputContainer() {
   return (
-    <input type="text" placeholder="이름" />
+    <NameInput />
   );
 }
