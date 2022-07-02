@@ -1,24 +1,24 @@
-export function UpdateRestaurantName(nameInput) {
+export function updateRestaurantName(nameInput) {
   return {
-    type: 'UpdateRestaurantName',
+    type: 'updateRestaurantName',
     payload: {
       nameInput,
     },
   };
 }
 
-export function UpdateRestaurantType(typeInput) {
+export function updateRestaurantType(typeInput) {
   return {
-    type: 'UpdateRestaurantType',
+    type: 'updateRestaurantType',
     payload: {
       typeInput,
     },
   };
 }
 
-export function UpdateRestaurantAdress(adressInput) {
+export function updateRestaurantAdress(adressInput) {
   return {
-    type: 'UpdateRestaurantAdress',
+    type: 'updateRestaurantAdress',
     payload: {
       adressInput,
     },

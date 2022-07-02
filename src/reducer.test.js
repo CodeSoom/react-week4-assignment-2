@@ -1,5 +1,5 @@
 import {
-  addRestaurant, UpdateRestaurantAdress, UpdateRestaurantName, UpdateRestaurantType,
+  addRestaurant, updateRestaurantAdress, updateRestaurantName, updateRestaurantType,
 } from './actions';
 
 import { restaurantAdress, restaurantName, restaurantType } from './fixtures/restaurant';
@@ -23,7 +23,7 @@ describe('reducer', () => {
   context('state가 있는경우', () => {
     describe('UpdateRestaurantName', () => {
       it('nameInput이 변경이된다', () => {
-        const state = reducer({ nameInput: '' }, UpdateRestaurantName(restaurantName));
+        const state = reducer({ nameInput: '' }, updateRestaurantName(restaurantName));
 
         expect(state.nameInput).toBe(restaurantName);
       });
@@ -31,7 +31,7 @@ describe('reducer', () => {
 
     describe('UpdateRestaurantType', () => {
       it('typeInput이 변경이된다', () => {
-        const state = reducer({ typeInput: '' }, UpdateRestaurantType(restaurantType));
+        const state = reducer({ typeInput: '' }, updateRestaurantType(restaurantType));
 
         expect(state.typeInput).toBe(restaurantType);
       });
@@ -39,7 +39,7 @@ describe('reducer', () => {
 
     describe('UpdateRestaurantAdress', () => {
       it('adressInput이 변경이된다', () => {
-        const state = reducer({ adressInput: '' }, UpdateRestaurantAdress(restaurantAdress));
+        const state = reducer({ adressInput: '' }, updateRestaurantAdress(restaurantAdress));
 
         expect(state.adressInput).toBe(restaurantAdress);
       });

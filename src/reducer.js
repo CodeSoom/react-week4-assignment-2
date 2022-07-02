@@ -6,17 +6,17 @@ const initialState = {
 };
 
 const reducerAction = {
-  UpdateRestaurantName: (state, action) => ({
+  updateRestaurantName: (state, action) => ({
     ...state,
     nameInput: action.payload.nameInput,
   }),
 
-  UpdateRestaurantType: (state, action) => ({
+  updateRestaurantType: (state, action) => ({
     ...state,
     typeInput: action.payload.typeInput,
   }),
 
-  UpdateRestaurantAdress: (state, action) => ({
+  updateRestaurantAdress: (state, action) => ({
     ...state,
     adressInput: action.payload.adressInput,
   }),
