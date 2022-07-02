@@ -10,6 +10,11 @@ const reducerAction = {
     ...state,
     nameInput: action.payload.nameInput,
   }),
+
+  UpdateRestaurantType: (state, action) => ({
+    ...state,
+    typeInput: action.payload.typeInput,
+  }),
 };
 
 export default function reducer(state = initialState, action) {
