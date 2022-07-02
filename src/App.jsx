@@ -1,14 +1,12 @@
-import Form from './Form';
-import List from './List';
-
-import restaurants from './fixtures/restaurants';
+import FormContainer from './FormContainer';
+import ListContainer from './ListContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <List restaurants={restaurants} />
-      <Form />
+      <ListContainer />
+      <FormContainer />
     </div>
   );
 }
