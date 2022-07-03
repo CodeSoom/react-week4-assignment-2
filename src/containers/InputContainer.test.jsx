@@ -32,4 +32,14 @@ describe('<InputContainer />', () => {
       expect(getByPlaceholderText('이름')).toHaveDisplayValue(given.restaurantName);
     });
   });
+
+  context('입력된 이름이 없으면', () => {
+    it('input이 비어있다.', () => {
+      given('restaurantName', () => '');
+
+      const { getByPlaceholderText } = renderInputContainer();
+
+      expect(getByPlaceholderText('이름')).toHaveDisplayValue('');
+    });
+  });
 });
