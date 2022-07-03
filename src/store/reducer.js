@@ -1,4 +1,5 @@
 export const initialState = {
+  newId: 100,
   name: '',
   category: '',
   address: '',
