@@ -5,4 +5,14 @@ const updateName = (name) => ({
   },
 });
 
-export default updateName;
+const updateCategory = (category) => ({
+  type: 'updateCategory',
+  payload: {
+    category,
+  },
+});
+
+export {
+  updateName,
+  updateCategory,
+};
