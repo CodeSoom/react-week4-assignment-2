@@ -14,6 +14,7 @@ export default function App() {
   useEffect(() => {
     dispatch(setRestaurants(restaurants));
   }, []);
+
   return (
     <div>
       <h1>Restaurants</h1>

@@ -23,6 +23,7 @@ describe('<App/>', () => {
 
   it('dispatch 호출', () => {
     renderApp();
+
     expect(dispatch).toBeCalledWith({
       type: 'setRestaurants',
       payload: { restaurants },
