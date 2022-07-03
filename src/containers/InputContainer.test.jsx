@@ -168,4 +168,14 @@ describe('<InputContainer />', () => {
 
     expect(getByText('등록')).toBeInTheDocument();
   });
+
+  describe('등록 버튼 클릭', () => {
+    it('레스토랑이 등록된다.', () => {
+      const { getByText } = renderInputContainer();
+
+      fireEvent.click(getByText('등록'));
+
+      expect(dispatch).toBeCalled();
+    });
+  });
 });
