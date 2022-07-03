@@ -2,12 +2,20 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import given from 'given2';
+
 import App from './App';
+
+import RESTAURANTS from './fixtures/restaurants';
 
 jest.mock('react-redux');
 
 describe('<App />', () => {
-  useSelector.mockImplementation((selector) => selector({}));
+  given('restaurants', () => []);
+
+  useSelector.mockImplementation((selector) => selector({
+    restaurants: given.restaurants,
+  }));
 
   const renderApp = () => render((<App />));
 
@@ -39,5 +47,19 @@ describe('<App />', () => {
     const { getByText } = renderApp();
 
     expect(getByText('등록')).toBeInTheDocument();
+  });
+
+  context('레스토랑 목록이 있을 경우', () => {
+    it('레스토랑 목록이 보인다.', () => {
+      given('restaurants', () => RESTAURANTS);
+
+      const { container } = renderApp();
+
+      RESTAURANTS.forEach((restaurant) => {
+        expect(container).toHaveTextContent(restaurant.name);
+        expect(container).toHaveTextContent(restaurant.category);
+        expect(container).toHaveTextContent(restaurant.address);
+      });
+    });
   });
 });
