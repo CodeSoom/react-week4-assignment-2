@@ -11,7 +11,7 @@ import Input from './Input';
 export default function InputContainer() {
   const dispatch = useDispatch();
   const {
-    nameInput, typeInput, adressInput,
+    restaurantName, restaurantType, restaurantAdress,
   } = useSelector((state) => state);
 
   function handleChangeRestaurantName(event) {
@@ -33,9 +33,9 @@ export default function InputContainer() {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <Input
-      nameInput={nameInput}
-      typeInput={typeInput}
-      adressInput={adressInput}
+      restaurantName={restaurantName}
+      restaurantType={restaurantType}
+      restaurantAdress={restaurantAdress}
       handleChangeRestaurantName={handleChangeRestaurantName}
       handleChangeRestaurantType={handleChangeRestaurantType}
       handleChangeRestaurantAdress={handleChangeRestaurantAdress}

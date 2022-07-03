@@ -12,9 +12,9 @@ describe('Input', () => {
 
   const renderInput = () => render((
     <Input
-      nameInput={restaurantName}
-      typeInput={restaurantType}
-      adressInput={restaurantAdress}
+      restaurantName={restaurantName}
+      restaurantType={restaurantType}
+      restaurantAdress={restaurantAdress}
       handleChangeRestaurantName={handleChangeRestaurantName}
       handleChangeRestaurantType={handleChangeRestaurantType}
       handleChangeRestaurantAdress={handleChangeRestaurantAdress}

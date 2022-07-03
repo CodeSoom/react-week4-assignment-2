@@ -1,7 +1,7 @@
 export default function Input({
-  nameInput,
-  typeInput,
-  adressInput,
+  restaurantName,
+  restaurantType,
+  restaurantAdress,
   handleChangeRestaurantName,
   handleChangeRestaurantType,
   handleChangeRestaurantAdress,
@@ -9,9 +9,9 @@ export default function Input({
 }) {
   return (
     <div>
-      <input type="text" placeholder="이름" value={nameInput} onChange={handleChangeRestaurantName} />
-      <input type="text" placeholder="분류" value={typeInput} onChange={handleChangeRestaurantType} />
-      <input type="text" placeholder="주소" value={adressInput} onChange={handleChangeRestaurantAdress} />
+      <input type="text" placeholder="이름" value={restaurantName} onChange={handleChangeRestaurantName} />
+      <input type="text" placeholder="분류" value={restaurantType} onChange={handleChangeRestaurantType} />
+      <input type="text" placeholder="주소" value={restaurantAdress} onChange={handleChangeRestaurantAdress} />
       <button type="button" onClick={handleClickAddRestaurant}>등록</button>
     </div>
   );
