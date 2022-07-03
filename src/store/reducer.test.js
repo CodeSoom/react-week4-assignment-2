@@ -18,75 +18,85 @@ describe('reducer', () => {
   });
 
   context('state가 있으면', () => {
-    describe('updateName', () => {
-      it('name이 변경된다.', () => {
-        const state = reducer(given.state, updateName('마녀주방'));
+    context('정의되지 않은 액션', () => {
+      it('기존 state를 그대로 반환한다.', () => {
+        const state = reducer(given.state, undefined);
 
-        expect(state.name).toBe('마녀주방');
+        expect(state).toEqual(given.state);
       });
     });
 
-    describe('updateCategory', () => {
-      it('category가 변경된다.', () => {
-        const state = reducer(given.state, updateCategory('한식'));
+    context('정의되어 있는 액션', () => {
+      describe('updateName', () => {
+        it('name이 변경된다.', () => {
+          const state = reducer(given.state, updateName('마녀주방'));
 
-        expect(state.category).toBe('한식');
-      });
-    });
-
-    describe('updateAddress', () => {
-      it('address가 변경된다.', () => {
-        const state = reducer(given.state, updateAddress('서울시 강남구'));
-
-        expect(state.address).toBe('서울시 강남구');
-      });
-    });
-
-    describe('addRestaurant', () => {
-      const reduceAddRestaurant = () => reducer(given.state, addRestaurant());
-
-      it('레스토링이 추가된다.', () => {
-        given('state', () => ({
-          ...initialState,
-          name: '마녀주방',
-          category: '한식',
-          address: '서울시 강남구',
-          restaurants: [],
-        }));
-
-        const state = reduceAddRestaurant();
-
-        expect(state.restaurants).toHaveLength(1);
+          expect(state.name).toBe('마녀주방');
+        });
       });
 
-      it('newId가 증가한다.', () => {
-        given('state', () => ({
-          ...initialState,
-          name: '마녀주방',
-          category: '한식',
-          address: '서울시 강남구',
-          restaurants: [],
-        }));
+      describe('updateCategory', () => {
+        it('category가 변경된다.', () => {
+          const state = reducer(given.state, updateCategory('한식'));
 
-        const state = reduceAddRestaurant();
-
-        expect(state.newId).toBe(given.state.newId + 1);
+          expect(state.category).toBe('한식');
+        });
       });
 
-      it('input이 초기화된다.', () => {
-        given('state', () => ({
-          ...initialState,
-          name: '마녀주방',
-          category: '한식',
-          address: '서울시 강남구',
-          restaurants: [],
-        }));
+      describe('updateAddress', () => {
+        it('address가 변경된다.', () => {
+          const state = reducer(given.state, updateAddress('서울시 강남구'));
 
-        const state = reduceAddRestaurant();
+          expect(state.address).toBe('서울시 강남구');
+        });
+      });
 
-        expect(state.name).toBe('');
-        expect(state.category).toBe('');
-        expect(state.address).toBe('');
+      describe('addRestaurant', () => {
+        const reduceAddRestaurant = () => reducer(given.state, addRestaurant());
+
+        it('레스토링이 추가된다.', () => {
+          given('state', () => ({
+            ...initialState,
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+            restaurants: [],
+          }));
+
+          const state = reduceAddRestaurant();
+
+          expect(state.restaurants).toHaveLength(1);
+        });
+
+        it('newId가 증가한다.', () => {
+          given('state', () => ({
+            ...initialState,
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+            restaurants: [],
+          }));
+
+          const state = reduceAddRestaurant();
+
+          expect(state.newId).toBe(given.state.newId + 1);
+        });
+
+        it('input이 초기화된다.', () => {
+          given('state', () => ({
+            ...initialState,
+            name: '마녀주방',
+            category: '한식',
+            address: '서울시 강남구',
+            restaurants: [],
+          }));
+
+          const state = reduceAddRestaurant();
+
+          expect(state.name).toBe('');
+          expect(state.category).toBe('');
+          expect(state.address).toBe('');
+        });
       });
     });
   });
