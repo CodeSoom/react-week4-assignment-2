@@ -34,4 +34,10 @@ describe('<App />', () => {
 
     expect(getByPlaceholderText('주소')).toBeInTheDocument();
   });
+
+  it('등록 버튼이 보인다.', () => {
+    const { getByText } = renderApp();
+
+    expect(getByText('등록')).toBeInTheDocument();
+  });
 });

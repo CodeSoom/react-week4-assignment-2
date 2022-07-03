@@ -162,4 +162,10 @@ describe('<InputContainer />', () => {
       expect(dispatch).toBeCalledWith(updateAddress(newAddress));
     });
   });
+
+  it('등록 버튼이 보인다.', () => {
+    const { getByText } = renderInputContainer();
+
+    expect(getByText('등록')).toBeInTheDocument();
+  });
 });
