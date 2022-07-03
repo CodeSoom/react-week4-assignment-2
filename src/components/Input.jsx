@@ -7,7 +7,7 @@ export default function Input(
     handleSubmit,
   },
 ) {
-  function handleChangeName(e) {
+  function inputHandler(e) {
     const { target: { name } } = e;
     handleInputChange({ targetType: name, content: e.target.value });
   }
@@ -21,19 +21,19 @@ export default function Input(
         name="title"
         placeholder="이름"
         value={title}
-        onChange={handleChangeName}
+        onChange={inputHandler}
       />
       <input
         name="category"
         placeholder="분류"
         value={category}
-        onChange={handleChangeName}
+        onChange={inputHandler}
       />
       <input
         name="address"
         placeholder="주소"
         value={address}
-        onChange={handleChangeName}
+        onChange={inputHandler}
       />
       <button onClick={onSubmit} type="button">등록</button>
     </div>
