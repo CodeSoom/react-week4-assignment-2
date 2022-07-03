@@ -12,7 +12,15 @@ const updateCategory = (category) => ({
   },
 });
 
+const updateAddress = (address) => ({
+  type: 'updateAddress',
+  payload: {
+    address,
+  },
+});
+
 export {
   updateName,
   updateCategory,
+  updateAddress,
 };
