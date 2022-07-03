@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import given from 'given2';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
@@ -11,9 +11,17 @@ jest.mock('react-redux');
 describe('<InputContainer />', () => {
   given('restaurantName', () => '');
 
+  const dispatch = jest.fn();
+
   useSelector.mockImplementation((selector) => selector({
     name: given.restaurantName,
   }));
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
 
   const renderInputContainer = () => render((<InputContainer />));
 
@@ -40,6 +48,22 @@ describe('<InputContainer />', () => {
       const { getByPlaceholderText } = renderInputContainer();
 
       expect(getByPlaceholderText('이름')).toHaveDisplayValue('');
+    });
+  });
+
+  describe('이름 입력', () => {
+    it('이름을 업데이트하는 dispatch가 호출된다.', () => {
+      const { getByPlaceholderText } = renderInputContainer();
+
+      expect(dispatch).not.toBeCalled();
+
+      fireEvent.change(getByPlaceholderText('이름'), {
+        target: {
+          value: '마녀주방',
+        },
+      });
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
