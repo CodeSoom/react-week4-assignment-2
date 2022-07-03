@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
+import updateName from '../store/actions';
+
 jest.mock('react-redux');
 
 describe('<InputContainer />', () => {
@@ -65,12 +67,7 @@ describe('<InputContainer />', () => {
         },
       });
 
-      expect(dispatch).toBeCalledWith({
-        type: 'updateName',
-        payload: {
-          name: newName,
-        },
-      });
+      expect(dispatch).toBeCalledWith(updateName(newName));
     });
   });
 });
