@@ -1,3 +1,5 @@
+import Restaurant from './Restaurant';
+
 export default function Restaurants({ restaurants }) {
   if (!restaurants.length) {
     return (
@@ -11,17 +13,12 @@ export default function Restaurants({ restaurants }) {
         restaurants.map(({
           name, address, category, id,
         }) => (
-          <li key={id}>
-            {name}
-            {' '}
-            |
-            {' '}
-            {category}
-            {' '}
-            |
-            {' '}
-            {address}
-          </li>
+          <Restaurant
+            key={id}
+            name={name}
+            category={category}
+            address={address}
+          />
         ))
       }
     </ul>
