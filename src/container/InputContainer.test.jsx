@@ -6,6 +6,8 @@ import { updateInputContent, addRestaurant } from '../store/actions';
 
 import InputContainer from './InputContainer';
 
+jest.mock('react-redux');
+
 describe('InputContainer', () => {
   const dispatch = jest.fn();
 
