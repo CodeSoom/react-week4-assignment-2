@@ -39,21 +39,19 @@ describe('<NameInput />', () => {
     });
   });
 
-  describe('이름 입력', () => {
-    it('handleChange이 호출된다.', () => {
-      given('restaurantName', () => '마녀주방');
+  it('listen change event', () => {
+    given('restaurantName', () => '마녀주방');
 
-      const { getByPlaceholderText } = renderNameInput('');
+    const { getByPlaceholderText } = renderNameInput('');
 
-      expect(handleChange).not.toBeCalled();
+    expect(handleChange).not.toBeCalled();
 
-      fireEvent.change(getByPlaceholderText('이름'), {
-        target: {
-          value: given.restaurantName,
-        },
-      });
-
-      expect(handleChange).toBeCalledWith(given.restaurantName);
+    fireEvent.change(getByPlaceholderText('이름'), {
+      target: {
+        value: given.restaurantName,
+      },
     });
+
+    expect(handleChange).toBeCalledWith(given.restaurantName);
   });
 });
