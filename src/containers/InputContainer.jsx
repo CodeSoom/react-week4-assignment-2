@@ -2,13 +2,15 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import NameInput from '../components/NameInput';
 import CategoryInput from '../components/CategoryInput';
+import AddressInput from '../components/AddressInput';
 
-import { updateName, updateCategory } from '../store/actions';
+import { updateName, updateCategory, updateAddress } from '../store/actions';
 
 export default function InputContainer() {
-  const { name, category } = useSelector((state) => ({
+  const { name, category, address } = useSelector((state) => ({
     name: state.name,
     category: state.category,
+    address: state.address,
   }));
 
   const dispatch = useDispatch();
@@ -21,10 +23,15 @@ export default function InputContainer() {
     dispatch(updateCategory(newCategory));
   };
 
+  const handleChangeAddress = (newAddress) => {
+    dispatch(updateAddress(newAddress));
+  };
+
   return (
     <>
       <NameInput name={name} onChangeName={handleChangeName} />
       <CategoryInput category={category} onChange={handleChangeCategory} />
+      <AddressInput address={address} onChange={handleChangeAddress} />
     </>
   );
 }
