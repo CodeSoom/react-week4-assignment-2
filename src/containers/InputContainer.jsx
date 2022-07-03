@@ -8,8 +8,13 @@ export default function InputContainer() {
 
   const dispatch = useDispatch();
 
-  const handleChangeName = () => {
-    dispatch();
+  const handleChangeName = (newName) => {
+    dispatch({
+      type: 'updateName',
+      payload: {
+        name: newName,
+      },
+    });
   };
 
   return (
