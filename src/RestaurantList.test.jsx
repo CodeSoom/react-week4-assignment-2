@@ -17,24 +17,12 @@ describe('ListContainer', () => {
     <RestaurantList />
   ));
 
-  const firstRestaurants = restaurants[0];
-  const { name, type, adress } = firstRestaurants;
+  it('restaurants를 렌더링한다', () => {
+    const firstRestaurants = restaurants[0];
+    const { name, type, adress } = firstRestaurants;
 
-  it('restaurantName을 렌더링한다', () => {
-    const { getByText } = renderListContainer();
+    const { container } = renderListContainer();
 
-    expect(getByText(name)).not.toBeNull();
-  });
-
-  it('restaurantType을 렌더링한다', () => {
-    const { getByText } = renderListContainer();
-
-    expect(getByText(type)).not.toBeNull();
-  });
-
-  it('restaurantAdress를 렌더링한다', () => {
-    const { getByText } = renderListContainer();
-
-    expect(getByText(adress)).not.toBeNull();
+    expect(container).toHaveTextContent(name, type, adress);
   });
 });
