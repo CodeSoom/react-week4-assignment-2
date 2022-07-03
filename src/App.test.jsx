@@ -22,4 +22,16 @@ describe('<App />', () => {
 
     expect(getByPlaceholderText('이름')).toBeInTheDocument();
   });
+
+  it('레스토랑 분류를 입력할 수 있는 input이 보인다.', () => {
+    const { getByPlaceholderText } = renderApp();
+
+    expect(getByPlaceholderText('분류')).toBeInTheDocument();
+  });
+
+  it('레스토랑 주소를 입력할 수 있는 input이 보인다.', () => {
+    const { getByPlaceholderText } = renderApp();
+
+    expect(getByPlaceholderText('주소')).toBeInTheDocument();
+  });
 });

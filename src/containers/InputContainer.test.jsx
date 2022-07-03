@@ -6,19 +6,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
-import { updateName, updateCategory } from '../store/actions';
+import { updateName, updateCategory, updateAddress } from '../store/actions';
 
 jest.mock('react-redux');
 
 describe('<InputContainer />', () => {
   given('restaurantName', () => '');
   given('category', () => '');
+  given('address', () => '');
 
   const dispatch = jest.fn();
 
   useSelector.mockImplementation((selector) => selector({
     name: given.restaurantName,
     category: given.category,
+    address: given.address,
   }));
 
   useDispatch.mockImplementation(() => dispatch);
@@ -114,6 +116,50 @@ describe('<InputContainer />', () => {
       });
 
       expect(dispatch).toBeCalledWith(updateCategory(newCategory));
+    });
+  });
+
+  it('레스토랑 주소를 입력할 수 있는 input이 보인다.', () => {
+    const { getByPlaceholderText } = renderInputContainer();
+
+    expect(getByPlaceholderText('주소')).toBeInTheDocument();
+  });
+
+  context('입력된 주소가 있으면', () => {
+    it('입력된 값이 보인다.', () => {
+      given('address', () => '서울시 강남구');
+
+      const { getByPlaceholderText } = renderInputContainer();
+
+      expect(getByPlaceholderText('주소')).toHaveDisplayValue(given.address);
+    });
+  });
+
+  context('입력된 주소가 없으면', () => {
+    it('input이 비어있다.', () => {
+      given('address', () => '');
+
+      const { getByPlaceholderText } = renderInputContainer();
+
+      expect(getByPlaceholderText('주소')).toHaveDisplayValue('');
+    });
+  });
+
+  describe('주소 입력', () => {
+    it('주소를 업데이트 한다.', () => {
+      const { getByPlaceholderText } = renderInputContainer();
+
+      expect(dispatch).not.toBeCalled();
+
+      const newAddress = '서울시 강남구';
+
+      fireEvent.change(getByPlaceholderText('주소'), {
+        target: {
+          value: newAddress,
+        },
+      });
+
+      expect(dispatch).toBeCalledWith(updateAddress(newAddress));
     });
   });
 });
