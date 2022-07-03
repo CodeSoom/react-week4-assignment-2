@@ -62,4 +62,14 @@ describe('<App />', () => {
       });
     });
   });
+
+  context('레스토랑 목록이 없을 경우', () => {
+    it('"레스토랑을 추가해주세요!" 텍스트가 보인다.', () => {
+      given('restaurants', () => []);
+
+      const { container } = renderApp();
+
+      expect(container).toHaveTextContent('레스토랑을 추가해주세요!');
+    });
+  });
 });
