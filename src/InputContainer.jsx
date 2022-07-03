@@ -31,7 +31,6 @@ export default function InputContainer() {
   }
 
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <Input
       restaurantName={restaurantName}
       restaurantType={restaurantType}
