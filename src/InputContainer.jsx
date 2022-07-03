@@ -36,10 +36,10 @@ export default function InputContainer() {
       restaurantName={restaurantName}
       restaurantType={restaurantType}
       restaurantAdress={restaurantAdress}
-      handleChangeRestaurantName={handleChangeRestaurantName}
-      handleChangeRestaurantType={handleChangeRestaurantType}
-      handleChangeRestaurantAdress={handleChangeRestaurantAdress}
-      handleClickAddRestaurant={handleClickAddRestaurant}
+      onChangeRestaurantName={handleChangeRestaurantName}
+      onChangeRestaurantType={handleChangeRestaurantType}
+      onChangeRestaurantAdress={handleChangeRestaurantAdress}
+      onClickAddRestaurant={handleClickAddRestaurant}
     />
   );
 }
