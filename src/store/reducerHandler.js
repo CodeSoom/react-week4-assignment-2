@@ -7,25 +7,25 @@ const reducers = {
   addRestaurant: (state) => {
     const {
       newId,
-      name,
+      title,
       category,
       address,
       restaurants,
     } = state;
 
-    if (!name || !category || !address) {
+    if (!title || !category || !address) {
       return state;
     }
 
     return {
       ...state,
       newId: newId + 1,
-      name: '',
+      title: '',
       category: '',
       address: '',
       restaurants: [...restaurants, {
         id: newId,
-        name,
+        title,
         category,
         address,
       }],

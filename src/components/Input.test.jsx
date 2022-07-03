@@ -7,7 +7,7 @@ describe('Input', () => {
   const handleSubmit = jest.fn();
 
   const restaurant = {
-    name: '마녀주방',
+    title: '마녀주방',
     category: '한식',
     address: '잠실',
   };
@@ -15,7 +15,7 @@ describe('Input', () => {
   function renderInput() {
     return render((
       <Input
-        name={restaurant.name}
+        title={restaurant.title}
         category={restaurant.category}
         address={restaurant.address}
         handleInputChange={handleInputChange}

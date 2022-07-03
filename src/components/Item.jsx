@@ -1,7 +1,7 @@
-export default function Item({ restaurants: { name, category, address } }) {
+export default function Item({ restaurants: { title, category, address } }) {
   return (
     <li>
-      {name}
+      {title}
       {' '}
       |
       {' '}

@@ -2,7 +2,7 @@ import reducers from './reducerHandler';
 
 export const initialState = {
   newId: 100,
-  name: '',
+  title: '',
   category: '',
   address: '',
   restaurants: [],

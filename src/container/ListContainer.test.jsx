@@ -10,10 +10,10 @@ describe('ListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
       {
-        id: 1, name: '마녀주방', category: '한식', address: '잠실',
+        id: 1, title: '마녀주방', category: '한식', address: '잠실',
       },
       {
-        id: 2, name: '김가네', category: '한식', address: '창신',
+        id: 2, title: '김가네', category: '한식', address: '창신',
       },
     ],
   }));

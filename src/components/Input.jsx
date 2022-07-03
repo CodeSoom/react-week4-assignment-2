@@ -1,6 +1,6 @@
 export default function Input(
   {
-    name,
+    title,
     category,
     address,
     handleInputChange,
@@ -8,15 +8,8 @@ export default function Input(
   },
 ) {
   function handleChangeName(e) {
-    handleInputChange({ targetType: 'name', content: e.target.value });
-  }
-
-  function handleChangeCategory(e) {
-    handleInputChange({ targetType: 'category', content: e.target.value });
-  }
-
-  function handleChangeAddress(e) {
-    handleInputChange({ targetType: 'address', content: e.target.value });
+    const { target: { name } } = e;
+    handleInputChange({ targetType: name, content: e.target.value });
   }
 
   function onSubmit() {
@@ -25,22 +18,22 @@ export default function Input(
   return (
     <div>
       <input
-        name="name"
+        name="title"
         placeholder="이름"
-        value={name}
+        value={title}
         onChange={handleChangeName}
       />
       <input
         name="category"
         placeholder="분류"
         value={category}
-        onChange={handleChangeCategory}
+        onChange={handleChangeName}
       />
       <input
         name="address"
         placeholder="주소"
         value={address}
-        onChange={handleChangeAddress}
+        onChange={handleChangeName}
       />
       <button onClick={onSubmit} type="button">등록</button>
     </div>

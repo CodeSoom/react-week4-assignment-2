@@ -16,13 +16,13 @@ describe('reducer', () => {
 
   describe('updateInputValue', () => {
     context('target이 name 일 때', () => {
-      it('name이 입력한 값으로 변경하여 반환합니다.', () => {
+      it('title이 입력한 값으로 변경하여 반환합니다.', () => {
         const state = reducer(
-          { name: '' },
-          updateInputContent({ targetType: 'name', content: '프론트' }),
+          { title: '' },
+          updateInputContent({ targetType: 'title', content: '프론트' }),
         );
 
-        expect(state.name).toBe('프론트');
+        expect(state.title).toBe('프론트');
       });
     });
 
@@ -50,12 +50,12 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    context('name과 category와 address가 하나라도 비어있을 시', () => {
+    context('title category와 address가 하나라도 비어있을 시', () => {
       it('아무일도 일어나지 않습니다.', () => {
         const state = reducer(
           {
             newId: 100,
-            name: '',
+            title: '',
             category: '',
             address: '',
             restaurants: [],
@@ -66,11 +66,11 @@ describe('reducer', () => {
       });
     });
 
-    context('name과 category와 address가 있을 때', () => {
+    context('title과 category와 address가 있을 때', () => {
       function reduceAddRestaurant() {
         return reducer({
           newId: 100,
-          name: '떡볶이',
+          title: '떡볶이',
           category: '분식',
           address: '잠실',
           restaurants: [],
@@ -82,13 +82,13 @@ describe('reducer', () => {
 
         expect(state.restaurants).toHaveLength(1);
         expect(state.restaurants[0].id).not.toBeUndefined();
-        expect(state.restaurants[0].name).toBe('떡볶이');
+        expect(state.restaurants[0].title).toBe('떡볶이');
       });
 
       it('name, category, address를 비워줍니다.', () => {
         const state = reduceAddRestaurant();
 
-        expect(state.name).toBe('');
+        expect(state.title).toBe('');
         expect(state.category).toBe('');
         expect(state.address).toBe('');
       });

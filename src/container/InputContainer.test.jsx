@@ -12,7 +12,7 @@ describe('InputContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    name: selector.name,
+    title: selector.title,
     category: selector.category,
     address: selector.address,
   }));
@@ -32,7 +32,7 @@ describe('InputContainer', () => {
 
     fireEvent.change(getByPlaceholderText('이름'), { target: { value: '김가네' } });
 
-    expect(dispatch).toBeCalledWith(updateInputContent({ targetType: 'name', content: '김가네' }));
+    expect(dispatch).toBeCalledWith(updateInputContent({ targetType: 'title', content: '김가네' }));
   });
 
   it('카테고리를 변경하면 updateInputContent가 호출됩니다.', () => {
