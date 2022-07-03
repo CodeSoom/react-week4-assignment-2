@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import NameInput from '../components/NameInput';
 
 export default function InputContainer() {
@@ -6,7 +6,13 @@ export default function InputContainer() {
     name: state.name,
   }));
 
+  const dispatch = useDispatch();
+
+  const handleChangeName = () => {
+    dispatch();
+  };
+
   return (
-    <NameInput name={name} />
+    <NameInput name={name} onChangeName={handleChangeName} />
   );
 }
