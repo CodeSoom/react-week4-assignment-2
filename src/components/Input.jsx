@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+import { Fragment } from 'react';
+
 export default function Input(
   {
     name,
@@ -7,42 +10,45 @@ export default function Input(
     handleSubmit,
   },
 ) {
-  function handleChangeName(e) {
-    handleInputChange({ targetType: 'name', content: e.target.value });
-  }
-
-  function handleChangeCategory(e) {
-    handleInputChange({ targetType: 'category', content: e.target.value });
-  }
-
-  function handleChangeAddress(e) {
-    handleInputChange({ targetType: 'address', content: e.target.value });
+  function InputHandler(e) {
+    const { target: { name } } = e;
+    handleInputChange({ targetType: name, content: e.target.value });
   }
 
   function onSubmit() {
     handleSubmit();
   }
 
+  const inputContents = [
+    {
+      type: 'name',
+      value: name,
+      placeholder: '이름',
+    },
+    {
+      type: 'category',
+      value: category,
+      placeholder: '분류',
+    },
+    {
+      type: 'address',
+      value: address,
+      placeholder: '주소',
+    },
+  ];
+
   return (
     <div>
-      <input
-        name="name"
-        placeholder="이름"
-        value={name}
-        onChange={handleChangeName}
-      />
-      <input
-        name="category"
-        placeholder="분류"
-        value={category}
-        onChange={handleChangeCategory}
-      />
-      <input
-        name="address"
-        placeholder="주소"
-        value={address}
-        onChange={handleChangeAddress}
-      />
+      {inputContents.map(({ type, value, placeholder }) => (
+        <Fragment key={type}>
+          <input
+            name={type}
+            value={value}
+            placeholder={placeholder}
+            onChange={InputHandler}
+          />
+        </Fragment>
+      ))}
       <button onClick={onSubmit} type="button">등록</button>
     </div>
   );
