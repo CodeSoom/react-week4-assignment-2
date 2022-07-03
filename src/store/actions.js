@@ -19,8 +19,13 @@ const updateAddress = (address) => ({
   },
 });
 
+const addRestaurant = () => ({
+  type: 'addRestaurant',
+});
+
 export {
   updateName,
   updateCategory,
   updateAddress,
+  addRestaurant,
 };

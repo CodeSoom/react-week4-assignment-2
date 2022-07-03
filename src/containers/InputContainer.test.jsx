@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputContainer from './InputContainer';
 
-import { updateName, updateCategory, updateAddress } from '../store/actions';
+import {
+  updateName, updateCategory, updateAddress, addRestaurant,
+} from '../store/actions';
 
 jest.mock('react-redux');
 
@@ -175,7 +177,7 @@ describe('<InputContainer />', () => {
 
       fireEvent.click(getByText('등록'));
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledWith(addRestaurant());
     });
   });
 });
