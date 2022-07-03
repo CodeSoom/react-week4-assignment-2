@@ -52,18 +52,25 @@ describe('<InputContainer />', () => {
   });
 
   describe('이름 입력', () => {
-    it('이름을 업데이트하는 dispatch가 호출된다.', () => {
+    it('이름을 업데이트 한다.', () => {
       const { getByPlaceholderText } = renderInputContainer();
 
       expect(dispatch).not.toBeCalled();
 
+      const newName = '마녀주방';
+
       fireEvent.change(getByPlaceholderText('이름'), {
         target: {
-          value: '마녀주방',
+          value: newName,
         },
       });
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledWith({
+        type: 'updateName',
+        payload: {
+          name: newName,
+        },
+      });
     });
   });
 });
