@@ -18,6 +18,7 @@ describe('<InputContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     name: given.restaurantName,
+    category: given.category,
   }));
 
   useDispatch.mockImplementation(() => dispatch);

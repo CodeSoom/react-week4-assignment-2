@@ -1,12 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import NameInput from '../components/NameInput';
+import CategoryInput from '../components/CategoryInput';
 
-import { updateName } from '../store/actions';
+import { updateName, updateCategory } from '../store/actions';
 
 export default function InputContainer() {
-  const { name } = useSelector((state) => ({
+  const { name, category } = useSelector((state) => ({
     name: state.name,
+    category: state.category,
   }));
 
   const dispatch = useDispatch();
@@ -15,7 +17,14 @@ export default function InputContainer() {
     dispatch(updateName(newName));
   };
 
+  const handleChangeCategory = (newCategory) => {
+    dispatch(updateCategory(newCategory));
+  };
+
   return (
-    <NameInput name={name} onChangeName={handleChangeName} />
+    <>
+      <NameInput name={name} onChangeName={handleChangeName} />
+      <CategoryInput category={category} onChange={handleChangeCategory} />
+    </>
   );
 }
