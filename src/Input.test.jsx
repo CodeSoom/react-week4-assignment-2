@@ -39,4 +39,10 @@ describe('Input', () => {
 
     expect(getByPlaceholderText('주소')).toHaveValue(restaurantAdress);
   });
+
+  it('등록버튼을 렌더링한다', () => {
+    const { getByText } = renderInput();
+
+    expect(getByText(/등록/)).not.toBeNull();
+  });
 });
