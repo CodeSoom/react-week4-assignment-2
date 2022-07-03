@@ -1,39 +1,47 @@
 export default function Input(
   {
-    title,
+    name,
     category,
     address,
     handleInputChange,
     handleSubmit,
   },
 ) {
-  function inputHandler(e) {
-    const { target: { name } } = e;
-    handleInputChange({ targetType: name, content: e.target.value });
+  function handleChangeName(e) {
+    handleInputChange({ targetType: 'name', content: e.target.value });
+  }
+
+  function handleChangeCategory(e) {
+    handleInputChange({ targetType: 'category', content: e.target.value });
+  }
+
+  function handleChangeAddress(e) {
+    handleInputChange({ targetType: 'address', content: e.target.value });
   }
 
   function onSubmit() {
     handleSubmit();
   }
+
   return (
     <div>
       <input
-        name="title"
+        name="name"
         placeholder="이름"
-        value={title}
-        onChange={inputHandler}
+        value={name}
+        onChange={handleChangeName}
       />
       <input
         name="category"
         placeholder="분류"
         value={category}
-        onChange={inputHandler}
+        onChange={handleChangeCategory}
       />
       <input
         name="address"
         placeholder="주소"
         value={address}
-        onChange={inputHandler}
+        onChange={handleChangeAddress}
       />
       <button onClick={onSubmit} type="button">등록</button>
     </div>

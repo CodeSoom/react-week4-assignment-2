@@ -7,8 +7,8 @@ import { addRestaurant, updateInputContent } from '../store/actions';
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  const { title, category, address } = useSelector((state) => ({
-    title: state.name,
+  const { name, category, address } = useSelector((state) => ({
+    name: state.name,
     category: state.category,
     address: state.address,
   }));
@@ -23,7 +23,7 @@ export default function InputContainer() {
 
   return (
     <Input
-      name={title}
+      name={name}
       category={category}
       address={address}
       handleInputChange={handleInputChange}

@@ -5,7 +5,7 @@ import Item from './Item';
 describe('Item', () => {
   it('레스토랑 목록이 보여집니다', () => {
     const restaurants = {
-      id: 1, title: '마녀주방', category: '한식', address: '잠실',
+      id: 1, name: '마녀주방', category: '한식', address: '잠실',
     };
 
     const { container } = render((
