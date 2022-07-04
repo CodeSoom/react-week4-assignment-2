@@ -1,7 +1,12 @@
+import InputContainer from './containers/InputContainer';
+import ListContainer from './containers/ListContainer';
+
 export default function App() {
   return (
     <div>
-      Hello
+      <h1>Restaurants</h1>
+      <InputContainer />
+      <ListContainer />
     </div>
   );
 }
