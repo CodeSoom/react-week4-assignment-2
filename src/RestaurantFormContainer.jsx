@@ -6,7 +6,7 @@ import {
   addRestaurant, updateRestaurantAdress, updateRestaurantName, updateRestaurantType,
 } from './actions';
 
-import Input from './Input';
+import Form from './Form';
 
 export default function InputContainer() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ export default function InputContainer() {
   }
 
   return (
-    <Input
+    <Form
       restaurantName={restaurantName}
       restaurantType={restaurantType}
       restaurantAdress={restaurantAdress}

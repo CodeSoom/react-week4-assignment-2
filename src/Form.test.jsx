@@ -1,17 +1,17 @@
 import { render } from '@testing-library/react';
 
-import Input from './Input';
+import Form from './Form';
 
 import { restaurantName, restaurantType, restaurantAdress } from './fixtures/restaurant';
 
-describe('Input', () => {
+describe('Form', () => {
   const handleChangeRestaurantName = jest.fn();
   const handleChangeRestaurantType = jest.fn();
   const handleChangeRestaurantAdress = jest.fn();
   const handleClick = jest.fn();
 
-  const renderInput = () => render((
-    <Input
+  const renderForm = () => render((
+    <Form
       restaurantName={restaurantName}
       restaurantType={restaurantType}
       restaurantAdress={restaurantAdress}
@@ -22,26 +22,26 @@ describe('Input', () => {
     />
   ));
 
-  it('input-restaurantName을 렌더링한다', () => {
-    const { getByPlaceholderText } = renderInput();
+  it('form-restaurantName을 렌더링한다', () => {
+    const { getByPlaceholderText } = renderForm();
 
     expect(getByPlaceholderText('이름')).toHaveValue(restaurantName);
   });
 
-  it('input-restaurantType을 렌더링한다', () => {
-    const { getByPlaceholderText } = renderInput();
+  it('form-restaurantType을 렌더링한다', () => {
+    const { getByPlaceholderText } = renderForm();
 
     expect(getByPlaceholderText('분류')).toHaveValue(restaurantType);
   });
 
-  it('input-restaurantAdress을 렌더링한다', () => {
-    const { getByPlaceholderText } = renderInput();
+  it('form-restaurantAdress을 렌더링한다', () => {
+    const { getByPlaceholderText } = renderForm();
 
     expect(getByPlaceholderText('주소')).toHaveValue(restaurantAdress);
   });
 
   it('등록버튼을 렌더링한다', () => {
-    const { getByText } = renderInput();
+    const { getByText } = renderForm();
 
     expect(getByText(/등록/)).not.toBeNull();
   });

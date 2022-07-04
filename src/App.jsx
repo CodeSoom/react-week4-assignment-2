@@ -1,4 +1,4 @@
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 import RestaurantList from './RestaurantList';
 
 export default function App() {
@@ -6,7 +6,7 @@ export default function App() {
     <div>
       <h1>Restaurants</h1>
       <RestaurantList />
-      <InputContainer />
+      <RestaurantFormContainer />
     </div>
   );
 }

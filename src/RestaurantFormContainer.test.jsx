@@ -6,11 +6,11 @@ import {
   restaurantAdress, restaurantName, restaurants, restaurantType,
 } from './fixtures/restaurant';
 
-import InputContainer from './InputContainer';
+import RestaurantFormContainer from './RestaurantFormContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('RestaurantFormContainer', () => {
   const dispathch = jest.fn();
 
   useDispatch.mockImplementation(() => dispathch);
@@ -19,12 +19,12 @@ describe('InputContainer', () => {
     restaurants,
   }));
 
-  const renderInputContainer = () => render((
-    <InputContainer />
+  const renderRestaurantFormContainer = () => render((
+    <RestaurantFormContainer />
   ));
 
   it('restaurantName - change 이벤트를 listen한다', () => {
-    const { getByPlaceholderText } = renderInputContainer();
+    const { getByPlaceholderText } = renderRestaurantFormContainer();
 
     fireEvent.change(getByPlaceholderText('이름'), {
       target: { value: restaurantName },
@@ -36,7 +36,7 @@ describe('InputContainer', () => {
   });
 
   it('restaurantType - change 이벤트를 listen한다', () => {
-    const { getByPlaceholderText } = renderInputContainer();
+    const { getByPlaceholderText } = renderRestaurantFormContainer();
 
     fireEvent.change(getByPlaceholderText('분류'), {
       target: { value: restaurantType },
@@ -48,7 +48,7 @@ describe('InputContainer', () => {
   });
 
   it('restaurantAdress - change 이벤트를 listen한다', () => {
-    const { getByPlaceholderText } = renderInputContainer();
+    const { getByPlaceholderText } = renderRestaurantFormContainer();
 
     fireEvent.change(getByPlaceholderText('주소'), {
       target: { value: restaurantAdress },
@@ -60,7 +60,7 @@ describe('InputContainer', () => {
   });
 
   it('등록버튼 - click 이벤트를 listen한다', () => {
-    const { getByText } = renderInputContainer();
+    const { getByText } = renderRestaurantFormContainer();
 
     fireEvent.click(getByText('등록'), 1);
 
