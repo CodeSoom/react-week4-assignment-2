@@ -34,7 +34,7 @@ describe('App', () => {
         location: '이태원동',
       },
       {
-        id: 2,
+        id: 3,
         name: '키와미',
         type: '일식',
         location: '분당구 정자동',
