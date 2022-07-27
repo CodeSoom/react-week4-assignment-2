@@ -67,19 +67,19 @@ export default function App() {
       <form>
         <input
           type="text"
-          name="restaurant-name"
+          name="name"
           value={restaurantName}
           onChange={(e) => handleChangeName(e.target.value)}
         />
         <input
           type="text"
-          name="restaurant-type"
+          name="category"
           value={restaurantType}
           onChange={(e) => handleChangeType(e.target.value)}
         />
         <input
           type="text"
-          name="restaurant-location"
+          name="address"
           value={restaurantLocation}
           onChange={(e) => handleChangeLocation(e.target.value)}
         />
