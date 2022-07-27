@@ -8,16 +8,16 @@ import {
   addRestaurant,
 } from './actions';
 
-const initialState = {
-  restaurantName: '원래 이름',
-  restaurantType: '원래 장르',
-  restaurantLocation: '원래 위치',
-  newId: 0,
-  restaurants: [],
-};
-
 describe('Reducer', () => {
-  context('action type is setRestaurants', () => {
+  const initialState = {
+    restaurantName: '원래 이름',
+    restaurantType: '원래 장르',
+    restaurantLocation: '원래 위치',
+    newId: 0,
+    restaurants: [],
+  };
+
+  context('with setRestaurants', () => {
     it('returns updated restaurants', () => {
       const restaurants = [
         {
@@ -39,46 +39,55 @@ describe('Reducer', () => {
           location: '분당구 정자동',
         },
       ];
+
       expect(reducer(initialState, setRestaurants(restaurants))).toEqual({
         ...initialState,
         restaurants,
       });
     });
   });
-  context('action type is changeName', () => {
+
+  context('with changeName', () => {
     it('returns updated name', () => {
       const name = '새로운 가게';
+
       expect(reducer(initialState, changeName(name))).toEqual({
         ...initialState,
         restaurantName: name,
       });
     });
   });
-  context('action type is changeType', () => {
+
+  context('with changeType', () => {
     it('returns updated type', () => {
       const type = '새로운 장르';
+
       expect(reducer(initialState, changeType(type))).toEqual({
         ...initialState,
-        restaurantName: type,
+        restaurantType: type,
       });
     });
   });
-  context('action type is changeLocation', () => {
+
+  context('with changeLocation', () => {
     it('returns updated location', () => {
       const location = '새로운 위치';
+
       expect(reducer(initialState, changeLocation(location))).toEqual({
         ...initialState,
-        restaurantName: location,
+        restaurantLocation: location,
       });
     });
   });
-  context('action type is addRestaurant', () => {
+
+  context('with addRestaurant', () => {
     it('returns updates restaurants with a new restaurant', () => {
       const {
         restaurantName: name,
         restaurantType: type,
         restaurantLocation: location,
       } = initialState;
+
       expect(reducer(initialState, addRestaurant())).toEqual({
         ...initialState,
         restaurantName: '',
@@ -93,6 +102,30 @@ describe('Reducer', () => {
             location,
           },
         ],
+      });
+    });
+  });
+
+  context('with not predefined action', () => {
+    it('returns initial state', () => {
+      function randomAction() {
+        return {
+          type: 'random',
+        };
+      }
+
+      expect(reducer(initialState, randomAction())).toEqual(initialState);
+    });
+  });
+
+  context('without any action', () => {
+    it('returns initial state', () => {
+      expect(reducer()).toEqual({
+        restaurantName: '',
+        restaurantType: '',
+        restaurantLocation: '',
+        newId: 0,
+        restaurants: [],
       });
     });
   });

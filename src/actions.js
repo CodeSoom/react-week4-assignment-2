@@ -18,7 +18,7 @@ export function changeName(name) {
 
 export function changeType(type) {
   return {
-    type: 'changeName',
+    type: 'changeType',
     payload: {
       type,
     },
@@ -27,7 +27,7 @@ export function changeType(type) {
 
 export function changeLocation(location) {
   return {
-    type: 'changeName',
+    type: 'changeLocation',
     payload: {
       location,
     },

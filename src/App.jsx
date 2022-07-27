@@ -29,13 +29,25 @@ export default function App() {
     restaurantLocation,
   } = useSelector(selector);
 
+  function handleChangeName(name) {
+    dispatch(changeName(name));
+  }
+
+  function handleChangeType(type) {
+    dispatch(changeType(type));
+  }
+
+  function handleChangeLocation(location) {
+    dispatch(changeLocation(location));
+  }
+
   useEffect(() => {
     dispatch(setRestaurants(restaurants));
-  }, []);
+  }, [restaurants]);
 
   function submitNewRestaurant(event) {
     event.preventDefault();
-    addRestaurant();
+    dispatch(addRestaurant());
     return null;
   }
 
@@ -57,19 +69,19 @@ export default function App() {
           type="text"
           name="restaurant-name"
           value={restaurantName}
-          onChange={changeName}
+          onChange={(e) => handleChangeName(e.target.value)}
         />
         <input
           type="text"
           name="restaurant-type"
           value={restaurantType}
-          onChange={changeType}
+          onChange={(e) => handleChangeType(e.target.value)}
         />
         <input
           type="text"
           name="restaurant-location"
           value={restaurantLocation}
-          onChange={changeLocation}
+          onChange={(e) => handleChangeLocation(e.target.value)}
         />
         <button type="submit" onClick={submitNewRestaurant}>등록</button>
       </form>
