@@ -1,28 +1,36 @@
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
-    payload: restaurants,
+    payload: {
+      restaurants,
+    },
   };
 }
 
 export function changeName(name) {
   return {
     type: 'changeName',
-    payload: name,
+    payload: {
+      name,
+    },
   };
 }
 
 export function changeType(type) {
   return {
     type: 'changeName',
-    payload: type,
+    payload: {
+      type,
+    },
   };
 }
 
 export function changeLocation(location) {
   return {
     type: 'changeName',
-    payload: location,
+    payload: {
+      location,
+    },
   };
 }
 
