@@ -18,7 +18,7 @@ export default function ListContainer() {
   }, [restaurants]);
 
   return (
-    <ul>
+    <ol>
       {restaurants && restaurants.map((restaurant) => {
         const restaurantItem = `${restaurant.name} | ${restaurant.type} | ${restaurant.location}`;
         return (
@@ -27,6 +27,6 @@ export default function ListContainer() {
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 }

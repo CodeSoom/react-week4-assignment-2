@@ -28,10 +28,10 @@ export default function InputContainer() {
     if (inputName === 'name') {
       dispatch(changeName(input));
     }
-    if (inputName === 'type') {
+    if (inputName === 'category') {
       dispatch(changeType(input));
     }
-    if (inputName === 'location') {
+    if (inputName === 'address') {
       dispatch(changeLocation(input));
     }
   }
@@ -54,14 +54,14 @@ export default function InputContainer() {
         name="category"
         placeholder="분류"
         value={restaurantType}
-        onChange={(e) => handleChangeRestaurant('type', e.target.value)}
+        onChange={(e) => handleChangeRestaurant('category', e.target.value)}
       />
       <input
         type="text"
         name="address"
         placeholder="주소"
         value={restaurantLocation}
-        onChange={(e) => handleChangeRestaurant('location', e.target.value)}
+        onChange={(e) => handleChangeRestaurant('address', e.target.value)}
       />
       <button type="button" onClick={submitNewRestaurant}>등록</button>
     </form>
