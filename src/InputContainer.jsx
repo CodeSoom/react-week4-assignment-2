@@ -7,6 +7,8 @@ import {
   addRestaurant,
 } from './actions';
 
+import Input from './Input';
+
 export default function InputContainer() {
   const dispatch = useDispatch();
 
@@ -42,26 +44,26 @@ export default function InputContainer() {
 
   return (
     <form>
-      <input
+      <Input
         type="text"
         name="name"
         placeholder="이름"
         value={restaurantName}
-        onChange={(e) => handleChangeRestaurant('name', e.target.value)}
+        onChange={handleChangeRestaurant}
       />
-      <input
+      <Input
         type="text"
         name="category"
         placeholder="분류"
         value={restaurantType}
-        onChange={(e) => handleChangeRestaurant('category', e.target.value)}
+        onChange={handleChangeRestaurant}
       />
-      <input
+      <Input
         type="text"
         name="address"
         placeholder="주소"
         value={restaurantLocation}
-        onChange={(e) => handleChangeRestaurant('address', e.target.value)}
+        onChange={handleChangeRestaurant}
       />
       <button type="button" onClick={submitNewRestaurant}>등록</button>
     </form>

@@ -24,11 +24,11 @@ describe('Input', () => {
     });
 
     it('listens to change event', () => {
-      const { queryByPlaceholderText, queryByText } = customRender('name', '이름');
+      const { queryByPlaceholderText } = customRender('name', '이름');
 
       fireEvent.change(queryByPlaceholderText(/이름/), { target: { value: 'KFC' } });
 
-      expect(queryByText(/KFC/)).not.toBeNull();
+      expect(handleChange).toBeCalledWith('name', 'KFC');
     });
   });
 
@@ -40,11 +40,11 @@ describe('Input', () => {
     });
 
     it('listens to change event', () => {
-      const { queryByPlaceholderText, queryByText } = customRender('category', '분류');
+      const { queryByPlaceholderText } = customRender('category', '분류');
 
       fireEvent.change(queryByPlaceholderText(/분류/), { target: { value: '치킨' } });
 
-      expect(queryByText(/치킨/)).not.toBeNull();
+      expect(handleChange).toBeCalledWith('category', '치킨');
     });
   });
 
@@ -56,11 +56,11 @@ describe('Input', () => {
     });
 
     it('listens to change event', () => {
-      const { queryByPlaceholderText, queryByText } = customRender('address', '주소');
+      const { queryByPlaceholderText } = customRender('address', '주소');
 
       fireEvent.change(queryByPlaceholderText(/주소/), { target: { value: '강남역' } });
 
-      expect(queryByText(/강남역/)).not.toBeNull();
+      expect(handleChange).toBeCalledWith('address', '강남역');
     });
   });
 });
