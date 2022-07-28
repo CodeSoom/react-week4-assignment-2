@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ListContainer from './ListContainer';
 
@@ -35,6 +35,9 @@ describe('ListContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurants,
     }));
+
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
 
     test('renders restaurant list', () => {
       expect(screen.getByText('마녀주방 | 한식 | 서울시 강남구')).not.toBeNull();

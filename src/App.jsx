@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+import ListContainer from './ListContainer';
+
 import {
-  setRestaurants,
   changeName,
   changeType,
   changeLocation,
@@ -18,12 +17,10 @@ export default function App() {
       restaurantName: state.restaurantName,
       restaurantType: state.restaurantType,
       restaurantLocation: state.restaurantLocation,
-      restaurants: state.restaurants,
     };
   }
 
   const {
-    restaurants,
     restaurantName,
     restaurantType,
     restaurantLocation,
@@ -41,10 +38,6 @@ export default function App() {
     }
   }
 
-  useEffect(() => {
-    dispatch(setRestaurants(restaurants));
-  }, [restaurants]);
-
   function submitNewRestaurant() {
     dispatch(addRestaurant());
   }
@@ -52,16 +45,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <ul>
-        {restaurants && restaurants.map((restaurant) => {
-          const restaurantItem = `${restaurant.name} | ${restaurant.type} | ${restaurant.location}`;
-          return (
-            <li key={restaurant.id}>
-              {restaurantItem}
-            </li>
-          );
-        })}
-      </ul>
+      <ListContainer />
       <form>
         <input
           type="text"

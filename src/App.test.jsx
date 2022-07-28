@@ -22,40 +22,14 @@ describe('App', () => {
   });
 
   context('with restaurants', () => {
-    const restaurants = [
-      {
-        id: 1,
-        name: '마녀주방',
-        type: '한식',
-        location: '서울시 강남구',
-      },
-      {
-        id: 2,
-        name: '시카고 피자',
-        type: '양식',
-        location: '이태원동',
-      },
-      {
-        id: 3,
-        name: '키와미',
-        type: '일식',
-        location: '분당구 정자동',
-      },
-    ];
-
     useSelector.mockImplementation((selector) => selector({
       restaurantName: '신규가게',
       restaurantType: '중식',
       restaurantLocation: '명동',
-      restaurants,
     }));
 
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
-
-    it('renders restaurant list', () => {
-      expect(screen.getByText('키와미 | 일식 | 분당구 정자동')).not.toBeNull();
-    });
 
     it('listens to change event on changeName', () => {
       const name = screen.getAllByRole('textbox')[0];
