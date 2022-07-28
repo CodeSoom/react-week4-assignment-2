@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
+import List from './List';
 
 import {
   setRestaurants,
@@ -18,15 +19,6 @@ export default function ListContainer() {
   }, [restaurants]);
 
   return (
-    <ol>
-      {restaurants && restaurants.map((restaurant) => {
-        const restaurantItem = `${restaurant.name} | ${restaurant.type} | ${restaurant.location}`;
-        return (
-          <li key={restaurant.id}>
-            {restaurantItem}
-          </li>
-        );
-      })}
-    </ol>
+    <List restaurants={restaurants} />
   );
 }
