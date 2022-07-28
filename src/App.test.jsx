@@ -10,7 +10,7 @@ describe('App', () => {
     render(<App />);
   });
 
-  context('without items', () => {
+  context('restaurants = []', () => {
     it('renders subject', () => {
       expect(screen.getByText(/Restaurants/)).not.toBeNull();
     });
@@ -21,7 +21,7 @@ describe('App', () => {
     });
   });
 
-  context('with items', () => {
+  context('with restaurants', () => {
     const restaurants = [
       {
         id: 1,
@@ -57,7 +57,7 @@ describe('App', () => {
       expect(screen.getByText('키와미 | 일식 | 분당구 정자동')).not.toBeNull();
     });
 
-    it('changes name input', () => {
+    it('listens to change event on changeName', () => {
       const name = screen.getAllByRole('textbox')[0];
       fireEvent.change(name, { target: { value: '최고의 가게' } });
 
@@ -69,7 +69,7 @@ describe('App', () => {
       });
     });
 
-    it('changes type input', () => {
+    it('listens to change event on changeType', () => {
       const type = screen.getAllByRole('textbox')[1];
       fireEvent.change(type, { target: { value: '최고의 타입' } });
 
@@ -81,7 +81,7 @@ describe('App', () => {
       });
     });
 
-    it('changes location input', () => {
+    it('listens to change event on changeLocation', () => {
       const location = screen.getAllByRole('textbox')[2];
       fireEvent.change(location, { target: { value: '최고의 위치' } });
 
@@ -93,7 +93,7 @@ describe('App', () => {
       });
     });
 
-    it('submits new restaurant', () => {
+    it('listens to click event on addRestaurant', () => {
       fireEvent.click(screen.getByText('등록'));
 
       expect(dispatch).toBeCalledWith({ type: 'addRestaurant' });

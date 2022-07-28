@@ -29,26 +29,24 @@ export default function App() {
     restaurantLocation,
   } = useSelector(selector);
 
-  function handleChangeName(name) {
-    dispatch(changeName(name));
-  }
-
-  function handleChangeType(type) {
-    dispatch(changeType(type));
-  }
-
-  function handleChangeLocation(location) {
-    dispatch(changeLocation(location));
+  function handleChangeRestaurant(inputName, input) {
+    if (inputName === 'name') {
+      dispatch(changeName(input));
+    }
+    if (inputName === 'type') {
+      dispatch(changeType(input));
+    }
+    if (inputName === 'location') {
+      dispatch(changeLocation(input));
+    }
   }
 
   useEffect(() => {
     dispatch(setRestaurants(restaurants));
   }, [restaurants]);
 
-  function submitNewRestaurant(event) {
-    event.preventDefault();
+  function submitNewRestaurant() {
     dispatch(addRestaurant());
-    return null;
   }
 
   return (
@@ -69,21 +67,21 @@ export default function App() {
           type="text"
           name="name"
           value={restaurantName}
-          onChange={(e) => handleChangeName(e.target.value)}
+          onChange={(e) => handleChangeRestaurant('name', e.target.value)}
         />
         <input
           type="text"
           name="category"
           value={restaurantType}
-          onChange={(e) => handleChangeType(e.target.value)}
+          onChange={(e) => handleChangeRestaurant('type', e.target.value)}
         />
         <input
           type="text"
           name="address"
           value={restaurantLocation}
-          onChange={(e) => handleChangeLocation(e.target.value)}
+          onChange={(e) => handleChangeRestaurant('location', e.target.value)}
         />
-        <button type="submit" onClick={submitNewRestaurant}>등록</button>
+        <button type="button" onClick={submitNewRestaurant}>등록</button>
       </form>
     </div>
   );
