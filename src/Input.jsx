@@ -4,13 +4,17 @@ export default function Input({
   value,
   onChange,
 }) {
+  function handleChange(e) {
+    return onChange({ inputName: name, input: e.target.value });
+  }
+
   return (
     <input
       type="text"
       name={name}
       placeholder={placeholder}
       value={value}
-      onChange={(e) => onChange({ inputName: name, input: e.target.value })}
+      onChange={handleChange}
     />
   );
 }

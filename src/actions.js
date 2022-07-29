@@ -8,10 +8,8 @@ export function setRestaurants(restaurants) {
 }
 
 export function changeNewRestaurant({ inputName, input }) {
-  const inputNameWithCapitalizedFirstLetter = inputName[0].toUpperCase() + inputName.substring(1);
-  const actionType = `change${inputNameWithCapitalizedFirstLetter}`;
   return {
-    type: actionType,
+    type: 'changeNewRestaurant',
     payload: {
       inputName,
       input,

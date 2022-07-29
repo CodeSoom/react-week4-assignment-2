@@ -25,7 +25,7 @@ describe('NewRestaurantContainer', () => {
     fireEvent.change(name, { target: { value: '이촌떡볶이' } });
 
     expect(dispatch).toBeCalledWith({
-      type: 'changeName',
+      type: 'changeNewRestaurant',
       payload: {
         input: '이촌떡볶이',
         inputName: 'name',
@@ -39,7 +39,7 @@ describe('NewRestaurantContainer', () => {
     fireEvent.change(type, { target: { value: '분식' } });
 
     expect(dispatch).toBeCalledWith({
-      type: 'changeCategory',
+      type: 'changeNewRestaurant',
       payload: {
         input: '분식',
         inputName: 'category',
@@ -53,7 +53,7 @@ describe('NewRestaurantContainer', () => {
     fireEvent.change(location, { target: { value: '용산구 이촌동' } });
 
     expect(dispatch).toBeCalledWith({
-      type: 'changeAddress',
+      type: 'changeNewRestaurant',
       payload: {
         input: '용산구 이촌동',
         inputName: 'address',

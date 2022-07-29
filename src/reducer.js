@@ -14,7 +14,7 @@ export default function reducer(state = initialState, action) {
       restaurants: action.payload.restaurants,
     };
   }
-  if (['changeName', 'changeCategory', 'changeAddress'].includes(action.type)) {
+  if (action.type === 'changeNewRestaurant') {
     return {
       ...state,
       [action.payload.inputName]: action.payload.input,
