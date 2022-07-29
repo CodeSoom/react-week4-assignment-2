@@ -13,6 +13,7 @@ export function changeNewRestaurant({ inputName, input }) {
   return {
     type: actionType,
     payload: {
+      inputName,
       input,
     },
   };

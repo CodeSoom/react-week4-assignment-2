@@ -8,9 +8,9 @@ import {
 
 describe('Reducer', () => {
   const initialState = {
-    restaurantName: '원래 이름',
-    restaurantType: '원래 장르',
-    restaurantLocation: '원래 위치',
+    name: '백촌막국수',
+    category: '한식',
+    address: '강원도',
     newId: 0,
     restaurants: [],
   };
@@ -47,33 +47,33 @@ describe('Reducer', () => {
 
   context('with changeNewRestaurant', () => {
     it('returns updated name', () => {
-      const name = '새로운 가게';
+      const name = '소울브릿지';
 
       expect(reducer(initialState, changeNewRestaurant({ inputName: 'name', input: name }))).toEqual({
         ...initialState,
-        restaurantName: name,
+        name,
       });
     });
   });
 
   context('with changeType', () => {
     it('returns updated type', () => {
-      const category = '새로운 장르';
+      const category = '브런치';
 
       expect(reducer(initialState, changeNewRestaurant({ inputName: 'category', input: category }))).toEqual({
         ...initialState,
-        restaurantType: category,
+        category,
       });
     });
   });
 
   context('with changeLocation', () => {
     it('returns updated location', () => {
-      const address = '새로운 위치';
+      const address = '고성';
 
       expect(reducer(initialState, changeNewRestaurant({ inputName: 'address', input: address }))).toEqual({
         ...initialState,
-        restaurantLocation: address,
+        address,
       });
     });
   });
@@ -81,23 +81,23 @@ describe('Reducer', () => {
   context('with addRestaurant', () => {
     it('returns updates restaurants with a new restaurant', () => {
       const {
-        restaurantName: name,
-        restaurantType: type,
-        restaurantLocation: location,
+        name,
+        category,
+        address,
       } = initialState;
 
       expect(reducer(initialState, addRestaurant())).toEqual({
         ...initialState,
-        restaurantName: '',
-        restaurantType: '',
-        restaurantLocation: '',
+        name: '',
+        category: '',
+        address: '',
         newId: 1,
         restaurants: [
           {
             id: 0,
             name,
-            type,
-            location,
+            category,
+            address,
           },
         ],
       });
@@ -119,9 +119,9 @@ describe('Reducer', () => {
   context('without any action', () => {
     it('returns initial state', () => {
       expect(reducer()).toEqual({
-        restaurantName: '',
-        restaurantType: '',
-        restaurantLocation: '',
+        name: '',
+        category: '',
+        address: '',
         newId: 0,
         restaurants: [],
       });

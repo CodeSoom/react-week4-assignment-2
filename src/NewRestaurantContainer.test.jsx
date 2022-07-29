@@ -28,6 +28,7 @@ describe('NewRestaurantContainer', () => {
       type: 'changeName',
       payload: {
         input: '이촌떡볶이',
+        inputName: 'name',
       },
     });
   });
@@ -41,6 +42,7 @@ describe('NewRestaurantContainer', () => {
       type: 'changeCategory',
       payload: {
         input: '분식',
+        inputName: 'category',
       },
     });
   });
@@ -54,6 +56,7 @@ describe('NewRestaurantContainer', () => {
       type: 'changeAddress',
       payload: {
         input: '용산구 이촌동',
+        inputName: 'address',
       },
     });
   });

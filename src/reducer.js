@@ -1,7 +1,7 @@
 const initialState = {
-  restaurantName: '',
-  restaurantType: '',
-  restaurantLocation: '',
+  name: '',
+  category: '',
+  address: '',
   newId: 0,
   restaurants: [],
 };
@@ -14,37 +14,25 @@ export default function reducer(state = initialState, action) {
       restaurants: action.payload.restaurants,
     };
   }
-  if (action.type === 'changeName') {
+  if (['changeName', 'changeCategory', 'changeAddress'].includes(action.type)) {
     return {
       ...state,
-      restaurantName: action.payload.input,
-    };
-  }
-  if (action.type === 'changeCategory') {
-    return {
-      ...state,
-      restaurantType: action.payload.input,
-    };
-  }
-  if (action.type === 'changeAddress') {
-    return {
-      ...state,
-      restaurantLocation: action.payload.input,
+      [action.payload.inputName]: action.payload.input,
     };
   }
   if (action.type === 'addRestaurant') {
     return {
-      restaurantName: '',
-      restaurantType: '',
-      restaurantLocation: '',
+      name: '',
+      category: '',
+      address: '',
       newId: state.newId + 1,
       restaurants: [
         ...state.restaurants,
         {
           id: state.newId,
-          name: state.restaurantName,
-          type: state.restaurantType,
-          location: state.restaurantLocation,
+          name: state.name,
+          category: state.category,
+          address: state.address,
         },
       ],
     };
