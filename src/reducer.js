@@ -17,19 +17,19 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'changeName') {
     return {
       ...state,
-      restaurantName: action.payload.name,
+      restaurantName: action.payload.input,
     };
   }
-  if (action.type === 'changeType') {
+  if (action.type === 'changeCategory') {
     return {
       ...state,
-      restaurantType: action.payload.type,
+      restaurantType: action.payload.input,
     };
   }
-  if (action.type === 'changeLocation') {
+  if (action.type === 'changeAddress') {
     return {
       ...state,
-      restaurantLocation: action.payload.location,
+      restaurantLocation: action.payload.input,
     };
   }
   if (action.type === 'addRestaurant') {

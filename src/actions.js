@@ -7,29 +7,13 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function changeName(name) {
+export function changeNewRestaurant({ inputName, input }) {
+  const inputNameWithCapitalizedFirstLetter = inputName[0].toUpperCase() + inputName.substring(1);
+  const actionType = `change${inputNameWithCapitalizedFirstLetter}`;
   return {
-    type: 'changeName',
+    type: actionType,
     payload: {
-      name,
-    },
-  };
-}
-
-export function changeType(type) {
-  return {
-    type: 'changeType',
-    payload: {
-      type,
-    },
-  };
-}
-
-export function changeLocation(location) {
-  return {
-    type: 'changeLocation',
-    payload: {
-      location,
+      input,
     },
   };
 }

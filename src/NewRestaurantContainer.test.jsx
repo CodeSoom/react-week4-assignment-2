@@ -1,13 +1,13 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import InputContainer from './InputContainer';
+import NewRestaurantContainer from './NewRestaurantContainer';
 
 jest.mock('react-redux');
 
-describe('InputContainer', () => {
+describe('NewRestaurantContainer', () => {
   beforeEach(() => {
-    render(<InputContainer />);
+    render(<NewRestaurantContainer />);
   });
 
   useSelector.mockImplementation((selector) => selector({
@@ -21,36 +21,39 @@ describe('InputContainer', () => {
 
   it('listens to change event on changeName', () => {
     const name = screen.getByPlaceholderText('이름');
+
     fireEvent.change(name, { target: { value: '이촌떡볶이' } });
 
     expect(dispatch).toBeCalledWith({
       type: 'changeName',
       payload: {
-        name: '이촌떡볶이',
+        input: '이촌떡볶이',
       },
     });
   });
 
-  it('listens to change event on changeType', () => {
+  it('listens to change event on changeCategory', () => {
     const type = screen.getByPlaceholderText('분류');
+
     fireEvent.change(type, { target: { value: '분식' } });
 
     expect(dispatch).toBeCalledWith({
-      type: 'changeType',
+      type: 'changeCategory',
       payload: {
-        type: '분식',
+        input: '분식',
       },
     });
   });
 
-  it('listens to change event on changeLocation', () => {
+  it('listens to change event on changeAddress', () => {
     const location = screen.getByPlaceholderText('주소');
+
     fireEvent.change(location, { target: { value: '용산구 이촌동' } });
 
     expect(dispatch).toBeCalledWith({
-      type: 'changeLocation',
+      type: 'changeAddress',
       payload: {
-        location: '용산구 이촌동',
+        input: '용산구 이촌동',
       },
     });
   });

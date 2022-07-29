@@ -17,7 +17,7 @@ describe('App', () => {
 
   context('restaurants = []', () => {
     it('renders subject', () => {
-      expect(screen.getByText(/Restaurants/)).not.toBeNull();
+      expect(screen.queryByText(/Restaurants/)).not.toBeNull();
     });
   });
 });

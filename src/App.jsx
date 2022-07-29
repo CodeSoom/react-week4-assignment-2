@@ -1,12 +1,12 @@
 import ListContainer from './ListContainer';
-import InputContainer from './InputContainer';
+import NewRestaurantContainer from './NewRestaurantContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
       <ListContainer />
-      <InputContainer />
+      <NewRestaurantContainer />
     </div>
   );
 }

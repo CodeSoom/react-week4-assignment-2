@@ -2,9 +2,7 @@ import reducer from './reducer';
 
 import {
   setRestaurants,
-  changeName,
-  changeType,
-  changeLocation,
+  changeNewRestaurant,
   addRestaurant,
 } from './actions';
 
@@ -47,11 +45,11 @@ describe('Reducer', () => {
     });
   });
 
-  context('with changeName', () => {
+  context('with changeNewRestaurant', () => {
     it('returns updated name', () => {
       const name = '새로운 가게';
 
-      expect(reducer(initialState, changeName(name))).toEqual({
+      expect(reducer(initialState, changeNewRestaurant({ inputName: 'name', input: name }))).toEqual({
         ...initialState,
         restaurantName: name,
       });
@@ -60,22 +58,22 @@ describe('Reducer', () => {
 
   context('with changeType', () => {
     it('returns updated type', () => {
-      const type = '새로운 장르';
+      const category = '새로운 장르';
 
-      expect(reducer(initialState, changeType(type))).toEqual({
+      expect(reducer(initialState, changeNewRestaurant({ inputName: 'category', input: category }))).toEqual({
         ...initialState,
-        restaurantType: type,
+        restaurantType: category,
       });
     });
   });
 
   context('with changeLocation', () => {
     it('returns updated location', () => {
-      const location = '새로운 위치';
+      const address = '새로운 위치';
 
-      expect(reducer(initialState, changeLocation(location))).toEqual({
+      expect(reducer(initialState, changeNewRestaurant({ inputName: 'address', input: address }))).toEqual({
         ...initialState,
-        restaurantLocation: location,
+        restaurantLocation: address,
       });
     });
   });

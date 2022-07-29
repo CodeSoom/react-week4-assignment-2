@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  changeName,
-  changeType,
-  changeLocation,
+  changeNewRestaurant,
   addRestaurant,
 } from './actions';
 
@@ -26,16 +24,8 @@ export default function InputContainer() {
     restaurantLocation,
   } = useSelector(selector);
 
-  function handleChangeRestaurant(inputName, input) {
-    if (inputName === 'name') {
-      dispatch(changeName(input));
-    }
-    if (inputName === 'category') {
-      dispatch(changeType(input));
-    }
-    if (inputName === 'address') {
-      dispatch(changeLocation(input));
-    }
+  function handleChangeRestaurant({ inputName, input }) {
+    dispatch(changeNewRestaurant({ inputName, input }));
   }
 
   function submitNewRestaurant() {
