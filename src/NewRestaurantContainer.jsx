@@ -12,16 +12,16 @@ export default function InputContainer() {
 
   function selector(state) {
     return {
-      restaurantName: state.restaurantName,
-      restaurantType: state.restaurantType,
-      restaurantLocation: state.restaurantLocation,
+      name: state.name,
+      category: state.category,
+      address: state.address,
     };
   }
 
   const {
-    restaurantName,
-    restaurantType,
-    restaurantLocation,
+    name,
+    category,
+    address,
   } = useSelector(selector);
 
   function handleChangeRestaurant({ inputName, input }) {
@@ -38,21 +38,21 @@ export default function InputContainer() {
         type="text"
         name="name"
         placeholder="이름"
-        value={restaurantName}
+        value={name}
         onChange={handleChangeRestaurant}
       />
       <Input
         type="text"
         name="category"
         placeholder="분류"
-        value={restaurantType}
+        value={category}
         onChange={handleChangeRestaurant}
       />
       <Input
         type="text"
         name="address"
         placeholder="주소"
-        value={restaurantLocation}
+        value={address}
         onChange={handleChangeRestaurant}
       />
       <button type="button" onClick={submitNewRestaurant}>등록</button>
