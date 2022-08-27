@@ -16,7 +16,7 @@ function stubSelector(information = {
   }));
 }
 
-describe('FormConainer', () => {
+describe('FormContainer', () => {
   let dispatch;
 
   beforeEach(() => {
