@@ -6,8 +6,9 @@ import App from './App';
 
 jest.mock('react-redux');
 
-function stubSelector(restaurants = []) {
+function stubSelector({ information = '', restaurants = [] } = {}) {
   useSelector.mockImplementation((selector) => selector({
+    information,
     restaurants,
   }));
 }
@@ -52,7 +53,7 @@ describe('App', () => {
     };
 
     it('renders restaurants list', () => {
-      stubSelector(state.restaurants);
+      stubSelector({ restaurants: state.restaurants });
 
       const { getAllByRole } = render((
         <App />
