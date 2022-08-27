@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import List from './List';
+import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 
@@ -12,7 +12,7 @@ function stubSelector(restaurants = []) {
   }));
 }
 
-describe('List', () => {
+describe('ListContainer', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -30,10 +30,10 @@ describe('List', () => {
     };
 
     it('renders restaurants list', () => {
-      stubSelector({ restaurants: state.restaurants });
+      stubSelector(state.restaurants);
 
       const { getAllByRole } = render((
-        <List />
+        <ListContainer />
       ));
 
       state.restaurants.forEach((restaurant, index) => {

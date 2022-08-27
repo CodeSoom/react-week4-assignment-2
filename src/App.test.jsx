@@ -24,7 +24,7 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  it('renders', () => {
+  it("renders 'Restaurant' & text box & button", () => {
     stubSelector();
 
     const { getByText, getByPlaceholderText } = render((
