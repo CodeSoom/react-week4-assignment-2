@@ -7,3 +7,9 @@ export function updateInformation(category, content) {
     },
   };
 }
+
+export function addRestaurant() {
+  return {
+    type: 'addRestaurant',
+  };
+}

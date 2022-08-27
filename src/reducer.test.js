@@ -45,12 +45,16 @@ describe('reducer', () => {
   });
 
   describe('addRestaurant', () => {
-    function reduceAddRestaurant() {
+    function reduceAddRestaurant({
+      name = '',
+      classification = '',
+      address = '',
+    } = {}) {
       return (reducer({
         information: {
-          name: 'New Name',
-          classification: 'New Classification',
-          address: 'New Address',
+          name,
+          classification,
+          address,
         },
         restaurants: [],
       }, addRestaurant()));
@@ -66,7 +70,7 @@ describe('reducer', () => {
 
         expect(restaurants).toHaveLength(1);
         expect(restaurants[0].name).toBe('New Name');
-        expect(restaurants[0].classifiaction).toBe('New Classification');
+        expect(restaurants[0].classification).toBe('New Classification');
         expect(restaurants[0].address).toBe('New Address');
       });
 
@@ -85,13 +89,13 @@ describe('reducer', () => {
 
     context('with empty information at least one', () => {
       it("doesn't work", () => {
-        const { tasks } = reduceAddRestaurant({
+        const { restaurants } = reduceAddRestaurant({
           name: 'New Name',
           classification: '',
           address: 'New Address',
         });
 
-        expect(tasks).toHaveLength(0);
+        expect(restaurants).toHaveLength(0);
       });
     });
   });
