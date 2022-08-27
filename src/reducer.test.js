@@ -12,6 +12,40 @@ describe('reducer', () => {
     expect(state.restaurants).toHaveLength(0);
   });
 
+  context('when recieving unspecified action type', () => {
+    it('returns recevied state as is', () => {
+      const settingState = {
+        information: {
+          name: 'New Name',
+          classification: 'New Classification',
+          address: 'New Address',
+        },
+        restaurants: [
+          {
+            id: 1,
+            name: 'Name-1',
+            classification: 'Classification-1',
+            address: 'Address-1',
+          },
+        ],
+      };
+
+      const { information, restaurants } = reducer(settingState, {});
+
+      // eslint-disable-next-line guard-for-in, no-restricted-syntax
+      for (const category in information) {
+        expect(information[category]).toBe(settingState.information[category]);
+      }
+
+      restaurants.forEach((restaurant, index) => {
+        expect(restaurant.id).toBe(settingState.restaurants[index].id);
+        expect(restaurant.name).toBe(settingState.restaurants[index].name);
+        expect(restaurant.classification).toBe(settingState.restaurants[index].classification);
+        expect(restaurant.address).toBe(settingState.restaurants[index].address);
+      });
+    });
+  });
+
   describe('updateInformation', () => {
     it('changes name', () => {
       const { information } = reducer({
