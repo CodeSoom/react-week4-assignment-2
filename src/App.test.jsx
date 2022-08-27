@@ -1,12 +1,18 @@
 import { render } from '@testing-library/react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import App from './App';
 
 jest.mock('react-redux');
 
-function stubSelector({ information = '', restaurants = [] } = {}) {
+function stubSelector({
+  information = {
+    name: '',
+    classification: '',
+    address: '',
+  }, restaurants = [],
+} = {}) {
   useSelector.mockImplementation((selector) => selector({
     information,
     restaurants,
@@ -14,14 +20,6 @@ function stubSelector({ information = '', restaurants = [] } = {}) {
 }
 
 describe('App', () => {
-  let dispatch;
-
-  beforeEach(() => {
-    dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-  });
-
   afterEach(() => {
     jest.clearAllMocks();
   });

@@ -6,7 +6,11 @@ import FormContainer from './FormContainer';
 
 jest.mock('react-redux');
 
-function stubSelector({ information = '' } = {}) {
+function stubSelector(information = {
+  name: '',
+  classification: '',
+  address: '',
+}) {
   useSelector.mockImplementation((selector) => selector({
     information,
   }));
@@ -67,7 +71,7 @@ describe('FormConainer', () => {
   });
 
   it('renders button to listen to submit event', () => {
-    stubSelector({ information });
+    stubSelector(information);
 
     const { getByRole } = render((
       <FormContainer />
