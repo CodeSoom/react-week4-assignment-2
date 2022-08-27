@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   updateInformation,
+  addRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -40,6 +41,58 @@ describe('reducer', () => {
       }, updateInformation('address', 'New Address'));
 
       expect(information.address).toBe('New Address');
+    });
+  });
+
+  describe('addRestaurant', () => {
+    function reduceAddRestaurant() {
+      return (reducer({
+        information: {
+          name: 'New Name',
+          classification: 'New Classification',
+          address: 'New Address',
+        },
+        restaurants: [],
+      }, addRestaurant()));
+    }
+
+    context('with full information', () => {
+      it('appends a new restaurant into restaurants', () => {
+        const { restaurants } = reduceAddRestaurant({
+          name: 'New Name',
+          classification: 'New Classification',
+          address: 'New Address',
+        });
+
+        expect(restaurants).toHaveLength(1);
+        expect(restaurants[0].name).toBe('New Name');
+        expect(restaurants[0].classifiaction).toBe('New Classification');
+        expect(restaurants[0].address).toBe('New Address');
+      });
+
+      it('clears information', () => {
+        const { information } = reduceAddRestaurant({
+          name: 'New Name',
+          classification: 'New Classification',
+          address: 'New Address',
+        });
+
+        expect(information.name).toBe('');
+        expect(information.classification).toBe('');
+        expect(information.address).toBe('');
+      });
+    });
+
+    context('with empty information at least one', () => {
+      it("doesn't work", () => {
+        const { tasks } = reduceAddRestaurant({
+          name: 'New Name',
+          classification: '',
+          address: 'New Address',
+        });
+
+        expect(tasks).toHaveLength(0);
+      });
     });
   });
 });
