@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 
-export default function App() {
+import List from './List';
+
+export default function ListContainer() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
@@ -8,9 +10,7 @@ export default function App() {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          {`${restaurant.name} | ${restaurant.classification} | ${restaurant.address}`}
-        </li>
+        <List key={restaurant.id} restaurant={restaurant} />
       ))}
     </ul>
   );

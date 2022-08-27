@@ -14,6 +14,7 @@ describe('List', () => {
     const { getByRole } = render((
       <List restaurant={restaurant} />
     ));
+
     expect(getByRole('listitem').textContent)
       .toBe(`${restaurant.name} | ${restaurant.classification} | ${restaurant.address}`);
   });

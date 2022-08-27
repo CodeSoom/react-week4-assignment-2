@@ -5,7 +5,7 @@ import {
   addRestaurant,
 } from './actions';
 
-export default function App() {
+export default function FormContainer() {
   const { information } = useSelector((state) => ({
     information: state.information,
   }));
