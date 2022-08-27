@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -25,12 +25,6 @@ describe('App', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-
-  const information = {
-    name: 'New Name',
-    classification: 'New Classification',
-    address: 'New Address',
-  };
 
   it('renders', () => {
     stubSelector();
@@ -69,42 +63,6 @@ describe('App', () => {
         expect(getAllByRole('listitem')[index].textContent)
           .toBe(`${restaurant.name} | ${restaurant.classification} | ${restaurant.address}`);
       });
-    });
-  });
-
-  it('renders input to listen to change event', () => {
-    stubSelector();
-
-    const { getAllByRole } = render((
-      <App />
-    ));
-
-    const inputs = getAllByRole('textbox');
-
-    inputs.forEach((input, index) => {
-      fireEvent.change(input, { target: { value: Object.values(information)[index] } });
-
-      expect(dispatch).toBeCalledWith({
-        type: 'updateInformation',
-        payload: {
-          category: Object.keys(information)[index],
-          content: Object.values(information)[index],
-        },
-      });
-    });
-  });
-
-  it('renders button to listen to submit event', () => {
-    stubSelector({ information });
-
-    const { getByRole } = render((
-      <App />
-    ));
-
-    fireEvent.click(getByRole('button'));
-
-    expect(dispatch).toBeCalledWith({
-      type: 'addRestaurant',
     });
   });
 });
