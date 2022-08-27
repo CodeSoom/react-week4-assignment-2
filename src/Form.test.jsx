@@ -45,7 +45,7 @@ describe('Form', () => {
     inputs.forEach((input, index) => {
       fireEvent.change(input, { target: { value: Object.values(information)[index] } });
 
-      expect(handleChange).toBeCalledWith();
+      expect(handleChange).toBeCalled();
     });
   });
 
