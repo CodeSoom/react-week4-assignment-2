@@ -7,7 +7,13 @@ import App from './App';
 jest.mock('react-redux');
 
 describe('App', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders', () => {
+    useSelector.mockImplementation((selector) => selector({ restaurants: [] }));
+
     const { getByText, getByPlaceholderText } = render((
       <App />
     ));
@@ -39,7 +45,7 @@ describe('App', () => {
       ));
 
       state.restaurants.forEach((restaurant, index) => {
-        expect(getAllByRole('list')[index])
+        expect(getAllByRole('listitem')[index].textContent)
           .toBe(`${restaurant.name} | ${restaurant.classification} | ${restaurant.address}`);
       });
     });
