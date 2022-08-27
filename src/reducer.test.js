@@ -1,5 +1,9 @@
 import reducer from './reducer';
 
+import {
+  updateInformation,
+} from './actions';
+
 describe('reducer', () => {
   it('returns initial state at initial situation', () => {
     const state = reducer(undefined, {});
