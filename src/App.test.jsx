@@ -1,18 +1,32 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
 jest.mock('react-redux');
 
+function stubSelector(restaurants = []) {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
+}
+
 describe('App', () => {
+  let dispatch;
+
+  beforeEach(() => {
+    dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders', () => {
-    useSelector.mockImplementation((selector) => selector({ restaurants: [] }));
+    stubSelector();
 
     const { getByText, getByPlaceholderText } = render((
       <App />
@@ -38,7 +52,7 @@ describe('App', () => {
     };
 
     it('renders restaurants list', () => {
-      useSelector.mockImplementation((selector) => selector(state));
+      stubSelector(state.restaurants);
 
       const { getAllByRole } = render((
         <App />
@@ -47,6 +61,34 @@ describe('App', () => {
       state.restaurants.forEach((restaurant, index) => {
         expect(getAllByRole('listitem')[index].textContent)
           .toBe(`${restaurant.name} | ${restaurant.classification} | ${restaurant.address}`);
+      });
+    });
+  });
+
+  it('renders input to listen to change event', () => {
+    stubSelector();
+
+    const { getAllByRole } = render((
+      <App />
+    ));
+
+    const inputs = getAllByRole('textbox');
+
+    const information = {
+      name: 'New Name',
+      classification: 'New Classification',
+      address: 'New Address',
+    };
+
+    inputs.forEach((input, index) => {
+      fireEvent.change(input, { target: { value: Object.values(information)[index] } });
+
+      expect(dispatch).toBeCalledWith({
+        type: 'updateInformation',
+        payload: {
+          category: Object.keys(information)[index],
+          content: Object.values(information)[index],
+        },
       });
     });
   });
