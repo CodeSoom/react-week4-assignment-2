@@ -26,6 +26,12 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
+  const information = {
+    name: 'New Name',
+    classification: 'New Classification',
+    address: 'New Address',
+  };
+
   it('renders', () => {
     stubSelector();
 
@@ -75,12 +81,6 @@ describe('App', () => {
 
     const inputs = getAllByRole('textbox');
 
-    const information = {
-      name: 'New Name',
-      classification: 'New Classification',
-      address: 'New Address',
-    };
-
     inputs.forEach((input, index) => {
       fireEvent.change(input, { target: { value: Object.values(information)[index] } });
 
@@ -91,6 +91,20 @@ describe('App', () => {
           content: Object.values(information)[index],
         },
       });
+    });
+  });
+
+  it('renders button to listen to submit event', () => {
+    stubSelector({ information });
+
+    const { getByRole } = render((
+      <App />
+    ));
+
+    fireEvent.click(getByRole('button'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'addRestaurant',
     });
   });
 });
