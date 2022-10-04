@@ -2,25 +2,26 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import InputContainer from './InputContainer';
+
 jest.mock('react-redux');
 
 describe('InputContainer', () => {
   it('Shows value', () => {
     useSelector.mockImplementation((selector) => selector({
-      title: '카와미',
-      menu: '한식',
-      address: '강남구 신사동',
+      listTitle: '카와미',
+      listMenu: '한식',
+      listAddress: '강남구 신사동',
       list: [],
     }));
 
-    const { getByText } = render((
+    const { getByDisplayValue } = render((
       <InputContainer />
     ));
 
-    expect(getByText(/카와미/)).not.toBeNull();
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/강남구 신사동/)).not.toBeNull();
-    expect(getByText(/등록/)).not.toBeNull();
+    expect(getByDisplayValue('카와미')).not.toBeNull();
+    expect(getByDisplayValue('한식')).not.toBeNull();
+    expect(getByDisplayValue('강남구 신사동')).not.toBeNull();
   });
 
   it('Calls dispatch', () => {
@@ -29,9 +30,9 @@ describe('InputContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      title: '카와미',
-      menu: '한식',
-      address: '강남구 신사동',
+      listTitle: '카와미',
+      listMenu: '한식',
+      listAddress: '강남구 신사동',
       list: [],
     }));
 
