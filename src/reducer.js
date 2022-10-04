@@ -51,8 +51,8 @@ export default function reducer(state = initialState, action) {
         ...list,
         {
           id: newId,
-          title: listName,
-          menu: listCategory,
+          name: listName,
+          category: listCategory,
           address: listAddress,
         }],
     };
