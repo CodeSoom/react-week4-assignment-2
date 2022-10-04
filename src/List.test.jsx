@@ -1,4 +1,6 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
+
+import List from './List';
 
 describe('List', () => {
   it('renders task', () => {
@@ -15,20 +17,6 @@ describe('List', () => {
       <List list={list} />
     ));
 
-    expect(getByText('백암순대')).not.toBeNull();
-    expect(getByText('순댓국')).not.toBeNull();
-    expect(getByText('영등포구')).not.toBeNull();
-  });
-
-  it('renders blank space', () => {
-    const list = [];
-
-    const { asFragment } = render((
-      <List list={list} />
-    ));
-
-    expect(asFragment()).toMatchInlineSnapshot(`
-    <></>
-  `);
+    expect(getByText('백암순대|순댓국|영등포구')).not.toBeNull();
   });
 });
