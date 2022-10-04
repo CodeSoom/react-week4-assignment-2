@@ -1,7 +1,18 @@
 import updateReservation from './actions';
+
 import reducer from './reducer';
 
 describe('Reducer', () => {
+  describe('Update titles', () => {
+    it('Change list title', () => {
+      const state = reducer({
+        listTitle: '',
+      }, updateListTitle('백암'));
+
+      expect(state.listTitle).toBe('백암');
+    });
+  });
+
   describe('Update reservation', () => {
     it('appends new list', () => {
       const state = reducer({
