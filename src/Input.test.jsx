@@ -1,20 +1,24 @@
 import { fireEvent, render } from '@testing-library/react';
+import Input from './Input';
 
 describe('Input', () => {
-  const handleChange = jest.fn();
+  it('Changes input value', () => {
+    const handleChange = jest.fn();
 
-  const { getByDisplayValue, getByLabelText } = render((
-    <Input
-      value="치킨"
-      onChange={handleChange}
-    />
-  ));
+    const { getByDisplayValue, getByLabelText } = render((
+      <Input
+        label="메뉴1"
+        value="치킨"
+        handleChange={handleChange}
+      />
+    ));
 
-  expect(getByDisplayValue('치킨')).not.toBeNull();
+    expect(getByDisplayValue('치킨')).not.toBeNull();
 
-  fireEvent.change(getByLabelText('메뉴1'), {
-    target: { value: '피자' },
+    fireEvent.change(getByLabelText('메뉴1'), {
+      target: { value: '피자' },
+    });
+
+    expect(handleChange).toBeCalled();
   });
-
-  expect(handleChange).toBeCalled();
 });
