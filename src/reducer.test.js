@@ -35,16 +35,32 @@ describe('Reducer', () => {
   });
 
   describe('Update reservation', () => {
-    it('appends new list', () => {
-      const state = reducer({
-        newId: 10,
-        listTitle: '백암순대',
-        listMenu: '순댓국',
-        listAddress: '영등포구 여의도동',
-        list: [],
-      }, updateReservation());
+    context('with titles', () => {
+      it('appends new list', () => {
+        const state = reducer({
+          newId: 10,
+          listTitle: '백암순대',
+          listMenu: '순댓국',
+          listAddress: '영등포구 여의도동',
+          list: [],
+        }, updateReservation());
 
-      expect(state.list).toHaveLength(1);
+        expect(state.list).toHaveLength(1);
+      });
+    });
+
+    context('without titles', () => {
+      it('doesnt work', () => {
+        const state = reducer({
+          newId: 10,
+          listTitle: '',
+          listMenu: '',
+          listAddress: '',
+          list: [],
+        }, updateReservation());
+
+        expect(state.list).toHaveLength(0);
+      });
     });
   });
 });
