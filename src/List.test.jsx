@@ -1,20 +1,26 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import List from './List';
+
+jest.mock('react-redux');
 
 describe('List', () => {
   it('renders task', () => {
-    const list = [
-      {
-        id: 1,
-        name: '백암순대',
-        category: '순댓국',
-        address: '영등포구',
-      },
-    ];
+    useSelector.mockImplementation((selector) => selector({
+      list: [
+        {
+          id: 1,
+          name: '백암순대',
+          category: '순댓국',
+          address: '영등포구',
+        },
+      ],
+    }));
 
     const { getByText } = render((
-      <List list={list} />
+      <List />
     ));
 
     expect(getByText('백암순대|순댓국|영등포구')).not.toBeNull();
