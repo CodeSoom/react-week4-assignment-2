@@ -7,6 +7,27 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  if (action.type === 'updateListTitle') {
+    return {
+      ...state,
+      listTitle: action.payload.listTitle,
+    };
+  }
+
+  if (action.type === 'updateListMenu') {
+    return {
+      ...state,
+      listMenu: action.payload.listMenu,
+    };
+  }
+
+  if (action.type === 'updateListAddress') {
+    return {
+      ...state,
+      listAddress: action.payload.listAddress,
+    };
+  }
+
   if (action.type === 'updateReservation') {
     const {
       newId,
