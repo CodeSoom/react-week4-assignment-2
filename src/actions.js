@@ -30,3 +30,12 @@ export function updateReservation() {
     type: 'updateReservation',
   };
 }
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}

@@ -1,4 +1,4 @@
-const initialState = {
+export const restaurants = {
   newId: 0,
   listName: '',
   listCategory: '',
@@ -6,7 +6,13 @@ const initialState = {
   list: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = restaurants, action) {
+  if (action.type === 'setRestaurants') {
+    return {
+      ...action.payload.restaurants,
+    };
+  }
+
   if (action.type === 'updateName') {
     return {
       ...state,
