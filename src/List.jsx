@@ -1,6 +1,12 @@
+import { useSelector } from 'react-redux';
+
 import Item from './Item';
 
-export default function List({ list }) {
+export default function List() {
+  const { list } = useSelector((state) => ({
+    list: state.list,
+  }));
+
   if (list.length === 0) {
     return <></>;
   }
