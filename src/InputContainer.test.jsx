@@ -9,8 +9,8 @@ jest.mock('react-redux');
 describe('InputContainer', () => {
   it('Shows value', () => {
     useSelector.mockImplementation((selector) => selector({
-      listTitle: '카와미',
-      listMenu: '한식',
+      listName: '카와미',
+      listCategory: '한식',
       listAddress: '강남구 신사동',
       list: [],
     }));
@@ -30,8 +30,8 @@ describe('InputContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      listTitle: '카와미',
-      listMenu: '한식',
+      listName: '카와미',
+      listCategory: '한식',
       listAddress: '강남구 신사동',
       list: [],
     }));

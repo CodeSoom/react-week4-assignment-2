@@ -1,4 +1,9 @@
-export default function Input({ label, value, handleChange }) {
+export default function Input({
+  label,
+  value,
+  name,
+  handleChange,
+}) {
   return (
     <>
       <label
@@ -11,6 +16,7 @@ export default function Input({ label, value, handleChange }) {
         id={label}
         type="text"
         value={value}
+        name={name}
         onChange={handleChange}
       />
     </>

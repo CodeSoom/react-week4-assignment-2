@@ -1,24 +1,24 @@
-export function updateListTitle(listTitle) {
+export function updateName(listName) {
   return {
-    type: 'updateListTitle',
+    type: 'updateName',
     payload: {
-      listTitle,
+      listName,
     },
   };
 }
 
-export function updateListMenu(listMenu) {
+export function updateCategory(listCategory) {
   return {
-    type: 'updateListMenu',
+    type: 'updateCategory',
     payload: {
-      listMenu,
+      listCategory,
     },
   };
 }
 
-export function updateListAddress(listAddress) {
+export function updateAddress(listAddress) {
   return {
-    type: 'updateListAddress',
+    type: 'updateAddress',
     payload: {
       listAddress,
     },

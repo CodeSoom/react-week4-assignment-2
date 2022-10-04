@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updateListAddress,
-  updateListMenu,
-  updateListTitle,
+  updateAddress,
+  updateCategory,
+  updateName,
   updateReservation,
 } from './actions';
 
@@ -12,22 +12,22 @@ import Input from './Input';
 export default function InputContainer() {
   const dispatch = useDispatch();
 
-  const { listTitle, listMenu, listAddress } = useSelector((state) => ({
-    listTitle: state.listTitle,
-    listMenu: state.listMenu,
+  const { listName, listCategory, listAddress } = useSelector((state) => ({
+    listName: state.listName,
+    listCategory: state.listCategory,
     listAddress: state.listAddress,
   }));
 
-  function handleChangeListTitle(event) {
-    dispatch(updateListTitle(event.target.value));
+  function handleChangeName(event) {
+    dispatch(updateName(event.target.value));
   }
 
-  function handleChangeListMenu(event) {
-    dispatch(updateListMenu(event.target.value));
+  function handleChangeCategory(event) {
+    dispatch(updateCategory(event.target.value));
   }
 
-  function handleChangeListAddress(event) {
-    dispatch(updateListAddress(event.target.value));
+  function handleChangeAddress(event) {
+    dispatch(updateAddress(event.target.value));
   }
 
   function makeReservation() {
@@ -37,19 +37,22 @@ export default function InputContainer() {
   return (
     <>
       <Input
-        label="title"
-        value={listTitle}
-        handleChange={handleChangeListTitle}
+        label="name"
+        value={listName}
+        name="name"
+        handleChange={handleChangeName}
       />
       <Input
         label="menu"
-        value={listMenu}
-        handleChange={handleChangeListMenu}
+        value={listCategory}
+        name="category"
+        handleChange={handleChangeCategory}
       />
       <Input
         label="address"
         value={listAddress}
-        handleChange={handleChangeListAddress}
+        name="address"
+        handleChange={handleChangeAddress}
       />
       <button type="button" onClick={makeReservation}>등록</button>
     </>

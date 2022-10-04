@@ -1,27 +1,27 @@
 const initialState = {
   newId: 0,
-  listTitle: '',
-  listMenu: '',
+  listName: '',
+  listCategory: '',
   listAddress: '',
   list: [],
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'updateListTitle') {
+  if (action.type === 'updateName') {
     return {
       ...state,
-      listTitle: action.payload.listTitle,
+      listName: action.payload.listName,
     };
   }
 
-  if (action.type === 'updateListMenu') {
+  if (action.type === 'updateCategory') {
     return {
       ...state,
-      listMenu: action.payload.listMenu,
+      listCategory: action.payload.listCategory,
     };
   }
 
-  if (action.type === 'updateListAddress') {
+  if (action.type === 'updateAddress') {
     return {
       ...state,
       listAddress: action.payload.listAddress,
@@ -31,28 +31,28 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'updateReservation') {
     const {
       newId,
-      listTitle,
-      listMenu,
+      listName,
+      listCategory,
       listAddress,
       list,
     } = state;
 
-    if (!listTitle || !listMenu || !listAddress) {
+    if (!listName || !listCategory || !listAddress) {
       return state;
     }
 
     return {
       ...state,
       newId: newId + 1,
-      listTitle: '',
-      listMenu: '',
+      listName: '',
+      listCategory: '',
       listAddress: '',
       list: [
         ...list,
         {
           id: newId,
-          title: listTitle,
-          menu: listMenu,
+          title: listName,
+          menu: listCategory,
           address: listAddress,
         }],
     };
