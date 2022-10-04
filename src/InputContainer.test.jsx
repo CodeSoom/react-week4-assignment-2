@@ -44,6 +44,8 @@ describe('InputContainer', () => {
 
     fireEvent.click(getByText(/등록/));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'updateReservation',
+    });
   });
 });
