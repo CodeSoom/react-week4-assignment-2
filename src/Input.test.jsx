@@ -7,6 +7,7 @@ describe('Input', () => {
       <Input
         label="메뉴1"
         value="치킨"
+        onChange={() => { }}
       />
     ));
 
@@ -18,7 +19,7 @@ describe('Input', () => {
       <Input
         label="메뉴1"
         value="치킨"
-        handleChange={handleChange}
+        onChange={handleChange}
       />
     ));
 

@@ -2,7 +2,7 @@ export default function Input({
   label,
   value,
   name,
-  handleChange,
+  onChange,
 }) {
   return (
     <>
@@ -17,7 +17,7 @@ export default function Input({
         type="text"
         value={value}
         name={name}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </>
   );
