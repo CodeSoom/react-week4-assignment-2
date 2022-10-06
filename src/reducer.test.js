@@ -46,6 +46,7 @@ describe('Reducer', () => {
         }, updateReservation());
 
         expect(state.list).toHaveLength(1);
+        expect(state.list[0]).not.toBeNull();
       });
     });
 
