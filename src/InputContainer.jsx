@@ -40,19 +40,19 @@ export default function InputContainer() {
         label="name"
         value={listName}
         name="name"
-        handleChange={handleChangeInput}
+        onChange={handleChangeInput}
       />
       <Input
         label="menu"
         value={listCategory}
         name="category"
-        handleChange={handleChangeInput}
+        onChange={handleChangeInput}
       />
       <Input
         label="address"
         value={listAddress}
         name="address"
-        handleChange={handleChangeInput}
+        onChange={handleChangeInput}
       />
       <button type="button" onClick={makeReservation}>등록</button>
     </>
