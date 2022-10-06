@@ -7,7 +7,8 @@ import { setRestaurants } from './actions';
 import { restaurants } from './reducer';
 
 import InputContainer from './InputContainer';
-import List from './List';
+
+import ListContainer from './ListContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <List />
+      <ListContainer />
       <InputContainer />
     </div>
   );

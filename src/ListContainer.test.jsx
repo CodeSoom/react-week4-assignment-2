@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import List from './List';
+import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 
-describe('List', () => {
+describe('ListContainer', () => {
   it('renders task', () => {
     useSelector.mockImplementation((selector) => selector({
       list: [
@@ -20,7 +20,7 @@ describe('List', () => {
     }));
 
     const { getByText } = render((
-      <List />
+      <ListContainer />
     ));
 
     expect(getByText('백암순대|순댓국|영등포구')).not.toBeNull();
