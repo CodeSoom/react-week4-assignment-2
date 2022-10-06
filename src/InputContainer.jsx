@@ -18,16 +18,16 @@ export default function InputContainer() {
     listAddress: state.listAddress,
   }));
 
-  function handleChangeName(event) {
-    dispatch(updateName(event.target.value));
-  }
-
-  function handleChangeCategory(event) {
-    dispatch(updateCategory(event.target.value));
-  }
-
-  function handleChangeAddress(event) {
-    dispatch(updateAddress(event.target.value));
+  function handleChangeInput({ target: { name, value } }) {
+    if (name === 'name') {
+      dispatch(updateName(value));
+    }
+    if (name === 'category') {
+      dispatch(updateCategory(value));
+    }
+    if (name === 'address') {
+      dispatch(updateAddress(value));
+    }
   }
 
   function makeReservation() {
@@ -40,19 +40,19 @@ export default function InputContainer() {
         label="name"
         value={listName}
         name="name"
-        handleChange={handleChangeName}
+        handleChange={handleChangeInput}
       />
       <Input
         label="menu"
         value={listCategory}
         name="category"
-        handleChange={handleChangeCategory}
+        handleChange={handleChangeInput}
       />
       <Input
         label="address"
         value={listAddress}
         name="address"
-        handleChange={handleChangeAddress}
+        handleChange={handleChangeInput}
       />
       <button type="button" onClick={makeReservation}>등록</button>
     </>
