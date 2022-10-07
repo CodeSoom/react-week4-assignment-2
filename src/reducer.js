@@ -6,7 +6,7 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action = { type: '' }) {
   if (action.type === 'setRestaurants') {
     const {
       newId, shopName, shopType, shopAddress, restaurants,

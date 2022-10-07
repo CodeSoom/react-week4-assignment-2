@@ -7,6 +7,7 @@ export default function ListContainer() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
+
   return (
     <List restaurants={restaurants} />
   );

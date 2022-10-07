@@ -6,7 +6,7 @@ export default function List({
   restaurants,
 }) {
   if (restaurants.length === 0) {
-    return false;
+    return <p>레스토랑 목록이 없습니다.</p>;
   }
 
   return (
