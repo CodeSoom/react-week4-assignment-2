@@ -26,5 +26,26 @@ export default function reducer(state = initialState, action = { type: '' }) {
     };
   }
 
+  if (action.type === 'updateName') {
+    return {
+      ...state,
+      shopName: action.payload.shopName,
+    };
+  }
+
+  if (action.type === 'updateType') {
+    return {
+      ...state,
+      shopType: action.payload.shopType,
+    };
+  }
+
+  if (action.type === 'updateAddress') {
+    return {
+      ...state,
+      shopAddress: action.payload.shopAddress,
+    };
+  }
+
   return state;
 }

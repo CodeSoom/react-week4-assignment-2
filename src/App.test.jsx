@@ -8,33 +8,10 @@ jest.mock('react-redux');
 function setState(listInfo = {}) {
   useSelector.mockImplementation((selector) => selector(
     listInfo,
-    // {
-    //   shopName: '',
-    //   shopType: '',
-    //   shopAddress: '',
-    //   restaurants: [
-    //     {
-    //       id: 1, name: '마녀주방', type: '한식', address: '서울시 강남구',
-    //     },
-    //   ],
-    // },
   ));
 }
 
 describe('App', () => {
-  // useSelector.mockImplementation((selector) => selector(
-  //   {
-  //     shopName: '',
-  //     shopType: '',
-  //     shopAddress: '',
-  //     restaurants: [
-  //       {
-  //         id: 1, name: '마녀주방', type: '한식', address: '서울시 강남구',
-  //       },
-  //     ],
-  //   },
-  // ));
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -67,7 +44,7 @@ describe('App', () => {
     ));
 
     expect(getByLabelText(/레스토랑명/)).not.toBeNull();
-    expect(getByLabelText(/레스토랑 리스트/)).not.toBeNull();
+    expect(getByLabelText(/레스토랑 타입/)).not.toBeNull();
     expect(getByLabelText(/주소/)).not.toBeNull();
     expect(getByText(/등록/)).not.toBeNull();
   });
