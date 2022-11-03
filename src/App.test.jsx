@@ -9,6 +9,6 @@ describe('App', () => {
   it('App이 잘 랜더링 되는가', () => {
     renderApp();
 
-    expect(screen.getByText('Hello')).toBeInTheDocument();
+    expect(screen.getByText('Restaurants')).toBeInTheDocument();
   });
 });
