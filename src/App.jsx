@@ -1,24 +1,25 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+function selector(state) {
+  return {
+    restaurantName: state.restaurantName,
+  };
+}
+
+function updateRestaurant(restaurantName) {
+  return {
+    type: 'updateRestaurantName',
+    payload: { restaurantName },
+  };
+}
 
 export default function App() {
-  const initialState = {
-    id: null,
-    restaurantName: '',
-    lists: [
-      { id: 1, name: '김밥천국' },
-      { id: 2, name: '김밥지옥' },
-    ],
-  };
+  const { restaurantName } = useSelector(selector);
 
-  const [state, setState] = useState(initialState);
-
-  const { restaurantName } = state;
+  const dispatch = useDispatch();
 
   function handleChange(e) {
-    setState({
-      ...state,
-      restaurantName: e.target.value,
-    });
+    dispatch(updateRestaurant(e.target.value));
   }
 
   return (
