@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import updateRestaurant from './actions';
+import { updateRestaurant, addRestaurant } from './actions';
 
 export default function App() {
   const { restaurantName, category, address } = useSelector((state) => ({
@@ -16,7 +16,7 @@ export default function App() {
   }
 
   function handleSubmit() {
-
+    dispatch(addRestaurant());
   }
 
   return (
