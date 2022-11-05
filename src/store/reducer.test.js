@@ -1,6 +1,6 @@
-import reducer from "./reducer";
+import reducer from './reducer';
 
-import {changeText, addRestaurant } from './actions';
+import { changeText, addRestaurant } from './actions';
 
 describe('reducer', () => {
   describe('changeText', () => {
