@@ -1,5 +1,5 @@
 export default function Input({
-  restaurantName, category, address, handleChange, handleSubmit,
+  restaurantName, category, address, onChange, onSubmit,
 }) {
   return (
     <div>
@@ -9,26 +9,26 @@ export default function Input({
           name="restaurantName"
           placeholder="이름"
           value={restaurantName}
-          onChange={handleChange}
+          onChange={onChange}
         />
         <input
           type="text"
           name="category"
           placeholder="분류"
           value={category}
-          onChange={handleChange}
+          onChange={onChange}
         />
         <input
           type="text"
           name="address"
           placeholder="주소"
           value={address}
-          onChange={handleChange}
+          onChange={onChange}
         />
       </form>
       <button
         type="submit"
-        onClick={handleSubmit}
+        onClick={onSubmit}
       >
         등록
 

@@ -1,7 +1,23 @@
-export default function List() {
+export default function List({ restaurantList }) {
+  if (restaurantList.length === 0) {
+    return <p>목록이 없어요!</p>;
+  }
+
   return (
-    <li>
-      리스트
-    </li>
+    <ul>
+      {
+        restaurantList.map(({
+          id, restaurantName, category, address,
+        }) => (
+          <li key={id}>
+            {restaurantName}
+            |
+            {category}
+            |
+            {address}
+          </li>
+        ))
+      }
+    </ul>
   );
 }

@@ -13,14 +13,24 @@ const actionCreators = {
   }),
 
   addRestaurant: (state) => {
-    const { restaurantName, category, address } = state;
+    const {
+      restaurantName, category, address, restaurantList,
+    } = state;
 
     return {
       ...state,
-      id: Date.now(),
-      restaurantName,
-      category,
-      address,
+      restaurantName: '',
+      category: '',
+      address: '',
+      restaurantList: [
+        ...restaurantList,
+        {
+          id: Date.now(),
+          restaurantName,
+          category,
+          address,
+        },
+      ],
     };
   },
 };

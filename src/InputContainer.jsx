@@ -16,8 +16,10 @@ export default function InputContainer() {
     dispatch(updateRestaurant(e.target.name, e.target.value));
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     dispatch(addRestaurant());
+    console.log('눌림');
   }
 
   return (
