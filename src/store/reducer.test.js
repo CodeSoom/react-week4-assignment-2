@@ -24,7 +24,7 @@ describe('reducer', () => {
       }, addRestaurant());
     }
 
-    context('입력란에 레스토랑 정보가 있을 경우', () => {
+    context('입력란에 레스토랑 정보가 모두 있을 경우', () => {
       it('레스토랑 정보를 추가하여 목록을 만든다.', () => {
         const state = reducerAddRestaurant('양키통닭', '한식', '서울시 문래동');
 
@@ -40,25 +40,35 @@ describe('reducer', () => {
       });
     });
 
-    context('입력란에 레스토랑 정보가 없을 경우', () => {
-      it('아무런 동작을 하지 않는다.', () => {
-        const state = reducer({
-          newId: 100,
-          name: '',
-          category: '',
-          address: '',
-          restaurantList: [],
-        });
+    context('입력란에 레스토랑 이름 정보가 없을 경우', () => {
+      it('레스토랑 목록에 추가되지 않고, 아무 동작하지 않는다.', () => {
+        const state = reducerAddRestaurant('', '양식', '서울시 문래동');
 
         expect(state.name).toBe('');
+        expect(state.restaurantList).toHaveLength(0);
+      });
+    });
+
+    context('입력란에 레스토랑 분류 정보가 없을 경우', () => {
+      it('레스토랑 목록에 추가되지 않고, 아무 동작하지 않는다.', () => {
+        const state = reducerAddRestaurant('양키통닭', '', '서울시 문래동');
+
         expect(state.category).toBe('');
+        expect(state.restaurantList).toHaveLength(0);
+      });
+    });
+
+    context('입력란에 레스토랑 주소 정보가 없을 경우', () => {
+      it('레스토랑 목록에 추가되지 않고, 아무 동작하지 않는다.', () => {
+        const state = reducerAddRestaurant('양키통닭', '한식', '');
+
         expect(state.address).toBe('');
         expect(state.restaurantList).toHaveLength(0);
       });
     });
   });
 
-  describe('아무런 동작을 하지 않는 경우', () => {
+  describe('어떠한 동작을 하지 않는 경우', () => {
     it('아무 일도 일어나지 않는다.', () => {
       const state = reducer();
 
