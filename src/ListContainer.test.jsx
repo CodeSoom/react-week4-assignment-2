@@ -13,7 +13,12 @@ describe('ListContainer', () => {
 
   const renderListContainer = () => render((<ListContainer />));
 
-  it('', () => {
-    renderListContainer();
+  it('입력한 레스토랑 목록이 보인다', () => {
+    const { container } = renderListContainer(restaurantList);
+
+    expect(container).not.toBeNull();
+    expect(container).toHaveTextContent('김밥지옥');
+    expect(container).toHaveTextContent('분식');
+    expect(container).toHaveTextContent('강남구');
   });
 });

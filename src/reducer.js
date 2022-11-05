@@ -13,9 +13,11 @@ const actionCreators = {
   }),
 
   addRestaurant: (state) => {
-    const {
-      restaurantName, category, address, restaurantList,
-    } = state;
+    const { restaurantName, category, address, restaurantList } = state;
+
+    if (!state.restaurantName || !state.category || !state.address) {
+      return state;
+    }
 
     return {
       ...state,
