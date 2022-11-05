@@ -1,6 +1,6 @@
 const initialState = {
   id: null,
-  restaurantName: '',
+  name: '',
   category: '',
   address: '',
   restaurantList: [],
@@ -13,22 +13,22 @@ const actionCreators = {
   }),
 
   addRestaurant: (state) => {
-    const { restaurantName, category, address, restaurantList } = state;
+    const { name, category, address, restaurantList } = state;
 
-    if (!state.restaurantName || !state.category || !state.address) {
+    if (!state.name || !state.category || !state.address) {
       return state;
     }
 
     return {
       ...state,
-      restaurantName: '',
+      name: '',
       category: '',
       address: '',
       restaurantList: [
         ...restaurantList,
         {
           id: Date.now(),
-          restaurantName,
+          name,
           category,
           address,
         },

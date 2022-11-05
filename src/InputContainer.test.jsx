@@ -39,7 +39,7 @@ describe('InputContainer', () => {
     changeInput('이름', '김밥지옥');
 
     expect(dispatch).toBeCalledWith(updateRestaurant(
-      'restaurantName', '김밥지옥',
+      'name', '김밥지옥',
     ));
   });
 

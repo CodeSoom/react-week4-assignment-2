@@ -7,10 +7,10 @@ export default function List({ restaurantList }) {
     <ul>
       {
         restaurantList.map(({
-          id, restaurantName, category, address,
+          id, name, category, address,
         }) => (
           <li key={id}>
-            {restaurantName}
+            {name}
             |
             {category}
             |

@@ -18,7 +18,7 @@ describe('Input', () => {
 
   const renderInput = () => render((
     <Input
-      restaurantName="김밥나라"
+      name="김밥나라"
       category="분식"
       address="중량구"
       onChange={handleChange}

@@ -1,14 +1,14 @@
 export default function Input({
-  restaurantName, category, address, onChange, onSubmit,
+  name, category, address, onChange, onSubmit,
 }) {
   return (
     <div>
       <form>
         <input
           type="text"
-          name="restaurantName"
+          name="name"
           placeholder="이름"
-          value={restaurantName}
+          value={name}
           onChange={onChange}
         />
         <input

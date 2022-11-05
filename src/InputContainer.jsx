@@ -4,8 +4,8 @@ import Input from './Input';
 import { updateRestaurant, addRestaurant } from './actions';
 
 export default function InputContainer() {
-  const { restaurantName, category, address } = useSelector((state) => ({
-    restaurantName: state.restaurantName,
+  const { name, category, address } = useSelector((state) => ({
+    name: state.name,
     category: state.category,
     address: state.address,
   }));
@@ -23,7 +23,7 @@ export default function InputContainer() {
 
   return (
     <Input
-      restaurantName={restaurantName}
+      name={name}
       category={category}
       address={address}
       onChange={handleChange}
