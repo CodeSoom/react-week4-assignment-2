@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render, fireEvent, getByDisplayValue } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantsCreateContainer from './RestaurantsCreateContainer';
 

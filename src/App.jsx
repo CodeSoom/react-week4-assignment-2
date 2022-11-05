@@ -9,15 +9,11 @@ import {
   setRestaurants,
 } from './actions';
 
-import restaurants from '../fixtures/restaurants';
-
 export default function App() {
   const dispatch = useDispatch();
 
-  // TODO : 초기 실행
-  // restaurants에 데이터 넣기=>dispatch
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch(setRestaurants([]));
   }, []);
 
   return (

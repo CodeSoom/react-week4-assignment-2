@@ -10,7 +10,7 @@ import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
-    it('음식점의 리스트가 변화한다', () => {
+    it('레스토랑의 리스트가 변경된다', () => {
       const initialState = {
         restaurants: [],
       };
@@ -22,7 +22,7 @@ describe('reducer', () => {
   });
 
   describe('changeRestaurantField', () => {
-    it('입력한 음식점으로 바뀐다', () => {
+    it('입력한 레스토랑의 정보로 바뀐다', () => {
       const initialState = {
         restaurant: {
           name: '이름',
@@ -37,6 +37,32 @@ describe('reducer', () => {
       }));
 
       expect(state.restaurant.address).toBe('서울시 강남구 역삼동');
+    });
+  });
+
+  describe('addRestaurant', () => {
+    it('레스토랑 리스트에 입력한 레스토랑을 추가하고 입력값을 초기화한다', () => {
+      const initialState = {
+        newId: 101,
+        restaurants: [],
+        restaurant: {
+          name: '베리파스타',
+          category: '이탈리안',
+          address: '서울시 강남구 역삼동',
+        },
+      };
+
+      const state = reducer(initialState, addRestaurant());
+
+      expect(state.restaurants).toHaveLength(1);
+
+      const restaurant = state.restaurants[state.restaurants.length - 1];
+      expect(restaurant.id).toBe(101);
+      expect(restaurant.name).toBe('베리파스타');
+
+      expect(state.restaurant.name).toBe('');
+
+      expect(state.newId).toBe(102);
     });
   });
 });

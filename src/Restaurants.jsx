@@ -4,10 +4,14 @@ export default function Restaurants({ restaurants }) {
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
           {restaurant.name}
+          {' '}
           |
-          {restaurants.category}
+          {' '}
+          {restaurant.category}
+          {' '}
           |
-          {restaurants.address}
+          {' '}
+          {restaurant.address}
         </li>
       ))}
     </ul>
