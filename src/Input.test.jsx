@@ -46,31 +46,5 @@ describe('Input', () => {
 
       expect(handleSubmit).toBeCalled();
     });
-    //   renderInput();
-
-    //   const input = screen.getByPlaceholderText('분류');
-
-    //   fireEvent.change(input, {
-    //     target: { value: '분식' },
-    //   });
-
-    //   expect(dispatch).toBeCalledWith(updateRestaurant(
-    //     'category', '분식',
-    //   ));
-    // });
-
-    // it('입력한 주소가 랜더링 된다', () => {
-    //   renderInput();
-
-    //   const input = screen.getByPlaceholderText('주소');
-
-    //   fireEvent.change(input, {
-    //     target: { value: '김밥나라 김밥시' },
-    //   });
-
-    //   expect(dispatch).toBeCalledWith(updateRestaurant(
-    //     'address', '김밥나라 김밥시',
-    //   ));
-    // });
   });
 });
