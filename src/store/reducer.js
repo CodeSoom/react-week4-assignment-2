@@ -3,7 +3,7 @@ const initialState = {
   name: '',
   category: '',
   address: '',
-  restaurantList: [],
+  restaurantLists: [],
 };
 
 const reducers = {
@@ -13,7 +13,7 @@ const reducers = {
   }),
   addRestaurant: (state) => {
     const {
-      newId, name, category, address, restaurantList,
+      newId, name, category, address, restaurantLists,
     } = state;
 
     if (!name || !category || !address) {
@@ -25,7 +25,7 @@ const reducers = {
       name: '',
       category: '',
       address: '',
-      restaurantList: [...restaurantList, {
+      restaurantLists: [...restaurantLists, {
         id: newId, name, category, address,
       }],
     };
