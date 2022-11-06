@@ -1,11 +1,11 @@
-export default function List({ restaurantList }) {
-  if (restaurantList.length === 0) {
+export default function List({ restaurantLists }) {
+  if (restaurantLists.length === 0) {
     return <></>;
   }
   return (
     <ul>
       {
-        restaurantList.map((item) => (
+        restaurantLists.map((item) => (
           <li key={item.id}>
             {item.name}
             |
