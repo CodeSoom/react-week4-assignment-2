@@ -26,25 +26,25 @@ describe('Input', () => {
     />
   ));
 
-  context('레스토랑 정보를 입력하면', () => {
-    it('handleChange가 호출된다', () => {
-      renderInput();
-      expect(screen.getByDisplayValue('김밥나라')).not.toBeNull();
+  it('레스토랑 정보를 입력하면 handleChange가 호출된다', () => {
+    renderInput();
 
-      fireEvent.change(screen.getByPlaceholderText('이름'), {
-        target: { value: '김밥천국' },
-      });
+    expect(screen.getByDisplayValue('김밥나라')).not.toBeNull();
 
-      expect(handleChange).toBeCalled();
+    fireEvent.change(screen.getByPlaceholderText('이름'), {
+      target: { value: '김밥천국' },
     });
 
-    it('등록 버튼이 랜더링된다', () => {
-      renderInput();
-      expect(screen.getByDisplayValue('김밥나라')).not.toBeNull();
+    expect(handleChange).toBeCalled();
+  });
 
-      fireEvent.click(screen.getByText('등록'));
+  it('등록 버튼이 랜더링된다', () => {
+    renderInput();
 
-      expect(handleSubmit).toBeCalled();
-    });
+    expect(screen.getByDisplayValue('김밥나라')).not.toBeNull();
+
+    fireEvent.click(screen.getByText('등록'));
+
+    expect(handleSubmit).toBeCalled();
   });
 });
