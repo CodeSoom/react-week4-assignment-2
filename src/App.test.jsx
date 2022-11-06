@@ -6,7 +6,7 @@ import App from './App';
 
 jest.mock('react-redux');
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -20,10 +20,12 @@ test('App', () => {
     <App />
   ));
 
-  expect(dispatch).toBeCalledWith({
-    type: 'setRestaurants',
-    payload: { restaurants: [] },
-  });
+  it('App이 랜더링된다', () => {
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      payload: { restaurants: [] },
+    });
 
-  expect(queryByText(/맛나분식/)).toBeNull();
+    expect(queryByText(/맛나분식/)).toBeNull();
+  });
 });

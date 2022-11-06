@@ -4,10 +4,12 @@ import Restaurants from './Restaurants';
 
 import restaurants from '../fixtures/restaurants';
 
-test('Restaurants', () => {
+describe('Restaurants', () => {
   const { getByText } = render((
     <Restaurants restaurants={restaurants} />
   ));
 
-  expect(getByText(/맛나분식/)).not.toBeNull();
+  it('입력한 레스토랑이 랜더링된다', () => {
+    expect(getByText(/맛나분식/)).not.toBeNull();
+  });
 });
