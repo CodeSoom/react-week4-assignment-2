@@ -25,7 +25,7 @@ describe('Form', () => {
     expect(getByText('등록')).not.toBeNull();
   });
 
-  it('레스토랑 정보를 입력한다.', () => {
+  it('입력란에 레스토랑 정보를 입력하면 handleChange 함수가 호출된다..', () => {
     const { getByPlaceholderText } = renderForm();
 
     fireEvent.change(getByPlaceholderText('이름'), {
@@ -37,7 +37,7 @@ describe('Form', () => {
     expect(handleChange).toBeCalled();
   });
 
-  it('등록 버튼을 클릭하여 레스토랑 정보를 등록한다.', () => {
+  it('등록 버튼을 클릭하면 handleClick 함수가 호출된다.', () => {
     const { getByText } = renderForm();
 
     fireEvent.click(getByText('등록'));
