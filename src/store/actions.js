@@ -1,7 +1,7 @@
-export function changeText(keyValue, text) {
+export function changeText(name, text) {
   return {
     type: 'changeText',
-    payload: { key: keyValue, content: text },
+    payload: { key: name, content: text },
   };
 }
 
