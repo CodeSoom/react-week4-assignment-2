@@ -1,7 +1,7 @@
-export function updateRestaurant(keyValue, text) {
+export function updateRestaurant(inputName, text) {
   return {
     type: 'updateRestaurant',
-    payload: { key: keyValue, content: text },
+    payload: { key: inputName, content: text },
   };
 }
 
