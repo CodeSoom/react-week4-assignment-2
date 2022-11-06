@@ -9,7 +9,7 @@ describe('List', () => {
       restaurantList={restaurants}
     />));
 
-  context('입력한 레스토랑이 있을 때', () => {
+  context('레스토랑 목록이 있을 때', () => {
     it('입력한 레스토랑이 랜더링된다', () => {
       const { container } = renderList(restaurantList);
 
@@ -18,7 +18,7 @@ describe('List', () => {
     });
   });
 
-  context('입력한 레스토랑이 없을 때', () => {
+  context('레스토랑 목록이 없을 때', () => {
     it('목록이 없어요! 메세지가 뜬다', () => {
       const restaurants = [];
       const { container } = renderList(restaurants);
