@@ -1,4 +1,4 @@
-const restaurantList = [
+const restaurantLists = [
   {
     id: 1, name: '양키통닭', category: '한식', address: '서울시 문래동',
   },
@@ -7,4 +7,4 @@ const restaurantList = [
   },
 ];
 
-export default restaurantList;
+export default restaurantLists;
