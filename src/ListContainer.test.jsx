@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import restaurantList from '../fixtures/restaurantList';
+import restaurantLists from '../fixtures/restaurantLists';
 
 import ListContainer from './ListContainer';
 
@@ -13,7 +13,7 @@ describe('ListContainer', () => {
     return render((<ListContainer />));
   }
 
-  useSelector.mockImplementation((selector) => selector({ restaurantList }));
+  useSelector.mockImplementation((selector) => selector({ restaurantLists }));
 
   it('ListContainer가 렌더링된다.', () => {
     const { container } = renderListContainer();

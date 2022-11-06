@@ -2,14 +2,14 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import restaurantList from '../fixtures/restaurantList';
+import restaurantLists from '../fixtures/restaurantLists';
 
 import App from './App';
 
 jest.mock('react-redux');
 
 describe('App', () => {
-  useSelector.mockImplementation((selector) => selector({ restaurantList }));
+  useSelector.mockImplementation((selector) => selector({ restaurantLists }));
 
   function renderApp() {
     return render((<App />));
