@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/react';
+
 import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
+
 import restaurantList from '../fixtures/restaurantList';
 
 jest.mock('react-redux');
