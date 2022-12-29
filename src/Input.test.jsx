@@ -5,6 +5,6 @@ import Input from './Input';
 describe('Input', () => {
   it('renders input boxes', () => {
     const { getAllByRole } = render(<Input />);
-    expect(getAllByRole('textbox')).toBeInTheDocument();
+    expect(getAllByRole('textbox')).toHaveLength(3);
   });
 });
