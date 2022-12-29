@@ -4,6 +4,7 @@ export default function Input() {
       <input type='text' />
       <input type='text' />
       <input type='text' />
+      <button type='button'>등록</button>
     </>
   );
 }
