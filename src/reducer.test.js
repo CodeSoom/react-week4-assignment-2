@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import setRestuarants from './actions';
+import { setRestuarants } from './actions';
 
 describe('reducer', () => {
   describe('setRestuarants', () => {
