@@ -1,4 +1,7 @@
 const initialState = {
+  name: '',
+  category: '',
+  address: '',
   restaurants: [],
 };
 
