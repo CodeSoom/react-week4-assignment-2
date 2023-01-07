@@ -1,4 +1,4 @@
-export const RESTAURANTS_LIST = [
+export const restaurants = [
   {
     id: 1,
     name: '홍콩반점',
