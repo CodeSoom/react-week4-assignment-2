@@ -1,23 +1,37 @@
 import reducer from './reducer';
 import { addNewRestaurant } from './actions';
 import { Restaurant } from '../@types/restaurant';
+import { inputValues } from '../fixtures/inputValues';
+
+const initialState = {
+  restaurants: [],
+  inputValues,
+};
+
+const newRestaurant = new Restaurant({
+  name: '할매국밥',
+  category: '한식',
+  location: '부산',
+});
 
 describe('reducer', () => {
   describe('addNewRestaurant', () => {
     it('새로운 레스토랑 리스트를 반환한다.', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
-      const newRestaurant = new Restaurant({
-        name: '할매국밥',
-        category: '한식',
-        location: '부산',
-      });
-
       const store = reducer(initialState, addNewRestaurant(newRestaurant));
 
       expect(store.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('updateFormInputs', () => {
+    it('새로운 input name의 value를 반환한다.', () => {
+      const store = reducer(initialState, updateFormInputs('name', '안녕하세요'));
+
+      expect(store.inputValues).toBe({
+        name: '안녕하세요',
+        category: '',
+        location: '',
+      });
     });
   });
 });

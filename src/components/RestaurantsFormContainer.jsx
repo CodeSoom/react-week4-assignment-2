@@ -13,10 +13,9 @@ const RestaurantsFormContainer = () => {
   const dispatch = useDispatch();
 
   const updateRestaurantForm = (e) => {
-    setInputValues((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+
+    dispatch(updateFormInputs(name, value));
   };
 
   const submitNewRestaurantForm = (e) => {
