@@ -38,6 +38,13 @@ export default function App() {
         ))}
       </ul>
 
+      <form>
+        <input />
+        <input />
+        <input />
+
+        <button type="button">등록</button>
+      </form>
     </div>
   );
 }
