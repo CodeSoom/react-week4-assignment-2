@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 import RestaurantForm from './RestaurantForm';

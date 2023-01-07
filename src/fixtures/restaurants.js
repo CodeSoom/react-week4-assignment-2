@@ -19,6 +19,4 @@ export const restaurants = [
   },
 ];
 
-export const x = {
-  //
-};
+export const x = [];
