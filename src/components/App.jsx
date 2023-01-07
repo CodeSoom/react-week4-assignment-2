@@ -26,6 +26,8 @@ export const RESTAURANTS_LIST = [
 export default function App() {
   const [inputValues, setInputValues] = useState({
     name: '',
+    category: '',
+    location: '',
   });
 
   const updateRestaurantForm = (e) => {

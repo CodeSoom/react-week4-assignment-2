@@ -1,9 +1,13 @@
-const RestaurantForm = ({ inputValues: { name }, onUpdateRestaurantForm }) => (
+const RestaurantForm = ({ inputValues: { name, category, location }, onUpdateRestaurantForm }) => (
   <form>
     <label htmlFor="input:name">이름</label>
     <input id="input:name" name="name" value={name} onChange={onUpdateRestaurantForm} />
-    <input />
-    <input />
+
+    <label htmlFor="input:category">항목</label>
+    <input id="input:category" name="category" value={category} onChange={onUpdateRestaurantForm} />
+
+    <label htmlFor="input:location">지역</label>
+    <input id="input:location" name="location" value={location} onChange={onUpdateRestaurantForm} />
 
     <button type="button">등록</button>
   </form>
