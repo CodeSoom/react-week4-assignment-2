@@ -1,6 +1,7 @@
-const RestaurantForm = () => (
+const RestaurantForm = ({ inputValues: { name }, onUpdateRestaurantForm }) => (
   <form>
-    <input />
+    <label htmlFor="input:name">이름</label>
+    <input id="input:name" name="name" value={name} onChange={onUpdateRestaurantForm} />
     <input />
     <input />
 

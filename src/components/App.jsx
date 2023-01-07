@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import RestaurantForm from './RestaurantForm';
 import Restaurants from './Restaurants';
 
@@ -23,6 +24,17 @@ export const RESTAURANTS_LIST = [
 ];
 
 export default function App() {
+  const [inputValues, setInputValues] = useState({
+    name: '',
+  });
+
+  const updateRestaurantForm = (e) => {
+    setInputValues((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <div>
       <header>
@@ -30,7 +42,7 @@ export default function App() {
       </header>
 
       <Restaurants restaurants={RESTAURANTS_LIST} />
-      <RestaurantForm />
+      <RestaurantForm inputValues={inputValues} onUpdateRestaurantForm={updateRestaurantForm} />
     </div>
   );
 }
