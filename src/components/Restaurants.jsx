@@ -11,4 +11,5 @@ const Restaurants = ({ restaurants }) => (
     ))}
   </ul>
 );
+
 export default Restaurants;
