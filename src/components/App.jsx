@@ -1,29 +1,13 @@
 import { useState } from 'react';
+
 import RestaurantForm from './RestaurantForm';
 import Restaurants from './Restaurants';
 
-export const RESTAURANTS_LIST = [
-  {
-    id: 1,
-    name: '홍콩반점',
-    category: '중식',
-    location: '서울시',
-  },
-  {
-    id: 2,
-    name: '달초밥',
-    category: '일식',
-    location: '안산시',
-  },
-  {
-    id: 3,
-    name: '막퍼주는 시골밥상',
-    category: '한식',
-    location: '인천시',
-  },
-];
+import { Restaurant } from '../@types';
+import { RESTAURANTS_LIST } from '../__mocks__';
 
 export default function App() {
+  const [restaurants, setRestaurants] = useState(RESTAURANTS_LIST);
   const [inputValues, setInputValues] = useState({
     name: '',
     category: '',
@@ -37,8 +21,15 @@ export default function App() {
     }));
   };
 
-  const addNewRestaurant = () => {
+  const addNewRestaurant = (e) => {
+    e.preventDefault();
 
+    const newRestaurant = new Restaurant(restaurants, inputValues);
+
+    setRestaurants((prevRestaurants) => [
+      ...prevRestaurants,
+      newRestaurant,
+    ]);
   };
 
   return (
@@ -47,7 +38,7 @@ export default function App() {
         <h1>Restaurants</h1>
       </header>
 
-      <Restaurants restaurants={RESTAURANTS_LIST} />
+      <Restaurants restaurants={restaurants} />
       <RestaurantForm
         inputValues={inputValues}
         onUpdateRestaurantForm={updateRestaurantForm}
