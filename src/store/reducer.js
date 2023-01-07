@@ -10,9 +10,15 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === '') {
+  if (action.type === 'addNewRestaurant') {
+    const { newRestaurantForm } = action.payload;
+
     return {
       ...state,
+      restaurants: [
+        ...state.restaurants,
+        newRestaurantForm,
+      ],
     };
   }
 

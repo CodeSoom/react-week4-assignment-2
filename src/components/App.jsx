@@ -1,20 +1,20 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 import RestaurantForm from './RestaurantForm';
 
+import { addNewRestaurant } from '../store/actions';
 import { Restaurant } from '../@types';
-import { RESTAURANTS_LIST } from '../__mocks__';
-
-jest.mock('react-redux');
 
 export default function App() {
-  const [restaurants, setRestaurants] = useState(RESTAURANTS_LIST);
   const [inputValues, setInputValues] = useState({
     name: '',
     category: '',
     location: '',
   });
+
+  const dispatch = useDispatch();
 
   const updateRestaurantForm = (e) => {
     setInputValues((prev) => ({
@@ -23,15 +23,12 @@ export default function App() {
     }));
   };
 
-  const addNewRestaurant = (e) => {
+  const submitNewRestaurantForm = (e) => {
     e.preventDefault();
 
-    const newRestaurant = new Restaurant(restaurants, inputValues);
+    const newRestaurant = new Restaurant(inputValues);
 
-    setRestaurants((prevRestaurants) => [
-      ...prevRestaurants,
-      newRestaurant,
-    ]);
+    dispatch(addNewRestaurant(newRestaurant));
   };
 
   return (
@@ -44,7 +41,7 @@ export default function App() {
       <RestaurantForm
         inputValues={inputValues}
         onUpdateRestaurantForm={updateRestaurantForm}
-        onAddNewRestaurant={addNewRestaurant}
+        onAddNewRestaurant={submitNewRestaurantForm}
       />
     </div>
   );

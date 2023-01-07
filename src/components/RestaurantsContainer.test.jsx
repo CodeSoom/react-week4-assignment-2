@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { restaurants } from '../fixtures/restaurants';
+import { restaurants as restaurantsMock } from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants,
+    restaurants: restaurantsMock,
   }));
 
   it('레스토랑 리스트를 화면에 렌더한다.', () => {
@@ -19,10 +19,10 @@ describe('RestaurantsContainer', () => {
   });
 
   it('레스토랑 리스트는 초기에 3개를 갖는다.', () => {
-    const store = useSelector((state) => ({
+    const { restaurants } = useSelector((state) => ({
       restaurants: state.restaurants,
     }));
 
-    expect(store.restaurants).toHaveLength(3);
+    expect(restaurants).toHaveLength(3);
   });
 });
