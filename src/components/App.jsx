@@ -1,3 +1,6 @@
+import RestaurantForm from './RestaurantForm';
+import Restaurants from './Restaurants';
+
 export const RESTAURANTS_LIST = [
   {
     id: 1,
@@ -26,25 +29,8 @@ export default function App() {
         <h1>Restaurants</h1>
       </header>
 
-      <ul>
-        {RESTAURANTS_LIST.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-            |
-            {restaurant.category}
-            |
-            {restaurant.location}
-          </li>
-        ))}
-      </ul>
-
-      <form>
-        <input />
-        <input />
-        <input />
-
-        <button type="button">등록</button>
-      </form>
+      <Restaurants restaurants={RESTAURANTS_LIST} />
+      <RestaurantForm />
     </div>
   );
 }
