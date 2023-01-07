@@ -1,11 +1,11 @@
 import reducer from './reducer';
-import { addNewRestaurant } from './actions';
+import { addNewRestaurant, updateFormInputs } from './actions';
 import { Restaurant } from '../@types/restaurant';
-import { inputValues } from '../fixtures/inputValues';
+import { emptyInputValues } from '../fixtures/inputValues';
 
 const initialState = {
   restaurants: [],
-  inputValues,
+  inputValues: emptyInputValues,
 };
 
 const newRestaurant = new Restaurant({

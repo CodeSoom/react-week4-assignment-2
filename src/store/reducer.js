@@ -22,6 +22,18 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'updateFormInputs') {
+    const { currentInputValues } = action.payload;
+
+    return {
+      ...state,
+      inputValues: {
+        ...state.inputValues,
+        currentInputValues,
+      },
+    };
+  }
+
   return state;
 };
 

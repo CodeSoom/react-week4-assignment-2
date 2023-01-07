@@ -5,6 +5,9 @@ export const addNewRestaurant = (newRestaurantForm) => ({
   },
 });
 
-export const x = {
-  //
-};
+export const updateFormInputs = (name, value) => ({
+  type: 'updateFormInputs',
+  payload: {
+    [name]: value,
+  },
+});
