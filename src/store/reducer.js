@@ -1,12 +1,9 @@
+import { emptyInputValues } from '../fixtures/inputValues';
 import { RESTAURANTS_LIST } from '../__mocks__';
 
 const initialState = {
   restaurants: RESTAURANTS_LIST,
-  inputValues: {
-    name: '',
-    category: '',
-    location: '',
-  },
+  inputValues: emptyInputValues,
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,13 +20,13 @@ const reducer = (state = initialState, action) => {
   }
 
   if (action.type === 'updateFormInputs') {
-    const { currentInputValues } = action.payload;
+    const { name, value } = action.payload;
 
     return {
       ...state,
       inputValues: {
         ...state.inputValues,
-        currentInputValues,
+        [name]: value,
       },
     };
   }

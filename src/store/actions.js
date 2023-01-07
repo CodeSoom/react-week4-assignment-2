@@ -8,6 +8,7 @@ export const addNewRestaurant = (newRestaurantForm) => ({
 export const updateFormInputs = (name, value) => ({
   type: 'updateFormInputs',
   payload: {
-    [name]: value,
+    name,
+    value,
   },
 });

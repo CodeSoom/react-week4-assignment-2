@@ -27,7 +27,7 @@ describe('reducer', () => {
     it('새로운 input name의 value를 반환한다.', () => {
       const store = reducer(initialState, updateFormInputs('name', '안녕하세요'));
 
-      expect(store.inputValues).toBe({
+      expect(store.inputValues).toStrictEqual({
         name: '안녕하세요',
         category: '',
         location: '',

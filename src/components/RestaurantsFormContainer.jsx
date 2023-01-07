@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantForm from './RestaurantForm';
 
 import { Restaurant } from '../@types';
-import { addNewRestaurant } from '../store/actions';
+import { addNewRestaurant, updateFormInputs } from '../store/actions';
 
 const RestaurantsFormContainer = () => {
   const { inputValues } = useSelector((state) => ({
@@ -30,6 +30,7 @@ const RestaurantsFormContainer = () => {
     <RestaurantForm
       inputValues={inputValues}
       onSubmitNewRestaurant={submitNewRestaurantForm}
+      onUpdateRestaurantForm={updateRestaurantForm}
     />
   );
 };
