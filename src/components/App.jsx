@@ -38,7 +38,7 @@ export default function App() {
         <h1>Restaurants</h1>
       </header>
 
-      <Restaurants restaurants={restaurants} />
+      <Restaurants />
       <RestaurantForm
         inputValues={inputValues}
         onUpdateRestaurantForm={updateRestaurantForm}
