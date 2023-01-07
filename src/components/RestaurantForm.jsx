@@ -7,4 +7,5 @@ const RestaurantForm = () => (
     <button type="button">등록</button>
   </form>
 );
+
 export default RestaurantForm;
