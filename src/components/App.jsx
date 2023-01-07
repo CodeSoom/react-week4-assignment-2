@@ -37,6 +37,10 @@ export default function App() {
     }));
   };
 
+  const addNewRestaurant = () => {
+
+  };
+
   return (
     <div>
       <header>
@@ -44,7 +48,11 @@ export default function App() {
       </header>
 
       <Restaurants restaurants={RESTAURANTS_LIST} />
-      <RestaurantForm inputValues={inputValues} onUpdateRestaurantForm={updateRestaurantForm} />
+      <RestaurantForm
+        inputValues={inputValues}
+        onUpdateRestaurantForm={updateRestaurantForm}
+        onAddNewRestaurant={addNewRestaurant}
+      />
     </div>
   );
 }
