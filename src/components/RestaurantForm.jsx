@@ -1,9 +1,9 @@
 const RestaurantForm = ({
   inputValues: { name, category, location },
   onUpdateRestaurantForm,
-  onAddNewRestaurant,
+  onSubmitNewRestaurant,
 }) => (
-  <form onSubmit={onAddNewRestaurant}>
+  <form onSubmit={onSubmitNewRestaurant}>
     <label htmlFor="input:name">이름</label>
     <input id="input:name" name="name" value={name} onChange={onUpdateRestaurantForm} />
 
