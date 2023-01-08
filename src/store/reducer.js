@@ -6,29 +6,27 @@ const initialState = {
   inputValues: emptyInputValues,
 };
 
+const actionTypes = {
+  addNewRestaurant: (state, { newRestaurantForm }) => ({
+    ...state,
+    restaurants: [
+      ...state.restaurants,
+      newRestaurantForm,
+    ],
+  }),
+
+  updateFormInputs: (state, { name, value }) => ({
+    ...state,
+    inputValues: {
+      ...state.inputValues,
+      [name]: value,
+    },
+  }),
+};
+
 const reducer = (state = initialState, action) => {
-  if (action.type === 'addNewRestaurant') {
-    const { newRestaurantForm } = action.payload;
-
-    return {
-      ...state,
-      restaurants: [
-        ...state.restaurants,
-        newRestaurantForm,
-      ],
-    };
-  }
-
-  if (action.type === 'updateFormInputs') {
-    const { name, value } = action.payload;
-
-    return {
-      ...state,
-      inputValues: {
-        ...state.inputValues,
-        [name]: value,
-      },
-    };
+  if (actionTypes[action.type]) {
+    return actionTypes[action.type](state, action.payload);
   }
 
   return state;
