@@ -1,12 +1,8 @@
 import { render } from '@testing-library/react';
 import App from './App';
-import InputContainer from './InputContainer';
-import ListContainer from './ListContainer';
 
 describe('App', () => {
   const renderApp = () => render(<App />);
-  const renderInputContainer = () => render(<InputContainer />);
-  const renderListContainer = () => render(<ListContainer />);
 
   it('header가 보인다', () => {
     const { getByText } = renderApp();
