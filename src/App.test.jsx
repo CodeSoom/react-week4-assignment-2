@@ -9,10 +9,10 @@ describe('App', () => {
     expect(getByText('Restaurants')).not.toBeNull();
   });
 
-  describe('InputContainer가 렌더링 된다.', () => {
-    it('input이 보인다.');
-  });
-  describe('ListContainer가 렌더링 된다.', () => {
-    it('List가 보인다.');
-  });
+  // describe('InputContainer가 렌더링 된다.', () => {
+  //   it('input이 보인다.');
+  // });
+  // describe('ListContainer가 렌더링 된다.', () => {
+  //   it('List가 보인다.');
+  // });
 });

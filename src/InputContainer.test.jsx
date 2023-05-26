@@ -10,9 +10,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import InputContainer from './InputContainer';
 
 describe('InputContainer', () => {
-  const renderInputContainer = () => render(InputContainer);
+  const renderInputContainer = () => render(<InputContainer />);
   jest.mock('react-redux');
-
+  useSelector.mockImplementation((selector) => selector({
+    name: '투썸플레이스',
+    sort: '카페',
+    address: '신도림',
+  }));
   describe('NameInput이 렌더링 된다.', () => {
     it('input이 보인다.', () => {
       const { getByPlaceholderText } = renderInputContainer();
@@ -20,14 +24,7 @@ describe('InputContainer', () => {
     });
 
     it('input에 입력된 값이 보인다.', () => {
-      const restaurant = {
-        id: '1', name: '투썸플레이스', sort: '카페', address: '신도림',
-      };
       const { getByDisplayValue } = renderInputContainer();
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
-
       expect(getByDisplayValue('투썸플레이스')).not.toBeNull();
     });
   });
@@ -39,14 +36,7 @@ describe('InputContainer', () => {
     });
 
     it('input에 입력된 값이 보인다.', () => {
-      const restaurant = {
-        id: '1', name: '투썸플레이스', sort: '카페', address: '신도림',
-      };
       const { getByDisplayValue } = renderInputContainer();
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
-
       expect(getByDisplayValue('카페')).not.toBeNull();
     });
   });
@@ -58,14 +48,7 @@ describe('InputContainer', () => {
     });
 
     it('input에 입력된 값이 보인다.', () => {
-      const restaurant = {
-        id: '1', name: '투썸플레이스', sort: '카페', address: '신도림',
-      };
       const { getByDisplayValue } = renderInputContainer();
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
-
       expect(getByDisplayValue('신도림')).not.toBeNull();
     });
   });
@@ -83,7 +66,7 @@ describe('InputContainer', () => {
       const { getByText } = renderInputContainer();
       fireEvent.click(getByText('등록'));
       expect(dispatch).toBeCalledWith({
-        type: 'addRestaurant',
+        type: 'ADD_RESTAURANT',
       });
     });
   });
