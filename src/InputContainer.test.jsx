@@ -62,7 +62,7 @@ describe('InputContainer', () => {
       expect(getByText('등록')).not.toBeNull();
     });
 
-    it('button 클릭 시 state에 추가된다.', () => {
+    it('button 클릭 시 입력된 값들을 통해 state가 추가된다.', () => {
       const { getByText } = renderInputContainer();
       fireEvent.click(getByText('등록'));
       expect(dispatch).toBeCalledWith({

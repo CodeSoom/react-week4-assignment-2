@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   addRestaurant, updateInput,
 } from './action';
+import Form from './Form';
 
 export default function InputContainer() {
   const { title, sort, location } = useSelector((state) => ({
@@ -16,16 +17,20 @@ export default function InputContainer() {
     dispatch(updateInput({ name: e.target.name, value: e.target.value }));
   }
 
-  function handleClickButton() {
+  function handleSubmitButton(e) {
+    e.preventDefault();
     dispatch(addRestaurant());
   }
 
   return (
     <div>
-      <input name="title" placeholder="이름" type="text" value={title} onChange={handleChangeInput} />
-      <input name="sort" placeholder="분류" type="text" value={sort} onChange={handleChangeInput} />
-      <input name="location" placeholder="주소" type="text" value={location} onChange={handleChangeInput} />
-      <button type="button" onClick={handleClickButton}>등록</button>
+      <Form
+        title={title}
+        sort={sort}
+        location={location}
+        onChange={handleChangeInput}
+        onSubmit={handleSubmitButton}
+      />
     </div>
   );
 }
