@@ -1,49 +1,45 @@
 const initialState = {
   id: 100,
-  name: '',
+  title: '',
   sort: '',
-  address: '',
+  location: '',
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'ADD_NAME') {
+function createReducer(initialState, handlers) {
+  return function reducer(state = initialState, action) {
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action);
+    }
+    return state;
+  };
+}
+
+const reducers = createReducer(initialState, {
+  UPDATE_INPUT: (state, { payload }) => {
+    const { name, value } = payload;
     return ({
       ...state,
-      name: action.payload.name,
+      [name]: value,
     }
     );
-  }
-
-  if (action.type === 'ADD_SORT') {
-    return ({
-      ...state,
-      sort: action.payload.sort,
-    });
-  }
-
-  if (action.type === 'ADD_ADDRESS') {
-    return ({
-      ...state,
-      address: action.payload.address,
-    });
-  }
-
-  if (action.type === 'ADD_RESTAURANT') {
+  },
+  ADD_RESTAURANT: (state) => {
     const {
-      id, name, sort, address,
+      id, title, sort, location, restaurants,
     } = state;
-    return ({
+    return {
       ...state,
       id: id + 1,
-      name: '',
+      title: '',
       sort: '',
-      address: '',
+      location: '',
       restaurants: [
-        ...state, {
-          id, name, sort, address,
+        ...restaurants, {
+          id, title, sort, location,
         }],
-    });
-  }
-  return state;
-}
+    };
+  },
+});
+
+export default reducers;

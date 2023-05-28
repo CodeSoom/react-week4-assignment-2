@@ -1,27 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addAddress, addName, addRestaurant, addSort,
+  addRestaurant, updateInput,
 } from './action';
 
 export default function InputContainer() {
-  const { name, sort, address } = useSelector((state) => ({
-    name: state.name,
+  const { title, sort, location } = useSelector((state) => ({
+    title: state.title,
     sort: state.sort,
-    address: state.address,
+    location: state.location,
   }));
 
   const dispatch = useDispatch();
 
-  function handleChangeName(e) {
-    dispatch(addName(e.target.value));
-  }
-
-  function handleChangeSort(e) {
-    dispatch(addSort(e.target.value));
-  }
-
-  function handleChangeAddress(e) {
-    dispatch(addAddress(e.target.value));
+  function handleChangeInput(e) {
+    dispatch(updateInput({ name: e.target.name, value: e.target.value }));
   }
 
   function handleClickButton() {
@@ -30,9 +22,9 @@ export default function InputContainer() {
 
   return (
     <div>
-      <input placeholder="이름" type="text" value={name} onChange={handleChangeName} />
-      <input placeholder="분류" type="text" value={sort} onChange={handleChangeSort} />
-      <input placeholder="주소" type="text" value={address} onChange={handleChangeAddress} />
+      <input name="title" placeholder="이름" type="text" value={title} onChange={handleChangeInput} />
+      <input name="sort" placeholder="분류" type="text" value={sort} onChange={handleChangeInput} />
+      <input name="location" placeholder="주소" type="text" value={location} onChange={handleChangeInput} />
       <button type="button" onClick={handleClickButton}>등록</button>
     </div>
   );
