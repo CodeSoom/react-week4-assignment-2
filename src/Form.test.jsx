@@ -21,6 +21,7 @@ describe('Form', () => {
     onChange={handleChangeInput}
     onSubmit={handleSubmitButton}
   />);
+
   describe('Form이 렌더링된다.', () => {
     it('이름 input이 보인다.', () => {
       const { getByPlaceholderText } = renderForm();
