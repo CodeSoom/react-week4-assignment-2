@@ -7,7 +7,7 @@ export default function ListContainer() {
   }));
   return (
     <ul>
-      {restaurants.map((item) => (
+      {restaurants?.map((item) => (
         <List
           key={item.id}
           id={item.id}
