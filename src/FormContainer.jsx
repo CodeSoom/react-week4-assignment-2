@@ -4,7 +4,7 @@ import {
 } from './action';
 import Form from './Form';
 
-export default function InputContainer() {
+export default function FormContainer() {
   const { title, sort, location } = useSelector((state) => ({
     title: state.title,
     sort: state.sort,

@@ -7,10 +7,10 @@
 
 import { render, fireEvent } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
-import InputContainer from './InputContainer';
+import FormContainer from './FormContainer';
 
 describe('InputContainer', () => {
-  const renderInputContainer = () => render(<InputContainer />);
+  const renderInputContainer = () => render(<FormContainer />);
   jest.mock('react-redux');
   useSelector.mockImplementation((selector) => selector({
     name: '투썸플레이스',
