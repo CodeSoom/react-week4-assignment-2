@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import List from './List';
 
 export default function ListContainer() {
   const { restaurants } = useSelector((state) => ({
@@ -6,14 +7,14 @@ export default function ListContainer() {
   }));
   return (
     <ul>
-      {restaurants?.map((item) => (
-        <li key={item.id}>
-          <span>{item.title}</span>
-          |
-          <span>{item.sort}</span>
-          |
-          <span>{item.location}</span>
-        </li>
+      {restaurants.map((item) => (
+        <List
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          sort={item.sort}
+          location={item.location}
+        />
       ))}
     </ul>
   );
