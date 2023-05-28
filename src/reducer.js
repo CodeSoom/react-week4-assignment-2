@@ -6,16 +6,7 @@ const initialState = {
   restaurants: [],
 };
 
-function createReducer(initialState, handlers) {
-  return function reducer(state = initialState, action) {
-    if (handlers.hasOwnProperty(action.type)) {
-      return handlers[action.type](state, action);
-    }
-    return state;
-  };
-}
-
-const reducers = createReducer(initialState, {
+const actionCreator = {
   UPDATE_INPUT: (state, { payload }) => {
     const { name, value } = payload;
     return ({
@@ -40,6 +31,13 @@ const reducers = createReducer(initialState, {
         }],
     };
   },
-});
+};
 
-export default reducers;
+export default function reducer(state = initialState, action) {
+  if (actionCreator[action.type]) {
+    const { payload } = action;
+    return actionCreator[action.type](state, { payload });
+  }
+
+  return state;
+}
