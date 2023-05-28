@@ -3,7 +3,14 @@ const initialState = {
   title: '',
   sort: '',
   location: '',
-  restaurants: [],
+  restaurants: [
+    {
+      id: 1,
+      title: '파리바게트',
+      sort: '빵집',
+      location: '구로',
+    },
+  ],
 };
 
 const actionCreator = {
