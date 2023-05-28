@@ -7,7 +7,6 @@ export default function Form({
       <input name="sort" placeholder="분류" type="text" value={sort} onChange={onChange} />
       <input name="location" placeholder="주소" type="text" value={location} onChange={onChange} />
       <button type="submit">등록</button>
-
     </form>
   );
 }
